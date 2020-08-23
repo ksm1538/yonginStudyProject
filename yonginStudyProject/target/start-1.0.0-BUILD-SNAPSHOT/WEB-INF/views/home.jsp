@@ -15,6 +15,7 @@ request.setCharacterEncoding("UTF-8");
 
 <P>  The time on the server is ${serverTime}. </P>
 
+<P> ${testList[0].column1}</P> 
 
 </body>
 </html>

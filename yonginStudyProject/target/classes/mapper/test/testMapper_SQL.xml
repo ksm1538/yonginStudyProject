@@ -6,7 +6,7 @@
 <mapper namespace="testMapper">
 	<!-- 해당 부분의 id는 MapperClass의 함수 이름과 유사하여야 합니다. -->
 	
-	<select id="selectlist"  resultType="com.popit.start.VO.testVO">
+	<select id="selectlist"  resultType="com.login.VO.testVO">
 		SELECT	*	
 		FROM	TEMP
 	</select>
