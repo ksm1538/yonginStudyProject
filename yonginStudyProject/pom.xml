@@ -20,7 +20,7 @@
 		</repository>
 	</repositories>
 	<dependencies>
-		<!-- Spring -->      
+		<!-- Spring 1-->      
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
