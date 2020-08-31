@@ -17,7 +17,7 @@ request.setCharacterEncoding("UTF-8");
 <!-- css, js 설정(끝) -->
 
 <script>
-var DB = '${testList}';
+var DB = '${testList}'; 
 alert(DB);
 </script>
 

@@ -16,6 +16,6 @@ public class testDAOImpl implements testDAO{
 	
 	@Override
     public List<testVO> selectlist(){
-        return sqlSession.selectList("testMapper.selectlist");
+        return sqlSession.selectList("testMapper.selectlist"); 
     }
 }

@@ -11,7 +11,7 @@ function openRegisterForm(){
 }*/
 
 
-function a1(){
+function a1(){ 
 	var sendData="1";
 
 	  $.ajax({

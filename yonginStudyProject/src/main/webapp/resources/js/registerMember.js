@@ -12,7 +12,7 @@ function registerMemberFunc(){
 		//userPwHintAwsr:${'#userPwHintAwsr'}.val(),
 	}
 	
-	console.log(sendData);
+	console.log(sendData); 
 	  $.ajax({
 	     type: "POST",
 	     url : "/registerMember/registerAjax.json",

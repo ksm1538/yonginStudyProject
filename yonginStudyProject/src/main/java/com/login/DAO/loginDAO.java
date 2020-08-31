@@ -6,5 +6,5 @@ import com.login.VO.testVO;
 import com.login.VO.userInfoVO;
 
 public interface loginDAO {
-	public void insertMember(userInfoVO data) throws Exception;
+	public void insertMember(userInfoVO data) throws Exception; 
 }

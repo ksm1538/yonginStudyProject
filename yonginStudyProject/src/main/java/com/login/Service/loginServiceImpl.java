@@ -11,7 +11,7 @@ public class loginServiceImpl implements loginService{
 	@Autowired
 	loginDAO loginDAO;
 	
-	public void insertMember(userInfoVO data) throws Exception{
+	public void insertMember(userInfoVO data) throws Exception{ 
 		loginDAO.insertMember(data);
 	}
 }

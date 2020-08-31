@@ -28,7 +28,7 @@ request.setCharacterEncoding("UTF-8");
 	<div class="circle_btn" onClick="self.close()"></div> 
 	<div class="tc search_memeber_title_con">
 		<div class="search_memeber_title">회원 가입</div>
-	</div>
+	</div> 
 	
 	
 </div>

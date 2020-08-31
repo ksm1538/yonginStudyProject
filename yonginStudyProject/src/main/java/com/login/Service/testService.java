@@ -8,5 +8,5 @@ public interface testService {
 	
 	String aa();
 	
-	List<testVO> selectlistService();
+	List<testVO> selectlistService(); 
 }

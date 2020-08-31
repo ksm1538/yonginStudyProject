@@ -10,7 +10,7 @@ public class userInfoVO {
 	String userPw = "";
 	String userPwConfirm = "";
 	String userPhoneNumber ="";
-	String userPwHint = "";
+	String userPwHint = ""; 
 	String userGender = "";
 	String userAddress = "";
 	String useYn = "";

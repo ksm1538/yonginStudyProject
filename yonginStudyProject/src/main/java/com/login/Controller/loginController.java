@@ -68,7 +68,7 @@ public class loginController {
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 	      
 		// 위에 RequestBody 부분으로 JS에서 들어오는 데이터를 표현 근데 js에서 받은 데이터가 1이라는게 정확히 어떤상황에서 jsㅇ가 값을 넘겨준다는거임 ?ㅇㅇ
-		// js에서 받은 데이터가 "1"일 때 DB에서 값 가져옴
+		// js에서 받은 데이터가 "1"일 때 DB에서 값 가져옴  
 		if(data.equals("1")) {
 			List<testVO> testList = testService.selectlistService();
 			

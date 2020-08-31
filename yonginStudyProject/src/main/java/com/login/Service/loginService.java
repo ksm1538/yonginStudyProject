@@ -4,6 +4,6 @@ import com.login.VO.userInfoVO;
 
 public interface loginService {
 	
-	void insertMember(userInfoVO data) throws Exception;
+	void insertMember(userInfoVO data) throws Exception; 
 
 }

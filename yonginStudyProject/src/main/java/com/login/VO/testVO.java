@@ -6,7 +6,7 @@ public class testVO {
 	public String column1 = "";
 	
 	// TEMP 테이블의 COLUMN2 담을 변수 
-	public String column2 = "";
+	public String column2 = ""; 
 	
 	
 	public String getColumn2() {

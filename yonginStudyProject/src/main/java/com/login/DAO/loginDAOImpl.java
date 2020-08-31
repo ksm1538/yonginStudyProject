@@ -16,6 +16,6 @@ public class loginDAOImpl implements loginDAO{
 	
 	@Override
 	public void insertMember(userInfoVO data) throws Exception{
-		sqlSession.insert("loginMapper.insertMember", data);
+		sqlSession.insert("loginMapper.insertMember", data); 
 	}
 }

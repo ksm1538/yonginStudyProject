@@ -6,7 +6,7 @@
 <mapper namespace="loginMapper">
 	<!-- 해당 부분의 id는 MapperClass의 함수 이름과 유사하여야 합니다. -->
 	
-	<insert id="insertMember">
+	<insert id="insertMember"> 
 		INSERT 
 		INTO	USER_INFO
 			(	USER_CODE
