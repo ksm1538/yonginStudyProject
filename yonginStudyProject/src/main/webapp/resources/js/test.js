@@ -2,6 +2,10 @@ function openRegisterForm(){
 	window.open("/login/registerForm.do",'회원가입','width=700px ,height=900px ,location=no,status=no,scrollbars=no');
 }
 
+
+function openMainForm(){
+	window.open("/main/main.do");
+}
 /*function openFindIdForm(){
 	'findID.jsp','아이디 찾기','width=700px ,height=500px ,location=no,status=no,scrollbars=no'
 }*/

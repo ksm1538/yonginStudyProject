@@ -67,3 +67,32 @@ html, body {
 .user_identity_num{position:relative;}
 .user_identity_num .user_identity_title:after{content:""; position:absolute; width:6px; height:1px; left:64%; bottom:10px; background-color:#000;}
 
+
+
+/*메인 컨텐츠*/
+.main_content_wrap{overflow:hidden;}
+.calender_wrap{margin-bottom:40px;}
+
+.content_wrap{border:3px solid #31aae2;}
+.content_title{font-size:30px; font-weight: bold; padding: 20px 20px;}
+.content_title > span{display:inline-block; border-bottom:3px solid #31aae2; padding-bottom:10px;}
+.study_list_wrap{margin-bottom: 40px;}
+.left_content{margin-right:50px;}
+.right_content{margin-left:50px;}
+
+/*달력*/
+.calender_con{overflow:hidden; margin-bottom: 40px;}
+.calender_month_con{display:flex; flex-wrap: nowrap; justify-content: center;}
+.left_arrow_con{margin-right:50px;}
+.right_arrow_con{margin-left:50px;}
+.left_arrow_con .left_arrow{cursor:pointer; width:18px; height:18px; transform: rotate(180deg);}
+.right_arrow_con .right_arrow{cursor:pointer;  width:18px; height:18px;}
+
+/*달력 화살표 년 월*/
+.month_choice{position: relative;}
+.choice_year, .choice_month{font-size:20px; position: absolute; }
+.month_choice .choice_year{top:-6px; left:-35px;}
+.month_choice .choice_month{top:-6px; left:20px;}
+
+.calender > tbody > tr > th {width:100px;}
+.cal_day{text-align: center;}

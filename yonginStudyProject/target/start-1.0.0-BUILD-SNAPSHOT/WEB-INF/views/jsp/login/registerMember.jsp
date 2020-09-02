@@ -9,9 +9,11 @@ request.setCharacterEncoding("UTF-8");
 <!------ JSP 설정(끝) ------>
 
 <!-- css, js 설정(시작) -->
+<script src="<c:url value="/resources/util/jquery.js" />"></script>
+
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
-<script src="<c:url value="/resources/js/test.js" />"></script>
+<script src="<c:url value="/resources/js/registerMember.js" />"></script>
 <!-- css, js 설정(끝) -->
 
 <!DOCTYPE html>
@@ -26,7 +28,7 @@ request.setCharacterEncoding("UTF-8");
 	<div class="circle_btn" onClick="self.close()"></div> 
 	<div class="tc search_memeber_title_con">
 		<div class="search_memeber_title">회원 가입</div>
-	</div>
+	</div> 
 	
 	
 </div>
@@ -36,24 +38,26 @@ request.setCharacterEncoding("UTF-8");
 			
 			<div class="user_name search_member_form_con">
 				<div class="title_size type_2">이름</div>
-				<input type="text" id="userNm" class="textbox_style_1">
+				<input type="text" id="userName" class="textbox_style_1">
 			</div>
 			 
 			<div class="user_identity_num search_member_form_con">
 				<div class="user_identity_title title_size type_2">주민번호</div>
-				<input type="text" id="userNumber" class="textbox_style_1 type_2">
-				<input type="text" id="userNumber" class="textbox_style_1 type_2">
+				<input type="text" id="userNumber_1" class="textbox_style_1 type_2">
+				<input type="text" id="userNumber_2" class="textbox_style_1 type_2">
 			</div>
 			
+			<!-- 성별 라벨로 묶기 -->
 			<div class="user_gender search_member_form_con">
 				<div class="title_size type_2">성별</div>
-				<div class="radio_btn_con"><input type="radio" name="userGenderRadio" value="man" class="radio_btn"><span>남성</span></div>
-				<div class="radio_btn_con"><input type="radio" name="userGenderRadio" value="woman" checked="checked" class="radio_btn"><span>여성</span></div>
+				<div class="radio_btn_con"><input type="radio" name="userGender" value="man" class="radio_btn"><span>남성</span></div>
+				<div class="radio_btn_con"><input type="radio" name="userGender" value="woman" checked="checked" class="radio_btn"><span>여성</span></div>
 			</div>
+			
 			
 			<div class="user_phone search_member_form_con">
 				<div class="user_phone_title title_size type_2">전화번호</div>
-				<input type="text" id="userPhone" class="textbox_style_1">
+				<input type="text" id="userPhoneNumber" class="textbox_style_1">
 			</div>
 			
 			
@@ -61,6 +65,7 @@ request.setCharacterEncoding("UTF-8");
 				<div class="title_size type_2">아이디</div>
 				<input type="text" id="userId" class="textbox_style_1">
 				<input type="button" value="중복확인" id="checkIdBtn" class="btn_style_1">
+				<!-- 중복확인 기능 추가 예정 -->
 			</div>
 			
 			<div class="user_pw search_member_form_con">
@@ -88,6 +93,8 @@ request.setCharacterEncoding("UTF-8");
 				<input type="text" id="userPwHintAwsr" class="textbox_style_1">
 			</div>
 			
+			<!--  주소추가예정 -->
+			
 	
 
 	
@@ -97,7 +104,7 @@ request.setCharacterEncoding("UTF-8");
 
 <div class="col-12 col-center mw-1200 register_memeber_btn_wrap">
 	<div class="btn_style_1_con">
-		<input type="submit" value="확인" class="btn_style_1">
+		<input type="button" value="확인" class="btn_style_1" onclick="registerMemberFunc()" >
 	</div> 
 </div>
 
