@@ -80,7 +80,7 @@ public class loginController {
 			mReturn.put("resultList", null);
 			mReturn.put("message", "½ÇÆÐ");
 		    mReturn.put("result", "fail");   
-		}
+		} 
 	    
 	    return mReturn;
 	}
