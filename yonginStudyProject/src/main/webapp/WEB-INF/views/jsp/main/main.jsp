@@ -11,12 +11,22 @@ request.setCharacterEncoding("UTF-8");
 
 <!-- css, js 설정(시작) --> 
 
-<script src="<c:url value="/resources/util/jquery/jquery.js" />"></script>
-<script src="<c:url value="/resources/js/calender.js" />"></script>
-<script src="<c:url value="/resources/js/main.js" />"></script>
-<script src="<c:url value="/resources/js/test.js" />"></script>
+<link href="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
+
+<script src="<c:url value="/resources/util/jquery/jquery.js" />"></script>
+<script src="<c:url value="/resources/util/ax5core-master/dist/ax5core.min.js" />"></script>
+
+<script src="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.min.js" />"></script>
+<script src="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.min.js" />"></script>
+<script src="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.min.js" />"></script>
+
+<script src="<c:url value="/resources/js/constant.js" />"></script>
+<script src="<c:url value="/resources/js/main.js" />"></script>
+<%-- <script src="<c:url value="/resources/js/calender.js" />"></script> --%>
 
 <!-- css, js 설정(끝) -->
     
@@ -64,6 +74,10 @@ request.setCharacterEncoding("UTF-8");
             <div class="content_title"><span>스터디 목록</span></div>
         </div>
 
+	<div style="width: 40%; position: absolute; " >  
+	  <div data-ax5grid="studyListGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
+	</div>
+	
         <div class="col-12 sub_content_wrap">
             <div class="col-5 left_content">
                 <div class="col-12 calender_wrap content_wrap">

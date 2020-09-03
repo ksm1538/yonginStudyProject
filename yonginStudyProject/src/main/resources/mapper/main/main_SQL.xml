@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	 
+<mapper namespace="mainMapper">
+	
+	<select id="selectStudyList" resultType="com.main.VO.studyInfoVO"> 
+		SELECT	STUDY_INFO.STUDY_CODE 	as studyCode
+			 ,	STUDY_INFO.STUDY_NAME 	as studyName
+			 ,	STUDY_INFO.STUDY_DESC 	as studyDesc
+			 ,	STUDY_INFO.STUDY_TOPIC 	as studyTopic
+			 ,	STUDY_INFO.STUDY_LIMIT 	as studyLimit
+			 ,	USER_INFO.USER_NAME 	as userName
+		FROM	STUDY_INFO,
+				USER_INFO
+		WHERE	STUDY_INFO.STUDY_RGSTUS_ID		=	USER_INFO.USER_ID
+	</select>
+	
+</mapper>
