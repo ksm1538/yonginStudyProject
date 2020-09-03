@@ -7,8 +7,21 @@ public class studyInfoVO {
 	String 	studyTopic = "";
 	String 	studyLimit = "";
 	String	studyRgstusId = "";
+	String 	userName="";
+	String	studyArea="";
 	
-	
+	public String getStudyArea() {
+		return studyArea;
+	}
+	public void setStudyArea(String studyArea) {
+		this.studyArea = studyArea;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public String getStudyName() {
 		return studyName;
 	}

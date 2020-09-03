@@ -11,6 +11,7 @@
 			 ,	STUDY_INFO.STUDY_DESC 	as studyDesc
 			 ,	STUDY_INFO.STUDY_TOPIC 	as studyTopic
 			 ,	STUDY_INFO.STUDY_LIMIT 	as studyLimit
+			 ,	STUDY_INFO.STUDY_AREA	as studyArea
 			 ,	USER_INFO.USER_NAME 	as userName
 		FROM	STUDY_INFO,
 				USER_INFO

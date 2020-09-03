@@ -18,12 +18,11 @@ $(document).ready(function () {
     	target: $('[data-ax5grid="studyListGrid"]'),
         showLineNumber: false,
         showRowSelector: true,
-        lineNumberColumnWidth: 20,
-        
         columns: [ 
-        	{key : "studyName", label: "제목", align: "center", width:"30%", sortable: true},
-        	{key : "studyTopic", label: "주제", align: "center", width:"30%", },
-        	{key : "studyRgstusId",label : "방장", align : "center",width : "20%"},
+        	{key : "studyTopic", label: "주제", align: "center", width:"25%", sortable: true},
+        	{key : "studyName", label: "제목", align: "center", width:"25%"},
+        	{key : "studyArea", label: "지역", align: "center", width:"15%"},
+        	{key : "userName",label : "방장", align : "center",width : "15%"},
         	{key : "studyNumber",label : "현재 인원", align : "right",width : "10%"},
         	{key : "studyLimit",label : "정원", align : "right",width : "10%"},
 			
@@ -73,6 +72,7 @@ function getStudyList(){
 		success : function(data, status, xhr) {
 			switch(data.result){
 			    case COMMON_SUCCESS:
+			    	console.log(data.resultList);
 			    	studyListGrid.setData(data.resultList);
 			    	break;    
 			    case COMMON_FAIL:
