@@ -36,6 +36,8 @@ request.setCharacterEncoding("UTF-8");
                         <li><a>공지사항</a></li>
                         <li><a>마이페이지</a></li>
                         <h1>테스트 언제까지해</h1>
+                        <h1>테스트 언제까지해</h1>
+                        <h1>테스트 언제까지해22</h1>
                     </ul>
                 </div>
                 
