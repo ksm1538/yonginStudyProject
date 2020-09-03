@@ -37,6 +37,7 @@ request.setCharacterEncoding("UTF-8");
                         <li><a>마이페이지</a></li>
                         <h1>테스트입니다.</h1>
                          <h1>테스트입니다.2</h1>
+                         <h1>테스트입니다.4</h1>
                     </ul>
                 </div>
                 
