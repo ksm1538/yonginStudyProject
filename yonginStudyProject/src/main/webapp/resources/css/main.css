@@ -33,11 +33,21 @@ html, body {
 .header_con .header_menu{display:inline-block;}
 .header_con .header_menu > li {float:left; color:#fff; font-weight:bold; font-size:25px; margin-right:30px;}
 .header_con .header_menu > li:last-child{margin-right:0;}
-.header_con .header_member_con {display:flex;}
+.header_con .header_member_con {display:flex; position:relative}
 .header_member_con .header_user{color:#fff; position:relative; margin-right:30px;}
-.header_member_con .header_user .user_id{font-weight:bold;}
+.header_member_con .header_user .user_id{font-weight:bold; cursor:pointer;}
 .header_member_con .header_user:after{content:""; position:absolute; width:1px; height:16px; top:3px; right:-16px; background-color:rgba(255,255,255,0.4); }
 .header_member_con .logout{color:#fff;} 
+
+.header_member_con .user_box_con{display:none; position:absolute; right:145px; top:45px; background-color:#CAB0F1; border-radius:10px; color:#000; padding-right:15px; padding-left:15px; width:150px;}
+.header_member_con .user_box_tri{position:absolute;  width: 0px; height: 0px; border-top: 25px solid transparent; border-right: 25px solid #CAB0F1; top:-10px; right:75px; transform: rotate(225deg);}
+.header_member_con .user_box{color:#fff; display:flex;}
+.header_member_con .user_box > li {cursor:pointer; padding-right:10px; padding-left:10px; font-size:12px; font-weight:bold; }
+.header_member_con .user_box > li > a{display:block;}
+.header_member_con .user_box > li:last-child{margin-right:0;}
+.header_member_con .user_box > li:not(:last-child):after{content:""; position:absolute; width:1px; height:13px; top:17px; right:85px; background-color:rgba(255,255,255,0.4);}
+
+ 
 
  
 /*회원가입, 아이디찾기 , 비밀번호 찾기 공통*/

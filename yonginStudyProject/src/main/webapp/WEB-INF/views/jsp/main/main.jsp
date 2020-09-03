@@ -13,12 +13,14 @@ request.setCharacterEncoding("UTF-8");
 
 <script src="<c:url value="/resources/util/jquery/jquery.js" />"></script>
 <script src="<c:url value="/resources/js/calender.js" />"></script>
+<script src="<c:url value="/resources/js/main.js" />"></script>
+<script src="<c:url value="/resources/js/test.js" />"></script>
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
 
 <!-- css, js 설정(끝) -->
     
-
+    
     
 <!DOCTYPE html>
 <html>
@@ -35,15 +37,23 @@ request.setCharacterEncoding("UTF-8");
                         <li><a>스터디목록</a></li>
                         <li><a>공지사항</a></li>
                         <li><a>마이페이지</a></li>
-                        <h1>테스트 언제까지해</h1>
-                        <h1>테스트 언제까지해</h1>
-                        <h1>테스트 언제까지해22</h1>
                     </ul>
                 </div>
                 
                 <div class="header_member_con">
                     <div class="header_user"><span class="user_id">용인대학교</span>님 환영합니다.</div>
                     <div class="logout">로그아웃</div>
+                    
+                    <div class="user_box_con">
+                    	<div class="circle_btn_2"></div>
+                    	<div class="user_box_tri"></div>
+                    	<div>
+                    		 <ul class="user_box">
+                       			 <li><a>마이페이지</a></li>
+                      			 <li><a>쪽지함</a></li>
+                   			 </ul>
+                    	</div>
+                    </div>
                 </div>
         </div>
     </div>
