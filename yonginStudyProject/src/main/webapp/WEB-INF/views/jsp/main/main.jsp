@@ -72,11 +72,18 @@ request.setCharacterEncoding("UTF-8");
             <!--게시판-->
         <div class="col-12 study_list_wrap content_wrap">
             <div class="content_title"><span>스터디 목록</span></div>
+            
+            <div style="width: 100%;" >  
+	  			<div data-ax5grid="studyListGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
+			</div>
+			
+			<div class="list_btn">
+				<input type="button" value="스터디 만들기">
+			</div>
+            
         </div>
 
-	<div style="width: 40%; position: absolute; " >  
-	  <div data-ax5grid="studyListGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
-	</div>
+	
 	
         <div class="col-12 sub_content_wrap">
             <div class="col-5 left_content">
