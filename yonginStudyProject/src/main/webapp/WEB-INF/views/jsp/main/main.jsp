@@ -11,7 +11,7 @@ request.setCharacterEncoding("UTF-8");
 
 <!-- css, js 설정(시작) --> 
 
-<script src="<c:url value="/resources/util/jquery.js" />"></script>
+<script src="<c:url value="/resources/util/jquery/jquery.js" />"></script>
 <script src="<c:url value="/resources/js/calender.js" />"></script>
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
