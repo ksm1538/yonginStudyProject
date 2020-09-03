@@ -18,7 +18,7 @@ request.setCharacterEncoding("UTF-8");
 
 <!-- css, js 설정(끝) -->
     
-<!-- ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ -->
+
     
 <!DOCTYPE html>
 <html>
@@ -35,6 +35,7 @@ request.setCharacterEncoding("UTF-8");
                         <li><a>스터디목록</a></li>
                         <li><a>공지사항</a></li>
                         <li><a>마이페이지</a></li>
+                        <h1>테스트입니다.</h1>
                     </ul>
                 </div>
                 
