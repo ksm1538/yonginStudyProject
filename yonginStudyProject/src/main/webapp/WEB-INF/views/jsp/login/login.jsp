@@ -13,7 +13,7 @@ request.setCharacterEncoding("UTF-8");
 
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
-<script src="<c:url value="/resources/js/test.js" />"></script>
+<script src="<c:url value="/resources/js/login.js" />"></script>
 <!-- css, js 설정(끝) -->
 
 <script>
