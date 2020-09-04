@@ -106,3 +106,19 @@ html, body {
 
 .calender > tbody > tr > th {width:100px;}
 .cal_day{text-align: center;}
+
+/*스터디 생성*/
+.make_study_title_con .make_study_title{font-size:30px; font-weight:bold;}
+.make_study_title_con{overflow:hidden;}
+.make_study_form{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:40px;}
+.make_study{position:relative;}
+.make_study_form_wrap{margin-bottom:50px;}
+.make_study_title_wrap{padding-top:30px; margin-bottom:80px;}
+
+/*스터디 정보*/
+.study_info_title_con{overflow:hidden;}
+.study_info_title_con .study_info_title{font-size:30px; font-weight:bold;}
+.study_info_form{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:40px;}
+.study_info{position:relative;}
+.study_info_form_wrap{margin-bottom:50px;}
+.study_info_title_wrap{padding-top:30px; margin-bottom:80px;}
