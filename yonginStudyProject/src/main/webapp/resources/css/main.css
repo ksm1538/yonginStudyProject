@@ -62,6 +62,8 @@ html, body {
 .title_size.type_2{min-width:200px;}
 .title_size.type_3{min-width:190px;}
 .title_size.type_4{min-width:350px;}
+.title_size.type_5{min-width:100px;}
+
 
 .user_pw_hint{position:relative;}
 .user_pw_hint .select_style_0{position:absolute; right:16%; bottom:0; width:220px; height:30px;}
@@ -106,6 +108,28 @@ html, body {
 
 .calender > tbody > tr > th {width:100px;}
 .cal_day{text-align: center;}
+
+
+
+/*마이페이지*/
+.mypage_list_con{background-color:#CAB0F1; height:100%; padding:20px 20px; }
+.mypage_list_con .mypage_list > li{font-size:20px; font-weight:bold; color:#fff; margin-bottom:50px; margin-top:50px;}
+.mypage_list_con .mypage_list > li > a{cursor:pointer;}
+.mypage_list_title{padding-bottom:20px; margin-bottom:20px; border-bottom:2px solid #fff; width:auto; font-size:25px; font-weight:bold; color:#fff;}
+
+.mypage_content_con{padding:50px 50px;  }
+.mypage_content_con .mypage_content_title{margin-bottom:80px;}
+.mypage_content_con .mypage_content_title > span{display:inline-block; padding-bottom:15px; font-size:30px; font-weight:bold; border-bottom:3px solid #31aae2; }
+
+.user_info_modify{border-bottom:3px solid #CAB0F1; padding-bottom:50px; margin-bottom:50px;}
+
+.modify_line_con{margin-bottom:80px;}
+.modify_line{display:flex; margin-bottom:50px;}
+.modify_line:last-child{margin-bottom:0;}
+.modify_con{display:flex; margin-right:120px;}
+.modify_phonenumber .title_size, .modify_pw .title_size{margin-right:40px;}
+
+
 
 /*스터디 생성*/
 .make_study_title_con .make_study_title{font-size:30px; font-weight:bold;}

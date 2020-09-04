@@ -62,12 +62,11 @@ body{overflow:scroll;}
 
 
  
- 
  /*버튼 스타일*/
-.btn_style_0{cursor:pointer; border:1px solid #fff; color:#fff; font-size:15px; width:200px; height:35px; background:transparent;}
+.btn_style_0{outline:none; cursor:pointer; border:1px solid #fff; color:#fff; font-size:15px; width:200px; height:35px; background:transparent;}
 .btn_style_0:hover{color:#000; background-color:#31aae2; color:#fff;}
 
-.btn_style_1{cursor:pointer; border-radius:12px; font-weight:bold; color:#000; font-size:15px; width:100px; height:35px; background:transparent;}
+.btn_style_1{outline:none;  cursor:pointer; border-radius:12px; font-weight:bold; color:#000; font-size:15px; width:100px; height:35px; background:transparent;}
 .btn_style_1.type_2{width:150px;}
 .btn_style_1:hover{color:#000; border:none; background-color:#31aae2; color:#fff;}
 
