@@ -1,11 +1,28 @@
 function openRegisterForm(){
-	window.open("/login/registerForm.do",'회원가입','width=700px ,height=900px ,location=no,status=no,scrollbars=no');
+	window.open("/registerForm.do",'회원가입','width=700px ,height=900px ,location=no,status=no,scrollbars=no');
 }
 
+/*function login(){
+	var sendData={
+		userId : document.getElementById("userId").value,
+		userPw : document.getElementById("userPw").value
+	}
 
-function openMainForm(){
-	window.open("/main/main.do");
-}
+	$.ajax({
+	     type: "GET",
+	     url : "/login.json",
+	     data: JSON.stringify(sendData),
+	     dataType: "json",
+	     contentType: "application/json; charset=UTF-8",
+	     async: false,
+	     success : function(data, status, xhr) {
+	     },
+	     error: function(jqXHR, textStatus, errorThrown) {
+	        alert('error = ' + jqXHR.responseText);
+	     }
+	}); 
+}*/
+
 /*function openFindIdForm(){
 	'findID.jsp','아이디 찾기','width=700px ,height=500px ,location=no,status=no,scrollbars=no'
 }*/
@@ -15,41 +32,3 @@ function openMainForm(){
 }*/
 
 
-function a1(){ 
-	var sendData="1";
-
-	  $.ajax({
-	      type: "POST",
-	      url : "/login/testAjax.json",
-	     data: sendData,
-	     dataType: "json",
-	     contentType: "application/json; charset=UTF-8",
-	     async: false,
-	     success : function(data, status, xhr) {
-	        console.log(data);
-	     },
-	     error: function(jqXHR, textStatus, errorThrown) {
-	        alert('error = ' + jqXHR.responseText);
-	     }
-	  }); 
-}
-
-
- function a2(){
-	var sendData="2";
-
-	  $.ajax({
-	      type: "POST",
-	      url : "/login/testAjax.json",
-	     data: sendData,
-	     dataType: "json",
-	     contentType: "application/json; charset=UTF-8",
-	     async: false,
-	     success : function(data, status, xhr) {
-	        console.log(data);
-	     },
-	     error: function(jqXHR, textStatus, errorThrown) {
-	        alert('error = ' + jqXHR.responseText);
-	     }
-	  }); 
-}

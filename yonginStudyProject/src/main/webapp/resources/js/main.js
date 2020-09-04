@@ -1,9 +1,15 @@
 /** 변수 설정(시작) **/
 var studyListGrid = new ax5.ui.grid();
+var studyNoticeListGrid = new ax5.ui.grid();
+var cal;
 /** 변수 설정(끝) **/
 
 /** 초기화(시작) **/
 $(document).ready(function () {
+	//달력 초기 설정
+	cal = new tui.Calendar('#calendar', {
+	    defaultView: 'month' // monthly view option
+	});
 	
 	$(".user_id").click(function(){
 		$(".user_box_con").fadeIn(600);
@@ -23,9 +29,8 @@ $(document).ready(function () {
         	{key : "studyName", label: "제목", align: "center", width:"25%"},
         	{key : "studyArea", label: "지역", align: "center", width:"15%"},
         	{key : "userName",label : "방장", align : "center",width : "15%"},
-        	{key : "studyNumber",label : "현재 인원", align : "right",width : "10%"},
+        	{key : "totalCount",label : "현재 인원", align : "right",width : "10%"},
         	{key : "studyLimit",label : "정원", align : "right",width : "10%"},
-			
         ],
         header: {
         	align:"center",
@@ -33,7 +38,47 @@ $(document).ready(function () {
         },
         body: {
                     align: "left",
-                    columnHeight: 28,
+                    columnHeight: 45,
+                    
+                    onClick: function () 	{
+                    
+					},
+					onDataChanged: function(){
+						
+					},
+                },
+        
+        page: {
+            navigationItemCount: 9,
+            height: 30,
+            display: true,
+            firstIcon: '|<', 
+            prevIcon: '<',
+            nextIcon: '>',
+            lastIcon: '>|',
+            display: false,
+            onChange: function () {
+                },
+            },
+        });
+	
+	//스터디 리스트 설정
+	studyNoticeListGrid.setConfig({   
+    	target: $('[data-ax5grid="studyNoticeListGrid"]'),
+        showLineNumber: false,
+        showRowSelector: true,
+        columns: [ 
+        	{key : "studyName", label: "스터디 이름", align: "center", width:"45%", sortable: true},
+        	{key : "noticeTitle", label: "제목", align: "center", width:"45%"},
+        	{key : "noticeCnt", label: "조회 수", align: "center", width:"10%"},
+        ],
+        header: {
+        	align:"center",
+        	selector: false
+        },
+        body: {
+                    align: "left",
+                    columnHeight: 45,
                     
                     onClick: function () 	{
                     
@@ -72,7 +117,6 @@ function getStudyList(){
 		success : function(data, status, xhr) {
 			switch(data.result){
 			    case COMMON_SUCCESS:
-			    	console.log(data.resultList);
 			    	studyListGrid.setData(data.resultList);
 			    	break;    
 			    case COMMON_FAIL:

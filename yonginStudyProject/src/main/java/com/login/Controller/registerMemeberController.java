@@ -30,7 +30,7 @@ public class registerMemeberController {
 	/**
 	 * 회원가입 팝업 Mapping
 	 */
-	@RequestMapping(value = "/login/registerForm.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/registerForm.do", method = RequestMethod.GET)
 	public String registerForm() {
 		
 		return "jsp/login/registerMember";

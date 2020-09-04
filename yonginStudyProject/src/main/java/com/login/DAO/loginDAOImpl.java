@@ -1,7 +1,5 @@
 package com.login.DAO;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,5 +15,10 @@ public class loginDAOImpl implements loginDAO{
 	@Override
 	public void insertMember(userInfoVO data) throws Exception{
 		sqlSession.insert("loginMapper.insertMember", data); 
+	}
+	
+	@Override
+	public userInfoVO login(userInfoVO userInfoVO) throws Exception{
+		return sqlSession.selectOne("loginMapper.login", userInfoVO); 
 	}
 }

@@ -9,11 +9,11 @@ request.setCharacterEncoding("UTF-8");
 <!------ JSP 설정(끝) ------>
 
 <!-- css, js 설정(시작) --> 
-<script src="<c:url value="/resources/util/jquery.js" />"></script>
+<script src="<c:url value="/resources/util/jquery/jquery.js" />"></script>
 
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
-<script src="<c:url value="/resources/js/test.js" />"></script>
+<script src="<c:url value="/resources/js/login.js" />"></script>
 <!-- css, js 설정(끝) -->
 
 <script>
@@ -43,7 +43,7 @@ alert(DB);
 		<div class="col-3 mw-1200 col-center tc log_in_form_content">
 			<div class="id_form"><input type="text" class="textbox_style_0" placeholder="아이디를 입력하세요"></div>
 			<div class="pw_form"><input type="password" class="textbox_style_0" placeholder="비밀번호를 입력하세요"></div>
-			<div class="log_in_btn"><input type="button" value="로그인" class="bd btn_style_0"></div>
+			<div class="log_in_btn"><input type="button" value="로그인" class="bd btn_style_0" onclick="openMainForm();"></div>
 			<div class="col-12">
 				<ul class="member_function">
 					<li><a class="a_tag" onclick="openRegisterForm();"><span>회원가입</span></a></li>

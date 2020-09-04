@@ -1,5 +1,4 @@
-    
-    <!------ JSP 설정(시작) ------>
+<!------ JSP 설정(시작) ------>
 <!-- 한글 설정(시작) -->
 <%@ page language="java" contentType="text/HTML;charset=UTF-8" pageEncoding="UTF-8" %>
 <%
@@ -8,33 +7,36 @@ request.setCharacterEncoding("UTF-8");
 <!-- 한글 설정(끝) -->
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!------ JSP 설정(끝) ------>
-
-<!-- css, js 설정(시작) --> 
-
-<link href="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
-
-<script src="<c:url value="/resources/util/jquery/jquery.js" />"></script>
-<script src="<c:url value="/resources/util/ax5core-master/dist/ax5core.min.js" />"></script>
-
-<script src="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.min.js" />"></script>
-<script src="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.min.js" />"></script>
-<script src="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.min.js" />"></script>
-
-<script src="<c:url value="/resources/js/constant.js" />"></script>
-<script src="<c:url value="/resources/js/main.js" />"></script>
-<%-- <script src="<c:url value="/resources/js/calender.js" />"></script> --%>
-
-<!-- css, js 설정(끝) -->
-    
-    
     
 <!DOCTYPE html>
 <html>
 <head>
+<!---- css, js 설정(시작) ----> 
+<!-- 공통 (시작) -->
+<link href="<c:url value="/resources/util/jquery-ui/jquery-ui.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/bootstrap-3.4.1-dist/css/bootstrap.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
+<script src="<c:url value="/resources/util/jquery-ui/jquery-1.12.4.min.js" />"></script>
+<script src="<c:url value="/resources/util/bootstrap-3.4.1-dist/js/bootstrap.min.js" />"></script>
+<script src="<c:url value="/resources/util/ax5core-master/dist/ax5core.min.js" />"></script>
+<script src="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.min.js" />"></script>
+<script src="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.min.js" />"></script>
+<script src="<c:url value="/resources/js/constant.js" />"></script>
+<!-- 공통 (끝) -->
+
+<!-- 페이지 별 설정(시작) -->
+<link href="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/toast-ui/tui-calendar.css" />" rel="stylesheet">
+
+<script src="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.min.js" />"></script>
+<script src="<c:url value="/resources/util/toast-ui/tui-code-snippet.js" />"></script>
+<script src="<c:url value="/resources/util/toast-ui/tui-calendar.min.js" />"></script>
+<script src="<c:url value="/resources/js/main.js" />"></script>
+<!-- 페이지 별 설정(끝) -->
+<!---- css, js 설정(끝) ---->
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -89,28 +91,30 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-5 left_content">
                 <div class="col-12 calender_wrap content_wrap">
                     <div class="content_title"><span>시험일정</span></div>
-
-                    <div class="calender_con">
-                        <div class="col-12 tc calender_month_con">
-                            <div class="left_arrow_con"><a href="#" id="prev_month"><img src="/resources/img/arrow.png" class="left_arrow"></a></div>
-                            <div class="month_choice">
-                                <span class="choice_year" id="choice_year"></span>
-                                <span class="choice_month" id="choice_month"></span>
-                            </div>
-                            <div class="right_arrow_con"><a href="#" id="next_month"><img src="/resources/img/arrow.png" class="right_arrow"></a></div>
-                        </div>
-                    </div>
-
-                    <div class="calender_date_con">
-                        <div class="calender_date" id="calender_date"></div>
-                    </div>
-
+					    <!-- 달력 버튼 -->
+					    <div id="menu">
+					      <span id="menu-navi">
+					        <button type="button" class="btn btn-default btn-sm move-today" data-action="move-today">Today</button>
+					        <button type="button" class="btn btn-default btn-sm move-day" data-action="move-prev">
+					          <i class="calendar-icon ic-arrow-line-left" data-action="move-prev"></i>
+					        </button>
+					        <button type="button" class="btn btn-default btn-sm move-day" data-action="move-next">
+					          <i class="calendar-icon ic-arrow-line-right" data-action="move-next"></i>
+					        </button>
+					      </span>
+					      <span id="renderRange" class="render-range"></span>
+					    </div> 
+                    	<!-- 달력표시 -->
+                    	<div id="calendar"></div>
                 </div>
             </div>
     
             <div class="col-6 right_content">
                 <div class="col-12 notice_wrap content_wrap">
                    <div class="content_title"><span>공지사항</span></div>
+               		<div style="width: 100%;" >  
+	  					<div data-ax5grid="studyNoticeListGrid" data-ax5grid-config="{}" style="height:300px; padding-top:10px; padding-right:10px"></div>  
+					</div>
                 </div>
             </div>
         </div>

@@ -9,7 +9,15 @@ public class studyInfoVO {
 	String	studyRgstusId = "";
 	String 	userName="";
 	String	studyArea="";
+	int 	totalCount;
 	
+	
+	public int getTotalCount() {
+		return totalCount;
+	}
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
 	public String getStudyArea() {
 		return studyArea;
 	}

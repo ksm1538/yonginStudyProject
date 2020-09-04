@@ -50,7 +50,6 @@ public class mainController {
 	      
 		List<studyInfoVO> ltResult = mainService.selectStudyList();
 		
-		System.out.println("확인 : "+ltResult.get(0).getStudyName());
 		if(ltResult.size() < 1) {
 			mReturn.put("result", "fail");
 			mReturn.put("message", "스터디 목록이 없습니다.");
