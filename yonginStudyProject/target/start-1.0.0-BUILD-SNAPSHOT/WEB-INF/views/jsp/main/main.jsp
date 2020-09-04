@@ -12,31 +12,28 @@ request.setCharacterEncoding("UTF-8");
 <html>
 <head>
 <!---- css, js 설정(시작) ----> 
-<!-- 공통 (시작) -->
-<link href="<c:url value="/resources/util/jquery-ui/jquery-ui.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/util/bootstrap-3.4.1-dist/css/bootstrap.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/jquery-ui/jquery-ui.css" />" rel="stylesheet">
+<%-- <link href="<c:url value="/resources/util/bootstrap-3.4.1-dist/css/bootstrap.min.css" />" rel="stylesheet"> --%>
+<link href="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.css" />" rel="stylesheet">
+
+<link href="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/toast-ui/tui-calendar.css" />" rel="stylesheet">
+
 
 <script src="<c:url value="/resources/util/jquery-ui/jquery-1.12.4.min.js" />"></script>
-<script src="<c:url value="/resources/util/bootstrap-3.4.1-dist/js/bootstrap.min.js" />"></script>
+<%-- <script src="<c:url value="/resources/util/bootstrap-3.4.1-dist/js/bootstrap.min.js" />"></script> --%>
 <script src="<c:url value="/resources/util/ax5core-master/dist/ax5core.min.js" />"></script>
 <script src="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.min.js" />"></script>
 <script src="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.min.js" />"></script>
 <script src="<c:url value="/resources/js/constant.js" />"></script>
-<!-- 공통 (끝) -->
-
-<!-- 페이지 별 설정(시작) -->
-<link href="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/util/toast-ui/tui-calendar.css" />" rel="stylesheet">
 
 <script src="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.min.js" />"></script>
 <script src="<c:url value="/resources/util/toast-ui/tui-code-snippet.js" />"></script>
 <script src="<c:url value="/resources/util/toast-ui/tui-calendar.min.js" />"></script>
 <script src="<c:url value="/resources/js/main.js" />"></script>
-<!-- 페이지 별 설정(끝) -->
 <!---- css, js 설정(끝) ---->
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -62,7 +59,7 @@ request.setCharacterEncoding("UTF-8");
                     	<div class="user_box_tri"></div>
                     	<div>
                     		 <ul class="user_box">
-                       			 <li><a>마이페이지</a></li>
+                       			 <li><a onclick="openMypageForm();">마이페이지</a></li>
                       			 <li><a>쪽지함</a></li>
                    			 </ul>
                     	</div>
@@ -83,6 +80,9 @@ request.setCharacterEncoding("UTF-8");
 			<div class="list_btn">
 				<input type="button" value="스터디 만들기">
 			</div>
+			<div class="make_btn">
+				<input type="button" value="스터디  더보기">
+			</div>
             
         </div>
 
@@ -92,6 +92,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-5 left_content">
                 <div class="col-12 calender_wrap content_wrap">
                     <div class="content_title"><span>시험일정</span></div>
+					    <!-- 달력 버튼 -->
 					    <div id="menu">
 					      <span id="menu-navi">
 					        <button type="button" class="btn btn-default btn-sm move-today" data-action="move-today">Today</button>
@@ -104,6 +105,7 @@ request.setCharacterEncoding("UTF-8");
 					      </span>
 					      <span id="renderRange" class="render-range"></span>
 					    </div> 
+                    	<!-- 달력표시 -->
                     	<div id="calendar"></div>
                 </div>
             </div>
@@ -111,6 +113,9 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-6 right_content">
                 <div class="col-12 notice_wrap content_wrap">
                    <div class="content_title"><span>공지사항</span></div>
+               		<div style="width: 100%;" >  
+	  					<div data-ax5grid="studyNoticeListGrid" data-ax5grid-config="{}" style="height:300px; padding-top:10px; padding-right:10px"></div>  
+					</div>
                 </div>
             </div>
         </div>

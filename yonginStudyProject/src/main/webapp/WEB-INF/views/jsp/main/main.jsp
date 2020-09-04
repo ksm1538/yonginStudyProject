@@ -33,6 +33,8 @@ request.setCharacterEncoding("UTF-8");
 <script src="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.min.js" />"></script>
 <script src="<c:url value="/resources/util/toast-ui/tui-code-snippet.js" />"></script>
 <script src="<c:url value="/resources/util/toast-ui/tui-calendar.min.js" />"></script>
+<script src="<c:url value="/resources/js/moreStudy.js" />"></script>
+<script src="<c:url value="/resources/js/myPage.js" />"></script>
 <script src="<c:url value="/resources/js/main.js" />"></script>
 <!---- css, js 설정(끝) ---->
 <meta charset="UTF-8">
@@ -59,7 +61,7 @@ request.setCharacterEncoding("UTF-8");
                     	<div class="user_box_tri"></div>
                     	<div>
                     		 <ul class="user_box">
-                       			 <li><a>마이페이지</a></li>
+                       			 <li><a onclick="openMypageForm();">마이페이지</a></li>
                       			 <li><a>쪽지함</a></li>
                    			 </ul>
                     	</div>
@@ -79,6 +81,9 @@ request.setCharacterEncoding("UTF-8");
 			
 			<div class="list_btn">
 				<input type="button" value="스터디 만들기">
+			</div>
+			<div class="make_btn">
+				<input type="button" value="스터디  더보기" onclick="openMoreStudyForm();">
 			</div>
             
         </div>

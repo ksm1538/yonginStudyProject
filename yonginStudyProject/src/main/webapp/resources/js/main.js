@@ -11,6 +11,12 @@ $(document).ready(function () {
 	    defaultView: 'month' // monthly view option
 	});
 	
+	
+
+
+
+
+	
 	$(".user_id").click(function(){
 		$(".user_box_con").fadeIn(600);
 	});
