@@ -12,30 +12,28 @@ request.setCharacterEncoding("UTF-8");
 <html>
 <head>
 <!---- css, js 설정(시작) ----> 
-<!-- 공통 (시작) -->
-<link href="<c:url value="/resources/util/jquery-ui/jquery-ui.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/util/bootstrap-3.4.1-dist/css/bootstrap.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/jquery-ui/jquery-ui.css" />" rel="stylesheet">
+<%-- <link href="<c:url value="/resources/util/bootstrap-3.4.1-dist/css/bootstrap.min.css" />" rel="stylesheet"> --%>
+<link href="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.css" />" rel="stylesheet">
+
+<link href="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/toast-ui/tui-calendar.css" />" rel="stylesheet">
+
+
 <script src="<c:url value="/resources/util/jquery-ui/jquery-1.12.4.min.js" />"></script>
-<script src="<c:url value="/resources/util/bootstrap-3.4.1-dist/js/bootstrap.min.js" />"></script>
+<%-- <script src="<c:url value="/resources/util/bootstrap-3.4.1-dist/js/bootstrap.min.js" />"></script> --%>
 <script src="<c:url value="/resources/util/ax5core-master/dist/ax5core.min.js" />"></script>
 <script src="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.min.js" />"></script>
 <script src="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.min.js" />"></script>
 <script src="<c:url value="/resources/js/constant.js" />"></script>
-<!-- 공통 (끝) -->
-
-<!-- 페이지 별 설정(시작) -->
-<link href="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/util/toast-ui/tui-calendar.css" />" rel="stylesheet">
 
 <script src="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.min.js" />"></script>
 <script src="<c:url value="/resources/util/toast-ui/tui-code-snippet.js" />"></script>
 <script src="<c:url value="/resources/util/toast-ui/tui-calendar.min.js" />"></script>
 <script src="<c:url value="/resources/js/main.js" />"></script>
-<!-- 페이지 별 설정(끝) -->
 <!---- css, js 설정(끝) ---->
 <meta charset="UTF-8">
 <title>Insert title here</title>
