@@ -45,20 +45,29 @@ public class loginController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login.json", method = RequestMethod.POST)
 	public String login(userInfoVO userInfoVO, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 		logger.info("post login");
 		
 		HttpSession session = req.getSession();
-		System.out.println("아이디 : "+userInfoVO.getUserId());
-		System.out.println("비번 : "+userInfoVO.getUserPw());
+		
+		// ID나 PW가 비어있는 경우
+		if(userInfoVO.getUserId().equals("") || userInfoVO.getUserPw().equals("")) {
+			session.setAttribute("user", null);
+			rttr.addFlashAttribute("msg", "ID와 PW를 입력해주세요.");
+			return "redirect:/";
+		}
+		
+		// 입력한 ID와 PW를 이용해 select 
 		userInfoVO login = loginService.login(userInfoVO);
 		
+		// 결과가 존재하지않는 경우
 		if(login == null) {
 			session.setAttribute("user", null);
-			rttr.addFlashAttribute("msg", "로그인에 실패하였습니다.");
-			return "jsp/main/main";
+			rttr.addFlashAttribute("msg", "ID 또는 PW를 확인해주세요.");
+			return "redirect:/";
 			
+		//결과가 존재하는 경우
 		}else {
 			session.setAttribute("user", login);
 			return "jsp/main/main";
@@ -71,7 +80,7 @@ public class loginController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logout.json", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception{
 		
 		session.invalidate();

@@ -38,12 +38,12 @@ request.setCharacterEncoding("UTF-8");
 			<hr class="col-center log_in_line">
 		</div>
 		
-		<form name="loginForm" method="post" action="/login">
+		<form name="loginForm" method="post" action="/login.json">
 			<div class="col-3 mw-1200 col-center tc log_in_form_content">
 				<font color="red">${msg}</font>
-				<div class="id_form"><input type="text" id="userId" class="textbox_style_0" placeholder="아이디를 입력하세요"></div>
-				<div class="pw_form"><input type="password" id="userPw" class="textbox_style_0" placeholder="비밀번호를 입력하세요"></div>
-				<div class="log_in_btn"><button type="submit" class="bd btn_style_0" >로그인</button></div>
+				<div class="id_form"><input type="text" name="userId" class="textbox_style_0" placeholder="아이디를 입력하세요"></div>
+				<div class="pw_form"><input type="password" name="userPw" class="textbox_style_0" placeholder="비밀번호를 입력하세요"></div>
+				<div class="log_in_btn"><input type="submit" value="로그인" class="bd btn_style_0" ></div>
 				<div class="col-12">
 					<ul class="member_function">
 						<li><a class="a_tag" onclick="openRegisterForm();"><span>회원가입</span></a></li>
