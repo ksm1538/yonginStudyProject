@@ -4,41 +4,55 @@ public class userInfoVO {
 	
 	String userName = "";
 	String userCode = "";
-	String userNumber_1 = "";
-	String userNumber_2 = "";		
+	String userNumber1 = "";
+	String userNumber2 = "";	
+	String userNumber = "";
 	String userId = "";
 	String userPw = "";
 	String userPwConfirm = "";
 	String userPhoneNumber ="";
-	String userPwHint = ""; 
+	String userPwHintCode = ""; 
+	String userPwHintAnswer = "";
 	String userGender = "";
 	String userAddress = "";
 	String useYn = "";
 	
 	
-	public String getUserNumber_1() {
-		return userNumber_1;
+	public String getUserNumber() {
+		return userNumber;
 	}
-	public void setUserNumber_1(String userNumber_1) {
-		this.userNumber_1 = userNumber_1;
+	public void setUserNumber(String userNumber) {
+		this.userNumber = userNumber;
 	}
-	public String getUserNumber_2() {
-		return userNumber_2;
+	public String getUserPwHintCode() {
+		return userPwHintCode;
 	}
-	public void setUserNumber_2(String userNumber_2) {
-		this.userNumber_2 = userNumber_2;
+	public void setUserPwHintCode(String userPwHintCode) {
+		this.userPwHintCode = userPwHintCode;
+	}
+	public String getUserNumber1() {
+		return userNumber1;
+	}
+	public void setUserNumber1(String userNumber1) {
+		this.userNumber1 = userNumber1;
+	}
+	public String getUserNumber2() {
+		return userNumber2;
+	}
+	public void setUserNumber2(String userNumber2) {
+		this.userNumber2 = userNumber2;
+	}
+	public String getUserPwHintAnswer() {
+		return userPwHintAnswer;
+	}
+	public void setUserPwHintAnswer(String userPwHintAnswer) {
+		this.userPwHintAnswer = userPwHintAnswer;
 	}
 	public String getUserPwConfirm() {
 		return userPwConfirm;
 	}
 	public void setUserPwConfirm(String userPwConfirm) {
 		this.userPwConfirm = userPwConfirm;
-	}
-	public String getUserPwHint() {
-		return userPwHint;
-	}
-	public void setUserPwHint(String userPwHint) {
-		this.userPwHint = userPwHint;
 	}
 	public String getUserAddress() {
 		return userAddress;

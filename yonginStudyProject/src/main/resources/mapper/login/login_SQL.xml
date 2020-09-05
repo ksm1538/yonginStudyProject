@@ -38,7 +38,6 @@
 				 ,	USER_PW		as 	userPw
 			FROM	USER_INFO
 			WHERE	USER_ID		=	#{userId}
-				AND	USER_PW		=	#{userPw}
 		]]>
 		
 	</select>
