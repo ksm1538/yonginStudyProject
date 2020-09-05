@@ -6,4 +6,6 @@ public interface loginDAO {
 	public void insertMember(userInfoVO data) throws Exception; 
 	
 	public userInfoVO login(userInfoVO userInfoVO) throws Exception;
+	
+	public int selectSameId(String userId) throws Exception;
 }

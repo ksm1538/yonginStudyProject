@@ -18,6 +18,7 @@ request.setCharacterEncoding("UTF-8");
 <%-- <link href="<c:url value="/resources/util/bootstrap-3.4.1-dist/css/bootstrap.min.css" />" rel="stylesheet"> --%>
 <link href="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/ax5ui-toast-master/dist/ax5toast.css" />" rel="stylesheet">
 
 <link href="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/util/toast-ui/tui-calendar.css" />" rel="stylesheet">
@@ -28,6 +29,7 @@ request.setCharacterEncoding("UTF-8");
 <script src="<c:url value="/resources/util/ax5core-master/dist/ax5core.min.js" />"></script>
 <script src="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.min.js" />"></script>
 <script src="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.min.js" />"></script>
+<script src="<c:url value="/resources/util/ax5ui-toast-master/dist/ax5toast.min.js" />"></script>
 <script src="<c:url value="/resources/js/constant.js" />"></script>
 
 <script src="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.min.js" />"></script>
@@ -80,7 +82,7 @@ request.setCharacterEncoding("UTF-8");
 			</div>
 			
 			<div class="list_btn">
-				<input type="button" value="스터디 만들기" onclick="makeStudyForm();">
+				<input type="button" value="스터디 만들기">
 			</div>
 			<div class="make_btn">
 				<input type="button" value="스터디  더보기" onclick="openMoreStudyForm();">

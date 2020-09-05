@@ -20,4 +20,9 @@ public class loginServiceImpl implements loginService{
 	public userInfoVO login(userInfoVO userInfoVO) throws Exception{
 		return loginDAO.login(userInfoVO);
 	}
+	
+	@Override
+	public int selectSameId(String userId) throws Exception{
+		return loginDAO.selectSameId(userId);
+	}
 }

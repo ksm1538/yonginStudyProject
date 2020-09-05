@@ -9,10 +9,22 @@ request.setCharacterEncoding("UTF-8");
 <!------ JSP 설정(끝) ------>
 
 <!-- css, js 설정(시작) -->
-<script src="<c:url value="/resources/util/jquery-ui/jquery-1.12.4.min.js" />"></script>
-
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/jquery-ui/jquery-ui.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/util/ax5ui-toast-master/dist/ax5toast.css" />" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="<c:url value="/resources/util/jquery-ui/jquery-1.12.4.min.js" />"></script>
+<script src="<c:url value="/resources/util/ax5core-master/dist/ax5core.min.js" />"></script>
+<script src="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.min.js" />"></script>
+<script src="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.min.js" />"></script>
+<script src="<c:url value="/resources/util/ax5ui-toast-master/dist/ax5toast.min.js" />"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+<script src="<c:url value="/resources/js/constant.js" />"></script>
 <script src="<c:url value="/resources/js/registerMember.js" />"></script>
 <!-- css, js 설정(끝) -->
 
@@ -35,37 +47,11 @@ request.setCharacterEncoding("UTF-8");
 
 	<div class="col-12 col-center mw-1200 search_memeber_form_wrap">
 			<div class="register_member_form_con">
-				
-				<div class="user_name search_member_form_con">
-					<div class="title_size type_2">이름</div>
-					<input type="text" name="userName" id="userName" class="textbox_style_1">
-				</div>
-				 
-				<div class="user_identity_num search_member_form_con">
-					<div class="user_identity_title title_size type_2">주민번호</div>
-					<input type="text" name="userNumber1" id="userNumber1" class="textbox_style_1 type_2">
-					<input type="text" name="userNumber2" id="userNumber2" class="textbox_style_1 type_2">
-				</div>
-				
-				<!-- 성별 라벨로 묶기 -->
-				<div class="user_gender search_member_form_con">
-					<div class="title_size type_2">성별</div>
-					<div class="radio_btn_con"><input type="radio" name="userGender" value="m" class="radio_btn"><span>남성</span></div>
-					<div class="radio_btn_con"><input type="radio" name="userGender" value="w" checked="checked" class="radio_btn"><span>여성</span></div>
-				</div>
-				
-				
-				<div class="user_phone search_member_form_con">
-					<div class="user_phone_title title_size type_2">전화번호</div>
-					<input type="text" name="userPhoneNumber" id="userPhoneNumber" class="textbox_style_1">
-				</div>
-				
-				
 				<div class="user_id search_member_form_con">
-					<div class="title_size type_2">아이디</div>
+					<div class="title_size type_2"> 아이디</div>
 					<input type="text" name="userId" id="userId" class="textbox_style_1">
-					<input type="button" value="중복확인" id="checkIdBtn" class="btn_style_1">
-					<!-- 중복확인 기능 추가 예정 -->
+					<i class="fa fa-times-circle" aria-hidden="true" id="idYnIcon" style="margin-left:1%"></i>
+					<input type="button" value="중복확인" id="checkIdBtn" class="btn_style_1" onclick="IdCheckFunc()">
 				</div>
 				
 				<div class="user_pw search_member_form_con">
@@ -81,10 +67,9 @@ request.setCharacterEncoding("UTF-8");
 				<div class="user_pw_hint search_member_form_con">
 					<div class="title_size type_4">비밀번호 힌트</div>
 					<select name="userPwHintCode" id="userPwHintCode" class="select_style_0" >
-					    <option value="10">자신의 보물 제 1호는?</option>
-					    <option value="20">태어난 곳은?</option>
-					    <option value="30">가장 좋아하는 음식은?</option>
-					    <option value="40">가장 좋아하는 색깔은?</option>
+					    <c:forEach var="result" items="${pwHint}" varStatus="status">
+				          	<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
+				         </c:forEach>
 					</select>
 				</div>
 				
@@ -93,7 +78,35 @@ request.setCharacterEncoding("UTF-8");
 					<input type="text" name="userPwHintAnswer" id="userPwHintAnswer" class="textbox_style_1">
 				</div>
 				
-				<!--  주소추가예정 -->
+				<div class="user_name search_member_form_con">
+					<div class="title_size type_2">이름</div>
+					<input type="text" name="userName" id="userName" class="textbox_style_1">
+				</div>
+				 
+				<div class="user_identity_num search_member_form_con">
+					<div class="user_identity_title title_size type_2">주민번호</div>
+					<input type="text" name="userNumber1" id="userNumber1" class="textbox_style_1 type_2">
+					<input type="password" name="userNumber2" id="userNumber2" class="textbox_style_1 type_2">
+				</div>
+				
+				<!-- 성별 라벨로 묶기 -->
+				<div class="user_gender search_member_form_con">
+					<div class="title_size type_2">성별</div>
+					<div class="radio_btn_con"><input type="radio" name="userGender" value="m" class="radio_btn"><span>남성</span></div>
+					<div class="radio_btn_con"><input type="radio" name="userGender" value="w" checked="checked" class="radio_btn"><span>여성</span></div>
+				</div>
+				
+				
+				<div class="user_phone search_member_form_con">
+					<div class="user_phone_title title_size type_2">전화번호</div>
+					<input type="text" name="userPhoneNumber" id="userPhoneNumber" class="textbox_style_1">
+				</div>
+				
+				<div class="user_id search_member_form_con">
+					<div class="title_size type_2">주소</div>
+					<input type="text" name="userAddress" id="userAddress" class="textbox_style_1" readonly="true" placeholder="주소 검색을 클릭하세요.">
+					<input type="button" value="주소 검색" class="btn_style_1" onclick="addressPopup()" >
+				</div>
 			</div>
 	</div>
 	

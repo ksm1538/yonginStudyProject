@@ -21,4 +21,9 @@ public class loginDAOImpl implements loginDAO{
 	public userInfoVO login(userInfoVO userInfoVO) throws Exception{
 		return sqlSession.selectOne("loginMapper.login", userInfoVO); 
 	}
+	
+	@Override
+	public int selectSameId(String userId) throws Exception{
+		return sqlSession.selectOne("loginMapper.selectSameId", userId);
+	}
 }

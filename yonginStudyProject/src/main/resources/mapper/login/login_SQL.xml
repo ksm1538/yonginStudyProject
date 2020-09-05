@@ -27,7 +27,7 @@
 				,	#{userPhoneNumber}
 				,	#{userGender}
 				,	#{userName}
-				,	#{useYn}
+				,	'Y'
 				)
 		]]>
 	</insert>
@@ -39,7 +39,14 @@
 			FROM	USER_INFO
 			WHERE	USER_ID		=	#{userId}
 		]]>
-		
+	</select>
+	
+	<select id="selectSameId" resultType="int" parameterType="string">
+		<![CDATA[
+			SELECT	COUNT(*)
+			FROM	USER_INFO
+			WHERE	USER_ID		=	#{userId}
+		]]>
 	</select>
 	
 </mapper>
