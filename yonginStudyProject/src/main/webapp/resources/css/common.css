@@ -68,6 +68,7 @@ body{overflow:scroll;}
 
 .btn_style_1{outline:none;  cursor:pointer; border-radius:12px; font-weight:bold; color:#000; font-size:15px; width:100px; height:35px; background:transparent;}
 .btn_style_1.type_2{width:150px;}
+.btn_style_1.type_3{width:250px;}
 .btn_style_1:hover{color:#000; border:none; background-color:#31aae2; color:#fff;}
 
 .btn_style_1_con{display:flex; flex-wrap:nowrap; justify-content:center;}

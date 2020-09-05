@@ -38,6 +38,7 @@ html, body {
 .header_member_con .header_user .user_id{font-weight:bold; cursor:pointer;}
 .header_member_con .header_user:after{content:""; position:absolute; width:1px; height:16px; top:3px; right:-16px; background-color:rgba(255,255,255,0.4); }
 .header_member_con .logout{color:#fff;} 
+.header_member_con .logout > a{text-decoration:none; color:#fff;}
 
 .header_member_con .user_box_con{display:none; position:absolute; right:145px; top:45px; background-color:#CAB0F1; border-radius:10px; color:#000; padding-right:15px; padding-left:15px; width:150px;}
 .header_member_con .user_box_tri{position:absolute;  width: 0px; height: 0px; border-top: 25px solid transparent; border-right: 25px solid #CAB0F1; top:-10px; right:75px; transform: rotate(225deg);}
@@ -88,9 +89,16 @@ html, body {
 .content_wrap{border:3px solid #31aae2;}
 .content_title{font-size:30px; font-weight: bold; padding: 20px 20px;}
 .content_title > span{display:inline-block; border-bottom:3px solid #31aae2; padding-bottom:10px;}
-.study_list_wrap{margin-bottom: 40px; margin-top:40px;}
+.study_list_wrap{padding:40px 40px; margin-bottom: 40px; margin-top:40px;}
 .left_content{margin-right:50px;}
 .right_content{margin-left:50px;}
+
+
+/*스터디목록 및 버튼 스타일*/
+.main_study_list_con{margin-bottom:40px;}
+.main_btn_con{display:flex; flex-wrap:nowrap; justify-content:center}
+.main_btn_con .list_btn{margin-right:25px; margin-left:25px;}
+.main_btn_con .make_btn{margin-right:25px; margin-left:25px;}
 
 /*달력*/
 .calender_con{overflow:hidden; margin-bottom: 40px;}
@@ -117,11 +125,11 @@ html, body {
 .mypage_list_con .mypage_list > li > a{cursor:pointer;}
 .mypage_list_title{padding-bottom:20px; margin-bottom:20px; border-bottom:2px solid #fff; width:auto; font-size:25px; font-weight:bold; color:#fff;}
 
-.mypage_content_con{padding:50px 50px;  }
+.mypage_content_con{padding:50px 50px;}
 .mypage_content_con .mypage_content_title{margin-bottom:80px;}
 .mypage_content_con .mypage_content_title > span{display:inline-block; padding-bottom:15px; font-size:30px; font-weight:bold; border-bottom:3px solid #31aae2; }
 
-.user_info_modify{border-bottom:3px solid #CAB0F1; padding-bottom:50px; margin-bottom:50px;}
+.user_info_modify, .my_participate_list, .my_make_list{border-bottom:3px solid #CAB0F1; padding-bottom:50px; margin-bottom:50px;}
 
 .modify_line_con{margin-bottom:80px;}
 .modify_line{display:flex; margin-bottom:50px;}
@@ -130,6 +138,11 @@ html, body {
 .modify_phonenumber .title_size, .modify_pw .title_size{margin-right:40px;}
 
 
+.mypage_content_con .my_participate_study{margin-bottom:50px;}
+.mypage_content_con .my_make_study{margin-bottom:50px;}
+
+.mypage_top_btn_con{width:75px; height:75px; border-radius:50px; background-color:#CAB0F1; position:fixed; left:92%; top:20%;}
+.mypage_top_btn_con >a{display:block; transform: rotate(270deg); width:50px; height:50px; margin-left:12px; margin-top:12px; cursor:pointer;}
 
 /*스터디 생성*/
 .make_study_title_con .make_study_title{font-size:30px; font-weight:bold;}

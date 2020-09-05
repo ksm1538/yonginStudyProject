@@ -35,8 +35,6 @@ request.setCharacterEncoding("UTF-8");
 <script src="<c:url value="/resources/util/ax5ui-grid-master/dist/ax5grid.min.js" />"></script>
 <script src="<c:url value="/resources/util/toast-ui/tui-code-snippet.js" />"></script>
 <script src="<c:url value="/resources/util/toast-ui/tui-calendar.min.js" />"></script>
-<script src="<c:url value="/resources/js/moreStudy.js" />"></script>
-<script src="<c:url value="/resources/js/myPage.js" />"></script>
 <script src="<c:url value="/resources/js/main.js" />"></script>
 <!---- css, js 설정(끝) ---->
 <meta charset="UTF-8">
@@ -50,7 +48,6 @@ request.setCharacterEncoding("UTF-8");
                         <li><a>HOME</a></li>
                         <li><a>스터디목록</a></li>
                         <li><a>공지사항</a></li>
-                        <li><a>마이페이지</a></li>
                     </ul>
                 </div>
                 
@@ -59,34 +56,37 @@ request.setCharacterEncoding("UTF-8");
                     <div class="logout"><a href="/logout.json">로그아웃</a></div>
                     
                     <div class="user_box_con">
-                    	<div class="circle_btn_2"></div>
-                    	<div class="user_box_tri"></div>
-                    	<div>
-                    		 <ul class="user_box">
-                       			 <li><a onclick="openMypageForm();">마이페이지</a></li>
-                      			 <li><a>쪽지함</a></li>
-                   			 </ul>
-                    	</div>
+                       <div class="circle_btn_2"></div>
+                       <div class="user_box_tri"></div>
+                       <div>
+                           <ul class="user_box">
+                                 <li><a onclick="openMypageForm();">마이페이지</a></li>
+                                <li><a>쪽지함</a></li>
+                            </ul>
+                       </div>
                     </div>
                 </div>
         </div>
-    </div>
+      </div>
 
     <div class="col-12 col-center mw-1200 main_content_wrap">
             <!--게시판-->
         <div class="col-12 study_list_wrap content_wrap">
             <div class="content_title"><span>스터디 목록</span></div>
             
-            <div style="width: 100%;" >  
+            <div class="main_study_list_con" style="width: 100%;" >  
 	  			<div data-ax5grid="studyListGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
 			</div>
 			
-			<div class="list_btn">
-				<input type="button" value="스터디 만들기">
+			<div class="main_btn_con">
+				<div class="list_btn">
+					<input type="button" value="스터디 만들기" class="btn_style_1 type_3">
+				</div>
+				<div class="make_btn">
+					<input type="button" value="스터디  더보기" class="btn_style_1 type_3" onclick="openMoreStudyForm();">
+				</div>
 			</div>
-			<div class="make_btn">
-				<input type="button" value="스터디  더보기" onclick="openMoreStudyForm();">
-			</div>
+			
             
         </div>
 

@@ -122,10 +122,7 @@ function makeStudyForm(){
 	window.open("/makeStudy.do");
 }
 
-/*스터디 관리 호출 */
-function openstudyManagementForm(){
-	window.open("/studyManagement.do",'회원가입','width=700px ,height=900px ,location=no,status=no,scrollbars=no');
-}
+
 
 /* 스터디 리스트 조회 함수 */
 function getStudyList(){
