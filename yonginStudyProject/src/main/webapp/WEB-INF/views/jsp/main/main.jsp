@@ -80,7 +80,7 @@ request.setCharacterEncoding("UTF-8");
 			</div>
 			
 			<div class="list_btn">
-				<input type="button" value="스터디 만들기">
+				<input type="button" value="스터디 만들기" onclick="makeStudyForm();">
 			</div>
 			<div class="make_btn">
 				<input type="button" value="스터디  더보기" onclick="openMoreStudyForm();">
