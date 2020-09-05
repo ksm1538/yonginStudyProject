@@ -5,7 +5,7 @@ public class commonCodeVO {
 	String	codeNm="";
 	String	codeId="";
 	String	codeValue="";
-	
+	 
 	
 	public String getCode() {
 		return code;
