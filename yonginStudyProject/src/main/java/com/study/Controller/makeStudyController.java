@@ -25,7 +25,7 @@ public class makeStudyController {
 	/**
 	 * 스터디 생성 Mapping
 	 */
-	@RequestMapping(value = "/study/makeStudy.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/makeStudy.do", method = RequestMethod.GET)
 	public String login(Locale locale, Model model) {
 
 		return "jsp/study/makeStudy";

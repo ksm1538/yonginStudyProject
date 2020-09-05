@@ -25,9 +25,9 @@ public class studyInfoController {
 	/**
 	 * 스터디정보 팝업 Mapping
 	 */
-	@RequestMapping(value = "/study/studyInfo.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/studyInfo.do", method = RequestMethod.GET)
 	public String login(Locale locale, Model model) {
 
-		return "jsp/study/studyInfo";
+		return "jsp/study/studyInfo"; 
 	}
 }
