@@ -11,19 +11,13 @@ $(document).ready(function () {
 	    defaultView: 'month' // monthly view option
 	});
 	
-	
-
-
-
-
-	
 	$(".user_id").click(function(){
 		$(".user_box_con").fadeIn(600);
 	});
 	
 	$(".circle_btn_2").click(function(){
 		$(".user_box_con").fadeOut(600);
-	});
+	}); 
 	
 	//스터디 리스트 설정
 	studyListGrid.setConfig({   
@@ -68,7 +62,8 @@ $(document).ready(function () {
             },
         });
 	
-	//스터디 리스트 설정
+	
+	//공지사항 리스트 설정
 	studyNoticeListGrid.setConfig({   
     	target: $('[data-ax5grid="studyNoticeListGrid"]'),
         showLineNumber: false,
@@ -111,6 +106,26 @@ $(document).ready(function () {
 	getStudyList();	// 스터디 목록 조회
 });
 /** 초기화(끝) **/
+
+/*마이페이지 호출*/
+function openMypageForm(){
+	window.open("/myPage.do");
+}
+
+/*스터디 더보기 호출 */
+function openMoreStudyForm(){
+	window.open("/moreStudy.do");
+}
+
+/*스터드만들기 호출 */
+function makeStudyForm(){
+	window.open("/makeStudy.do");
+}
+
+/*스터디 관리 호출 */
+function openstudyManagementForm(){
+	window.open("/studyManagement.do",'회원가입','width=700px ,height=900px ,location=no,status=no,scrollbars=no');
+}
 
 /* 스터디 리스트 조회 함수 */
 function getStudyList(){
