@@ -1,36 +1,21 @@
 <!------ JSP 설정(시작) ------>
-<!-- 한글 설정(시작) -->
 <%@ page language="java" contentType="text/HTML;charset=UTF-8" pageEncoding="UTF-8" %>
-<%
-request.setCharacterEncoding("UTF-8");
-%>
-<!-- 한글 설정(끝) -->
+<%request.setCharacterEncoding("UTF-8");%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!------ JSP 설정(끝) ------>
-
-<!-- css, js 설정(시작) -->
-<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/util/jquery-ui/jquery-ui.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/util/ax5ui-toast-master/dist/ax5toast.css" />" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<script src="<c:url value="/resources/util/jquery-ui/jquery-1.12.4.min.js" />"></script>
-<script src="<c:url value="/resources/util/ax5core-master/dist/ax5core.min.js" />"></script>
-<script src="<c:url value="/resources/util/ax5ui-dialog-master/dist/ax5dialog.min.js" />"></script>
-<script src="<c:url value="/resources/util/ax5ui-mask-master/dist/ax5mask.min.js" />"></script>
-<script src="<c:url value="/resources/util/ax5ui-toast-master/dist/ax5toast.min.js" />"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-
-<script src="<c:url value="/resources/js/constant.js" />"></script>
-<script src="<c:url value="/resources/js/registerMember.js" />"></script>
-<!-- css, js 설정(끝) -->
 
 <!DOCTYPE html>
 <html>
 <head>
+<!-- 자원 불러오기(공통) -->
+<jsp:include page="../common/resources.jsp"></jsp:include>
+
+<!-- 주소 API javascript 호출 -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+<!-- 해당 페이지 js 호출 -->
+<script type="text/javascript" src="/resources/js/registerMember.js"></script>
+
 <title>회원가입</title>
 </head>
 <body>

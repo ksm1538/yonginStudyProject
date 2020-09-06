@@ -1,27 +1,17 @@
 <!------ JSP 설정(시작) ------>
-<!-- 한글 설정(시작) -->
 <%@ page language="java" contentType="text/HTML;charset=UTF-8" pageEncoding="UTF-8" %>
-<%
-request.setCharacterEncoding("UTF-8");
-%>
-<!-- 한글 설정(끝) -->
+<%request.setCharacterEncoding("UTF-8");%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!------ JSP 설정(끝) ------>
-
-<!-- css, js 설정(시작) --> 
-<script src="<c:url value="/resources/util/jquery/jquery.js" />"></script>
-
-<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
-<script src="<c:url value="/resources/js/login.js" />"></script>
-<!-- css, js 설정(끝) -->
-
-<script>
-</script>
 
 <!DOCTYPE html>
 <html>
 <head>
+<!-- 자원 불러오기(공통) -->
+<jsp:include page="../common/resources.jsp"></jsp:include>
+
+<!-- 해당 페이지 js 호출 -->
+<script src="<c:url value="/resources/js/login.js" />"></script>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>

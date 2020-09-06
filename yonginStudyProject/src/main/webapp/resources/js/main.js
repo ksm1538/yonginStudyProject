@@ -107,11 +107,6 @@ $(document).ready(function () {
 });
 /** 초기화(끝) **/
 
-/*마이페이지 호출*/
-function openMypageForm(){
-	window.open("/myPage.do");
-}
-
 /*스터디 더보기 호출 */
 function openMoreStudyForm(){
 	window.open("/moreStudy.do");
@@ -121,7 +116,6 @@ function openMoreStudyForm(){
 function makeStudyForm(){
 	window.open("/makeStudy.do");
 }
-
 
 
 /* 스터디 리스트 조회 함수 */
