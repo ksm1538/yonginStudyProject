@@ -32,7 +32,7 @@ public class studyApplyPopController {
 	 */
 	@RequestMapping(value = "/studyApplyPop.do", method = RequestMethod.GET)
 	public String studyApplyPopForm() {
-		
+		   
 		return "jsp/study/studyApplyPop";
 	}
 }

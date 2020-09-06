@@ -32,7 +32,7 @@ public class moreStudyFormController {
 	 */
 	@RequestMapping(value = "/moreStudy.do", method = RequestMethod.GET)
 	public String MoreStudyForm() {
-		
+		 
 		return "jsp/study/moreStudy";
 	}
 
