@@ -21,7 +21,7 @@
                 
                 <div class="header_member_con">
                     <div class="header_user"><span class="user_id">${user.userId}</span>님 환영합니다.</div>
-                    <div class="logout">로그아웃</div>
+                    <div class="logout"><a href="/logout.json">로그아웃</a></div>
                     
                     <div class="user_box_con">
                        <div class="circle_btn_2"></div>
