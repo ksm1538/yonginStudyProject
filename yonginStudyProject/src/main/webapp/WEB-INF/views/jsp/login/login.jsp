@@ -7,10 +7,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 자원 불러오기(공통) -->
+<!---- 순서 다르면 오류 ---->
+<!-- 자원 불러오기(공통) : 순서  1(필수)-->
 <jsp:include page="../common/resources.jsp"></jsp:include>
 
-<!-- 해당 페이지 js 호출 -->
+<!-- 헤더 생략 -->
+
+<!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
 <script src="<c:url value="/resources/js/login.js" />"></script>
 
 <meta charset="UTF-8">

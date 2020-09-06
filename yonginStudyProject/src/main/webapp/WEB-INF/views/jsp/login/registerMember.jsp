@@ -7,13 +7,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 자원 불러오기(공통) -->
+<!---- 순서 다르면 오류 ---->
+<!-- 자원 불러오기(공통) : 순서  1(필수)-->
 <jsp:include page="../common/resources.jsp"></jsp:include>
 
-<!-- 주소 API javascript 호출 -->
+<!-- 헤더 필요X 생략 -->
+
+<!-- 주소 API javascript 호출(주소 사용하는 곳만 추가) -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
-<!-- 해당 페이지 js 호출 -->
+<!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
 <script type="text/javascript" src="/resources/js/registerMember.js"></script>
 
 <title>회원가입</title>

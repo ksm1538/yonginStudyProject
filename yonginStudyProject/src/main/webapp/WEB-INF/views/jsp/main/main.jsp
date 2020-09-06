@@ -7,13 +7,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 자원 불러오기(공통) -->
+<!---- 순서 다르면 오류 ---->
+<!-- 자원 불러오기(공통) : 순서  1(필수)-->
 <jsp:include page="../common/resources.jsp"></jsp:include>
 
-<!-- 헤더 불러오기 -->
+<!-- 헤더 불러오기 : 순서 2(헤더 필요없는 곳은 주석처리) -->
 <jsp:include page="../common/header.jsp"></jsp:include>
 
-<!-- 해당 페이지 js 호출 -->
+<!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
 <script type="text/javascript" src="/resources/js/main.js"></script>
 
 <meta charset="UTF-8">
