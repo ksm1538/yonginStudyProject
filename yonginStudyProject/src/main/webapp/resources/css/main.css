@@ -144,6 +144,15 @@ html, body {
 .mypage_top_btn_con{width:75px; height:75px; border-radius:50px; background-color:#CAB0F1; position:fixed; left:92%; top:20%;}
 .mypage_top_btn_con >a{display:block; transform: rotate(270deg); width:50px; height:50px; margin-left:12px; margin-top:12px; cursor:pointer;}
 
+
+/*스터디관리*/
+.manageStudy_wrap{padding:50px 50px;}
+.manageStudy_con{margin-bottom:100px;}
+.manageStudy_title, .see_apply_study_con{margin-bottom:50px;}
+.manageStudy_title, .see_apply_study_con > span{display:inline-block; padding-bottom:15px; font-size:30px; font-weight:bold; border-bottom:3px solid #31aae2; }
+
+
+
 /*스터디 생성*/
 .make_study_title_con .make_study_title{font-size:30px; font-weight:bold;}
 .make_study_title_con{overflow:hidden;}
