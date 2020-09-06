@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 해당 부분의 namespace는 project package + Mapper Package + Mapper Interface 이름입니다. -->
+<mapper namespace="loginMapper">
+	<!-- 해당 부분의 id는 MapperClass의 함수 이름과 유사하여야 합니다. -->	
+	<select id="selectSameStudyName" resultType="int" parameterType="string">
+		<![CDATA[
+			SELECT	COUNT(*)
+			FROM	STUDY_INFO
+			WHERE	STUDY_NAME		=	#{studyName}
+		]]>
+	</select>
+	
+	<insert id="insertStudy"> 
+		<![CDATA[
+			INSERT 
+			INTO	STUDY_INFO
+				(	STUDY_CODE
+				,	STUDY_NAME
+				,	STUDY_DESC
+				,	STUDY_TOPIC
+				,	STUDY_LIMIT
+				,	STUDY_RGSTUS_ID
+				,	STUDY_AREA
+				) 
+			VALUES	
+				(	#{userCode}
+				,	#{studyName}
+				,	#{studyDesc}
+				,	#{studyTopic}
+				,	#{studyLimit}
+				,	#{studyRgstusId}
+				,	#{studyArea}
+				)
+		]]>
+	</insert>
+	
+</mapper>
