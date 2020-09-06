@@ -159,3 +159,7 @@ html, body {
 .study_info{position:relative;}
 .study_info_form_wrap{margin-bottom:50px;}
 .study_info_title_wrap{padding-top:30px; margin-bottom:80px;}
+
+/*스터디 신청서*/
+.study_apply_reason_form_con .title_size{margin-bottom:50px;}
+.study_apply_reason_form_con .textarea_style{resize:none;}
