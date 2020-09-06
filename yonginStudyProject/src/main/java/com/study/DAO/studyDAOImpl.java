@@ -14,11 +14,12 @@ public class studyDAOImpl implements studyDAO{
 	
 	@Override
 	public int selectSameStudyName(String studyName) throws Exception{
-		return sqlSession.selectOne("loginMapper.selectSameStudyName", studyName);
+		return sqlSession.selectOne("studyMapper.selectSameStudyName", studyName);
 	}
 	
 	@Override
 	public void insertStudy(studyInfoVO data) throws Exception{
-		sqlSession.insert("loginMapper.insertStudy", data); 
+		sqlSession.insert("studyMapper.insertStudy", data); 
 	}
 }
+ 

@@ -23,7 +23,7 @@ function makeStudyFunc(){
 	var sendData={
 		studyName:document.getElementById("studyName").value,
 		studyRgstusId:document.getElementById("studyRgstusId").value,
-		studyTopic:$('#studyType option:selected').val(),
+		studyTopic:$('#studyTopic option:selected').val(),
 		studyArea:$('#studyArea option:selected').val(),
 		studyLimit:$('#studyLimit option:selected').val(),
 		studyDesc:document.getElementById("studyDesc").value
@@ -96,4 +96,4 @@ function studyNameCheckFunc(){
 			alert('error = ' + jqXHR.responseText);
 		}
 	}); 
-}
+} 

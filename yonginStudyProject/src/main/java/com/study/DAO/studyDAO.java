@@ -8,3 +8,4 @@ public interface studyDAO {
 	
 	public void insertStudy(studyInfoVO data) throws Exception;
 }
+ 

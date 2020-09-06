@@ -8,3 +8,4 @@ public interface studyService {
 	
 	void insertStudy(studyInfoVO data) throws Exception; 
 }
+ 

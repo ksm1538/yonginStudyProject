@@ -55,7 +55,7 @@ public class makeStudyController {
 	
 	/**
 	 * 스터디 생성
-	 * @param userInfoVO
+	 * @param studyInfoVO
 	 * @return
 	 * @throws Exception
 	 */
@@ -107,3 +107,4 @@ public class makeStudyController {
 		}
 	}
 }
+ 
