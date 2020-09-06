@@ -5,28 +5,34 @@ var dToast = new ax5.ui.toast();
 var COMMON_SUCCESS = "success";
 var COMMON_FAIL = "fail";
 
-dialog.setConfig({
-    title: "YonginStudy",
-    onStateChanged: function () {
-        if (this.state === "open") {
-        	mask.open();
-        }
-        else if (this.state === "close") {
-        	mask.close();
-        }
-    }
-});
+/** 초기화 (시작) **/
+$(document).ready(function () {
+	dialog.setConfig({
+	    title: "YonginStudy",
+	    onStateChanged: function () {
+	        if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    }
+	});
 
-/*toast 설정 - danger*/
-dToast.setConfig({
-	icon: '<i class="fa fa-bell"></i>',
-	theme:"danger",
-	containerPosition: "top-left",
-});
+	/*toast 설정 - danger*/
+	dToast.setConfig({
+		icon: '<i class="fa fa-bell"></i>',
+		theme:"danger",
+		containerPosition: "top-left",
+		width:350
+	});
 
-/*toast 설정 - success*/
-sToast.setConfig({
-    icon: '<i class="fa fa-bell"></i>',
-	theme:"success",
-	containerPosition: "top-left"
+	/*toast 설정 - success*/
+	sToast.setConfig({
+	    icon: '<i class="fa fa-bell"></i>',
+		theme:"success",
+		containerPosition: "top-left",
+		width:350
+	});
 });
+/** 초기화 (끝) **/

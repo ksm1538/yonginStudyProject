@@ -1,6 +1,8 @@
 /** 변수 선언(시작) **/
 var idFixYn = "N";
 /** 변수 선언(끝) **/
+
+/** 초기화 (시작) **/
 $(document).ready(function () {
 	// ID 입력 폼의 값 변경 시, 중복체크 여부 N
 	$("#userId").on("propertychange change keyup paste input", function() {
@@ -10,6 +12,7 @@ $(document).ready(function () {
 	
 	
 });
+/** 초기화 (끝) **/
 
 // 주소 검색 함수
 function addressPopup() {
@@ -24,7 +27,7 @@ function addressPopup() {
 // 회원가입 함수
 function registerMemberFunc(){
 	if(idFixYn == "N"){
-		dialog.alert("ID 중복체크를 해주세요.");
+		dToast.push("ID 중복체크를 해주세요.");
 		return;
 	}
 	
@@ -95,13 +98,13 @@ function IdCheckFunc(){
 		success : function(data, status, xhr) {
 			switch(data.result){
 		    case COMMON_SUCCESS:
-		    	dialog.alert(data.message);
+		    	sToast.push(data.message);
 		    	
 		    	idFixYn = "Y";
 		    	document.getElementById("idYnIcon").className = "fa fa-check";
 		    	break;
 		    case COMMON_FAIL:
-		    	dialog.alert(data.message);
+		    	dToast.push(data.message);
 		    	break;	
 			}
 		},
