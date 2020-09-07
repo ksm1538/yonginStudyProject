@@ -56,9 +56,19 @@ public class loginController {
 		HttpSession session = req.getSession();
 		
 		// ID나 PW가 비어있는 경우
-		if(userInfoVO.getUserId().equals("") || userInfoVO.getUserPw().equals("")) {
+		if(userInfoVO.getUserId().equals("") && userInfoVO.getUserPw().equals("")) {
 			session.setAttribute("user", null);
 			rttr.addFlashAttribute("msg", "ID와 PW를 입력해주세요.");
+			return "redirect:/";
+		}
+		else if(userInfoVO.getUserId().equals("")) {
+			session.setAttribute("user", null);
+			rttr.addFlashAttribute("msg", "ID를  입력해주세요.");
+			return "redirect:/";
+		}
+		else if(userInfoVO.getUserPw().equals("")) {
+			session.setAttribute("user", null);
+			rttr.addFlashAttribute("msg", "PW를  입력해주세요.");
 			return "redirect:/";
 		}
 		
