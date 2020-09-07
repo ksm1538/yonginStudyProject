@@ -33,6 +33,7 @@ html, body {
 .header_con .header_menu{display:inline-block;}
 .header_con .header_menu > li {float:left; color:#fff; font-weight:bold; font-size:25px; margin-right:30px;}
 .header_con .header_menu > li:last-child{margin-right:0;}
+.header_con .header_menu > li > a {cursor:pointer;}
 .header_con .header_member_con {display:flex; position:relative}
 .header_member_con .header_user{color:#fff; position:relative; margin-right:30px;}
 .header_member_con .header_user .user_id{font-weight:bold; cursor:pointer;}
@@ -84,7 +85,9 @@ html, body {
 
 /*메인 컨텐츠*/
 .main_content_wrap{overflow:hidden;}
-.calender_wrap{margin-bottom:40px;}
+.calender_wrap{padding:40px 40px; margin-bottom:40px;}
+.notice_wrap {padding:40px 40px;}
+.notice_wrap .main_btn_con{margin-top:40px;}
 
 .content_wrap{border:3px solid #31aae2;}
 .content_title{font-size:30px; font-weight: bold; padding: 20px 20px;}
@@ -92,6 +95,8 @@ html, body {
 .study_list_wrap{padding:40px 40px; margin-bottom: 40px; margin-top:40px;}
 .left_content{margin-right:50px;}
 .right_content{margin-left:50px;}
+
+.calender_menu{margin-bottom:20px;}
 
 
 /*스터디목록 및 버튼 스타일*/

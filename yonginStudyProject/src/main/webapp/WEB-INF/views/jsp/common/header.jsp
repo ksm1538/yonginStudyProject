@@ -13,7 +13,7 @@
         <div class="col-12 col-center mw-1200 header_con">
                 <div class="header_menu_con">
                     <ul class="header_menu">
-                        <li><a>HOME</a></li>
+                        <li><a onclick="openHome();">HOME</a></li>
                         <li><a>스터디목록</a></li>
                         <li><a>공지사항</a></li>
                     </ul>
@@ -29,7 +29,7 @@
                        <div>
                            <ul class="user_box">
                                  <li><a onclick="openMypageForm();">마이페이지</a></li>
-                                <li><a>쪽지함</a></li>
+                                <li><a onclick="openMessageForm();">쪽지함</a></li>
                             </ul>
                        </div>
                     </div>

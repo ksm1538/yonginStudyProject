@@ -118,6 +118,8 @@ function makeStudyForm(){
 }
 
 
+
+
 /* 스터디 리스트 조회 함수 */
 function getStudyList(){
 	
