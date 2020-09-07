@@ -106,6 +106,30 @@ html, body {
 .main_btn_con .make_btn{margin-right:25px; margin-left:25px;}
 
 /*달력*/
+/*달려ㅕㄱ버튼*/
+.today_btn{margin-right:15px; font-size:12px; border-radius:25px; padding:8px 16px; outline:none; cursor:pointer; border:2px solid #31aae2;  }
+.today_btn:hover{border:2px solid #CAB0F1;}
+
+/*이전버튼*/
+.prev_btn{margin-right:15px; position:relative; border-radius:50px; top:8px; width:32px; height:32px; outline:none; cursor:pointer; border:2px solid #31aae2;  }
+.prev_btn:hover{border:2px solid #CAB0F1;}
+.prev_btn:before{content:""; position:absolute; width:10px; height:1px; border:1px solid #31aae2; background-color:#31aae2; top:9px; left:7px; transform: rotate(135deg);}
+.prev_btn:hover:before{border:1px solid #CAB0F1; background-color:#CAB0F1;}
+.prev_btn:after{content:""; position:absolute; width:10px; height:1px; border:1px solid #31aae2; background-color:#31aae2; top:16px; left:7px; transform: rotate(45deg); }
+.prev_btn:hover:after{border:1px solid #CAB0F1; background-color:#CAB0F1;}
+
+/*다음버튼*/
+.next_btn{margin-right:15px; position:relative; border-radius:50px; top:8px; width:32px; height:32px; outline:none; cursor:pointer; border:2px solid #31aae2;  }
+.next_btn:hover{border:2px solid #CAB0F1;}
+.next_btn:before{content:""; position:absolute; width:10px; height:1px; border:1px solid #31aae2; background-color:#31aae2; top:9px; left:9px; transform: rotate(45deg);}
+.next_btn:hover:before{border:1px solid #CAB0F1; background-color:#CAB0F1;}
+.next_btn:after{content:""; position:absolute; width:10px; height:1px; border:1px solid #31aae2; background-color:#31aae2; top:16px; left:9px; transform: rotate(135deg); }
+.next_btn:hover:after{border:1px solid #CAB0F1; background-color:#CAB0F1;}
+
+
+
+
+
 .calender_con{overflow:hidden; margin-bottom: 40px;}
 .calender_month_con{display:flex; flex-wrap: nowrap; justify-content: center;}
 .left_arrow_con{margin-right:50px;}
