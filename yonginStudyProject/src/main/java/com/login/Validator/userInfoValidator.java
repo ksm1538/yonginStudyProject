@@ -25,8 +25,8 @@ public class userInfoValidator implements Validator{
 	@Override
 	public void validate(Object obj, Errors error) {
 		ValidationUtils.rejectIfEmpty(error, "userId", "userInfoVO.userId.empty","아이디를 입력해주세요.");
-		ValidationUtils.rejectIfEmpty(error, "userPw", "userInfoVO.userPw.empty","비밀번호를 입력해주세요");
-       
+		//ValidationUtils.rejectIfEmpty(error, "userPw", "userInfoVO.userPw.empty","비밀번호를 입력해주세요");
+		
 		
 		/**
 		 * 영어,숫자 공백X
