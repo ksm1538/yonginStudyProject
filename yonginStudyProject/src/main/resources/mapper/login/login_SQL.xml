@@ -17,16 +17,20 @@
 				,	USER_PHONENUMBER
 				,	USER_GENDER
 				,	USER_NAME
+				,	USER_PW_HINT_CODE
+				,	USER_PW_HINT_ANSWER
 				,	USE_YN
 				) 
 			VALUES	
-				(	#{userCode}
+				(	('USER_' || LPAD(user_seq.nextval,8,0))
 				,	#{userId}
 				,	#{userPw}
 				,	#{userAddress}
 				,	#{userPhoneNumber}
 				,	#{userGender}
 				,	#{userName}
+				,	#{userPwHintCode}
+				,	#{userPwHintAnswer}
 				,	'Y'
 				)
 		]]>
@@ -36,6 +40,7 @@
 		<![CDATA[
 			SELECT	USER_ID 	as	userId
 				 ,	USER_PW		as 	userPw
+				 ,	USER_CODE	as 	userCode
 			FROM	USER_INFO
 			WHERE	USER_ID		=	#{userId}
 		]]>

@@ -14,8 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -68,13 +66,15 @@ public class registerMemeberController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/registerMember.json", method = RequestMethod.POST)
-	@ResponseBody
-	public Map<String, Object> registerAjaxFunction(@ModelAttribute @RequestBody userInfoVO userInfoVO, BindingResult bindingResult) throws Exception {
+	public Map<String, Object> registerAjaxFunction(@RequestBody userInfoVO userInfoVO, BindingResult bindingResult) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 	      
+		System.out.println("Id : "+userInfoVO.getUserId());
+		System.out.println("비밀번호 : "+userInfoVO.getUserPw());
+		
 		/** 데이터 검증(시작) **/
-		userInfoValidator userInfoValidator = new userInfoValidator();
+		/*userInfoValidator userInfoValidator = new userInfoValidator();
 		userInfoValidator.validate(userInfoVO, bindingResult);
 		
 		// 에러 검출 시 에러 메시지와 함께 종료
@@ -84,7 +84,7 @@ public class registerMemeberController {
 		    for (FieldError error : errors ) {
 		    	errorMsg = error.getDefaultMessage() + "\n";
 		    }
-		    
+		    System.out.println("에러메시지ㅋ : "+errorMsg);
 			mReturn.put("result", "fail");
 			mReturn.put("message", errorMsg);
 			
