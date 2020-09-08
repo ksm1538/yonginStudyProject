@@ -103,7 +103,7 @@ request.setCharacterEncoding("UTF-8");
    <div class="btn_style_1_con">
       <input type="button" value="완료" class="btn_style_1" onclick="makeStudyFunc()" >
    </div> 
-</div>
+</div> 
 
 
   

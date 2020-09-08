@@ -33,7 +33,7 @@
 			
 			<div class="main_btn_con">
 				<div class="list_btn">
-					<input type="button" value="스터디 만들기" class="btn_style_1 type_3">
+					<input type="button" value="스터디 만들기" class="btn_style_1 type_3" onclick="makeStudyForm();">
 				</div>
 				<div class="make_btn">
 					<input type="button" value="스터디  더보기" class="btn_style_1 type_3" onclick="openMoreStudyForm();">

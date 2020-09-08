@@ -15,8 +15,7 @@ $(document).ready(function () {
 // 스터디 생성가입 함수
 function makeStudyFunc(){
 	if(studyNameFixYn == "N"){
-		dialog.alert("ID 중복체크를 해주세요.");
-		dToast.push("ID 중복체크를 해주세요.");
+		dToast.push("스터디 이름 중복체크를 해주세요.");
 		return;
 	}
 	
