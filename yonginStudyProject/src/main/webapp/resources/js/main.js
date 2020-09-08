@@ -109,7 +109,7 @@ $(document).ready(function () {
 
 /*스터디 더보기 호출 */
 function openMoreStudyForm(){
-	window.open("/moreStudy.do");
+	location.href = "/moreStudy.do";
 }
 
 /*스터드만들기 호출 */
@@ -141,4 +141,10 @@ function getStudyList(){
 			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
 		}
 	}); 
+}
+
+
+/*공지사항 더보기 호출 */
+function openMoreNotice(){
+	location.href = "/moreNotice.do";
 }

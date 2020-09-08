@@ -73,7 +73,7 @@
 					
 					<div class="main_btn_con">
 						<div class="notice_btn">
-							<input type="button" value="공지사항 더보기" class="btn_style_1 type_3">
+							<input type="button" value="공지사항 더보기" class="btn_style_1 type_3" onclick="openMoreNotice();">
 						</div>
 					</div>
 					

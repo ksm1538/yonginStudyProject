@@ -14,7 +14,7 @@
 <jsp:include page="../common/header.jsp"></jsp:include>
 
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
-<script type="text/javascript" src="/resources/js/study/moreStudy.js"></script>
+<script type="text/javascript" src="/resources/js/notice/moreNotice.js"></script>
 
 <!---- css, js 설정(끝) ----> 
 
@@ -25,17 +25,12 @@
    
        <div class="col-12 col-center mw-1200 moreStudy_wrap">
         	<div class="col-12 moreStudy_list_wrap content_wrap">
-         	   <div class="content_title"><span>스터디 목록</span></div>
+         	   <div class="content_title"><span>공지사항</span></div>
             
          	   <div style="width: 100%;" >
-	  				<div data-ax5grid="studyListPlusGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
-				</div> 
-			
-				<div class="apply_btn tc">
-					<input type="button" value="스터디 신청하기" class="btn_style_1 type_3" onclick="openstudyApplyPopForm();">
-				</div>
-		
-       		 </div>
+	  				<div data-ax5grid="noticeListPlusGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
+			   </div> 
+   		 	</div>
        </div>
 </body>
 </html>

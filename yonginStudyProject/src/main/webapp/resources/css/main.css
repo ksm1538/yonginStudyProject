@@ -198,7 +198,12 @@ html, body {
 .study_info_form_wrap{margin-bottom:50px;}
 .study_info_title_wrap{padding-top:30px; margin-bottom:80px;}
 
-/*스터디 신청서*/
+/*스터디 더보기*/
+.moreStudy_list_wrap{padding:40px 40px; margin-top:70px;}
+.moreStudy_list_wrap .apply_btn{margin-top:50px;}
 
-.study_apply_reason_form_con .title_size{margin-bottom:50px;}
-.study_apply_reason_form_con .textarea_style{resize:none;}
+/*스터디 신청서*/
+.study_apply_con .study_apply_sub_title{font-size:20px; font-weight: bold; margin-bottom:30px;}
+.textarea_style_con .textarea_style{resize:none; margin-bottom:30px;}
+.btn_style_1_con .btn_style_1{margin-bottom:20px;}
+.study_apply_wrap{padding:70px 50px;}
