@@ -28,72 +28,39 @@ request.setCharacterEncoding("UTF-8");
 <script src="<c:url value="/resources/util/ax5ui-toast-master/dist/ax5toast.min.js" />"></script>
 <script src="<c:url value="/resources/js/constant.js" />"></script>
 
-<script src="<c:url value="/resources/js/study/makeStudy.js" />"></script>
+<script src="<c:url value="/resources/js/message/sendMessage.js" />"></script>
 <!-- 자기가 만든 js파일은 가장 밑으로. 순서 잘 지키고 -->
 <!-- css, js 설정(끝) -->
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>스터디 생성</title>
+<title>쪽지 보내기</title>
 </head>
 <body>
 
 <div class="col-12 col-center mw-1200 make_study_title_wrap">
-
-   <div class="circle_btn" onClick="self.close()"></div> 
-   <div class="tc make_study_title_con">
-      <div class="make_study_title">스터디 생성</div>
-   </div> 
-   
-   
+	<div class="circle_btn" onClick="self.close()"></div> 
+   	<div class="tc make_study_title_con">
+      <div class="make_study_title">쪽지 보내기</div>
+   	</div> 
 </div>
 
 <div class="col-12 col-center mw-1200 make_study_form_wrap">
       <div class="make_study_form_con">
          
          <div class="study_name make_study_form">
-            <div class="title_size type_2">스터디 이름</div>
-            <input type="text" id="studyName" name ="studyName" class="textbox_style_1">
-            <i class="fa fa-times-circle" aria-hidden="true" id="nameYnIcon" style="margin-left:1%"></i>
-            <input type="button" value="중복확인" id="checkIdBtn" class="btn_style_1" onclick="studyNameCheckFunc()">
+            <div class="title_size type_2">받는 사람</div>
+            <input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1">
          </div>
          
          <div class="creator_name make_study_form">
-            <div class="title_size type_2">스터디장 이름</div>
-            <input type="text" id="studyRgstusId" name="studyRgstusId" class="textbox_style_1">
+            <div class="title_size type_2">제목</div>
+            <input type="text" id="messageTitle" name="messageTitle" class="textbox_style_1">
          </div>
-         
-         <div class="study_type make_study_form">
-            <div class="title_size type_4">스터디 종류</div>
-            <select name="studyTopic" id="studyTopic" class="select_style_0" >
-				<c:forEach var="result" items="${studyType}" varStatus="status">
-					<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
-				</c:forEach>
-            </select>
-         </div>
-         
-          <div class="study_area make_study_form">
-            <div class="title_size type_4">스터디 지역</div>
-            <select name="studyArea" id="studyArea" class="select_style_0" >
-                <c:forEach var="result" items="${studyArea}" varStatus="status">
-					<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
-				</c:forEach>
-            </select>
-         </div>
-         
-         <div class="study_people make_study_form">
-            <div class="title_size type_4">모집 인원</div>
-            <select name="studyLimit" id="studyLimit" class="select_style_0" >
-                <c:forEach var="result" items="${studyLimit}" varStatus="status">
-					<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
-				</c:forEach>
-            </select>
-         </div>
-         
-         <div class="study_text make_study_form">
-            <div class="title_size type_2">설명</div>
-            <input type="text" name="studyDesc" id="studyDesc" class="textbox_style_1">
+          <div class="study_text make_study_form">
+            <div class="title_size type_2">내용</div>
+            <input type="text" name="messageDesc" id="messageDesc" class="textbox_style_1">
             <!--<textarea name="studyDesc" id="studyDesc" cols="20" rows="10" placeholder="스터디에 대한 설명을 입력해주세요."></textarea> -->
          </div>      
       </div>
@@ -101,7 +68,7 @@ request.setCharacterEncoding("UTF-8");
 
 <div class="col-12 col-center mw-1200 make_study_btn_wrap">
    <div class="btn_style_1_con">
-      <input type="button" value="완료" class="btn_style_1" onclick="makeStudyFunc()" >
+      <input type="button" value="보내기" class="btn_style_1" onclick="sendMessage()" >
    </div> 
 </div>
 

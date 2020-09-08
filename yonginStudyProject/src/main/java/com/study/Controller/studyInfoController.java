@@ -11,13 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.login.Controller.registerMemeberController;
-import com.login.Service.loginService;
+import com.study.Service.studyService;
+import com.main.VO.studyInfoVO;
 
 @Controller
 public class studyInfoController {
-	@Resource(name="loginService") // 해당 서비스가 리소스임을 표시합니다.
-	private loginService loginService;
+	@Resource(name="studyService") // 해당 서비스가 리소스임을 표시합니다.
+	private studyService studyService;
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(studyInfoController.class);
