@@ -15,7 +15,7 @@
 <jsp:include page="../common/header.jsp"></jsp:include>
 
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
-<script type="text/javascript" src="/resources/js/messageList.js"></script>
+<script type="text/javascript" src="/resources/js/message/messageList.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>

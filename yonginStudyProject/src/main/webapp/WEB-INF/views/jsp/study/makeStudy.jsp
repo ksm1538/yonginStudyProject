@@ -28,7 +28,7 @@ request.setCharacterEncoding("UTF-8");
 <script src="<c:url value="/resources/util/ax5ui-toast-master/dist/ax5toast.min.js" />"></script>
 <script src="<c:url value="/resources/js/constant.js" />"></script>
 
-<script src="<c:url value="/resources/js/makeStudy.js" />"></script>
+<script src="<c:url value="/resources/js/study/makeStudy.js" />"></script>
 <!-- 자기가 만든 js파일은 가장 밑으로. 순서 잘 지키고 -->
 <!-- css, js 설정(끝) -->
 
