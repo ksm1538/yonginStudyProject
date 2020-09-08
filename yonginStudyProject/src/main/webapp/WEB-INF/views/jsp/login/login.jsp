@@ -14,7 +14,7 @@
 <!-- 헤더 생략 -->
 
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
-<script src="<c:url value="/resources/js/login.js" />"></script>
+<script src="<c:url value="/resources/js/login/login.js" />"></script>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>

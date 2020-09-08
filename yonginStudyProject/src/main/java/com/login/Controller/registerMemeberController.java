@@ -9,9 +9,13 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +25,7 @@ import com.commonCode.Service.commonCodeService;
 import com.commonCode.VO.commonCodeVO;
 import com.login.Service.loginService;
 import com.login.VO.userInfoVO;
+import com.login.Validator.userInfoValidator;
 
 /**
  * Handles requests for the application home page.
@@ -36,7 +41,11 @@ public class registerMemeberController {
 	@Inject
     PasswordEncoder passwordEncoder;	// 암호화 기능 추가
 	
+	@Autowired
+	userInfoValidator userInfoValidator;// validator 변수 불러옴
+	
 	private static final Logger logger = LoggerFactory.getLogger(registerMemeberController.class);
+	
 	/**
 	 * 회원가입 팝업 Mapping
 	 * @throws Exception 
@@ -45,26 +54,47 @@ public class registerMemeberController {
 	public String registerForm(Model model) throws Exception {
 		List<commonCodeVO> codeResult = commonCodeService.selectCommonCodeList("pwHint");
 		
+		//model 변수에 데이터를 담아 jsp에 전달
 		model.addAttribute("pwHint", codeResult);
+		model.addAttribute("userInfoVO", new userInfoVO());
 		return "jsp/login/registerMember";
 	}
 	
 	/**
 	 * 회원가입
 	 * @param userInfoVO
+	 * @param bindingResult
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/registerMember.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> registerAjaxFunction(@RequestBody userInfoVO userInfoVO) throws Exception {
+	public Map<String, Object> registerAjaxFunction(@ModelAttribute @RequestBody userInfoVO userInfoVO, BindingResult bindingResult) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 	      
+		/** 데이터 검증(시작) **/
+		userInfoValidator userInfoValidator = new userInfoValidator();
+		userInfoValidator.validate(userInfoVO, bindingResult);
+		
+		// 에러 검출 시 에러 메시지와 함께 종료
+		if (bindingResult.hasErrors()) {
+			List<FieldError> errors = bindingResult.getFieldErrors();
+			String errorMsg = "";
+		    for (FieldError error : errors ) {
+		    	errorMsg = error.getDefaultMessage() + "\n";
+		    }
+		    
+			mReturn.put("result", "fail");
+			mReturn.put("message", errorMsg);
+			
+			return mReturn;
+		}  
+		/** 데이터 검증(끝) **/
+		
 		//비밀번호 암호화
 		userInfoVO.setUserPw(passwordEncoder.encode(userInfoVO.getUserPw()));
 		
-		//벨리데이터 추가
 		loginService.insertMember(userInfoVO);
 		
 		mReturn.put("result", "success");
@@ -84,6 +114,14 @@ public class registerMemeberController {
 	public Map<String, Object> checkExsitingId(@RequestBody String userId) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		
+		// id 입력 확인
+		if(userId == null || userId.equals("")){
+			mReturn.put("result", "fail");
+			mReturn.put("message", "아이디를 입력해주세요.");
+			
+			return mReturn;
+		}
 		
 		// 앞, 뒤 공백 제거
 		userId = userId.trim();

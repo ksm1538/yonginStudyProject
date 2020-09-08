@@ -1,5 +1,8 @@
 package com.login.Validator;
 
+import javax.inject.Inject;
+
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -10,6 +13,9 @@ import com.login.VO.userInfoVO;
 @Component
 public class userInfoValidator implements Validator{
 
+	@Inject
+    private MessageSource msg;
+	
 	@Override
 	public boolean supports(Class<?> clazz) {
         // 타입이 안맞으면 invalid target for Validator 오류가 뜬다!
@@ -21,7 +27,16 @@ public class userInfoValidator implements Validator{
 		ValidationUtils.rejectIfEmpty(error, "userId", "userInfoVO.userId.empty","아이디를 입력해주세요.");
 		ValidationUtils.rejectIfEmpty(error, "userPw", "userInfoVO.userPw.empty","비밀번호를 입력해주세요");
        
-		userInfoVO userInfoVO = (userInfoVO) obj;
+		
+		/**
+		 * 영어,숫자 공백X
+		 * 
+		 */
+		/*userInfoVO userInfoVO = (userInfoVO) obj;
+		if(userInfoVO.getUserId().length() < 5 || userInfoVO.getUserId().length() > 20) {
+			error.rejectValue("userId", "메세지코드입력");
+		}*/
+		//
 		
 		/*
 		 * //만약 이메일의 값을 검증하고싶다면 Pattern 클래스를 이용하자! Pattern pattern =

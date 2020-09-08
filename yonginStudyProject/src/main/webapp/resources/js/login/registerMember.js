@@ -88,6 +88,12 @@ function IdCheckFunc(){
 	sendData = sendData.trim();
 	$('#userId').val(sendData);
 	
+	//id 입력 확인
+	if(sendData == ""){
+		dToast.push("ID를 입력해주세요.");
+		return;
+	}
+	
 	$.ajax({
  		type: "POST",
  		url : "/register/checkExsitingId.json",

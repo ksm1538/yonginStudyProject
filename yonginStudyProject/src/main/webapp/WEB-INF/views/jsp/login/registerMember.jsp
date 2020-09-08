@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/HTML;charset=UTF-8" pageEncoding="UTF-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!------ JSP 설정(끝) ------>
 
 <!DOCTYPE html>
@@ -17,7 +18,7 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
-<script type="text/javascript" src="/resources/js/registerMember.js"></script>
+<script type="text/javascript" src="/resources/js/login/registerMember.js"></script>
 
 <title>회원가입</title>
 </head>
@@ -33,18 +34,21 @@
 	
 </div>
 
+<form:form method="POST" modelAttribute="userInfoVO">
 	<div class="col-12 col-center mw-1200 search_memeber_form_wrap">
 			<div class="register_member_form_con">
 				<div class="user_id search_member_form_con">
 					<div class="title_size type_2"> 아이디</div>
-					<input type="text" name="userId" id="userId" class="textbox_style_1">
+					<form:input path="userId" type="text" name="userId" id="userId" class="textbox_style_1"/>
+					<small><form:errors path="userId"  /></small>
 					<i class="fa fa-times-circle" aria-hidden="true" id="idYnIcon" style="margin-left:1%"></i>
 					<input type="button" value="중복확인" id="checkIdBtn" class="btn_style_1" onclick="IdCheckFunc()">
 				</div>
 				
 				<div class="user_pw search_member_form_con">
 					<div class="title_size type_2">비밀번호</div>
-					<input type="password" name="userPw" id="userPw" class="textbox_style_1">
+					<form:input path="userPw" type="password" name="userPw" id="userPw" class="textbox_style_1"/>
+					<small><form:errors path="userPw"  /></small>
 				</div>
 				
 				<div class="user_pw_check search_member_form_con">
@@ -103,6 +107,7 @@
 			<input type="button" value="확인" class="btn_style_1" onclick="registerMemberFunc()" >
 		</div> 
 	</div>
+</form:form>
 
   
 </body>
