@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.commonCode.Service.commonCodeService;
 import com.commonCode.VO.commonCodeVO;
+import com.commonFunction.Controller.yonginFunction;
 import com.login.Service.loginService;
 import com.login.VO.userInfoVO;
 import com.login.Validator.userInfoValidator;
@@ -41,6 +43,7 @@ public class registerMemeberController {
 	
 	@Autowired
 	userInfoValidator userInfoValidator;// validator 변수 불러옴
+	
 	
 	private static final Logger logger = LoggerFactory.getLogger(registerMemeberController.class);
 	
@@ -66,12 +69,10 @@ public class registerMemeberController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/registerMember.json", method = RequestMethod.POST)
-	public Map<String, Object> registerAjaxFunction(@RequestBody userInfoVO userInfoVO, BindingResult bindingResult) throws Exception {
+	@ResponseBody
+	public Map<String, Object> registerAjaxFunction(@ModelAttribute("userInfoVO") userInfoVO userInfoVO, BindingResult bindingResult) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
-	      
-		System.out.println("Id : "+userInfoVO.getUserId());
-		System.out.println("비밀번호 : "+userInfoVO.getUserPw());
 		
 		/** 데이터 검증(시작) **/
 		/*userInfoValidator userInfoValidator = new userInfoValidator();
@@ -84,8 +85,8 @@ public class registerMemeberController {
 		    for (FieldError error : errors ) {
 		    	errorMsg = error.getDefaultMessage() + "\n";
 		    }
-		    System.out.println("에러메시지ㅋ : "+errorMsg);
-			mReturn.put("result", "fail");
+
+		    mReturn.put("result", "fail");
 			mReturn.put("message", errorMsg);
 			
 			return mReturn;
@@ -94,6 +95,10 @@ public class registerMemeberController {
 		
 		//비밀번호 암호화
 		userInfoVO.setUserPw(passwordEncoder.encode(userInfoVO.getUserPw()));
+		
+		// 날짜에서 '-' 빼기
+		String removeEmail = yonginFunction.remove(userInfoVO.getUserBirth(), '-');	//com.commonFunction.Controller에 있는 공통 함수를 이용해 문자 제거
+		userInfoVO.setUserBirth(removeEmail);
 		
 		loginService.insertMember(userInfoVO);
 		

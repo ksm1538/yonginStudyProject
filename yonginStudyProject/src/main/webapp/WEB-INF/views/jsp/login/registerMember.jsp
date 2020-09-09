@@ -34,13 +34,13 @@
 	
 </div>
 
-<form:form method="POST" modelAttribute="userInfoVO">
+<form:form method="POST" modelAttribute="userInfoVO" name="registerForm" id="registerForm" action="/registerMember.json">
 	<div class="col-12 col-center mw-1200 search_memeber_form_wrap">
 			<div class="register_member_form_con">
 				<div class="user_id search_member_form_con">
 					<div class="title_size type_2"> 아이디</div>
-					<form:input path="userId" type="text" name="userId" id="userId" class="textbox_style_1"/>
-					<small><form:errors path="userId"  /></small>
+					<form:input path="userId" type="text" name="userId" id="userId" class="textbox_style_1" placeholder="5~20자로 설정해주세요." maxlength="20"/>
+					<%-- <small><form:errors path="userId"  /></small> --%>
 					<i class="fa fa-times-circle" aria-hidden="true" id="idYnIcon" style="margin-left:1%"></i>
 					<input type="button" value="중복확인" id="checkIdBtn" class="btn_style_1" onclick="IdCheckFunc()">
 				</div>
@@ -48,55 +48,58 @@
 				<div class="user_pw search_member_form_con">
 					<div class="title_size type_2">비밀번호</div>
 					<form:input path="userPw" type="password" name="userPw" id="userPw" class="textbox_style_1"/>
-					<small><form:errors path="userPw"  /></small>
+					<%-- <small><form:errors path="userPw"  /></small> --%>
 				</div>
 				
 				<div class="user_pw_check search_member_form_con">
 					<div class="title_size type_2">비밀번호 확인</div>
-					<input type="password" name="userPwConfirm" id="userPwConfirm" class="textbox_style_1">
+					<form:input path="userPwConfirm" type="password" name="userPwConfirm" id="userPwConfirm" class="textbox_style_1"/>
 				</div>
 				
 				<div class="user_pw_hint search_member_form_con">
 					<div class="title_size type_4">비밀번호 힌트</div>
-					<select name="userPwHintCode" id="userPwHintCode" class="select_style_0" >
+					<form:select path="userPwHintCode" name="userPwHintCode" id="userPwHintCode" class="select_style_0" >
 					    <c:forEach var="result" items="${pwHint}" varStatus="status">
 				          	<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
 				         </c:forEach>
-					</select>
+					</form:select>
 				</div>
 				
 				<div class="user_pw_ans search_member_form_con">
 					<div class="title_size type_2">비밀번호 힌트 답</div>
-					<input type="text" name="userPwHintAnswer" id="userPwHintAnswer" class="textbox_style_1">
+					<form:input path="userPwHintAnswer" type="text" name="userPwHintAnswer" id="userPwHintAnswer" class="textbox_style_1"/>
 				</div>
 				
 				<div class="user_name search_member_form_con">
 					<div class="title_size type_2">이름</div>
-					<input type="text" name="userName" id="userName" class="textbox_style_1">
+					<form:input path="userName" type="text" name="userName" id="userName" class="textbox_style_1"/>
 				</div>
 				 
+				<!-- 생일 선택하는 곳 width 20%안주면 너무 작게 설정됨 -->
 				<div class="user_identity_num search_member_form_con">
-					<div class="user_identity_title title_size type_2">주민번호</div>
-					<input type="text" name="userNumber1" id="userNumber1" class="textbox_style_1 type_2">
-					<input type="password" name="userNumber2" id="userNumber2" class="textbox_style_1 type_2">
+					<div class="title_size type_2">생일</div>
+					<form:input path="userBirth" type="date" name="userBirth" id="userBirth" class="textbox_style_1 type_2" style="width:20%" />
 				</div>
 				
-				<!-- 성별 라벨로 묶기 -->
 				<div class="user_gender search_member_form_con">
 					<div class="title_size type_2">성별</div>
-					<div class="radio_btn_con"><input type="radio" name="userGender" value="m" class="radio_btn"><span>남성</span></div>
-					<div class="radio_btn_con"><input type="radio" name="userGender" value="w" checked="checked" class="radio_btn"><span>여성</span></div>
+					<div class="radio_btn_con"><form:radiobutton path="userGender" name="userGender" value="m" class="radio_btn"/><span>남성</span></div>
+					<div class="radio_btn_con"><form:radiobutton path="userGender" name="userGender" value="w" checked="checked" class="radio_btn"/><span>여성</span></div>
 				</div>
 				
+				<div class="user_name search_member_form_con">
+					<div class="title_size type_2">이메일</div>
+					<form:input path="userEmail" type="text" name="userEmail" id="userEmail" class="textbox_style_1"/>
+				</div>
 				
 				<div class="user_phone search_member_form_con">
 					<div class="user_phone_title title_size type_2">전화번호</div>
-					<input type="text" name="userPhoneNumber" id="userPhoneNumber" class="textbox_style_1">
+					<form:input path="userPhoneNumber" type="text" name="userPhoneNumber" id="userPhoneNumber" class="textbox_style_1"/>
 				</div>
 				
 				<div class="user_id search_member_form_con">
 					<div class="title_size type_2">주소</div>
-					<input type="text" name="userAddress" id="userAddress" class="textbox_style_1" readonly="true" placeholder="주소 검색을 클릭하세요.">
+					<form:input path="userAddress" type="text" name="userAddress" id="userAddress" class="textbox_style_1" readonly="true" placeholder="주소 검색을 클릭하세요."/>
 					<input type="button" value="주소 검색" class="btn_style_1" onclick="addressPopup()" >
 				</div>
 			</div>

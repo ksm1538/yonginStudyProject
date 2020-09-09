@@ -14,7 +14,7 @@ $(document).ready(function () {
 });
 /** 초기화 (끝) **/
 
-// 주소 검색 함수
+// 주소 검색 함수 세팅
 function addressPopup() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -31,7 +31,7 @@ function registerMemberFunc(){
 		return;
 	}
 	
-	var sendData={
+	/*var sendData={
 		userName:document.getElementById("userName").value,
 		userNumber1:document.getElementById("userNumber1").value,
 		userNumber2:document.getElementById("userNumber2").value,
@@ -43,15 +43,16 @@ function registerMemberFunc(){
 		userPwHintCode:$('#userPwHintCode option:selected').val(),
 		userPwHintAnswer:$('#userPwHintAnswer').val(),
 		userAddress:$('#userAddress').val()
-	}
-	
+	}*/
+	var sendData = $('#registerForm').serialize();		// validator를 이용할 경우 serialize를 이용해 데이터 수집
+
 	console.log(sendData); 
 	  $.ajax({
 	     type: "POST",
 	     url : "/registerMember.json",
-	     data: JSON.stringify(sendData),
+	     data: sendData,
 	     dataType: "json",
-	     contentType: "application/json; charset=UTF-8",
+	     //contentType: "application/json; charset=UTF-8", (validator를 이용할 경우 contentType은 주석처리)
 	     async: false,
 	     success : function(data, status, xhr) {
 	    	 switch(data.result){

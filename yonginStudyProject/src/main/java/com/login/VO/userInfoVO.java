@@ -4,9 +4,6 @@ public class userInfoVO {
 	
 	String userName = "";
 	String userCode = "";
-	String userNumber1 = "";
-	String userNumber2 = "";	
-	String userNumber = "";
 	String userId = "";
 	String userPw = "";
 	String userPwConfirm = "";
@@ -16,31 +13,27 @@ public class userInfoVO {
 	String userGender = "";
 	String userAddress = "";
 	String useYn = "";
+	String userEmail = "";
+	String userBirth = "";
 	
 	
-	public String getUserNumber() {
-		return userNumber;
+	public String getUserEmail() {
+		return userEmail;
 	}
-	public void setUserNumber(String userNumber) {
-		this.userNumber = userNumber;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+	public String getUserBirth() {
+		return userBirth;
+	}
+	public void setUserBirth(String userBirth) {
+		this.userBirth = userBirth;
 	}
 	public String getUserPwHintCode() {
 		return userPwHintCode;
 	}
 	public void setUserPwHintCode(String userPwHintCode) {
 		this.userPwHintCode = userPwHintCode;
-	}
-	public String getUserNumber1() {
-		return userNumber1;
-	}
-	public void setUserNumber1(String userNumber1) {
-		this.userNumber1 = userNumber1;
-	}
-	public String getUserNumber2() {
-		return userNumber2;
-	}
-	public void setUserNumber2(String userNumber2) {
-		this.userNumber2 = userNumber2;
 	}
 	public String getUserPwHintAnswer() {
 		return userPwHintAnswer;

@@ -14,6 +14,8 @@
 				,	USER_ID
 				,	USER_PW
 				,	USER_ADDRESS
+				,	USER_EMAIL
+				,	USER_BIRTH
 				,	USER_PHONENUMBER
 				,	USER_GENDER
 				,	USER_NAME
@@ -26,6 +28,8 @@
 				,	#{userId}
 				,	#{userPw}
 				,	#{userAddress}
+				,	#{userEmail}
+				,	#{userBirth}
 				,	#{userPhoneNumber}
 				,	#{userGender}
 				,	#{userName}
