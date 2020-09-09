@@ -22,7 +22,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-   
        <div class="col-12 col-center mw-1200 moreStudy_wrap">
         	<div class="col-12 moreStudy_list_wrap content_wrap">
          	   <div class="content_title"><span>공지사항</span></div>

@@ -14,8 +14,8 @@
                 <div class="header_menu_con">
                     <ul class="header_menu">
                         <li><a onclick="openHome();">HOME</a></li>
-                        <li><a>스터디목록</a></li>
-                        <li><a>공지사항</a></li>
+                        <li><a onclick="openMoreStudyForm();">스터디목록</a></li>
+                        <li><a onclick="openMoreNotice();">공지사항</a></li>
                     </ul>
                 </div>
                 

@@ -147,4 +147,4 @@ function getStudyList(){
 /*공지사항 더보기 호출 */
 function openMoreNotice(){
 	location.href = "/moreNotice.do";
-}
+		}
