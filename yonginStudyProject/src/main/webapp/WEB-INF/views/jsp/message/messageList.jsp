@@ -26,7 +26,7 @@
             <div class="content_title"><span>쪽지</span></div>
             
             <div style="width: 100%;" >  
-	  			<div data-ax5grid="studyListGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
+	  			<div data-ax5grid="messageListGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
 			</div> 
 			
 			<div class="message_btn">
@@ -38,4 +38,4 @@
        </div>
 	
 </body>
-</html>
+</html> 

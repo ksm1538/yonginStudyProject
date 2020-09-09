@@ -7,8 +7,22 @@ public class messageInfoVO {
 	String 	messageCode = "";
 	String 	messageTitle = "";
 	String 	messageDesc = "";
+	String	messageTime = "";
+	int totalCount;
 	
 	
+	public String getMessageTime() {
+		return messageTime;
+	}
+	public void setMessageTime(String messageTime) {
+		this.messageTime = messageTime;
+	}
+	public int getTotalCount() {
+		return totalCount;
+	}
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
 	public String getUserCodeFrom() {
 		return userCodeFrom;
 	}

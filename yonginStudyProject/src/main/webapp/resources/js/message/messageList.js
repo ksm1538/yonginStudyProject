@@ -1,17 +1,16 @@
-var studyListGrid = new ax5.ui.grid();
-var studyNoticeListGrid = new ax5.ui.grid();
+var messageListGrid = new ax5.ui.grid();
 var cal;
 
 /** 초기화(시작) **/
 $(document).ready(function () {	
 	//스터디 리스트 설정
-	studyListGrid.setConfig({   
-    	target: $('[data-ax5grid="studyListGrid"]'),
+	messageListGrid.setConfig({   
+    	target: $('[data-ax5grid="messageListGrid"]'),
         showLineNumber: false,
         showRowSelector: true,
         columns: [ 
-        	{key : "messageSender", label: "보낸 사람", align: "center", width:"25%", sortable: true},
-        	{key : "messageSubject", label: "제목", align: "center", width:"25%"},
+        	{key : "userCodeFrom", label: "보낸 사람", align: "center", width:"25%", sortable: true},
+        	{key : "messageTitle", label: "제목", align: "center", width:"25%"},
         	{key : "messageTime", label: "시간", align: "center", width:"15%"},
         ],
         header: {
@@ -47,7 +46,7 @@ $(document).ready(function () {
             },
         });
 	
-	getStudyList();	// 스터디 목록 조회
+	getMessageList();	// ㅉㅗㄱㅈㅣ 목록 조회
 });
 /** 초기화(끝) **/
 
@@ -100,4 +99,28 @@ function deleteMessage(){
 	        alert('error = ' + jqXHR.responseText);
 	     }
 	  }); 
+}
+
+/* ㅉㅗㄱㅈㅣ 리스트 조회 함수 */
+function getMessageList(){
+	
+	$.ajax({
+ 		type: "POST",
+ 		url : "/selectMessageList.json",
+		contentType: "application/json; charset=UTF-8",
+		async: false,
+		success : function(data, status, xhr) {
+			switch(data.result){
+			    case COMMON_SUCCESS:
+					console.log(data);
+			    	messageListGrid.setData(data.resultList);
+			    	break;    
+			    case COMMON_FAIL:
+			    	dialog.alert(data.message); 
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+		}
+	}); 
 }

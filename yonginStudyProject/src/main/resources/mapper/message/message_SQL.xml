@@ -18,20 +18,49 @@
 		<![CDATA[
 			INSERT 
 			INTO	USER_MESSAGE
-				(	USER_CODE_FROM
+				(	
+					MESSAGE_CODE
+				,	USER_CODE_FROM
 				,	USER_CODE_TO
-				,	MESSAGE_CODE
 				,	MESSAGE_TITLE
 				,	MESSAGE_DESC
-				) 
+				,	MESSAGE_TIME
+				)  
 			VALUES	
-				(	#{userCodeFrom}
-				,	#{userCodeTo}
-				,	#{messageCode}
+				(	
+					('MESSAGE_' || LPAD(message_seq.nextval,8,0))
+				,	(	SELECT USER_CODE
+						FROM USER_INFO
+						WHERE USER_ID = #{userCodeFrom}
+					)
+				,	(	SELECT USER_CODE
+						FROM USER_INFO
+						WHERE USER_ID = #{userCodeTo}
+					)
 				,	#{messageTitle}
 				,	#{messageDesc}
+				,	sysdate
 				)
 		]]>
 	</insert>
+	
+	<select id="selectMessageList" resultType="com.message.VO.messageInfoVO"> 
+		<![CDATA[
+			SELECT	USER_MESSAGE.USER_CODE_FROM 	as userCodeFrom
+			 ,	USER_MESSAGE.USER_CODE_TO 	as userCodeTo
+			 ,	USER_MESSAGE.MESSAGE_CODE 	as messageCode
+			 ,	USER_MESSAGE.MESSAGE_TITLE 	as messageTitle
+			 ,	USER_MESSAGE.MESSAGE_DESC 	as messageDesc
+			 ,	TO_CHAR(USER_MESSAGE.MESSAGE_TIME, 'YYYY-MM-DD HH24:MI:SS') 	as messageTime
+			 ,	(SELECT	COUNT(*)		
+			 	FROM	USER_MESSAGE
+			 	WHERE	USER_MESSAGE.USER_CODE_TO	=	USER_INFO.USER_CODE)	as totalCount
+		FROM	USER_MESSAGE,
+				USER_INFO
+		WHERE	USER_MESSAGE.USER_CODE_TO		=	USER_INFO.USER_CODE
+		]]>
+	</select>
+	<!-- 49번줄 아이디가 코드로 변환하는 법 아직몰라서 일단 USER ID로 입력 -->
+	
 	
 </mapper> 

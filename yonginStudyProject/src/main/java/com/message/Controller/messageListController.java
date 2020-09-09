@@ -1,10 +1,12 @@
 package com.message.Controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.message.Service.messageService;
 import com.commonCode.Service.commonCodeService;
 import com.commonCode.VO.commonCodeVO;
-
+import com.main.VO.studyInfoVO;
 import com.message.VO.messageInfoVO;
 
 @Controller
@@ -62,4 +64,31 @@ public class messageListController {
 		
 		return mReturn;
 	}
+	
+	/**
+	 * 쪽지 리스트 조회
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/selectMessageList.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> selectMessageList(HttpServletRequest request) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+	      
+		List<messageInfoVO> ltResult = messageService.selectMessageList();
+		
+		if(ltResult.size() < 1) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "쪽지 목록이 없습니다.");
+		}
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "조회 성공하였습니다.");
+		mReturn.put("resultList", ltResult);
+		
+		return mReturn;
+	}
+	
+	
 }
