@@ -53,12 +53,14 @@ html, body {
 
  
 /*회원가입, 아이디찾기 , 비밀번호 찾기 공통*/
-.search_memeber_title_wrap{padding-top:30px; margin-bottom:80px;}
+.search_memeber_title_wrap{margin-bottom:80px;}
 .search_memeber_title_con{overflow:hidden;}
-.search_memeber_title_con .search_memeber_title{font-size:30px; font-weight:bold;}
+.search_memeber_title_con .search_memeber_title{font-size:30px; font-weight:bold; }
 .search_member_form_con{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:40px;}
+.search_member_form_con_type_2{display:flex; margin-bottom:40px;}
+.search_member_form_con_type_2:last-child{margin-bottom:0}
 .search_member_form_con:last-child{margin-bottom:0}
-.search_memeber_form_wrap{margin-bottom:50px;}
+.search_memeber_form_wrap{margin-bottom:70px;}
 
 .title_size{min-width:130px; font-size:20px; font-weight:bold;}
 .title_size.type_2{min-width:200px;}
@@ -68,19 +70,28 @@ html, body {
 
 
 .user_pw_hint{position:relative;}
-.user_pw_hint .select_style_0{position:absolute; right:16%; bottom:0; width:220px; height:30px;}
+.user_pw_hint .select_style_0{width:220px; height:30px;}
 
 
-/*회원가입*/			
+/*회원가입*/
+.register_wrap{padding:40px 40px;}
 .register_member_form_con .user_id{position:relative;}
-.register_member_form_con .user_id .btn_style_1{position:absolute; right:7%; bottom:0;}
+.register_member_form_con .user_id .btn_style_1{}
 .register_member_form_con .user_gender .radio_btn_con{margin-right:46px;}
 .register_member_form_con .user_gender .radio_btn_con:last-child{margin-right:0;}
 .register_member_form_con .user_gender .radio_btn_con > span{font-weight:bold;}
 
+/*회원가입 아이디*/
+.register_input_con{position:relative; display:flex;}
+.register_input_con .fa-times-circle:before{content:"\f057"; position:absolute; top:10px; left:165px;}
+.register_input_con .fa-check:before{content:"\f00c"; position:absolute; top:10px; left:165px;}
+
 .user_identity_num{position:relative;}
 .user_identity_num .user_identity_title:after{content:""; position:absolute; width:6px; height:1px; left:64%; bottom:10px; background-color:#000;}
 
+/*회원가입 라디오버튼*/
+.register_input_con .radio_btn_con{display:flex;}
+.register_input_con .radio_btn_con .radio_gender{display:block; margin-left:8px;}
 
 
 /*메인 컨텐츠*/
@@ -106,7 +117,7 @@ html, body {
 .main_btn_con .make_btn{margin-right:25px; margin-left:25px;}
 
 /*달력*/
-/*달려ㅕㄱ버튼*/
+/*달력버튼*/
 .today_btn{margin-right:15px; font-size:12px; border-radius:25px; padding:8px 16px; outline:none; cursor:pointer; border:2px solid #31aae2;  }
 .today_btn:hover{border:2px solid #CAB0F1;}
 
@@ -181,14 +192,22 @@ html, body {
 .manageStudy_title, .see_apply_study_con > span{display:inline-block; padding-bottom:15px; font-size:30px; font-weight:bold; border-bottom:3px solid #31aae2; }
 
 
-
 /*스터디 생성*/
+.make_study_wrap{padding:40px 40px;}
+.make_study_title_con{overflow:hidden; margin-bottom:80px;}
+
+.make_study_input_con{display:flex; position:relative;}
+.make_study_input_con .fa-times-circle:before{content:"\f057"; position:absolute; top:10px; left:165px;}
+.make_study_input_con .fa-check:before{content:"\f00c"; position:absolute; top:10px; left:165px;}
+.make_study_input_con .btn_style_1{margin-left:50px; outline:none; cursor:pointer; border-radius:12px; font-weight:bold; color:#000; font-size:15px; width:100px; height:35px; background:transparent;}
+.make_study_input_con .select_style_0{width:150px; height:30px; border:1px solid #31aae2;}
+
 .make_study_title_con .make_study_title{font-size:30px; font-weight:bold;}
-.make_study_title_con{overflow:hidden;}
-.make_study_form{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:40px;}
+.make_study_form:not(last-child){display:flex; margin-bottom:40px;}
 .make_study{position:relative;}
 .make_study_form_wrap{margin-bottom:50px;}
-.make_study_title_wrap{padding-top:30px; margin-bottom:80px;}
+
+
 
 /*스터디 정보*/
 .study_info_title_con{overflow:hidden;}

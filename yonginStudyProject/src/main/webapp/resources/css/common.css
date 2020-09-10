@@ -66,18 +66,22 @@ body{overflow:scroll;}
 .btn_style_0{outline:none; cursor:pointer; border:1px solid #fff; color:#fff; font-size:15px; width:200px; height:35px; background:transparent;}
 .btn_style_0:hover{color:#000; background-color:#31aae2; color:#fff;}
 
-.btn_style_1{outline:none;  cursor:pointer; border-radius:12px; font-weight:bold; color:#000; font-size:15px; width:100px; height:35px; background:transparent;}
+.btn_style_1{outline:none; cursor:pointer; border-radius:12px; font-weight:bold; color:#000; font-size:15px; width:100px; height:35px; background:transparent;}
 .btn_style_1.type_2{width:150px;}
 .btn_style_1.type_3{width:250px;}
 .btn_style_1:hover{color:#000; border:none; background-color:#31aae2; color:#fff;}
 
 .btn_style_1_con{display:flex; flex-wrap:nowrap; justify-content:center;}
 
+
+.register_member_form_con .btn_style_1{margin-left:50px; outline:none; cursor:pointer; border-radius:12px; font-weight:bold; color:#000; font-size:15px; width:100px; height:35px; background:transparent;}
+
 .a_tag:link {text-decoration: none;}
 .a_tag:visited {text-decoration: none;}
 
 /*닫기버튼*/
 .circle_btn{cursor:pointer; position:absolute; right:10%; width:50px; height:50px; border-radius:50%; background-color:#31aae2; }
+.circle_btn.type_2{right:0%;}
 .circle_btn:after{content:""; position:absolute; height:1px; width:20px; background-color:#fff; right:15px; top:26px; transform: rotate(45deg)}
 .circle_btn:before{content:""; position:absolute; height:1px; width:20px; background-color:#fff; right:15px; top:26px; transform: rotate(135deg)}
  

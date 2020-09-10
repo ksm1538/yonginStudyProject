@@ -11,14 +11,14 @@ $(document).ready(function () {
 	    defaultView: 'month' // monthly view option
 	});
 	
-	$(".user_id").click(function(){
+/*	$(".user_id").click(function(){
 		$(".user_box_con").fadeIn(600);
 	});
 	
 	$(".circle_btn_2").click(function(){
 		$(".user_box_con").fadeOut(600);
 	}); 
-	
+	*/
 	//스터디 리스트 설정
 	studyListGrid.setConfig({   
     	target: $('[data-ax5grid="studyListGrid"]'),
@@ -114,7 +114,7 @@ function openMoreStudyForm(){
 
 /*스터드만들기 호출 */
 function makeStudyForm(){
-	window.open("/makeStudy.do");
+	window.open("/makeStudy.do",'스터디더보기','width=700px ,height=800px ,location=no,status=no,scrollbars=no');
 }
 
 

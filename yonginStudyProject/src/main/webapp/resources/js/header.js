@@ -1,3 +1,17 @@
+$(document).ready(function (){
+	
+		$(".user_id").click(function(){
+		$(".user_box_con").fadeIn(600);
+	});
+	
+	$(".circle_btn_2").click(function(){
+		$(".user_box_con").fadeOut(600);
+	}); 
+	
+	
+});
+
+
 /*마이페이지 호출*/
 function openMypageForm(){
 	//이걸 쓰면 창이 새로 열리지않고 이동
@@ -12,10 +26,6 @@ function openMessageForm(){
 	location.href = "/message.do";
 	
 }
-
-
-
-
 
 
 /*메인으로 이동 */
