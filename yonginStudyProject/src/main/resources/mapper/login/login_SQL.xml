@@ -58,4 +58,12 @@
 		]]>
 	</select>
 	
+	<select id="selectSameEmail"  resultType="int" parameterType="string">
+		<![CDATA[
+			SELECT	COUNT(*)
+			FROM	USER_INFO
+			WHERE	USER_EMAIL	=	#{userEmail}
+		]]>
+	</select>
+	
 </mapper>

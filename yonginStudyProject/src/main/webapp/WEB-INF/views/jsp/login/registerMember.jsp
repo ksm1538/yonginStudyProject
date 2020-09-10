@@ -47,13 +47,13 @@
 				
 				<div class="user_pw search_member_form_con">
 					<div class="title_size type_2">비밀번호</div>
-					<form:input path="userPw" type="password" name="userPw" id="userPw" class="textbox_style_1"/>
+					<form:input path="userPw" type="password" name="userPw" id="userPw" class="textbox_style_1" placeholder="10~20자로 설정해주세요."/>
 					<%-- <small><form:errors path="userPw"  /></small> --%>
 				</div>
 				
 				<div class="user_pw_check search_member_form_con">
 					<div class="title_size type_2">비밀번호 확인</div>
-					<form:input path="userPwConfirm" type="password" name="userPwConfirm" id="userPwConfirm" class="textbox_style_1"/>
+					<form:input path="userPwConfirm" type="password" name="userPwConfirm" id="userPwConfirm" class="textbox_style_1" placeholder="동일한 비밀번호를 입력해주세요."/>
 				</div>
 				
 				<div class="user_pw_hint search_member_form_con">
@@ -90,11 +90,20 @@
 				<div class="user_name search_member_form_con">
 					<div class="title_size type_2">이메일</div>
 					<form:input path="userEmail" type="text" name="userEmail" id="userEmail" class="textbox_style_1"/>
+					<input type="button" value="인증번호 전송" id="initSendMailBtn" class="btn_style_1" onclick="sendAuthCode()" >
+					<input type="button" value="재전송" id="reSendMailBtn"  class="btn_style_1" onclick="sendAuthCode()" >
+					<input type="button" value="이메일 변경" id="resetMailBtn"  class="btn_style_1" onclick="resetAuthCode()" >
+				</div>
+				
+				<div class="user_id search_member_form_con" id="emailCodeDiv">
+					<div class="title_size type_2">인증번호 </div>
+					<input type="text" name="emailCode" id="emailCode" class="textbox_style_1"/>
+					<input type="button" id="authCodeBtn" value="인증하기" class="btn_style_1" onclick="checkAuthCode()" >
 				</div>
 				
 				<div class="user_phone search_member_form_con">
-					<div class="user_phone_title title_size type_2">전화번호</div>
-					<form:input path="userPhoneNumber" type="text" name="userPhoneNumber" id="userPhoneNumber" class="textbox_style_1"/>
+					<div class="user_phone_title title_size type_2">휴대폰 번호</div>
+					<form:input path="userPhoneNumber" type="text" name="userPhoneNumber" id="userPhoneNumber" class="textbox_style_1" placeholder="'-'없이 숫자만 입력하세요." maxlength="13"/>
 				</div>
 				
 				<div class="user_id search_member_form_con">

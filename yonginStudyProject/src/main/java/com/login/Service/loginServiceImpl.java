@@ -25,4 +25,9 @@ public class loginServiceImpl implements loginService{
 	public int selectSameId(String userId) throws Exception{
 		return loginDAO.selectSameId(userId);
 	}
+	
+	@Override
+	public int selectSameEmail(String userEmail) throws Exception{
+		return loginDAO.selectSameEmail(userEmail);
+	}
 }

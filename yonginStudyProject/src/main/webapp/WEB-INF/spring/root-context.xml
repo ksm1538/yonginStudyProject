@@ -33,5 +33,23 @@
     <bean id="messageSource"
     class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
     <property name="basename" value="/WEB-INF/message" />
-</bean>
+	</bean>
+	
+	 <!-- 메일 보내기 (SEND) -->
+   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+      <property name="host" value="smtp.gmail.com" />
+      <property name="port" value="587" />
+      <property name="username" value="ID입력하셈@gmail.com" />	<!-- 자기 gmail 아이디 입력  -->
+      <property name="password" value="비밀번호입력하셈" />			<!-- 자기 gmail 비밀번호 입력  -->
+    
+      <!-- email 요청시는 SMTP -->
+      <property name="javaMailProperties">
+         <props>
+            <prop key="mail.transport.protocol">smtp</prop>
+            <prop key="mail.smtp.auth">true</prop>
+            <prop key="mail.smtp.starttls.enable">true</prop>
+            <prop key="mail.debug">true</prop>
+         </props>
+      </property>
+   </bean>
 </beans>

@@ -8,4 +8,6 @@ public interface loginDAO {
 	public userInfoVO login(userInfoVO userInfoVO) throws Exception;
 	
 	public int selectSameId(String userId) throws Exception;
+	
+	public int selectSameEmail(String userEmail) throws Exception;
 }

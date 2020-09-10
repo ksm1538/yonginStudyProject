@@ -9,4 +9,7 @@ public interface loginService {
 	userInfoVO login(userInfoVO userInfoVO) throws Exception;
 	
 	int selectSameId(String userId) throws Exception;
+	
+	int selectSameEmail(String userEmail) throws Exception;
+	
 }
