@@ -47,7 +47,7 @@
 	<select id="selectMessageList" resultType="com.message.VO.messageInfoVO"> 
 		<![CDATA[
 			SELECT	USER_MESSAGE.USER_CODE_FROM 	as userCodeFrom
-			 ,	USER_MESSAGE.USER_CODE_TO 	as userCodeTo
+			 ,	USER_INFO.USER_ID 	as userCodeTo
 			 ,	USER_MESSAGE.MESSAGE_CODE 	as messageCode
 			 ,	USER_MESSAGE.MESSAGE_TITLE 	as messageTitle
 			 ,	USER_MESSAGE.MESSAGE_DESC 	as messageDesc
