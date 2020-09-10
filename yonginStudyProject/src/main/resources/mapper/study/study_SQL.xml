@@ -26,7 +26,7 @@
 				,	STUDY_AREA
 				) 
 			VALUES	
-				(	#{studyCode}
+				(	('STUDY_' || LPAD(study_seq.nextval,8,0))
 				,	#{studyName}
 				,	#{studyDesc}
 				,	#{studyTopic}
