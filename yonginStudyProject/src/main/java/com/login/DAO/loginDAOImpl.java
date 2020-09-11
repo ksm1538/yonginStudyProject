@@ -31,4 +31,24 @@ public class loginDAOImpl implements loginDAO{
 	public int selectSameEmail(String userEmail) throws Exception{
 		return sqlSession.selectOne("loginMapper.selectSameEmail", userEmail);
 	}
+	
+	@Override
+	public String selectIdWithData(userInfoVO userInfoVO) throws Exception{
+		return sqlSession.selectOne("loginMapper.selectIdWithData", userInfoVO);
+	}
+	
+	@Override
+	public userInfoVO selectUserInfoWithData(userInfoVO userInfoVO) throws Exception{
+		System.out.println("이름 : "+userInfoVO.getUserName().length());
+		System.out.println("아이디 : "+userInfoVO.getUserId().length());
+		System.out.println("비밀번호 힌트 코드 : "+userInfoVO.getUserPwHintCode().length());
+		System.out.println("비밀번호 힌트 답 : "+userInfoVO.getUserPwHintAnswer().length());
+		
+		return sqlSession.selectOne("loginMapper.selectUserInfoWithData", userInfoVO);
+	}
+	
+	@Override
+	public void updatePw(userInfoVO userInfoVO) throws Exception{
+		sqlSession.update("loginMapper.updatePw", userInfoVO);
+	}
 }

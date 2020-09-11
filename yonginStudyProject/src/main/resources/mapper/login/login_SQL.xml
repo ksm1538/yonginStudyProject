@@ -66,4 +66,33 @@
 		]]>
 	</select>
 	
+	<select id="selectIdWithData" resultType="string" parameterType="com.login.VO.userInfoVO">
+		<![CDATA[
+			SELECT	USER_ID
+			FROM	USER_INFO
+			WHERE	USER_NAME		=	#{userName}
+				AND	USER_EMAIL		=	#{userEmail}
+				AND	USER_BIRTH		=	#{userBirth}
+		]]>
+	</select>
+	
+	<select id="selectUserInfoWithData" resultType="com.login.VO.userInfoVO" parameterType="com.login.VO.userInfoVO">
+		<![CDATA[
+			SELECT	USER_CODE		as	userCode
+				 ,	USER_EMAIL		as	userEmail
+			FROM	USER_INFO
+			WHERE	USER_NAME			=	#{userName}
+				AND	USER_ID				=	#{userId}
+				AND	USER_PW_HINT_CODE	=	#{userPwHintCode}
+				AND	USER_PW_HINT_ANSWER	=	#{userPwHintAnswer}
+		]]>
+	</select>
+	
+	<update id="updatePw" parameterType="com.login.VO.userInfoVO">
+		<![CDATA[
+			UPDATE	USER_INFO
+			SET		USER_PW		=	#{userPw}
+			WHERE	USER_CODE	=	#{userCode}
+		]]>
+	</update>
 </mapper>

@@ -12,4 +12,9 @@ public interface loginService {
 	
 	int selectSameEmail(String userEmail) throws Exception;
 	
+	String selectIdWithData(userInfoVO userInfoVO) throws Exception;
+	
+	userInfoVO selectUserInfoWithData(userInfoVO userInfoVO) throws Exception;
+	
+	void updatePw(userInfoVO userInfoVO) throws Exception;
 }

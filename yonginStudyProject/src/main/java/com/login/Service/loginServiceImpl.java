@@ -30,4 +30,19 @@ public class loginServiceImpl implements loginService{
 	public int selectSameEmail(String userEmail) throws Exception{
 		return loginDAO.selectSameEmail(userEmail);
 	}
+	
+	@Override
+	public String selectIdWithData(userInfoVO userInfoVO) throws Exception{
+		return loginDAO.selectIdWithData(userInfoVO);
+	}
+	
+	@Override
+	public userInfoVO selectUserInfoWithData(userInfoVO userInfoVO) throws Exception{
+		return loginDAO.selectUserInfoWithData(userInfoVO);
+	}
+	
+	@Override
+	public void updatePw(userInfoVO userInfoVO) throws Exception{
+		loginDAO.updatePw(userInfoVO);
+	}
 }

@@ -40,8 +40,8 @@
 				<div class="col-12">
 					<ul class="member_function">
 						<li><a class="a_tag" onclick="openRegisterForm();"><span>회원가입</span></a></li>
-						<li><a class="a_tag" onclick="a1()"><span>아이디 찾기</span></a></li>
-						<li><a class="a_tag" onclick="a2()"><span>비밀번호 찾기</span></a></li>
+						<li><a class="a_tag" onclick="findIdForm()"><span>아이디 찾기</span></a></li>
+						<li><a class="a_tag" onclick="findPwForm()"><span>비밀번호 찾기</span></a></li>
 					</ul>
 				</div> 
 			</div>
