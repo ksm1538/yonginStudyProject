@@ -21,53 +21,59 @@
 </head>
 <body>
 
+
+
+<div class="col-12 find_id_wrap">
+
+	
 <div class="col-12 col-center mw-1200 search_memeber_title_wrap">
 
 	<div class="circle_btn" onClick="self.close()"></div> 
 	<div class="tc search_memeber_title_con">
 		<div class="search_memeber_title">아이디 찾기</div>
 	</div>
-	
-	
+
 </div>
 
 <form:form method="POST" modelAttribute="userInfoVO" name="findIdForm" id="findIdForm" action="/findId.json">
-<div class="col-12 col-center mw-1200 search_memeber_form_wrap">
-	<div class="search_id_form_con">
-		<div class="user_name search_id_form_con">
+		<div class="col-12 col-center mw-1200 search_memeber_form_wrap">
+			<div class="search_id_form_con">
+				<div class="user_name search_id_form_con">
 			
 			
-			<div class="user_name search_member_form_con_type_2">
-				<div class="title_size type_2">이름</div>
-				<div class="register_input_con">
-					<input type="text" name="userName" id="userName" class="textbox_style_1"/>
+					<div class="user_name search_member_form_con_type_2">
+						<div class="title_size type_2">이름</div>
+						<div class="register_input_con">
+							<input type="text" name="userName" id="userName" class="textbox_style_1"/>
+						</div>
+					</div>
+			
+					<div class="user_identity_num search_member_form_con_type_2">
+						<div class="title_size type_2">생일</div>
+						<div class="register_input_con">
+							<input type="date" name="userBirth" id="userBirth" class="textbox_style_1 type_4" />
+						</div>
+					</div>
+			
+					<div class="user_name search_member_form_con_type_2">
+						<div class="title_size type_2">이메일</div>
+						<div class="register_input_con">
+							<input type="text" name="userEmail" id="userEmail" class="textbox_style_1" placeholder="도메인까지 입력해주세요."/>
+						</div>
+					</div>
+			
 				</div>
 			</div>
-			
-			<div class="user_identity_num search_member_form_con_type_2">
-				<div class="title_size type_2">생일</div>
-				<div class="register_input_con">
-					<input type="date" name="userBirth" id="userBirth" class="textbox_style_1 type_4" />
-				</div>
-			</div>
-			
-			<div class="user_name search_member_form_con_type_2">
-				<div class="title_size type_2">이메일</div>
-				<div class="register_input_con">
-					<input type="text" name="userEmail" id="userEmail" class="textbox_style_1" placeholder="도메인까지 입력해주세요."/>
-				</div>
-			</div>
-			
 		</div>
-	</div>
-</div>
 
-<div class="col-12 col-center mw-1200 search_id_btn_wrap">
-	<div class="btn_style_1_con">
-		<input type="button" value="확인" class="btn_style_1" onclick="findId()">
-	</div> 
-</div>
+		<div class="col-12 col-center mw-1200 search_id_btn_wrap">
+			<div class="btn_style_1_con">
+				<input type="button" value="확인" class="btn_style_1" onclick="findId()">
+			</div> 
+		</div>
 </form:form>
   
+</div>
+
 </body>
 </html>

@@ -52,7 +52,7 @@ $(document).ready(function () {
 
 /*쪽지 보내기 호출*/
 function openSendMessageForm(){
-	window.open("/sendMessage.do",'회원가입','width=700px ,height=900px ,location=no,status=no,scrollbars=no');
+	window.open("/sendMessage.do",'회원가입','width=500px ,height=470px ,location=no,status=no,scrollbars=no');
 }
 
 /*쪽지 삭제*/

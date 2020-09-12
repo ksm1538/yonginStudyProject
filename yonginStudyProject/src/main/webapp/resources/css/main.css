@@ -68,9 +68,9 @@ html, body {
 .title_size.type_4{min-width:350px;}
 .title_size.type_5{min-width:100px;}
 
-
 .user_pw_hint{position:relative;}
 .user_pw_hint .select_style_0{width:220px; height:30px;}
+
 
 
 /*회원가입*/
@@ -92,6 +92,15 @@ html, body {
 /*회원가입 라디오버튼*/
 .register_input_con .radio_btn_con{display:flex;}
 .register_input_con .radio_btn_con .radio_gender{display:block; margin-left:8px;}
+
+/*아이디찾기*/
+.find_id_wrap{padding:40px 40px;}
+.find_id_wrap .search_memeber_title_wrap .circle_btn{right:-6%;}
+
+/*비밀번호찾기*/
+.find_pw_wrap{padding:40px 40px;}
+.find_pw_wrap .search_memeber_title_wrap .circle_btn{right:-6%;}
+
 
 
 /*메인 컨텐츠*/
@@ -226,3 +235,8 @@ html, body {
 .textarea_style_con .textarea_style{resize:none; margin-bottom:30px;}
 .btn_style_1_con .btn_style_1{margin-bottom:20px;}
 .study_apply_wrap{padding:70px 50px;}
+
+
+/*쪽지 보내기*/
+.send_message_wrap{padding:40px 40px;}
+.send_message_wrap .make_study_title_wrap .circle_btn{right:0%;}

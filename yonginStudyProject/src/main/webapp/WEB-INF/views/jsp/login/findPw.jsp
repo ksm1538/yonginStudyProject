@@ -21,62 +21,66 @@
 </head>
 <body>
 
-<div class="col-12 col-center mw-1200 search_memeber_title_wrap">
+<div class="col-12 find_pw_wrap">
 
-	<div class="circle_btn" onClick="self.close()"></div> 
-	<div class="tc search_memeber_title_con">
-		<div class="search_memeber_title">비밀번호 찾기</div>
+	<div class="col-12 col-center mw-1200 search_memeber_title_wrap">
+		<div class="circle_btn" onClick="self.close()"></div> 
+		<div class="tc search_memeber_title_con">
+			<div class="search_memeber_title">비밀번호 찾기</div>
+		</div>
 	</div>
 	
 	
-</div>
-
-<form:form method="POST" modelAttribute="userInfoVO" name="findPwForm" id="findPwForm" action="/findPw.json">
-<div class="col-12 col-center mw-1200 search_memeber_form_wrap">
-	<div class="search_password_form_con">
-		<div class="search_password_form_con">
+	
+	<form:form method="POST" modelAttribute="userInfoVO" name="findPwForm" id="findPwForm" action="/findPw.json">
+		<div class="col-12 col-center mw-1200 search_memeber_form_wrap">
+			<div class="search_password_form_con">
+				<div class="search_password_form_con">
 		
-			<div class="user_name search_member_form_con_type_2">
-				<div class="title_size type_2">이름</div>
-				<div class="register_input_con">
-					<form:input path="userName" type="text" name="userName" id="userName" class="textbox_style_1"/>
-				</div>
-			</div>
+					<div class="user_name search_member_form_con_type_2">
+						<div class="title_size type_2">이름</div>
+						<div class="register_input_con">
+							<form:input path="userName" type="text" name="userName" id="userName" class="textbox_style_1"/>
+						</div>
+					</div>
 			
-			<div class="user_id search_member_form_con_type_2">
-				<div class="title_size type_2"> 아이디</div>
-				<div class="register_input_con">
-					<form:input path="userId" type="text" name="userId" id="userId" class="textbox_style_1" placeholder="5~20자로 설정해주세요." maxlength="20"/>
-				</div>
-			</div>
+					<div class="user_id search_member_form_con_type_2">
+						<div class="title_size type_2"> 아이디</div>
+						<div class="register_input_con">
+							<form:input path="userId" type="text" name="userId" id="userId" class="textbox_style_1" placeholder="5~20자로 설정해주세요." maxlength="20"/>
+						</div>
+					</div>
 			
-			<div class="user_pw_hint search_member_form_con_type_2">
-				<div class="title_size type_2">비밀번호 힌트</div>
-				<div class="register_input_con">
-					<form:select path="userPwHintCode" name="userPwHintCode" id="userPwHintCode" class="select_style_0" >
-				    <c:forEach var="result" items="${pwHint}" varStatus="status">
-			          	<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
-			         </c:forEach>
-				</form:select>
-				</div>
-			</div>
+					<div class="user_pw_hint search_member_form_con_type_2">
+						<div class="title_size type_2">비밀번호 힌트</div>
+						<div class="register_input_con">
+							<form:select path="userPwHintCode" name="userPwHintCode" id="userPwHintCode" class="select_style_0" >
+						    <c:forEach var="result" items="${pwHint}" varStatus="status">
+			     		     	<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
+			      		   </c:forEach>
+						</form:select>
+						</div>
+					</div>
 			
-			<div class="user_pw_ans search_member_form_con_type_2">
-				<div class="title_size type_2">비밀번호 힌트 답</div>
-				<div class="register_input_con">
+					<div class="user_pw_ans search_member_form_con_type_2">
+						<div class="title_size type_2">비밀번호 힌트 답</div>
+						<div class="register_input_con">
 					<form:input path="userPwHintAnswer" type="text" name="userPwHintAnswer" id="userPwHintAnswer" class="textbox_style_1"/>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+
+		<div class="col-12 col-center mw-1200 search_id_btn_wrap">
+			<div class="btn_style_1_con">
+				<input type="button" value="비밀번호 찾기" class="btn_style_1 type_2" onclick="findPw()">
+			</div> 
+		</div>
+	</form:form>	
 </div>
 
-<div class="col-12 col-center mw-1200 search_id_btn_wrap">
-	<div class="btn_style_1_con">
-		<input type="button" value="비밀번호 찾기" class="btn_style_1 type_2" onclick="findPw()">
-	</div> 
-</div>
-</form:form>
-  
+
+
 </body>
 </html>

@@ -3,11 +3,11 @@ function openRegisterForm(){
 }
 
 function findIdForm(){
-	window.open("/findIdForm.do",'아이디 찾기','width=700px ,height=600px ,location=no,status=no,scrollbars=no');
+	window.open("/findIdForm.do",'아이디 찾기','width=480px ,height=470px ,location=no,status=no,scrollbars=no');
 }
 
 function findPwForm(){
-	window.open("/findPwForm.do",'비밀번호 찾기','width=700px ,height=600px ,location=no,status=no,scrollbars=no');
+	window.open("/findPwForm.do",'비밀번호 찾기','width=510px ,height=545px ,location=no,status=no,scrollbars=no');
 }
 /*function openFindIdForm(){
 	'findID.jsp','아이디 찾기','width=700px ,height=500px ,location=no,status=no,scrollbars=no'
