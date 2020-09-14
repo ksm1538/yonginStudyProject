@@ -29,10 +29,7 @@
 			VALUES	
 				(	
 					('MESSAGE_' || LPAD(message_seq.nextval,8,0))
-				,	(	SELECT USER_CODE
-						FROM USER_INFO
-						WHERE USER_ID = #{userCodeFrom}
-					)
+				,	#{userCodeFrom}
 				,	(	SELECT USER_CODE
 						FROM USER_INFO
 						WHERE USER_ID = #{userCodeTo}
@@ -43,10 +40,13 @@
 				)
 		]]>
 	</insert>
-	
+	 
 	<select id="selectMessageList" resultType="com.message.VO.messageInfoVO"> 
 		<![CDATA[
-			SELECT	USER_MESSAGE.USER_CODE_FROM 	as userCodeFrom
+			SELECT	(	SELECT USER_ID
+						FROM USER_INFO
+						WHERE USER_INFO.USER_CODE	=	USER_MESSAGE.USER_CODE_FROM
+					)	as userCodeFrom
 			 ,	USER_INFO.USER_ID 	as userCodeTo
 			 ,	USER_MESSAGE.MESSAGE_CODE 	as messageCode
 			 ,	USER_MESSAGE.MESSAGE_TITLE 	as messageTitle
@@ -60,7 +60,7 @@
 		WHERE	USER_MESSAGE.USER_CODE_TO		=	USER_INFO.USER_CODE
 		]]>
 	</select>
-	<!-- 49번줄 아이디가 코드로 변환하는 법 아직몰라서 일단 USER ID로 입력 -->
+	
 	
 	
 </mapper> 
