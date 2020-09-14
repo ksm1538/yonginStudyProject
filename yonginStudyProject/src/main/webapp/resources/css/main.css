@@ -127,11 +127,11 @@ html, body {
 
 /*달력*/
 /*달력버튼*/
-.today_btn{margin-right:15px; font-size:12px; border-radius:25px; padding:8px 16px; outline:none; cursor:pointer; border:2px solid #31aae2;  }
+.today_btn{margin-right:15px; font-size:12px; border-radius:25px; padding:8px 16px; outline:none; cursor:pointer; border:2px solid #31aae2;  background-color:transparent;}
 .today_btn:hover{border:2px solid #CAB0F1;}
 
 /*이전버튼*/
-.prev_btn{margin-right:15px; position:relative; border-radius:50px; top:8px; width:32px; height:32px; outline:none; cursor:pointer; border:2px solid #31aae2;  }
+.prev_btn{margin-right:15px; position:relative; border-radius:50px; top:8px; width:32px; height:32px; outline:none; cursor:pointer; border:2px solid #31aae2; background-color:transparent;  }
 .prev_btn:hover{border:2px solid #CAB0F1;}
 .prev_btn:before{content:""; position:absolute; width:10px; height:1px; border:1px solid #31aae2; background-color:#31aae2; top:9px; left:7px; transform: rotate(135deg);}
 .prev_btn:hover:before{border:1px solid #CAB0F1; background-color:#CAB0F1;}
@@ -139,7 +139,7 @@ html, body {
 .prev_btn:hover:after{border:1px solid #CAB0F1; background-color:#CAB0F1;}
 
 /*다음버튼*/
-.next_btn{margin-right:15px; position:relative; border-radius:50px; top:8px; width:32px; height:32px; outline:none; cursor:pointer; border:2px solid #31aae2;  }
+.next_btn{margin-right:15px; position:relative; border-radius:50px; top:8px; width:32px; height:32px; outline:none; cursor:pointer; border:2px solid #31aae2;  background-color:transparent; }
 .next_btn:hover{border:2px solid #CAB0F1;}
 .next_btn:before{content:""; position:absolute; width:10px; height:1px; border:1px solid #31aae2; background-color:#31aae2; top:9px; left:9px; transform: rotate(45deg);}
 .next_btn:hover:before{border:1px solid #CAB0F1; background-color:#CAB0F1;}
@@ -171,6 +171,7 @@ html, body {
 /*마이페이지*/
 .mypage_list_con{background-color:#CAB0F1; height:100%; padding:20px 20px; }
 .mypage_list_con .mypage_list > li{font-size:20px; font-weight:bold; color:#fff; margin-bottom:50px; margin-top:50px;}
+.mypage_list_con .mypage_list > li:hover{color:#31aae2;}
 .mypage_list_con .mypage_list > li > a{cursor:pointer;}
 .mypage_list_title{padding-bottom:20px; margin-bottom:20px; border-bottom:2px solid #fff; width:auto; font-size:25px; font-weight:bold; color:#fff;}
 
@@ -237,6 +238,28 @@ html, body {
 .study_apply_wrap{padding:70px 50px;}
 
 
+/*쪽지함*/
+.message_list_wrap{padding:40px 40px;}
+.message_list_wrap .message_btn{margin-top:40px;}
+.message_list_wrap .content_title{padding: 0 0; margin-bottom:40px;}
+.message_page_list_con{background-color:#CAB0F1; height:100%; padding:20px 20px; }
+.message_page_list_con .message_list > li{font-size:20px; font-weight:bold; color:#fff; margin-bottom:50px; margin-top:50px;}
+.message_page_list_con .message_list > li:hover{color:#31aae2;}
+.message_page_list_con .message_list > li > a{cursor:pointer;}
+.message_list_title{padding-bottom:20px; margin-bottom:20px; border-bottom:2px solid #fff; width:auto; font-size:25px; font-weight:bold; color:#fff;}
+
+
 /*쪽지 보내기*/
 .send_message_wrap{padding:40px 40px;}
 .send_message_wrap .make_study_title_wrap .circle_btn{right:0%;}
+.send_message_wrap .content_title{padding:0 0; margin-bottom:70px;}
+
+.send_message_form{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:40px;}
+
+.summer_note_con .title_size{margin-bottom:40px;}
+.summer_note_con .summer_note{margin-bottom:40px;}
+
+
+
+
+

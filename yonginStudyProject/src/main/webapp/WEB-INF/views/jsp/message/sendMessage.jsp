@@ -19,40 +19,79 @@ request.setCharacterEncoding("UTF-8");
 <!-- 자원 불러오기(공통) : 순서  1(필수)-->
 <jsp:include page="../common/resources.jsp"></jsp:include>
 
-<!-- 헤더 필요X 생략 -->
+<!-- 헤더 불러오기 : 순서 2(헤더 필요없는 곳은 주석처리) -->
+<jsp:include page="../message/messageSidemenu.jsp"></jsp:include>
 
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
-<script type="text/javascript" src="/resources/js/message/sendmessage.js"></script>
+<script type="text/javascript" src="/resources/js/message/sendMessage.js"></script>
 	
 </head>
 <body>
 
-<div class="col-12 send_message_wrap">
 
 	
-	<div class="col-12 col-center mw-1200 make_study_title_wrap">
-		<div class="circle_btn" onClick="self.close()"></div> 
- 	  	<div class="tc make_study_title_con">
- 	     <div class="make_study_title">쪽지 보내기</div>
-  	 	</div> 
-	</div>
-
-	<div class="col-12 col-center mw-1200 make_study_form_wrap">
-	      <div class="make_study_form_con">
-         
-  	       <div class="study_name make_study_form">
+	<div class="col-8 mw-1200 send_message_wrap">
+		 <div class="tc content_title"><span>쪽지보내기</span></div>
+		 
+		 <div class="send_message_con">
+		 
+		 	  <div class="send_message_form">
     	        <div class="title_size type_2">받는 사람</div>
     	        <input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1">
-    	     </div>
+    	      </div>
+    	      
+    	       <div class="send_message_form">
+     	       	 <div class="title_size type_2">제목</div>
+     	      	 <input type="text" id="messageTitle" name="messageTitle" class="textbox_style_1">
+     		   </div>
+     		   
+     		   
+     		   <div class="tc summer_note_con">
+     		   		<div class="title_size type_2">내용</div>
+     		   		<div class="summer_note">
+     		   			<textarea name="studyDesc" id="studyDesc" cols="20" rows="10" placeholder="스터디에 대한 설명을 입력해주세요."></textarea>
+     		   		</div>
+     		   		
+     		   </div>
+     		   
+     		
+     		   
+    	    
+    	        	         	 
+		 </div>
+		 
+		 
+		
+     	 
+     	 
+     	  
+     	 
+     	 <div class="btn_style_1_con">
+	      	<input type="button" value="보내기" class="btn_style_1" onclick="sendMessage()" >
+  		 </div> 
+     	   
+     	   
+		 
+	</div>
+	
+<!-- 	<div class="col-12 col-center mw-1200 make_study_title_wrap">
+	 	  
+	 	 
+	 	   
+	 	   
+	 	   
+	</div> -->
+
+<!-- 	<div class="col-12 col-center mw-1200 make_study_form_wrap">
+	      <div class="make_study_form_con">
          
-     	    <div class="creator_name make_study_form">
-     	       <div class="title_size type_2">제목</div>
-     	       <input type="text" id="messageTitle" name="messageTitle" class="textbox_style_1">
-     	    </div>
+  	      	 
+         
+     	   
      	     <div class="study_text make_study_form">
       	      <div class="title_size type_2">내용</div>
        	     <input type="text" name="messageDesc" id="messageDesc" class="textbox_style_1">
-       	     <!--<textarea name="studyDesc" id="studyDesc" cols="20" rows="10" placeholder="스터디에 대한 설명을 입력해주세요."></textarea> -->
+       	     <textarea name="studyDesc" id="studyDesc" cols="20" rows="10" placeholder="스터디에 대한 설명을 입력해주세요."></textarea>
       	   </div>      
      	 </div>
 	</div>
@@ -64,7 +103,7 @@ request.setCharacterEncoding("UTF-8");
 	</div>
 	
 </div>
-
+ -->
 
   
 </body>

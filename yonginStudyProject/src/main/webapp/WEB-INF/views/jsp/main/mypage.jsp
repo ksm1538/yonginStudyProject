@@ -21,8 +21,7 @@ request.setCharacterEncoding("UTF-8");
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
 <script type="text/javascript" src="/resources/js/myPage.js"></script>
 
-<!DOCTYPE html>
-<html>
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
