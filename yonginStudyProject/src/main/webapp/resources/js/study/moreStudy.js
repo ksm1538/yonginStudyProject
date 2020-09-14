@@ -43,7 +43,32 @@ $(document).ready(function () {
                 },
             },
         });
+
+	getStudyList();	// 스터디 목록 조회
 });
+
+/* 스터디 리스트 조회 함수 */
+function getStudyList(){
+	
+	$.ajax({
+ 		type: "POST",
+ 		url : "/study/selectStudyList.json",
+		contentType: "application/json; charset=UTF-8",
+		async: false,
+		success : function(data, status, xhr) {
+			switch(data.result){
+			    case COMMON_SUCCESS:
+			    	studyListPlusGrid.setData(data.resultList);
+			    	break;    
+			    case COMMON_FAIL:
+			    	dialog.alert(data.message); 
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+		}
+	}); 
+}
 
 function openstudyApplyPopForm(){ 
 	window.open("/studyApplyPop.do",'회원가입','width=700px ,height=900px ,location=no,status=no,scrollbars=no');

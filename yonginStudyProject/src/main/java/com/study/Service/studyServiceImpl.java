@@ -1,5 +1,7 @@
 package com.study.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,11 @@ public class studyServiceImpl implements studyService{
 	@Override
 	public void insertStudy(studyInfoVO data) throws Exception{ 
 		studyDAO.insertStudy(data);
+	}
+	
+	@Override
+	public List<studyInfoVO> selectStudyList(){
+		return studyDAO.selectStudyList();
 	}
 }
  

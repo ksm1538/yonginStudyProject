@@ -1,5 +1,7 @@
 package com.study.DAO;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -20,6 +22,11 @@ public class studyDAOImpl implements studyDAO{
 	@Override
 	public void insertStudy(studyInfoVO data) throws Exception{
 		sqlSession.insert("studyMapper.insertStudy", data); 
+	}
+	
+	@Override
+	public List<studyInfoVO> selectStudyList(){
+		return sqlSession.selectList("studyMapper.selectStudyList");
 	}
 }
  
