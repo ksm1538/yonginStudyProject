@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.study.DAO.studyDAO;
 import com.main.VO.studyInfoVO;
+import com.study.DAO.studyDAO;
 
 @Service("studyService")
 public class studyServiceImpl implements studyService{
@@ -26,6 +26,11 @@ public class studyServiceImpl implements studyService{
 	@Override
 	public List<studyInfoVO> selectStudyList(){
 		return studyDAO.selectStudyList();
+	}
+	
+	@Override
+	public studyInfoVO selectStudyInfoDetail(String studyCode) {
+		return studyDAO.selectStudyInfoDetail(studyCode);
 	}
 }
  

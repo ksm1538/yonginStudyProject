@@ -28,5 +28,10 @@ public class studyDAOImpl implements studyDAO{
 	public List<studyInfoVO> selectStudyList(){
 		return sqlSession.selectList("studyMapper.selectStudyList");
 	}
+	
+	@Override
+	public studyInfoVO selectStudyInfoDetail(String studyCode) {
+		return sqlSession.selectOne("studyMapper.selectStudyInfoDetail", studyCode);
+	}
 }
  

@@ -11,5 +11,7 @@ public interface studyDAO {
 	public void insertStudy(studyInfoVO data) throws Exception;
 	
 	public List<studyInfoVO> selectStudyList();
+	
+	public studyInfoVO selectStudyInfoDetail(String studyCode);
 }
  

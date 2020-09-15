@@ -9,9 +9,16 @@ public class studyInfoVO {
 	String	studyRgstusId = "";
 	String 	userName="";
 	String	studyArea="";
+	String	studyRgstusCode="";
 	int 	totalCount;
 	
 	
+	public String getStudyRgstusCode() {
+		return studyRgstusCode;
+	}
+	public void setStudyRgstusCode(String studyRgstusCode) {
+		this.studyRgstusCode = studyRgstusCode;
+	}
 	public int getTotalCount() {
 		return totalCount;
 	}

@@ -47,19 +47,6 @@ function registerMemberFunc(){
 		return;
 	}
 	
-	/*var sendData={
-		userName:document.getElementById("userName").value,
-		userNumber1:document.getElementById("userNumber1").value,
-		userNumber2:document.getElementById("userNumber2").value,
-		userGender:$('input[name="userGender"]:checked').val(),
-		userPhoneNumber:document.getElementById("userPhoneNumber").value,
-		userId:document.getElementById("userId").value,
-		userPw:document.getElementById("userPw").value,
-		userPwConfirm:document.getElementById("userPwConfirm").value,
-		userPwHintCode:$('#userPwHintCode option:selected').val(),
-		userPwHintAnswer:$('#userPwHintAnswer').val(),
-		userAddress:$('#userAddress').val()
-	}*/
 	var sendData = $('#registerForm').serialize();		// validator를 이용할 경우 serialize를 이용해 데이터 수집
 
 	  $.ajax({
@@ -67,7 +54,7 @@ function registerMemberFunc(){
 	     url : "/registerMember.json",
 	     data: sendData,
 	     dataType: "json",
-	     //contentType: "application/json; charset=UTF-8", (validator를 이용할 경우 contentType은 주석처리)
+	     //contentType: "application/json; charset=UTF-8", (!중요 : validator를 이용할 경우 contentType은 주석처리)
 	     async: false,
 	     success : function(data, status, xhr) {
 	    	 switch(data.result){

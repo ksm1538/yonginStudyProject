@@ -1,6 +1,7 @@
 /** 변수 설정(시작) **/
 var studyListGrid = new ax5.ui.grid();
 var studyNoticeListGrid = new ax5.ui.grid();
+var studyInfoDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
 var cal;
 /** 변수 설정(끝) **/
 
@@ -25,7 +26,11 @@ $(document).ready(function () {
         showLineNumber: false,
         showRowSelector: true,
         columns: [ 
-        	{key : "studyTopic", label: "주제", align: "center", width:"25%", sortable: true},
+        	{key : "studyTopic", label: "주제", align: "center", width:"25%", sortable: true,
+    			formatter:function(){
+    			    return inoutSxnMap[this.value];
+    			}
+        	},
         	{key : "studyName", label: "제목", align: "center", width:"25%"},
         	{key : "studyArea", label: "지역", align: "center", width:"15%"},
         	{key : "userName",label : "방장", align : "center",width : "15%"},
@@ -41,10 +46,14 @@ $(document).ready(function () {
                     columnHeight: 45,
                     
                     onClick: function () 	{
-                    
+                    	studyListGrid.select(this.dindex, {selected:true});
+					},
+					onDBLClick: function(){
+			    		selectStudyInfoDetail(this.list[this.dindex]["studyCode"]);
+			    		studyListGrid.select(this.dindex, {selected:true});
 					},
 					onDataChanged: function(){
-						
+						studyListGrid.focus(Number(this.dindex));
 					},
                 },
         
@@ -117,9 +126,6 @@ function makeStudyForm(){
 	window.open("/makeStudy.do",'스터디더보기','width=700px ,height=800px ,location=no,status=no,scrollbars=no');
 }
 
-
-
-
 /* 스터디 리스트 조회 함수 */
 function getStudyList(){
 	
@@ -143,8 +149,36 @@ function getStudyList(){
 	}); 
 }
 
-
 /*공지사항 더보기 호출 */
 function openMoreNotice(){
 	location.href = "/moreNotice.do";
-		}
+}
+
+function selectStudyInfoDetail(studyCode){
+	var parentData={
+		studyCode:studyCode	 		// 스터디 그리드에서 선택한 studyCode를 팝업으로 보낼 데이터에 넣음
+	}
+	
+	studyInfoDetailModal.open({
+		width: 800,
+		height: 700,
+		iframe: {
+			method: "post",
+			url: "/study/studyInfoDetailPopup.do",
+			param: callBack = parentData
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
+
+function close(){
+	studyInfoDetailModal.close();
+}

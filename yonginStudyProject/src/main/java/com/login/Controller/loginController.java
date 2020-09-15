@@ -1,5 +1,6 @@
 package com.login.Controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.annotation.Resource;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.commonCode.Service.commonCodeService;
+import com.commonCode.VO.commonCodeVO;
 import com.login.Service.loginService;
 import com.login.VO.userInfoVO;
 
@@ -26,6 +29,9 @@ import com.login.VO.userInfoVO;
 public class loginController {
 	@Resource(name="loginService") 
 	private loginService loginService;	// 서비스 변수 추가
+	
+	@Resource(name="commonCodeService")
+	private commonCodeService commonCodeService;
 	
 	@Inject
     PasswordEncoder passwordEncoder;	// 암호화 기능 추가
@@ -50,7 +56,7 @@ public class loginController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/login.json", method = RequestMethod.POST)
-	public String login(userInfoVO userInfoVO, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+	public String login(userInfoVO userInfoVO, HttpServletRequest req, RedirectAttributes rttr, Model model) throws Exception{
 		logger.info("post login");
 		
 		HttpSession session = req.getSession();
@@ -84,6 +90,12 @@ public class loginController {
 		}else {
 			login.setUserPw("");
 			session.setAttribute("user", login);
+			
+			List<commonCodeVO> codeResult = commonCodeService.selectCommonCodeList("studyTopic");
+			
+			//model 변수에 데이터를 담아 jsp에 전달
+			model.addAttribute("studyTopicArray", codeResult);
+			
 			return "jsp/main/main";
 		}
 	}
