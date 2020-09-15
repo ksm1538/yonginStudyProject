@@ -210,6 +210,7 @@ html, body {
 .make_study_input_con .fa-times-circle:before{content:"\f057"; position:absolute; top:10px; left:165px;}
 .make_study_input_con .fa-check:before{content:"\f00c"; position:absolute; top:10px; left:165px;}
 .make_study_input_con .btn_style_1{margin-left:50px; outline:none; cursor:pointer; border-radius:12px; font-weight:bold; color:#000; font-size:15px; width:100px; height:35px; background:transparent;}
+.study_area .btn_style_1{margin-left:50px;}
 .make_study_input_con .select_style_0{width:150px; height:30px; border:1px solid #31aae2;}
 
 .make_study_title_con .make_study_title{font-size:30px; font-weight:bold;}

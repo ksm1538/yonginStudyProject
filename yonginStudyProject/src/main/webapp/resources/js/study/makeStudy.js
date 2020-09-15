@@ -19,22 +19,22 @@ function makeStudyFunc(){
 		return;
 	}
 	
-	var sendData={
+	/*var sendData={
 		studyName:document.getElementById("studyName").value,
-		studyRgstusId:document.getElementById("studyRgstusId").value,
 		studyTopic:$('#studyTopic option:selected').val(),
-		studyArea:$('#studyArea option:selected').val(),
+		studyArea:document.getElementById("studyArea").value,
 		studyLimit:$('#studyLimit option:selected').val(),
 		studyDesc:document.getElementById("studyDesc").value
-	}
+	}*/
+	var sendData = $('#studyMakeForm').serialize();
 	
 	console.log(sendData); 
 	  $.ajax({
 	     type: "POST",
 	     url : "/makeStudy.json",
-	     data: JSON.stringify(sendData),
+	     data: sendData,
 	     dataType: "json",
-	     contentType: "application/json; charset=UTF-8",
+	     //contentType: "application/json; charset=UTF-8",
 	     async: false,
 	     success : function(data, status, xhr) {
 	    	 switch(data.result){
@@ -71,6 +71,12 @@ function studyNameCheckFunc(){
 	sendData = sendData.trim();
 	$('#studyName').val(sendData);
 	
+	// 스터디 이름 입력 확인
+	if(sendData == ""){
+		dToast.push("스터디 이름을 입력해주세요.");
+		return;
+	}
+	
 	$.ajax({
  		type: "POST",
  		url : "/make/checkExsitingStudyName.json",
@@ -96,3 +102,13 @@ function studyNameCheckFunc(){
 		}
 	}); 
 } 
+
+// 주소 검색 함수 세팅
+function studyAddressPopup() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            document.getElementById('studyArea').value = data.sido + " " + data.sigungu;
+        }
+    }).open();
+}
+

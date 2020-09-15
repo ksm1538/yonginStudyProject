@@ -6,13 +6,16 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 /*import org.springframework.security.crypto.password.PasswordEncoder;*/
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +27,7 @@ import com.commonCode.VO.commonCodeVO;
 
 import com.login.VO.userInfoVO;
 import com.main.VO.studyInfoVO;
+import com.study.Validator.studyInfoValidator;
 
 /**
  * Handles requests for the application home page.
@@ -36,7 +40,8 @@ public class makeStudyController {
 	@Resource(name="commonCodeService")
 	private commonCodeService commonCodeService;
 	
-	@Inject
+	@Autowired
+	studyInfoValidator studyInfoValidator;
 	
 	private static final Logger logger = LoggerFactory.getLogger(makeStudyController.class);
 	/**
@@ -44,7 +49,7 @@ public class makeStudyController {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/makeStudy.do", method = RequestMethod.GET)
-	public String registerForm(Model model) throws Exception {
+	public String studyMakeForm(Model model) throws Exception {
 		List<commonCodeVO> studyTypecodeResult = commonCodeService.selectCommonCodeList("studyType");
 		List<commonCodeVO> studyAreacodeResult = commonCodeService.selectCommonCodeList("studyArea");
 		List<commonCodeVO> studyLimitcodeResult= commonCodeService.selectCommonCodeList("studyLimit");
@@ -52,23 +57,45 @@ public class makeStudyController {
 		model.addAttribute("studyType", studyTypecodeResult);
 		model.addAttribute("studyArea", studyAreacodeResult);
 		model.addAttribute("studyLimit", studyLimitcodeResult);
+		model.addAttribute("studyInfoVO", new studyInfoVO());
 		return "jsp/study/makeStudy";
 	}
 	
 	/**
 	 * 스터디 생성
 	 * @param studyInfoVO
+	 * @param bingdingResult
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/makeStudy.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> registerAjaxFunction(@RequestBody studyInfoVO studyInfoVO) throws Exception {
+	public Map<String, Object> registerAjaxFunction(@ModelAttribute("studyInfoVO") studyInfoVO studyInfoVO, HttpSession session, BindingResult bindingResult) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 	      
+		/** 데이터 검증(시작) **/
+		studyInfoValidator studyInfoValidator = new studyInfoValidator();
+		studyInfoValidator.validate(studyInfoVO, bindingResult);
 		
-		//벨리데이터 추가
+		if (bindingResult.hasErrors()) {
+			List<FieldError> errors = bindingResult.getFieldErrors();
+			String errorMsg = "";
+		    for (FieldError error : errors ) {
+		    	errorMsg += error.getDefaultMessage() + "\n";
+		    }
+		    
+		    mReturn.put("result", "fail");
+			mReturn.put("message", errorMsg);
+			
+			return mReturn;
+			
+		}
+		
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		studyInfoVO.setStudyRgstusId(user.getUserCode());
+		studyInfoVO.getStudyRgstusId();
+		
 		studyService.insertStudy(studyInfoVO);
 		
 		mReturn.put("result", "success");
@@ -79,7 +106,7 @@ public class makeStudyController {
 	
 	/**
 	 * 스터디 이름 중복체크
-	 * @param userId
+	 * @param studyName
 	 * @return
 	 * @throws Exception
 	 */

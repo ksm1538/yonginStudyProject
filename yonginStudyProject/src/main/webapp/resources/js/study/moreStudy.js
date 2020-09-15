@@ -5,7 +5,7 @@ $(document).ready(function () {
 	studyListPlusGrid.setConfig({   
     	target: $('[data-ax5grid="studyListPlusGrid"]'),
         showLineNumber: false,
-        showRowSelector: true,
+        //showRowSelector: true,
         columns: [ 
         	{key : "studyTopic", label: "주제", align: "center", width:"25%", sortable: true},
         	{key : "studyName", label: "제목", align: "center", width:"25%"},

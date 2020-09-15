@@ -24,7 +24,7 @@ $(document).ready(function () {
 	studyListGrid.setConfig({   
     	target: $('[data-ax5grid="studyListGrid"]'),
         showLineNumber: false,
-        showRowSelector: true,
+        //showRowSelector: true,
         columns: [ 
         	{key : "studyTopic", label: "주제", align: "center", width:"25%", sortable: true,
     			formatter:function(){
