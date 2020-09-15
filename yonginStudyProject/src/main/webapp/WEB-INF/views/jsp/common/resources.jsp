@@ -14,6 +14,7 @@
 <link rel="stylesheet" type="text/css" href="/resources/util/ax5ui-toast-master/dist/ax5toast.css">
 <link rel="stylesheet" type="text/css" href="/resources/util/ax5ui-grid-master/dist/ax5grid.css">
 <link rel="stylesheet" type="text/css" href="/resources/util/ax5ui-formatter-master/dist/ax5formatter.css">
+<link rel="stylesheet" type="text/css" href="/resources/util/ax5ui-modal-master/dist/ax5modal.css">
 <link rel="stylesheet" type="text/css" href="/resources/util/toast-ui/tui-calendar.css">
 <link rel="stylesheet" type="text/css" href="/resources/util/summernote/summernote.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,6 +26,7 @@
 <script type="text/javascript" src="/resources/util/ax5ui-toast-master/dist/ax5toast.min.js"></script>
 <script type="text/javascript" src="/resources/util/ax5ui-grid-master/dist/ax5grid.min.js"></script>
 <script type="text/javascript" src="/resources/util/ax5ui-formatter-master/dist/ax5formatter.min.js"></script>
+<script type="text/javascript" src="/resources/util/ax5ui-modal-master/dist/ax5modal.min.js"></script>
 <script type="text/javascript" src="/resources/util/toast-ui/tui-code-snippet.js"></script>
 <script type="text/javascript" src="/resources/util/toast-ui/tui-calendar.min.js"></script>
 <script type="text/javascript" src="/resources/util/summernote/summernote.min.js"></script>

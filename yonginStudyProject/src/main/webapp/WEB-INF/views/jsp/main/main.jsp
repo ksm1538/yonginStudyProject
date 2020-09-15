@@ -15,8 +15,21 @@
 <jsp:include page="../common/header.jsp"></jsp:include>
 
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
-<script type="text/javascript" src="/resources/js/main.js"></script>
+<script type="text/javascript" src="/resources/js/main/main.js"></script>
+<script>
+//진행상태 코드 값 설정
+var inoutSxnList = [
+    <c:forEach var="result" items="${studyTopicArray}" varStatus="status">
+        {codeId:"${result.codeId}", codeValue:"${result.codeValue}"}<c:if test="${!status.last}">,</c:if>
+    </c:forEach> 	
+    ];
 
+var inoutSxnMap = {};
+inoutSxnList.forEach(function(n){
+    inoutSxnMap[n.codeId] = n.codeValue;
+}); 
+
+</script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>

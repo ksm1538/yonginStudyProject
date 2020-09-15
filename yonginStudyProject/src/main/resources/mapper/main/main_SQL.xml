@@ -8,26 +8,18 @@
 	<select id="selectStudyList" resultType="com.main.VO.studyInfoVO"> 
 		<![CDATA[
 			SELECT	STUDY_INFO.STUDY_CODE 	as studyCode
-			 ,	STUDY_INFO.STUDY_NAME 	as studyName
-			 ,	STUDY_INFO.STUDY_DESC 	as studyDesc
-			 ,	(	SELECT CODE_VALUE
-			 		FROM COMMON_CODE_DETAIL
-			 		WHERE COMMON_CODE_DETAIL.CODE_ID	=	STUDY_INFO.STUDY_TOPIC
-			 	)	as studyTopic
-			 ,	(SELECT CODE_VALUE
-			 	 FROM COMMON_CODE_DETAIL
-			 	 WHERE COMMON_CODE_DETAIL.CODE_ID	=	STUDY_INFO.STUDY_LIMIT
-			 	 ) 	as studyLimit
-			 ,	(SELECT CODE_VALUE
-			 	 FROM COMMON_CODE_DETAIL
-			 	 WHERE COMMON_CODE_DETAIL.CODE_ID	=	STUDY_INFO.STUDY_AREA
-			 	 )	as studyArea
-			 ,	USER_INFO.USER_NAME 	as userName
-			 ,	(SELECT	COUNT(*)		
-			 	FROM	USER_IN_STUDY
-			 	WHERE	USER_IN_STUDY.STUDY_CODE	=	STUDY_INFO.STUDY_CODE)	as totalCount
-		FROM	STUDY_INFO,
-				USER_INFO
+				 ,	STUDY_INFO.STUDY_NAME 	as studyName
+				 ,	STUDY_INFO.STUDY_DESC 	as studyDesc
+				 ,	STUDY_INFO.STUDY_TOPIC  as studyTopic
+				 ,	STUDY_INFO.STUDY_LIMIT	as studyLimit
+				 ,	STUDY_INFO.STUDY_AREA	as studyArea
+				 ,	USER_INFO.USER_NAME 	as userName
+				 ,	(SELECT	COUNT(*)		
+				 	 FROM	USER_IN_STUDY
+				 	 WHERE	USER_IN_STUDY.STUDY_CODE	=	STUDY_INFO.STUDY_CODE)	as totalCount
+			FROM	STUDY_INFO,
+					USER_INFO
+			WHERE	USER_INFO.USER_CODE		=	STUDY_INFO.STUDY_RGSTUS_ID
 		]]>
 	</select>
 	
