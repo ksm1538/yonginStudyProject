@@ -35,3 +35,12 @@ function openHome(){
 	
 }
 
+/*스터디 더보기 호출 */
+function openMoreStudyForm(){
+	location.href = "/moreStudy.do";
+}
+
+/*공지사항 더보기 호출 */
+function openMoreNotice(){
+	location.href = "/moreNotice.do";
+}
