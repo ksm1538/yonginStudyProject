@@ -22,6 +22,8 @@
 				,	USER_PW_HINT_CODE
 				,	USER_PW_HINT_ANSWER
 				,	USE_YN
+				,	RGDT_DT
+				,	UPDT_DT
 				) 
 			VALUES	
 				(	('USER_' || LPAD(user_seq.nextval,8,0))
@@ -36,6 +38,8 @@
 				,	#{userPwHintCode}
 				,	#{userPwHintAnswer}
 				,	'Y'
+				,	sysdate
+				,	sysdate
 				)
 		]]>
 	</insert>
@@ -47,6 +51,7 @@
 				 ,	USER_CODE	as 	userCode
 			FROM	USER_INFO
 			WHERE	USER_ID		=	#{userId}
+				AND	USE_YN		=	'Y'
 		]]>
 	</select>
 	
@@ -55,6 +60,7 @@
 			SELECT	COUNT(*)
 			FROM	USER_INFO
 			WHERE	USER_ID		=	#{userId}
+				AND	USE_YN		=	'Y'
 		]]>
 	</select>
 	
@@ -63,6 +69,7 @@
 			SELECT	COUNT(*)
 			FROM	USER_INFO
 			WHERE	USER_EMAIL	=	#{userEmail}
+				AND	USE_YN		=	'Y'
 		]]>
 	</select>
 	
@@ -73,6 +80,7 @@
 			WHERE	USER_NAME		=	#{userName}
 				AND	USER_EMAIL		=	#{userEmail}
 				AND	USER_BIRTH		=	#{userBirth}
+				AND	USE_YN			=	'Y'
 		]]>
 	</select>
 	
@@ -81,9 +89,10 @@
 			SELECT	USER_CODE		as	userCode
 				 ,	USER_EMAIL		as	userEmail
 			FROM	USER_INFO
-			WHERE	USER_NAME			=	#{userName}
-				AND	USER_ID				=	#{userId}
-				AND	USER_BIRTH			=	#{userBirth}
+			WHERE	USER_NAME		=	#{userName}
+				AND	USER_ID			=	#{userId}
+				AND	USER_BIRTH		=	#{userBirth}
+				AND	USE_YN			=	'Y'
 		]]>
 	</select>
 	
@@ -102,6 +111,7 @@
 			WHERE	USER_CODE			=	#{userCode}
 				AND	USER_PW_HINT_CODE	=	#{userPwHintCode}
 				AND	USER_PW_HINT_ANSWER	=	#{userPwHintAnswer}
+				AND	USE_YN				=	'Y'
 		]]>
 	</select>
 </mapper>
