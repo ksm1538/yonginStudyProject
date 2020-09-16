@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.message.Service.messageService;
 import com.commonCode.Service.commonCodeService;
 import com.commonCode.VO.commonCodeVO;
+import com.login.VO.userInfoVO;
 import com.main.VO.studyInfoVO;
 import com.message.VO.messageInfoVO;
 
@@ -38,8 +40,15 @@ public class messageListController {
 	 * 쪽지함 Mapping
 	 */
 	@RequestMapping(value = "/message.do", method = RequestMethod.GET)
-	public String MoreStudyForm(Locale locale) {
-		 
+	public String messageListForm(Locale locale, HttpSession session) {
+		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(시작) **/
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+
+		if(user == null) {
+			return "jsp/login/login";
+		}
+		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
+		
 		return "jsp/message/messageList";
 	}
 	

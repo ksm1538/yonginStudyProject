@@ -42,7 +42,14 @@ public class moreStudyController {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/moreStudy.do", method = RequestMethod.GET)
-	public String login(Locale locale, Model model) {
+	public String moreStudyForm(Locale locale, Model model, HttpSession session) {
+		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(시작) **/
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+
+		if(user == null) {
+			return "jsp/login/login";
+		}
+		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
 		
 		return "jsp/study/moreStudy";
 	}

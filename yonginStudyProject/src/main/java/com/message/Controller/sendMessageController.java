@@ -33,7 +33,14 @@ public class sendMessageController {
 	 * 쪽지 보내기 Mapping
 	 */
 	@RequestMapping(value = "/sendMessage.do", method = RequestMethod.GET)
-	public String MoreStudyForm() {
+	public String sendMessageForm(HttpSession session) {
+		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(시작) **/
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+
+		if(user == null) {
+			return "jsp/login/login";
+		}
+		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
 		
 		return "jsp/message/sendMessage";
 	}
