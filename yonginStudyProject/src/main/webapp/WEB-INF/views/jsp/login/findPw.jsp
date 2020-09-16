@@ -55,7 +55,7 @@
 					<div class="user_identity_num search_member_form_con_type_2">
 						<div class="title_size type_2">생일</div>
 						<div class="register_input_con">
-							<form:input path="userBirth" type="date" name="userBirth" id="userBirth" class="textbox_style_1 type_4" />
+							<form:input path="userBirth" type="date" name="userBirth" id="userBirth" class="textbox_style_1 type_4" placeholder="yyyy-mm-dd" max="9999-12-31"  maxlength="10" data-ax5formatter="date"/>
 						</div>
 					</div>
 				</div>

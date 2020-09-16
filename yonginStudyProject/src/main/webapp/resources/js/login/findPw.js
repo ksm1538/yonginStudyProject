@@ -4,7 +4,7 @@
 
 /** 초기화 (시작) **/
 $(document).ready(function () {
-	
+	$('[data-ax5formatter]').ax5formatter();
 });
 /** 초기화 (끝) **/
 

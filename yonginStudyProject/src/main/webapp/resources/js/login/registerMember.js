@@ -19,6 +19,8 @@ $(document).ready(function () {
 	  this.value = autoHypenPhone( this.value ) ;  
 	}
 	
+	$('[data-ax5formatter]').ax5formatter();
+	
 	$("#emailCodeDiv").hide();	//	인증번호 확인 구역 숨김처리
 	$("#reSendMailBtn").hide();	//  재전송 버튼 숨김처리
 	$("#resetMailBtn").hide();	//  이메일 재설정 버튼 숨김처리
