@@ -83,8 +83,7 @@
 			FROM	USER_INFO
 			WHERE	USER_NAME			=	#{userName}
 				AND	USER_ID				=	#{userId}
-				AND	USER_PW_HINT_CODE	=	#{userPwHintCode}
-				AND	USER_PW_HINT_ANSWER	=	#{userPwHintAnswer}
+				AND	USER_BIRTH			=	#{userBirth}
 		]]>
 	</select>
 	
@@ -95,4 +94,14 @@
 			WHERE	USER_CODE	=	#{userCode}
 		]]>
 	</update>
+	
+	<select id="selectUserPwHint" parameterType="com.login.VO.userInfoVO" resultType="int">
+		<![CDATA[
+			SELECT	COUNT(*)
+			FROM	USER_INFO
+			WHERE	USER_CODE			=	#{userCode}
+				AND	USER_PW_HINT_CODE	=	#{userPwHintCode}
+				AND	USER_PW_HINT_ANSWER	=	#{userPwHintAnswer}
+		]]>
+	</select>
 </mapper>

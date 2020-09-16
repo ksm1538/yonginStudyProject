@@ -43,7 +43,6 @@
 					<div class="title_size type_2"> 아이디</div>
 					<div class="register_input_con">
 						<form:input path="userId" type="text" name="userId" id="userId" class="textbox_style_1" placeholder="5~20자로 설정해주세요." maxlength="20"/>
-						<%-- <small><form:errors path="userId"  /></small> --%>
 						<i class="fa fa-times-circle" aria-hidden="true" id="idYnIcon" style="margin-left:1%"></i>
 						<input type="button" value="중복확인" id="checkIdBtn" class="btn_style_1 id_btn" onclick="IdCheckFunc()">
 					</div>
@@ -53,7 +52,6 @@
 					<div class="title_size type_2">비밀번호</div>
 					<div class="register_input_con">
 						<form:input path="userPw" type="password" name="userPw" id="userPw" class="textbox_style_1" placeholder="10~20자로 설정해주세요."/>
-						<%-- <small><form:errors path="userPw"  /></small> --%>
 					</div>
 				</div>
 				

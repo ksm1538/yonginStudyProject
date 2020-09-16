@@ -1,7 +1,6 @@
 package com.login.Controller;
 
 import java.util.List;
-import java.util.Locale;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
@@ -40,10 +39,19 @@ public class loginController {
 	
 	/**
 	 * 로그인 화면 Controller
+	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String login(Locale locale, Model model) {
+	public String login(Model model, HttpSession session) throws Exception {
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
 
+		if(user != null) {
+			List<commonCodeVO> codeResult = commonCodeService.selectCommonCodeList("studyTopic");
+			
+			//model 변수에 데이터를 담아 jsp에 전달
+			model.addAttribute("studyTopicArray", codeResult);
+			return "jsp/main/main";
+		}
 		return "jsp/login/login";
 	}
 	
@@ -112,6 +120,5 @@ public class loginController {
 		session.invalidate();
 		
 		return "redirect:/";
-	}
-	
+	}	
 } 

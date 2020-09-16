@@ -17,4 +17,6 @@ public interface loginService {
 	userInfoVO selectUserInfoWithData(userInfoVO userInfoVO) throws Exception;
 	
 	void updatePw(userInfoVO userInfoVO) throws Exception;
+	
+	int selectUserPwHint(userInfoVO userInfoVO) throws Exception;
 }

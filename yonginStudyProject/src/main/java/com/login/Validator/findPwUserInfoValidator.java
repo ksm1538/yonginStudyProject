@@ -1,5 +1,7 @@
 package com.login.Validator;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 import javax.inject.Inject;
@@ -10,6 +12,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import com.commonFunction.Controller.yonginFunction;
 import com.login.VO.userInfoVO;
 
 @Component
@@ -50,10 +53,23 @@ public class findPwUserInfoValidator implements Validator{
    	    }
    	    /** ID 검증(끝) **/
    	    
-   	    /** 비밀번호 힌트 답 검증(시작) **/
-        //비밀번호 힌트 답 빈 값 체크
-		ValidationUtils.rejectIfEmpty(error, "userPwHintAnswer", "","비밀번호 힌트 답을 입력해주세요.");
-        /** 비밀번호 힌트 답 검증(끝) **/
+   	    /** 생일 검증(시작) **/
+        //생일 빈 값 체크
+		ValidationUtils.rejectIfEmpty(error, "userBirth", "","생일을 입력해주세요.");	
+		
+		//생일 날짜 검사
+		if(!userInfoVO.getUserBirth().equals("")) {
+			SimpleDateFormat timeFormat = new SimpleDateFormat ("yyyyMMdd");
+			Date time = new Date();
+			String today = timeFormat.format(time);
+			
+			String removeBirth = yonginFunction.remove(userInfoVO.getUserBirth(), '-');	//com.commonFunction.Controller에 있는 공통 함수를 이용해 문자 제거
+					
+			if(Integer.parseInt(removeBirth) > Integer.parseInt(today)) {
+				error.rejectValue("userBirth","", "생일은 오늘 날짜보다 작거나 같아야합니다.");
+			}
+		}
+        /** 생일 검증(끝) **/
         
         /******** 규칙 검사(끝) ********/
 	}

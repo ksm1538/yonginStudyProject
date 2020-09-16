@@ -18,30 +18,11 @@ function findPw(){
 	     data: sendData,
 	     dataType: "json",
 	     //contentType: "charset=UTF-8", (validator를 이용할 경우 contentType은 주석처리)
-	     async: true,
-	     beforeSend:function(){
-			mask.open({
-				content: '<h1><i class="fa fa-spinner fa-spin"></i> Loading...</h1>'
-			});
-	    },
-	    complete:function(){
-	    	mask.close();
-	    },
+	     async: false,
 	     success : function(data, status, xhr) {
 	    	 switch(data.result){
 	    	 case COMMON_SUCCESS:
-	    		 dialog.confirm({
-			    		msg:data.message,
-			        	btns:{
-			        		yes: {
-			        			label:'확인'
-			        		},
-			        	}
-			        }, function(){
-			        	if(this.key=="yes"){
-			        			window.close();
-			        	}
-			    	});
+	    		 window.location.replace(data.url);
 	    		 break;
 	    	 case COMMON_FAIL:
 	    		 dialog.alert(data.message);
@@ -53,3 +34,4 @@ function findPw(){
 	     }
 	  }); 
 }
+

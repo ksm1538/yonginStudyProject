@@ -16,4 +16,6 @@ public interface loginDAO {
 	public userInfoVO selectUserInfoWithData(userInfoVO userInfoVO) throws Exception;
 	
 	public void updatePw(userInfoVO userInfoVO) throws Exception;
+	
+	public int selectUserPwHint(userInfoVO userInfoVO) throws Exception;
 }

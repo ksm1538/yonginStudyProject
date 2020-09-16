@@ -51,21 +51,11 @@
 						</div>
 					</div>
 			
-					<div class="user_pw_hint search_member_form_con_type_2">
-						<div class="title_size type_2">비밀번호 힌트</div>
+					<!-- 생일 선택하는 곳 width 20%안주면 너무 작게 설정됨 -->
+					<div class="user_identity_num search_member_form_con_type_2">
+						<div class="title_size type_2">생일</div>
 						<div class="register_input_con">
-							<form:select path="userPwHintCode" name="userPwHintCode" id="userPwHintCode" class="select_style_0" >
-						    <c:forEach var="result" items="${pwHint}" varStatus="status">
-			     		     	<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
-			      		   </c:forEach>
-						</form:select>
-						</div>
-					</div>
-			
-					<div class="user_pw_ans search_member_form_con_type_2">
-						<div class="title_size type_2">비밀번호 힌트 답</div>
-						<div class="register_input_con">
-					<form:input path="userPwHintAnswer" type="text" name="userPwHintAnswer" id="userPwHintAnswer" class="textbox_style_1"/>
+							<form:input path="userBirth" type="date" name="userBirth" id="userBirth" class="textbox_style_1 type_4" />
 						</div>
 					</div>
 				</div>

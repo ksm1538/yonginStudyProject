@@ -45,4 +45,9 @@ public class loginServiceImpl implements loginService{
 	public void updatePw(userInfoVO userInfoVO) throws Exception{
 		loginDAO.updatePw(userInfoVO);
 	}
+	
+	@Override
+	public int selectUserPwHint(userInfoVO userInfoVO) throws Exception{
+		return loginDAO.selectUserPwHint(userInfoVO);
+	}
 }
