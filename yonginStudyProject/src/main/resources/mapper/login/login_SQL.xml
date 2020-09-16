@@ -100,7 +100,9 @@
 		<![CDATA[
 			UPDATE	USER_INFO
 			SET		USER_PW		=	#{userPw}
+				,	UPDT_DT		=	sysdate
 			WHERE	USER_CODE	=	#{userCode}
+			
 		]]>
 	</update>
 	
