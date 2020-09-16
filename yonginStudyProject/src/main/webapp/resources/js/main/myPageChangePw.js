@@ -13,7 +13,7 @@ function changePw(){
 	
 	$.ajax({
 	     type: "POST",
-	     url : "/findPwChangePw.json",
+	     url : "/myPageChangePw.json",
 	     data: sendData,
 	     dataType: "json",
 	     //contentType: "application/json; charset=UTF-8",

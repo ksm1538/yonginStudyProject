@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	 
+<mapper namespace="myPageSql"> 
+	
+	<select id="selectUserInfoData" resultType="com.login.VO.userInfoVO"> 
+		<![CDATA[
+			SELECT	USER_ID				as	userId
+				 ,	USER_ADDRESS		as	userAddress
+				 ,	USER_PHONENUMBER	as	userPhoneNumber
+				 ,	USER_NAME			as	userName
+				 ,	USER_EMAIL			as	userEmail
+			FROM	USER_INFO
+			WHERE	USER_CODE	=	#{userCode}
+				AND	USE_YN		=	'Y'
+		]]>
+	</select>
+	
+	<update id="updateUserInfo">
+		<![CDATA[
+			UPDATE	USER_INFO
+			SET		USER_EMAIL		=	#{userEmail}
+				 ,	USER_PHONENUMBER=	#{userPhoneNumber}
+				 ,	USER_ADDRESS	=	#{userAddress}
+				 ,	UPDT_DT			=	sysdate
+			WHERE	USER_CODE		=	#{userCode}
+		]]>
+	</update>
+	
+</mapper>

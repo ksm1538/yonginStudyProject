@@ -1,11 +1,8 @@
 <!------ JSP 설정(시작) ------>
-<!-- 한글 설정(시작) -->
 <%@ page language="java" contentType="text/HTML;charset=UTF-8" pageEncoding="UTF-8" %>
-<%
-request.setCharacterEncoding("UTF-8");
-%>
-<!-- 한글 설정(끝) -->
+<%request.setCharacterEncoding("UTF-8");%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!------ JSP 설정(끝) ------>
     
 <!DOCTYPE html>
@@ -18,9 +15,14 @@ request.setCharacterEncoding("UTF-8");
 <!-- 헤더 불러오기 : 순서 2(헤더 필요없는 곳은 주석처리) -->
 <jsp:include page="../common/header.jsp"></jsp:include> 
 
-<!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
-<script type="text/javascript" src="/resources/js/myPage.js"></script>
+<!-- 주소 API javascript 호출(주소 사용하는 곳만 추가) -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
+<!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
+<script type="text/javascript" src="/resources/js/main/myPage.js"></script>
+<script>
+var currentUserEmail = '${currentUser.userEmail}';
+</script>
 
 <head>
 <meta charset="UTF-8">
@@ -45,37 +47,70 @@ request.setCharacterEncoding("UTF-8");
          <div class="col-9 mypage_content_con">
             <div class="col-12 user_info_modify">
                <div class="mypage_content_title" id="list1"><span>개인 정보 수정</span></div>
+               
+               <form:form method="POST" modelAttribute="userInfoVO" name="changeInfoForm" id="changeInfoForm">
                <div class="modify_line_con">
                   <div class="modify_line">
                      <div class="modify_name modify_con">
                      <div class="title_size type_5">이름</div>
-                     <input type="text" id="userName" class="textbox_style_1">
+                     <form:input path ="userName" type="text" id="userName" class="textbox_style_1" value='${currentUser.userName }' readonly="true"/>
                      </div>
                
-                     <div class="modify_phonenumber modify_con">
-                     <div class="title_size type_5">전화번호</div>
-                     <input type="text" id="userPhoneNumber" class="textbox_style_1">
+               		 <div class="modify_id modify_con">
+                     <div class="title_size type_5">아이디</div>
+                     <form:input path ="userId" type="text" id="userId" class="textbox_style_1" value='${currentUser.userId }' readonly="true"/>
                      </div>
+                     
+                    
                   </div>
                
                   <div class="modify_line">
-                     <div class="modify_id modify_con">
-                     <div class="title_size type_5">아이디</div>
-                     <input type="text" id="userId" class="textbox_style_1">
+                     <div class="modify_phonenumber modify_con">
+                     <div class="title_size type_5">전화번호</div>
+                     <form:input path="userPhoneNumber" type="text" id="userPhoneNumber" class="textbox_style_1" value='${currentUser.userPhoneNumber }' maxlength="13"/>
                      </div>
-                  
-                     <div class="modify_pw modify_con">
-                     <div class="title_size type_5">비밀번호</div>
-                     <input type="text" id="userPw" class="textbox_style_1">
+                     
+                     <div class="modify_phonenumber modify_con">
+                     <div class="title_size type_5">주소</div>
+                     <form:input path="userAddress" type="text" name="userAddress" id="userAddress" class="textbox_style_1" readonly="true" placeholder="주소 검색을 클릭하세요." value='${currentUser.userAddress }' />
+					 <input type="button" value="주소 검색" class="btn_style_1" onclick="addressPopup()" >
                      </div>
                   
                   </div>
+                  
+                  <div class="modify_line">
+						
+					 <div class="modify_phonenumber modify_con">
+					 <div class="title_size type_5">이메일</div>
+					 <div class="register_input_con">
+						<form:input path="userEmail" type="text" name="userEmail" id="userEmail" class="textbox_style_1" value='${currentUser.userEmail }'/>
+						<input type="button" value="인증번호 전송" id="initSendMailBtn" class="btn_style_1 type_2" onclick="sendAuthCode()" >
+						<input type="button" value="재전송" id="reSendMailBtn"  class="btn_style_1" onclick="sendAuthCode()" >
+						<input type="button" value="이메일 변경" id="resetMailBtn"  class="btn_style_1" onclick="resetAuthCode()" >
+					 </div>
+					 </div>	
+                     
+                  </div>
+                  
+                  <div class="modify_line">
+                 	<div class="modify_phonenumber modify_con" id="emailCodeDiv">
+						<div class="title_size type_5">인증번호 </div>
+						<div class="register_input_con">
+							<input type="text" name="emailCode" id="emailCode" class="textbox_style_1"/>
+							<input type="button" id="authCodeBtn" value="인증하기" class="btn_style_1" onclick="checkAuthCode()" >
+						</div>
+					</div>
+				</div>
+				
                </div>
+               </form:form>
                <div class="tc modify_btn_con">
-                  <input class="btn_style_1" type="button" value="수정하기">
+                  <input class="btn_style_1" type="button" value="수정하기" onclick="changeUserInfo()">
+                  <input class="btn_style_1 type_2" type="button" value="비밀번호 변경" onclick="changePw()">
                </div>
             </div>
          </div>
+        
          
          
          <div class="col-9 mypage_content_con">

@@ -235,6 +235,7 @@ function resetAuthCode(){
 		    	$("#emailCode").attr("readonly",false);
 		    	
 		    	$("#userEmail").val("");
+		    	$("#emailCode").val("");
 		    	
 		    	$("#initSendMailBtn").show();
 		    	$("#emailCodeDiv").hide();	
@@ -243,6 +244,7 @@ function resetAuthCode(){
 		    	
 		    	$("#authCodeBtn").val("인증하기");
 		    	$("#authCodeBtn").prop("disabled", false);
+		    	
 		    	break;
 		    case COMMON_FAIL:
 		    	emailFixYn = "N";

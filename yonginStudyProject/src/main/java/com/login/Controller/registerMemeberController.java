@@ -196,12 +196,12 @@ public class registerMemeberController {
 		//발송 메일 설정
 		String adminEmail = "ID@gmail.com";		// 자기 gmail ID 입력하셈
 		
-		String mailTitle = "YonginStudy : 회원가입 인증 코드 메일";
+		String mailTitle = "YonginStudy : 메일 인증 코드";
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("<div style=\"font-size:20px\">안녕하세요.<br>");
-		stringBuilder.append("YonginStudy에 가입해주셔서 감사합니다. <br>");
+		stringBuilder.append("YonginStudy를 사용해주셔서 감사합니다. <br>");
 		stringBuilder.append("귀하의 인증 코드는 <strong style=\"color:red\"> " + authCode + "</strong> 입니다.<br>");
-		stringBuilder.append("가입을 계속해서 진행하시려면 인증코드를 입력해주세요.<br></div>");
+		stringBuilder.append("계속 진행하시려면 인증코드를 입력해주세요.<br></div>");
 		
 		session.setAttribute("authCode", authCode);		//세션에 인증번호 저장
 		
