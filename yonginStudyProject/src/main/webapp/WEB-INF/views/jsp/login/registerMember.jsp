@@ -51,14 +51,14 @@
 				<div class="user_pw search_member_form_con_type_2">
 					<div class="title_size type_2">비밀번호</div>
 					<div class="register_input_con">
-						<form:input path="userPw" type="password" name="userPw" id="userPw" class="textbox_style_1" placeholder="10~20자로 설정해주세요."/>
+						<form:input path="userPw" type="password" name="userPw" id="userPw" class="textbox_style_1 type_3" placeholder="10~20자로 설정해주세요."/>
 					</div>
 				</div>
 				
 				<div class="user_pw_check search_member_form_con_type_2">
 					<div class="title_size type_2">비밀번호 확인</div>
 					<div class="register_input_con">
-						<form:input path="userPwConfirm" type="password" name="userPwConfirm" id="userPwConfirm" class="textbox_style_1" placeholder="동일한 비밀번호를 입력해주세요."/>
+						<form:input path="userPwConfirm" type="password" name="userPwConfirm" id="userPwConfirm" class="textbox_style_1 type_3" placeholder="동일한 비밀번호를 입력해주세요."/>
 					</div>
 					
 				</div>
@@ -125,7 +125,7 @@
 				<div class="user_phone search_member_form_con_type_2">
 					<div class="user_phone_title title_size type_2">휴대폰 번호</div>
 					<div class="register_input_con">
-						<form:input path="userPhoneNumber" type="text" name="userPhoneNumber" id="userPhoneNumber" class="textbox_style_1" placeholder="'-'없이 숫자만 입력하세요." maxlength="13"/>
+						<form:input path="userPhoneNumber" type="text" name="userPhoneNumber" id="userPhoneNumber" class="textbox_style_1 type_3" placeholder="'-'없이 숫자만 입력하세요." maxlength="13"/>
 					</div>
 				</div>
 				

@@ -21,9 +21,12 @@
                 
                 <div class="header_member_con">
                     <div class="header_user"><span class="user_id">${user.userId}</span>님 환영합니다.</div>
+                    <div class="header_mypage"><a onclick="openMypageForm();">마이페이지</a></div>
+                    <div class="header_message"><a onclick="openMessageForm();">쪽지함</a></div>
                     <div class="logout"><a href="/logout.json">로그아웃</a></div>
+              
                     
-                    <div class="user_box_con">
+                    <!-- <div class="user_box_con">
                        <div class="circle_btn_2"></div>
                        <div class="user_box_tri"></div>
                        <div>
@@ -32,7 +35,7 @@
                                 <li><a onclick="openMessageForm();">쪽지함</a></li>
                             </ul>
                        </div>
-                    </div>
+                    </div> -->
                 </div>
         </div>
       </div>

@@ -58,7 +58,7 @@
 					<div class="user_name search_member_form_con_type_2">
 						<div class="title_size type_2">이메일</div>
 						<div class="register_input_con">
-							<input type="text" name="userEmail" id="userEmail" class="textbox_style_1" placeholder="도메인까지 입력해주세요."/>
+							<input type="text" name="userEmail" id="userEmail" class="textbox_style_1 type_4" placeholder="도메인까지 입력해주세요."/>
 						</div>
 					</div>
 			

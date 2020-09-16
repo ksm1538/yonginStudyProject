@@ -34,13 +34,36 @@ $(window).bind('beforeunload', function() {
 	<div class="col-12 col-center mw-1200 search_memeber_title_wrap">
 		<div class="circle_btn" onClick="self.close()"></div> 
 		<div class="tc search_memeber_title_con">
-			<div class="search_memeber_title">비밀번호 찾기</div>
+			<div class="search_memeber_title">비밀번호 찾기 방법</div>
 		</div>
 	</div>
 	
+	<div class="col-12 col-center mw-1200 find_pw_form_wrap">
+	
+		<div class="find_pw_form_con pw_email">
+			<div class="find_pw_title"><span>1.</span>이메일로 임시 비밀번호 받기</div>
+			<div class="find_pw_desc">가입 시 등록하신 이메일 주소로 임시 비밀번호를 받습니다.</div>
+			<div class="find_pw_email">
+				등록된 이메일:&nbsp;&nbsp;&nbsp;<font>${findPwEmail}</font>
+			</div>
+			<div class="tc find_pw_btn_con">
+				<input type="button" value="확인" class="btn_style_1" onclick="usingEmail()">
+			</div>
+		</div>
+		
+		
+		<div class="find_pw_form_con pw_hint">
+			<div class="find_pw_title"><span>2.</span>비밀번호 힌트를 이용해 찾기</div>
+			<div class="find_pw_desc">가입 시 등록하신 비밀번호 힌트를 이용해 새로운 비밀번호로 갱신합니다.</div>
+			<div class="tc find_pw_btn_con">
+				<input type="button" value="확인" class="btn_style_1" onclick="usingHint()">
+			</div>
+		</div>
+	
+	</div>
 	
 	
-	<div class="col-12 col-center mw-1200 search_memeber_form_wrap">
+	<%-- <div class="col-12 col-center mw-1200 search_memeber_form_wrap">
 		<div class="search_password_form_con">
 			<div class="search_password_form_con">
 	
@@ -63,7 +86,10 @@ $(window).bind('beforeunload', function() {
 		
 			</div>
 		</div>
-	</div>
+	</div> --%>
+	
+	
+	
 </div>
 
 

@@ -4,10 +4,9 @@ html, body {
     margin: 0;
     height: 100%;
     overflow: hidden;
-
 }
 
-
+/* #31aae2;  #CAB0F1;  */
  
 /*로그인 화면*/
 .log_in_wrap{height:100%;} 
@@ -21,39 +20,39 @@ html, body {
 .log_in_con .id_form{margin-bottom:20px;}
 .log_in_con .pw_form{margin-bottom:20px;}
 .log_in_con .member_function{position:relative; padding:0;}
-.log_in_con .member_function > li{display:inline; list-style:none;  padding-left:10px;}
+.log_in_con .member_function > li{display:inline; list-style:none;  padding-left:10px; }
 .log_in_con .member_function > li > a > span{color:#fff; font-size:14px; opacity:0.8; cursor:pointer;}
+.log_in_con .member_function > li > a:hover{text-decoration:none;}
+.log_in_con .member_function > li > a > span:hover{color:#31aae2;}
 .log_in_con .member_function > li > a:visited{text-decoration:none; color:#000;}
 .log_in_con .member_function > li:not(:last-child):after{content:""; position:absolute; margin-left:8px;  top:6px; width:1px; height:10px; background-color:rgba(255,255,255,0.3);}
-
+.log_in_con .log_in_btn{margin-bottom: 20px;}
   
 /*헤더*/
-.header_wrap{padding-top:22px; padding-bottom:22px; }
+.header_wrap{padding-top:22px !important; padding-bottom:22px !important; }
 .header_wrap .header_con{display: flex; flex-wrap: nowrap; justify-content: space-between; align-items:center;}
-.header_con .header_menu{display:inline-block;}
+.header_con .header_menu{display:inline-block; padding-bottom:10px !important; padding-top:10px !important; margin-bottom:0 !important;}
 .header_con .header_menu > li {float:left; color:#fff; font-weight:bold; font-size:25px; margin-right:30px;}
 .header_con .header_menu > li:last-child{margin-right:0;}
-.header_con .header_menu > li > a {cursor:pointer;}
+.header_con .header_menu > li > a {cursor:pointer; color:#fff; text-decoration:none;}
+.header_con .header_menu > li > a:hover{color: #CAB0F1;}
 .header_con .header_member_con {display:flex; position:relative}
-.header_member_con .header_user{color:#fff; position:relative; margin-right:30px;}
-.header_member_con .header_user .user_id{font-weight:bold; cursor:pointer;}
-.header_member_con .header_user:after{content:""; position:absolute; width:1px; height:16px; top:3px; right:-16px; background-color:rgba(255,255,255,0.4); }
+.header_member_con .header_user, .header_mypage, .header_message{color:#fff; position:relative; margin-right:30px; position:relative;}
+.header_member_con .header_user:after, .header_mypage:after, .header_message:after{content:""; position:absolute; width:1px; height:13px; top:3px; right:-16px; background-color:rgba(255,255,255,0.4);}
+.header_member_con .header_mypage > a , .header_message > a{color:#fff; cursor:pointer;}
+.header_member_con .header_mypage:hover > a , .header_message:hover > a{color: #CAB0F1; text-decoration:none; }
+
+
+.header_member_con .header_user .user_id{font-weight:bold;}
+.header_member_con .header_user:after{content:""; position:absolute; width:1px; height:13px; top:3px; right:-16px; background-color:rgba(255,255,255,0.4); }
 .header_member_con .logout{color:#fff;} 
-.header_member_con .logout > a{text-decoration:none; color:#fff;}
+.header_member_con .logout > a{color:#fff;}
+.header_member_con .logout:hover > a{color: #CAB0F1; text-decoration:none;}
 
-.header_member_con .user_box_con{display:none; position:absolute; right:145px; top:45px; background-color:#CAB0F1; border-radius:10px; color:#000; padding-right:15px; padding-left:15px; width:150px;}
-.header_member_con .user_box_tri{position:absolute;  width: 0px; height: 0px; border-top: 25px solid transparent; border-right: 25px solid #CAB0F1; top:-10px; right:75px; transform: rotate(225deg);}
-.header_member_con .user_box{color:#fff; display:flex;}
-.header_member_con .user_box > li {cursor:pointer; padding-right:10px; padding-left:10px; font-size:12px; font-weight:bold; }
-.header_member_con .user_box > li > a{display:block;}
-.header_member_con .user_box > li:last-child{margin-right:0;}
-.header_member_con .user_box > li:not(:last-child):after{content:""; position:absolute; width:1px; height:13px; top:17px; right:85px; background-color:rgba(255,255,255,0.4);}
-
- 
 
  
 /*회원가입, 아이디찾기 , 비밀번호 찾기 공통*/
-.search_memeber_title_wrap{margin-bottom:80px;}
+.search_memeber_title_wrap{margin-bottom:50px;}
 .search_memeber_title_con{overflow:hidden;}
 .search_memeber_title_con .search_memeber_title{font-size:30px; font-weight:bold; }
 .search_member_form_con{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:40px;}
@@ -72,14 +71,15 @@ html, body {
 .user_pw_hint .select_style_0{width:220px; height:30px;}
 
 
-
 /*회원가입*/
 .register_wrap{padding:40px 40px;}
 .register_member_form_con .user_id{position:relative;}
-.register_member_form_con .user_id .btn_style_1{}
 .register_member_form_con .user_gender .radio_btn_con{margin-right:46px;}
 .register_member_form_con .user_gender .radio_btn_con:last-child{margin-right:0;}
 .register_member_form_con .user_gender .radio_btn_con > span{font-weight:bold;}
+
+.register_member_form_con .btn_style_1{margin-left:50px; outline:none; cursor:pointer; border-radius:12px; font-weight:bold; color:#000; font-size:15px; width:100px; height:35px; background:transparent;}
+.register_member_form_con .user_id .btn_style_1:hover{border:2px solid #31aae2;}
 
 /*회원가입 아이디*/
 .register_input_con{position:relative; display:flex;}
@@ -101,6 +101,18 @@ html, body {
 .find_pw_wrap{padding:40px 40px;}
 .find_pw_wrap .search_memeber_title_wrap .circle_btn{right:-6%;}
 
+
+/*비밀번호찾기 폼*/
+.find_pw_form_wrap{}
+.find_pw_form_con:not(:last-child){margin-bottom:30px; padding-top:30px; padding-bottom:30px; border-bottom:2px solid #a0a0a0; }
+.find_pw_form_con:last-child{margin-bottom:0;}
+
+.find_pw_form_wrap .find_pw_title{font-size:20px; font-weight:bold; margin-bottom:10px;}
+.find_pw_form_wrap .find_pw_title > span{display:inline-block; margin-right:10px; color:#31aae2; }
+
+.find_pw_form_wrap .find_pw_desc{margin-left:28px; margin-bottom:20px; color:#31aae2;  font-size:14px; font-weight:bold;}
+.find_pw_form_wrap .find_pw_email{margin-left:28px; margin-bottom:20px; font-weight:bold;}
+.find_pw_form_wrap .find_pw_email > font{color: #31aae2; }
 
 
 /*메인 컨텐츠*/
