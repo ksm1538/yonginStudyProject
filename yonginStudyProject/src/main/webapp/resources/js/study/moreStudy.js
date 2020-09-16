@@ -7,7 +7,11 @@ $(document).ready(function () {
         showLineNumber: false,
         //showRowSelector: true,
         columns: [ 
-        	{key : "studyTopic", label: "주제", align: "center", width:"25%", sortable: true},
+        	{key : "studyTopic", label: "주제", align: "center", width:"25%", sortable: true,
+    			formatter:function(){
+    			    return inoutSxnMap[this.value];
+    			}
+        	},
         	{key : "studyName", label: "제목", align: "center", width:"25%"},
         	{key : "studyArea", label: "지역", align: "center", width:"15%"},
         	{key : "userName",label : "방장", align : "center",width : "15%"},

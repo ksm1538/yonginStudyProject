@@ -6,7 +6,6 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,18 +14,15 @@ import org.slf4j.LoggerFactory;
 /*import org.springframework.security.crypto.password.PasswordEncoder;*/
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.study.Service.studyService;
+
 import com.commonCode.Service.commonCodeService;
 import com.commonCode.VO.commonCodeVO;
-
 import com.login.VO.userInfoVO;
 import com.main.VO.studyInfoVO;
+import com.study.Service.studyService;
 
 @Controller
 public class moreStudyController {
@@ -42,7 +38,7 @@ public class moreStudyController {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/moreStudy.do", method = RequestMethod.GET)
-	public String moreStudyForm(Locale locale, Model model, HttpSession session) {
+	public String moreStudyForm(Locale locale, Model model, HttpSession session) throws Exception {
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(시작) **/
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
 
@@ -50,6 +46,11 @@ public class moreStudyController {
 			return "jsp/login/login";
 		}
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
+		
+		List<commonCodeVO> codeResult = commonCodeService.selectCommonCodeList("studyTopic");
+		
+		//model 변수에 데이터를 담아 jsp에 전달
+		model.addAttribute("studyTopicArray", codeResult);
 		
 		return "jsp/study/moreStudy";
 	}
