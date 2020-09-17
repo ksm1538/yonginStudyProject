@@ -29,6 +29,69 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 <title>Insert title here</title>
 </head>
 <body>
+	<div class="col-12 col-center mw-1200 study_detail_pop_wrap">
+		 <div class="circle_btn" onClick="closeModal()"></div> 
+		 <div class="tc content_title"><span>스터디 상세정보</span></div>
+		 
+		 <form:form method="POST" modelAttribute="studyInfoVO" name="studyInfoDetailForm" id="studyInfoDetailForm" >
+		 <div class="study_detail_pop_wrap_con" id="detailDiv">
+			
+				<form:input path="studyCode" type="hidden" name="studyCode" id="studyCode" data-ax-path="studyCode" class="textbox_style_1"/>
+				
+				<div class="study_detail_con detail_name">
+					<div class="title_size type_2">스터디 이름</div>
+					<div class="study_detail_input_con">
+						<form:input path="studyName" type="text" name="studyName" id="studyName" data-ax-path="studyName" class="textbox_style_1"/>
+					</div>
+				</div>				
+				<div class="study_detail_con detail_subject">
+					<div class="title_size type_2">스터디 과목</div>
+					<div class="study_detail_input_con">
+						<form:select path="studyTopic" name="studyTopic" id="studyTopic" data-ax-path="studyTopic" class="select_style_0" >
+						    <c:forEach var="result" items="${studyTopicArray}" varStatus="status">
+					          	<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
+					         </c:forEach>
+						</form:select>
+					</div>
+				</div>
+				<div class="study_detail_con detail_leader">
+					<div class="title_size type_2">스터디 장</div>
+					<div class="study_detail_input_con">
+						<form:input path="studyRgstusId" type="text" name="studyRgstusId" id="studyRgstusId" data-ax-path="studyRgstusId" class="textbox_style_1"/>
+					</div>
+				</div>	
+				
+				
+				
+				<div class="study_detail_con detail_location">
+					<div class="title_size type_2">스터디 지역</div>
+					<div class="study_detail_input_con">
+					  <div class="study_detail_input_con">
+						<form:input path="studyArea" type="text" name="studyArea" id="studyArea" data-ax-path="studyArea" class="textbox_style_1"/>
+					  </div>
+					</div>
+				</div>
+				
+				
+				<div class="detail_desc">
+					<div class="title_size type_2">스터디 내용</div>
+					<div class="study_detail_input_con">
+						<form:textarea path="studyDesc" id="studyDesc" name="studyDesc" data-ax-path="studyDesc" style=""/>
+					</div>
+				</div>
+				
+				<div class="btn_style_1_con">
+					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
+				</div> 
+				
+				
+				
+			</div>
+		 </form:form>
+		 
+		 
+	</div>
+<%-- 
 	<form:form method="POST" modelAttribute="studyInfoVO" name="studyInfoDetailForm" id="studyInfoDetailForm" >
 	<div class="col-12 col-center mw-1200 search_memeber_form_wrap">
 			<div class="register_member_form_con" id="detailDiv">
@@ -82,6 +145,6 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 		<div class="btn_style_1_con">
 			<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
 		</div> 
-	</div>
+	</div>  --%>
 </body>
 </html>

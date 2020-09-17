@@ -29,7 +29,7 @@
 
 		<div class="circle_btn type_2" onClick="self.close()"></div> 
 		<div class="tc search_memeber_title_con">
-			<div class="search_memeber_title">회원 가입</div>
+			<div class="search_memeber_title content_title"><span>회원 가입</span></div>
 		</div> 
 	</div>
 

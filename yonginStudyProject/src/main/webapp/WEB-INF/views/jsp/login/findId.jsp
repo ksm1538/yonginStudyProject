@@ -30,7 +30,7 @@
 
 	<div class="circle_btn" onClick="self.close()"></div> 
 	<div class="tc search_memeber_title_con">
-		<div class="search_memeber_title">아이디 찾기</div>
+		<div class="search_memeber_title content_title"><span>아이디 찾기</span></div>
 	</div>
 
 </div>

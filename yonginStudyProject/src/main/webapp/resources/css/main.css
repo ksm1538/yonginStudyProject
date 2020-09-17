@@ -249,6 +249,15 @@ html, body {
 .btn_style_1_con .btn_style_1{margin-bottom:20px;}
 .study_apply_wrap{padding:70px 50px;}
 
+/*스터디 상세정보 팝업*/
+.study_detail_pop_wrap{padding:30px 30px;}
+.study_detail_pop_wrap .circle_btn{top:7%;}
+.study_detail_pop_wrap .content_title{margin-bottom:30px;}
+.study_detail_pop_wrap .select_style_0{width:150px; height:30px; border:1px solid #31aae2;}
+.study_detail_con{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:30px;}
+.detail_desc{margin-left:186px;}
+.detail_desc .title_size{margin-bottom:15px;}
+.detail_desc .study_detail_input_con{width:350px;}
 
 /*쪽지함*/
 .message_list_wrap{padding:40px 40px;}

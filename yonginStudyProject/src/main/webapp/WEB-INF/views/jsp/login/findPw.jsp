@@ -26,7 +26,7 @@
    <div class="col-12 col-center mw-1200 search_memeber_title_wrap">
       <div class="circle_btn" onClick="self.close()"></div> 
       <div class="tc search_memeber_title_con">
-         <div class="search_memeber_title">비밀번호 찾기</div>
+         <div class="search_memeber_title content_title"><span>비밀번호 찾기</span></div>
       </div>
    </div>
    

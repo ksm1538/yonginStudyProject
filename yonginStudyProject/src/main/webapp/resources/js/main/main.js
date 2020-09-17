@@ -113,10 +113,8 @@ $(document).ready(function () {
 });
 /** 초기화(끝) **/
 
-/*스터디 더보기 호출 */
-function openMoreStudyForm(){
-	location.href = "/moreStudy.do";
-}
+/*스터디 더보기 호출 2020 09 17 정승준 삭제*/
+
 
 /*스터드만들기 호출 */
 function makeStudyForm(){
