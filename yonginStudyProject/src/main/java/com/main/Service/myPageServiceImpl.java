@@ -1,10 +1,13 @@
 package com.main.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.login.VO.userInfoVO;
 import com.main.DAO.myPageDAO;
+import com.main.VO.studyInfoVO;
 
 @Service("myPageService")
 public class myPageServiceImpl implements myPageService{
@@ -19,5 +22,15 @@ public class myPageServiceImpl implements myPageService{
 	@Override
 	public void updateUserInfo(userInfoVO userInfoVO) {
 		myPageDAO.updateUserInfo(userInfoVO);
+	}
+	
+	@Override
+	public List<studyInfoVO> selectStudyMadeByMeList(String userCode){
+		return myPageDAO.selectStudyMadeByMeList(userCode);
+	}
+	
+	@Override
+	public List<studyInfoVO> selectParticipateStudyList(String userCode){
+		return myPageDAO.selectParticipateStudyList(userCode);
 	}
 }

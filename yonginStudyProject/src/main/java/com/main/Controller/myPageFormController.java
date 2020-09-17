@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -27,6 +28,7 @@ import com.login.Service.loginService;
 import com.login.VO.userInfoVO;
 import com.login.Validator.pwChangeValidator;
 import com.main.Service.myPageService;
+import com.main.VO.studyInfoVO;
 import com.main.Validator.changeUserInfoValidator;
 
 /**
@@ -193,6 +195,64 @@ public class myPageFormController {
 		
 		mReturn.put("result", "success");
 		mReturn.put("message", "비밀번호가 변경되었습니다.");
+		
+		return mReturn;
+	}
+	
+	/**
+	 * 내가 만든스터디 리스트 조회
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/myPage/selectStudyMadeByMeList.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> selectStudyMadeByMeList(HttpSession session) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		String userCode = user.getUserCode();
+		
+	      
+		List<studyInfoVO> ltResult = myPageService.selectStudyMadeByMeList(userCode);
+		
+		if(ltResult.size() < 1) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "스터디 목록이 없습니다.");
+		}
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "조회 성공하였습니다.");
+		mReturn.put("resultList", ltResult);
+		
+		return mReturn;
+	}
+	
+	/**
+	 * 내가 가입된 스터디 리스트 조회
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/myPage/selectParticipateStudyList.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> selectParticipateStudyList(HttpSession session) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		String userCode = user.getUserCode();
+		
+	      
+		List<studyInfoVO> ltResult = myPageService.selectParticipateStudyList(userCode);
+		
+		if(ltResult.size() < 1) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "스터디 목록이 없습니다.");
+		}
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "조회 성공하였습니다.");
+		mReturn.put("resultList", ltResult);
 		
 		return mReturn;
 	}

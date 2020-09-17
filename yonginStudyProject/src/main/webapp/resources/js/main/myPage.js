@@ -4,14 +4,14 @@ var emailFixYn = "N";
 
 $(document).ready(function () {
 	
-	//공지사항 리스트 설정
+	//내가 참여한 스터디 목록
 	myParcitipateListGrid.setConfig({   
     	target: $('[data-ax5grid="myParcitipateListGrid"]'),
         showLineNumber: false,
-        showRowSelector: true,
+        //showRowSelector: true,
         columns: [ 
-        	{key : "studyName", label: "스터디 이름", align: "center", width:"45%", sortable: true},
-        	{key : "noticeTitle", label: "제목", align: "center", width:"45%"},
+			{key : "studyTopic", label: "주제", align: "center", width:"45%", sortable: true},
+        	{key : "studyName", label: "스터디 이름", align: "center", width:"45%"},
         	{key : "dropStudy", label: "탈퇴", align: "center", width:"10%"},
         ],
         header: {
@@ -46,14 +46,14 @@ $(document).ready(function () {
 
 
 
-	//공지사항 리스트 설정
+	//내가 만든 스터디 리스트 관리
 	myMakeListGrid.setConfig({   
     	target: $('[data-ax5grid="myMakeListGrid"]'),
         showLineNumber: false,
-        showRowSelector: true,
+        //showRowSelector: true,
         columns: [ 
-        	{key : "studyName", label: "스터디 이름", align: "center", width:"45%", sortable: true},
-        	{key : "noticeTitle", label: "제목", align: "center", width:"45%"},
+			{key : "studyTopic", label: "주제", align: "center", width:"45%", sortable: true},
+        	{key : "studyName", label: "스터디 이름", align: "center", width:"45%"},
         	{key : "manageStudy", label: "관리", align: "center", width:"10%"},
         ],
         header: {
@@ -85,6 +85,9 @@ $(document).ready(function () {
                 },
             },
         });
+
+		getStudyMadeByMeList();
+		getParticipateStudyList();
 
 
 		//클릭시 맨위로
@@ -359,4 +362,50 @@ function resetAuthCode(){
 
 function changePw(){
 	window.open("/myPageChangePwForm.do",'비밀번호 변경','width=650px ,height=545px ,location=no,status=no,scrollbars=no');
+}
+
+/* 내가 만든 스터디 리스트 조회 함수 */
+function getStudyMadeByMeList(){
+	
+	$.ajax({
+ 		type: "POST",
+ 		url : "/myPage/selectStudyMadeByMeList.json",
+		contentType: "application/json; charset=UTF-8",
+		async: false,
+		success : function(data, status, xhr) {
+			switch(data.result){
+			    case COMMON_SUCCESS:
+			    	myMakeListGrid.setData(data.resultList);
+			    	break;    
+			    case COMMON_FAIL:
+			    	dialog.alert(data.message); 
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+		}
+	}); 
+}
+
+/* 내가 가입된 스터디 리스트 조회 함수 */
+function getParticipateStudyList(){
+	
+	$.ajax({
+ 		type: "POST",
+ 		url : "/myPage/selectParticipateStudyList.json",
+		contentType: "application/json; charset=UTF-8",
+		async: false,
+		success : function(data, status, xhr) {
+			switch(data.result){
+			    case COMMON_SUCCESS:
+			    	myParcitipateListGrid.setData(data.resultList);
+			    	break;    
+			    case COMMON_FAIL:
+			    	dialog.alert(data.message); 
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+		}
+	}); 
 }
