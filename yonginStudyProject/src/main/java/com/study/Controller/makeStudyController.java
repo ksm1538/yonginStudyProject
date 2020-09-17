@@ -58,12 +58,10 @@ public class makeStudyController {
 		}
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
 		
-		List<commonCodeVO> studyTypecodeResult = commonCodeService.selectCommonCodeList("studyType");
-		List<commonCodeVO> studyAreacodeResult = commonCodeService.selectCommonCodeList("studyArea");
+		List<commonCodeVO> studyTopiccodeResult = commonCodeService.selectCommonCodeList("studyTopic");
 		List<commonCodeVO> studyLimitcodeResult= commonCodeService.selectCommonCodeList("studyLimit");
 		
-		model.addAttribute("studyType", studyTypecodeResult);
-		model.addAttribute("studyArea", studyAreacodeResult);
+		model.addAttribute("studyTopic", studyTopiccodeResult);
 		model.addAttribute("studyLimit", studyLimitcodeResult);
 		model.addAttribute("studyInfoVO", new studyInfoVO());
 		return "jsp/study/makeStudy";
