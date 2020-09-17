@@ -86,8 +86,8 @@
          <div class="study_text make_study_form">
             <div class="title_size type_2">설명</div>
             <div class="make_study_input_con">
-            	 <input type="text" name="studyDesc" id="studyDesc" class="textbox_style_1">
-           		 <!--<textarea name="studyDesc" id="studyDesc" cols="20" rows="10" placeholder="스터디에 대한 설명을 입력해주세요."></textarea> -->
+            	 <!-- <input type="text" name="studyDesc" id="studyDesc" class="textbox_style_1"> -->
+           		 <textarea name="studyDesc" id="studyDesc" placeholder="스터디에 대한 설명을 입력해주세요."></textarea> 
             </div>
            
          </div>      

@@ -10,7 +10,7 @@ $(document).ready(function () {
 	
 	//summernote editor
 	$('#studyDesc').summernote({           
-	    height: 150,        
+	    height: 200,        
 	    codeviewFilter: true,
 		codeviewIframeFilter: true,   
 		disableDragAndDrop: true
