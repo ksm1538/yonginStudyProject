@@ -44,9 +44,7 @@ inoutSxnList.forEach(function(n){
 	  				<div data-ax5grid="studyListPlusGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
 				</div> 
 			
-				<div class="apply_btn tc">
-					<input type="button" value="스터디 신청하기" class="btn_style_1 type_3" onclick="openstudyApplyPopForm();">
-				</div>
+				
 		
        		 </div>
        </div>

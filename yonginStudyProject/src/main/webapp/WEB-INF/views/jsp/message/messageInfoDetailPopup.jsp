@@ -33,16 +33,7 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 			
 				<div class="message_detail_con">
 					<form id="messageInfoDetailForm" name="messageInfoDetailForm">
-					<div class="message_user_con">
-						<div class="send_user_con">
-						 	<div class="title_size">보낸 사람</div>
-						 	<input type="text" id="userCodeFrom" name ="userCodeFrom" data-ax-path="userCodeFrom" class="textbox_style_1" readonly="true">
-						</div>
-						<div class="get_user_con">
-							 <div class="title_size">받는 사람</div>
-							 <input type="text" id="userCodeTo" name ="userCodeTo" data-ax-path="userCodeTo" class="textbox_style_1"  readonly="true">
-						</div>
-					</div>
+					
 					
 					<div class="message_desc_con">
 						<div class="message_title_con">
@@ -52,6 +43,16 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 						<div class="message_time_con">
 							 <div class="title_size">보낸 시각</div>
      	      				 <input type="text" id="messageTime" name="messageTime" data-ax-path="messageTime" class="textbox_style_1"  readonly="true">
+						</div>
+					</div>
+					<div class="message_user_con">
+						<div class="send_user_con">
+						 	<div class="title_size">보낸 사람</div>
+						 	<input type="text" id="userCodeFrom" name ="userCodeFrom" data-ax-path="userCodeFrom" class="textbox_style_1" readonly="true">
+						</div>
+						<div class="get_user_con">
+							 <div class="title_size">받는 사람</div>
+							 <input type="text" id="userCodeTo" name ="userCodeTo" data-ax-path="userCodeTo" class="textbox_style_1"  readonly="true">
 						</div>
 					</div>
 					
