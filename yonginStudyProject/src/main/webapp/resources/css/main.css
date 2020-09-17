@@ -271,7 +271,16 @@ html, body {
 .summer_note_con .title_size{margin-bottom:40px;}
 .summer_note_con .summer_note{margin-bottom:40px;}
 
-
-
-
-
+/*쪽지 상세보기*/ 
+.message_detail_wrap{padding:40px 40px;}
+.message_detail_wrap .circle_btn.type_2{right:6%;}
+.message_detail_wrap .content_title{margin-bottom:30px;}
+.message_detail_wrap .textbox_style_1{font-size:18px; font-weight:bold;}
+.message_detail_con .message_user_con{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:80px;}
+.message_detail_con .send_user_con{display:flex; margin-right:30px;}
+.message_detail_con .get_user_con{display:flex; margin-left:30px;}
+.message_detail_con .message_title_con{display:flex; margin-left:42px; margin-bottom:30px;}
+.message_detail_con .message_time_con{display:flex; margin-left:42px; margin-bottom:50px;}
+.message_detail_con .message_detail_btn_con{display:flex;  flex-wrap:nowrap; justify-content:center; }
+.message_detail_btn_con .return_message_btn{margin-right:20px;}
+.message_detail_btn_con .close_message_btn{margin-right:20px;}

@@ -27,7 +27,49 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 <body>
 
 
-	
+	<div class="col-12 mw-1200 col-center message_detail_wrap">
+		<div class="circle_btn type_2" onClick="closeModal()"></div> 
+		<div class="tc content_title"><span>쪽지 상세 정보</span></div>
+			<form id="messageInfoDetailForm" name="messageInfoDetailForm">
+				<div class="message_detail_con">
+					<div class="message_user_con">
+						<div class="send_user_con">
+						 	<div class="title_size">보낸 사람</div>
+						 	<input type="text" id="userCodeFrom" name ="userCodeFrom" data-ax-path="userCodeFrom" class="textbox_style_1" readonly="true">
+						</div>
+						<div class="get_user_con">
+							 <div class="title_size">받는 사람</div>
+							 <input type="text" id="userCodeTo" name ="userCodeTo" data-ax-path="userCodeTo" class="textbox_style_1"  readonly="true">
+						</div>
+					</div>
+					
+					<div class="message_desc_con">
+						<div class="message_title_con">
+							<div class="title_size">제목</div>
+     	      				<input type="text" id="messageTitle" name="messageTitle" data-ax-path="messageTitle" class="textbox_style_1"  readonly="true">
+						</div>
+						<div class="message_time_con">
+							 <div class="title_size">보낸 시각</div>
+     	      				 <input type="text" id="messageTime" name="messageTime" data-ax-path="messageTime" class="textbox_style_1"  readonly="true">
+						</div>
+					</div>
+					
+					<div class="tc summer_note_con">
+     		   			<div class="summer_note" style="width:100%; margin-left:0%">
+     		   				<textarea name="messageDesc" id="messageDesc" data-ax-path="messageDesc" ></textarea>
+     		   			</div>
+     		  		</div>	
+     		  		
+     		  		 <div class="message_detail_btn_con">
+	      				<input type="button" value="답장 쓰기" class="btn_style_1 return_message_btn" onclick="replyMessage()">
+	      				<input type="button" value="닫기" class="btn_style_1 close_message_btn" onclick="closeModal()">
+  					 </div> 
+     		  		
+     		  							
+				</div>
+			</form>
+	</div>
+	<!-- 
 	<div class="col-8 mw-1200 send_message_wrap">
 		 <div class="tc content_title"><span>쪽지 상세 정보</span></div>
 		 
@@ -50,14 +92,14 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
      		   </div>
      		   
      		   
-     		   <div class="tc summer_note_con"><!-- 내용이라고 안넣는게 더 이쁠거같아서 뺌 -->
+     		   <div class="tc summer_note_con">
      		   		<div class="summer_note" style="width:100%; margin-left:0%">
      		   			<textarea name="messageDesc" id="messageDesc" data-ax-path="messageDesc" ></textarea>
      		   		</div>
      		   		
      		   </div>
     	        
-    	       </form>	         	 
+    	     </form>	         	 
 		 </div>
 
      	 
@@ -69,6 +111,6 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
      	   
 		 
 	</div>
-  
+   -->
 </body>
 </html>
