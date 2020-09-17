@@ -3,6 +3,7 @@ package com.study.Service;
 import java.util.List;
 
 import com.main.VO.studyInfoVO;
+import com.study.VO.studyApplicationFormUserVO;
 
 public interface studyService {
 	
@@ -13,5 +14,13 @@ public interface studyService {
 	List<studyInfoVO> selectStudyList();
 	
 	studyInfoVO selectStudyInfoDetail(String studyCode);
+	
+	void insertStudyApplicationFormUser(studyApplicationFormUserVO studyApplicationFormUserVO);
+	
+	int selectStudyApplicationFormCount(studyApplicationFormUserVO studyApplicationFormUserVO);
+	
+	void updateStudyApplicationFormUser(studyApplicationFormUserVO studyApplicationFormUserVO);
+	
+	studyApplicationFormUserVO selectStudyApplicationForm(studyApplicationFormUserVO studyApplicationFormUserVO);
 }
  

@@ -1,16 +1,16 @@
 package com.main.VO;
 
 public class studyInfoVO {
-	String	studyCode = "";
-	String 	studyName = "";
-	String 	studyDesc = "";
-	String 	studyTopic = "";
-	String 	studyLimit = "";
-	String	studyRgstusId = "";
-	String 	userName="";
-	String	studyArea="";
-	String	studyRgstusCode="";
-	int 	totalCount;
+	private String	studyCode = "";
+	private String 	studyName = "";
+	private String 	studyDesc = "";
+	private String 	studyTopic = "";
+	private String 	studyLimit = "";
+	private String	studyRgstusId = "";
+	private String 	userName="";
+	private String	studyArea="";
+	private String	studyRgstusCode="";
+	private int 	totalCount;
 	
 	
 	public String getStudyRgstusCode() {

@@ -8,36 +8,33 @@ request.setCharacterEncoding("UTF-8");
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!------ JSP 설정(끝) ------>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>쪽지 보내기</title>
+<title></title>
 
 <!---- 순서 다르면 오류 ---->
 <!-- 자원 불러오기(공통) : 순서  1(필수)-->
 <jsp:include page="../common/resources.jsp"></jsp:include>
 
-<!-- 헤더 불러오기 : 순서 2(헤더 필요없는 곳은 주석처리) -->
-<jsp:include page="../message/messageSidemenu.jsp"></jsp:include>
-
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
-<script type="text/javascript" src="/resources/js/message/sendMessage.js"></script>
+<script type="text/javascript" src="/resources/js/message/replyMessage.js"></script>
 	
+<script>
+</script>
 </head>
 <body>
 
 
-	
-	<div class="col-8 mw-1200 send_message_wrap">
-		 <div class="tc content_title"><span>쪽지보내기</span></div>
+	<div class="col-12 mw-1200 col-center message_detail_wrap">
+		<div class="circle_btn type_2" onClick="closeModal()"></div> 
+		<div class="tc content_title"><span>쪽지보내기</span></div>
 		 
 		 <div class="send_message_con">
 		 
 		 	  <div class="send_message_form">
     	        <div class="title_size type_2">받는 사람</div>
-    	        <input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1">
+    	        <input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1" readonly="true">
     	      </div>
     	      
     	       <div class="send_message_form">
@@ -57,43 +54,8 @@ request.setCharacterEncoding("UTF-8");
 
      	 <div class="btn_style_1_con">
 	      	<input type="button" value="보내기" class="btn_style_1" onclick="sendMessage()" >
-  		 </div> 
-     	   
-     	   
-		 
-	</div>
-	
-<!-- 	<div class="col-12 col-center mw-1200 make_study_title_wrap">
-	 	  
-	 	 
-	 	   
-	 	   
-	 	   
-	</div> -->
-
-<!-- 	<div class="col-12 col-center mw-1200 make_study_form_wrap">
-	      <div class="make_study_form_con">
-         
-  	      	 
-         
-     	   
-     	     <div class="study_text make_study_form">
-      	      <div class="title_size type_2">내용</div>
-       	     <input type="text" name="messageDesc" id="messageDesc" class="textbox_style_1">
-       	     <textarea name="studyDesc" id="studyDesc" cols="20" rows="10" placeholder="스터디에 대한 설명을 입력해주세요."></textarea>
-      	   </div>      
-     	 </div>
-	</div>
-
-	<div class="col-12 col-center mw-1200 make_study_btn_wrap">
-	   <div class="btn_style_1_con">
-	      <input type="button" value="보내기" class="btn_style_1" onclick="sendMessage()" >
+	      	<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
   		 </div> 
 	</div>
-	
-</div>
- -->
-
-  
 </body>
 </html>

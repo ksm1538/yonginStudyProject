@@ -10,8 +10,12 @@ $(document).ready(function () {
 	    height: 150,        
 	    codeviewFilter: true,
 		codeviewIframeFilter: true,   
-		disableDragAndDrop: true
+		disableDragAndDrop: true,
+		toolbar:[]
 	});	
+	
+	//섬머노트 비활성화(readonly)
+	$('#studyDesc').summernote('disable');
 	
 	studyInfoDetailBinder.setModel({}, $(document["studyInfoDetailForm"]));
 	

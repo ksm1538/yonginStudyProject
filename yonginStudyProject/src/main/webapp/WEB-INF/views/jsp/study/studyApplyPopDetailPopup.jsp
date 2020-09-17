@@ -16,7 +16,7 @@ request.setCharacterEncoding("UTF-8");
 <%-- <jsp:include page="../common/header.jsp"></jsp:include> --%>
 
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
-<script type="text/javascript" src="/resources/js/study/studyApplyPop.js"></script>
+<script type="text/javascript" src="/resources/js/study/studyApplyPopDetailPopup.js"></script>
 
 <!---- css, js 설정(끝) ----> 
 
@@ -28,8 +28,8 @@ request.setCharacterEncoding("UTF-8");
 <div class="circle_btn" onClick="closeModal()"></div> 
 
 <div class="study_apply_wrap">
-	
-	<div class="study_apply_con tc">
+	<form id="applicationFormDetailPopupForm" name="applicationFormDetailPopupForm">
+	<div class="study_apply_con tc" id="detailDiv">
 		<div class="study_apply_main_title content_title"><span>스터디 신청서 </span></div>
 		
 		<div class="study_apply_sub_title "><span>신청서 제목 </span></div>
@@ -43,12 +43,13 @@ request.setCharacterEncoding("UTF-8");
 		</div>
 		
 	<div class="btn_style_1_con">
-		<input type="button" value="신청하기" class="btn_style_1" onclick="applyStudy()" >
+		<input type="button" value="수정하기" class="btn_style_1" id="updateAFBtn" onclick="updateStudyApplicationForm()" >
 		<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
 	</div> 
 		
 		
 	</div>
+	</form>
 </div>
  
 </body>

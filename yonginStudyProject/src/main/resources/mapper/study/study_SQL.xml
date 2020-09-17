@@ -75,4 +75,68 @@
 				AND	STUDY_INFO.STUDY_CODE	=	#{studyCode}
 		]]>
 	</select>
+	
+	<insert id="insertStudyApplicationFormUser">
+		<![CDATA[
+			INSERT	
+			INTO	STUDY_APPLICATION_FORM_USER
+				(	APPLICATION_FORM_CODE
+				,	USER_CODE
+				,	STUDY_CODE
+				,	APPLICATION_FORM_DESC
+				,	TITLE
+				,	RGDT_DT
+				,	UPDT_DT
+				,	STATUS
+				,	USE_YN
+				)
+			VALUES	
+				(	('APPLIFORM_' || LPAD(applicationForm_seq.nextval,8,0))
+				,	#{userCode}
+				,	#{studyCode}
+				,	#{applicationFormDesc}
+				,	#{title}
+				,	sysdate
+				,	sysdate
+				,	'10'
+				,	'Y'
+				)
+			
+			
+		]]>
+	</insert>
+	
+	<update id="updateStudyApplicationFormUser">
+		<![CDATA[
+			UPDATE	STUDY_APPLICATION_FORM_USER
+			SET		TITLE					=	#{title}
+				,	APPLICATION_FORM_DESC	=	#{applicationFormDesc}
+				,	UPDT_DT					=	sysdate
+			WHERE	APPLICATION_FORM_CODE	=	#{applicationFormCode}
+				AND	USER_CODE				=	#{userCode}
+		]]>
+	</update>
+	
+	<select id="selectStudyApplicationForm" resultType="com.study.VO.studyApplicationFormUserVO">
+		<![CDATA[
+			SELECT	APPLICATION_FORM_CODE	as	applicationFormCode
+				 ,	TITLE					as	title	
+				 ,	APPLICATION_FORM_DESC	as	applicationFormDesc
+				 ,	STATUS					as	status
+			FROM	STUDY_APPLICATION_FORM_USER
+			WHERE	USER_CODE		=	#{userCode}
+				AND	STUDY_CODE		=	#{studyCode}
+				AND	USE_YN			=	'Y'
+		]]>
+	</select>
+	
+	<select id="selectStudyApplicationFormCount" resultType="int">
+		<![CDATA[
+			SELECT	COUNT(*)
+			FROM	STUDY_APPLICATION_FORM_USER
+			WHERE	USER_CODE		=	#{userCode}
+				AND	STUDY_CODE		=	#{studyCode}
+				AND	USE_YN			=	'Y'
+		]]>
+	</select>
 </mapper> 

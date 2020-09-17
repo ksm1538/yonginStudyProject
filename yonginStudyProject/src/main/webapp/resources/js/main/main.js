@@ -46,14 +46,11 @@ $(document).ready(function () {
                     columnHeight: 45,
                     
                     onClick: function () 	{
-                    	studyListGrid.select(this.dindex, {selected:true});
 					},
 					onDBLClick: function(){
 			    		selectStudyInfoDetail(this.list[this.dindex]["studyCode"]);
-			    		studyListGrid.select(this.dindex, {selected:true});
 					},
 					onDataChanged: function(){
-						studyListGrid.focus(Number(this.dindex));
 					},
                 },
         

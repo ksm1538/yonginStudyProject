@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.main.VO.studyInfoVO;
 import com.study.DAO.studyDAO;
+import com.study.VO.studyApplicationFormUserVO;
 
 @Service("studyService")
 public class studyServiceImpl implements studyService{
@@ -31,6 +32,26 @@ public class studyServiceImpl implements studyService{
 	@Override
 	public studyInfoVO selectStudyInfoDetail(String studyCode) {
 		return studyDAO.selectStudyInfoDetail(studyCode);
+	}
+	
+	@Override
+	public void insertStudyApplicationFormUser(studyApplicationFormUserVO studyApplicationFormUserVO) {
+		studyDAO.insertStudyApplicationFormUser(studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public int selectStudyApplicationFormCount(studyApplicationFormUserVO studyApplicationFormUserVO) {
+		return studyDAO.selectStudyApplicationFormCount(studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public void updateStudyApplicationFormUser(studyApplicationFormUserVO studyApplicationFormUserVO) {
+		studyDAO.updateStudyApplicationFormUser(studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public studyApplicationFormUserVO selectStudyApplicationForm(studyApplicationFormUserVO studyApplicationFormUserVO) {
+		return studyDAO.selectStudyApplicationForm(studyApplicationFormUserVO);
 	}
 }
  

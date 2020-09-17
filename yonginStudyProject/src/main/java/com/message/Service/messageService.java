@@ -18,4 +18,5 @@ public interface messageService {
 	
 	messageInfoVO selectMessageInfoDetail(String messageCode);
 	
+	int selectUserExistCount(String userId);
 }

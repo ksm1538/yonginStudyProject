@@ -71,7 +71,6 @@ function deleteMessage(){
 		messageCodes:messageCodes
 	}
 	
-	
 	$.ajax({
 	     type: "POST",
 	     url : "/deleteMessageTo.json",
@@ -106,7 +105,7 @@ function deleteMessage(){
 	  }); 
 }
 
-/* ㅉㅗㄱㅈㅣ 리스트 조회 함수 */
+/* 쪽지 리스트 조회 함수 */
 function getMessageList(){
 	
 	$.ajax({
@@ -117,7 +116,6 @@ function getMessageList(){
 		success : function(data, status, xhr) {
 			switch(data.result){
 			    case COMMON_SUCCESS:
-					console.log(data);
 			    	messageListGrid.setData(data.resultList);
 			    	break;    
 			    case COMMON_FAIL:
@@ -133,12 +131,13 @@ function getMessageList(){
 //메시지 정보 팝업 보기
 function selectMessageInfoDetail(messageCode){
 	var parentData={
-			messageCode:messageCode	 		// 스터디 그리드에서 선택한 studyCode를 팝업으로 보낼 데이터에 넣음
+			messageCode:messageCode,	 		// 스터디 그리드에서 선택한 studyCode를 팝업으로 보낼 데이터에 넣음
+			status:"receiveMessage"
 		}
 		
 	messageInfoModal.open({
 		width: 800,
-		height: 700,
+		height: 750,
 		iframe: {
 			method: "post",
 			url: "/message/messageInfoDetailPopup.do",

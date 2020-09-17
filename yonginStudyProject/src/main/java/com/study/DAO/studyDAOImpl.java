@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.main.VO.studyInfoVO;
+import com.study.VO.studyApplicationFormUserVO;
 
 @Repository
 public class studyDAOImpl implements studyDAO{
@@ -32,6 +33,26 @@ public class studyDAOImpl implements studyDAO{
 	@Override
 	public studyInfoVO selectStudyInfoDetail(String studyCode) {
 		return sqlSession.selectOne("studyMapper.selectStudyInfoDetail", studyCode);
+	}
+	
+	@Override
+	public void insertStudyApplicationFormUser(studyApplicationFormUserVO studyApplicationFormUserVO) {
+		sqlSession.insert("studyMapper.insertStudyApplicationFormUser", studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public int selectStudyApplicationFormCount(studyApplicationFormUserVO studyApplicationFormUserVO) {
+		return sqlSession.selectOne("studyMapper.selectStudyApplicationFormCount", studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public void updateStudyApplicationFormUser(studyApplicationFormUserVO studyApplicationFormUserVO) {
+		sqlSession.update("studyMapper.updateStudyApplicationFormUser", studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public studyApplicationFormUserVO selectStudyApplicationForm(studyApplicationFormUserVO studyApplicationFormUserVO) {
+		return sqlSession.selectOne("studyMapper.selectStudyApplicationForm", studyApplicationFormUserVO);
 	}
 }
  

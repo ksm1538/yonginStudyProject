@@ -2,19 +2,19 @@ package com.login.VO;
 
 public class userInfoVO {
 	
-	String userName = "";
-	String userCode = "";
-	String userId = "";
-	String userPw = "";
-	String userPwConfirm = "";
-	String userPhoneNumber ="";
-	String userPwHintCode = ""; 
-	String userPwHintAnswer = "";
-	String userGender = "";
-	String userAddress = "";
-	String useYn = "";
-	String userEmail = "";
-	String userBirth = "";
+	private String userName = "";
+	private String userCode = "";
+	private String userId = "";
+	private String userPw = "";
+	private String userPwConfirm = "";
+	private String userPhoneNumber ="";
+	private String userPwHintCode = ""; 
+	private String userPwHintAnswer = "";
+	private String userGender = "";
+	private String userAddress = "";
+	private String useYn = "";
+	private String userEmail = "";
+	private String userBirth = "";
 	
 	
 	public String getUserEmail() {

@@ -67,7 +67,6 @@ function deleteSendMessage(){
 		messageCodes:messageCodes
 	}
 	
-	console.log(sendData); 
 	  $.ajax({
 	     type: "POST",
 	     url : "/deleteSendMessage.json",
@@ -113,7 +112,6 @@ function getMessageList(){
 		success : function(data, status, xhr) {
 			switch(data.result){
 			    case COMMON_SUCCESS:
-					console.log(data);
 			    	messageListGrid.setData(data.resultList);
 			    	break;    
 			    case COMMON_FAIL:
@@ -130,12 +128,13 @@ function getMessageList(){
 // 메시지 상세내용 정보보기
 function selectMessageInfoDetail(messageCode){
 	var parentData={
-			messageCode:messageCode	 		// 스터디 그리드에서 선택한 studyCode를 팝업으로 보낼 데이터에 넣음
+			messageCode:messageCode,	 		// 스터디 그리드에서 선택한 studyCode를 팝업으로 보낼 데이터에 넣음
+			status:"sendMessage"
 		}
 		
 	messageInfoModal.open({
 		width: 800,
-		height: 700,
+		height: 750,
 		iframe: {
 			method: "post",
 			url: "/message/messageInfoDetailPopup.do",

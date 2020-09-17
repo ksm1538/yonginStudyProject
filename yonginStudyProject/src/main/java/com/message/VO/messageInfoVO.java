@@ -2,15 +2,15 @@ package com.message.VO;
 
 public class messageInfoVO {
 
-	String	userCodeFrom = "";
-	String 	userCodeTo = "";
-	String 	messageCode = "";
-	String 	messageTitle = "";
-	String 	messageDesc = "";
-	String	messageTime = "";
-	int totalCount;
-	int messageCodeSize;
-	String[] messageCodes;
+	private String	userCodeFrom = "";
+	private String 	userCodeTo = "";
+	private String 	messageCode = "";
+	private String 	messageTitle = "";
+	private String 	messageDesc = "";
+	private String	messageTime = "";
+	private int totalCount;
+	private int messageCodeSize;
+	private String[] messageCodes;
 	
 	public String[] getMessageCodes() {
 		return messageCodes;

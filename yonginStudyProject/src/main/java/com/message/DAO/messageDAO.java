@@ -17,4 +17,6 @@ public interface messageDAO {
 	public List<messageInfoVO> selectSendMessageList(String userCode);
 
 	public messageInfoVO selectMessageInfoDetail(String messageCode);
+	
+	public int selectUserExistCount(String userId);
 }

@@ -50,4 +50,10 @@ public class messageServiceImpl implements messageService{
 	public messageInfoVO selectMessageInfoDetail(String messageCode) {
 		return messageDAO.selectMessageInfoDetail(messageCode);
 	}
+	
+	@Override
+	public int selectUserExistCount(String userId) {
+		return messageDAO.selectUserExistCount(userId);
+	}
+	
 }

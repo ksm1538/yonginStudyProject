@@ -11,12 +11,18 @@ $(document).ready(function () {
 	    height: 250,        
 	    codeviewFilter: true,
 		codeviewIframeFilter: true,   
-		disableDragAndDrop: true
+		disableDragAndDrop: true,
+		toolbar:[]
 	});	
 	
+	$('#messageDesc').summernote('disable');
 	messageInfoDetailBinder.setModel({}, $(document["messageInfoDetailForm"]));
 	
 	selectMessageInfoDetail(parentData.messageCode);
+	
+	if(parentData.status != "receiveMessage"){
+		$('#replyMessageBtn').hide();
+	}
 	
 });
 /** 초기화(끝) **/
@@ -41,15 +47,9 @@ function selectMessageInfoDetail(messageCode){
 			    	messageInfoDetailBinder.setModel(data.messageInfo);
 			    	$('#messageDesc').summernote('code', data.messageInfo.messageDesc);
 			    	
-			    	// 쪽지 보낸사람이 현재 접속한 사용자 일 때
-			    	if(rgstusIdCode != data.studyInfo.messageCodeFrom){
-			    		// 쪽지 보내기로 바꿔주고
+			    	if(parentData.status == "receiveMessage"){
+			    		parentData["userCodeFrom"] = data.messageInfo.userCodeFrom;
 			    	}
-			    	// 쪽지 받은사람이 현재 접속한 사용자 일 때 
-			    	else if(rgstusIdCode == data.studyInfo.messageCodeFrom){
-			    		//답장하기로 바꿔주고
-			    	}
-			    	
 			    	break;    
 			    case COMMON_FAIL:
 			    	dialog.alert(data.message); 

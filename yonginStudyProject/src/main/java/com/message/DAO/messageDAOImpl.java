@@ -44,4 +44,9 @@ public class messageDAOImpl implements messageDAO{
 	public messageInfoVO selectMessageInfoDetail(String messageCode) {
 		return sqlSession.selectOne("messageMapper.selectMessageInfoDetail", messageCode);
 	}
+	
+	@Override
+	public int selectUserExistCount(String userId) {
+		return sqlSession.selectOne("messageMapper.selectUserExistCount", userId);
+	}
 }
