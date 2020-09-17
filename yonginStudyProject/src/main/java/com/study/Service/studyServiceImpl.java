@@ -21,7 +21,11 @@ public class studyServiceImpl implements studyService{
 	
 	@Override
 	public void insertStudy(studyInfoVO data) throws Exception{ 
+		//스터디 생성하고
 		studyDAO.insertStudy(data);
+		
+		//스터디에 가입시켜줌
+		studyDAO.insertUserInStudy(data);
 	}
 	
 	@Override

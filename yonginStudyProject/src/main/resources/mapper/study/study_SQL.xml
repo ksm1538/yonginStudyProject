@@ -13,7 +13,11 @@
 		]]>
 	</select>
 	
-	<insert id="insertStudy"> 
+	<insert id="insertStudy" parameterType="com.main.VO.studyInfoVO"> 
+		<selectKey resultType="string" keyProperty="studyCode" order="BEFORE">
+       		SELECT	('STUDY_' || LPAD(study_seq.nextval,8,0))	FROM 	DUAL     
+   		</selectKey>
+   		
 		<![CDATA[
 			INSERT 
 			INTO	STUDY_INFO
@@ -27,7 +31,7 @@
 				,	USE_YN
 				) 
 			VALUES	
-				(	('STUDY_' || LPAD(study_seq.nextval,8,0))
+				(	#{studyCode}
 				,	#{studyName}
 				,	#{studyDesc}
 				,	#{studyTopic}
@@ -39,6 +43,27 @@
 		]]>
 	</insert>
 	
+	<insert id="insertUserInStudy">
+		<![CDATA[
+			INSERT
+			INTO	USER_IN_STUDY
+				 (	USER_CODE
+				 ,	STUDY_CODE
+				 ,	USER_POSITION
+				 ,	USE_YN
+				 ,	RGDT_DT
+				 ,	UPDT_DT
+				 )
+			VALUES
+				(	#{studyRgstusId}
+				,	#{studyCode}
+				,	'MASTER'
+				,	'Y'
+				,	sysdate
+				,	sysdate
+				)
+		]]>
+	</insert>
 	<select id="selectStudyList" resultType="com.main.VO.studyInfoVO"> 
 		<![CDATA[
 			SELECT	STUDY_INFO.STUDY_CODE 	as studyCode

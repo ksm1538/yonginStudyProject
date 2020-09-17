@@ -1,5 +1,6 @@
 var myParcitipateListGrid= new ax5.ui.grid();
 var myMakeListGrid= new ax5.ui.grid();
+var myApplicationFormGrid = new ax5.ui.grid();
 var emailFixYn = "N";
 
 $(document).ready(function () {
@@ -10,7 +11,11 @@ $(document).ready(function () {
         showLineNumber: false,
         //showRowSelector: true,
         columns: [ 
-			{key : "studyTopic", label: "주제", align: "center", width:"45%", sortable: true},
+			{key : "studyTopic", label: "주제", align: "center", width:"45%", sortable: true,
+    			formatter:function(){
+    			    return studySxnMap[this.value];
+    			}
+			},
         	{key : "studyName", label: "스터디 이름", align: "center", width:"45%"},
         	{key : "dropStudy", label: "탈퇴", align: "center", width:"10%"},
         ],
@@ -44,15 +49,17 @@ $(document).ready(function () {
             },
         });
 
-
-
 	//내가 만든 스터디 리스트 관리
 	myMakeListGrid.setConfig({   
     	target: $('[data-ax5grid="myMakeListGrid"]'),
         showLineNumber: false,
         //showRowSelector: true,
         columns: [ 
-			{key : "studyTopic", label: "주제", align: "center", width:"45%", sortable: true},
+			{key : "studyTopic", label: "주제", align: "center", width:"45%", sortable: true,
+    			formatter:function(){
+    			    return studySxnMap[this.value];
+    			}
+			},
         	{key : "studyName", label: "스터디 이름", align: "center", width:"45%"},
         	{key : "manageStudy", label: "관리", align: "center", width:"10%"},
         ],
@@ -86,6 +93,66 @@ $(document).ready(function () {
             },
         });
 
+	// 나의 스터디 신청서 내역 목록
+	myApplicationFormGrid.setConfig({   
+    	target: $('[data-ax5grid="myApplicationFormGrid"]'),
+        showLineNumber: false,
+        //showRowSelector: true,
+        columns: [ 
+        	{key : "title", label: "신청서 제목", align: "center", width:"40%"},
+        	
+			{key : "studyName", label: "스터디 이름", align: "center", width:"40%"},
+        	
+			{key : "status", label: "상태", align: "center", width:"10%",formatter:function(){
+        		if(this.value == "10"){
+        			return applicationFormStatusMap[this.value];
+        		}
+        		else if(this.value == "30"){
+					return "<span style="+"font-weight:bold;color:green;"+">"+applicationFormStatusMap[this.value]+"</span>";
+				}
+        		else if(this.value == "30"){
+					return "<span style="+"font-weight:bold;color:red;"+">"+applicationFormStatusMap[this.value]+"</span>";
+				}
+			}},
+        	{key : "dropStudy", label: "취소", align: "center", width:"10%", 
+       		 formatter: function (){
+       			 if(this.item.status == "10"){
+       				 return '<button type="button" onclick="dropStudyForm(' + this.item.applicationFormCode + ')">취소</button>';
+       			 }else{
+       				 return "";
+       			 }
+    		 }},
+        ],
+        header: {
+        	align:"center",
+        	selector: false
+        },
+        body: {
+                    align: "left",
+                    columnHeight: 45,
+                    
+                    onClick: function () 	{
+                    
+					},
+					onDataChanged: function(){
+						
+					},
+                },
+        
+        page: {
+            navigationItemCount: 9,
+            height: 30,
+            display: true,
+            firstIcon: '|<', 
+            prevIcon: '<',
+            nextIcon: '>',
+            lastIcon: '>|',
+            display: false,
+            onChange: function () {
+                },
+            },
+        });
+	
 		getStudyMadeByMeList();
 		getParticipateStudyList();
 

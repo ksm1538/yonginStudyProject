@@ -22,5 +22,7 @@ public interface studyDAO {
 	public void updateStudyApplicationFormUser(studyApplicationFormUserVO studyApplicationFormUserVO);
 	
 	public studyApplicationFormUserVO selectStudyApplicationForm(studyApplicationFormUserVO studyApplicationFormUserVO);
+
+	public void insertUserInStudy(studyInfoVO data);
 }
  

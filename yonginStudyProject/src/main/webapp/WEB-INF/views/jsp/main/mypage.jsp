@@ -22,6 +22,30 @@
 <script type="text/javascript" src="/resources/js/main/myPage.js"></script>
 <script>
 var currentUserEmail = '${currentUser.userEmail}';
+
+//그리드에 출력될 스터디 신청서 상태 코드 값 설정
+var applicationFormStatusList = [
+    <c:forEach var="result" items="${applicationFormStatusArray}" varStatus="status">
+        {codeId:"${result.codeId}", codeValue:"${result.codeValue}"}<c:if test="${!status.last}">,</c:if>
+    </c:forEach> 	
+    ];
+
+var applicationFormStatusMap = {};
+applicationFormStatusList.forEach(function(n){
+	applicationFormStatusMap[n.codeId] = n.codeValue;
+}); 
+
+//그리드에 출력될 스터디 주제 코드 값 설정
+var studySxnList = [
+    <c:forEach var="result" items="${studyTopicArray}" varStatus="status">
+        {codeId:"${result.codeId}", codeValue:"${result.codeValue}"}<c:if test="${!status.last}">,</c:if>
+    </c:forEach> 	
+    ];
+
+var studySxnMap = {};
+studySxnList.forEach(function(n){
+	studySxnMap[n.codeId] = n.codeValue;
+}); 
 </script>
 
 <head>
@@ -117,6 +141,17 @@ var currentUserEmail = '${currentUser.userEmail}';
                <div class="tc modify_btn_con">
                   <input class="btn_style_1" type="button" value="관리하기 " onclick="openstudyManagementForm();">
                </div>
+               
+            </div>
+         </div>
+         
+         <div class="col-9 mypage_content_con">
+            <div class="col-12 my_make_list">
+               <div class="mypage_content_title" id="list3"><span>나의 신청 내역</span></div>
+               
+               	<div class="my_make_study"style="width: 100%;" >  
+	  				<div data-ax5grid="myApplicationFormGrid" data-ax5grid-config="{}" style="height:300px; padding-top:10px; padding-right:10px"></div>  
+				</div>
                
             </div>
          </div>

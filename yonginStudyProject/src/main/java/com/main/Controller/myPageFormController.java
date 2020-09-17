@@ -6,7 +6,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.commonCode.Service.commonCodeService;
+import com.commonCode.VO.commonCodeVO;
 import com.commonFunction.Controller.yonginFunction;
 import com.login.Service.loginService;
 import com.login.VO.userInfoVO;
@@ -55,9 +55,10 @@ public class myPageFormController {
 	
 	/**
 	 * 마이페이지 팝업 Mapping
+	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/myPage.do", method = RequestMethod.GET)
-	public String myPageForm(Model model, HttpSession session) {
+	public String myPageForm(Model model, HttpSession session) throws Exception {
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(시작) **/
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
 
@@ -67,10 +68,17 @@ public class myPageFormController {
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
 		
 		
+		
+		//model 변수에 데이터를 담아 jsp에 전달
 		String userCode = user.getUserCode();
 		userInfoVO userInfoVO = myPageService.selectUserInfoData(userCode);
+		List<commonCodeVO> codeResult1 = commonCodeService.selectCommonCodeList("SAFStatus");
+		List<commonCodeVO> codeResult2 = commonCodeService.selectCommonCodeList("studyTopic");
+		
 		model.addAttribute("userInfoVO", new userInfoVO());
 		model.addAttribute("currentUser", userInfoVO);
+		model.addAttribute("applicationFormStatusArray", codeResult1);
+		model.addAttribute("studyTopicArray", codeResult2);
 		return "jsp/main/mypage";
 	}
 
@@ -181,7 +189,6 @@ public class myPageFormController {
 		if(user == null) {
 			mReturn.put("result", "fail");
 			mReturn.put("message", "잘못된 접근입니다.");
-			System.out.println("끼요오오오오옷");
 			return mReturn;
 		}
 		

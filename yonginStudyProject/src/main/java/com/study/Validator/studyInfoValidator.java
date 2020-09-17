@@ -1,7 +1,5 @@
 package com.study.Validator;
 
-import java.util.regex.Pattern;
-
 import javax.inject.Inject;
 
 import org.springframework.context.MessageSource;
@@ -38,11 +36,6 @@ public class studyInfoValidator implements Validator{
 			error.rejectValue("studyName", "", "½ºÅÍµğ ÀÌ¸§À» 5~30ÀÚ·Î ¼³Á¤ÇØÁÖ¼¼¿ä.");
 		}
 		
-		//½ºÅÍµğ ÀÌ¸§ ¿µ¾î, ¼ıÀÚ, ÇÑ±Û È®ÀÎ
-		boolean flag = Pattern.matches("^[a-zA-Z0-9°¡-ÆR\s]*$", studyInfoVO.getStudyName());
-   	    if(flag == false) {
-   	    	error.rejectValue("studyName","", "½ºÅÍµğ ÀÌ¸§Àº ¿µ¾î, ¼ıÀÚ, ÇÑ±Û¸¸ ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
-   	    }
    	    /** ½ºÅÍµğ ÀÌ¸§ °ËÁõ(³¡) **/
    	    
    	    /** ½ºÅÍµğ ¼³¸í °ËÁõ(½ÃÀÛ) **/
