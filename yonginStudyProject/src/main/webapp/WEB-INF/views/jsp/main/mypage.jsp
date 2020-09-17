@@ -49,67 +49,46 @@ var currentUserEmail = '${currentUser.userEmail}';
                <div class="mypage_content_title" id="list1"><span>개인 정보 수정</span></div>
                
                <form:form method="POST" modelAttribute="userInfoVO" name="changeInfoForm" id="changeInfoForm">
-               <div class="modify_line_con">
-                  <div class="modify_line">
-                     <div class="modify_name modify_con">
-                     <div class="title_size type_5">이름</div>
-                     <form:input path ="userName" type="text" id="userName" class="textbox_style_1" value='${currentUser.userName }' readonly="true"/>
-                     </div>
-               
-               		 <div class="modify_id modify_con">
-                     <div class="title_size type_5">아이디</div>
-                     <form:input path ="userId" type="text" id="userId" class="textbox_style_1" value='${currentUser.userId }' readonly="true"/>
-                     </div>
-                     
-                    
-                  </div>
-               
-                  <div class="modify_line">
-                     <div class="modify_phonenumber modify_con">
-                     <div class="title_size type_5">전화번호</div>
-                     <form:input path="userPhoneNumber" type="text" id="userPhoneNumber" class="textbox_style_1" value='${currentUser.userPhoneNumber }' maxlength="13"/>
-                     </div>
-                     
-                     <div class="modify_phonenumber modify_con">
-                     <div class="title_size type_5">주소</div>
-                     <form:input path="userAddress" type="text" name="userAddress" id="userAddress" class="textbox_style_1" readonly="true" placeholder="주소 검색을 클릭하세요." value='${currentUser.userAddress }' />
-					 <input type="button" value="주소 검색" class="btn_style_1" onclick="addressPopup()" >
-                     </div>
-                  
-                  </div>
-                  
-                  <div class="modify_line">
-						
-					 <div class="modify_phonenumber modify_con">
-					 <div class="title_size type_5">이메일</div>
-					 <div class="register_input_con">
-						<form:input path="userEmail" type="text" name="userEmail" id="userEmail" class="textbox_style_1" value='${currentUser.userEmail }'/>
-						<input type="button" value="인증번호 전송" id="initSendMailBtn" class="btn_style_1 type_2" onclick="sendAuthCode()" >
-						<input type="button" value="재전송" id="reSendMailBtn"  class="btn_style_1" onclick="sendAuthCode()" >
-						<input type="button" value="이메일 변경" id="resetMailBtn"  class="btn_style_1" onclick="resetAuthCode()" >
-					 </div>
-					 </div>	
-                     
-                  </div>
-                  
-                  <div class="modify_line">
-                 	<div class="modify_phonenumber modify_con" id="emailCodeDiv">
-						<div class="title_size type_5">인증번호 </div>
-						<div class="register_input_con">
-							<input type="text" name="emailCode" id="emailCode" class="textbox_style_1"/>
-							<input type="button" id="authCodeBtn" value="인증하기" class="btn_style_1" onclick="checkAuthCode()" >
-						</div>
-					</div>
-				</div>
-				
-               </div>
-               </form:form>
-               <div class="tc modify_btn_con">
-                  <input class="btn_style_1" type="button" value="수정하기" onclick="changeUserInfo()">
-                  <input class="btn_style_1 type_2" type="button" value="비밀번호 변경" onclick="changePw()">
-               </div>
-            </div>
+                    <div class="col-6 modify_line_left_con">
+               			<div class="modify_name modify_con first_line_right">
+                     		<div class="title_size type_5">이름</div>
+                    		<form:input path ="userName" type="text" id="userName" class="textbox_style_1" value='${currentUser.userName }' readonly="true"/>
+                     	</div>
+                      	<div class="modify_id modify_con">
+                   	 		<div class="title_size type_5">아이디</div>
+                   	 		<form:input path ="userId" type="text" id="userId" class="textbox_style_1" value='${currentUser.userId }' readonly="true"/>
+                   	 		<input class="btn_style_1 type_2" type="button" value="비밀번호 변경" onclick="changePw()">
+               			</div>
+                		 <div class="modify_phonenumber modify_con">
+					 		<div class="title_size type_5">이메일</div>
+					 		<div class="register_input_con">
+								<form:input path="userEmail" type="text" name="userEmail" id="userEmail" class="textbox_style_1" value='${currentUser.userEmail }'/>
+								<input type="button" value="인증번호 전송" id="initSendMailBtn" class="btn_style_1 type_2" onclick="sendAuthCode()" >
+								<input type="button" value="재전송" id="reSendMailBtn"  class="btn_style_1" onclick="sendAuthCode()" >
+								<input type="button" value="이메일 변경" id="resetMailBtn"  class="btn_style_1" onclick="resetAuthCode()" >
+					 		</div>
+						</div>	
+               	   </div>    	                        	               	
+               	   <div class="col-6 modify_line_right_con">
+               	  		<div class="modify_phonenumber modify_con first_line_left">
+                     		<div class="title_size type_5">전화번호</div>
+                     		<form:input path="userPhoneNumber" type="text" id="userPhoneNumber" class="textbox_style_1" value='${currentUser.userPhoneNumber }' maxlength="13"/>
+                    	</div>
+                    	<div class="modify_phonenumber modify_con">
+                     		<div class="title_size type_5">주소</div>
+                     		<form:input path="userAddress" type="text" name="userAddress" id="userAddress" class="textbox_style_1" readonly="true" placeholder="주소 검색을 클릭하세요." value='${currentUser.userAddress }' />
+					 		<input type="button" value="주소 검색" class="btn_style_1 type_2" onclick="addressPopup()" >
+               			</div>
+                       
+            	    </div>
+            	    
+            	  <div class="tc col-12 modify_btn_con">
+                  	<input class="btn_style_1" type="button" value="수정하기" onclick="changeUserInfo()">
+           	  	  </div>               	                            	                			
+               </form:form>              
+             </div>                           
          </div>
+          
         
          
          

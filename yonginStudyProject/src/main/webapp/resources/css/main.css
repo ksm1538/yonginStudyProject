@@ -178,32 +178,31 @@ html, body {
 .calender > tbody > tr > th {width:100px;}
 .cal_day{text-align: center;}
 
-
+/* #31aae2;  #CAB0F1;  */
 
 /*마이페이지*/
 .mypage_list_con{background-color:#CAB0F1; height:100%; padding:20px 20px; }
-.mypage_list_con .mypage_list > li{font-size:20px; font-weight:bold; color:#fff; margin-bottom:50px; margin-top:50px;}
-.mypage_list_con .mypage_list > li:hover{color:#31aae2;}
-.mypage_list_con .mypage_list > li > a{cursor:pointer;}
+.mypage_list_con .mypage_list > li{font-size:20px; font-weight:bold; margin-bottom:50px; margin-top:50px;}
+.mypage_list_con .mypage_list > li > a{cursor:pointer; color:#fff;}
+.mypage_list_con .mypage_list > li > a:hover{color:#31aae2; text-decoration:none;}
 .mypage_list_title{padding-bottom:20px; margin-bottom:20px; border-bottom:2px solid #fff; width:auto; font-size:25px; font-weight:bold; color:#fff;}
 
 .mypage_content_con{padding:50px 50px;}
 .mypage_content_con .mypage_content_title{margin-bottom:80px;}
 .mypage_content_con .mypage_content_title > span{display:inline-block; padding-bottom:15px; font-size:30px; font-weight:bold; border-bottom:3px solid #31aae2; }
 
-.user_info_modify, .my_participate_list, .my_make_list{border-bottom:3px solid #CAB0F1; padding-bottom:50px; margin-bottom:50px;}
+.user_info_modify, .my_participate_list, .my_make_list{border-bottom:3px solid #CAB0F1; padding-bottom:50px;}
 
-.modify_line_con{margin-bottom:80px;}
-.modify_line{display:flex; margin-bottom:50px;}
-.modify_line:last-child{margin-bottom:0;}
-.modify_con{display:flex; margin-right:120px;}
-.modify_phonenumber .title_size, .modify_pw .title_size{margin-right:40px;}
-
+.modify_line_right_con{padding-left: 100px;}
+.modify_con{display:flex; margin-bottom:30px;}
+.modify_con .textbox_style_1{margin-right:40px;}
+.modify_btn_con{margin-top:50px;}
 
 .mypage_content_con .my_participate_study{margin-bottom:50px;}
 .mypage_content_con .my_make_study{margin-bottom:50px;}
 
 .mypage_top_btn_con{width:75px; height:75px; border-radius:50px; background-color:#CAB0F1; position:fixed; left:92%; top:20%;}
+.mypage_top_btn_con:hover{background-color:#31aae2; }
 .mypage_top_btn_con >a{display:block; transform: rotate(270deg); width:50px; height:50px; margin-left:12px; margin-top:12px; cursor:pointer;}
 
 
@@ -257,8 +256,8 @@ html, body {
 .message_list_wrap .content_title{padding: 0 0; margin-bottom:40px;}
 .message_page_list_con{background-color:#CAB0F1; height:100%; padding:20px 20px; }
 .message_page_list_con .message_list > li{font-size:20px; font-weight:bold; color:#fff; margin-bottom:50px; margin-top:50px;}
-.message_page_list_con .message_list > li:hover{color:#31aae2;}
-.message_page_list_con .message_list > li > a{cursor:pointer;}
+.message_page_list_con .message_list > li > a{cursor:pointer; color:#fff;}
+.message_page_list_con .message_list > li > a:hover{color:#31aae2; text-decoration:none;}
 .message_list_title{padding-bottom:20px; margin-bottom:20px; border-bottom:2px solid #fff; width:auto; font-size:25px; font-weight:bold; color:#fff;}
 
 
