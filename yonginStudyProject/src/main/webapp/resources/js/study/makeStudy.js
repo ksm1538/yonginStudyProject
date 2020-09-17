@@ -8,6 +8,14 @@ $(document).ready(function () {
     	document.getElementById("nameYnIcon").className = "fa fa-times-circle";
 	});
 	
+	//summernote editor
+	$('#studyDesc').summernote({           
+	    height: 150,        
+	    codeviewFilter: true,
+		codeviewIframeFilter: true,   
+		disableDragAndDrop: true
+	});	
+	
 
 });
 
@@ -18,14 +26,7 @@ function makeStudyFunc(){
 		dToast.push("스터디 이름 중복체크를 해주세요.");
 		return;
 	}
-	
-	/*var sendData={
-		studyName:document.getElementById("studyName").value,
-		studyTopic:$('#studyTopic option:selected').val(),
-		studyArea:document.getElementById("studyArea").value,
-		studyLimit:$('#studyLimit option:selected').val(),
-		studyDesc:document.getElementById("studyDesc").value
-	}*/
+
 	var sendData = $('#studyMakeForm').serialize();
 	
 	console.log(sendData); 

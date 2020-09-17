@@ -24,6 +24,7 @@
 				,	STUDY_LIMIT
 				,	STUDY_RGSTUS_ID
 				,	STUDY_AREA
+				,	USE_YN
 				) 
 			VALUES	
 				(	('STUDY_' || LPAD(study_seq.nextval,8,0))
@@ -33,6 +34,7 @@
 				,	#{studyLimit}
 				,	#{studyRgstusId}
 				,	#{studyArea}
+				,	'Y'
 				)
 		]]>
 	</insert>

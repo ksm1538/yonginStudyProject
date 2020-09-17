@@ -17,7 +17,15 @@ public class messageServiceImpl implements messageService{
 	
 	@Override
 	public void deleteMessage(messageInfoVO data) throws Exception{
-		messageDAO.deleteMessage(data);
+		for(int i=0;i<data.getMessageCodeSize();i++)
+		{
+			messageDAO.deleteMessage(data);
+		}
+	}
+	
+	@Override
+	public void deleteSendMessage(messageInfoVO data) throws Exception{
+		messageDAO.deleteSendMessage(data);
 	}
 	
 	@Override
@@ -27,6 +35,11 @@ public class messageServiceImpl implements messageService{
 	
 	@Override
 	public List<messageInfoVO> selectMessageList(){
+		return messageDAO.selectMessageList();
+	}
+	
+	@Override
+	public List<messageInfoVO> selectSendMessageList(){
 		return messageDAO.selectMessageList();
 	}
 }

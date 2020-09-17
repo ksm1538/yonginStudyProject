@@ -1,3 +1,16 @@
+/** 초기화(시작) **/
+$(document).ready(function () {
+	//summernote editor
+	$('#messageDesc').summernote({           
+	    height: 150,        
+	    codeviewFilter: true,
+		codeviewIframeFilter: true,   
+		disableDragAndDrop: true
+	});	
+	
+});
+/** 초기화(끝) **/
+
 /**
  * 쪽지 보내기
  */

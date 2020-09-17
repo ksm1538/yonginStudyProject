@@ -52,8 +52,8 @@ $(document).ready(function () {
 
 
 
-/*쪽지 삭제*/
-function deleteMessage(){
+/*보낸 쪽지 삭제*/
+function deleteSendMessage(){
 	var sendData={
 		studyName:document.getElementById("studyName").value,
 		studyRgstusId:document.getElementById("studyRgstusId").value,
@@ -66,7 +66,7 @@ function deleteMessage(){
 	console.log(sendData); 
 	  $.ajax({
 	     type: "POST",
-	     url : "/deleteMessage.json",
+	     url : "/deleteSendMessage.json",
 	     data: JSON.stringify(sendData),
 	     dataType: "json",
 	     contentType: "application/json; charset=UTF-8",
@@ -103,7 +103,7 @@ function getMessageList(){
 	
 	$.ajax({
  		type: "POST",
- 		url : "/selectMessageList.json",
+ 		url : "/selectSendMessageList.json",
 		contentType: "application/json; charset=UTF-8",
 		async: false,
 		success : function(data, status, xhr) {

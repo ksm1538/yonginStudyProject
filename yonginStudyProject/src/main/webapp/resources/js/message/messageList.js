@@ -55,15 +55,13 @@ function openSendMessageForm(){
 	location.href ="/sendMessage.do";
 }
 
-/*쪽지 삭제*/
+/*받은 쪽지 삭제*/
 function deleteMessage(){
-	var sendData={
-		studyName:document.getElementById("studyName").value,
-		studyRgstusId:document.getElementById("studyRgstusId").value,
-		studyTopic:$('#studyTopic option:selected').val(),
-		studyArea:$('#studyArea option:selected').val(),
-		studyLimit:$('#studyLimit option:selected').val(),
-		studyDesc:document.getElementById("studyDesc").value
+	var sendData = {
+		messageCode:messageListGrid.getList('selected')
+	}
+	for(var i=0;i<sendData.length;i++){
+    console.log(sendData[i].messageCode);  
 	}
 	
 	console.log(sendData); 

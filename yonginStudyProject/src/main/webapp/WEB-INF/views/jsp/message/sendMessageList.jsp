@@ -34,7 +34,9 @@
 	  			<div data-ax5grid="messageListGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
 			</div> 
 			
-			
+			<div class="message_btn">
+				<input type="button" value="쪽지 삭제하기" class="btn_style_1 type_3" onclick="deleteSendMessage();">
+			</div>
 		
         </div>
 </body>

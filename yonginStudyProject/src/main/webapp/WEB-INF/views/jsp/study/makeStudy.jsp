@@ -54,7 +54,7 @@
             <div class="title_size type_2">스터디 종류</div>
             <div class="make_study_input_con">
             	<select name="studyTopic" id="studyTopic" class="select_style_0" >
-					<c:forEach var="result" items="${studyType}" varStatus="status">
+					<c:forEach var="result" items="${studyTopic}" varStatus="status">
 						<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
 					</c:forEach>
            		</select>
@@ -73,10 +73,13 @@
             <div class="title_size type_2">모집 인원</div>
             <div class="make_study_input_con">
             	  <select name="studyLimit" id="studyLimit" class="select_style_0" >
-                	<c:forEach var="result" items="${studyLimit}" varStatus="status">
-						<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
-					</c:forEach>
-           		   </select>
+                	<option value="5">5명</option>
+                	<option value="10">10명</option>
+                	<option value="15">15명</option>
+                	<option value="20">20명</option>
+                	<option value="25">25명</option>
+                	<option value="30">30명</option>
+           		  </select>
             </div>
          </div>
          

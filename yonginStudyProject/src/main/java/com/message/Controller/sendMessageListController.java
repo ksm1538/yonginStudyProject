@@ -51,4 +51,51 @@ public class sendMessageListController {
 		
 		return "jsp/message/sendMessageList";
 	}
+	
+	/**
+	 * 메시지 삭제
+	 * @param messageInfoVO
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/deleteSendMessage.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> messageDeleteAjaxFunction(@RequestBody messageInfoVO messageInfoVO) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+	      
+		
+		//벨리데이터 추가
+		messageService.deleteSendMessage(messageInfoVO);
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "성공적으로 삭제되었습니다.");
+		
+		return mReturn;
+	}
+	
+	/**
+	 * 쪽지 리스트 조회
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/selectSendMessageList.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> selectMessageList(HttpServletRequest request) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+	      
+		List<messageInfoVO> ltResult = messageService.selectSendMessageList();
+		
+		if(ltResult.size() < 1) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "쪽지 목록이 없습니다.");
+		}
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "조회 성공하였습니다.");
+		mReturn.put("resultList", ltResult);
+		
+		return mReturn;
+	}
 }

@@ -8,8 +8,16 @@
 	
 	<delete id="deleteMessage"> 
 		<![CDATA[
-			DELETE 
-			FROM	USER_MESSAGE_INFO
+			UPDATE USER_MESSAGE
+			SET USE_YN_TO	=	'N'
+			WHERE	MESSAGE_CODE	=	#{messageCode}
+		]]>
+	</delete>
+	
+	<delete id="deleteSendMessage"> 
+		<![CDATA[
+			UPDATE USER_MESSAGE
+			SET USE_YN_FROM	=	'N'
 			WHERE	MESSAGE_CODE	=	#{messageCode}
 		]]>
 	</delete>
@@ -25,6 +33,8 @@
 				,	MESSAGE_TITLE
 				,	MESSAGE_DESC
 				,	MESSAGE_TIME
+				,	USE_YN_TO
+				,	USE_YN_FROM
 				)  
 			VALUES	
 				(	
@@ -37,6 +47,8 @@
 				,	#{messageTitle}
 				,	#{messageDesc}
 				,	sysdate
+				,	'Y'
+				,	'Y'
 				)
 		]]>
 	</insert>
@@ -58,6 +70,28 @@
 		FROM	USER_MESSAGE,
 				USER_INFO
 		WHERE	USER_MESSAGE.USER_CODE_TO		=	USER_INFO.USER_CODE
+			AND	USER_MESSAGE.USE_YN_TO			=	'Y'
+		]]>
+	</select>
+	
+	<select id="selectSendMessageList" resultType="com.message.VO.messageInfoVO"> 
+		<![CDATA[
+			SELECT	(	SELECT USER_ID
+						FROM USER_INFO
+						WHERE USER_INFO.USER_CODE	=	USER_MESSAGE.USER_CODE_FROM
+					)	as userCodeFrom
+			 ,	USER_INFO.USER_ID 	as userCodeTo
+			 ,	USER_MESSAGE.MESSAGE_CODE 	as messageCode
+			 ,	USER_MESSAGE.MESSAGE_TITLE 	as messageTitle
+			 ,	USER_MESSAGE.MESSAGE_DESC 	as messageDesc
+			 ,	TO_CHAR(USER_MESSAGE.MESSAGE_TIME, 'YYYY-MM-DD HH24:MI:SS') 	as messageTime
+			 ,	(SELECT	COUNT(*)		
+			 	FROM	USER_MESSAGE
+			 	WHERE	USER_MESSAGE.USER_CODE_TO	=	USER_INFO.USER_CODE)	as totalCount
+		FROM	USER_MESSAGE,
+				USER_INFO
+		WHERE	USER_MESSAGE.USER_CODE_TO		=	USER_INFO.USER_CODE
+			AND	USER_MESSAGE.USE_YN_FROM		=	'Y'
 		]]>
 	</select>
 	

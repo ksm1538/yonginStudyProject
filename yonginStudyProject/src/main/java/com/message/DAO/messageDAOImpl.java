@@ -21,13 +21,23 @@ public class messageDAOImpl implements messageDAO{
 	}
 	
 	@Override
-	public void sendMessage(messageInfoVO data) throws Exception{
-		sqlSession.insert("messageMapper.sendMessage", data);
+	public void deleteSendMessage(messageInfoVO data) throws Exception{
+		sqlSession.delete("messageMapper.deleteSendMessage", data);
 	}
 	
 	
 	@Override
+	public void sendMessage(messageInfoVO data) throws Exception{
+		sqlSession.insert("messageMapper.sendMessage", data);
+	}
+	
+	@Override
 	public List<messageInfoVO> selectMessageList(){
 		return sqlSession.selectList("messageMapper.selectMessageList");
+	}
+	
+	@Override
+	public List<messageInfoVO> selectSendMessageList(){
+		return sqlSession.selectList("messageMapper.selectSendMessageList");
 	}
 }

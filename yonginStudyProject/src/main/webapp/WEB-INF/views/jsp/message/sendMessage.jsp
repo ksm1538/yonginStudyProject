@@ -49,7 +49,7 @@ request.setCharacterEncoding("UTF-8");
      		   <div class="tc summer_note_con">
      		   		<div class="title_size type_2">내용</div>
      		   		<div class="summer_note">
-     		   			<textarea name="studyDesc" id="studyDesc" cols="20" rows="10" placeholder="스터디에 대한 설명을 입력해주세요."></textarea>
+     		   			<textarea name="messageDesc" id="messageDesc" cols="20" rows="10" placeholder="스터디에 대한 설명을 입력해주세요."></textarea>
      		   		</div>
      		   		
      		   </div>

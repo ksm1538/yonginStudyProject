@@ -9,8 +9,12 @@ public interface messageService {
 
 	void deleteMessage(messageInfoVO data) throws Exception;
 	
+	void deleteSendMessage(messageInfoVO data) throws Exception;
+	
 	void sendMessage(messageInfoVO data) throws Exception;
 	
 	List<messageInfoVO> selectMessageList();
+	
+	List<messageInfoVO> selectSendMessageList();
 	
 }
