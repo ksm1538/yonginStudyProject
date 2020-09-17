@@ -36,7 +36,7 @@ request.setCharacterEncoding("UTF-8");
 		 <div class="send_message_con">
 		 
 		 	  <div class="send_message_form">
-    	        <div class="title_size type_2">받는 사람</div>
+    	        <div class="title_size type_2">받는 사람 ID</div>
     	        <input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1">
     	      </div>
     	      

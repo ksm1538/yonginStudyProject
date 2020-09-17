@@ -47,11 +47,11 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 					</div>
 					<div class="message_user_con">
 						<div class="send_user_con">
-						 	<div class="title_size">보낸 사람</div>
+						 	<div class="title_size">보낸 사람 ID</div>
 						 	<input type="text" id="userCodeFrom" name ="userCodeFrom" data-ax-path="userCodeFrom" class="textbox_style_1" readonly="true">
 						</div>
 						<div class="get_user_con">
-							 <div class="title_size">받는 사람</div>
+							 <div class="title_size">받는 사람 ID</div>
 							 <input type="text" id="userCodeTo" name ="userCodeTo" data-ax-path="userCodeTo" class="textbox_style_1"  readonly="true">
 						</div>
 					</div>
