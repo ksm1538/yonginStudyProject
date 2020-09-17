@@ -42,7 +42,7 @@ var studySxnList = [
     </c:forEach> 	
     ];
 
-var studySxnMap = {};
+var studySxnMap = {}; 
 studySxnList.forEach(function(n){
 	studySxnMap[n.codeId] = n.codeValue;
 }); 
