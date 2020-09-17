@@ -19,10 +19,13 @@
 				 ,	(SELECT	COUNT(*)		
 				 	 FROM	USER_IN_STUDY
 				 	 WHERE	USER_IN_STUDY.STUDY_CODE	=	STUDY_INFO.STUDY_CODE)	as totalCount
-			FROM	STUDY_INFO,
-					USER_INFO
-			WHERE	USER_INFO.USER_CODE		=	STUDY_INFO.STUDY_RGSTUS_ID
-				AND	STUDY_INFO.USE_YN		=	'Y'	
+			FROM	STUDY_INFO
+			WHERE	STUDY_INFO.USE_YN		=	'Y'	
+				AND	STUDY_INFO.STUDY_CODE 	IN	(SELECT STUDY_CODE
+												 FROM	USER_IN_STUDY
+												 WHERE	USER_CODE	=	#{userCode}
+												 	AND	USE_YN		=	'Y'
+												 )
 		]]>
 	</select>
 	

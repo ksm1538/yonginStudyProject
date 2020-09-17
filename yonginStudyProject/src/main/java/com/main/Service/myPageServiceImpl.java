@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.login.VO.userInfoVO;
 import com.main.DAO.myPageDAO;
 import com.main.VO.studyInfoVO;
+import com.study.VO.studyApplicationFormUserVO;
 
 @Service("myPageService")
 public class myPageServiceImpl implements myPageService{
@@ -32,5 +33,10 @@ public class myPageServiceImpl implements myPageService{
 	@Override
 	public List<studyInfoVO> selectParticipateStudyList(String userCode){
 		return myPageDAO.selectParticipateStudyList(userCode);
+	}
+	
+	@Override
+	public List<studyApplicationFormUserVO> selectMyStudyApplicationFormList(String userCode){
+		return myPageDAO.selectMyStudyApplicationFormList(userCode);
 	}
 }

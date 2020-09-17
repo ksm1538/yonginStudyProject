@@ -149,9 +149,9 @@
 				 ,	APPLICATION_FORM_DESC	as	applicationFormDesc
 				 ,	STATUS					as	status
 			FROM	STUDY_APPLICATION_FORM_USER
-			WHERE	USER_CODE		=	#{userCode}
-				AND	STUDY_CODE		=	#{studyCode}
-				AND	USE_YN			=	'Y'
+			WHERE	USER_CODE					=	#{userCode}
+				AND	APPLICATION_FORM_CODE		=	#{applicationFormCode}
+				AND	USE_YN						=	'Y'
 		]]>
 	</select>
 	

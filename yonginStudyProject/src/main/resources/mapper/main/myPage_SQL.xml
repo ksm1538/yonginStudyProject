@@ -60,4 +60,17 @@
 		]]>
 	</select>
 	
+	<select id="selectMyStudyApplicationFormList" resultType="com.study.VO.studyApplicationFormUserVO">
+		<![CDATA[
+			SELECT	STUDY_INFO.STUDY_NAME	as 	studyName
+				 ,	STUDY_APPLICATION_FORM_USER.TITLE	as	title
+				 ,	STUDY_APPLICATION_FORM_USER.STATUS	as	status
+				 ,	STUDY_APPLICATION_FORM_USER.APPLICATION_FORM_CODE	as	applicationFormCode
+			FROM	STUDY_APPLICATION_FORM_USER,
+					STUDY_INFO
+			WHERE	STUDY_APPLICATION_FORM_USER.STUDY_CODE		=	STUDY_INFO.STUDY_CODE
+				AND	STUDY_APPLICATION_FORM_USER.USER_CODE		=	#{userCode}
+				AND	STUDY_APPLICATION_FORM_USER.USE_YN			=	'Y'
+		]]>
+	</select>
 </mapper>

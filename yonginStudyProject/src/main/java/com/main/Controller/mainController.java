@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -64,11 +63,12 @@ public class mainController {
 	 */
 	@RequestMapping(value="/main/selectStudyList.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> selectStudyList(HttpServletRequest request) throws Exception {
+	public Map<String, Object> selectStudyList(HttpSession session) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
-	      
-		List<studyInfoVO> ltResult = mainService.selectStudyList();
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		
+		List<studyInfoVO> ltResult = mainService.selectStudyList(user.getUserCode());
 		
 		if(ltResult.size() < 1) {
 			mReturn.put("result", "fail");

@@ -30,6 +30,7 @@ import com.login.Validator.pwChangeValidator;
 import com.main.Service.myPageService;
 import com.main.VO.studyInfoVO;
 import com.main.Validator.changeUserInfoValidator;
+import com.study.VO.studyApplicationFormUserVO;
 
 /**
  * Handles requests for the application home page.
@@ -255,6 +256,36 @@ public class myPageFormController {
 		if(ltResult.size() < 1) {
 			mReturn.put("result", "fail");
 			mReturn.put("message", "스터디 목록이 없습니다.");
+		}
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "조회 성공하였습니다.");
+		mReturn.put("resultList", ltResult);
+		
+		return mReturn;
+	}
+	
+	/**
+	 * 나의 신청서 내역 보기
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/myPage/selectMyStudyApplicationFormList.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> selectMyStudyApplicationFormList(HttpSession session) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		String userCode = user.getUserCode();
+		
+	      
+		List<studyApplicationFormUserVO> ltResult = myPageService.selectMyStudyApplicationFormList(userCode);
+		
+		if(ltResult.size() < 1) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "신청 목록이 없습니다.");
 		}
 		
 		mReturn.put("result", "success");

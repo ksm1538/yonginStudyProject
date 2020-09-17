@@ -10,7 +10,7 @@ public class studyApplicationFormUserVO {
 	private	String	status="";
 	private	String	useYn="";
 	private	String	applicationFormCode="";
-	
+	private String	studyName="";
 	
 	public String getStatus() {
 		return status;
@@ -65,6 +65,12 @@ public class studyApplicationFormUserVO {
 	}
 	public void setApplicationFormCode(String applicationFormCode) {
 		this.applicationFormCode = applicationFormCode;
+	}
+	public String getStudyName() {
+		return studyName;
+	}
+	public void setStudyName(String studyName) {
+		this.studyName = studyName;
 	}
 	
 	

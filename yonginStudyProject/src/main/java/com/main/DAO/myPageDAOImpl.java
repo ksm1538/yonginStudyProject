@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.login.VO.userInfoVO;
 import com.main.VO.studyInfoVO;
+import com.study.VO.studyApplicationFormUserVO;
 
 @Repository
 public class myPageDAOImpl implements myPageDAO{
@@ -33,5 +34,10 @@ public class myPageDAOImpl implements myPageDAO{
 	@Override
 	public List<studyInfoVO> selectParticipateStudyList(String userCode){
 		return sqlSession.selectList("myPageSql.selectParticipateStudyList", userCode);
+	}
+	
+	@Override
+	public List<studyApplicationFormUserVO> selectMyStudyApplicationFormList(String userCode){
+		return sqlSession.selectList("myPageSql.selectMyStudyApplicationFormList", userCode);
 	}
 }

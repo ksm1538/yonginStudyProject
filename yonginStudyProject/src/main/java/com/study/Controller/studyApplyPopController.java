@@ -104,6 +104,24 @@ public class studyApplyPopController {
 	}
 	
 	/**
+	 * 스터디 상세 보기 팝업 
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/study/studyApplicationFormDetailForm.do", method = RequestMethod.POST)
+	public String studyApplicationFormDetailForm(HttpSession session) {
+		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(시작) **/
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+
+		if(user == null) {
+			return "jsp/login/login";
+		}
+		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
+		   
+		return "jsp/study/studyApplyPopDetailPopup";
+	}
+	
+	/**
 	 * 신청서 수정
 	 * @param studyApplicationFormUserVO
 	 * @param session
@@ -149,15 +167,23 @@ public class studyApplyPopController {
 		return mReturn;
 	}
 	
+	/**
+	 * 신청서 상세 조회
+	 * @param studyApplicationFormUserVO
+	 * @param session
+	 * @param bindingResult
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value="/study/selectStudyApplicationForm.json", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> selectStudyApplicationForm(@RequestBody studyApplicationFormUserVO studyApplicationFormUserVO, HttpSession session, BindingResult bindingResult) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 		
-		if(studyApplicationFormUserVO.getStudyCode().equals("")) {
+		if(studyApplicationFormUserVO.getApplicationFormCode().equals("")) {
 			mReturn.put("result", "fail");
-			mReturn.put("message", "스터디가 선택되지 않았습니다.");
+			mReturn.put("message", "신청서가 선택되지 않았습니다.");
 			
 			return mReturn;
 		}
@@ -169,7 +195,7 @@ public class studyApplyPopController {
 		studyApplicationFormUserVO resultVo = studyService.selectStudyApplicationForm(studyApplicationFormUserVO);
 		
 		mReturn.put("result", "success");
-		mReturn.put("message", "수정이 완료되었습니다.");
+		mReturn.put("message", "조회가 완료되었습니다.");
 		mReturn.put("resultVO", resultVo);
 		
 		return mReturn;

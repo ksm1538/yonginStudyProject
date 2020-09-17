@@ -15,7 +15,7 @@ public class mainDAOImpl implements mainDAO{
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<studyInfoVO> selectStudyList(){
-		return sqlSession.selectList("mainMapper.selectStudyList");
+	public List<studyInfoVO> selectStudyList(String userCode){
+		return sqlSession.selectList("mainMapper.selectStudyList", userCode);
 	}
 }

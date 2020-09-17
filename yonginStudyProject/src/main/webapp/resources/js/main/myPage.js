@@ -1,6 +1,7 @@
 var myParcitipateListGrid= new ax5.ui.grid();
 var myMakeListGrid= new ax5.ui.grid();
 var myApplicationFormGrid = new ax5.ui.grid();
+var applicationFormDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
 var emailFixYn = "N";
 
 $(document).ready(function () {
@@ -17,7 +18,11 @@ $(document).ready(function () {
     			}
 			},
         	{key : "studyName", label: "스터디 이름", align: "center", width:"45%"},
-        	{key : "dropStudy", label: "탈퇴", align: "center", width:"10%"},
+        	{key : "dropStudy", label: "탈퇴", align: "center", width:"10%", 
+          		 formatter: function (){
+        			 return '<button type="button" onclick="exitMyStudy(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">탈퇴</button>';
+        		 }
+        	},
         ],
         header: {
         	align:"center",
@@ -61,7 +66,11 @@ $(document).ready(function () {
     			}
 			},
         	{key : "studyName", label: "스터디 이름", align: "center", width:"45%"},
-        	{key : "manageStudy", label: "관리", align: "center", width:"10%"},
+        	{key : "manageStudy", label: "", align: "center", width:"10%", 
+	       		 formatter: function (){
+	    			 return '<button type="button" onclick="manageStudy(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">관리</button>';
+	    		 }
+        	},
         ],
         header: {
         	align:"center",
@@ -107,17 +116,17 @@ $(document).ready(function () {
         		if(this.value == "10"){
         			return applicationFormStatusMap[this.value];
         		}
-        		else if(this.value == "30"){
+        		else if(this.value == "20"){
 					return "<span style="+"font-weight:bold;color:green;"+">"+applicationFormStatusMap[this.value]+"</span>";
 				}
         		else if(this.value == "30"){
 					return "<span style="+"font-weight:bold;color:red;"+">"+applicationFormStatusMap[this.value]+"</span>";
 				}
 			}},
-        	{key : "dropStudy", label: "취소", align: "center", width:"10%", 
+        	{key : "dropStudy", label: "", align: "center", width:"10%", 
        		 formatter: function (){
        			 if(this.item.status == "10"){
-       				 return '<button type="button" onclick="dropStudyForm(' + this.item.applicationFormCode + ')">취소</button>';
+       				 return '<button type="button" onclick="dropStudyForm(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">취소</button>';
        			 }else{
        				 return "";
        			 }
@@ -131,8 +140,8 @@ $(document).ready(function () {
                     align: "left",
                     columnHeight: 45,
                     
-                    onClick: function () 	{
-                    
+                    onDBLClick: function () 	{
+                    	openApplicationFormDetail(this.list[this.dindex]["applicationFormCode"]);
 					},
 					onDataChanged: function(){
 						
@@ -155,7 +164,7 @@ $(document).ready(function () {
 	
 		getStudyMadeByMeList();
 		getParticipateStudyList();
-
+		getMyStudyApplicationFormList();
 
 		//클릭시 맨위로
 		$("#Movetop").click(function(){
@@ -480,4 +489,57 @@ function getParticipateStudyList(){
 			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
 		}
 	}); 
+}
+
+function getMyStudyApplicationFormList(){
+	$.ajax({
+ 		type: "POST",
+ 		url : "/myPage/selectMyStudyApplicationFormList.json",
+		contentType: "application/json; charset=UTF-8",
+		async: false,
+		success : function(data, status, xhr) {
+			switch(data.result){
+			    case COMMON_SUCCESS:
+			    	myApplicationFormGrid.setData(data.resultList);
+			    	break;    
+			    case COMMON_FAIL:
+			    	dialog.alert(data.message); 
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+		}
+	}); 
+}
+
+
+// 신청서 상세 팝업 열기
+function openApplicationFormDetail(applicationFormCode){
+	var parentData={
+			applicationFormCode:applicationFormCode	 		// 신청서 그리드에서 더블클릭으로 받은 applicationFormCode를 팝업으로 보낼 데이터에 넣음
+	}
+	
+	applicationFormDetailModal.open({
+		width: 800,
+		height: 700,
+		iframe: {
+			method: "post",
+			url: "/study/studyApplicationFormDetailForm.do",
+			param: callBack = parentData
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
+
+// 신청서 상세 팝업 닫기
+function closeApplcationFormModal(){
+	applicationFormDetailModal.close();
 }

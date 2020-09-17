@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.login.VO.userInfoVO;
 import com.main.VO.studyInfoVO;
+import com.study.VO.studyApplicationFormUserVO;
 
 public interface myPageService {
 	userInfoVO selectUserInfoData(String userCode);
@@ -13,4 +14,6 @@ public interface myPageService {
 	List<studyInfoVO> selectStudyMadeByMeList(String userCode);
 	
 	List<studyInfoVO> selectParticipateStudyList(String userCode);
+	
+	List<studyApplicationFormUserVO> selectMyStudyApplicationFormList(String userCode);
 }

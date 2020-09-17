@@ -5,5 +5,5 @@ import java.util.List;
 import com.main.VO.studyInfoVO;
 
 public interface mainDAO {
-	public List<studyInfoVO> selectStudyList();
+	public List<studyInfoVO> selectStudyList(String userCode);
 }

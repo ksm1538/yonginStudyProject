@@ -14,7 +14,7 @@ public class mainServiceImpl implements mainService{
 	mainDAO mainDAO;
 	
 	@Override
-	public List<studyInfoVO> selectStudyList(){
-		return mainDAO.selectStudyList();
+	public List<studyInfoVO> selectStudyList(String userCode){
+		return mainDAO.selectStudyList(userCode);
 	}
 }

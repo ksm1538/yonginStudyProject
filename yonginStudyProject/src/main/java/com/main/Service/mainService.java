@@ -6,6 +6,6 @@ import com.main.VO.studyInfoVO;
 
 public interface mainService {
 	
-	List<studyInfoVO> selectStudyList();
+	List<studyInfoVO> selectStudyList(String userCode);
 
 }

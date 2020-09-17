@@ -5,13 +5,7 @@ var studyApplicationFormDetailBinder = new ax5.ui.binder();	// Binder 설정(데
 
 /** 초기화(시작) **/
 $(document).ready(function () {
-	//summernote editor
-	$('#applicationFormDesc').summernote({           
-	    height: 250,        
-	    codeviewFilter: true,
-		codeviewIframeFilter: true,   
-		disableDragAndDrop: true
-	});	
+	
 	
 	studyApplicationFormDetailBinder.setModel({}, $(document["applicationFormDetailPopupForm"]));
 	
@@ -23,7 +17,7 @@ $(document).ready(function () {
 // 스터디 신청서 정보 가져오기
 function selectStudyApplicationForm(){
 	var sendData = {
-			studyCode:parentData.studyCode
+			applicationFormCode:parentData.applicationFormCode
 	}
 	
 	$.ajax({
@@ -35,13 +29,34 @@ function selectStudyApplicationForm(){
 		success : function(data, status, xhr) {
 			switch(data.result){
 			    case COMMON_SUCCESS:
-			    	studyApplicationFormDetailBinder(data.resultVO);
-			    	$('#applicationFormDesc').summernote('code', data.resultVO.applicationFormDesc);
+			    	// Binder에 데이터 넣어줌(자동으로 data-ax-path 랑 매치되면 알아서 대입됨)
+			    	studyApplicationFormDetailBinder.setModel(data.resultVO);
 			    	
 			    	if(data.resultVO.status != "10"){
 			    		$("#detailDiv *").prop("disabled", true);
 			    		$("#updateAFBtn").hide();
+			    		$('#applicationFormDesc').summernote({           
+			    		    height: 250,        
+			    		    codeviewFilter: true,
+			    			codeviewIframeFilter: true,   
+			    			disableDragAndDrop: true,
+			    			toolbar:[]
+			    		});	
+			    		//섬머노트 비활성화(readonly)
+			    		$('#applicationFormDesc').summernote('disable');
 			    	}
+			    	else{
+			    		//summernote editor
+			    		$('#applicationFormDesc').summernote({           
+			    		    height: 250,        
+			    		    codeviewFilter: true,
+			    			codeviewIframeFilter: true,   
+			    			disableDragAndDrop: true
+			    		});	
+			    	}
+			    	
+			    	//summernote는 따로 넣어줘야함 이런방식으로 Binder가 적용안됨
+			    	$('#applicationFormDesc').summernote('code', data.resultVO.applicationFormDesc);
 			    	break;    
 			    case COMMON_FAIL:
 			    	dialog.alert(data.message); 
@@ -95,5 +110,5 @@ function updateStudyApplicationForm(){
 
 //팝업창 닫기
 function closeModal(){
-	return self.parent.closeApplicationModal();		// 부모 페이지의 close함수로 리턴
+	return self.parent.closeApplcationFormModal();		// 부모 페이지의 close함수로 리턴
 }
