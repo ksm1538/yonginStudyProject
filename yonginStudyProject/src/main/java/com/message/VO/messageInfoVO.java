@@ -10,20 +10,19 @@ public class messageInfoVO {
 	String	messageTime = "";
 	int totalCount;
 	int messageCodeSize;
-	String[] data = new String[messageCodeSize];
+	String[] messageCodes;
 	
+	public String[] getMessageCodes() {
+		return messageCodes;
+	}
+	public void setMessageCodes(String[] messageCodes) {
+		this.messageCodes = messageCodes;
+	}
 	public int getMessageCodeSize() {
 		return messageCodeSize;
 	}
 	public void setMessageCodeSize(int messageCodeSize) {
 		this.messageCodeSize = messageCodeSize;
-	}
-	public String[] getData() {
-		return data;
-	}
-	public void setData(String[] data)
-	{
-		this.data = data;
 	}
 	public String getMessageTime() {
 		return messageTime;

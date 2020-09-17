@@ -53,48 +53,55 @@
 		]]>
 	</insert>
 	 
-	<select id="selectMessageList" resultType="com.message.VO.messageInfoVO"> 
+	<select id="selectMessageList" resultType="com.message.VO.messageInfoVO" parameterType="String"> 
 		<![CDATA[
 			SELECT	(	SELECT USER_ID
 						FROM USER_INFO
 						WHERE USER_INFO.USER_CODE	=	USER_MESSAGE.USER_CODE_FROM
 					)	as userCodeFrom
-			 ,	USER_INFO.USER_ID 	as userCodeTo
 			 ,	USER_MESSAGE.MESSAGE_CODE 	as messageCode
 			 ,	USER_MESSAGE.MESSAGE_TITLE 	as messageTitle
 			 ,	USER_MESSAGE.MESSAGE_DESC 	as messageDesc
-			 ,	TO_CHAR(USER_MESSAGE.MESSAGE_TIME, 'YYYY-MM-DD HH24:MI:SS') 	as messageTime
-			 ,	(SELECT	COUNT(*)		
-			 	FROM	USER_MESSAGE
-			 	WHERE	USER_MESSAGE.USER_CODE_TO	=	USER_INFO.USER_CODE)	as totalCount
-		FROM	USER_MESSAGE,
-				USER_INFO
-		WHERE	USER_MESSAGE.USER_CODE_TO		=	USER_INFO.USER_CODE
+			 ,	TO_CHAR(USER_MESSAGE.MESSAGE_TIME, 'YYYY-MM-DD HH24:MI') 	as messageTime
+		FROM	USER_MESSAGE
+		WHERE	USER_MESSAGE.USER_CODE_TO		=	#{userCode}
 			AND	USER_MESSAGE.USE_YN_TO			=	'Y'
 		]]>
 	</select>
 	
-	<select id="selectSendMessageList" resultType="com.message.VO.messageInfoVO"> 
+	<select id="selectSendMessageList" resultType="com.message.VO.messageInfoVO" parameterType="String"> 
 		<![CDATA[
 			SELECT	(	SELECT USER_ID
 						FROM USER_INFO
-						WHERE USER_INFO.USER_CODE	=	USER_MESSAGE.USER_CODE_FROM
-					)	as userCodeFrom
-			 ,	USER_INFO.USER_ID 	as userCodeTo
+						WHERE USER_INFO.USER_CODE	=	USER_MESSAGE.USER_CODE_TO
+					)	as userCodeTo
 			 ,	USER_MESSAGE.MESSAGE_CODE 	as messageCode
 			 ,	USER_MESSAGE.MESSAGE_TITLE 	as messageTitle
-			 ,	USER_MESSAGE.MESSAGE_DESC 	as messageDesc
-			 ,	TO_CHAR(USER_MESSAGE.MESSAGE_TIME, 'YYYY-MM-DD HH24:MI:SS') 	as messageTime
-			 ,	(SELECT	COUNT(*)		
-			 	FROM	USER_MESSAGE
-			 	WHERE	USER_MESSAGE.USER_CODE_TO	=	USER_INFO.USER_CODE)	as totalCount
-		FROM	USER_MESSAGE,
-				USER_INFO
-		WHERE	USER_MESSAGE.USER_CODE_TO		=	USER_INFO.USER_CODE
+			 ,	TO_CHAR(USER_MESSAGE.MESSAGE_TIME, 'YYYY-MM-DD HH24:MI') 	as messageTime
+		FROM	USER_MESSAGE
+		WHERE	USER_MESSAGE.USER_CODE_FROM		=	#{userCode}
 			AND	USER_MESSAGE.USE_YN_FROM		=	'Y'
 		]]>
 	</select>
 	
+	<select id="selectMessageInfoDetail" resultType="com.message.VO.messageInfoVO">
+		<![CDATA[
+			SELECT	(	SELECT USER_ID
+						FROM USER_INFO
+						WHERE USER_INFO.USER_CODE	=	USER_MESSAGE.USER_CODE_TO
+					)	as userCodeTo
+			 ,		(	SELECT USER_ID
+						FROM USER_INFO
+						WHERE USER_INFO.USER_CODE	=	USER_MESSAGE.USER_CODE_FROM
+					)	as userCodeFrom
+			 ,	USER_MESSAGE.MESSAGE_CODE 	as messageCode
+			 ,	USER_MESSAGE.MESSAGE_TITLE 	as messageTitle
+			 ,	USER_MESSAGE.MESSAGE_DESC	as messageDesc
+			 ,	TO_CHAR(USER_MESSAGE.MESSAGE_TIME, 'YYYY-MM-DD HH24:MI') 	as messageTime
+		FROM	USER_MESSAGE
+		WHERE	USER_MESSAGE.MESSAGE_CODE		=	#{messageCode}
+		]]>
+	</select>
 	
 	
 </mapper> 

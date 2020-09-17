@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.main.VO.studyInfoVO;
 import com.message.DAO.messageDAO;
 import com.message.VO.messageInfoVO;
 
@@ -17,15 +16,19 @@ public class messageServiceImpl implements messageService{
 	
 	@Override
 	public void deleteMessage(messageInfoVO data) throws Exception{
-		for(int i=0;i<data.getMessageCodeSize();i++)
-		{
-			messageDAO.deleteMessage(data);
+		String[] messageCodes = data.getMessageCodes();
+		for(int i=0;i<data.getMessageCodes().length;i++) {
+			messageDAO.deleteMessage(messageCodes[i]);
 		}
 	}
 	
 	@Override
 	public void deleteSendMessage(messageInfoVO data) throws Exception{
-		messageDAO.deleteSendMessage(data);
+		
+		String[] messageCodes = data.getMessageCodes();
+		for(int i=0;i<data.getMessageCodes().length;i++) {
+			messageDAO.deleteSendMessage(messageCodes[i]);
+		}
 	}
 	
 	@Override
@@ -34,12 +37,17 @@ public class messageServiceImpl implements messageService{
 	}
 	
 	@Override
-	public List<messageInfoVO> selectMessageList(){
-		return messageDAO.selectMessageList();
+	public List<messageInfoVO> selectMessageList(String userCode){
+		return messageDAO.selectMessageList(userCode);
 	}
 	
 	@Override
-	public List<messageInfoVO> selectSendMessageList(){
-		return messageDAO.selectMessageList();
+	public List<messageInfoVO> selectSendMessageList(String userCode){
+		return messageDAO.selectSendMessageList(userCode);
+	}
+	
+	@Override
+	public messageInfoVO selectMessageInfoDetail(String messageCode) {
+		return messageDAO.selectMessageInfoDetail(messageCode);
 	}
 }

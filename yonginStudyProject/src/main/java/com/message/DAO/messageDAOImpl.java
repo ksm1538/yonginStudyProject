@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.main.VO.studyInfoVO;
 import com.message.VO.messageInfoVO;
 
 @Repository
@@ -16,13 +15,13 @@ public class messageDAOImpl implements messageDAO{
 	private SqlSession sqlSession;
 	
 	@Override
-	public void deleteMessage(messageInfoVO data) throws Exception{
-		sqlSession.delete("messageMapper.deleteMessage", data);
+	public void deleteMessage(String messageCode) throws Exception{
+		sqlSession.delete("messageMapper.deleteMessage", messageCode);
 	}
 	
 	@Override
-	public void deleteSendMessage(messageInfoVO data) throws Exception{
-		sqlSession.delete("messageMapper.deleteSendMessage", data);
+	public void deleteSendMessage(String messageCode) throws Exception{
+		sqlSession.delete("messageMapper.deleteSendMessage", messageCode);
 	}
 	
 	
@@ -32,12 +31,17 @@ public class messageDAOImpl implements messageDAO{
 	}
 	
 	@Override
-	public List<messageInfoVO> selectMessageList(){
-		return sqlSession.selectList("messageMapper.selectMessageList");
+	public List<messageInfoVO> selectMessageList(String userCode){
+		return sqlSession.selectList("messageMapper.selectMessageList", userCode);
 	}
 	
 	@Override
-	public List<messageInfoVO> selectSendMessageList(){
-		return sqlSession.selectList("messageMapper.selectSendMessageList");
+	public List<messageInfoVO> selectSendMessageList(String userCode){
+		return sqlSession.selectList("messageMapper.selectSendMessageList", userCode);
+	}
+	
+	@Override
+	public messageInfoVO selectMessageInfoDetail(String messageCode) {
+		return sqlSession.selectOne("messageMapper.selectMessageInfoDetail", messageCode);
 	}
 }

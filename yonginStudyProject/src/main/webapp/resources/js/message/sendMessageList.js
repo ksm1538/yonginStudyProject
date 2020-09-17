@@ -1,4 +1,5 @@
 var messageListGrid = new ax5.ui.grid();
+var messageInfoModal = new ax5.ui.modal();
 var cal;
 
 /** 초기화(시작) **/
@@ -10,8 +11,8 @@ $(document).ready(function () {
         showRowSelector: true,
         columns: [ 
         	{key : "userCodeTo", label: "받는 사람", align: "center", width:"25%", sortable: true},
-        	{key : "messageTitle", label: "제목", align: "center", width:"25%"},
-        	{key : "messageTime", label: "시간", align: "center", width:"15%"},
+        	{key : "messageTitle", label: "제목", align: "center", width:"50%"},
+        	{key : "messageTime", label: "시간", align: "center", width:"25%"},
         ],
         header: {
         	align:"center",
@@ -25,10 +26,11 @@ $(document).ready(function () {
                     columnHeight: 45,
                     
                     onClick: function () 	{
-                    
+					},
+					onDBLClick: function(){
+			    		selectMessageInfoDetail(this.list[this.dindex]["messageCode"]);
 					},
 					onDataChanged: function(){
-						
 					},
                 },
         
@@ -54,13 +56,15 @@ $(document).ready(function () {
 
 /*보낸 쪽지 삭제*/
 function deleteSendMessage(){
-	var sendData={
-		studyName:document.getElementById("studyName").value,
-		studyRgstusId:document.getElementById("studyRgstusId").value,
-		studyTopic:$('#studyTopic option:selected').val(),
-		studyArea:$('#studyArea option:selected').val(),
-		studyLimit:$('#studyLimit option:selected').val(),
-		studyDesc:document.getElementById("studyDesc").value
+	var temp = messageListGrid.getList('selected');
+	var messageCodes = [];
+	
+	for(var i=0;i<temp.length;i++){
+		messageCodes.push(temp[i].messageCode)
+	}
+	
+	var sendData = {
+		messageCodes:messageCodes
 	}
 	
 	console.log(sendData); 
@@ -83,7 +87,7 @@ function deleteSendMessage(){
 			        	}
 			        }, function(){
 			        	if(this.key=="yes"){
-			        			window.close();
+			        		window.location.reload();
 			        	}
 			    	});
 	    		 break;
@@ -120,4 +124,36 @@ function getMessageList(){
 			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
 		}
 	}); 
+}
+
+
+// 메시지 상세내용 정보보기
+function selectMessageInfoDetail(messageCode){
+	var parentData={
+			messageCode:messageCode	 		// 스터디 그리드에서 선택한 studyCode를 팝업으로 보낼 데이터에 넣음
+		}
+		
+	messageInfoModal.open({
+		width: 800,
+		height: 700,
+		iframe: {
+			method: "post",
+			url: "/message/messageInfoDetailPopup.do",
+			param: callBack = parentData
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
+
+//쪽지 상세 정보 보기 팝업 닫기
+function close(){
+	messageInfoModal.close();
 }

@@ -2,7 +2,6 @@ package com.message.Service;
 
 import java.util.List;
 
-import com.main.VO.studyInfoVO;
 import com.message.VO.messageInfoVO;
 
 public interface messageService {
@@ -13,8 +12,10 @@ public interface messageService {
 	
 	void sendMessage(messageInfoVO data) throws Exception;
 	
-	List<messageInfoVO> selectMessageList();
+	List<messageInfoVO> selectMessageList(String userCode);
 	
-	List<messageInfoVO> selectSendMessageList();
+	List<messageInfoVO> selectSendMessageList(String userCode);
+	
+	messageInfoVO selectMessageInfoDetail(String messageCode);
 	
 }

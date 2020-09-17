@@ -6,22 +6,19 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.message.Service.messageService;
+
 import com.commonCode.Service.commonCodeService;
-import com.commonCode.VO.commonCodeVO;
 import com.login.VO.userInfoVO;
-import com.main.VO.studyInfoVO;
+import com.message.Service.messageService;
 import com.message.VO.messageInfoVO;
 
 @Controller
@@ -58,14 +55,12 @@ public class messageListController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/deleteMessage.json", method = RequestMethod.POST)
+	@RequestMapping(value="/deleteMessageTo.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> messageDeleteAjaxFunction(@RequestBody messageInfoVO messageInfoVO) throws Exception {
+	public Map<String, Object> deleteMessageTo(@RequestBody messageInfoVO messageInfoVO) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 	      
-		
-		//벨리데이터 추가
 		messageService.deleteMessage(messageInfoVO);
 		
 		mReturn.put("result", "success");
@@ -75,17 +70,20 @@ public class messageListController {
 	}
 	
 	/**
-	 * 쪽지 리스트 조회
+	 * 받은 쪽지 리스트 조회
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/selectMessageList.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> selectMessageList(HttpServletRequest request) throws Exception {
+	public Map<String, Object> selectMessageList(HttpSession session) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 	      
-		List<messageInfoVO> ltResult = messageService.selectMessageList();
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		String userCode = user.getUserCode();
+		
+		List<messageInfoVO> ltResult = messageService.selectMessageList(userCode);
 		
 		if(ltResult.size() < 1) {
 			mReturn.put("result", "fail");
@@ -98,6 +96,4 @@ public class messageListController {
 		
 		return mReturn;
 	}
-	
-	
 }

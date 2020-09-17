@@ -2,7 +2,7 @@
 $(document).ready(function () {
 	//summernote editor
 	$('#messageDesc').summernote({           
-	    height: 150,        
+	    height: 200,        
 	    codeviewFilter: true,
 		codeviewIframeFilter: true,   
 		disableDragAndDrop: true
@@ -41,7 +41,7 @@ function sendMessage(){
 			        	}
 			        }, function(){
 			        	if(this.key=="yes"){
-			        			window.close();
+			        		window.location.reload();
 			        	}
 			    	});
 	    		 break;

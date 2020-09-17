@@ -46,17 +46,12 @@ request.setCharacterEncoding("UTF-8");
      		   </div>
      		   
      		   
-     		   <div class="tc summer_note_con">
-     		   		<div class="title_size type_2">내용</div>
-     		   		<div class="summer_note">
-     		   			<textarea name="messageDesc" id="messageDesc" cols="20" rows="10" placeholder="스터디에 대한 설명을 입력해주세요."></textarea>
+     		   <div class="tc summer_note_con"><!-- 내용이라고 안넣는게 더 이쁠거같아서 뺌 -->
+     		   		<div class="summer_note" style="width:70%; margin-left:15%">
+     		   			<textarea name="messageDesc" id="messageDesc"></textarea>
      		   		</div>
      		   		
      		   </div>
-     		   
-     		
-     		   
-    	    
     	        	         	 
 		 </div>
 		 
