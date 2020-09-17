@@ -59,7 +59,7 @@ studySxnList.forEach(function(n){
       	<div class="mypage_top_btn_con"><a id="Movetop"><img src="/resources/img/arrow.png"></a></div>
       	
       	
-         <div class="col-3 mypage_list_con" style="height:200vh">
+         <div class="col-3 mypage_list_con" style="height:256vh">
             <div class="mypage_list_title">마이페이지</div>
             <ul class="mypage_list">
                <li><a id="listMove1">개인 정보 수정</a></li>
