@@ -181,6 +181,11 @@ $(document).ready(function () {
 			$("html body").animate({scrollTop:offset.top},400);
 		});
 		
+		$("#listMove4").on("click",function(event){
+			var offset = $("#list4").offset();
+			$("html body").animate({scrollTop:offset.top},400);
+		});
+		
 		//전화번호 '-' 자동 붙이기
 		var userPhoneNumber = document.getElementById('userPhoneNumber');
 
