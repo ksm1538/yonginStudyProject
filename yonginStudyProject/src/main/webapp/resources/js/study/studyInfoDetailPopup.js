@@ -13,7 +13,8 @@ $(document).ready(function () {
 		disableDragAndDrop: true,
 		toolbar:[]
 	});	
-	
+	// DIV안에 있는 요소 비활성화
+	$("#detailDiv *").prop("disabled", true);
 	//섬머노트 비활성화(readonly)
 	$('#studyDesc').summernote('disable');
 	
@@ -43,11 +44,6 @@ function selectStudyInfoDetail(studyCode){
 			    	studyInfoDetailBinder.setModel(data.studyInfo);
 			    	$('#studyDesc').summernote('code', data.studyInfo.studyDesc);
 			    	
-			    	// 현재 접속자랑 스터디 생성자가 다른 경우 수정 못하게 비활성화 처리
-			    	if(rgstusIdCode != data.studyInfo.studyRgstusCode){
-			    		$("#detailDiv *").prop("disabled", true);
-			    	}
-			    	
 			    	break;    
 			    case COMMON_FAIL:
 			    	dialog.alert(data.message); 
@@ -59,16 +55,7 @@ function selectStudyInfoDetail(studyCode){
 	}); 
 }
 
-//주소 검색 함수 세팅
-function addressPopup() {
-    new daum.Postcode({
-        oncomplete: function(data) {
-        	studyInfoDetailBinder.set("studyArea", data.sido + " " + data.sigungu);
-        }
-    }).open();
-}
-
 // 팝업창 닫기
 function closeModal(){
-	return self.parent.close();		// 부모 페이지의 close함수로 리턴
+	return self.parent.closeStudyInfo();		// 부모 페이지의 close함수로 리턴
 }

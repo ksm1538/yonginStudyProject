@@ -57,5 +57,5 @@ function applyStudy(){
 
 //팝업창 닫기
 function closeModal(){
-	return self.parent.close();		// 부모 페이지의 close함수로 리턴
+	return self.parent.closeApplyStudy();		// 부모 페이지의 close함수로 리턴
 }

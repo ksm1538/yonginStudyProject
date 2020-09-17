@@ -80,71 +80,13 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 					</div>
 				</div>
 				
+			</div>
 				<div class="btn_style_1_con">
 					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
 				</div> 
-				
-				
-				
-			</div>
 		 </form:form>
 		 
 		 
 	</div>
-<%-- 
-	<form:form method="POST" modelAttribute="studyInfoVO" name="studyInfoDetailForm" id="studyInfoDetailForm" >
-	<div class="col-12 col-center mw-1200 search_memeber_form_wrap">
-			<div class="register_member_form_con" id="detailDiv">
-			
-				<form:input path="studyCode" type="hidden" name="studyCode" id="studyCode" data-ax-path="studyCode" class="textbox_style_1"/>
-					
-				<div class="user_id search_member_form_con_type_2">
-					<div class="title_size type_2">스터디 이름</div>
-					<div class="register_input_con">
-						<form:input path="studyName" type="text" name="studyName" id="studyName" data-ax-path="studyName" class="textbox_style_1"/>
-					</div>
-				</div>
-				
-				<div class="user_pw search_member_form_con_type_2">
-					<div class="title_size type_2">스터디 주제</div>
-					<div class="register_input_con">
-						<form:select path="studyTopic" name="studyTopic" id="studyTopic" data-ax-path="studyTopic" class="select_style_0" >
-						    <c:forEach var="result" items="${studyTopicArray}" varStatus="status">
-					          	<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
-					         </c:forEach>
-						</form:select>
-					</div>
-				</div>
-				
-				<div class="user_pw_check search_member_form_con_type_2">
-					<div class="title_size type_2">스터디 내용</div>
-					<div class="register_input_con">
-						<form:textarea path="studyDesc" id="studyDesc" name="studyDesc" data-ax-path="studyDesc" style="height:200px; display: inline-block; z-index:0"/>
-					</div>
-				</div>
-				
-				<div class="user_pw_hint search_member_form_con_type_2">
-					<div class="title_size type_2">스터디 방장</div>
-					<div class="register_input_con">
-						<form:input path="studyRgstusId" type="text" name="studyRgstusId" id="studyRgstusId" data-ax-path="studyRgstusId" class="textbox_style_1"/>
-					</div>
-				</div>
-				
-				<div class="user_pw_ans search_member_form_con_type_2">
-					<div class="title_size type_2">스터디 지역</div>
-					<div class="register_input_con">
-						<form:input path="studyArea" type="text" name="studyArea" id="studyArea" data-ax-path="studyArea" class="textbox_style_1"/>
-						<input type="button" value="주소 검색" class="btn_style_1" onclick="addressPopup()" >
-					</div>
-				</div>
-				
-			</div>
-	</div>
-	</form:form>
-	<div class="col-12 col-center mw-1200 register_memeber_btn_wrap">
-		<div class="btn_style_1_con">
-			<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
-		</div> 
-	</div>  --%>
 </body>
 </html>

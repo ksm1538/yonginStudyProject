@@ -1,5 +1,6 @@
 var studyListPlusGrid = new ax5.ui.grid();
 var applyStudyModal = new ax5.ui.modal();
+var studyInfoDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
 
 $(document).ready(function () {
 	//스터디 목록 더보기 리스트 설정
@@ -20,8 +21,7 @@ $(document).ready(function () {
         	{key : "studyLimit",label : "정원", align : "right",width : "8%"},
         	{key : "applyButton", label : "", align : "center", width:"5%", 
         		 formatter: function (){
-        			 console.log(this);
-        			 return '<button type="button" onclick="applyStudyForm(' + this.item.studyCode + ')" style="border:transparent; background-color:transparent">신청</button>';
+        			 return '<button type="button" onclick="applyStudyForm(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">신청</button>';
         		 }
         	}
         ],
@@ -33,8 +33,8 @@ $(document).ready(function () {
                     align: "left",
                     columnHeight: 45,
                     
-                    onClick: function () 	{
-                    
+                    onDBLClick: function () 	{
+                    	selectStudyInfoDetail(this.list[this.dindex]["studyCode"]);
 					},
 					onDataChanged: function(){
 						
@@ -82,7 +82,9 @@ function getStudyList(){
 }
 
 // 버튼 누르면 팝업으로 가도록 호출
-function applyStudyForm(studyCode){
+function applyStudyForm(dindex){
+	var studyCode = studyListPlusGrid.list[dindex].studyCode;
+	
 	var parentData={
 			studyCode:studyCode	 		// 스터디 그리드에서 선택한 studyCode를 팝업으로 보낼 데이터에 넣음
 		}
@@ -107,7 +109,39 @@ function applyStudyForm(studyCode){
 	});
 }
 
+
+function selectStudyInfoDetail(studyCode){
+	var parentData={
+		studyCode:studyCode	 		// 스터디 그리드에서 선택한 studyCode를 팝업으로 보낼 데이터에 넣음
+	}
+	
+	studyInfoDetailModal.open({
+		width: 800,
+		height: 700,
+		iframe: {
+			method: "post",
+			url: "/study/studyInfoDetailPopup.do",
+			param: callBack = parentData
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
+
+// 스터디 상세 팝업 닫기
+function closeStudyInfo(){
+	studyInfoDetailModal.close();
+}
+
+
 //스터디 신청하기 팝업 닫기
-function close(){
+function closeApplyStudy(){
 	applyStudyModal.close();
 }
