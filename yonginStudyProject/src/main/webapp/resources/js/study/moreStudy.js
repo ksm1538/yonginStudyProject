@@ -21,7 +21,7 @@ $(document).ready(function () {
         	{key : "applyButton", label : "", align : "center", width:"5%", 
         		 formatter: function (){
         			 console.log(this);
-        			 return '<button type="button" onclick="applyStudyForm(' + this.item.studyCode + ')">신청</button>';
+        			 return '<button type="button" onclick="applyStudyForm(' + this.item.studyCode + ')" style="border:transparent; background-color:transparent">신청</button>';
         		 }
         	}
         ],
