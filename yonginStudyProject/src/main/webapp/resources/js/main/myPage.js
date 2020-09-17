@@ -175,25 +175,25 @@ $(document).ready(function () {
 			return false;
 		});
 		
+		var list1 = $("#list1").offset();
+		var list2 = $("#list2").offset();
+		var list3 = $("#list3").offset();
+		var list4 = $("#list4").offset();
 		//클릭시 이동
 		$("#listMove1").on("click",function(event){
-			var offset = $("#list1").offset();
-			$("html body").animate({scrollTop:offset.top},400);
+			$("html body").animate({scrollTop:list1.top},400);
 		});
 		
 		$("#listMove2").on("click",function(event){
-			var offset = $("#list2").offset();
-			$("html body").animate({scrollTop:offset.top},400);
+			$("html body").animate({scrollTop:list2.top},400);
 		});
 		
 		$("#listMove3").on("click",function(event){
-			var offset = $("#list3").offset();
-			$("html body").animate({scrollTop:offset.top},400);
+			$("html body").animate({scrollTop:list3.top},400);
 		});
 		
 		$("#listMove4").on("click",function(event){
-			var offset = $("#list4").offset();
-			$("html body").animate({scrollTop:offset.top},400);
+			$("html body").animate({scrollTop:list4.top},400);
 		});
 		
 		//전화번호 '-' 자동 붙이기

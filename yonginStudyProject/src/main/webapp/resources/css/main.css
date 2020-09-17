@@ -205,6 +205,7 @@ html, body {
 .mypage_top_btn_con:hover{background-color:#31aae2; }
 .mypage_top_btn_con >a{display:block; transform: rotate(270deg); width:50px; height:50px; margin-left:12px; margin-top:12px; cursor:pointer;}
 
+.mypage_fixed_list{position:fixed;}
 
 /*스터디관리*/
 .manageStudy_wrap{padding:50px 50px;}

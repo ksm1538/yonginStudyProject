@@ -59,19 +59,22 @@ studySxnList.forEach(function(n){
       	<div class="mypage_top_btn_con"><a id="Movetop"><img src="/resources/img/arrow.png"></a></div>
       	
       	
-         <div class="col-3 mypage_list_con" style="height:256vh">
-            <div class="mypage_list_title">마이페이지</div>
-            <ul class="mypage_list">
-               <li><a id="listMove1">개인 정보 수정</a></li>
-               <li><a id="listMove2">내가 참여한 스터디</a></li>
-               <li><a id="listMove3">내가 만든 스터디</a></li>
-               <li><a id="listMove4">나의 스터디 신청 현황</a></li>
-            </ul>
+         <div class="col-3 mypage_list_con" style="height:265vh">
+            <div class="mypage_fixed_list">
+            	<div class="mypage_list_title">마이페이지</div>
+            	<ul class="mypage_list">
+               		<li><a id="listMove1">개인 정보 수정</a></li>
+               		<li><a id="listMove2">내가 참여한 스터디</a></li>
+              		<li><a id="listMove3">내가 만든 스터디</a></li>
+               		<li><a id="listMove4">나의 스터디 신청 현황</a></li>
+           		</ul>
+            </div>
+            
          </div>
          
-         <div class="col-9 mypage_content_con">
+         <div class="col-9 mypage_content_con" id="list1">
             <div class="col-12 user_info_modify">
-               <div class="mypage_content_title" id="list1"><span>개인 정보 수정</span></div>
+               <div class="mypage_content_title" ><span>개인 정보 수정</span></div>
                
                <form:form method="POST" modelAttribute="userInfoVO" name="changeInfoForm" id="changeInfoForm">
                     <div class="col-6 modify_line_left_con">
@@ -117,9 +120,9 @@ studySxnList.forEach(function(n){
         
          
          
-         <div class="col-9 mypage_content_con">
+         <div class="col-9 mypage_content_con" id="list2">
             <div class="col-12 my_participate_list">
-               <div class="mypage_content_title" id="list2"><span>내가 참여한 스터디</span></div>
+               <div class="mypage_content_title" ><span>내가 참여한 스터디</span></div>
                
                	<div class="my_participate_study"style="width: 100%;" >  
 	  				<div data-ax5grid="myParcitipateListGrid" data-ax5grid-config="{}" style="height:300px; padding-top:10px; padding-right:10px"></div>  
@@ -130,9 +133,9 @@ studySxnList.forEach(function(n){
          
          
          
-        <div class="col-9 mypage_content_con">
+        <div class="col-9 mypage_content_con" id="list3">
             <div class="col-12 my_make_list">
-               <div class="mypage_content_title" id="list3"><span>내가 만든 스터디</span></div>
+               <div class="mypage_content_title" ><span>내가 만든 스터디</span></div>
                
                	<div class="my_make_study"style="width: 100%;" >  
 	  				<div data-ax5grid="myMakeListGrid" data-ax5grid-config="{}" style="height:300px; padding-top:10px; padding-right:10px"></div>  
@@ -146,9 +149,9 @@ studySxnList.forEach(function(n){
             </div>
          </div>
          
-         <div class="col-9 mypage_content_con">
+         <div class="col-9 mypage_content_con" id="list4">
             <div class="col-12 my_apply_list">
-               <div class="mypage_content_title" id="list4"><span>나의 스터디 신청 현황</span></div>
+               <div class="mypage_content_title" ><span>나의 스터디 신청 현황</span></div>
                
                	<div class="my_make_study"style="width: 100%;" >  
 	  				<div data-ax5grid="myApplicationFormGrid" data-ax5grid-config="{}" style="height:300px; padding-top:10px; padding-right:10px"></div>  
