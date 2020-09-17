@@ -2,6 +2,7 @@ var myParcitipateListGrid= new ax5.ui.grid();
 var myMakeListGrid= new ax5.ui.grid();
 var myApplicationFormGrid = new ax5.ui.grid();
 var applicationFormDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
+var changePwModal = new ax5.ui.modal();
 var emailFixYn = "N";
 
 $(document).ready(function () {
@@ -12,7 +13,7 @@ $(document).ready(function () {
         showLineNumber: false,
         //showRowSelector: true,
         columns: [ 
-			{key : "studyTopic", label: "주제", align: "center", width:"45%", sortable: true,
+			{key : "studyTopic", label: "주제", align: "center", width:"46%", sortable: true,
     			formatter:function(){
     			    return studySxnMap[this.value];
     			}
@@ -60,7 +61,7 @@ $(document).ready(function () {
         showLineNumber: false,
         //showRowSelector: true,
         columns: [ 
-			{key : "studyTopic", label: "주제", align: "center", width:"45%", sortable: true,
+			{key : "studyTopic", label: "주제", align: "center", width:"46%", sortable: true,
     			formatter:function(){
     			    return studySxnMap[this.value];
     			}
@@ -108,7 +109,7 @@ $(document).ready(function () {
         showLineNumber: false,
         //showRowSelector: true,
         columns: [ 
-        	{key : "title", label: "신청서 제목", align: "center", width:"40%"},
+        	{key : "title", label: "신청서 제목", align: "center", width:"41%"},
         	
 			{key : "studyName", label: "스터디 이름", align: "center", width:"40%"},
         	
@@ -281,11 +282,19 @@ function changeUserInfo(){
 					     success : function(data, status, xhr) {
 					    	 switch(data.result){
 					    	 case COMMON_SUCCESS:
-					    		 
-					    		 sToast.push(data.message);
-					    		 setTimeout(function(){
-					    			 location.reload();
-					    		 },1500);
+					    		 dialog.confirm({
+							    		msg:data.message,
+							        	btns:{
+							        		yes: {
+							        			label:'확인'
+							        		},
+							        	}
+							        }, function(){
+							        	console.log(this);
+							        	if(this.key=="yes" || this.state == "close"){
+							        		window.location.reload();
+							        	}
+							    	});
 					    		 break;
 					    	 case COMMON_FAIL:
 					    		 dialog.alert(data.message);
@@ -307,8 +316,6 @@ function changeUserInfo(){
 		}
 	}, function(){
 	});
-	
-	
 }
 
 //이메일 인증번호 전송 버튼
@@ -441,10 +448,31 @@ function resetAuthCode(){
 	}); 
 }
 
+// 비밀번호 변경 팝업 열기
 function changePw(){
-	window.open("/myPageChangePwForm.do",'비밀번호 변경','width=650px ,height=545px ,location=no,status=no,scrollbars=no');
+	changePwModal.open({
+		width: 600,
+		height: 410,
+		iframe: {
+			method: "get",
+			url: "/myPageChangePwForm.do",
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
 }
 
+//비밀번호 변경 팝업 닫기
+function closeChangePwModal(){
+	changePwModal.close();
+}
 /* 내가 만든 스터디 리스트 조회 함수 */
 function getStudyMadeByMeList(){
 	
@@ -542,4 +570,10 @@ function openApplicationFormDetail(applicationFormCode){
 // 신청서 상세 팝업 닫기
 function closeApplcationFormModal(){
 	applicationFormDetailModal.close();
+}
+
+//신청서 상세 팝업 닫기
+function closeApplcationFormModalRefresh(){
+	applicationFormDetailModal.close();
+	window.location.reload();
 }

@@ -22,5 +22,7 @@ public interface studyService {
 	void updateStudyApplicationFormUser(studyApplicationFormUserVO studyApplicationFormUserVO);
 	
 	studyApplicationFormUserVO selectStudyApplicationForm(studyApplicationFormUserVO studyApplicationFormUserVO);
+	
+	int selectUserInStudyCount(studyApplicationFormUserVO studyApplicationFormUserVO);
 }
  

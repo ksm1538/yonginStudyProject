@@ -57,5 +57,10 @@ public class studyServiceImpl implements studyService{
 	public studyApplicationFormUserVO selectStudyApplicationForm(studyApplicationFormUserVO studyApplicationFormUserVO) {
 		return studyDAO.selectStudyApplicationForm(studyApplicationFormUserVO);
 	}
+	
+	@Override
+	public int selectUserInStudyCount(studyApplicationFormUserVO studyApplicationFormUserVO) {
+		return studyDAO.selectUserInStudyCount(studyApplicationFormUserVO);
+	}
 }
  

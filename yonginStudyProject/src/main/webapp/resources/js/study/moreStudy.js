@@ -117,7 +117,7 @@ function selectStudyInfoDetail(studyCode){
 	
 	studyInfoDetailModal.open({
 		width: 800,
-		height: 700,
+		height: 710,
 		iframe: {
 			method: "post",
 			url: "/study/studyInfoDetailPopup.do",

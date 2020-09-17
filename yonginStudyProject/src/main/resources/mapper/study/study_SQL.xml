@@ -164,4 +164,14 @@
 				AND	USE_YN			=	'Y'
 		]]>
 	</select>
+	
+	<select id="selectUserInStudyCount" resultType="int">
+		<![CDATA[
+			SELECT	COUNT(*)
+			FROM	USER_IN_STUDY
+			WHERE	USER_CODE	=	#{userCode}
+				AND	STUDY_CODE	=	#{studyCode}
+				AND	USE_YN		=	'Y'
+		]]>
+	</select>
 </mapper> 

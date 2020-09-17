@@ -48,8 +48,8 @@ function makeStudyFunc(){
 			        		},
 			        	}
 			        }, function(){
-			        	if(this.key=="yes"){
-			        			window.close();
+			        	if(this.key=="yes" || this.state == "close"){
+			        		closeModal();
 			        	}
 			    	});
 	    		 break;
@@ -113,3 +113,7 @@ function studyAddressPopup() {
     }).open();
 }
 
+// 팝업 닫기
+function closeModal(){
+	self.parent.closeMakeStudyModal();
+}

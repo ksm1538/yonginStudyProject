@@ -215,7 +215,7 @@ html, body {
 
 /*스터디 생성*/
 .make_study_wrap{padding:40px 40px;}
-.make_study_title_con{overflow:hidden; margin-bottom:80px;}
+.make_study_title_con{overflow:hidden; margin-bottom:50px;}
 
 .make_study_input_con{display:flex; position:relative;}
 .make_study_input_con .fa-times-circle:before{content:"\f057"; position:absolute; top:10px; left:165px;}
@@ -253,20 +253,19 @@ html, body {
 .study_apply_title_con{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:30px;}
 .study_apply_title_con .textbox_style_1{width:200px;}
 .study_apply_desc{font-size:20px; font-weight: bold; margin-right:240px; margin-bottom:15px;}
-.study_apply_desc_summer{width:346px; margin-left:180px;}
+.study_apply_desc_summer{width:500px; margin-left:100px;}
 .study_apply_finsh_btn{margin-right:15px;}
 .study_apply_close_btn{margin-left:15px;}
 
 
 /*스터디 상세정보 팝업*/
-.study_detail_pop_wrap{padding:30px 30px;}
+.study_detail_pop_wrap{padding:30px 30px 0 30px;}
 .study_detail_pop_wrap .circle_btn{top:7%;}
 .study_detail_pop_wrap .content_title{margin-bottom:30px;}
 .study_detail_pop_wrap .select_style_0{width:150px; height:30px; border:1px solid #31aae2;}
 .study_detail_con{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:30px;}
-.detail_desc{margin-left:186px;}
-.detail_desc .title_size{margin-bottom:15px;}
-.detail_desc .study_detail_input_con{width:350px;}
+.detail_desc .title_size{margin-bottom:30px; margin-left:186px;}
+.detail_desc .study_detail_input_con{width:550px; margin-left:85px;}
 
 
 /*쪽지함*/

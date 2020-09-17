@@ -93,8 +93,8 @@ function updateStudyApplicationForm(){
 			        		},
 			        	}
 			        }, function(){
-			        	if(this.key=="yes"){
-			        		closeModal();
+			        	if(this.key=="yes" || this.state == "close"){
+			        		closeModalRefresh();
 			        	}
 			    	});
 			    	break;    
@@ -110,5 +110,10 @@ function updateStudyApplicationForm(){
 
 //팝업창 닫기
 function closeModal(){
-	return self.parent.closeApplcationFormModal();		// 부모 페이지의 close함수로 리턴
+	return self.parent.closeApplcationFormModal();		
+}
+
+// 팝업창 닫고 부모페이지 새로고침
+function closeModalRefresh(){
+	return self.parent.closeApplcationFormModalRefresh();		
 }

@@ -28,7 +28,7 @@
 	
 <div class="col-12 col-center mw-1200 search_memeber_title_wrap">
 
-	<div class="circle_btn" onClick="self.close()"></div> 
+	<div class="circle_btn" onClick="closeModal()"></div> 
 	<div class="tc search_memeber_title_con">
 		<div class="search_memeber_title">비밀번호 변경</div>
 	</div>

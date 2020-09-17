@@ -31,7 +31,7 @@
 
 <div class="col-12 col-center mw-1200 make_study_wrap">
 
-   <div class="circle_btn" onClick="self.close()"></div> 
+   <div class="circle_btn" onClick="closeModal()"></div> 
    
    <div class="tc make_study_title_con">
       <div class="make_study_title">스터디 생성</div>
@@ -86,8 +86,7 @@
          <div class="study_text make_study_form">
             <div class="title_size type_2">설명</div>
             <div class="make_study_input_con">
-            	 <!-- <input type="text" name="studyDesc" id="studyDesc" class="textbox_style_1"> -->
-           		 <textarea name="studyDesc" id="studyDesc" placeholder="스터디에 대한 설명을 입력해주세요."></textarea> 
+           		 <textarea name="studyDesc" id="studyDesc"></textarea> 
             </div>
            
          </div>      
@@ -96,7 +95,8 @@
 	
 	<div class="col-12 col-center mw-1200 make_study_btn_wrap">
    		<div class="btn_style_1_con">
-      		<input type="button" value="완료" class="btn_style_1" onclick="makeStudyFunc()" >
+      		<input type="button" value="만들기" class="btn_style_1 study_apply_finsh_btn" onclick="makeStudyFunc()" >
+      		<input type="button" value="취소" class="btn_style_1 study_apply_close_btn" onclick="closeModal()" >
    		</div> 
 	</div> 
 </form:form>

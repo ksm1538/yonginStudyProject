@@ -86,11 +86,19 @@ public class studyApplyPopController {
 		
 		studyApplicationFormUserVO.setUserCode(user.getUserCode());
 		
-		int count = studyService.selectStudyApplicationFormCount(studyApplicationFormUserVO);
+		int count1 = studyService.selectStudyApplicationFormCount(studyApplicationFormUserVO);
 		
-		if(count != 0) {
+		if(count1 != 0) {
 			mReturn.put("result", "fail");
 			mReturn.put("message", "해당 스터디에 이미 신청하셨습니다.");
+			
+			return mReturn;
+		}
+		
+		int count2 = studyService.selectUserInStudyCount(studyApplicationFormUserVO);
+		if(count2 != 0) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "해당 스터디에 이미 가입되어 있습니다.");
 			
 			return mReturn;
 		}

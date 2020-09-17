@@ -32,7 +32,7 @@ function findPwUsingHint(){
 			        		},
 			        	}
 			        }, function(){
-			        	if(this.key=="yes"){
+			        	if(this.key=="yes"  || this.state == "close"){
 			        		window.location.replace(data.url);
 			        	}
 			    	});

@@ -74,10 +74,10 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 				
 				
 				<div class="detail_desc">
-					<div class="title_size type_2">스터디 내용</div>
+					<div class="title_size type_2">스터디 소개</div>
 					<div class="study_detail_input_con">
 						<form:textarea path="studyDesc" id="studyDesc" name="studyDesc" data-ax-path="studyDesc" style=""/>
-					</div>
+					</div> 
 				</div>
 				
 			</div>

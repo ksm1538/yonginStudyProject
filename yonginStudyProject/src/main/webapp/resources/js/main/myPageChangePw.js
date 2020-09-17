@@ -29,8 +29,8 @@ function changePw(){
 			        		},
 			        	}
 			        }, function(){
-			        	if(this.key=="yes"){
-			        		window.close();
+			        	if(this.key=="yes"  || this.state == "close"){
+			        		closeModal();
 			        	}
 			    	});
 	    		 break;
@@ -43,4 +43,9 @@ function changePw(){
 	        alert('error = ' + jqXHR.responseText);
 	     }
 	  }); 
+}
+
+// 팝업창 닫기
+function closeModal(){
+	return self.parent.closeChangePwModal();		// 부모 페이지의 closeChangePwModal함수로 리턴
 }

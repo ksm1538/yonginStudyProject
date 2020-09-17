@@ -29,7 +29,7 @@ function changePw(){
                        },
                     }
                  }, function(){
-                    if(this.key=="yes"){
+                    if(this.key=="yes"  || this.state == "close"){
                        window.close();
                     }
                 });

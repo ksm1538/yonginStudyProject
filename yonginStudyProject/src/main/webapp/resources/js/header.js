@@ -1,3 +1,4 @@
+var makeStudyModal = new ax5.ui.modal();
 $(document).ready(function (){
 	
 		$(".user_id").click(function(){
@@ -45,6 +46,29 @@ function openMoreNotice(){
 	location.href = "/moreNotice.do";
 }
 
+/* 스터디 만들기 팝업 호출 */
 function makeStudyForm(){
-	window.open("/makeStudy.do",'스터디더보기','width=700px ,height=800px ,location=no,status=no,scrollbars=no');
+	makeStudyModal.open({
+		width: 800,
+		height: 900,
+		iframe: {
+			method: "get",
+			url: "/makeStudy.do",
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+	//window.open("/makeStudy.do",'스터디더보기','width=700px ,height=800px ,location=no,status=no,scrollbars=no');
+}
+
+// 스터디 만들기 팝업 닫기
+function closeMakeStudyModal(){
+	makeStudyModal.close();
 }

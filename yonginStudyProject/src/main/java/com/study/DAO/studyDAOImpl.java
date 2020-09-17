@@ -59,5 +59,10 @@ public class studyDAOImpl implements studyDAO{
 	public studyApplicationFormUserVO selectStudyApplicationForm(studyApplicationFormUserVO studyApplicationFormUserVO) {
 		return sqlSession.selectOne("studyMapper.selectStudyApplicationForm", studyApplicationFormUserVO);
 	}
+	
+	@Override
+	public int selectUserInStudyCount(studyApplicationFormUserVO studyApplicationFormUserVO) {
+		return sqlSession.selectOne("studyMapper.selectUserInStudyCount", studyApplicationFormUserVO);
+	}
 }
  

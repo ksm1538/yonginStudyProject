@@ -30,7 +30,7 @@ $(document).ready(function () {
     			    return inoutSxnMap[this.value];
     			}
         	},
-        	{key : "studyName", label: "제목", align: "center", width:"25%"},
+        	{key : "studyName", label: "제목", align: "center", width:"26%"},
         	{key : "studyArea", label: "지역", align: "center", width:"15%"},
         	{key : "userName",label : "방장", align : "center",width : "15%"},
         	{key : "totalCount",label : "현재 인원", align : "right",width : "10%"},
@@ -73,9 +73,9 @@ $(document).ready(function () {
         showLineNumber: false,
         showRowSelector: true,
         columns: [ 
-        	{key : "studyName", label: "스터디 이름", align: "center", width:"45%", sortable: true},
-        	{key : "noticeTitle", label: "제목", align: "center", width:"45%"},
-        	{key : "noticeCnt", label: "조회 수", align: "center", width:"10%"},
+        	{key : "studyName", label: "스터디 이름", align: "center", width:"41%", sortable: true},
+        	{key : "noticeTitle", label: "제목", align: "center", width:"41%"},
+        	{key : "noticeCnt", label: "조회 수", align: "center", width:"20%"},
         ],
         header: {
         	align:"center",
