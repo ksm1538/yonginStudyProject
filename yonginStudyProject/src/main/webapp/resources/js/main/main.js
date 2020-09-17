@@ -114,10 +114,7 @@ $(document).ready(function () {
 /*스터디 더보기 호출 2020 09 17 정승준 삭제*/
 
 
-/*스터드만들기 호출 */
-function makeStudyForm(){
-	window.open("/makeStudy.do",'스터디더보기','width=700px ,height=800px ,location=no,status=no,scrollbars=no');
-}
+/*스터드만들기 호출 2020 09 18 정승준삭제 */
 
 /* 스터디 리스트 조회 함수 */
 function getStudyList(){

@@ -44,3 +44,7 @@ function openMoreStudyForm(){
 function openMoreNotice(){
 	location.href = "/moreNotice.do";
 }
+
+function makeStudyForm(){
+	window.open("/makeStudy.do",'스터디더보기','width=700px ,height=800px ,location=no,status=no,scrollbars=no');
+}

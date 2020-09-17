@@ -51,7 +51,7 @@ inoutSxnList.forEach(function(n){
         <div class="col-12 sub_content_wrap">
             <div class="col-5 left_content">
                 <div class="col-12 calender_wrap content_wrap">
-                    <div class="content_title tc"><span>시험일정</span></div>
+                    <div class="content_title tc"><span>스터디 일정</span></div>
 					    <!-- 달력 버튼 -->
 					    <div id="menu" class="calender_menu">
 					      <span id="menu-navi">
@@ -72,16 +72,12 @@ inoutSxnList.forEach(function(n){
     
             <div class="col-6 right_content">
                 <div class="col-12 notice_wrap content_wrap">
-                   <div class="content_title tc"><span>공지사항</span></div>
+                   <div class="content_title tc"><span>스터디 공지사항</span></div>
                		<div style="width: 100%;" >  
 	  					<div data-ax5grid="studyNoticeListGrid" data-ax5grid-config="{}" style="height:300px; padding-top:10px; padding-right:10px"></div>  
 					</div>
 					
-					<div class="main_btn_con">
-						<div class="notice_btn">
-							<input type="button" value="공지사항 더보기" class="btn_style_1 type_3" onclick="openMoreNotice();">
-						</div>
-					</div>
+					
 					
 					
                 </div>

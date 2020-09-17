@@ -65,6 +65,7 @@ studySxnList.forEach(function(n){
                <li><a id="listMove1">개인 정보 수정</a></li>
                <li><a id="listMove2">내가 참여한 스터디</a></li>
                <li><a id="listMove3">내가 만든 스터디</a></li>
+               <li><a id="listMove4">나의 스터디 신청 현황</a></li>
             </ul>
          </div>
          
@@ -146,8 +147,8 @@ studySxnList.forEach(function(n){
          </div>
          
          <div class="col-9 mypage_content_con">
-            <div class="col-12 my_make_list">
-               <div class="mypage_content_title" id="list3"><span>나의 신청 내역</span></div>
+            <div class="col-12 my_apply_list">
+               <div class="mypage_content_title" id="list4"><span>나의 스터디 신청 현황</span></div>
                
                	<div class="my_make_study"style="width: 100%;" >  
 	  				<div data-ax5grid="myApplicationFormGrid" data-ax5grid-config="{}" style="height:300px; padding-top:10px; padding-right:10px"></div>  
