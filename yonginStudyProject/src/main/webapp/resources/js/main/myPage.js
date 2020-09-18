@@ -212,11 +212,6 @@ $(document).ready(function () {
 		$('#userPhoneNumber').val(phoneNumber);
 });
 
-/*스터디 관리 호출 */
-function openstudyManagementForm(){
-	window.open("/studyManagement.do",'회원가입','width=700px ,height=900px ,location=no,status=no,scrollbars=no');
-}
-
 //주소 검색 함수 세팅
 function addressPopup() {
     new daum.Postcode({

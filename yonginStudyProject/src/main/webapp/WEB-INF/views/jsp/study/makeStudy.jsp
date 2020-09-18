@@ -51,7 +51,7 @@
          </div>
          
          <div class="study_type make_study_form">
-            <div class="title_size type_2">스터디 종류</div>
+            <div class="title_size type_2">스터디 주제</div>
             <div class="make_study_input_con">
             	<select name="studyTopic" id="studyTopic" class="select_style_0" >
 					<c:forEach var="result" items="${studyTopic}" varStatus="status">

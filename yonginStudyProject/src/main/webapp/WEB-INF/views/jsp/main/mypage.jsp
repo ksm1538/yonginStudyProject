@@ -141,11 +141,6 @@ studySxnList.forEach(function(n){
 	  				<div data-ax5grid="myMakeListGrid" data-ax5grid-config="{}" style="height:300px; padding-top:10px; padding-right:10px"></div>  
 				</div>
                
-               
-               <div class="tc modify_btn_con">
-                  <input class="btn_style_1" type="button" value="관리하기 " onclick="openstudyManagementForm();">
-               </div>
-               
             </div>
          </div>
          
