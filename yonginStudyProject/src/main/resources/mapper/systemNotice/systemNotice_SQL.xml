@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 해당 부분의 namespace는 project package + Mapper Package + Mapper Interface 이름입니다. -->
+<mapper namespace="systemNoticeMapper">
+	<!-- 해당 부분의 id는 MapperClass의 함수 이름과 유사하여야 합니다. -->	
+	
+	<select id="selectSystemNoticeList" resultType="com.notice.VO.moreNoticeInfoVO">
+		<![CDATA[
+			SELECT	SYSTEM_NOTICE.SYSTEM_NOTICE_CODE	as	systemNoticeCode
+				,	SYSTEM_NOTICE.TITLE					as	systemNoticeTitle
+				,	SYSTEM_NOTICE.SYSTEM_NOTICE_DESC	as	systemNoticeDesc
+				,	USER_INFO.USER_ID					as	systemNoticeRgstusId
+				,	TO_CHAR(SYSTEM_NOTICE.RGDT_DT, 'YYYY-MM-DD HH24:MI') 	as systemNoticeTime
+				,	TO_CHAR(SYSTEM_NOTICE.UPDT_DT, 'YYYY-MM-DD HH24:MI') 	as systemNoticeUpdateTime
+			FROM	SYSTEM_NOTICE,
+					USER_INFO
+			WHERE	USER_INFO.USER_CODE		=	SYSTEM_NOTICE.RGSTUS_ID
+		]]>
+	</select>
+	
+	<insert id="insertSystemNotice"> 
+		<![CDATA[
+			INSERT 
+			INTO	SYSTEM_NOTICE
+				(	
+					SYSTEM_NOTICE_CODE
+				,	TITLE
+				,	SYSTEM_NOTICE_DESC
+				,	RGSTUS_ID
+				,	RGDT_DT
+				,	USE_YN
+				)  
+			VALUES	
+				(	
+					'3333'
+				,	#{systemNoticeTitle}
+				,	#{systemNoticeDesc}
+				,	'SYSTEM'
+				,	sysdata
+				,	'Y'
+				)
+		]]>
+	</insert>
+	
+</mapper>

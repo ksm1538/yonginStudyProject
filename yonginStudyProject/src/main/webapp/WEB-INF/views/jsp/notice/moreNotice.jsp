@@ -29,6 +29,10 @@
          	   <div style="width: 100%;" >
 	  				<div data-ax5grid="noticeListPlusGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
 			   </div> 
+			   
+			   <div class="apply_btn tc">
+					<input type="button" value="글 작성하기" class="btn_style_1 type_3" onclick="openMoreNotice();">
+				</div>
    		 	</div>
        </div>
 </body>
