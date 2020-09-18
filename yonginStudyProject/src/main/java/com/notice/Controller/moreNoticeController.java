@@ -5,15 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,20 +19,22 @@ import com.login.VO.userInfoVO;
 import com.main.VO.studyInfoVO;
 import com.notice.Service.systemNoticeService;
 import com.notice.VO.moreNoticeInfoVO;
-import com.study.Validator.studyInfoValidator;
 
+/**
+ * Handles requests for the application home page.
+ */
 @Controller
-public class writeNoticeController {
+public class moreNoticeController {
 	@Resource(name="systemNoticeService") // 해당 서비스가 리소스임을 표시합니다.
 	private systemNoticeService systemNoticeService;
 	
 	
-	private static final Logger logger = LoggerFactory.getLogger(writeNoticeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(moreNoticeController.class);
 	
 	/**
-	 * 공지사항 작성 Mapping
+	 * 공지사항 더보기 Mapping
 	 */
-	@RequestMapping(value = "/writeNotice.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/moreNotice.do", method = RequestMethod.GET)
 	public String MoreNoticeForm(HttpSession session) {
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(시작) **/
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
@@ -45,26 +44,32 @@ public class writeNoticeController {
 		}
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
 		 
-		return "jsp/notice/writeNotice";
+		return "jsp/notice/moreNotice";
 	}
 	
 	/**
-	 * 공지사항 작성
-	 * @param moreNoticeInfoVO
-	 * @param bingdingResult
+	 * 시스템 공지사항 리스트 조회
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/notice/makeSystemNotice.json", method = RequestMethod.POST)
+	@RequestMapping(value="/notice/selectSystemNoticeList.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> registerAjaxFunction(@RequestBody moreNoticeInfoVO moreNoticeInfoVO, HttpSession session, BindingResult bindingResult) throws Exception {
+	public Map<String, Object> selectStudyList(HttpServletRequest request) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
-	
-		systemNoticeService.insertSystemNotice(moreNoticeInfoVO);
+	      
+		List<moreNoticeInfoVO> ltResult = systemNoticeService.selectSystemNoticeList();
+
+		if(ltResult.size() < 1) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "스터디 목록이 없습니다.");
+		}
+		
 		mReturn.put("result", "success");
-		mReturn.put("message", "성공적으로 생성되었습니다.");
+		mReturn.put("message", "조회 성공하였습니다.");
+		mReturn.put("resultList", ltResult);
 		
 		return mReturn;
 	}
+
 }

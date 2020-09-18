@@ -8,9 +8,9 @@ $(document).ready(function () {
         showRowSelector: true,
         columns: [ 
             {key : "systemNoticeTitle", label: "제목", align: "center", width:"45%", sortable: true},
-        	{key : "systemNoticeRgstusID", label: "작성자 ID", align: "center", width:"10%"},
+        	{key : "systemNoticeRgstusId", label: "작성자 ID", align: "center", width:"10%"},
         	{key : "systemNoticeTime", label: "날짜", align: "center", width:"10%"},
-			{key : "totalCount", label: "조회수", align: "center", width:"10%"},
+			{key : "count", label: "조회수", align: "center", width:"10%"},
         ],
         header: {
         	align:"center",
@@ -41,6 +41,8 @@ $(document).ready(function () {
                 },
             },
         });
+
+	getSystemNoticeList();
 });
 
 /* 시스템 공지사항 리스트 조회 함수 */

@@ -16,14 +16,14 @@ function makeSystemNoticeFunc(){
 
 	var sendData = {
 		systemNoticeTitle:document.getElementById("systemNoticeTitle").value,
-		systemNoticeDesc:document.getElementById("systemNoticeDesc").value
+		systemNoticeDesc:document.getElementById('systemNoticeDesc').value
 	}
 	
 	console.log(sendData); 
 	  $.ajax({
 	     type: "POST",
 	     url : "/notice/makeSystemNotice.json",
-	     data: sendData,
+	     data: JSON.stringify(sendData),
 	     dataType: "json",
 	     contentType: "application/json; charset=UTF-8",
 	     async: false,
