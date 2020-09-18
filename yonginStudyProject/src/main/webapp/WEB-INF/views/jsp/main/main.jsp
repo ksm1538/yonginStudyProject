@@ -35,56 +35,109 @@ inoutSxnList.forEach(function(n){
 </head>
 <body>
 	
-    <div class="col-12 col-center mw-1200 main_content_wrap">
-            <!--게시판-->
-        <div class="col-12 study_list_wrap content_wrap">
-            <div class="content_title"><span>나의 스터디 목록</span></div>
-            
-            <div class="main_study_list_con" style="width: 100%;" >  
+	<div class="col-12 main_top_desc_wrap">
+		<div class="main_top_btn_con"><a id="Movetop"><img src="/resources/img/arrow.png"></a></div>
+		<div class="col-12 col-center mw-1200 main_top_desc_con">
+			
+			<div class="col-6 main_top_left">
+				<div class="main_top_title">누가 사공이 많으면 배가 산으로<br> 간다 했나?</div>
+				<div class="main_top_sub_title">목표를 위해 팀원을 모아 함께 준비하세요 !</div>
+				
+				<div class="main_move_btn_con">
+					<div class="move_main_list main_my_study_list"><a id="movelist1">나의 스터디 목록</a></div>
+					<div class="move_main_list main_my_study_list"><a id="movelist2">스터디 공지사항</a></div>
+				</div>
+				<div class="main_move_btn_con">
+					<div class="move_main_list main_my_study_list"><a id="movelist3">스터디 일정 보기</a></div>
+				</div>
+			</div>
+		
+		
+			<div class="col-6 main_top_right">
+				<div class="main-content">
+   					 <div class="main_banner_wrap">
+      					  <div class="main_banner_list_con">      					
+           						<div class="main_banner_list"> <a><img src="../resources/img/study1.jpg"></a></div>
+           						<div class="main_banner_list"> <a><img src="../resources/img/study2.jpg" style="width:600px;"></a></div>
+           						<div class="main_banner_list"> <a><img src="../resources/img/study3.jpg"></a></div>
+           						<div class="main_banner_list"> <a><img src="../resources/img/study4.jpg"></a></div>
+           						<div class="main_banner_list"> <a><img src="../resources/img/study5.jpg"></a></div>
+        				  </div>
+  					 </div>
+				</div>	
+			</div>
+			
+		</div>	
+	</div>
+	
+	<div class="col-12 main_my_study_list_wrap" id="movelist">
+		<div class="col-12 col-center mw-1200 main_my_study_list_con">
+			
+			<div class="main_my_study_list_title_con">
+				<div class="main_my_study_list_title"><span>나의 스터디 목록</span></div>
+				<div class="question_mark_con">
+					<div class="tc question_mark"><span>?</span></div>
+					<div class="qestion_desc_box_con">
+						<div class="question_tri"></div>
+						<div class="question_desc">나의 스터디 목록은 사용자가 참여하고 있는 스터디의 주제, 제목 , 지역 등 다양한 정보를 제공합니다. 추가로 스터디 클릭시 상세 정보를 볼 수 있습니다.</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="main_study_list_con" style="width: 100%;" >  
 	  			<div data-ax5grid="studyListGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="col-12 main_my_study_notice_wrap" id="movenotice">
+		<div class="col-12 col-center mw-1200 main_my_study_notice_con">
+			<div class="main_my_study_notice_title_con">
+				<div class="main_my_study_notice_title"><span>스터디 공지사항</span></div>
+				<div class="question_mark_con">
+					<div class="tc question_mark"><span>?</span></div>
+					<div class="qestion_desc_box_con">
+						<div class="question_tri type_2"></div>
+						<div class="question_desc type_2">스터디 공지사항은 사용자가 참여하고 있는 스터디에서 등록된 공지사항을 보여 드립니다.</div>
+					</div>
+				</div>
+			</div>
+				<div style="width: 100%;" >  
+	  					<div data-ax5grid="studyNoticeListGrid" data-ax5grid-config="{}" class="color_grid" style="height:500px; padding-top:10px; padding-right:10px"></div>  
+				</div>
+		</div>
+	</div>
+	
+	<div class="col-12 main_my_study_calender_wrap" id="movecal">
+		<div class="col-12 col-center mw-1200 main_my_study_calender_con">
+			<div class="main_my_study_calender_title_con">
+				<div class="main_my_study_calender_title"><span>스터디 일정</span></div>
+				<div class="question_mark_con">
+					<div class="tc question_mark"><span>?</span></div>
+					<div class="qestion_desc_box_con">
+						<div class="question_tri"></div>
+						<div class="question_desc">스터디 일정은 사용자가 참여하고 있는 스터디에서 등록된 일정을 보여 드립니다.</div>
+					</div>
+				</div>
 			</div>
 			
 			
-        </div>
+			<div id="menu" class="calender_menu">
+				<span id="menu-navi">
+					  <button type="button" class="today_btn" data-action="move-today">Today</button>
+					  <button type="button" class="prev_btn" data-action="move-prev">
+					  	<i class="calendar-icon ic-arrow-line-left" data-action="move-prev"></i>
+					  </button>
+					  <button type="button" class="next_btn" data-action="move-next">
+					    <i class="calendar-icon ic-arrow-line-right" data-action="move-next"></i>
+					  </button>
+				</span>
+				<span id="renderRange" class="render-range"></span>
+			</div>
+			<div id="calendar"></div>	
+		</div>	
+	</div>
 	
-	
-        <div class="col-12 sub_content_wrap">
-            <div class="col-5 left_content">
-                <div class="col-12 calender_wrap content_wrap">
-                    <div class="content_title tc"><span>스터디 일정</span></div>
-					    <!-- 달력 버튼 -->
-					    <div id="menu" class="calender_menu">
-					      <span id="menu-navi">
-					        <button type="button" class="today_btn" data-action="move-today">Today</button>
-					        <button type="button" class="prev_btn" data-action="move-prev">
-					          <i class="calendar-icon ic-arrow-line-left" data-action="move-prev"></i>
-					        </button>
-					        <button type="button" class="next_btn" data-action="move-next">
-					          <i class="calendar-icon ic-arrow-line-right" data-action="move-next"></i>
-					        </button>
-					      </span>
-					      <span id="renderRange" class="render-range"></span>
-					    </div> 
-                    	<!-- 달력표시 -->
-                    	<div id="calendar"></div>
-                </div>
-            </div>
-    
-            <div class="col-6 right_content">
-                <div class="col-12 notice_wrap content_wrap">
-                   <div class="content_title tc"><span>스터디 공지사항</span></div>
-               		<div style="width: 100%;" >  
-	  					<div data-ax5grid="studyNoticeListGrid" data-ax5grid-config="{}" style="height:300px; padding-top:10px; padding-right:10px"></div>  
-					</div>
-					
-					
-					
-					
-                </div>
-            </div>
-        </div>
-       
-        
-    </div>
 </body>
 </html>

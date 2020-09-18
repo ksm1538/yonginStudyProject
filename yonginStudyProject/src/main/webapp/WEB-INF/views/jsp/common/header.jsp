@@ -9,7 +9,7 @@
 <script type="text/javascript" src="/resources/js/header.js"></script>
 </head>
 <body> 
-  <div class="col-12 point_bg0 header_wrap">
+  <div class="col-12 header_wrap">
         <div class="col-12 col-center mw-1200 header_con">
                 <div class="header_menu_con">
                     <ul class="header_menu">

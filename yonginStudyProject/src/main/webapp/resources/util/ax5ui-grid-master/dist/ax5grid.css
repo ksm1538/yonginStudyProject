@@ -739,6 +739,17 @@ textarea.input-lg, .input-group-lg>textarea.form-control,
 	overflow: hidden
 }
 
+
+.color_grid[data-ax5grid] [data-ax5grid-container="root"] {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	background: #fff;
+	border: 2px solid #000;
+	overflow: hidden;
+}
+
+
 [data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="hidden"]
 	{
 	margin: 0;
@@ -870,6 +881,13 @@ textarea.input-lg, .input-group-lg>textarea.form-control,
 	border-bottom: 1px solid #ccc
 }
 
+.color_grid[data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="header"] [data-ax5grid-panel] table tr td.hasBorder
+	{
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+
 [data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="header"] [data-ax5grid-panel] table tr td.focused
 	{
 	box-shadow: inset 0px 0px 1px 1px #0581f2
@@ -890,7 +908,7 @@ textarea.input-lg, .input-group-lg>textarea.form-control,
 [data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="header"] [data-ax5grid-panel] table tr td[data-ax5grid-column-row="null"]
 	{
 	border-right: 0 none;
-	background-color:#CAB0F1; 
+	background-color:#7f99e2; 
 }
 
 [data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="header"] [data-ax5grid-panel] table tr td[data-ax5grid-column-selected]
@@ -958,9 +976,25 @@ textarea.input-lg, .input-group-lg>textarea.form-control,
 	padding: 3px 5px;
 	font-size: 15px;
 	font-weight: bold;
-	background-color: #CAB0F1;
-	border:1px solid #CAB0F1; 
+	background-color: #7f99e2;
+	border:1px solid #7f99e2; 
 	color: #fff;
+	line-height: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis
+}
+
+.color_grid[data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="header"] [data-ax5grid-panel] table tr td [data-ax5grid-cellHolder]
+	{
+	display: block;
+	box-sizing: border-box;
+	padding: 3px 5px;
+	font-size: 15px;
+	font-weight: bold;
+	background-color: #fff;
+	border:1px solid #fff; 
+	color: #7f99e2;
 	line-height: 1;
 	white-space: nowrap;
 	overflow: hidden;
@@ -1297,8 +1331,18 @@ textarea.input-lg, .input-group-lg>textarea.form-control,
 	overflow: hidden;
 	border-top:none;
 	border-left:none;
-	border-right:2px solid #CAB0F1;
-	border-bottom:2px solid #CAB0F1;
+	border:2px solid #7f99e2;;
+}
+
+.color_grid[data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="body"] [data-ax5grid-panel]
+	{
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
+	border-top:none;
+	border-left:none;
+	border:1px solid #000;
 }
 
 [data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="body"] [data-ax5grid-panel] table
@@ -1610,8 +1654,10 @@ textarea.input-lg, .input-group-lg>textarea.form-control,
 	[data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="body"] [data-ax5grid-panel][data-ax5grid-panel="bottom-aside-body"]
 	{
 	border-right: 1px solid #ccc;
-	background: #CAB0F1; 
+	background: #fff; 
 }
+
+
 
 [data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="body"] [data-ax5grid-panel][data-ax5grid-panel="top-aside-body"] table tr,
 	[data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="body"] [data-ax5grid-panel][data-ax5grid-panel="aside-body"] table tr,

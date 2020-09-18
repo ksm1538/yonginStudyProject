@@ -47,8 +47,8 @@ body{overflow:scroll;}
 
   
 /*포인트 컬러 */
-.point0{color: #31aae2;}
-.point_bg0{background-color:#31aae2;} 
+.point0{color: #7f99e2;}
+.point_bg0{background-color:#7f99e2;} 
 
 
 .textbox_style_0{outline:none; color:#fff; width:200px; height:35px; background:transparent; border-top:none; border-right:none; border-left:none; border-bottom:2px solid rgba(255,255,255,0.5);}

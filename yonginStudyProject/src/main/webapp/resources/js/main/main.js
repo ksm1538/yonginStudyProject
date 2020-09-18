@@ -4,6 +4,11 @@ var studyNoticeListGrid = new ax5.ui.grid();
 var cal;
 /** 변수 설정(끝) **/
 
+		
+		
+
+
+
 /** 초기화(시작) **/
 $(document).ready(function () {
 	//달력 초기 설정
@@ -19,6 +24,32 @@ $(document).ready(function () {
 		$(".user_box_con").fadeOut(600);
 	}); 
 	*/
+		
+		$("#Movetop").click(function(){
+			$('html, body').animate({
+				scrollTop : 0
+			}, 400);
+			return false;
+		});
+		
+		var list1 = $("#movelist").offset();
+		var list2 = $("#movenotice").offset();
+		var list3 = $("#movecal").offset();
+		//클릭시 이동
+		$("#movelist1").on("click",function(event){
+			$("html body").animate({scrollTop:list1.top},400);
+		});
+		
+		$("#movelist2").on("click",function(event){
+			$("html body").animate({scrollTop:list2.top},400);
+		});
+		
+		$("#movelist3").on("click",function(event){
+			$("html body").animate({scrollTop:list3.top},400);
+		});
+		
+	
+	
 	//스터디 리스트 설정
 	studyListGrid.setConfig({   
     	target: $('[data-ax5grid="studyListGrid"]'),
@@ -137,6 +168,11 @@ function getStudyList(){
 			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
 		}
 	}); 
+	
+	
+	
+	
+	
 }
 
 /*공지사항 더보기 호출 */

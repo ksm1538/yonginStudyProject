@@ -34,6 +34,9 @@
 <script type="text/javascript" src="/resources/util/toast-ui/tui-calendar.min.js"></script>
 <script type="text/javascript" src="/resources/util/summernote/summernote.min.js"></script>
 <script type="text/javascript" src="/resources/js/constant.js"></script>
+<script type="text/javascript" src="/resources/js/constant.js"></script>
+<script type="text/javascript" src="/resources/js//main/autoslide.js"></script>
+<script type="text/javascript" src="/resources/js//main/TweenMax.js"></script>
 <!-- css, js 설정(끝) -->
 </head>
 <body> 
