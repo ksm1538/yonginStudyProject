@@ -304,7 +304,7 @@ html, body {
 .mypage_top_btn_con >a{display:block; transform: rotate(270deg); width:50px; height:50px; margin-left:12px; margin-top:12px; cursor:pointer;}
 
 /*메인 탑 */
-.main_top_btn_con{width:75px; height:75px; border-radius:50px; background-color:#CAB0F1; position:fixed; left:92%; top:20%;}
+.main_top_btn_con{width:75px; height:75px; border-radius:50px; background-color:#CAB0F1; position:fixed; left:92%; top:20%; z-index:5;}
 .main_top_btn_con > a{display:block; transform: rotate(270deg); width:50px; height:50px; margin-left:12px; margin-top:12px; cursor:pointer;}
 
 .main_top_desc_wrap{padding:30px 20px; background-color:#7f99e2;}
@@ -334,19 +334,19 @@ html, body {
 
 
 /*메인 스터디 목록*/
-.main_my_study_list_wrap{padding-top:120px; padding-bottom:120px; z-index:-1;}
+.main_my_study_list_wrap{padding-top:120px; padding-bottom:120px; z-index:3;}
 .main_my_study_list_title_con{display:flex;}
 .main_my_study_list_con .main_my_study_list_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px;}
 .main_my_study_list_con .main_my_study_list_title > span{display:inline-block; border-bottom:3px solid #7f99e2; padding-bottom:10px;}
 
 /*스터디 공지사항*/
-.main_my_study_notice_wrap{padding-top:120px; padding-bottom:120px; background-color: #7f99e2; z-index:-1;}
+.main_my_study_notice_wrap{padding-top:120px; padding-bottom:120px; background-color: #7f99e2; z-index:3;}
 .main_my_study_notice_title_con{display:flex;}
 .main_my_study_notice_con .main_my_study_notice_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px; color:#fff;}
 .main_my_study_notice_con .main_my_study_notice_title > span{display:inline-block; border-bottom:3px solid #fff; padding-bottom:10px;}
 
 /*스터디 일정*/
-.main_my_study_calender_wrap{padding-top:120px; padding-bottom:120px; z-index:-1;}
+.main_my_study_calender_wrap{padding-top:120px; padding-bottom:120px; z-index:3;}
 .main_my_study_calender_title_con{display:flex;}
 .main_my_study_calender_title_con .main_my_study_calender_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px;}
 .main_my_study_calender_title_con .main_my_study_calender_title > span{display:inline-block; border-bottom:3px solid #7f99e2; padding-bottom:10px;}
