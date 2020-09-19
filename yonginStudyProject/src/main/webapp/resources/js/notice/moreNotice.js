@@ -7,9 +7,10 @@ $(document).ready(function () {
         showLineNumber: false,
         showRowSelector: true,
         columns: [ 
-            {key : "studyName", label: "스터디 이름", align: "center", width:"45%", sortable: true},
-        	{key : "noticeTitle", label: "제목", align: "center", width:"45%"},
-        	{key : "noticeCnt", label: "조회 수", align: "center", width:"10%"},
+            {key : "systemNoticeTitle", label: "제목", align: "center", width:"45%", sortable: true},
+        	{key : "systemNoticeRgstusId", label: "작성자 ID", align: "center", width:"10%"},
+        	{key : "systemNoticeTime", label: "날짜", align: "center", width:"10%"},
+			{key : "count", label: "조회수", align: "center", width:"10%"},
         ],
         header: {
         	align:"center",
@@ -40,8 +41,36 @@ $(document).ready(function () {
                 },
             },
         });
+
+	getSystemNoticeList();
 });
 
+/* 시스템 공지사항 리스트 조회 함수 */
+function getSystemNoticeList(){
+	
+	$.ajax({
+ 		type: "POST",
+ 		url : "/notice/selectSystemNoticeList.json",
+		contentType: "application/json; charset=UTF-8",
+		async: false,
+		success : function(data, status, xhr) {
+			switch(data.result){
+			    case COMMON_SUCCESS:
+			    	noticeListPlusGrid.setData(data.resultList);
+			    	break;    
+			    case COMMON_FAIL:
+			    	dialog.alert(data.message); 
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+		}
+	}); 
+}
 
 
+/*공지사항 작성 호출 */
+function openMoreNotice(){
+	window.open("/writeNotice.do",'공지사항 작성','width=720px ,height=1050px ,location=no,status=no,scrollbars=no');
+}
 
