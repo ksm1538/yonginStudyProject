@@ -25,6 +25,8 @@ $(document).ready(function () {
 	}); 
 	*/
 		
+		
+		/*클릭시 이동 */
 		$("#Movetop").click(function(){
 			$('html, body').animate({
 				scrollTop : 0
@@ -47,6 +49,20 @@ $(document).ready(function () {
 		$("#movelist3").on("click",function(event){
 			$("html body").animate({scrollTop:list3.top},400);
 		});
+		
+		
+		/*사이드메뉴 */
+		$(".side_fixed_menu_title").click(function(){
+			var sidemenu = $(".side_fixed_menu_list");
+			
+			if(sidemenu.is(":visible")){
+				sidemenu.slideUp();
+			}else{
+				sidemenu.slideDown();
+			}
+		});
+		
+		
 		
 	
 	

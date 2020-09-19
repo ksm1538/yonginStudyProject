@@ -115,48 +115,6 @@ html, body {
 .find_pw_form_wrap .find_pw_email > font{color: #31aae2; }
 
 
-/*메인 컨텐츠*/
-.main_content_wrap{overflow:hidden;}
-.calender_wrap{padding:40px 40px; margin-bottom:40px;}
-.notice_wrap {padding:40px 40px;}
-.notice_wrap .main_btn_con{margin-top:40px;}
-
-.content_wrap{border:3px solid #31aae2;}
-.content_title{font-size:30px; font-weight: bold; padding: 20px 20px;}
-.content_title > span{display:inline-block; border-bottom:3px solid #31aae2; padding-bottom:10px;}
-.study_list_wrap{padding:40px 40px; margin-bottom: 40px; margin-top:40px;}
-.left_content{margin-right:50px;}
-.right_content{margin-left:50px;}
-
-.calender_menu{margin-bottom:20px;}
-
-
-/*스터디목록 및 버튼 스타일*/
-.main_study_list_con{margin-bottom:40px;}
-.main_btn_con{display:flex; flex-wrap:nowrap; justify-content:center}
-.main_btn_con .list_btn{margin-right:25px; margin-left:25px;}
-.main_btn_con .make_btn{margin-right:25px; margin-left:25px;}
-
-
-
-
-
-.calender_con{overflow:hidden; margin-bottom: 40px;}
-.calender_month_con{display:flex; flex-wrap: nowrap; justify-content: center;}
-.left_arrow_con{margin-right:50px;}
-.right_arrow_con{margin-left:50px;}
-.left_arrow_con .left_arrow{cursor:pointer; width:18px; height:18px; transform: rotate(180deg);}
-.right_arrow_con .right_arrow{cursor:pointer;  width:18px; height:18px;}
-
-/*달력 화살표 년 월*/
-.month_choice{position: relative;}
-.choice_year, .choice_month{font-size:20px; position: absolute; }
-.month_choice .choice_year{top:-6px; left:-35px;}
-.month_choice .choice_month{top:-6px; left:20px;}
-
-.calender > tbody > tr > th {width:100px;}
-.cal_day{text-align: center;}
-
 /* #31aae2;  #CAB0F1;  */
 
 /*마이페이지*/
@@ -298,10 +256,24 @@ html, body {
 .question_desc{position:absolute; top:-24px; left:47px; width:500px; background-color:#7f99e2; padding:15px 10px; border-radius:13px; color:#fff; font-weight:bold;}
 .question_desc.type_2{background-color:#fff; color:#7f99e2;}
 
-
+/*위로 움직이는 버튼*/
 .mypage_top_btn_con{width:55px; height:55px; border-radius:50px; background-color:#CAB0F1; position:fixed; left:92%; top:20%;}
 .mypage_top_btn_con:hover{background-color:#31aae2; }
 .mypage_top_btn_con >a{display:block; transform: rotate(270deg); width:50px; height:50px; margin-left:12px; margin-top:12px; cursor:pointer;}
+
+.side_fixed_menu_con{z-index:5; border:2px solid #CAB0F1; background-color:#CAB0F1; width:100px; padding:15px 10px; border-radius:10px; cursor:pointer; position:fixed; right:24px; bottom:315px;}
+.side_fixed_menu_con:hover{border:2px solid #000;}
+.side_fixed_menu_con .side_fixed_menu_title{font-size:15px; font-weight:bold;}
+
+.side_fixed_menu_list_con{}
+.side_fixed_menu_list{display:none;}
+.side_fixed_menu_list > a{width:55px; }
+.side_fixed_menu_list > li{width:75px; height:75px; border:2px solid #CAB0F1;}
+.side_fixed_menu_list > li:hover{border:2px solid red;}
+.side_fixed_menu_con .side_arrow_img{width:55px; height:55px; transform: rotate(270deg); margin-left:8px; margin-top:5px;}
+.side_fixed_menu_con .side_list_img{width:55px; height:55px; margin-left:9px; margin-top:9px;}
+.side_fixed_menu_con .side_notice_img{width:50px; height:50px; margin-left:16px; margin-top:10px;}
+.side_fixed_menu_con .side_cal_img{width:70px; height:70px; margin-left:2px;}
 
 /*메인 탑 */
 .main_top_btn_con{width:75px; height:75px; border-radius:50px; background-color:#CAB0F1; position:fixed; left:92%; top:20%; z-index:5;}
