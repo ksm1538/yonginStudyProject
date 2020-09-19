@@ -40,9 +40,9 @@ inoutSxnList.forEach(function(n){
 			<div class="side_fixed_menu_list_con">
 				<ul class="side_fixed_menu_list">
 					<li><a><img src="/resources/img/arrow.png" class="side_arrow_img" id="Movetop"></a></li>
-					<li><a><img src="/resources/img/list.png" class="side_list_img" id="movelist1"></a></li>
-					<li><a><img src="/resources/img/notice.png" class="side_notice_img" id="movelist2"></a></li>
-					<li><a><img src="/resources/img/cal.png" class="side_cal_img" id="movelist3"></a></li>
+					<li><a><img src="/resources/img/list.png" class="side_list_img" id="side_movelist1"></a></li>
+					<li><a><img src="/resources/img/notice.png" class="side_notice_img" id="side_movelist2"></a></li>
+					<li><a><img src="/resources/img/cal.png" class="side_cal_img" id="side_movelist3"></a></li>
 				</ul>
 			</div>
 			<div class="tc side_fixed_menu_title">빠른 이동</div>			
