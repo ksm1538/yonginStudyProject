@@ -209,24 +209,24 @@ $(document).ready(function () {
 		});
 		
 		
-		var list4 = $("#list1").offset();
-		var list5 = $("#list2").offset();
-		var list6 = $("#list3").offset();
-		var list7 = $("#list4").offset();
+		var list5 = $("#list1").offset();
+		var list6 = $("#list2").offset();
+		var list7 = $("#list3").offset();
+		var list8 = $("#list4").offset();
 		//클릭시 이동
 		$("#side_movelist1").on("click",function(event){
-			$("html body").animate({scrollTop:list4.top},400);
-		});
-		
-		$("#side_movelist2").on("click",function(event){
 			$("html body").animate({scrollTop:list5.top},400);
 		});
 		
-		$("#side_movelist3").on("click",function(event){
+		$("#side_movelist2").on("click",function(event){
 			$("html body").animate({scrollTop:list6.top},400);
 		});
-		$("#side_movelist4").on("click",function(event){
+		
+		$("#side_movelist3").on("click",function(event){
 			$("html body").animate({scrollTop:list7.top},400);
+		});
+		$("#side_movelist4").on("click",function(event){
+			$("html body").animate({scrollTop:list8.top},400);
 		});
 		
 		

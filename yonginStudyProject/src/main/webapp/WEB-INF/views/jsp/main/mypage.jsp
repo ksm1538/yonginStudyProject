@@ -179,7 +179,7 @@ studySxnList.forEach(function(n){
 	<div class="col-12 mypage_mymake_wrap" id="list3">
 		<div class="col-12 col-center mw-1200 mypage_mymake_con">
 			<div class="mypage_mymake_title_con">
-				<div class="mypage_mymake_title"><span>내가 참여한 스터디</span></div>
+				<div class="mypage_mymake_title"><span>내가 만든 스터디</span></div>
 				<div class="question_mark_con">
 					<div class="tc question_mark"><span>?</span></div>
 					<div class="qestion_desc_box_con">
