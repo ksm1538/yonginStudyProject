@@ -117,30 +117,7 @@ html, body {
 
 /* #31aae2;  #CAB0F1;  */
 
-/*마이페이지*/
-.mypage_list_con{background-color:#CAB0F1; height:100%; padding:20px 20px; }
-.mypage_list_con .mypage_list > li{font-size:20px; font-weight:bold; margin-bottom:50px; margin-top:50px;}
-.mypage_list_con .mypage_list > li > a{cursor:pointer; color:#fff;}
-.mypage_list_con .mypage_list > li > a:hover{color:#31aae2; text-decoration:none;}
-.mypage_list_title{padding-bottom:20px; margin-bottom:20px; border-bottom:2px solid #fff; width:auto; font-size:25px; font-weight:bold; color:#fff;}
 
-.mypage_content_con{padding:50px 50px;}
-.mypage_content_con .mypage_content_title{margin-bottom:80px;}
-.mypage_content_con .mypage_content_title > span{display:inline-block; padding-bottom:15px; font-size:30px; font-weight:bold; border-bottom:3px solid #31aae2; }
-
-.user_info_modify, .my_participate_list, .my_make_list{border-bottom:3px solid #CAB0F1; padding-bottom:50px;}
-
-.modify_line_right_con{padding-left: 100px;}
-.modify_con{display:flex; margin-bottom:30px;}
-.modify_con .textbox_style_1{margin-right:40px;}
-.modify_btn_con{margin-top:50px;}
-
-.mypage_content_con .my_participate_study{margin-bottom:50px;}
-.mypage_content_con .my_make_study{margin-bottom:50px;}
-
-.mypage_top_btn_con{width:75px; height:75px; border-radius:50px; background-color:#CAB0F1; position:fixed; left:92%; top:20%;}
-.mypage_top_btn_con:hover{background-color:#31aae2; }
-.mypage_top_btn_con >a{display:block; transform: rotate(270deg); width:50px; height:50px; margin-left:12px; margin-top:12px; cursor:pointer;}
 
 .mypage_fixed_list{position:fixed;}
 
@@ -245,7 +222,7 @@ html, body {
 
 
 
-/*메인 수정작업*/
+/*========메인 수정작업=========*/
 /*퀘스쳔마크*/
 .question_mark_con{display:flex; position:relative; width:25px; height:25px; background-color:#ffae42; border-radius:50px; cursor:pointer; margin-top:10px; margin-left:30px;}
 .question_mark > span{ font-size:20px; font-weight:bold; color:red; padding-left:6px;}
@@ -346,4 +323,77 @@ html, body {
 .next_btn:hover:after{border:1px solid #7f99e2; background-color:#7f99e2;}
 
 
+/*=======마이페이지==========*/
+.mypage_content_wrap{position:relative; height:700px; padding:120px 70px;}
+.mypage_content_img{z-index:-1; width:100%; height:100%; background-image:url("../img/mypage.jpg"); background-repeat: no-repeat; background-size:cover; backgroud-position:center; position:absolute; top:0; left:0;}
+.mypage_content_dim{z-index:-1; width:100%; height:100%; background-color:rgba(0,0,0,0.6); position: absolute; top:0; left:0;}
 
+.mymage_left_content_con{z-index:3; padding-top:140px;}
+.mymage_right_content_con{z-index:3;}
+.mymage_left_content_con .mypage_left_title{color:#fff; font-size:50px; font-weight:bold; margin-bottom:20px; }
+.mymage_left_content_con .mypage_left_subtitle{color:#fff; font-size:20px; font-weight:bold; margin-bottom:30px; }
+.mymage_left_content_con .mypage_left_subtitle2{color:#fff; font-size:15px; font-weight:bold; }
+
+.right_content_con{display:flex; padding-right:35px;}
+.right_content_con .right_content{padding:20px 20px; cursor:pointer; width:220px; height:220px; background-color:#fff; margin-left:15px; margin-right:15px; margin-bottom:15px;}
+.right_content .right_content_title{float:right; font-size:25px; font-weight:bold; margin-bottom:15px;}
+.right_content .right_content_subtitle{float:right; font-size:13px; font-weight:bold;}
+.right_content_con .right_content:hover{background-color:#7f99e2;}
+.right_content_con .right_content:hover .right_content_title{color:#fff;}
+.right_content_con .right_content:hover .right_content_subtitle{color:#fff;}
+.right_content_con .right_content:last-child{margin-left:0; }
+
+
+.right_content_img_con{overflow:hidden;}
+.right_content_img_con .info_img{float:right; width:50px; height:50px; margin-bottom:25px;}
+.right_content_img_con .mystudy_img{float:right; width:75px; margin-bottom:33px;}
+.right_content_img_con .mymake_img{float:right; width:75px; margin-bottom:10px;}
+.right_content_img_con .myapply_img{float:right; width:75px; margin-bottom:7px;}
+
+/*개인정보수정*/
+.mypage_myinfo_wrap{padding-top:120px; padding-bottom:120px;}
+.mypage_myinfo_title_con{display:flex;}
+.mypage_myinfo_title_con .mypage_myinfo_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px;}
+.mypage_myinfo_title_con .mypage_myinfo_title > span{display:inline-block; border-bottom:3px solid #7f99e2; padding-bottom:10px;}
+
+/*나의 스터디목록*/
+.mypage_mystudy_wrap{padding-top:120px; padding-bottom:120px; background-color: #7f99e2;}
+.mypage_mystudy_title_con{display:flex;}
+.mypage_mystudy_title_con .mypage_mystudy_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px; color:#fff;}
+.mypage_mystudy_title_con .mypage_mystudy_title > span{display:inline-block; border-bottom:3px solid #fff; padding-bottom:10px;}
+
+
+/*내가 만든 스터디*/
+.mypage_mymake_wrap{padding-top:120px; padding-bottom:120px;}
+.mypage_mymake_title_con{display:flex;}
+.mypage_mymake_title_con .mypage_mymake_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px;}
+.mypage_mymake_title_con .mypage_mymake_title > span{display:inline-block; border-bottom:3px solid #7f99e2; padding-bottom:10px;}
+
+
+/*나의 신청 현황*/
+.mypage_myapply_wrap{padding-top:120px; padding-bottom:120px; background-color: #7f99e2;}
+.mypage_myapply_title_con{display:flex;}
+.mypage_myapply_title_con .mypage_myapply_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px; color:#fff;}
+.mypage_myapply_title_con .mypage_myapply_title > span{display:inline-block; border-bottom:3px solid #fff; padding-bottom:10px;}
+
+.mypage_content_wrap .side_myinfo_img{width:55px; height:55px; margin-left:10px; margin-top:7px;}
+.mypage_content_wrap .side_mystudy_img{width:75px; height:60px; margin-left:2px; margin-top:7px;}
+.mypage_content_wrap .side_mymake_img{width:75px; height:75px; margin-left:1px; margin-top:0px;}
+.mypage_content_wrap .side_myapply_img{width:75px; height:75px; margin-left:1px; margin-top:-1px;}
+
+
+/*마이페이지*/
+.user_info_modify, .my_participate_list, .my_make_list{border-bottom:3px solid #CAB0F1; padding-bottom:50px;}
+.modify_line_left_con{position:relative; }
+.modify_line_left_con:after{content:""; position:absolute; top:-25px; right:-95px; height:215px; border-right:1px solid rgba(0,0,0,0.3); }
+
+.modify_line_right_con{padding-left: 160px;}
+.modify_con{display:flex; margin-bottom:30px;}
+.modify_con .textbox_style_1{margin-right:40px;}
+.modify_btn_con{margin-top:50px;}
+
+.mypage_content_con .my_participate_study{margin-bottom:50px;}
+.mypage_content_con .my_make_study{margin-bottom:50px;}
+
+
+.modify_line_left_con

@@ -55,7 +55,7 @@ body{overflow:scroll;}
 .textbox_style_0::placeholder{color:rgba(255,255,255,0.7);} /*로그인 텍스트박스*/
 
 /*기본 폼 텍스트박스 사이즈*/
-.textbox_style_1{outline:none; width:150px; background:transparent; border-top:none; border-right:none; border-left:none; border-bottom:2px solid  #31aae2;}
+.textbox_style_1{outline:none; width:150px; background:transparent; border-top:none; border-right:none; border-left:none; border-bottom:2px solid  #7f99e2;}
 
 .textbox_style_1.type_2{width:60px; margin-right:30px;}
 .textbox_style_1.type_2:last-child{margin-right:0;}
@@ -68,10 +68,10 @@ body{overflow:scroll;}
 .btn_style_0{outline:none; cursor:pointer; border:1px solid #fff; color:#fff; font-size:15px; width:200px; height:35px; background:transparent;}
 .btn_style_0:hover{color:#000; background-color:#31aae2; color:#fff;}
 
-.btn_style_1{outline:none; cursor:pointer; border-radius:12px; font-weight:bold; color:#000; font-size:15px; width:100px; height:35px; background:transparent;}
+.btn_style_1{border:2px solid #000; outline:none; cursor:pointer; border-radius:12px; font-weight:bold; color:#000; font-size:15px; width:100px; height:35px; background:transparent;}
 .btn_style_1.type_2{width:150px;}
 .btn_style_1.type_3{width:250px;}
-.btn_style_1:hover{color:#000; border:none; background-color:#31aae2; color:#fff;}
+.btn_style_1:hover{border:2px solid #000; background-color:#7f99e2; color:#fff;}
 
 .btn_style_1_con{display:flex; flex-wrap:nowrap; justify-content:center;}
 

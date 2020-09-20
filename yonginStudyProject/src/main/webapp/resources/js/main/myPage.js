@@ -196,6 +196,42 @@ $(document).ready(function () {
 			$("html body").animate({scrollTop:list4.top},400);
 		});
 		
+		
+		/*사이드메뉴 */
+		$(".side_fixed_menu_title").click(function(){
+			var sidemenu = $(".side_fixed_menu_list");
+			
+			if(sidemenu.is(":visible")){
+				sidemenu.slideUp();
+			}else{
+				sidemenu.slideDown();
+			}
+		});
+		
+		
+		var list4 = $("#list1").offset();
+		var list5 = $("#list2").offset();
+		var list6 = $("#list3").offset();
+		var list7 = $("#list4").offset();
+		//클릭시 이동
+		$("#side_movelist1").on("click",function(event){
+			$("html body").animate({scrollTop:list4.top},400);
+		});
+		
+		$("#side_movelist2").on("click",function(event){
+			$("html body").animate({scrollTop:list5.top},400);
+		});
+		
+		$("#side_movelist3").on("click",function(event){
+			$("html body").animate({scrollTop:list6.top},400);
+		});
+		$("#side_movelist4").on("click",function(event){
+			$("html body").animate({scrollTop:list7.top},400);
+		});
+		
+		
+		
+		
 		//전화번호 '-' 자동 붙이기
 		var userPhoneNumber = document.getElementById('userPhoneNumber');
 
