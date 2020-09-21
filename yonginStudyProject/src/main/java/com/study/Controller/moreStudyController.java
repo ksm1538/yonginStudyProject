@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 /*import org.springframework.security.crypto.password.PasswordEncoder;*/
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -62,11 +63,26 @@ public class moreStudyController {
 	 */
 	@RequestMapping(value="/study/selectStudyList.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> selectStudyList(HttpServletRequest request) throws Exception {
+	public Map<String, Object> selectStudyList(@RequestBody studyInfoVO studyInfoVO, HttpServletRequest request) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 	      
-		List<studyInfoVO> ltResult = studyService.selectStudyList();
+		/*** 페이징(시작) ***/
+		int dataPerPage = 12; //그리드 한 페이지에 표시할 데이터 수
+    	int page = Integer.parseInt(studyInfoVO.getPage()); //페이지별 변경
+    	
+    	int first = page * dataPerPage + 1; //변경없이 추가
+    	int last = first + dataPerPage - 1; //변경없이 추가
+    	
+    	studyInfoVO.setFirst(first); //변경없이 추가
+    	studyInfoVO.setLast(last);   //변경없이 추가
+    	
+    	int total = studyService.selectStudyListToCnt(studyInfoVO); // 총 몇 페이지인지 확인
+    	int totalPages = (int)Math.ceil(total / (double)dataPerPage); // 변경없이 추가
+		
+		/*** 페이징(끝) ***/
+    	
+		List<studyInfoVO> ltResult = studyService.selectStudyList(studyInfoVO);
 		
 		if(ltResult.size() < 1) {
 			mReturn.put("result", "fail");
@@ -75,6 +91,9 @@ public class moreStudyController {
 		
 		mReturn.put("result", "success");
 		mReturn.put("message", "조회 성공하였습니다.");
+		mReturn.put("total", total);
+    	mReturn.put("totalPages", totalPages);
+    	mReturn.put("dataPerPage", dataPerPage);
 		mReturn.put("resultList", ltResult);
 		
 		return mReturn;

@@ -11,7 +11,7 @@ public interface studyDAO {
 	
 	public void insertStudy(studyInfoVO data) throws Exception;
 	
-	public List<studyInfoVO> selectStudyList();
+	public List<studyInfoVO> selectStudyList(studyInfoVO studyInfoVO);
 	
 	public studyInfoVO selectStudyInfoDetail(String studyCode);
 	
@@ -26,5 +26,7 @@ public interface studyDAO {
 	public void insertUserInStudy(studyInfoVO data);
 	
 	public int selectUserInStudyCount(studyApplicationFormUserVO studyApplicationFormUserVO);
+	
+	public int selectStudyListToCnt(studyInfoVO studyInfoVO);
 }
  

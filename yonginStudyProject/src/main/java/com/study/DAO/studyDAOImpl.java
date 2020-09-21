@@ -31,8 +31,8 @@ public class studyDAOImpl implements studyDAO{
 	}
 	
 	@Override
-	public List<studyInfoVO> selectStudyList(){
-		return sqlSession.selectList("studyMapper.selectStudyList");
+	public List<studyInfoVO> selectStudyList(studyInfoVO studyInfoVO){
+		return sqlSession.selectList("studyMapper.selectStudyList", studyInfoVO);
 	}
 	
 	@Override
@@ -63,6 +63,11 @@ public class studyDAOImpl implements studyDAO{
 	@Override
 	public int selectUserInStudyCount(studyApplicationFormUserVO studyApplicationFormUserVO) {
 		return sqlSession.selectOne("studyMapper.selectUserInStudyCount", studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public int selectStudyListToCnt(studyInfoVO studyInfoVO) {
+		return sqlSession.selectOne("studyMapper.selectStudyListToCnt", studyInfoVO);
 	}
 }
  

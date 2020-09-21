@@ -11,7 +11,7 @@ public interface studyService {
 	
 	void insertStudy(studyInfoVO data) throws Exception; 
 	
-	List<studyInfoVO> selectStudyList();
+	List<studyInfoVO> selectStudyList(studyInfoVO studyInfoVO);
 	
 	studyInfoVO selectStudyInfoDetail(String studyCode);
 	
@@ -24,5 +24,7 @@ public interface studyService {
 	studyApplicationFormUserVO selectStudyApplicationForm(studyApplicationFormUserVO studyApplicationFormUserVO);
 	
 	int selectUserInStudyCount(studyApplicationFormUserVO studyApplicationFormUserVO);
+	
+	int selectStudyListToCnt(studyInfoVO studyInfoVO);
 }
  

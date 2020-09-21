@@ -60,7 +60,6 @@ public class sendMessageListController {
 	public Map<String, Object> messageDeleteAjaxFunction(@RequestBody messageInfoVO messageInfoVO) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
-	      
 		
 		//벨리데이터 추가
 		messageService.deleteSendMessage(messageInfoVO);
@@ -78,14 +77,30 @@ public class sendMessageListController {
 	 */
 	@RequestMapping(value="/selectSendMessageList.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> selectSendMessageList(HttpSession session) throws Exception {
+	public Map<String, Object> selectSendMessageList(@RequestBody messageInfoVO messageInfoVO, HttpSession session) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 	      
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
 		String userCode = user.getUserCode();
-		System.out.println("사용자 : "+userCode);
-		List<messageInfoVO> ltResult = messageService.selectSendMessageList(userCode);
+		messageInfoVO.setUserCodeFrom(userCode);
+		
+		/*** 페이징(시작) ***/
+		int dataPerPage = 12; //그리드 한 페이지에 표시할 데이터 수
+    	int page = Integer.parseInt(messageInfoVO.getPage()); //페이지별 변경
+    	
+    	int first = page * dataPerPage + 1; //변경없이 추가
+    	int last = first + dataPerPage - 1; //변경없이 추가
+    	
+    	messageInfoVO.setFirst(first); //변경없이 추가
+    	messageInfoVO.setLast(last);   //변경없이 추가
+    	
+    	int total = messageService.selectSendMessageListToCnt(messageInfoVO); // 총 몇 페이지인지 확인
+    	int totalPages = (int)Math.ceil(total / (double)dataPerPage); // 변경없이 추가
+		
+		/*** 페이징(끝) ***/
+		
+		List<messageInfoVO> ltResult = messageService.selectSendMessageList(messageInfoVO);
 		
 		if(ltResult.size() < 1) {
 			mReturn.put("result", "fail");
@@ -94,6 +109,9 @@ public class sendMessageListController {
 		
 		mReturn.put("result", "success");
 		mReturn.put("message", "조회 성공하였습니다.");
+		mReturn.put("total", total);
+    	mReturn.put("totalPages", totalPages);
+    	mReturn.put("dataPerPage", dataPerPage);
 		mReturn.put("resultList", ltResult);
 		
 		return mReturn;

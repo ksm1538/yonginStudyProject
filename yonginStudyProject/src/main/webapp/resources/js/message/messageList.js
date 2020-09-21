@@ -1,6 +1,7 @@
 var messageListGrid = new ax5.ui.grid();
 var messageInfoModal = new ax5.ui.modal();
 var cal;
+var _pageNo = 0;			//페이징 변수
 
 /** 초기화(시작) **/
 $(document).ready(function () {	
@@ -35,16 +36,17 @@ $(document).ready(function () {
                 },
         
         page: {
-            navigationItemCount: 9,
+        	navigationItemCount: 9,
             height: 30,
             display: true,
-            firstIcon: '|<', 
-            prevIcon: '<',
-            nextIcon: '>',
-            lastIcon: '>|',
-            display: false,
-            onChange: function () {
-                },
+            firstIcon : '<i class="fa fa-step-backward" aria-hidden="true"></i>',
+			prevIcon : '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+			nextIcon : '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+			lastIcon : '<i class="fa fa-step-forward" aria-hidden="true"></i>',
+            onChange: function () {		// 그리드 밑 페이지 번호로 이동했을 때
+            	_pageNo = this.page.selectPage;
+            	getMessageList();
+            	},
             },
         });
 	
@@ -61,6 +63,13 @@ function openSendMessageForm(){
 function deleteMessage(){
 	
 	var temp = messageListGrid.getList('selected');
+	
+	//쪽지를 선택하지 않은 경우
+	if(temp.length  == 0){
+		dToast.push("삭제할 쪽지를 선택하세요.");
+		return;
+	}
+	
 	var messageCodes = [];
 	
 	for(var i=0;i<temp.length;i++){
@@ -105,18 +114,52 @@ function deleteMessage(){
 	  }); 
 }
 
+//EnterKeyEvent
+function enterKeyEvent() {
+    if (window.event.keyCode == 13) {
+         // 엔터키가 눌렸을 때 실행할 내용
+    	_pageNo = 0;
+    	getMessageList();
+    }
+}
+
+// 검색 버튼용 조회 함수
+function searchMessageList(){
+	_pageNo = 0;
+	getMessageList();
+}
+
 /* 쪽지 리스트 조회 함수 */
 function getMessageList(){
+	var sendData = {
+			page : _pageNo,
+			searchUserCodeFrom:$('#userCodeFrom').val(),
+			searchMessageTitle:$('#messageTitle').val()
+	}
 	
 	$.ajax({
  		type: "POST",
  		url : "/selectMessageList.json",
 		contentType: "application/json; charset=UTF-8",
+		data : JSON.stringify(sendData),
 		async: false,
 		success : function(data, status, xhr) {
 			switch(data.result){
 			    case COMMON_SUCCESS:
-			    	messageListGrid.setData(data.resultList);
+			    	if(data.resultList.length>0){
+			    		messageListGrid.setData({
+			    			list: data.resultList,
+			    		 	page: {
+			    		 		currentPage: _pageNo || 0,
+			    			 	pageSize: data.dataPerPage,
+			    			 	totalElements: data.total,
+			    			 	totalPages: data.totalPages
+			    		 	}
+			    		});
+			    	}else{
+			    		dToast.push("쪽지 목록이 없습니다.");
+			    		messageListGrid.setData([]);
+			    	}
 			    	break;    
 			    case COMMON_FAIL:
 			    	dialog.alert(data.message); 

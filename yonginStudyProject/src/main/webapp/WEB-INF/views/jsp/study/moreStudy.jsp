@@ -39,9 +39,18 @@ inoutSxnList.forEach(function(n){
        <div class="col-12 col-center mw-1200 moreStudy_wrap">
         	<div class="col-12 moreStudy_list_wrap content_wrap">
          	   <div class="content_title"><span>스터디 목록</span></div>
-            
+            	스터디 주제 <select name="studyTopic" id="studyTopic" class="select_style_0" >
+            		<option value="noSelect" ><c:out value='선택 안함'/>
+					<c:forEach var="result" items="${studyTopicArray}" varStatus="status">
+						<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
+					</c:forEach>
+           		</select>
+           		스터디 이름 <input type="text" id="studyName" name ="studyName" class="textbox_style_1" onkeyup="enterKeyEvent();">
+           		스터디 지역 <input type="text" name="studyArea" id="studyArea" class="textbox_style_1" onkeyup="enterKeyEvent();">
+            	<input type="button" value="검색" class="btn_style_1" onclick="searchStudyList()" >
+            	
          	   <div style="width: 100%;" >
-	  				<div data-ax5grid="studyListPlusGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
+	  				<div data-ax5grid="studyListPlusGrid" data-ax5grid-config="{}" style="height:610px; padding-top:10px; padding-right:10px"></div>  
 				</div> 
 			
 				

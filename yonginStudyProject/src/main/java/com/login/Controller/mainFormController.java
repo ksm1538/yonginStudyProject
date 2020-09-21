@@ -35,7 +35,7 @@ public class mainFormController{
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/mainopen.do", method = RequestMethod.GET)
-	public String studyManagementForm(Model model, HttpSession session) throws Exception {
+	public String mainForm(Model model, HttpSession session) throws Exception {
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(시작) **/
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
 

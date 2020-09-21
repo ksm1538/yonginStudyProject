@@ -1,6 +1,7 @@
 var studyListPlusGrid = new ax5.ui.grid();
 var applyStudyModal = new ax5.ui.modal();
 var studyInfoDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
+var _pageNo = 0; 		//페이징 변수
 
 $(document).ready(function () {
 	//스터디 목록 더보기 리스트 설정
@@ -42,16 +43,18 @@ $(document).ready(function () {
                 },
         
         page: {
-            navigationItemCount: 9,
+            navigationItemCount: 10,
             height: 30,
             display: true,
-            firstIcon: '|<', 
-            prevIcon: '<',
-            nextIcon: '>',
-            lastIcon: '>|',
-            display: false,
-            onChange: function () {
-                },
+            firstIcon : '<i class="fa fa-step-backward" aria-hidden="true"></i>',
+			prevIcon : '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+			nextIcon : '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+			lastIcon : '<i class="fa fa-step-forward" aria-hidden="true"></i>',
+            display: true,
+            onChange: function () {		// 그리드 밑 페이지 번호로 이동했을 때
+            	_pageNo = this.page.selectPage;
+            	getStudyList();
+            	},
             },
         });
 
@@ -61,15 +64,36 @@ $(document).ready(function () {
 /* 스터디 리스트 조회 함수 */
 function getStudyList(){
 	
+	var sendData = {
+			page : _pageNo,
+			searchStudyTopic:$('#studyTopic').val(),
+			searchStudyName:$('#studyName').val(),
+			searchStudyArea:$('#studyArea').val()
+	}
+
 	$.ajax({
  		type: "POST",
  		url : "/study/selectStudyList.json",
+ 		data : JSON.stringify(sendData),
 		contentType: "application/json; charset=UTF-8",
 		async: false,
 		success : function(data, status, xhr) {
 			switch(data.result){
 			    case COMMON_SUCCESS:
-			    	studyListPlusGrid.setData(data.resultList);
+			    	if(data.resultList.length>0){
+			    		studyListPlusGrid.setData({
+			    			list: data.resultList,
+			    		 	page: {
+			    		 		currentPage: _pageNo || 0,
+			    			 	pageSize: data.dataPerPage,
+			    			 	totalElements: data.total,
+			    			 	totalPages: data.totalPages
+			    		 	}
+			    		});
+			    	}else{
+			    		dToast.push("스터디 목록이 없습니다.");
+			    		studyListPlusGrid.setData([]);
+			    	}
 			    	break;    
 			    case COMMON_FAIL:
 			    	dialog.alert(data.message); 
@@ -144,4 +168,19 @@ function closeStudyInfo(){
 //스터디 신청하기 팝업 닫기
 function closeApplyStudy(){
 	applyStudyModal.close();
+}
+
+// EnterKeyEvent
+function enterKeyEvent() {
+    if (window.event.keyCode == 13) {
+         // 엔터키가 눌렸을 때 실행할 내용
+    	_pageNo = 0;
+    	getStudyList();
+    }
+}
+
+// 검색용 버튼 함수
+function searchStudyList(){
+	_pageNo = 0;
+	getStudyList();
 }

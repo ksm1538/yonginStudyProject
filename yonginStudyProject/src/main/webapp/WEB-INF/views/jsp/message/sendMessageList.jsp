@@ -30,8 +30,12 @@
 	  <div class="col-8 mw-1200 message_list_wrap">
             <div class="content_title"><span>보낸쪽지함</span></div>
             
+           	받는사람 ID <input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1" onkeyup="enterKeyEvent();">
+                           제목 <input type="text" id="messageTitle" name="messageTitle" class="textbox_style_1" maxlength="30" onkeyup="enterKeyEvent();"s>
+            <input type="button" value="검색" class="btn_style_1" onclick="searchMessageList()" >
+            	
             <div style="width: 80%;" >  
-	  			<div data-ax5grid="messageListGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
+	  			<div data-ax5grid="messageListGrid" data-ax5grid-config="{}" style="height:610px; padding-top:10px; padding-right:10px"></div>  
 			</div> 
 			
 			<div class="message_btn">

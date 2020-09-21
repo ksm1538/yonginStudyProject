@@ -37,13 +37,13 @@ public class messageServiceImpl implements messageService{
 	}
 	
 	@Override
-	public List<messageInfoVO> selectMessageList(String userCode){
-		return messageDAO.selectMessageList(userCode);
+	public List<messageInfoVO> selectMessageList(messageInfoVO messageInfoVO){
+		return messageDAO.selectMessageList(messageInfoVO);
 	}
 	
 	@Override
-	public List<messageInfoVO> selectSendMessageList(String userCode){
-		return messageDAO.selectSendMessageList(userCode);
+	public List<messageInfoVO> selectSendMessageList(messageInfoVO messageInfoVO){
+		return messageDAO.selectSendMessageList(messageInfoVO);
 	}
 	
 	@Override
@@ -54,6 +54,16 @@ public class messageServiceImpl implements messageService{
 	@Override
 	public int selectUserExistCount(String userId) {
 		return messageDAO.selectUserExistCount(userId);
+	}
+	
+	@Override
+	public int selectSendMessageListToCnt(messageInfoVO messageInfoVO) {
+		return messageDAO.selectSendMessageListToCnt(messageInfoVO);
+	}
+	
+	@Override
+	public int selectMessageListToCnt(messageInfoVO messageInfoVO) {
+		return messageDAO.selectMessageListToCnt(messageInfoVO);
 	}
 	
 }

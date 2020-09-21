@@ -66,18 +66,40 @@
 	</insert>
 	<select id="selectStudyList" resultType="com.main.VO.studyInfoVO"> 
 		<![CDATA[
-			SELECT	STUDY_INFO.STUDY_CODE 	as studyCode
-				 ,	STUDY_INFO.STUDY_NAME 	as studyName
-				 ,	STUDY_INFO.STUDY_TOPIC  as studyTopic
-				 ,	STUDY_INFO.STUDY_LIMIT	as studyLimit
-				 ,	STUDY_INFO.STUDY_AREA	as studyArea
-				 ,	USER_INFO.USER_NAME 	as userName
-				 ,	(SELECT	COUNT(*)		
-				 	 FROM	USER_IN_STUDY
-				 	 WHERE	USER_IN_STUDY.STUDY_CODE	=	STUDY_INFO.STUDY_CODE)	as totalCount
-			FROM	STUDY_INFO,
-					USER_INFO
-			WHERE	USER_INFO.USER_CODE		=	STUDY_INFO.STUDY_RGSTUS_ID
+			SELECT	*
+			  FROM	(
+						SELECT	ROWNUM	as RNUM
+							 ,	main.*	
+						  FROM	(
+									SELECT	/*+ ordered use_nl(si ui) INDEX(si MORESTUDY_IDX) */
+										 	si.STUDY_CODE 	as studyCode
+										 ,	si.STUDY_NAME 	as studyName
+										 ,	si.STUDY_TOPIC  as studyTopic
+										 ,	si.STUDY_LIMIT	as studyLimit
+										 ,	si.STUDY_AREA	as studyArea
+										 ,	ui.USER_NAME 	as userName
+										 ,	(SELECT	COUNT(*)		
+										 	 FROM	USER_IN_STUDY uis
+										 	 WHERE	uis.STUDY_CODE	=	si.STUDY_CODE)	as totalCount
+									FROM	STUDY_INFO si,
+											USER_INFO ui
+									WHERE	ui.USER_CODE		=	si.STUDY_RGSTUS_ID
+										AND	si.USE_YN			=	'Y'
+					]]>
+									<if test='searchStudyTopic != "noSelect"'>
+										AND	si.STUDY_TOPIC		=	#{searchStudyTopic}
+									</if>
+									<if test='searchStudyName != ""'>
+										AND	si.STUDY_NAME		LIKE	'%' || 	#{searchStudyName} || '%'
+									</if>
+									<if test='searchStudyArea != ""'>
+										AND	si.STUDY_AREA		LIKE	'%' || 	#{searchStudyArea} || '%'
+									</if>
+					<![CDATA[		
+								) main 
+						  WHERE ROWNUM <= #{last}
+					)
+			WHERE	RNUM >= #{first}
 		]]>
 	</select>
 	
@@ -173,5 +195,24 @@
 				AND	STUDY_CODE	=	#{studyCode}
 				AND	USE_YN		=	'Y'
 		]]>
+	</select>
+	
+	<select id="selectStudyListToCnt" resultType="int">
+		<![CDATA[
+			SELECT	COUNT(*)
+			FROM	STUDY_INFO,
+					USER_INFO
+			WHERE	USER_INFO.USER_CODE		=	STUDY_INFO.STUDY_RGSTUS_ID
+				AND	STUDY_INFO.USE_YN		=	'Y'
+		]]>
+			<if test='searchStudyTopic != "noSelect"'>
+				AND	STUDY_INFO.STUDY_TOPIC		=	#{searchStudyTopic}
+			</if>
+			<if test='searchStudyName != ""'>
+				AND	STUDY_INFO.STUDY_NAME		LIKE	'%' || 	#{searchStudyName} || '%'
+			</if>
+			<if test='searchStudyArea != ""'>
+				AND	STUDY_INFO.STUDY_AREA		LIKE	'%' || 	#{searchStudyArea} || '%'
+			</if>
 	</select>
 </mapper> 

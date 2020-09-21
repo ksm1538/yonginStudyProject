@@ -12,11 +12,15 @@ public interface messageService {
 	
 	void sendMessage(messageInfoVO data) throws Exception;
 	
-	List<messageInfoVO> selectMessageList(String userCode);
+	List<messageInfoVO> selectMessageList(messageInfoVO messageInfoVO);
 	
-	List<messageInfoVO> selectSendMessageList(String userCode);
+	List<messageInfoVO> selectSendMessageList(messageInfoVO messageInfoVO);
 	
 	messageInfoVO selectMessageInfoDetail(String messageCode);
 	
 	int selectUserExistCount(String userId);
+	
+	int selectSendMessageListToCnt(messageInfoVO messageInfoVO);
+	
+	int selectMessageListToCnt(messageInfoVO messageInfoVO);
 }

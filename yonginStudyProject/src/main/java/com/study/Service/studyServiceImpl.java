@@ -29,8 +29,8 @@ public class studyServiceImpl implements studyService{
 	}
 	
 	@Override
-	public List<studyInfoVO> selectStudyList(){
-		return studyDAO.selectStudyList();
+	public List<studyInfoVO> selectStudyList(studyInfoVO studyInfoVO){
+		return studyDAO.selectStudyList(studyInfoVO);
 	}
 	
 	@Override
@@ -61,6 +61,11 @@ public class studyServiceImpl implements studyService{
 	@Override
 	public int selectUserInStudyCount(studyApplicationFormUserVO studyApplicationFormUserVO) {
 		return studyDAO.selectUserInStudyCount(studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public int selectStudyListToCnt(studyInfoVO studyInfoVO) {
+		return studyDAO.selectStudyListToCnt(studyInfoVO);
 	}
 }
  

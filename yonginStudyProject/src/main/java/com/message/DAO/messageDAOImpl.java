@@ -31,13 +31,13 @@ public class messageDAOImpl implements messageDAO{
 	}
 	
 	@Override
-	public List<messageInfoVO> selectMessageList(String userCode){
-		return sqlSession.selectList("messageMapper.selectMessageList", userCode);
+	public List<messageInfoVO> selectMessageList(messageInfoVO messageInfoVO){
+		return sqlSession.selectList("messageMapper.selectMessageList", messageInfoVO);
 	}
 	
 	@Override
-	public List<messageInfoVO> selectSendMessageList(String userCode){
-		return sqlSession.selectList("messageMapper.selectSendMessageList", userCode);
+	public List<messageInfoVO> selectSendMessageList(messageInfoVO messageInfoVO){
+		return sqlSession.selectList("messageMapper.selectSendMessageList", messageInfoVO);
 	}
 	
 	@Override
@@ -48,5 +48,15 @@ public class messageDAOImpl implements messageDAO{
 	@Override
 	public int selectUserExistCount(String userId) {
 		return sqlSession.selectOne("messageMapper.selectUserExistCount", userId);
+	}
+	
+	@Override
+	public int selectSendMessageListToCnt(messageInfoVO messageInfoVO) {
+		return sqlSession.selectOne("messageMapper.selectSendMessageListToCnt", messageInfoVO);
+	}
+	
+	@Override
+	public int selectMessageListToCnt(messageInfoVO messageInfoVO) {
+		return sqlSession.selectOne("messageMapper.selectMessageListToCnt", messageInfoVO);
 	}
 }
