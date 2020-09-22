@@ -16,7 +16,7 @@ public class userInfoVO {
 	private String userEmail = "";
 	private String userBirth = "";
 	private String userIsAdmin = "";
-	
+ 	
 	
 	public String getUserEmail() {
 		return userEmail;
