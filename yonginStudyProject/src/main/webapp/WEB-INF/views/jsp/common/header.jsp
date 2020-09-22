@@ -2,6 +2,7 @@
 <!-- 한글 설정(시작) -->
 <%@ page language="java" contentType="text/HTML;charset=UTF-8" pageEncoding="UTF-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +38,9 @@
                             </ul>
                        </div>
                     </div> -->
+                    <c:if test="${user.userIsAdmin == 'Y'}">
+                    	 | <div class="header_message"><a onclick="openAdminPage();">관리자 페이지</a></div>
+                    </c:if>
                 </div>
         </div>
       </div>

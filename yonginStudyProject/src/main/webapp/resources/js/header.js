@@ -73,3 +73,8 @@ function closeMakeStudyModal(){
 	window.location.reload();
 	makeStudyModal.close();
 }
+
+// 관리자 페이지 열기
+function openAdminPage(){
+	location.href = "/openAdminPage.do";
+}

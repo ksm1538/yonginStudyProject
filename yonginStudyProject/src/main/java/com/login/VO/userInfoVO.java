@@ -15,6 +15,7 @@ public class userInfoVO {
 	private String useYn = "";
 	private String userEmail = "";
 	private String userBirth = "";
+	private String userIsAdmin = "";
 	
 	
 	public String getUserEmail() {
@@ -94,6 +95,12 @@ public class userInfoVO {
 	}
 	public void setUseYn(String useYn) {
 		this.useYn = useYn;
+	}
+	public String getUserIsAdmin() {
+		return userIsAdmin;
+	}
+	public void setUserIsAdmin(String userIsAdmin) {
+		this.userIsAdmin = userIsAdmin;
 	}
 	
 }

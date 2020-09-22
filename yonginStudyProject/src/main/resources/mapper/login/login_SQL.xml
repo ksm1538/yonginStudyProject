@@ -24,6 +24,7 @@
 				,	USE_YN
 				,	RGDT_DT
 				,	UPDT_DT
+				,	USER_IS_ADMIN
 				) 
 			VALUES	
 				(	('USER_' || LPAD(user_seq.nextval,8,0))
@@ -40,6 +41,7 @@
 				,	'Y'
 				,	sysdate
 				,	sysdate
+				,	'N'
 				)
 		]]>
 	</insert>
@@ -49,6 +51,7 @@
 			SELECT	USER_ID 	as	userId
 				 ,	USER_PW		as 	userPw
 				 ,	USER_CODE	as 	userCode
+				 ,	USER_IS_ADMIN	as	userIsAdmin
 			FROM	USER_INFO
 			WHERE	USER_ID		=	#{userId}
 				AND	USE_YN		=	'Y'
@@ -102,7 +105,6 @@
 			SET		USER_PW		=	#{userPw}
 				,	UPDT_DT		=	sysdate
 			WHERE	USER_CODE	=	#{userCode}
-			
 		]]>
 	</update>
 	
