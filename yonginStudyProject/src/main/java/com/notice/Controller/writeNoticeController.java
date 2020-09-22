@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.login.VO.userInfoVO;
 import com.main.VO.studyInfoVO;
+import com.message.Validator.sendMessageValidator;
 import com.notice.Service.systemNoticeService;
 import com.notice.VO.moreNoticeInfoVO;
+import com.notice.Validator.systemNoticeValidator;
 import com.study.Validator.studyInfoValidator;
 
 @Controller
@@ -60,6 +62,28 @@ public class writeNoticeController {
 	public Map<String, Object> registerAjaxFunction(@RequestBody moreNoticeInfoVO moreNoticeInfoVO, HttpSession session, BindingResult bindingResult) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		moreNoticeInfoVO.setSystemNoticeRgstusId(user.getUserCode());
+		
+		/** 데이터 검증(시작) **/
+		systemNoticeValidator systemNoticeValidator = new systemNoticeValidator();
+		systemNoticeValidator.validate(moreNoticeInfoVO, bindingResult);
+		
+		// 에러 검출 시 에러 메시지와 함께 종료
+		if (bindingResult.hasErrors()) {
+			List<FieldError> errors = bindingResult.getFieldErrors();
+			String errorMsg = "";
+		    for (FieldError error : errors ) {
+		    	errorMsg += error.getDefaultMessage() + "\n";
+		    }
+
+		    mReturn.put("result", "fail");
+			mReturn.put("message", errorMsg);
+			
+			return mReturn;
+		}  
+		/** 데이터 검증(끝) **/
 	
 		systemNoticeService.insertSystemNotice(moreNoticeInfoVO);
 		mReturn.put("result", "success");

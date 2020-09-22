@@ -9,14 +9,28 @@ public class moreNoticeInfoVO {
 	private String useYn = "";
 	private String systemNoticeTime = "";
 	private String systemNoticeUpdateTime = "";
+	private String[] systemNoticeCodes;
+	private int count;
 	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count)	{
+		this.count = count;
+	}
+	public void setSystemNoticeCodes(String[] systemNoticeCodes) {
+		this.systemNoticeCodes = systemNoticeCodes;
+	}
+	public String[] getSystemNoticeCodes() {
+		return systemNoticeCodes;
+	}
 	public String getSystemNoticeUpdateTime() {
 		return systemNoticeUpdateTime;
 	}
 	public void setSystemNoticeUpdateTime(String systemNoticeUpdateTime) {
 		this.systemNoticeUpdateTime = systemNoticeUpdateTime;
 	}
-	public String getSystemNotice() {
+	public String getSystemNoticeTime() {
 		return systemNoticeTime;
 	}
 	public void setSystemNoticeTime(String systemNoticeTime) {

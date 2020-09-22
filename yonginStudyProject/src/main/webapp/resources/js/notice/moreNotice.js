@@ -70,7 +70,55 @@ function getSystemNoticeList(){
 
 
 /*공지사항 작성 호출 */
-function openMoreNotice(){
+function openWriteNotice(){
 	window.open("/writeNotice.do",'공지사항 작성','width=720px ,height=1050px ,location=no,status=no,scrollbars=no');
+}
+
+/*공지사항 삭제*/
+function deleteSystemNotice(){
+	
+	var temp = noticeListPlusGrid.getList('selected');
+	var systemNoticeCodes = [];
+	
+	for(var i=0;i<temp.length;i++){
+		systemNoticeCodes.push(temp[i].systemNoticeCode)
+	}
+	
+	var sendData = {
+		systemNoticeCodes:systemNoticeCodes
+	}
+	
+	$.ajax({
+	     type: "POST",
+	     url : "/notice/deleteSystemNotice.json",
+	     data: JSON.stringify(sendData),
+	     dataType: "json",
+	     contentType: "application/json; charset=UTF-8",
+	     async: false,
+	     success : function(data, status, xhr) {
+	    	 switch(data.result){
+	    	 case COMMON_SUCCESS:
+	    		 dialog.confirm({
+			    		msg:data.message,
+			        	btns:{
+			        		yes: {
+			        			label:'확인'
+			        		},
+			        	}
+			        }, function(){
+			        	if(this.key=="yes"  || this.state == "close"){
+			        		window.location.reload();
+			        	}
+			    	});
+	    		 break;
+	    	 case COMMON_FAIL:
+	    		 dialog.alert(data.message);
+	    		 break;
+	    	 }
+	     },
+	     error: function(jqXHR, textStatus, errorThrown) {
+	        alert('error = ' + jqXHR.responseText);
+	     }
+	  }); 
 }
 

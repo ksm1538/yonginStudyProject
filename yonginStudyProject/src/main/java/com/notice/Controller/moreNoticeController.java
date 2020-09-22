@@ -11,12 +11,12 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.login.VO.userInfoVO;
-import com.main.VO.studyInfoVO;
 import com.notice.Service.systemNoticeService;
 import com.notice.VO.moreNoticeInfoVO;
 
@@ -54,20 +54,39 @@ public class moreNoticeController {
 	 */
 	@RequestMapping(value="/notice/selectSystemNoticeList.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> selectStudyList(HttpServletRequest request) throws Exception {
+	public Map<String, Object> selectSystemNoticeList() throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
-	      
+		
 		List<moreNoticeInfoVO> ltResult = systemNoticeService.selectSystemNoticeList();
-
+		
 		if(ltResult.size() < 1) {
 			mReturn.put("result", "fail");
-			mReturn.put("message", "스터디 목록이 없습니다.");
+			mReturn.put("message", "쪽지 목록이 없습니다.");
 		}
 		
 		mReturn.put("result", "success");
 		mReturn.put("message", "조회 성공하였습니다.");
 		mReturn.put("resultList", ltResult);
+		
+		return mReturn;
+	}
+	
+	/**
+	 * 시스템 공지사항 삭제
+	 * @param moreNoticeInfoVO
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/notice/deleteSystemNotice.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> deleteMessageTo(@RequestBody moreNoticeInfoVO moreNoticeInfoVO) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		systemNoticeService.deleteSystemNotice(moreNoticeInfoVO);
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "성공적으로 삭제되었습니다.");
 		
 		return mReturn;
 	}

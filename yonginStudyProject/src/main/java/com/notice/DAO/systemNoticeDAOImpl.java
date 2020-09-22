@@ -23,4 +23,9 @@ public class systemNoticeDAOImpl implements systemNoticeDAO{
 	public void insertSystemNotice(moreNoticeInfoVO data) throws Exception{
 		sqlSession.insert("systemNoticeMapper.insertSystemNotice", data);
 	}
+	
+	@Override
+	public void deleteSystemNotice(String noticeCode) throws Exception{
+		sqlSession.delete("systemNoticeMapper.deleteSystemNotice", noticeCode);
+	}
 }

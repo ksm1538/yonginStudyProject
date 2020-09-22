@@ -9,4 +9,6 @@ public interface systemNoticeService {
 	List<moreNoticeInfoVO> selectSystemNoticeList();
 	
 	void insertSystemNotice(moreNoticeInfoVO data) throws Exception;
+	
+	void deleteSystemNotice(moreNoticeInfoVO data) throws Exception;
 }
