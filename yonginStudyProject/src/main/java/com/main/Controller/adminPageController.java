@@ -1,5 +1,7 @@
 package com.main.Controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.commonCode.Service.commonCodeService;
+import com.commonCode.VO.commonCodeVO;
 import com.login.VO.userInfoVO;
 import com.main.Service.adminService;
 
@@ -47,6 +50,9 @@ public class adminPageController {
 		}
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
 		
+		List<commonCodeVO> codeResult = commonCodeService.selectCommonCodeList("studyTopic");
+		
+		model.addAttribute("studyTopicArray", codeResult);
 		return "jsp/main/adminPage";
 	}
 }
