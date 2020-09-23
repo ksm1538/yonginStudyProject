@@ -14,8 +14,8 @@ public class systemNoticeServiceImpl implements systemNoticeService{
 	systemNoticeDAO systemNoticeDAO;
 	
 	@Override
-	public List<moreNoticeInfoVO> selectSystemNoticeList(){
-		return systemNoticeDAO.selectSystemNoticeList();
+	public List<moreNoticeInfoVO> selectSystemNoticeList(moreNoticeInfoVO moreNoticeInfoVO){
+		return systemNoticeDAO.selectSystemNoticeList(moreNoticeInfoVO);
 	}
 	
 	@Override
@@ -29,5 +29,10 @@ public class systemNoticeServiceImpl implements systemNoticeService{
 		for(int i=0;i<data.getSystemNoticeCodes().length;i++) {
 			systemNoticeDAO.deleteSystemNotice(systemNoticeCodes[i]);
 		}
+	}
+	
+	@Override
+	public int selectSystemNoticeListToCnt(moreNoticeInfoVO moreNoticeInfoVO) {
+		return systemNoticeDAO.selectSystemNoticeListToCnt(moreNoticeInfoVO);
 	}
 }

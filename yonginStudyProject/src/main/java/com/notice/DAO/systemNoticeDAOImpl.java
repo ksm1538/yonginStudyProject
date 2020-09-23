@@ -1,4 +1,4 @@
-package com.notice.DAO;
+package com.notice.DAO; 
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ public class systemNoticeDAOImpl implements systemNoticeDAO{
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<moreNoticeInfoVO> selectSystemNoticeList(){
-		return sqlSession.selectList("systemNoticeMapper.selectSystemNoticeList");
+	public List<moreNoticeInfoVO> selectSystemNoticeList(moreNoticeInfoVO moreNoticeInfoVO){
+		return sqlSession.selectList("systemNoticeMapper.selectSystemNoticeList", moreNoticeInfoVO);
 	}
 	
 	@Override
@@ -27,5 +27,10 @@ public class systemNoticeDAOImpl implements systemNoticeDAO{
 	@Override
 	public void deleteSystemNotice(String noticeCode) throws Exception{
 		sqlSession.delete("systemNoticeMapper.deleteSystemNotice", noticeCode);
+	}
+	
+	@Override
+	public int selectSystemNoticeListToCnt(moreNoticeInfoVO moreNoticeInfoVO) {
+		return sqlSession.selectOne("systemNoticeMapper.selectSystemNoticeListToCnt", moreNoticeInfoVO);
 	}
 }

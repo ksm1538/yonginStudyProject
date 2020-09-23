@@ -1,4 +1,4 @@
-package com.notice.VO;
+package com.notice.VO; 
 
 public class moreNoticeInfoVO {
 
@@ -11,7 +11,28 @@ public class moreNoticeInfoVO {
 	private String systemNoticeUpdateTime = "";
 	private String[] systemNoticeCodes;
 	private int count;
+	private int	first;
+	private int	last;
+	private String	page = "";
 	
+	public String getPage() {
+		return page;
+	}
+	public void setPage(String page) {
+		this.page = page;
+	}
+	public int getFirst() {
+		return first;
+	}
+	public void setFirst(int first) {
+		this.first = first;
+	}
+	public int getLast() {
+		return last;
+	}
+	public void setLast(int last) {
+		this.last = last;
+	}
 	public int getCount() {
 		return count;
 	}

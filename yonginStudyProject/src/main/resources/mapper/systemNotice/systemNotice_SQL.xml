@@ -8,16 +8,26 @@
 	
 	<select id="selectSystemNoticeList" resultType="com.notice.VO.moreNoticeInfoVO" >
 		<![CDATA[
-			SELECT	SYSTEM_NOTICE.SYSTEM_NOTICE_CODE	as	systemNoticeCode
-				,	SYSTEM_NOTICE.TITLE					as	systemNoticeTitle
-				,	USER_INFO.USER_ID					as	systemNoticeRgstusId
-				,	TO_CHAR(SYSTEM_NOTICE.RGDT_DT, 'YYYY-MM-DD HH24:MI') 	as systemNoticeTime
-				,	SYSTEM_NOTICE.COUNT	as	count
-			FROM	SYSTEM_NOTICE,
-					USER_INFO
-			WHERE	SYSTEM_NOTICE.USE_YN	=	'Y'
-				AND SYSTEM_NOTICE.RGSTUS_ID	=	USER_INFO.USER_CODE
-		]]> 
+			SELECT	*
+			  FROM	(
+						SELECT	ROWNUM	as RNUM
+							 ,	main.*	
+						  FROM	(
+									SELECT	/*+ ordered use_nl(sn,ui) INDEX_DESC(st SYSTEMNOTICE_IDX) */
+										 	sn.SYSTEM_NOTICE_CODE						as	systemNoticeCode
+										,	sn.TITLE 									as systemNoticeTitle
+										,	ui.USER_ID									as	systemNoticeRgstusId
+										,	TO_CHAR(sn.RGDT_DT, 'YYYY-MM-DD HH24:MI') 	as systemNoticeTime
+										,	sn.COUNT									as	count
+									FROM	SYSTEM_NOTICE sn,
+											USER_INFO ui
+									WHERE	sn.USE_YN			=	'Y'
+										AND	sn.RGSTUS_ID		=	ui.USER_ID
+								) main 
+						  WHERE ROWNUM <= #{last}
+					)
+			WHERE	RNUM >= #{first}
+		]]>
 	</select>
 	
 	<insert id="insertSystemNotice"> 
@@ -38,7 +48,7 @@
 					('NOTICE_' || LPAD(systemnotice_seq.nextval,8,0))
 				,	#{systemNoticeTitle}
 				,	#{systemNoticeDesc}
-				,	#{systemNoticeRgstusId}
+				,	'yongin'
 				,	sysdate
 				,	sysdate
 				,	'Y'
@@ -53,5 +63,13 @@
 			WHERE	SYSTEM_NOTICE_CODE	=	#{noticeCode}
 		]]>
 	</delete>
+	
+	<select id="selectSystemNoticeListToCnt" resultType="int">
+		<![CDATA[
+			SELECT	COUNT(*)
+			FROM	SYSTEM_NOTICE
+			WHERE	SYSTEM_NOTICE.USE_YN			=	'Y'
+		]]>
+	</select>
 	
 </mapper>

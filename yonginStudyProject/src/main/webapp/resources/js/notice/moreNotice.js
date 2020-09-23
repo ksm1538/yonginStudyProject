@@ -1,4 +1,5 @@
 var noticeListPlusGrid = new ax5.ui.grid();
+var _pageNo = 0;
 
 $(document).ready(function () {
 	//공지사항 목록 더보기 리스트 설정
@@ -32,12 +33,13 @@ $(document).ready(function () {
             navigationItemCount: 9,
             height: 30,
             display: true,
-            firstIcon: '|<', 
-            prevIcon: '<',
-            nextIcon: '>',
-            lastIcon: '>|',
-            display: false,
+            firstIcon: '<i class="fa fa-step-backward" aria-hidden="true"></i>', 
+            prevIcon: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+            nextIcon: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+            lastIcon: '<i class="fa fa-step-forward" aria-hidden="true"></i>',
             onChange: function () {
+				_pageNo = this.page.selectPage;
+				getSystemNoticeList();
                 },
             },
         });
@@ -47,16 +49,33 @@ $(document).ready(function () {
 
 /* 시스템 공지사항 리스트 조회 함수 */
 function getSystemNoticeList(){
+	var sendData = {
+			page :	_pageNo
+	}
 	
 	$.ajax({
- 		type: "POST",
+		type: "POST",
  		url : "/notice/selectSystemNoticeList.json",
 		contentType: "application/json; charset=UTF-8",
+		data : JSON.stringify(sendData),
 		async: false,
 		success : function(data, status, xhr) {
 			switch(data.result){
 			    case COMMON_SUCCESS:
-			    	noticeListPlusGrid.setData(data.resultList);
+			    	if(data.resultList.length>0){
+			    		noticeListPlusGrid.setData({
+			    			list: data.resultList,
+			    		 	page: {
+			    		 		currentPage: _pageNo || 0,
+			    			 	pageSize: data.dataPerPage,
+			    			 	totalElements: data.total,
+			    			 	totalPages: data.totalPages
+			    		 	}
+			    		});
+			    	}else{
+			    		dToast.push("쪽지 목록이 없습니다.");
+			    		noticeListPlusGrid.setData([]);
+			    	}
 			    	break;    
 			    case COMMON_FAIL:
 			    	dialog.alert(data.message); 
@@ -120,5 +139,4 @@ function deleteSystemNotice(){
 	        alert('error = ' + jqXHR.responseText);
 	     }
 	  }); 
-}
-
+} 

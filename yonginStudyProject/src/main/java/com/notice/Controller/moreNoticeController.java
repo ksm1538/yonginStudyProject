@@ -54,19 +54,37 @@ public class moreNoticeController {
 	 */
 	@RequestMapping(value="/notice/selectSystemNoticeList.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> selectSystemNoticeList() throws Exception {
+	public Map<String, Object> selectSystemNoticeList(@RequestBody moreNoticeInfoVO moreNoticeInfoVO) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 		
-		List<moreNoticeInfoVO> ltResult = systemNoticeService.selectSystemNoticeList();
+		/*** 페이징(시작) ***/
+		int dataPerPage = 12; //그리드 한 페이지에 표시할 데이터 수
+    	int page = Integer.parseInt(moreNoticeInfoVO.getPage()); //페이지별 변경
+    	
+    	int first = page * dataPerPage + 1; //변경없이 추가
+    	int last = first + dataPerPage - 1; //변경없이 추가
+    	
+    	moreNoticeInfoVO.setFirst(first); //변경없이 추가
+    	moreNoticeInfoVO.setLast(last);   //변경없이 추가
+    	
+    	int total = systemNoticeService.selectSystemNoticeListToCnt(moreNoticeInfoVO); // 총 몇 페이지인지 확인
+    	int totalPages = (int)Math.ceil(total / (double)dataPerPage); // 변경없이 추가
+		
+		/*** 페이징(끝) ***/
+    	
+    	List<moreNoticeInfoVO> ltResult = systemNoticeService.selectSystemNoticeList(moreNoticeInfoVO);
 		
 		if(ltResult.size() < 1) {
 			mReturn.put("result", "fail");
-			mReturn.put("message", "쪽지 목록이 없습니다.");
+			mReturn.put("message", "공지사항 목록이 없습니다.");
 		}
 		
 		mReturn.put("result", "success");
 		mReturn.put("message", "조회 성공하였습니다.");
+		mReturn.put("total", total);
+    	mReturn.put("totalPages", totalPages);
+    	mReturn.put("dataPerPage", dataPerPage);
 		mReturn.put("resultList", ltResult);
 		
 		return mReturn;
