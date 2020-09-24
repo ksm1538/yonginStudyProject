@@ -16,8 +16,60 @@ public class userInfoVO {
 	private String userEmail = "";
 	private String userBirth = "";
 	private String userIsAdmin = "";
- 	
+
+	/** 페이징 및 검색 조건 변수 추가 **/
+	private	String	page = "";
+	private int		first;
+	private int		last;
 	
+	private String	searchUserEmail="";		//검색용 사용자 이메일
+	private String	searchUserName="";		//검색용 사용자 이름
+	private String	searchUserId="";		//검색용 사용자 ID
+	private String	searchUserIsAdmin="";	//검색용 관리자 여부
+	
+	
+	public String getPage() {
+		return page;
+	}
+	public void setPage(String page) {
+		this.page = page;
+	}
+	public int getFirst() {
+		return first;
+	}
+	public void setFirst(int first) {
+		this.first = first;
+	}
+	public int getLast() {
+		return last;
+	}
+	public void setLast(int last) {
+		this.last = last;
+	}
+	public String getSearchUserEmail() {
+		return searchUserEmail;
+	}
+	public void setSearchUserEmail(String searchUserEmail) {
+		this.searchUserEmail = searchUserEmail;
+	}
+	public String getSearchUserName() {
+		return searchUserName;
+	}
+	public void setSearchUserName(String searchUserName) {
+		this.searchUserName = searchUserName;
+	}
+	public String getSearchUserId() {
+		return searchUserId;
+	}
+	public void setSearchUserId(String searchUserId) {
+		this.searchUserId = searchUserId;
+	}
+	public String getSearchUserIsAdmin() {
+		return searchUserIsAdmin;
+	}
+	public void setSearchUserIsAdmin(String searchUserIsAdmin) {
+		this.searchUserIsAdmin = searchUserIsAdmin;
+	}
 	public String getUserEmail() {
 		return userEmail;
 	}
