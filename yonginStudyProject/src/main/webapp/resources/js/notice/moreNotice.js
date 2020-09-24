@@ -70,7 +70,7 @@ function getSystemNoticeList(){
 			    			 	pageSize: data.dataPerPage,
 			    			 	totalElements: data.total,
 			    			 	totalPages: data.totalPages
-			    		 	}
+			    		 	}, 
 			    		});
 			    	}else{
 			    		dToast.push("공지사항 목록이 없습니다.");

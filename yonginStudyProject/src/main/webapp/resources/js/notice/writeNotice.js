@@ -38,7 +38,8 @@ function makeSystemNoticeFunc(){
 			        		},
 			        	}
 			        }, function(){
-			        	if(this.key=="yes"){
+			        	if(this.key=="yes" || this.state == "close"){
+								opener.location.reload();
 			        			window.close();
 			        	}
 			    	});
