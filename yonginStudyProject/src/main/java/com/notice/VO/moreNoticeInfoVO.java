@@ -10,7 +10,7 @@ public class moreNoticeInfoVO {
 	private String systemNoticeTime = "";
 	private String systemNoticeUpdateTime = "";
 	private String[] systemNoticeCodes;
-	private int count;
+	private int boardcount;
 	private int	first;
 	private int	last;
 	private String	page = "";
@@ -33,11 +33,11 @@ public class moreNoticeInfoVO {
 	public void setLast(int last) {
 		this.last = last;
 	}
-	public int getCount() {
-		return count;
+	public int getBoardCount() {
+		return boardcount;
 	}
-	public void setCount(int count)	{
-		this.count = count;
+	public void setBoardCount(int boardcount)	{
+		this.boardcount = boardcount;
 	}
 	public void setSystemNoticeCodes(String[] systemNoticeCodes) {
 		this.systemNoticeCodes = systemNoticeCodes;

@@ -13,16 +13,16 @@
 						SELECT	ROWNUM	as RNUM
 							 ,	main.*	
 						  FROM	(
-									SELECT	/*+ ordered use_nl(sn,ui) INDEX_DESC(st SYSTEMNOTICE_IDX) */
-										 	sn.SYSTEM_NOTICE_CODE						as	systemNoticeCode
-										,	sn.TITLE 									as systemNoticeTitle
-										,	ui.USER_ID									as	systemNoticeRgstusId
-										,	TO_CHAR(sn.RGDT_DT, 'YYYY-MM-DD HH24:MI') 	as systemNoticeTime
-										,	sn.COUNT									as	count
-									FROM	SYSTEM_NOTICE sn,
-											USER_INFO ui
+									SELECT	/*+ ordered use_nl(sn) INDEX_DESC(sn SYSTEMNOTICE_IDX) */
+										sn.SYSTEM_NOTICE_CODE							as	systemNoticeCode
+										,	sn.TITLE 									as 	systemNoticeTitle
+										,	(SELECT ui.USER_ID	
+										     FROM   USER_INFO ui
+											 WHERE  ui.USER_CODE   =   sn.RGSTUS_ID)    as	systemNoticeRgstusId
+										,	TO_CHAR(sn.RGDT_DT, 'YYYY-MM-DD HH24:MI') 	as 	systemNoticeTime
+										,	sn.BOARD_COUNT								as	boardCount
+									FROM	SYSTEM_NOTICE sn
 									WHERE	sn.USE_YN			=	'Y'
-										AND	sn.RGSTUS_ID		=	ui.USER_ID
 								) main 
 						  WHERE ROWNUM <= #{last}
 					)
@@ -48,7 +48,7 @@
 					('NOTICE_' || LPAD(systemnotice_seq.nextval,8,0))
 				,	#{systemNoticeTitle}
 				,	#{systemNoticeDesc}
-				,	'yongin'
+				,	#{systemNoticeRgstusId}
 				,	sysdate
 				,	sysdate
 				,	'Y'

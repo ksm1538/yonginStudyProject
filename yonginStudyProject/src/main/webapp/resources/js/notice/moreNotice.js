@@ -11,7 +11,7 @@ $(document).ready(function () {
             {key : "systemNoticeTitle", label: "제목", align: "center", width:"45%", sortable: true},
         	{key : "systemNoticeRgstusId", label: "작성자 ID", align: "center", width:"10%"},
         	{key : "systemNoticeTime", label: "날짜", align: "center", width:"10%"},
-			{key : "count", label: "조회수", align: "center", width:"10%"},
+			{key : "boardCount", label: "조회수", align: "center", width:"10%"},
         ],
         header: {
         	align:"center",
@@ -73,7 +73,7 @@ function getSystemNoticeList(){
 			    		 	}
 			    		});
 			    	}else{
-			    		dToast.push("쪽지 목록이 없습니다.");
+			    		dToast.push("공지사항 목록이 없습니다.");
 			    		noticeListPlusGrid.setData([]);
 			    	}
 			    	break;    
