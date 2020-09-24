@@ -14,7 +14,21 @@ public class moreNoticeInfoVO {
 	private int	first;
 	private int	last;
 	private String	page = "";
+	private String searchSystemNoticeRgstusId="";
+	private String searchSystemNoticeTitle="";
 	
+	public String getSearchSystemNoticeRgstusId() {
+		return searchSystemNoticeRgstusId;
+	}
+	public void setSearchSystemNoticeRgstusId(String searchSystemNoticeRgstusId) {
+		this.searchSystemNoticeRgstusId = searchSystemNoticeRgstusId;
+	}
+	public String getSearchSystemNoticeTitle() {
+		return searchSystemNoticeTitle;
+	}
+	public void setSearchSystemNoticeTitle(String searchSystemNoticeTitle) {
+		this.searchSystemNoticeTitle = searchSystemNoticeTitle;
+	}
 	public String getPage() {
 		return page;
 	}

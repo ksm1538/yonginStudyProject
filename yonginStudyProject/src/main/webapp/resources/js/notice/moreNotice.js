@@ -50,7 +50,9 @@ $(document).ready(function () {
 /* 시스템 공지사항 리스트 조회 함수 */
 function getSystemNoticeList(){
 	var sendData = {
-			page :	_pageNo
+			page :	_pageNo,
+			searchSystemNoticeRgstusId:$('#systemNoticeRgstusId').val(),
+			searchSystemNoticeTitle:$('#systemNoticeTitle').val()
 	}
 	
 	$.ajax({
@@ -93,7 +95,7 @@ function openWriteNotice(){
 	window.open("/writeNotice.do",'공지사항 작성','width=720px ,height=1050px ,location=no,status=no,scrollbars=no');
 }
 
-/*공지사항 삭제*/
+/*공지사항 삭제*/ 
 function deleteSystemNotice(){
 	
 	var temp = noticeListPlusGrid.getList('selected');
@@ -140,3 +142,18 @@ function deleteSystemNotice(){
 	     }
 	  }); 
 } 
+
+//EnterKeyEvent
+function enterKeyEvent() {
+    if (window.event.keyCode == 13) {
+         // 엔터키가 눌렸을 때 실행할 내용
+    	_pageNo = 0;
+    	getSystemNoticeList();
+    }
+}
+
+// 검색 버튼용 조회 함수
+function searchMessageList(){
+	_pageNo = 0;
+	getSystemNoticeList();
+}
