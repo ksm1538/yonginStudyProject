@@ -50,6 +50,7 @@ public class loginController {
 			
 			//model 변수에 데이터를 담아 jsp에 전달
 			model.addAttribute("studyTopicArray", codeResult);
+			
 			return "jsp/main/main";
 		}
 		return "jsp/login/login";
@@ -100,9 +101,11 @@ public class loginController {
 			session.setAttribute("user", login);
 			
 			List<commonCodeVO> codeResult = commonCodeService.selectCommonCodeList("studyTopic");
+			List<commonCodeVO> codeResult2 = commonCodeService.selectCommonCodeList("calendarType");
 			
 			//model 변수에 데이터를 담아 jsp에 전달
 			model.addAttribute("studyTopicArray", codeResult);
+			model.addAttribute("calendarType", codeResult2);
 			
 			return "jsp/main/main";
 		}

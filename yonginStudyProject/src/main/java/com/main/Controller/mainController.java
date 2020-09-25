@@ -11,14 +11,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.commonCode.Service.commonCodeService;
 import com.commonCode.VO.commonCodeVO;
+import com.commonFunction.Controller.yonginFunction;
 import com.login.VO.userInfoVO;
 import com.main.Service.mainService;
+import com.main.VO.calendarVO;
 import com.main.VO.studyInfoVO;
 /**
  * Handles requests for the application home page.
@@ -48,10 +51,12 @@ public class mainController {
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
 		
 		
-		List<commonCodeVO> codeResult = commonCodeService.selectCommonCodeList("studyTopic");
-		
+		List<commonCodeVO> codeResult1 = commonCodeService.selectCommonCodeList("studyTopic");
+		List<commonCodeVO> codeResult2 = commonCodeService.selectCommonCodeList("calendarType");
+
 		//model 변수에 데이터를 담아 jsp에 전달
-		model.addAttribute("studyTopicArray", codeResult);
+		model.addAttribute("studyTopicArray", codeResult1);
+		model.addAttribute("calendarType", codeResult2);
 		
 		return "jsp/main/main";
 	}
@@ -82,22 +87,42 @@ public class mainController {
 		return mReturn;
 	}
 	
-	/*	일정 조회 함수 수정예정(김성목)
-	@RequestMapping(value="/main/selectCalenderList.json", method = RequestMethod.POST)
+	/**
+	 * 자기가 가입한 스터디의 일정 조회
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/main/searchMyStudyCalendar.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> selectCalenderList(HttpServletRequest request) throws Exception {
+	public Map<String, Object> searchMyStudyCalendar(@RequestBody calendarVO calendarVO, HttpSession session) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 	      
-		HttpSession session = request.getSession();
-		userInfoVO userInfoVO = (userInfoVO) session.getAttribute("user");
-		System.out.println("세션 : "+userInfoVO.getUserId());
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		calendarVO.setUserCode(user.getUserCode());
 		
-		List<calenderVO> ltResult = mainService.selectCalenderList();
+		List<calendarVO> ltResult = mainService.searchMyStudyCalendar(calendarVO);
 		
 		if(ltResult.size() < 1) {
 			mReturn.put("result", "fail");
 			mReturn.put("message", "일정 목록이 없습니다.");
+		}
+		
+		// 시간 형식으로 변환
+		for(int i=0;i<ltResult.size();i++) {
+			calendarVO vo = ltResult.get(i);
+			
+			// '-' 추가
+    		String startDt = yonginFunction.nullConvert(vo.getStartDt());
+    		vo.setStartDt(yonginFunction.addMinusChar(startDt));
+    		String endDt = yonginFunction.nullConvert(vo.getEndDt());
+    		vo.setEndDt(yonginFunction.addMinusChar(endDt));
+    		// ':' 추가
+            String startHm = vo.getStartHm();
+            vo.setStartHm(yonginFunction.addColonChar(startHm));
+            String endHm = vo.getEndHm();
+            vo.setEndHm(yonginFunction.addColonChar(endHm));
 		}
 		
 		mReturn.put("result", "success");
@@ -106,7 +131,24 @@ public class mainController {
 		
 		return mReturn;
 	}
-	*/
+	
+	/**
+	 * 달력 팝업 상세보기
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/main/calendarDetailPopup.do", method = RequestMethod.POST)
+	public String calendarDetailPopup(HttpSession session) throws Exception {
+		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지 로 이동(시작) **/
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+
+		if(user == null) {
+			return "jsp/login/login";
+		}
+		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
+		return "jsp/main/calendarDetailPopup";
+	}
 }
 	
 	

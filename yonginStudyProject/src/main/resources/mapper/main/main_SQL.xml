@@ -29,4 +29,31 @@
 		]]>
 	</select>
 	
+	<select id="searchMyStudyCalendar" resultType="com.main.VO.calendarVO">
+		<![CDATA[
+			SELECT	TITLE			as title
+				 ,	START_DT		as	startDt
+				 ,	START_HM		as	startHm
+				 ,	END_DT			as	endDt
+				 ,	END_HM			as	endHm
+				 ,	TYPE			as	type
+				 ,	CONTENT			as	content
+				 ,	STUDY_CODE		as	studyCode
+				 ,	CALENDAR_CODE	as	calendarCode
+				 ,	(SELECT	STUDY_NAME
+				 	 FROM	STUDY_INFO
+				 	 WHERE	STUDY_CODE  =  	CALENDAR.STUDY_CODE)	as	studyName
+				 ,	(SELECT	USER_NAME
+				 	 FROM	USER_INFO
+				 	 WHERE	USER_CODE	=	CALENDAR.RGSTUS_ID)		as	rgstusId
+			FROM	CALENDAR
+			WHERE	STUDY_CODE	IN	(SELECT	STUDY_CODE
+									 FROM	USER_IN_STUDY
+									 WHERE	USER_CODE	=	#{userCode}
+									 	AND	USE_YN		=	'Y')
+				AND	((START_DT		>= #{searchMonthFrom}	AND		START_DT	<= #{searchMonthTo})
+					 	OR		
+					 (END_DT		>= #{searchMonthFrom}	AND		END_DT	<= #{searchMonthTo}))
+		]]>
+	</select>
 </mapper>

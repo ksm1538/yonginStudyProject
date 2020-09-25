@@ -29,6 +29,15 @@ inoutSxnList.forEach(function(n){
     inoutSxnMap[n.codeId] = n.codeValue;
 }); 
 
+var typeSxnList = [
+    <c:forEach var="result" items="${calendarType}" varStatus="status">
+        {codeId:"${result.codeId}", codeValue:"${result.codeValue}", codeExtraData:"${result.codeExtraData}"}<c:if test="${!status.last}">,</c:if>
+    </c:forEach>
+    ];
+var typeSxnMap = {};
+typeSxnList.forEach(function(n){
+	typeSxnMap[n.codeId] = [n.codeValue, n.codeExtraData];
+});
 </script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -135,11 +144,11 @@ inoutSxnList.forEach(function(n){
 			
 			<div id="menu" class="calender_menu">
 				<span id="menu-navi">
-					  <button type="button" class="today_btn" data-action="move-today">Today</button>
-					  <button type="button" class="prev_btn" data-action="move-prev">
+					  <button type="button" class="prev_btn" data-action="move-prev" onclick="prev();">
 					  	<i class="calendar-icon ic-arrow-line-left" data-action="move-prev"></i>
 					  </button>
-					  <button type="button" class="next_btn" data-action="move-next">
+					  <span id="renderRange" class="render-range" style="font-size:2.5rem;"></span>
+					  <button type="button" class="next_btn" data-action="move-next" onclick="next();">
 					    <i class="calendar-icon ic-arrow-line-right" data-action="move-next"></i>
 					  </button>
 				</span>

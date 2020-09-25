@@ -6,9 +6,10 @@
 
 	<select id="selectCommonCodeList" resultType="com.commonCode.VO.commonCodeVO" parameterType="String">
 		<![CDATA[
-			SELECT	CODE 		as	code
-				 ,	CODE_ID		as	codeId
-				 ,	CODE_VALUE	as 	codeValue
+			SELECT	CODE 				as	code
+				 ,	CODE_ID				as	codeId
+				 ,	CODE_VALUE			as 	codeValue
+				 ,	CODE_EXTRA_DATA		as	codeExtraData
 			FROM	COMMON_CODE_DETAIL
 			WHERE	CODE		=	#{code}
 		]]>

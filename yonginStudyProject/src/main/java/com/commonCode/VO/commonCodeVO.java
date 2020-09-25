@@ -1,11 +1,11 @@
 package com.commonCode.VO;
 
 public class commonCodeVO {
-	String	code="";
-	String	codeNm="";
-	String	codeId="";
-	String	codeValue="";
-	 
+	private String	code="";
+	private String	codeNm="";
+	private String	codeId="";
+	private String	codeValue="";
+	private String	codeExtraData="";
 	
 	public String getCode() {
 		return code;
@@ -30,5 +30,11 @@ public class commonCodeVO {
 	}
 	public void setCodeValue(String codeValue) {
 		this.codeValue = codeValue;
+	}
+	public String getCodeExtraData() {
+		return codeExtraData;
+	}
+	public void setCodeExtraData(String codeExtraData) {
+		this.codeExtraData = codeExtraData;
 	}
 }
