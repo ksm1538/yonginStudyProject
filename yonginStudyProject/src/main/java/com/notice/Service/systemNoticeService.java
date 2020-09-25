@@ -13,4 +13,8 @@ public interface systemNoticeService {
 	void deleteSystemNotice(moreNoticeInfoVO data) throws Exception;
 	
 	int selectSystemNoticeListToCnt(moreNoticeInfoVO moreNoticeInfoVO);
+	
+	moreNoticeInfoVO selectSystemNoticeInfoDetail(String systemNoticeCode);
+	
+	void reviseSystemNotice(moreNoticeInfoVO data) throws Exception;
 }

@@ -13,4 +13,8 @@ public interface systemNoticeDAO {
 	public void deleteSystemNotice(String messageCode) throws Exception;
 	
 	public int selectSystemNoticeListToCnt(moreNoticeInfoVO moreNoticeInfoVO);
+	
+	public moreNoticeInfoVO selectSystemNoticeInfoDetail(String systemNoticeCode);
+	
+	public void reviseSystemNotice(moreNoticeInfoVO data) throws Exception;
 }

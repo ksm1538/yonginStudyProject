@@ -33,4 +33,14 @@ public class systemNoticeDAOImpl implements systemNoticeDAO{
 	public int selectSystemNoticeListToCnt(moreNoticeInfoVO moreNoticeInfoVO) {
 		return sqlSession.selectOne("systemNoticeMapper.selectSystemNoticeListToCnt", moreNoticeInfoVO);
 	}
+	
+	@Override
+	public moreNoticeInfoVO selectSystemNoticeInfoDetail(String systemNoticeCode) {
+		return sqlSession.selectOne("systemNoticeMapper.selectSystemNoticeInfoDetail", systemNoticeCode);
+	}
+	
+	@Override
+	public void reviseSystemNotice(moreNoticeInfoVO data) throws Exception{
+		sqlSession.update("systemNoticeMapper.reviseSystemNotice", data);
+	}
 }

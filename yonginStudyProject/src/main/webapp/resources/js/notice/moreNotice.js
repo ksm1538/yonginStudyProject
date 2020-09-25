@@ -1,4 +1,5 @@
 var noticeListPlusGrid = new ax5.ui.grid();
+var systemNoticeInfoDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
 var _pageNo = 0;
 
 $(document).ready(function () {
@@ -21,8 +22,8 @@ $(document).ready(function () {
                     align: "left",
                     columnHeight: 45,
                     
-                    onClick: function () 	{
-                    
+                    onDBLClick: function () 	{
+                    	selectSystemNoticeInfoDetail(this.list[this.dindex]["systemNoticeCode"]);
 					},
 					onDataChanged: function(){
 						
@@ -156,4 +157,34 @@ function enterKeyEvent() {
 function searchMessageList(){
 	_pageNo = 0;
 	getSystemNoticeList();
+}
+
+function selectSystemNoticeInfoDetail(systemNoticeCode){
+	var parentData={
+		systemNoticeCode:systemNoticeCode
+	}
+	
+	systemNoticeInfoDetailModal.open({
+		width: 800,
+		height: 710,
+		iframe: {
+			method: "post",
+			url: "/notice/noticeInfoDetailPopup.do",
+			param: callBack = parentData
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
+
+// 공지사항 상세 팝업 닫기
+function closeSystemNoticeInfo(){
+	systemNoticeInfoDetailModal.close();
 }

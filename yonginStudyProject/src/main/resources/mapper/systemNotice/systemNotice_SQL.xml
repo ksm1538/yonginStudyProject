@@ -94,4 +94,29 @@
 		</if>
 	</select>
 	
+	<select id="selectSystemNoticeInfoDetail" parameterType="String" resultType="com.notice.VO.moreNoticeInfoVO">
+		<![CDATA[
+			SELECT	SYSTEM_NOTICE.SYSTEM_NOTICE_CODE 	as systemNoticeCode
+				 ,	SYSTEM_NOTICE.TITLE 				as systemNoticeTitle
+				 ,	SYSTEM_NOTICE.SYSTEM_NOTICE_DESC 	as systemNoticeDesc
+				 ,	SYSTEM_NOTICE.BOARD_COUNT  			as systemNoticeBoardCount
+				 ,	SYSTEM_NOTICE.UPDT_DT				as systemNoticeUpdateTime
+				 ,	USER_INFO.USER_ID 					as systemNoticeRgstusId
+				 ,	USER_INFO.USER_CODE 				as systemNoticeRgstusCode
+			FROM	SYSTEM_NOTICE,
+					USER_INFO
+			WHERE	USER_INFO.USER_CODE		=	SYSTEM_NOTICE.RGSTUS_ID
+				AND	SYSTEM_NOTICE.SYSTEM_NOTICE_CODE	=	#{systemNoticeCode}
+		]]>
+	</select>
+	
+	<update id="reviseSystemNotice">
+		<![CDATA[
+			UPDATE SYSTEM_NOTICE
+			SET		TITLE				=	#{systemNoticeTitle}
+				,	SYSTEM_NOTICE_DESC	=	#{systemNoticeDesc}
+				,	UPDT_DT				=	sysdate
+			WHERE	SYSTEM_NOTICE.SYSTEM_NOTICE_CODE	=	#{systemNoticeCode}
+		]]>
+	</update>
 </mapper>

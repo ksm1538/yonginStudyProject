@@ -35,4 +35,14 @@ public class systemNoticeServiceImpl implements systemNoticeService{
 	public int selectSystemNoticeListToCnt(moreNoticeInfoVO moreNoticeInfoVO) {
 		return systemNoticeDAO.selectSystemNoticeListToCnt(moreNoticeInfoVO);
 	}
+	
+	@Override
+	public moreNoticeInfoVO selectSystemNoticeInfoDetail(String systemNoticeCode) {
+		return systemNoticeDAO.selectSystemNoticeInfoDetail(systemNoticeCode);
+	}
+	
+	@Override
+	public void reviseSystemNotice(moreNoticeInfoVO data) throws Exception{
+		systemNoticeDAO.reviseSystemNotice(data);
+	}
 }
