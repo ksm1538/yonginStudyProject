@@ -56,6 +56,9 @@ body{overflow:scroll;}
 
 /*기본 폼 텍스트박스 사이즈*/
 .textbox_style_1{outline:none; width:150px; background:transparent; border-top:none; border-right:none; border-left:none; border-bottom:2px solid  #7f99e2;}
+.textbox_style_1.color_bg{outline:none; width:150px; background:transparent; border-top:none; border-right:none; border-left:none; border-bottom:2px solid  #fff; color:#fff; font-weight:bold;}
+
+
 
 .textbox_style_1.type_2{width:60px; margin-right:30px;}
 .textbox_style_1.type_2:last-child{margin-right:0;}

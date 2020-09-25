@@ -3,8 +3,31 @@ var messageInfoModal = new ax5.ui.modal();
 var cal;
 var _pageNo = 0;			//페이징 변수
 
+
+
+
 /** 초기화(시작) **/
 $(document).ready(function () {	
+		
+		
+		$(".get_img").on("click",function(event){
+			$(".message_content_sub_title").text("클릭시 이동 합니다.");
+		});
+
+
+	
+		$(".side_fixed_menu_title").click(function(){
+			var sidemenu = $(".side_fixed_menu_list");
+			
+			if(sidemenu.is(":visible")){
+				sidemenu.slideUp();
+			}else{
+				sidemenu.slideDown();
+			}
+		});
+	
+	
+	
 	//스터디 리스트 설정
 	messageListGrid.setConfig({   
     	target: $('[data-ax5grid="messageListGrid"]'),

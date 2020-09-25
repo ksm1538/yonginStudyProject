@@ -10,6 +10,42 @@ var _pageNo2 = 0;	// 스터디 그리드 페이지
 /** 초기화(시작) **/
 $(document).ready(function () {
 	
+
+	
+	/*사이드메뉴 */
+		$(".side_fixed_menu_title").click(function(){
+			var sidemenu = $(".side_fixed_menu_list");
+			
+			if(sidemenu.is(":visible")){
+				sidemenu.slideUp();
+			}else{
+				sidemenu.slideDown();
+			}
+		});
+	
+	//클릭시 맨위로
+		$("#Movetop").click(function(){
+			$('html, body').animate({
+				scrollTop : 0
+			}, 400);
+			return false;
+		});
+		
+		var list1 = $("#move1").offset();
+		var list2 = $("#move2").offset();
+	
+		//클릭시 이동
+		$("#side_movelist1").on("click",function(event){
+			$("html body").animate({scrollTop:list1.top},400);
+		});
+		
+		$("#side_movelist2").on("click",function(event){
+			$("html body").animate({scrollTop:list2.top},400);
+		});
+		
+	
+	
+	
 	// 사용자 그리드 
 	userListGrid.setConfig({   
     	target: $('[data-ax5grid="userListGrid"]'),

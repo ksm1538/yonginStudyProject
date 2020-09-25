@@ -30,8 +30,58 @@ request.setCharacterEncoding("UTF-8");
 </head>
 <body>
    
+   
+    <div class="col-12 meessage_box_wrap">
+		<div class="side_fixed_menu_con">
+			<div class="side_fixed_menu_list_con">
+				<ul class="side_fixed_menu_list">
+					<li><a><img src="/resources/img/arrow.png" class="side_arrow_img" id="Movetop"></a></li>
+					<li><a><img src="/resources/img/write_message.png" class="side_write_message_img" id="side_movelist1"></a></li>
+					<li><a><img src="/resources/img/sendmessage.png" class="side_send_message_img" id="side_movelist2"></a></li>
+					<li><a><img src="/resources/img/getmessage.png" class="side_get_message_img" id="side_movelist3"></a></li>
+				</ul>
+			</div>
+			<div class="tc side_fixed_menu_title">빠른 이동</div>			
+		</div> 
+		
+		<div class="message_content_img"></div>
+		<div class="message_content_dim"></div>
+		
+		<div class="tc message_title_con">
+			<div class="message_main_title">쪽지함</div>
+			<div class="message_sub_title">다른 회원들에게 쪽지를 보내보세요</div>
+			<div class="message_last_title">메뉴를 클릭 후 스크롤을 내려 확인하세요</div>
+		</div>
+		
+		<div class="col-12 message_content_con">
+			<div class="col-4 message_content_box">
+				<div class="tc message_content write_message" onclick="openSendMessageForm();">
+					<div class="message_img_box"><img src="/resources/img/write_message.png" class="box_content_img write_img"></div>
+					<div class="tc message_content_main_title">쪽지 쓰기</div>
+					<div class="tc message_content_sub_title">쪽지를 작성합니다.</div>
+				</div>
+			</div>
+			<div class="col-4 message_content_box">
+				<div class="tc message_content get_message" id="listMove1" onclick="openMessageForm();">
+					<div class="message_img_box"><img src="/resources/img/getmessage.png" class="box_content_img get_img"></div>
+					<div class="tc message_content_main_title">받은 쪽지함</div>
+					<div class="tc message_content_sub_title">받은 쪽지를 확인합니다.</div>
+				</div>
+			</div>
+			<div class="col-4 message_content_box">
+				<div class="tc message_content send_message" onclick="openSendMessageListForm();" >
+					<div class="message_img_box"><img src="/resources/img/sendmessage.png" class="box_content_img send_img"></div>
+					<div class="tc message_content_main_title">보낸 쪽지함</div>
+					<div class="tc message_content_sub_title">보낸 쪽지를 확인합니다.</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 write_message_wrap">
+		<div class="col-12 col-center mw-12300 write_message_con"></div>
+	</div>
       
-      <div class="col-12 col-center mw-1200 message_page_list_wrap">
+    <!--   <div class="col-12 col-center mw-1200 message_page_list_wrap">
          <div class="col-3 message_page_list_con" style="height:100vh">
             <div class="message_list_title">쪽지함</div>
             <ul class="message_list">
@@ -41,7 +91,7 @@ request.setCharacterEncoding("UTF-8");
                 
             </ul>
          </div> 
-      </div>
+      </div> -->
       
       
 </body>

@@ -26,21 +26,14 @@
                     <div class="header_mypage"><a onclick="openMypageForm();">마이페이지</a></div>
                     <div class="header_message"><a onclick="openMessageForm();">쪽지함</a></div>
                     <div class="logout"><a href="/logout.json">로그아웃</a></div>
-              
+              		<div class="admin_page">
+              			<c:if test="${user.userIsAdmin == 'Y'}">
+                    	  <div class="admin_page_click"><a onclick="openAdminPage();">관리자 페이지</a></div>
+                   		</c:if>
+              		</div>
                     
-                    <!-- <div class="user_box_con">
-                       <div class="circle_btn_2"></div>
-                       <div class="user_box_tri"></div>
-                       <div>
-                           <ul class="user_box">
-                                 <li><a onclick="openMypageForm();">마이페이지</a></li>
-                                <li><a onclick="openMessageForm();">쪽지함</a></li>
-                            </ul>
-                       </div>
-                    </div> -->
-                    <c:if test="${user.userIsAdmin == 'Y'}">
-                    	 | <div class="header_message"><a onclick="openAdminPage();">관리자 페이지</a></div>
-                    </c:if>
+                
+                    
                 </div>
         </div>
       </div>

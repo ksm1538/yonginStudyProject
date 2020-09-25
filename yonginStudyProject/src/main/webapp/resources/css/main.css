@@ -376,10 +376,10 @@ html, body {
 .mypage_myapply_title_con .mypage_myapply_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px; color:#fff;}
 .mypage_myapply_title_con .mypage_myapply_title > span{display:inline-block; border-bottom:3px solid #fff; padding-bottom:10px;}
 
-.mypage_content_wrap .side_myinfo_img{width:55px; height:55px; margin-left:10px; margin-top:7px;}
-.mypage_content_wrap .side_mystudy_img{width:75px; height:60px; margin-left:2px; margin-top:7px;}
-.mypage_content_wrap .side_mymake_img{width:75px; height:75px; margin-left:1px; margin-top:0px;}
-.mypage_content_wrap .side_myapply_img{width:75px; height:75px; margin-left:1px; margin-top:-1px;}
+.side_myinfo_img{width:55px; height:55px; margin-left:10px; margin-top:7px;}
+.side_mystudy_img{width:75px; height:60px; margin-left:2px; margin-top:7px;}
+.side_mymake_img{width:75px; height:75px; margin-left:1px; margin-top:0px;}
+.side_myapply_img{width:75px; height:75px; margin-left:1px; margin-top:-1px;}
 
 
 /*마이페이지*/
@@ -394,6 +394,118 @@ html, body {
 
 .mypage_content_con .my_participate_study{margin-bottom:50px;}
 .mypage_content_con .my_make_study{margin-bottom:50px;}
+/*============================================*/
 
 
-.modify_line_left_con
+
+/*==================쪽지함===================== */
+.side_write_message_img{margin-top:8px;}
+.side_set_message_img{}
+.side_get_message_img{width:66px; margin-top:2px; margin-left:4px;}
+
+/*쪽지함 헤더*/
+.meessage_box_wrap{position:relative; height:850px; padding:130px 70px;}
+.message_content_img{z-index:-1; width:100%; height:100%; background-image:url("../img/message_banner.jpg"); background-repeat: no-repeat; background-size:cover; backgroud-position:center; position:absolute; top:0; left:0;}
+.message_content_dim{z-index:-1; width:100%; height:100%; background-color:rgba(0,0,0,0.6); position: absolute; top:0; left:0;}
+
+.message_title_con{margin-bottom:70px;}
+.message_title_con .message_main_title{font-size:50px; font-weight:bold; color:#fff; margin-bottom:20px;}
+.message_title_con .message_sub_title{font-size:20px; font-weight:bold; color:#fff; margin-bottom:20px;}
+.message_title_con .message_last_title{font-size:20px;  font-weight:bold; color:#fff;}
+
+.message_content_con{display:flex;}
+.message_content_con .message_content_box{padding:40px 40px;}
+.message_content_con .message_content{width:220px; height:220px; background-color:#fff; }
+.message_content_con .message_content:hover{background-color:#7f99e2;}
+
+/*메세지 이미지 박스*/
+.message_content_con .message_img_box{margin-bottom:20px; padding-top:20px;}
+.message_content_con .message_img_box .get_img{}
+
+.message_content_con .message_content_main_title{font-size:20px; font-weight:bold; margin-bottom:20px;}
+.message_content_con .message_content_sub_title{font-size:15px; }
+
+.message_content_con .message_content:hover .message_content_main_title{color:#fff;}
+.message_content_con .message_content:hover .message_content_sub_title{color:#fff;}
+
+.message_content_con .write_message{float:right;}
+.message_content_con .write_img{width:85px; margin-top:15px;}
+
+.message_content_con .get_message{margin-right:auto; margin-left:auto;}
+
+.message_content_con .send_message{}
+.message_content_con .send_img{width:85px;}
+.message_content_con .get_img{width:85px;}
+
+/*받은 쪽지함*/
+.get_message_wrap{padding-top:120px; padding-bottom:120px;}
+.get_message_con .get_message_title_con{display:flex; position:relative; margin-bottom:30px;}
+.get_message_con .get_message_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px;}
+.get_message_con .get_message_title > span{display:inline-block; border-bottom:3px solid #7f99e2; padding-bottom:10px;}
+
+.get_message_con .get_message_search_con{display:flex; margin-bottom:40px;}
+.get_message_con .get_message_search_box{display:flex; margin-right:30px;}
+.get_message_con .get_message_box_title{font-size:20px; font-weight:bold;}
+
+.send_person{position:relative;}
+.send_person:before{content:"*"; position:absolute; left:-8px; top:-14px; font-size:25px;}
+.send_title{position:relative;}
+.send_title:before{content:"*"; position:absolute; left:-9px; top:-14px; font-size:25px;}
+
+.get_message_con .get_message_grid_con{margin-bottom:15px;}
+.get_message_con .message_btn .btn_style_1{width:150px;}
+
+/*===============================================*/
+
+/*관리자 페이지*/
+/*관리자 헤더*/
+.admin_page .admin_page_click{margin-left:30px; position:relative;}
+.admin_page .admin_page_click > a {text-decoration:none; color:#000; cursor:pointer;}
+.admin_page .admin_page_click > a:after{content:""; position:absolute; width:1px; height:13px; left:-14px; top:3px; background-color:rgba(0,0,0,0.2);}
+.admin_page .admin_page_click > a:hover{color : #7f99e2;}
+
+/*관리자 메인 타이틀 */
+.admin_main_title_con{display:flex; margin-bottom:20px;}
+.admin_main_title_con .admin_main_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px; color:#fff;}
+.admin_main_title_con .admin_main_title.type_2{color:#000;}
+.admin_main_title_con .admin_main_title > span{display:inline-block; border-bottom:3px solid #fff; padding-bottom:10px;}
+.admin_main_title_con .admin_main_title.type_2 > span{ border-bottom:3px solid #000;}
+
+/*사용자 관리*/
+.admin_page_id_manage_wrap{padding-top:80px; padding-bottom:80px; background-color: #7f99e2;}
+.admin_id_search_method_con{margin-bottom:20px;}
+.admin_id_search_method_con .admin_id_search_method{display:flex; margin-bottom:50px;}
+.admin_id_search_method_con .admin_search{display:flex; margin-right:30px;}
+.admin_id_search_method_con .admin_manage_title{font-size:18px; color:#fff; font-weight:bold; margin-right:30px;}
+
+.admin_page_id_manage_wrap .btn_style_1{background-color:#fff; color:#000;}
+
+/*관리자 셀렉트박스*/
+.admin_check_management{position:relative;}
+.admin_check_management .select_style_0{position:absolute; left:122px; top:-8px; width:155px; height:35px; font-weight:bold; border-radius:5px; outline:none; cursor:pointer;}
+
+/*관리자 검색버튼*/
+.adimin_check_btn{position:relative;}
+.adimin_check_btn .btn_style_1{position:absolute; top:-9px; left:163px;}
+
+
+.admin_manage_title{position:relative;}
+.admin_manage_title:before{content:"*"; position:absolute; top:-18px; right:95px; font-size:25px;}
+.admin_manage_title.type_2:before{content:"*"; position:absolute; top:-18px; right:55px; font-size:25px;}
+.admin_manage_title.type_3:before{content:"*"; position:absolute; top:-18px; right:35px; font-size:25px;}
+
+/*관리자 스터디관리*/
+.admin_page_sdudy_manage_wrap{padding-top:80px; padding-bottom:80px;}
+.admin_study_search_method_con{margin-bottom:30px;}
+.admin_study_search_method_con .textbox_style_1{border-color:#000;}
+.admin_study_search_method_con .admin_id_search_method{display:flex; margin-bottom:50px;}
+.admin_study_search_method_con .admin_search{display:flex; margin-right:30px;}
+.admin_study_search_method_con .admin_manage_title{font-size:18px; color:#000; font-weight:bold; margin-right:30px;}
+
+.study_subject_management{position:relative;}
+.admin_page_sdudy_manage_wrap .select_style_0{position:absolute; left:122px; top:-8px; width:155px; height:35px; font-weight:bold; border-radius:5px; outline:none; cursor:pointer;}
+
+.studymanage_search_btn{position:relative;}
+.sutdymanage_search_btn .btn_style_1{position:absolute; right:180px; top:115px;}
+
+
