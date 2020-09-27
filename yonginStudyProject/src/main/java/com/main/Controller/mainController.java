@@ -23,6 +23,8 @@ import com.login.VO.userInfoVO;
 import com.main.Service.mainService;
 import com.main.VO.calendarVO;
 import com.main.VO.studyInfoVO;
+import com.main.VO.studyNoticeInfoVO;
+import com.notice.VO.moreNoticeInfoVO;
 /**
  * Handles requests for the application home page.
  */
@@ -82,6 +84,51 @@ public class mainController {
 		
 		mReturn.put("result", "success");
 		mReturn.put("message", "조회 성공하였습니다.");
+		mReturn.put("resultList", ltResult);
+		
+		return mReturn;
+	}
+	
+	/**
+	 * 스터디 공지사항 리스트 조회
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/main/selectStudyNoticeList.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> selectStudyNoticeList(@RequestBody studyNoticeInfoVO studyNoticeInfoVO, HttpSession session) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		studyNoticeInfoVO.setUserCode(user.getUserCode());
+		
+		/*** 페이징(시작) ***/
+		int dataPerPage = 9; //그리드 한 페이지에 표시할 데이터 수
+    	int page = Integer.parseInt(studyNoticeInfoVO.getPage()); //페이지별 변경
+    	
+    	int first = page * dataPerPage + 1; //변경없이 추가
+    	int last = first + dataPerPage - 1; //변경없이 추가
+    	
+    	studyNoticeInfoVO.setFirst(first); //변경없이 추가
+    	studyNoticeInfoVO.setLast(last);   //변경없이 추가
+    	
+    	int total = mainService.selectStudyNoticeListToCnt(studyNoticeInfoVO); // 총 몇 페이지인지 확인
+    	int totalPages = (int)Math.ceil(total / (double)dataPerPage); // 변경없이 추가
+		
+		/*** 페이징(끝) ***/
+    	
+    	List<studyNoticeInfoVO> ltResult = mainService.selectStudyNoticeList(studyNoticeInfoVO);
+		
+		if(ltResult.size() < 1) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "공지사항 목록이 없습니다.");
+		}
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "조회 성공하였습니다.");
+		mReturn.put("total", total);
+    	mReturn.put("totalPages", totalPages);
+    	mReturn.put("dataPerPage", dataPerPage);
 		mReturn.put("resultList", ltResult);
 		
 		return mReturn;

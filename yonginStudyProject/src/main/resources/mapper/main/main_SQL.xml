@@ -56,4 +56,72 @@
 					 (END_DT		>= #{searchMonthFrom}	AND		END_DT	<= #{searchMonthTo}))
 		]]>
 	</select>
+	
+	<select id="selectStudyNoticeList" resultType="com.main.VO.studyNoticeInfoVO" >
+		<![CDATA[
+			SELECT	*
+			  FROM	(
+						SELECT	ROWNUM	as RNUM
+							 ,	main.*	
+						  FROM	(
+									SELECT	/*+ ordered use_nl(sn) INDEX_DESC(sn STUDYNOTICE_IDX) */
+										sn.NOTICE_CODE									as	studyNoticeCode
+										,	sn.NOTICE_TITLE 							as 	studyNoticeTitle
+										,	(SELECT ui.USER_ID	
+										     FROM   USER_INFO ui
+											 WHERE  ui.USER_CODE   =   sn.RGSTUS_ID)    as	studyNoticeRgstusId
+										,	(SELECT si.STUDY_NAME
+											 FROM	STUDY_INFO si
+											 WHERE	si.STUDY_CODE	=	sn.STUDY_CODE)	as	studyNoticeStudyName
+										,	TO_CHAR(sn.RGDT_DT, 'YYYY-MM-DD HH24:MI') 	as 	studyNoticeTime
+										,	sn.NOTICE_CNT								as	studyNoticeCount
+									FROM	STUDY_NOTICE sn
+									WHERE	sn.USE_YN			=	'Y'
+										AND	sn.STUDY_CODE 	IN	(SELECT us.STUDY_CODE
+																 FROM	USER_IN_STUDY us
+																 WHERE	us.USER_CODE	=	#{userCode}
+																 	AND	us.USE_YN		=	'Y'
+																 )
+								) main 
+						  WHERE ROWNUM <= #{last}
+					)
+			WHERE	RNUM >= #{first}
+		]]>
+	</select>
+	
+	<select id="selectStudyNoticeListToCnt" resultType="int">
+		<![CDATA[
+			SELECT	COUNT(*)
+			FROM	STUDY_NOTICE
+			WHERE	STUDY_NOTICE.USE_YN	=	'Y'
+		]]>
+	</select>
+	
+	<select id="selectStudyNoticeInfoDetail" parameterType="String" resultType="com.main.VO.studyNoticeInfoVO">
+		<![CDATA[
+			SELECT	STUDY_NOTICE.NOTICE_CODE 									as studyNoticeCode
+				 ,	STUDY_NOTICE.NOTICE_TITLE 									as studyNoticeTitle
+				 ,	STUDY_NOTICE.NOTICE_DESC 									as studyNoticeDesc
+				 ,	STUDY_NOTICE.NOTICE_CNT  									as studyNoticeCount
+				 ,	STUDY_NOTICE.RGDT_DT										as studyNoticeTime
+				 ,	STUDY_NOTICE.UPDT_DT 										as studyNoticeUpdateTime
+				 ,  STUDY_INFO.STUDY_NAME 										as studyNoticeStudyName
+				 ,	(SELECT USER_ID
+                     FROM USER_INFO
+                     WHERE STUDY_NOTICE.RGSTUS_ID   =   USER_INFO.USER_CODE)	as studyNoticeRgstusId
+			FROM	STUDY_NOTICE,
+					STUDY_INFO
+			WHERE	STUDY_INFO.STUDY_CODE		=	STUDY_NOTICE.STUDY_CODE
+				AND	STUDY_NOTICE.NOTICE_CODE	=	#{studyNoticeCode}
+				AND	STUDY_INFO.USE_YN			=	'Y'
+		]]>
+	</select>
+	
+	<update id="updateStudyNoticeCnt">
+		<![CDATA[
+			UPDATE  STUDY_NOTICE
+SET     NOTICE_CNT  =   NOTICE_CNT + 1
+WHERE   NOTICE_CODE =   #{studyNoticeCode}
+		]]>
+	</update>
 </mapper>

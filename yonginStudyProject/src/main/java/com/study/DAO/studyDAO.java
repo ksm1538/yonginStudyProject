@@ -28,5 +28,6 @@ public interface studyDAO {
 	public int selectUserInStudyCount(studyApplicationFormUserVO studyApplicationFormUserVO);
 	
 	public int selectStudyListToCnt(studyInfoVO studyInfoVO);
+ 
 }
  

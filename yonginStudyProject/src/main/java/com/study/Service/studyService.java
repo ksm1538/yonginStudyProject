@@ -1,4 +1,4 @@
-package com.study.Service;
+package com.study.Service; 
 
 import java.util.List;
 
@@ -27,4 +27,3 @@ public interface studyService {
 	
 	int selectStudyListToCnt(studyInfoVO studyInfoVO);
 }
- 

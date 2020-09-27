@@ -2,7 +2,9 @@
 var studyListGrid = new ax5.ui.grid();
 var studyNoticeListGrid = new ax5.ui.grid();
 var calendarDetailModal = new ax5.ui.modal();
+var studyNoticeInfoDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
 var cal;
+var _pageNo = 0;
 /** 변수 설정(끝) **/
 
 /** 초기화(시작) **/
@@ -132,6 +134,8 @@ $(document).ready(function () {
             lastIcon: '>|',
             display: false,
             onChange: function () {
+				_pageNo = this.page.selectPage;
+				getStudyNoticeList();
                 },
             },
         });
@@ -141,11 +145,13 @@ $(document).ready(function () {
 	studyNoticeListGrid.setConfig({   
     	target: $('[data-ax5grid="studyNoticeListGrid"]'),
         showLineNumber: false,
-        showRowSelector: true,
-        columns: [ 
-        	{key : "studyName", label: "스터디 이름", align: "center", width:"41%", sortable: true},
-        	{key : "noticeTitle", label: "제목", align: "center", width:"41%"},
-        	{key : "noticeCnt", label: "조회 수", align: "center", width:"20%"},
+        showRowSelector: false,
+        columns: [
+        	{key : "studyNoticeTitle", label: "제목", align: "center", width:"41%"},
+			{key : "studyNoticeStudyName", label: "스터디 이름", align: "center", width:"41%"},
+			{key : "studyNoticeRgstusId", label: "작성자 ID", align: "center", width:"41%"},
+			{key : "studyNoticeTime", label: "날짜", align: "center", width:"41%"},
+        	{key : "studyNoticeCount", label: "조회 수", align: "center", width:"20%"},
         ],
         header: {
         	align:"center",
@@ -154,7 +160,10 @@ $(document).ready(function () {
         body: {
                     align: "left",
                     columnHeight: 45,
-                    
+
+					onDBLClick: function () 	{
+                    	selectStudyNoticeInfoDetail(this.list[this.dindex]["studyNoticeCode"]);
+					},                    
                     onClick: function () 	{
                     
 					},
@@ -166,17 +175,19 @@ $(document).ready(function () {
             navigationItemCount: 9,
             height: 30,
             display: true,
-            firstIcon: '|<', 
-            prevIcon: '<',
-            nextIcon: '>',
-            lastIcon: '>|',
-            display: false,
+            firstIcon: '<i class="fa fa-step-backward" aria-hidden="true"></i>', 
+            prevIcon: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+            nextIcon: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+            lastIcon: '<i class="fa fa-step-forward" aria-hidden="true"></i>',
             onChange: function () {
+				_pageNo = this.page.selectPage;
+				getStudyNoticeList(); // 공지사항 조회
                 },
             },
         });
 	
 	getStudyList();	// 스터디 목록 조회
+	getStudyNoticeList(); // 공지사항 조회
 	
 	showRange();
 	searchMyStudyCalendar();
@@ -200,6 +211,46 @@ function getStudyList(){
 			switch(data.result){
 			    case COMMON_SUCCESS:
 			    	studyListGrid.setData(data.resultList);
+			    	break;    
+			    case COMMON_FAIL:
+			    	dialog.alert(data.message); 
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+		}
+	}); 
+}
+
+/* 시스템 공지사항 리스트 조회 함수 */
+function getStudyNoticeList(){
+	var sendData = {
+		page : _pageNo
+	}
+	
+	$.ajax({
+		type: "POST",
+ 		url : "/main/selectStudyNoticeList.json",
+		contentType: "application/json; charset=UTF-8",
+		data : JSON.stringify(sendData),
+		async: false,
+		success : function(data, status, xhr) {
+			switch(data.result){
+			    case COMMON_SUCCESS:
+			    	if(data.resultList.length>0){
+			    		studyNoticeListGrid.setData({
+			    			list: data.resultList,
+			    		 	page: {
+			    		 		currentPage: _pageNo || 0,
+			    			 	pageSize: data.dataPerPage,
+			    			 	totalElements: data.total,
+			    			 	totalPages: data.totalPages
+			    		 	}, 
+			    		});
+			    	}else{
+			    		dToast.push("공지사항 목록이 없습니다.");
+			    		studyNoticeListGrid.setData([]);
+			    	}
 			    	break;    
 			    case COMMON_FAIL:
 			    	dialog.alert(data.message); 
@@ -324,4 +375,36 @@ function openCalenderPopup(e){
 }
 function closeCalenderPopup(){
 	calendarDetailModal.close();
+}
+
+function selectStudyNoticeInfoDetail(studyNoticeCode){
+	var parentData={
+		studyNoticeCode:studyNoticeCode
+	}
+	
+	studyNoticeInfoDetailModal.open({
+		width: 800,
+		height: 710,
+		iframe: {
+			method: "post",
+			url: "/main/studyNoticeInfoDetailPopup.do",
+			param: callBack = parentData
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
+
+// 공지사항 작성 팝업창 닫고 새로고침
+function writeModalCloseWithRefresh(){
+	studyNoticeInfoDetailModal.close();
+	window.location.reload();
+	
 }

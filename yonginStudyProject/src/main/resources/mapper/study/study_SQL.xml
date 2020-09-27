@@ -175,7 +175,7 @@
 				AND	APPLICATION_FORM_CODE		=	#{applicationFormCode}
 				AND	USE_YN						=	'Y'
 		]]>
-	</select>
+	</select> 
 	
 	<select id="selectStudyApplicationFormCount" resultType="int">
 		<![CDATA[
@@ -215,4 +215,5 @@
 				AND	STUDY_INFO.STUDY_AREA		LIKE	'%' || 	#{searchStudyArea} || '%'
 			</if>
 	</select>
-</mapper> 
+
+</mapper>  
