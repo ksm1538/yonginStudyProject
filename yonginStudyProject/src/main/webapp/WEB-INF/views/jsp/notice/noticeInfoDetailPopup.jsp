@@ -15,9 +15,6 @@
 <!-- 헤더 불러오기 : 순서 2(헤더 필요없는 곳은 주석처리) -->
 <%-- <jsp:include page="../common/header.jsp"></jsp:include> --%>
 
-<!-- 주소 API javascript 호출(주소 사용하는 곳만 추가) -->
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
 <script type="text/javascript" src="/resources/js/notice/noticeInfoDetailPopup.js"></script>
 
@@ -32,6 +29,10 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 	<div class="col-12 col-center mw-1200 study_detail_pop_wrap">
 		 <div class="circle_btn" onClick="closeModal()"></div> 
 		 <div class="tc content_title"><span>공지사항 상세정보</span></div>
+		 
+		 <form id="readForm" name="readForm" method="post" role="form">
+		 	<input type="hidden" id="FILE_CODE" name="FILE_CODE" value=""> 
+		 </form> 
 		 
 		 <form:form method="POST" modelAttribute="moreNoticeInfoVO" name="noticeInfoDetailForm" id="noticeInfoDetailForm" >
 		 <div class="study_detail_pop_wrap_con" id="detailDiv">
@@ -66,6 +67,8 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 					</div> 
 				</div>
 				
+				<div id="fileListDiv">
+				</div>
 			</div>
 				<div class="btn_style_1_con">
 					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >

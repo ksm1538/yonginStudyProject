@@ -12,19 +12,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.login.VO.userInfoVO;
-import com.main.VO.studyInfoVO;
-import com.message.Validator.sendMessageValidator;
 import com.notice.Service.systemNoticeService;
 import com.notice.VO.moreNoticeInfoVO;
 import com.notice.Validator.systemNoticeValidator;
-import com.study.Validator.studyInfoValidator;
 
 @Controller
 public class writeNoticeController {
@@ -57,15 +53,15 @@ public class writeNoticeController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/notice/makeSystemNotice.json", method = RequestMethod.POST)
+	@RequestMapping(value="/notice/makeSystemNotice", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> registerAjaxFunction(@RequestBody moreNoticeInfoVO moreNoticeInfoVO, HttpSession session, BindingResult bindingResult) throws Exception {
+	public Map<String, Object> makeSystemNotice(moreNoticeInfoVO moreNoticeInfoVO, HttpSession session, BindingResult bindingResult, MultipartHttpServletRequest mpRequest) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 		
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
 		moreNoticeInfoVO.setSystemNoticeRgstusId(user.getUserCode());
-		
+
 		/** 데이터 검증(시작) **/
 		systemNoticeValidator systemNoticeValidator = new systemNoticeValidator();
 		systemNoticeValidator.validate(moreNoticeInfoVO, bindingResult);
@@ -84,11 +80,13 @@ public class writeNoticeController {
 			return mReturn;
 		}  
 		/** 데이터 검증(끝) **/
-	
-		systemNoticeService.insertSystemNotice(moreNoticeInfoVO);
+		systemNoticeService.insertSystemNotice(moreNoticeInfoVO, mpRequest);
+		
 		mReturn.put("result", "success");
 		mReturn.put("message", "성공적으로 생성되었습니다.");
 		
 		return mReturn;
 	}
+	
+	
 }

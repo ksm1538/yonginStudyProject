@@ -43,6 +43,10 @@
 	</select>
 	
 	<insert id="insertSystemNotice"> 
+		<selectKey keyProperty="systemNoticeCode" resultType="String" order="BEFORE">
+			SELECT	('SYSNOTICE_' || LPAD(systemnotice_seq.nextval,8,0))	FROM 	DUAL    
+		</selectKey>
+	
 		<![CDATA[
 			INSERT 
 			INTO	SYSTEM_NOTICE
@@ -57,7 +61,7 @@
 				)  
 			VALUES	
 				(	
-					('NOTICE_' || LPAD(systemnotice_seq.nextval,8,0))
+					#{systemNoticeCode}
 				,	#{systemNoticeTitle}
 				,	#{systemNoticeDesc}
 				,	#{systemNoticeRgstusId}

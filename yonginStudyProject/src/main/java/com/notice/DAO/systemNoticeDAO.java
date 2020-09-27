@@ -17,4 +17,15 @@ public interface systemNoticeDAO {
 	public moreNoticeInfoVO selectSystemNoticeInfoDetail(String systemNoticeCode);
 	
 	public void reviseSystemNotice(moreNoticeInfoVO data) throws Exception;
+	
+	/*
+	 * public void insertFile(Map<String, Object> map) throws Exception;
+	 * 
+	 * public List<Map<String, Object>> selectFileList(String bCode) throws
+	 * Exception;
+	 * 
+	 * public Map<String, Object> selectFileInfo(Map<String, Object> map) throws
+	 * Exception;
+	 */
+
 }

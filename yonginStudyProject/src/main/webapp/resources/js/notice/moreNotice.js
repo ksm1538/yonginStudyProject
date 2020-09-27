@@ -1,5 +1,6 @@
 var noticeListPlusGrid = new ax5.ui.grid();
 var systemNoticeInfoDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
+var systemNoticeInfoWriteModal = new ax5.ui.modal();
 var _pageNo = 0;
 
 $(document).ready(function () {
@@ -93,7 +94,35 @@ function getSystemNoticeList(){
 
 /*공지사항 작성 호출 */
 function openWriteNotice(){
-	window.open("/writeNotice.do",'공지사항 작성','width=720px ,height=1050px ,location=no,status=no,scrollbars=no');
+	systemNoticeInfoWriteModal.open({
+		width: 800,
+		height: 710,
+		iframe: {
+			method: "get",
+			url: "/writeNotice.do",
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
+
+// 공지사항 작성 팝업창 닫기
+function writeModalClose(){
+	systemNoticeInfoWriteModal.close();
+}
+
+// 공지사항 작성 팝업창 닫고 새로고침
+function writeModalCloseWithRefresh(){
+	systemNoticeInfoWriteModal.close();
+	window.location.reload();
+	
 }
 
 /*공지사항 삭제*/ 

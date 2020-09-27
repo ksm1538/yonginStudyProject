@@ -1,4 +1,4 @@
-package com.notice.VO; 
+package com.notice.VO;
 
 public class moreNoticeInfoVO {
 
@@ -16,6 +16,7 @@ public class moreNoticeInfoVO {
 	private String	page = "";
 	private String searchSystemNoticeRgstusId="";
 	private String searchSystemNoticeTitle="";
+	private String	fileCode="";
 	
 	public String getSearchSystemNoticeRgstusId() {
 		return searchSystemNoticeRgstusId;
@@ -100,6 +101,12 @@ public class moreNoticeInfoVO {
 	}
 	public void setSystemNoticeCode(String systemNoticeCode) {
 		this.systemNoticeCode = systemNoticeCode;
+	}
+	public String getFileCode() {
+		return fileCode;
+	}
+	public void setFileCode(String fileCode) {
+		this.fileCode = fileCode;
 	}
 	
 }

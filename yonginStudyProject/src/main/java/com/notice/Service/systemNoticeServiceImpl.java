@@ -1,10 +1,14 @@
 package com.notice.Service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.commonFunction.Controller.FileUtilsController;
+import com.commonFunction.DAO.fileDAO;
 import com.notice.DAO.systemNoticeDAO;
 import com.notice.VO.moreNoticeInfoVO;
 
@@ -13,14 +17,23 @@ public class systemNoticeServiceImpl implements systemNoticeService{
 	@Autowired
 	systemNoticeDAO systemNoticeDAO;
 	
+	@Autowired
+	fileDAO fileDAO;
+	
 	@Override
 	public List<moreNoticeInfoVO> selectSystemNoticeList(moreNoticeInfoVO moreNoticeInfoVO){
 		return systemNoticeDAO.selectSystemNoticeList(moreNoticeInfoVO);
 	}
 	
 	@Override
-	public void insertSystemNotice(moreNoticeInfoVO data) throws Exception{ 
+	public void insertSystemNotice(moreNoticeInfoVO data, MultipartHttpServletRequest mpRequest) throws Exception{ 
 		systemNoticeDAO.insertSystemNotice(data);
+		
+		List<Map<String,Object>> list = FileUtilsController.parseInsertFileInfo(data, mpRequest); 
+		int size = list.size();
+		for(int i=0; i<size; i++){ 
+			fileDAO.insertFile(list.get(i)); 
+		}
 	}
 	
 	@Override
@@ -45,4 +58,13 @@ public class systemNoticeServiceImpl implements systemNoticeService{
 	public void reviseSystemNotice(moreNoticeInfoVO data) throws Exception{
 		systemNoticeDAO.reviseSystemNotice(data);
 	}
+	
+	/*
+	 * @Override public List<Map<String, Object>> selectFileList(String bCode)
+	 * throws Exception{ return systemNoticeDAO.selectFileList(bCode); }
+	 * 
+	 * @Override public Map<String, Object> selectFileInfo(Map<String, Object> map)
+	 * throws Exception { return systemNoticeDAO.selectFileInfo(map); }
+	 */
+	
 }

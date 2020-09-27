@@ -31,13 +31,13 @@
 
 <div class="col-12 col-center mw-1200 make_study_wrap">
 
-   <div class="circle_btn" onClick="self.close()"></div> 
+   <div class="circle_btn" onClick="closeModal()"></div> 
    
    <div class="tc make_study_title_con">
       <div class="make_study_title">공지사항 작성</div>
    </div> 
    
- 
+   <form name="writeSysNoticeForm" id="writeSysNoticeForm" method="POST" enctype="multipart/form-data">
    <div class="col-12 col-center mw-1200 make_study_form_wrap">
       <div class="make_study_form_con">
       	<div class="study_text make_study_form">
@@ -54,16 +54,24 @@
          		 <textarea name="systemNoticeDesc" id="systemNoticeDesc" placeholder="공지사항을 입력해주세요."></textarea> 
           </div>
          
-       </div>      
+       </div>    
+       
+       <div class="study_text make_study_form">
+          <div class="title_size type_2">첨부파일</div>
+          <div class="make_study_input_con">
+         		<input type="file" name="file">
+          </div>
+         
+       </div>  
       </div>
 	</div>
 	
 	<div class="col-12 col-center mw-1200 make_study_btn_wrap">
    		<div class="btn_style_1_con">
-      		<input type="button" value="완료" class="btn_style_1" onclick="makeSystemNoticeFunc()" >
+      		<input type="button" value="완료" class="btn_style_1" onclick="makeSystemNoticeFunc()">
    		</div> 
 	</div> 
-
+	</form>
    
 </div>
  

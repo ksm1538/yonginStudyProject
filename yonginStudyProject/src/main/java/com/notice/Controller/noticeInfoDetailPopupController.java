@@ -14,15 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.commonFunction.Service.fileService;
 import com.login.VO.userInfoVO;
-import com.notice.VO.moreNoticeInfoVO;
 import com.notice.Service.systemNoticeService;
+import com.notice.VO.moreNoticeInfoVO;
 
 @Controller
 public class noticeInfoDetailPopupController {
 
 	@Resource(name="systemNoticeService")
 	private systemNoticeService systemNoticeService;
+	
+	@Resource(name="fileService")
+	private fileService fileService;
 	
 	@RequestMapping(value = "/notice/noticeInfoDetailPopup.do", method = RequestMethod.POST)
 	public String studyInfoDetailPopup(Model model, HttpSession session) throws Exception {
@@ -40,6 +44,12 @@ public class noticeInfoDetailPopupController {
 		return "jsp/notice/noticeInfoDetailPopup"; 
 	}
 	
+	/**
+	 * 공지사항 상세 보기 
+	 * @param systemNoticeCode
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value="/notice/selectNoticeInfoDetail.json", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> selectStudyInfoDetail(@RequestBody String systemNoticeCode) throws Exception {
@@ -62,9 +72,12 @@ public class noticeInfoDetailPopupController {
 			return mReturn;
 		}
 		
+		List<Map<String, Object>> fileList = fileService.selectFileList(systemNoticeCode);
+		
 		mReturn.put("result", "success");
 		mReturn.put("message", "성공적으로 조회하였습니다.");
 		mReturn.put("systemNoticeInfo", systemNoticeInfo);
+		mReturn.put("fileList", fileList);
 		
 		return mReturn;
 	}

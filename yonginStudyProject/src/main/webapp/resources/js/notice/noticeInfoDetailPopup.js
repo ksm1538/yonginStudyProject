@@ -44,6 +44,13 @@ function selectSystemNoticeInfoDetail(systemNoticeCode){
 			    	systemNoticeInfoDetailBinder.setModel(data.systemNoticeInfo);
 			    	$('#systemNoticeDesc').summernote('code', data.systemNoticeInfo.systemNoticeDesc);
 			    	
+			    	var output="";
+			    	
+			    	for(var i=0;i<data.fileList.length;i++){
+			    		output	+= "<a href="+"#"+" id="+data.fileList[i].FILE_CODE+" onclick=" + "fileDownFunc(id); return false;" + ">"+data.fileList[i].ORG_FILE_NAME+"</a> ("+data.fileList[i].FILE_SIZE+"kb)<br>"
+			    	}
+			    	$("#fileListDiv").html(output);
+			    	
 			    	break;    
 			    case COMMON_FAIL:
 			    	dialog.alert(data.message); 
@@ -54,6 +61,15 @@ function selectSystemNoticeInfoDetail(systemNoticeCode){
 		}
 	}); 
 }
+
+// 파일 다운로드 함수
+function fileDownFunc(fileCode){
+	$("#FILE_CODE").attr("value", fileCode);
+	var formObj = $("form[name='readForm']");
+	formObj.attr("action", "/fileDown");
+	formObj.submit();
+	
+}	
 
 // 팝업창 닫기
 function closeModal(){
