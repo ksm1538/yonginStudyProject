@@ -32,7 +32,10 @@ $(document).ready(function () {
         body: {
                     align: "left",
                     columnHeight: 45,
-                    
+
+					onDBLClick: function () 	{
+                    	openStudyManagementPage();
+					},                    
                     onClick: function () 	{
                     
 					},
@@ -81,6 +84,9 @@ $(document).ready(function () {
                     align: "left",
                     columnHeight: 45,
                     
+					onDBLClick: function () 	{
+                    	openStudyManagementPage();
+					},  
                     onClick: function () 	{
                     
 					},
@@ -607,4 +613,10 @@ function closeApplcationFormModal(){
 function closeApplcationFormModalRefresh(){
 	applicationFormDetailModal.close();
 	window.location.reload();
+}
+
+// 스터디 페이지 이동
+function openStudyManagementPage(){
+	
+	window.open("/studyManagement/studyMain.do");
 }
