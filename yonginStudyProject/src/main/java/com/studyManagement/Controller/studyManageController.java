@@ -17,4 +17,4 @@ public class studyManageController {
 		
 		return "jsp/studyManagement/studyManage";
 	}
-}
+} 

@@ -18,3 +18,4 @@ public class studyHeaderController {
 		return "jsp/studyManagement/studyHeader";
 	}
 }
+ 

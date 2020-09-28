@@ -594,7 +594,7 @@ function openApplicationFormDetail(applicationFormCode){
 		},
 		onStateChanged: function(){
 			if (this.state === "open") {
-	        	mask.open();
+	        	mask.open(); 
 	        }
 	        else if (this.state === "close") {
 	        	mask.close();
