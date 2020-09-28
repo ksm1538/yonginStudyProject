@@ -43,7 +43,7 @@ function openMoreStudyForm(){
 
 /*qna */
 function openQna(){
-	location.href = "/goToQna.do";
+	location.href = "/makeQna.do";
 }
 
 
