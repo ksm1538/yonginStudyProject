@@ -17,7 +17,27 @@ public class moreNoticeInfoVO {
 	private String searchSystemNoticeRgstusId="";
 	private String searchSystemNoticeTitle="";
 	private String	fileCode="";
+	private String[]	fileCodeDel;
+	private String[]	fileNameDel;
 	
+	public int getBoardcount() {
+		return boardcount;
+	}
+	public void setBoardcount(int boardcount) {
+		this.boardcount = boardcount;
+	}
+	public String[] getFileCodeDel() {
+		return fileCodeDel;
+	}
+	public void setFileCodeDel(String[] fileCodeDel) {
+		this.fileCodeDel = fileCodeDel;
+	}
+	public String[] getFileNameDel() {
+		return fileNameDel;
+	}
+	public void setFileNameDel(String[] fileNameDel) {
+		this.fileNameDel = fileNameDel;
+	}
 	public String getSearchSystemNoticeRgstusId() {
 		return searchSystemNoticeRgstusId;
 	}

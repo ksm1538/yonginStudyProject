@@ -55,7 +55,6 @@ public class FileUtilsController {
 		if(file.exists() == false) {
 			file.mkdirs();
 		}
-		
 		while(iterator.hasNext()) {
 			multipartFile = mpRequest.getFile(iterator.next());
 			if(multipartFile.isEmpty() == false) {
@@ -71,9 +70,46 @@ public class FileUtilsController {
 				listMap.put("storedFileName", storedFileName);
 				listMap.put("fileSize", multipartFile.getSize());
 				list.add(listMap);
+				
 			}
 		}
 		return list;
+	}
+	
+	public static List<Map<String, Object>> parseUpdateFileInfo(moreNoticeInfoVO moreNoticeInfoVO, String[] files, MultipartHttpServletRequest mpRequest) throws Exception{ 
+		Iterator<String> iterator = mpRequest.getFileNames();
+		MultipartFile multipartFile = null; 
+		String originalFileName = null; 
+		String originalFileExtension = null; 
+		String storedFileName = null; 
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+		Map<String, Object> listMap = null; 
+		String bCode = moreNoticeInfoVO.getSystemNoticeCode();
+		while(iterator.hasNext()){ 
+			multipartFile = mpRequest.getFile(iterator.next()); 
+			if(multipartFile.isEmpty() == false){ 
+				originalFileName = multipartFile.getOriginalFilename(); 
+				originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf(".")); 
+				storedFileName = getRandomString() + originalFileExtension; 
+				multipartFile.transferTo(new File(filePath + storedFileName)); 
+				listMap = new HashMap<String,Object>();
+				listMap.put("IS_NEW", "Y");
+				listMap.put("bCode", bCode);
+				listMap.put("orgFileName", originalFileName);
+				listMap.put("storedFileName", storedFileName);
+				listMap.put("fileSize", multipartFile.getSize());
+				list.add(listMap); 
+			} 
+		}
+		if(files != null){ 
+			for(int i = 0; i<files.length; i++) {
+					listMap = new HashMap<String,Object>();
+                    listMap.put("IS_NEW", "N");
+					listMap.put("FILE_CODE", files[i]); 
+					list.add(listMap); 
+			}
+		}
+		return list; 
 	}
 	
 	public static String getRandomString() {

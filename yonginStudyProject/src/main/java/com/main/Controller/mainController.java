@@ -24,7 +24,6 @@ import com.main.Service.mainService;
 import com.main.VO.calendarVO;
 import com.main.VO.studyInfoVO;
 import com.main.VO.studyNoticeInfoVO;
-import com.notice.VO.moreNoticeInfoVO;
 /**
  * Handles requests for the application home page.
  */
@@ -103,7 +102,7 @@ public class mainController {
 		studyNoticeInfoVO.setUserCode(user.getUserCode());
 		
 		/*** 페이징(시작) ***/
-		int dataPerPage = 9; //그리드 한 페이지에 표시할 데이터 수
+		int dataPerPage = 10; //그리드 한 페이지에 표시할 데이터 수
     	int page = Integer.parseInt(studyNoticeInfoVO.getPage()); //페이지별 변경
     	
     	int first = page * dataPerPage + 1; //변경없이 추가

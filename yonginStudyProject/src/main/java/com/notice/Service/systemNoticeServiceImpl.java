@@ -55,16 +55,23 @@ public class systemNoticeServiceImpl implements systemNoticeService{
 	}
 	
 	@Override
-	public void reviseSystemNotice(moreNoticeInfoVO data) throws Exception{
+	public void reviseSystemNotice(moreNoticeInfoVO data, MultipartHttpServletRequest mpRequest) throws Exception{
 		systemNoticeDAO.reviseSystemNotice(data);
+		
+		String[] files = data.getFileCodeDel();
+		
+		List<Map<String, Object>> list = FileUtilsController.parseUpdateFileInfo(data, files, mpRequest);
+		Map<String, Object> tempMap = null;
+		int size = list.size();
+		for(int i = 0; i<size; i++) {
+			tempMap = list.get(i);
+			if(tempMap.get("IS_NEW").equals("Y")) {
+				fileDAO.insertFile(tempMap);
+			}else {
+				fileDAO.updateFile(tempMap);
+			}
+		}
 	}
 	
-	/*
-	 * @Override public List<Map<String, Object>> selectFileList(String bCode)
-	 * throws Exception{ return systemNoticeDAO.selectFileList(bCode); }
-	 * 
-	 * @Override public Map<String, Object> selectFileInfo(Map<String, Object> map)
-	 * throws Exception { return systemNoticeDAO.selectFileInfo(map); }
-	 */
 	
 }
