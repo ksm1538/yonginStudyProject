@@ -618,5 +618,5 @@ function closeApplcationFormModalRefresh(){
 // 스터디 페이지 이동
 function openStudyManagementPage(){
 	
-	window.open("/studyManagement/studyMain.do");
+	window.open("/studyManagement/studyMain.do"); 
 }
