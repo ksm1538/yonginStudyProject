@@ -41,6 +41,12 @@ function openMoreStudyForm(){
 	location.href = "/moreStudy.do";
 }
 
+/*qna */
+function openQna(){
+	location.href = "/goToQna.do";
+}
+
+
 /*공지사항 더보기 호출 */
 function openMoreNotice(){
 	location.href = "/moreNotice.do";

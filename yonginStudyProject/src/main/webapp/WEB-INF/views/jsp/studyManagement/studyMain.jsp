@@ -31,13 +31,80 @@
 		
 		<div class="study_main_title_con">
 			<div class="tc study_main_title"><span class="study_main_name">스터디이름</span>에 오신걸 환영합니다 !</div>
+			<div class="tc study_main_sub_title">스터디원과 힘을 모아 공동된 목표를 향해 나아가세요</div>
 		</div>
 		
 		<div class="study_main_content_con">
-			<div class="study_main_content">가</div>
-			<div class="study_main_content">나</div>
-			<div class="study_main_content">다</div>
+			<div class="study_main_content">
+				<div class="tc study_main_content_img_con"><img src="../resources/img/mymake.png" class="info_img"></div>
+				<div class="tc study_main_content_title">스터디원 보기</div>
+				<div class="tc study_main_content_sub_title">나와 함께는 스터디원을 확인하세요</div>
+			</div>
+			
+			<div class="study_main_content">
+				<div class="tc study_main_content_img_con"><img src="../resources/img/cal.png" class="cal_img"></div>
+				<div class="tc study_main_content_title">스터디 일정</div>
+				<div class="tc study_main_content_sub_title">스터디의 일정을 확인하세요</div>
+			</div>
+			
+			<div class="study_main_content">
+				<div class="tc study_main_content_img_con"><img src="../resources/img/chatting.png" class="chatting_img"></div>
+				<div class="tc study_main_content_title">스터디 채팅</div>
+				<div class="tc study_main_content_sub_title">스터디 채팅을 통해 소통하세요</div>
+			</div>
 		</div>
+   </div>
+   
+   <div class="col-12 study_memeber_wrap">
+   		<div class="col-12 col-center mw-1200 study_memeber_con">
+   			<div class="study_memeber_title_con">
+				<div class="study_memeber_title"><span>스터디원 보기</span></div>
+				<div class="question_mark_con">
+					<div class="tc question_mark"><span>?</span></div>
+					<div class="qestion_desc_box_con">
+						<div class="question_tri"></div>
+						<div class="question_desc">현재 함께 스터디를 하는 동료들을 볼 수 있습니다.</div>
+					</div>
+				</div>
+			</div>
+   		</div>
+   		
+   		<div class="col-12 col-center mw-1200 study_member_grid_con"style="width: 100%;" >  
+	  		<div data-ax5grid="studyMemberListGrid" data-ax5grid-config="{}" class="" style="height:300px; padding-top:10px; padding-right:10px"></div>  
+		</div>
+   		
+   </div>
+   
+   <div class="col-12 study_plan_wrap">
+   		<div class="col-12 col-center mw-1200 study_plan_con">
+   			<div class="study_plan_title_con">
+				<div class="study_plan_title"><span>스터디원 보기</span></div>
+				<div class="question_mark_con">
+					<div class="tc question_mark"><span>?</span></div>
+					<div class="qestion_desc_box_con">
+						<div class="question_tri"></div>
+						<div class="question_desc">현재 함께 스터디를 하는 동료들을 볼 수 있습니다.</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="menu" class="calender_menu">
+				<span id="menu-navi">
+					  <button type="button" class="prev_btn" data-action="move-prev" onclick="prev();">
+					  	<i class="calendar-icon ic-arrow-line-left" data-action="move-prev"></i>
+					  </button>
+					  <span id="renderRange" class="render-range" style="font-size:2.5rem;"></span>
+					  <button type="button" class="next_btn" data-action="move-next" onclick="next();">
+					    <i class="calendar-icon ic-arrow-line-right" data-action="move-next"></i>
+					  </button>
+				</span>
+				<span id="renderRange" class="render-range"></span>
+			</div>
+   			<div id="study_calendar"></div>	
+			
+			
+			
+   		</div>   		  		
    </div>
 	
 	<%-- 
