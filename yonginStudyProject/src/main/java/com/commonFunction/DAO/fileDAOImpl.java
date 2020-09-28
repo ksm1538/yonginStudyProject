@@ -27,4 +27,9 @@ public class fileDAOImpl implements fileDAO{
 	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception {
 		return sqlSession.selectOne("commonFileSQL.selectFileInfo", map);
 	}
+	
+	@Override
+	public void updateFile(Map<String, Object> map) throws Exception{
+		sqlSession.update("commonFileSQL.updateFile", map);
+	}
 }

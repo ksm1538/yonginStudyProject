@@ -32,32 +32,53 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 	<div class="col-12 col-center mw-1200 study_detail_pop_wrap">
 		 <div class="circle_btn" onClick="closeModal()"></div> 
 		 <div class="tc content_title"><span>공지사항 수정</span></div>
+		 <form id="readForm" name="readForm" method="post" role="form">
+		 	<input type="hidden" id="FILE_CODE" name="FILE_CODE" value=""> 
+		 </form> 
 		 
-		 <form:form method="POST" modelAttribute="moreNoticeInfoVO" name="reviseNoticeForm" id="reviseNoticeForm" >
+		<form name="reviseNoticeForm" id="reviseNoticeForm" method="POST" enctype="multipart/form-data">
+		 <input type="hidden" id="fileCodeDel" name="fileCodeDel" value=""> 
+		 <input type="hidden" id="systemNoticeCode" name="systemNoticeCode" value=""> 
+		 
 		 <div class="study_detail_pop_wrap_con" id="detailDiv">
 			
-				<form:input path="systemNoticeCode" type="hidden" name="systemNoticeCode" id="systemNoticeCode" data-ax-path="systemNoticeCode" class="textbox_style_1"/>
-				
 				<div class="study_detail_con detail_name">
 					<div class="title_size type_2">제목</div>
 					<div class="study_detail_input_con">
-						<form:input path="systemNoticeTitle" type="text" name="systemNoticeTitle" id="systemNoticeTitle" data-ax-path="systemNoticeTitle" class="textbox_style_1"/>
+						<input type="text" name="systemNoticeTitle" id="systemNoticeTitle" data-ax-path="systemNoticeTitle" class="textbox_style_1"/>
 					</div>
 				</div>				
 				
 				<div class="detail_desc">
 					<div class="title_size type_2">공지사항 내용</div>
 					<div class="study_detail_input_con">
-						<form:textarea path="systemNoticeDesc" id="systemNoticeDesc" name="systemNoticeDesc" data-ax-path="systemNoticeDesc" style=""/>
+						<textarea id="systemNoticeDesc" name="systemNoticeDesc" data-ax-path="systemNoticeDesc"></textarea>
 					</div> 
 				</div>
 				
+				
+				<div class="study_text make_study_form">
+					<div class="title_size type_2">첨부 파일</div>
+					<div id="fileListDiv">
+					</div>
+					
+				</div>
+				
+				<div class="study_text make_study_form">
+					<div id="fileIndex">
+			        </div>
+			        <input type="button" value="파일 추가" class="btn_style_1" onclick="fn_addFile()">
+					
+				</div>
+				
+				
+				
 			</div>
 				<div class="btn_style_1_con">
-					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
 					<input type="button" value="수정완료" class="btn_style_1" onclick="reviseSystemNoticeFunc()" >
+					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
 				</div> 
-		 </form:form>
+		 </form>
 		 
 		 
 	</div>

@@ -1,3 +1,4 @@
+var fileIndex = 1;
 
 $(document).ready(function () {
 	//summernote editor
@@ -18,7 +19,7 @@ function makeSystemNoticeFunc(){
     var form = $('#writeSysNoticeForm')[0];
     var data = new FormData(form);
 
-
+    console.log(data);
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
@@ -61,4 +62,15 @@ function closeModal(){
 // 팝업창 닫고 새로고침
 function closeModalWithRefresh(){
 	self.parent.writeModalCloseWithRefresh();
+}
+
+// 파일 추가
+function fn_addFile(){
+	$("#fileIndex").append("<div id='fileDiv_"+fileIndex+"' style='margin-bottom:10%'><input type='file' style='float:left;' name='file_"+(fileIndex)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn' onclick='fileDelFunc("+fileIndex+")'>"+"삭제"+"</button></div>");
+	fileIndex++;
+}
+
+// 파일 삭제
+function fileDelFunc(index){
+	$('#fileDiv_'+index).remove();
 }

@@ -18,7 +18,7 @@ public interface systemNoticeService {
 	
 	moreNoticeInfoVO selectSystemNoticeInfoDetail(String systemNoticeCode);
 	
-	void reviseSystemNotice(moreNoticeInfoVO data) throws Exception;
+	void reviseSystemNotice(moreNoticeInfoVO data, MultipartHttpServletRequest mpRequest) throws Exception;
 	
 	/*
 	 * List<Map<String, Object>> selectFileList(String bCode) throws Exception;

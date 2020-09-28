@@ -31,7 +31,7 @@
             <input type="button" value="검색" class="btn_style_1" onclick="getSystemNoticeList()"  >
             
          	   <div style="width: 100%;" >
-	  				<div data-ax5grid="noticeListPlusGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
+	  				<div data-ax5grid="noticeListPlusGrid" data-ax5grid-config="{}" style="height:610px; padding-top:10px; padding-right:10px"></div>  
 			   </div> 
 			   
 			   	<div class="apply_btn tc">

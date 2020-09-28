@@ -1,6 +1,7 @@
 /** 변수 설정(시작) **/
 var systemNoticeInfoDetailBinder = new ax5.ui.binder();	// Binder 설정(데이터를 받아오면 이 Binder set 함으로써 데이터 자동으로 들어감)
 var parentData = self.parent.callBack;		// 부모 페이지에서 보낸 데이터 정의
+var updateModal = new ax5.ui.modal();
 /** 변수 설정(끝) **/
 
 /** 초기화(시작) **/
@@ -68,7 +69,6 @@ function fileDownFunc(fileCode){
 	var formObj = $("form[name='readForm']");
 	formObj.attr("action", "/fileDown");
 	formObj.submit();
-	
 }	
 
 // 팝업창 닫기
@@ -77,6 +77,7 @@ function closeModal(){
 }
 
 function openReviseSystemNotice(){
+
 	location.href = "/notice/reviseNotice.do";
 	//window.open("/notice/reviseNotice.do",'공지사항 수정','width=700px ,height=800px ,location=no,status=no,scrollbars=no');
 }

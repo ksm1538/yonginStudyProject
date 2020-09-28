@@ -58,17 +58,17 @@
        
        <div class="study_text make_study_form">
           <div class="title_size type_2">첨부파일</div>
-          <div class="make_study_input_con">
-         		<input type="file" name="file">
+          <div id="fileIndex">
           </div>
-         
+          <input type="button" value="파일 추가" class="btn_style_1" onclick="fn_addFile()">
        </div>  
       </div>
 	</div>
 	
 	<div class="col-12 col-center mw-1200 make_study_btn_wrap">
    		<div class="btn_style_1_con">
-      		<input type="button" value="완료" class="btn_style_1" onclick="makeSystemNoticeFunc()">
+      		<input type="button" value="작성하기" class="btn_style_1" onclick="makeSystemNoticeFunc()">
+      		<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()">
    		</div> 
 	</div> 
 	</form>

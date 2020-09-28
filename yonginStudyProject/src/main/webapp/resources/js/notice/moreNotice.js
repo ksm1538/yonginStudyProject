@@ -10,9 +10,9 @@ $(document).ready(function () {
         showLineNumber: false,
         showRowSelector: true,
         columns: [ 
-            {key : "systemNoticeTitle", label: "제목", align: "center", width:"45%", sortable: true},
-        	{key : "systemNoticeRgstusId", label: "작성자 ID", align: "center", width:"10%"},
-        	{key : "systemNoticeTime", label: "날짜", align: "center", width:"10%"},
+            {key : "systemNoticeTitle", label: "제목", align: "center", width:"55%", sortable: true},
+        	{key : "systemNoticeRgstusId", label: "작성자 ID", align: "center", width:"16%"},
+        	{key : "systemNoticeTime", label: "날짜", align: "center", width:"20%"},
 			{key : "boardCount", label: "조회수", align: "center", width:"10%"},
         ],
         header: {
