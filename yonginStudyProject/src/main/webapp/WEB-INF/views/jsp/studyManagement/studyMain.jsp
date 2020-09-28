@@ -78,23 +78,23 @@
    <div class="col-12 study_plan_wrap">
    		<div class="col-12 col-center mw-1200 study_plan_con">
    			<div class="study_plan_title_con">
-				<div class="study_plan_title"><span>스터디원 보기</span></div>
+				<div class="study_plan_title"><span>스터디 일정</span></div>
 				<div class="question_mark_con">
 					<div class="tc question_mark"><span>?</span></div>
 					<div class="qestion_desc_box_con">
-						<div class="question_tri"></div>
-						<div class="question_desc">현재 함께 스터디를 하는 동료들을 볼 수 있습니다.</div>
+						<div class="question_tri type_2"></div>
+						<div class="question_desc type_2">스터디 일정을 보여줍니다. 일정을 확인하세요</div>
 					</div>
 				</div>
 			</div>
 			
 			<div id="menu" class="calender_menu">
 				<span id="menu-navi">
-					  <button type="button" class="prev_btn" data-action="move-prev" onclick="prev();">
+					  <button type="button" class="prev_btn type_2" data-action="move-prev" onclick="prev();">
 					  	<i class="calendar-icon ic-arrow-line-left" data-action="move-prev"></i>
 					  </button>
-					  <span id="renderRange" class="render-range" style="font-size:2.5rem;"></span>
-					  <button type="button" class="next_btn" data-action="move-next" onclick="next();">
+					  <span id="renderRange" class="render-range" style="font-size:2.5rem;">2020.09</span>
+					  <button type="button" class="next_btn type_2" data-action="move-next" onclick="next();">
 					    <i class="calendar-icon ic-arrow-line-right" data-action="move-next"></i>
 					  </button>
 				</span>

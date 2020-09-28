@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="/resources/js/studyHeader.js"></script>
+<script type="text/javascript" src="/resources/js/header.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title> 
 </head>
@@ -14,9 +14,9 @@
         <div class="col-12 col-center mw-1200 header_con">
                 <div class="header_menu_con">
                     <ul class="header_menu">
-                        <li><a onclick="openHome1();">HOME</a></li>
-                        <li><a onclick="">공지사항</a></li>
-                        <li><a onclick="">게시판</a></li>
+                        <li><a onclick="openHome();">HOME</a></li>
+                        <li><a onclick="openStudyNotice();">공지사항</a></li>
+                        <li><a onclick="openStudyFreeNotice();">자유게시판</a></li>
                     </ul>
                 </div>
                 

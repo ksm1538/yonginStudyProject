@@ -52,6 +52,21 @@ function openMoreNotice(){
 	location.href = "/moreNotice.do";
 }
 
+
+/*스터디 공지사항*/
+function openStudyNotice(){
+	//이걸 쓰면 창이 새로 열리지않고 이동
+	location.href = "/studynotice.do";
+}
+
+/*스터디  자유게시판*/
+function openStudyFreeNotice(){
+	//이걸 쓰면 창이 새로 열리지않고 이동
+	location.href = "/studyfreenotice.do";
+}
+
+
+
 /* 스터디 만들기 팝업 호출 */
 function makeStudyForm(){
 	makeStudyModal.open({

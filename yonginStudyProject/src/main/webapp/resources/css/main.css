@@ -302,26 +302,47 @@ html, body {
 
 /*스터디 달력버튼*/
 /*달력*/
+.calender_menu{margin-bottom:20px;}
 /*달력버튼*/
 .today_btn{margin-right:15px; font-size:12px; border-radius:25px; padding:8px 16px; outline:none; cursor:pointer; border:2px solid #000;  background-color:transparent;}
 .today_btn:hover{border:2px solid #7f99e2; color:#7f99e2;}
 
 /*이전버튼*/
-.prev_btn{margin-right:15px; position:relative; border-radius:50px; top:8px; width:32px; height:32px; outline:none; cursor:pointer; border:2px solid #000; background-color:transparent;  }
+.prev_btn{margin-right:15px; position:relative; border-radius:50px; top:5px; width:32px; height:32px; outline:none; cursor:pointer; border:2px solid #000; background-color:transparent;  }
+.prev_btn.type_2{border:2px solid #fff;}
 .prev_btn:hover{border:2px solid #7f99e2;}
+.prev_btn.type_2:hover{border:2px solid #000;}
+
 .prev_btn:before{content:""; position:absolute; width:10px; height:1px; border:1px solid #000; background-color:#000; top:9px; left:7px; transform: rotate(135deg);}
+.prev_btn.type_2:before{border:1px solid #fff;}
+
 .prev_btn:hover:before{border:1px solid #7f99e2; background-color:#7f99e2;}
+.prev_btn.type_2:hover:before{border:1px solid #000;}
+
 .prev_btn:after{content:""; position:absolute; width:10px; height:1px; border:1px solid #000; background-color:#000; top:16px; left:7px; transform: rotate(45deg); }
+.prev_btn.type_2:after{border:1px solid #fff;}
+
 .prev_btn:hover:after{border:1px solid #7f99e2; background-color:#7f99e2;}
+.prev_btn.type_2:hover:after{border:1px solid #000;}
 
 /*다음버튼*/
-.next_btn{margin-right:15px; position:relative; border-radius:50px; top:8px; width:32px; height:32px; outline:none; cursor:pointer; border:2px solid #000;  background-color:transparent; }
-.next_btn:hover{border:2px solid #7f99e2;}
-.next_btn:before{content:""; position:absolute; width:10px; height:1px; border:1px solid #000; background-color:#000; top:9px; left:9px; transform: rotate(45deg);}
-.next_btn:hover:before{border:1px solid #7f99e2; background-color:#7f99e2;}
-.next_btn:after{content:""; position:absolute; width:10px; height:1px; border:1px solid #000; background-color:#000; top:16px; left:9px; transform: rotate(135deg); }
-.next_btn:hover:after{border:1px solid #7f99e2; background-color:#7f99e2;}
+.next_btn{margin-left:15px; position:relative; border-radius:50px; top:5px; width:32px; height:32px; outline:none; cursor:pointer; border:2px solid #000;  background-color:transparent; }
+.next_btn.type_2{border:2px solid #fff;}
 
+.next_btn:hover{border:2px solid #7f99e2;}
+.next_btn.type_2:hover{border:2px solid #000;}
+
+.next_btn:before{content:""; position:absolute; width:10px; height:1px; border:1px solid #fff; background-color:#000; top:9px; left:9px; transform: rotate(45deg);}
+.next_btn.type_2:before{border:1px solid #fff;}
+
+.next_btn:hover:before{border:1px solid #7f99e2; background-color:#7f99e2;}
+.next_btn.type_2:hover:before{border:1px solid #000; background-color:#000;}
+
+.next_btn:after{content:""; position:absolute; width:10px; height:1px; border:1px solid #000; background-color:#000; top:16px; left:9px; transform: rotate(135deg); }
+.next_btn.type_2:after{border:1px solid #fff; }
+
+.next_btn:hover:after{border:1px solid #7f99e2; background-color:#7f99e2;}
+.next_btn:hover.type_2:after{border:1px solid #000; background-color:#000;}
 
 /*=======마이페이지==========*/
 .mypage_content_wrap{position:relative; height:700px; padding:120px 70px;}
@@ -545,8 +566,7 @@ html, body {
 .study_plan_title_con{display:flex;}
 .study_plan_title_con .study_plan_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px; color:#fff;}
 .study_plan_title_con .study_plan_title > span{display:inline-block; border-bottom:3px solid #fff; padding-bottom:10px;}
-
-
-
+.study_plan_wrap .question_desc{top:-15px; top::45px;}
+.study_plan_wrap .render-range{color:#fff;}
 
 
