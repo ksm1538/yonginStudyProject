@@ -147,11 +147,11 @@ $(document).ready(function () {
         showLineNumber: false,
         showRowSelector: false,
         columns: [
-        	{key : "studyNoticeTitle", label: "제목", align: "center", width:"41%"},
-			{key : "studyNoticeStudyName", label: "스터디 이름", align: "center", width:"41%"},
-			{key : "studyNoticeRgstusId", label: "작성자 ID", align: "center", width:"41%"},
-			{key : "studyNoticeTime", label: "날짜", align: "center", width:"41%"},
-        	{key : "studyNoticeCount", label: "조회 수", align: "center", width:"20%"},
+        	{key : "studyNoticeTitle", label: "제목", align: "center", width:"30%"},
+			{key : "studyNoticeStudyName", label: "스터디 이름", align: "center", width:"20%"},
+			{key : "studyNoticeRgstusId", label: "작성자 ID", align: "center", width:"24%"},
+			{key : "studyNoticeTime", label: "날짜", align: "center", width:"17%"},
+        	{key : "studyNoticeCount", label: "조회 수", align: "center", width:"10%"},
         ],
         header: {
         	align:"center",

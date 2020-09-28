@@ -123,7 +123,7 @@ typeSxnList.forEach(function(n){
 				</div>
 			</div>
 				<div style="width: 100%;" >  
-	  					<div data-ax5grid="studyNoticeListGrid" data-ax5grid-config="{}" class="color_grid" style="height:500px; padding-top:10px; padding-right:10px"></div>  
+	  					<div data-ax5grid="studyNoticeListGrid" data-ax5grid-config="{}" class="color_grid" style="height:520px; padding-top:10px; padding-right:10px"></div>  
 				</div>
 		</div>
 	</div>
