@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.login.VO.userInfoVO;
 import com.notice.Service.systemNoticeService;
-import com.notice.VO.moreNoticeInfoVO;
+import com.notice.VO.boardVO;
 import com.notice.Validator.systemNoticeValidator;
 
 @Controller
@@ -53,19 +53,19 @@ public class writeNoticeController {
 	
 	/**
 	 * 공지사항 작성
-	 * @param moreNoticeInfoVO
+	 * @param boardVO
 	 * @param bingdingResult
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/notice/makeSystemNotice", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> makeSystemNotice(moreNoticeInfoVO moreNoticeInfoVO, HttpSession session, BindingResult bindingResult, MultipartHttpServletRequest mpRequest) throws Exception {
+	public Map<String, Object> makeSystemNotice(boardVO boardVO, HttpSession session, BindingResult bindingResult, MultipartHttpServletRequest mpRequest) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 		
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
-		moreNoticeInfoVO.setSystemNoticeRgstusId(user.getUserCode());
+		boardVO.setRgstusId(user.getUserCode());
 
 		// 관리자 권한이 없는 경우 오류 메시지 발생
 		if(!user.getUserIsAdmin().equals("Y")) {
@@ -77,7 +77,7 @@ public class writeNoticeController {
 				
 		/** 데이터 검증(시작) **/
 		systemNoticeValidator systemNoticeValidator = new systemNoticeValidator();
-		systemNoticeValidator.validate(moreNoticeInfoVO, bindingResult);
+		systemNoticeValidator.validate(boardVO, bindingResult);
 		
 		// 에러 검출 시 에러 메시지와 함께 종료
 		if (bindingResult.hasErrors()) {
@@ -93,7 +93,7 @@ public class writeNoticeController {
 			return mReturn;
 		}  
 		/** 데이터 검증(끝) **/
-		systemNoticeService.insertSystemNotice(moreNoticeInfoVO, mpRequest);
+		systemNoticeService.insertSystemNotice(boardVO, mpRequest);
 		
 		mReturn.put("result", "success");
 		mReturn.put("message", "성공적으로 생성되었습니다.");

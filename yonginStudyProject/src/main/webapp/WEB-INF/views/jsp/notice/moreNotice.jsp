@@ -26,8 +26,8 @@
         	<div class="col-12 moreStudy_list_wrap content_wrap">
          	   <div class="content_title"><span>공지사항</span></div>
          	   
-         	   작성자 ID <input type="text" id="systemNoticeRgstusId" name ="systemNoticeRgstusId" class="textbox_style_1" onkeyup="enterKeyEvent();">
-                           제목 <input type="text" id="systemNoticeTitle" name="systemNoticeTitle" class="textbox_style_1" maxlength="30" onkeyup="enterKeyEvent();">
+         	   작성자 ID <input type="text" id="boardRgstusId" name ="boardRgstusId" class="textbox_style_1" onkeyup="enterKeyEvent();">
+                           제목 <input type="text" id="boardTitle" name="boardTitle" class="textbox_style_1" maxlength="30" onkeyup="enterKeyEvent();">
             <input type="button" value="검색" class="btn_style_1" onclick="getSystemNoticeList()"  >
             
          	   <div style="width: 100%;" >

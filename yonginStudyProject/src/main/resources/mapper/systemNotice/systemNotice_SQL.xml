@@ -6,33 +6,34 @@
 <mapper namespace="systemNoticeMapper">
 	<!-- 해당 부분의 id는 MapperClass의 함수 이름과 유사하여야 합니다. -->	
 	
-	<select id="selectSystemNoticeList" resultType="com.notice.VO.moreNoticeInfoVO" >
+	<select id="selectSystemNoticeList" resultType="com.notice.VO.boardVO" >
 		<![CDATA[
 			SELECT	*
 			  FROM	(
 						SELECT	ROWNUM	as RNUM
 							 ,	main.*	
 						  FROM	(
-									SELECT	/*+ ordered use_nl(sn) INDEX_DESC(sn SYSTEMNOTICE_IDX) */
-										sn.SYSTEM_NOTICE_CODE							as	systemNoticeCode
-										,	sn.TITLE 									as 	systemNoticeTitle
+									SELECT	/*+ ordered use_nl(bt) INDEX_DESC(bt BOARD_IDX ) */
+											bt.BOARD_CODE						as	boardCode
+										,	bt.BOARD_TITLE 						as 	boardTitle
 										,	(SELECT ui.USER_ID	
 										     FROM   USER_INFO ui
-											 WHERE  ui.USER_CODE   =   sn.RGSTUS_ID)    as	systemNoticeRgstusId
-										,	TO_CHAR(sn.RGDT_DT, 'YYYY-MM-DD HH24:MI') 	as 	systemNoticeTime
-										,	sn.BOARD_COUNT								as	boardCount
-									FROM	SYSTEM_NOTICE sn
-									WHERE	sn.USE_YN			=	'Y'
+											 WHERE  ui.USER_CODE   =   bt.RGSTUS_ID)    as	rgstusId
+										,	TO_CHAR(bt.RGDT_DT, 'YYYY-MM-DD HH24:MI') 	as 	rgdtDt
+										,	bt.BOARD_COUNT								as	boardCount
+									FROM	BOARD_TB bt
+									WHERE	bt.USE_YN			=	'Y'
+										AND	bt.BOARD_TYPE		=	'10'
 			]]>
-									<if test='searchSystemNoticeRgstusId != ""'>
-											AND	sn.RGSTUS_ID			IN	(SELECT	ui2.USER_CODE
+									<if test='searchBoardRgstusId != ""'>
+											AND	bt.RGSTUS_ID			IN	(SELECT	ui2.USER_CODE
  																			 FROM	USER_INFO ui2
 																	 		 WHERE	ui2.USE_YN	=	'Y'
-																		 		AND	ui2.USER_ID	LIKE	'%'	||	#{searchSystemNoticeRgstusId} || '%'
+																		 		AND	ui2.USER_ID	LIKE	'%'	||	#{searchBoardRgstusId} || '%'
 																			)
 									</if>
-									<if test='searchSystemNoticeTitle != ""'>
-											AND	sn.TITLE	LIKE	'%'	||	#{searchSystemNoticeTitle} || '%'
+									<if test='searchBoardTitle != ""'>
+											AND	bt.BOARD_TITLE	LIKE	'%'	||	#{searchBoardTitle} || '%'
 									</if>
 		<![CDATA[
 								) main 
@@ -43,92 +44,95 @@
 	</select>
 	
 	<insert id="insertSystemNotice"> 
-		<selectKey keyProperty="systemNoticeCode" resultType="String" order="BEFORE">
-			SELECT	('SYSNOTICE_' || LPAD(systemnotice_seq.nextval,8,0))	FROM 	DUAL    
+		<selectKey keyProperty="boardCode" resultType="String" order="BEFORE">
+			SELECT	('SYSNOTICE_' || LPAD(BOARD_SEQ.nextval,8,0))	FROM 	DUAL    
 		</selectKey>
 	
 		<![CDATA[
 			INSERT 
-			INTO	SYSTEM_NOTICE
+			INTO	BOARD_TB
 				(	
-					SYSTEM_NOTICE_CODE
-				,	TITLE
-				,	SYSTEM_NOTICE_DESC
+					BOARD_CODE
+				,	BOARD_TITLE
+				,	BOARD_DESC
 				,	RGSTUS_ID
 				,	RGDT_DT
 				,	UPDT_DT
 				,	USE_YN
+				,	BOARD_TYPE
 				)  
 			VALUES	
 				(	
-					#{systemNoticeCode}
-				,	#{systemNoticeTitle}
-				,	#{systemNoticeDesc}
-				,	#{systemNoticeRgstusId}
+					#{boardCode}
+				,	#{boardTitle}
+				,	#{boardDesc}
+				,	#{rgstusId}
 				,	sysdate
 				,	sysdate
 				,	'Y'
+				,	'10'
 				)
 		]]>
 	</insert>
 	
 	<delete id="deleteSystemNotice"> 
 		<![CDATA[
-			UPDATE SYSTEM_NOTICE
-			SET USE_YN	=	'N'
-			WHERE	SYSTEM_NOTICE_CODE	=	#{noticeCode}
+			UPDATE 	BOARD_TB
+			SET 	USE_YN	=	'N'
+			WHERE	BOARD_CODE	=	#{boardCode}
 		]]>
 	</delete>
 	
 	<select id="selectSystemNoticeListToCnt" resultType="int">
 		<![CDATA[
 			SELECT	COUNT(*)
-			FROM	SYSTEM_NOTICE
-			WHERE	SYSTEM_NOTICE.USE_YN			=	'Y'
+			FROM	BOARD_TB
+			WHERE	BOARD_TB.USE_YN			=	'Y'
+				AND	BOARD_TB.BOARD_TYPE		=	'10'
 		]]>
-		<if test='searchSystemNoticeRgstusId != ""'>
-				AND	SYSTEM_NOTICE.RGSTUS_ID	IN		(SELECT	USER_INFO.USER_CODE
+		<if test='searchBoardRgstusId != ""'>
+				AND	BOARD_TB.RGSTUS_ID	IN		(SELECT	USER_INFO.USER_CODE
 													 	FROM	USER_INFO
 													 	WHERE	USER_INFO.USE_YN	=	'Y'
-													 	AND	USER_INFO.USER_ID	LIKE	'%'	||	#{searchSystemNoticeRgstusId} || '%'
+													 	AND	USER_INFO.USER_ID	LIKE	'%'	||	#{searchBoardRgstusId} || '%'
 													)
 		</if>
-		<if test='searchSystemNoticeTitle != ""'>
-				AND	SYSTEM_NOTICE.TITLE	LIKE	'%'	||	#{searchSystemNoticeTitle} || '%'
+		<if test='searchBoardTitle != ""'>
+				AND	BOARD_TB.BOARD_TITLE	LIKE	'%'	||	#{searchBoardTitle} || '%'
 		</if>
 	</select>
 	
-	<select id="selectSystemNoticeInfoDetail" parameterType="String" resultType="com.notice.VO.moreNoticeInfoVO">
+	<select id="selectSystemNoticeInfoDetail" parameterType="String" resultType="com.notice.VO.boardVO">
 		<![CDATA[
-			SELECT	SYSTEM_NOTICE.SYSTEM_NOTICE_CODE 	as systemNoticeCode
-				 ,	SYSTEM_NOTICE.TITLE 				as systemNoticeTitle
-				 ,	SYSTEM_NOTICE.SYSTEM_NOTICE_DESC 	as systemNoticeDesc
-				 ,	SYSTEM_NOTICE.BOARD_COUNT  			as systemNoticeBoardCount
-				 ,	SYSTEM_NOTICE.UPDT_DT				as systemNoticeUpdateTime
-				 ,	USER_INFO.USER_ID 					as systemNoticeRgstusId
-				 ,	USER_INFO.USER_CODE 				as systemNoticeRgstusCode
-			FROM	SYSTEM_NOTICE,
+			SELECT	BOARD_TB.BOARD_CODE 			as boardCode
+				 ,	BOARD_TB.BOARD_TITLE 			as boardTitle
+				 ,	BOARD_TB.BOARD_DESC 			as boardDesc
+				 ,	BOARD_TB.BOARD_COUNT  			as boardCount
+				 ,	BOARD_TB.UPDT_DT				as updtDt
+				 ,	USER_INFO.USER_ID 					as rgstusId
+				 ,	USER_INFO.USER_CODE 				as rgstusCode
+			FROM	BOARD_TB,
 					USER_INFO
-			WHERE	USER_INFO.USER_CODE		=	SYSTEM_NOTICE.RGSTUS_ID
-				AND	SYSTEM_NOTICE.SYSTEM_NOTICE_CODE	=	#{systemNoticeCode}
+			WHERE	USER_INFO.USER_CODE		=	BOARD_TB.RGSTUS_ID
+				AND	BOARD_TB.BOARD_CODE		=	#{boardCode}
 		]]>
 	</select>
 	
 	<update id="reviseSystemNotice">
 		<![CDATA[
-			UPDATE 	SYSTEM_NOTICE
-			SET		TITLE				=	#{systemNoticeTitle}
-				,	SYSTEM_NOTICE_DESC	=	#{systemNoticeDesc}
+			UPDATE 	BOARD_TB
+			SET		BOARD_TITLE			=	#{boardTitle}
+				,	BOARD_DESC			=	#{boardDesc}
 				,	UPDT_DT				=	sysdate
-			WHERE	SYSTEM_NOTICE.SYSTEM_NOTICE_CODE	=	#{systemNoticeCode}
+			WHERE	BOARD_CODE			=	#{boardCode}
 		]]>
 	</update>
 	
 	<update id="updateSystemNoticeCnt">
 		<![CDATA[
-			UPDATE	SYSTEM_NOTICE
+			UPDATE	BOARD_TB
 			SET		BOARD_COUNT	=	BOARD_COUNT+1
-			WHERE	SYSTEM_NOTICE_CODE	=	#{code}
+			WHERE	BOARD_CODE	=	#{boardCode}
 		]]>
 	</update>
 </mapper>

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.commonFunction.Service.fileService;
 import com.login.VO.userInfoVO;
 import com.notice.Service.systemNoticeService;
-import com.notice.VO.moreNoticeInfoVO;
+import com.notice.VO.boardVO;
 
 @Controller
 public class noticeInfoDetailPopupController {
@@ -39,7 +39,7 @@ public class noticeInfoDetailPopupController {
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
 		
 		//model 변수에 데이터를 담아 jsp에 전달
-		model.addAttribute("moreNoticeInfoVO", new moreNoticeInfoVO());
+		model.addAttribute("boardVO", new boardVO());
 		
 		return "jsp/notice/noticeInfoDetailPopup"; 
 	}
@@ -52,31 +52,31 @@ public class noticeInfoDetailPopupController {
 	 */
 	@RequestMapping(value="/notice/selectNoticeInfoDetail.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> selectStudyInfoDetail(@RequestBody String systemNoticeCode) throws Exception {
+	public Map<String, Object> selectStudyInfoDetail(@RequestBody String boardCode) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 		
-		if(systemNoticeCode == null || systemNoticeCode.equals("")) {
+		if(boardCode == null || boardCode.equals("")) {
 			mReturn.put("result","fail");
 			mReturn.put("message", "오류가 발생하였습니다.");
 			
 			return mReturn;
 		}
 		
-		moreNoticeInfoVO systemNoticeInfo = systemNoticeService.selectSystemNoticeInfoDetail(systemNoticeCode);
+		boardVO boardVO = systemNoticeService.selectSystemNoticeInfoDetail(boardCode);
 		
-		if(systemNoticeInfo == null) {
+		if(boardVO == null) {
 			mReturn.put("result","fail");
 			mReturn.put("message", "오류가 발생하였습니다.");
 			
 			return mReturn;
 		}
 		
-		List<Map<String, Object>> fileList = fileService.selectFileList(systemNoticeCode);
+		List<Map<String, Object>> fileList = fileService.selectFileList(boardCode);
 		
 		mReturn.put("result", "success");
 		mReturn.put("message", "성공적으로 조회하였습니다.");
-		mReturn.put("systemNoticeInfo", systemNoticeInfo);
+		mReturn.put("boardInfo", boardVO);
 		mReturn.put("fileList", fileList);
 		
 		return mReturn;

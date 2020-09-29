@@ -10,9 +10,9 @@ $(document).ready(function () {
         showLineNumber: false,
         showRowSelector: true,
         columns: [ 
-            {key : "systemNoticeTitle", label: "제목", align: "center", width:"55%", sortable: true},
-        	{key : "systemNoticeRgstusId", label: "작성자 ID", align: "center", width:"16%"},
-        	{key : "systemNoticeTime", label: "날짜", align: "center", width:"20%"},
+            {key : "boardTitle", label: "제목", align: "center", width:"55%", sortable: true},
+        	{key : "rgstusId", label: "작성자 ID", align: "center", width:"16%"},
+        	{key : "rgdtDt", label: "날짜", align: "center", width:"20%"},
 			{key : "boardCount", label: "조회수", align: "center", width:"10%"},
         ],
         header: {
@@ -24,7 +24,7 @@ $(document).ready(function () {
                     columnHeight: 45,
                     
                     onDBLClick: function () 	{
-                    	selectSystemNoticeInfoDetail(this.list[this.dindex]["systemNoticeCode"]);
+                    	selectSystemNoticeInfoDetail(this.list[this.dindex]["boardCode"]);
 					},
 					onDataChanged: function(){
 						
@@ -53,8 +53,8 @@ $(document).ready(function () {
 function getSystemNoticeList(){
 	var sendData = {
 			page :	_pageNo,
-			searchSystemNoticeRgstusId:$('#systemNoticeRgstusId').val(),
-			searchSystemNoticeTitle:$('#systemNoticeTitle').val()
+			searchBoardRgstusId:$('#boardRgstusId').val(),
+			searchBoardTitle:$('#boardTitle').val()
 	}
 	
 	$.ajax({
@@ -139,14 +139,14 @@ function deleteSystemNotice(){
 			yes: {
 				label:'네', onClick:function(key){
 					dialog.close();
-					var systemNoticeCodes = [];
+					var boardCodes = [];
 					
 					for(var i=0;i<temp.length;i++){
-						systemNoticeCodes.push(temp[i].systemNoticeCode)
+						boardCodes.push(temp[i].boardCode)
 					}
 					
 					var sendData = {
-						systemNoticeCodes:systemNoticeCodes
+							boardCodes:boardCodes
 					}
 					
 					$.ajax({
@@ -211,9 +211,9 @@ function searchMessageList(){
 	getSystemNoticeList();
 }
 
-function selectSystemNoticeInfoDetail(systemNoticeCode){
+function selectSystemNoticeInfoDetail(boardCode){
 	var parentData={
-		systemNoticeCode:systemNoticeCode
+			boardCode:boardCode
 	}
 	
 	systemNoticeInfoDetailModal.open({

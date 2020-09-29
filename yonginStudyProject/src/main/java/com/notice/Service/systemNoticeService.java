@@ -4,21 +4,21 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.notice.VO.moreNoticeInfoVO;
+import com.notice.VO.boardVO;
 
 public interface systemNoticeService {
 
-	List<moreNoticeInfoVO> selectSystemNoticeList(moreNoticeInfoVO moreNoticeInfoVO);
+	List<boardVO> selectSystemNoticeList(boardVO boardVO);
 	
-	void insertSystemNotice(moreNoticeInfoVO data, MultipartHttpServletRequest mpRequest) throws Exception;
+	void insertSystemNotice(boardVO data, MultipartHttpServletRequest mpRequest) throws Exception;
 	
-	void deleteSystemNotice(moreNoticeInfoVO data) throws Exception;
+	void deleteSystemNotice(boardVO boardVO) throws Exception;
 	
-	int selectSystemNoticeListToCnt(moreNoticeInfoVO moreNoticeInfoVO);
+	int selectSystemNoticeListToCnt(boardVO boardVO);
 	
-	moreNoticeInfoVO selectSystemNoticeInfoDetail(String systemNoticeCode) throws Exception;
+	boardVO selectSystemNoticeInfoDetail(String boardCode) throws Exception;
 	
-	void reviseSystemNotice(moreNoticeInfoVO data, MultipartHttpServletRequest mpRequest) throws Exception;
+	void reviseSystemNotice(boardVO data, MultipartHttpServletRequest mpRequest) throws Exception;
 	
 
     

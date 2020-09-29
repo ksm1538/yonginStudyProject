@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.commonFunction.Service.fileService;
-import com.notice.VO.moreNoticeInfoVO;
+import com.notice.VO.boardVO;
 
 @Controller
 public class FileUtilsController {
@@ -30,7 +30,7 @@ public class FileUtilsController {
 	 
 	private static final String filePath = "C:\\Git\\uploadedFileFolder\\"; // 파일이 저장될 위치
 	
-	public static List<Map<String, Object>> parseInsertFileInfo(moreNoticeInfoVO moreNoticeInfoVO, 
+	public static List<Map<String, Object>> parseInsertFileInfo(boardVO boardVO, 
 			MultipartHttpServletRequest mpRequest) throws Exception{
 		
 		/*
@@ -49,7 +49,7 @@ public class FileUtilsController {
 		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
 		Map<String, Object> listMap = null;
 		
-		String bCode = moreNoticeInfoVO.getSystemNoticeCode();
+		String bCode = boardVO.getBoardCode();
 		
 		File file = new File(filePath);
 		if(file.exists() == false) {
@@ -76,7 +76,7 @@ public class FileUtilsController {
 		return list;
 	}
 	
-	public static List<Map<String, Object>> parseUpdateFileInfo(moreNoticeInfoVO moreNoticeInfoVO, String[] files, MultipartHttpServletRequest mpRequest) throws Exception{ 
+	public static List<Map<String, Object>> parseUpdateFileInfo(boardVO boardVO, String[] files, MultipartHttpServletRequest mpRequest) throws Exception{ 
 		Iterator<String> iterator = mpRequest.getFileNames();
 		MultipartFile multipartFile = null; 
 		String originalFileName = null; 
@@ -84,7 +84,7 @@ public class FileUtilsController {
 		String storedFileName = null; 
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 		Map<String, Object> listMap = null; 
-		String bCode = moreNoticeInfoVO.getSystemNoticeCode();
+		String bCode = boardVO.getBoardCode();
 		while(iterator.hasNext()){ 
 			multipartFile = mpRequest.getFile(iterator.next()); 
 			if(multipartFile.isEmpty() == false){ 
@@ -118,7 +118,6 @@ public class FileUtilsController {
 	
 	@RequestMapping(value="/fileDown", method = RequestMethod.POST)
 	public void fileDown(@RequestParam Map<String, Object> map, HttpServletResponse response) throws Exception{
-		System.out.println("코드 : "+map.get("FILE_CODE"));
 		Map<String, Object> resultMap = fileService.selectFileInfo(map);
 		String storedFileName = (String) resultMap.get("STORED_FILE_NAME");
 		String originalFileName = (String) resultMap.get("ORG_FILE_NAME");

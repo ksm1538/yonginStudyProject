@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.login.VO.userInfoVO;
 import com.notice.Service.systemNoticeService;
-import com.notice.VO.moreNoticeInfoVO;
+import com.notice.VO.boardVO;
 
 /**
  * Handles requests for the application home page.
@@ -53,26 +53,26 @@ public class moreNoticeController {
 	 */
 	@RequestMapping(value="/notice/selectSystemNoticeList.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> selectSystemNoticeList(@RequestBody moreNoticeInfoVO moreNoticeInfoVO) throws Exception {
+	public Map<String, Object> selectSystemNoticeList(@RequestBody boardVO boardVO) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 		
 		/*** 페이징(시작) ***/
 		int dataPerPage = 12; //그리드 한 페이지에 표시할 데이터 수
-    	int page = Integer.parseInt(moreNoticeInfoVO.getPage()); //페이지별 변경
+    	int page = Integer.parseInt(boardVO.getPage()); //페이지별 변경
     	
     	int first = page * dataPerPage + 1; //변경없이 추가
     	int last = first + dataPerPage - 1; //변경없이 추가
     	
-    	moreNoticeInfoVO.setFirst(first); //변경없이 추가
-    	moreNoticeInfoVO.setLast(last);   //변경없이 추가
+    	boardVO.setFirst(first); //변경없이 추가
+    	boardVO.setLast(last);   //변경없이 추가
     	
-    	int total = systemNoticeService.selectSystemNoticeListToCnt(moreNoticeInfoVO); // 총 몇 페이지인지 확인
+    	int total = systemNoticeService.selectSystemNoticeListToCnt(boardVO); // 총 몇 페이지인지 확인
     	int totalPages = (int)Math.ceil(total / (double)dataPerPage); // 변경없이 추가
 		
 		/*** 페이징(끝) ***/
     	
-    	List<moreNoticeInfoVO> ltResult = systemNoticeService.selectSystemNoticeList(moreNoticeInfoVO);
+    	List<boardVO> ltResult = systemNoticeService.selectSystemNoticeList(boardVO);
 		
 		if(ltResult.size() < 1) {
 			mReturn.put("result", "fail");
@@ -91,13 +91,13 @@ public class moreNoticeController {
 	
 	/**
 	 * 시스템 공지사항 삭제
-	 * @param moreNoticeInfoVO
+	 * @param boardVO
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/notice/deleteSystemNotice.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> deleteMessageTo(@RequestBody moreNoticeInfoVO moreNoticeInfoVO, HttpSession session) throws Exception {
+	public Map<String, Object> deleteMessageTo(@RequestBody boardVO boardVO, HttpSession session) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 		
@@ -110,7 +110,7 @@ public class moreNoticeController {
 			return mReturn;
 		}
 				
-		systemNoticeService.deleteSystemNotice(moreNoticeInfoVO);
+		systemNoticeService.deleteSystemNotice(boardVO);
 		
 		mReturn.put("result", "success");
 		mReturn.put("message", "성공적으로 삭제되었습니다.");

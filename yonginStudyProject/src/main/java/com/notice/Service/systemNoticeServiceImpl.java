@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.commonFunction.Controller.FileUtilsController;
 import com.commonFunction.DAO.fileDAO;
 import com.notice.DAO.systemNoticeDAO;
-import com.notice.VO.moreNoticeInfoVO;
+import com.notice.VO.boardVO;
 
 @Service("systemNoticeService")
 public class systemNoticeServiceImpl implements systemNoticeService{
@@ -21,12 +21,12 @@ public class systemNoticeServiceImpl implements systemNoticeService{
 	fileDAO fileDAO;
 	
 	@Override
-	public List<moreNoticeInfoVO> selectSystemNoticeList(moreNoticeInfoVO moreNoticeInfoVO){
-		return systemNoticeDAO.selectSystemNoticeList(moreNoticeInfoVO);
+	public List<boardVO> selectSystemNoticeList(boardVO boardVO){
+		return systemNoticeDAO.selectSystemNoticeList(boardVO);
 	}
 	
 	@Override
-	public void insertSystemNotice(moreNoticeInfoVO data, MultipartHttpServletRequest mpRequest) throws Exception{ 
+	public void insertSystemNotice(boardVO data, MultipartHttpServletRequest mpRequest) throws Exception{ 
 		systemNoticeDAO.insertSystemNotice(data);
 		
 		List<Map<String,Object>> list = FileUtilsController.parseInsertFileInfo(data, mpRequest); 
@@ -37,27 +37,27 @@ public class systemNoticeServiceImpl implements systemNoticeService{
 	}
 	
 	@Override
-	public void deleteSystemNotice(moreNoticeInfoVO data) throws Exception{
-		String[] systemNoticeCodes = data.getSystemNoticeCodes();
-		for(int i=0;i<data.getSystemNoticeCodes().length;i++) {
-			systemNoticeDAO.deleteSystemNotice(systemNoticeCodes[i]);
-			fileDAO.updateNFileWithDeleteBoard(systemNoticeCodes[i]);
+	public void deleteSystemNotice(boardVO boardVO) throws Exception{
+		String[] boardCodes = boardVO.getBoardCodes();
+		for(int i=0;i<boardCodes.length;i++) {
+			systemNoticeDAO.deleteSystemNotice(boardCodes[i]);
+			fileDAO.updateNFileWithDeleteBoard(boardCodes[i]);
 		}
 	}
 	
 	@Override
-	public int selectSystemNoticeListToCnt(moreNoticeInfoVO moreNoticeInfoVO) {
-		return systemNoticeDAO.selectSystemNoticeListToCnt(moreNoticeInfoVO);
+	public int selectSystemNoticeListToCnt(boardVO boardVO) {
+		return systemNoticeDAO.selectSystemNoticeListToCnt(boardVO);
 	}
 	
 	@Override
-	public moreNoticeInfoVO selectSystemNoticeInfoDetail(String systemNoticeCode) throws Exception {
-		systemNoticeDAO.updateSystemNoticeCnt(systemNoticeCode);
-		return systemNoticeDAO.selectSystemNoticeInfoDetail(systemNoticeCode);
+	public boardVO selectSystemNoticeInfoDetail(String boardCode) throws Exception {
+		systemNoticeDAO.updateSystemNoticeCnt(boardCode);
+		return systemNoticeDAO.selectSystemNoticeInfoDetail(boardCode);
 	}
 	
 	@Override
-	public void reviseSystemNotice(moreNoticeInfoVO data, MultipartHttpServletRequest mpRequest) throws Exception{
+	public void reviseSystemNotice(boardVO data, MultipartHttpServletRequest mpRequest) throws Exception{
 		systemNoticeDAO.reviseSystemNotice(data);
 		
 		String[] files = data.getFileCodeDel();

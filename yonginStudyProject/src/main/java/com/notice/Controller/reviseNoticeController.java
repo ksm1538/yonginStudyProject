@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.commonFunction.Service.fileService;
 import com.login.VO.userInfoVO;
 import com.notice.Service.systemNoticeService;
-import com.notice.VO.moreNoticeInfoVO;
+import com.notice.VO.boardVO;
 import com.notice.Validator.systemNoticeValidator;
 
 @Controller
@@ -48,7 +48,7 @@ public class reviseNoticeController {
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
 		
 		//model 변수에 데이터를 담아 jsp에 전달
-		model.addAttribute("moreNoticeInfoVO", new moreNoticeInfoVO());
+		model.addAttribute("boardVO", new boardVO());
 		
 		return "jsp/notice/reviseNotice"; 
 	}
@@ -61,50 +61,50 @@ public class reviseNoticeController {
 	 */
 	@RequestMapping(value="/notice/selectReviseSystemNotice.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> selectStudyInfoDetail(@RequestBody String systemNoticeCode) throws Exception {
+	public Map<String, Object> selectStudyInfoDetail(@RequestBody String boardCode) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 		
-		if(systemNoticeCode == null || systemNoticeCode.equals("")) {
+		if(boardCode == null || boardCode.equals("")) {
 			mReturn.put("result","fail");
 			mReturn.put("message", "오류가 발생하였습니다.");
 			
 			return mReturn;
 		}
 		
-		moreNoticeInfoVO systemNoticeInfo = systemNoticeService.selectSystemNoticeInfoDetail(systemNoticeCode);
+		boardVO boardInfo = systemNoticeService.selectSystemNoticeInfoDetail(boardCode);
 		
-		if(systemNoticeInfo == null) {
+		if(boardInfo == null) {
 			mReturn.put("result","fail");
 			mReturn.put("message", "오류가 발생하였습니다.");
 			
 			return mReturn;
 		}
-		List<Map<String, Object>> fileList = fileService.selectFileList(systemNoticeCode);
+		List<Map<String, Object>> fileList = fileService.selectFileList(boardCode);
 		
 		mReturn.put("fileList", fileList);
 		mReturn.put("result", "success");
 		mReturn.put("message", "성공적으로 조회하였습니다.");
-		mReturn.put("systemNoticeInfo", systemNoticeInfo);
+		mReturn.put("boardInfo", boardInfo);
 		
 		return mReturn;
 	}
 	
 	/**
 	 * 공지사항 수정
-	 * @param moreNoticeInfoVO
+	 * @param boardVO
 	 * @param bingdingResult
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/notice/reviseSystemNotice", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> registerAjaxFunction(moreNoticeInfoVO moreNoticeInfoVO, HttpSession session, BindingResult bindingResult, MultipartHttpServletRequest mpRequest) throws Exception {
+	public Map<String, Object> registerAjaxFunction(boardVO boardVO, HttpSession session, BindingResult bindingResult, MultipartHttpServletRequest mpRequest) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 		
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
-		moreNoticeInfoVO.setSystemNoticeRgstusId(user.getUserCode());
+		boardVO.setRgstusId(user.getUserCode());
 		
 		// 관리자 권한이 없는 경우 오류 메시지 발생
 		if(!user.getUserIsAdmin().equals("Y")) {
@@ -116,7 +116,7 @@ public class reviseNoticeController {
 		
 		/** 데이터 검증(시작) **/
 		systemNoticeValidator systemNoticeValidator = new systemNoticeValidator();
-		systemNoticeValidator.validate(moreNoticeInfoVO, bindingResult);
+		systemNoticeValidator.validate(boardVO, bindingResult);
 		
 		// 에러 검출 시 에러 메시지와 함께 종료
 		if (bindingResult.hasErrors()) {
@@ -132,7 +132,7 @@ public class reviseNoticeController {
 			return mReturn;
 		}  
 		/** 데이터 검증(끝) **/
-		systemNoticeService.reviseSystemNotice(moreNoticeInfoVO, mpRequest);
+		systemNoticeService.reviseSystemNotice(boardVO, mpRequest);
 		mReturn.put("result", "success");
 		mReturn.put("message", "수정이 완료되었습니다.");
 		

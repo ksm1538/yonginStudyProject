@@ -2,7 +2,7 @@ var fileIndex = 1;
 
 $(document).ready(function () {
 	//summernote editor
-	$('#systemNoticeDesc').summernote({           
+	$('#boardDesc').summernote({           
 	    height: 200,        
 	    codeviewFilter: true,
 		codeviewIframeFilter: true,   
@@ -19,7 +19,6 @@ function makeSystemNoticeFunc(){
     var form = $('#writeSysNoticeForm')[0];
     var data = new FormData(form);
 
-    console.log(data);
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
@@ -27,6 +26,7 @@ function makeSystemNoticeFunc(){
         data: data,
         processData: false,		//필수
         contentType: false,		//필수
+        async:true,
         success: function (data) {
         	switch(data.result){
 	        case COMMON_SUCCESS:

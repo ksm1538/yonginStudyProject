@@ -9,7 +9,7 @@ var fileNameArry = [];
 /** 초기화(시작) **/
 $(document).ready(function () {
 	//summernote editor
-	$('#systemNoticeDesc').summernote({           
+	$('#boardDesc').summernote({           
 	    height: 250,        
 	    codeviewFilter: true,
 		codeviewIframeFilter: true,   
@@ -18,14 +18,14 @@ $(document).ready(function () {
 	
 	systemNoticeInfoDetailBinder.setModel({}, $(document["reviseNoticeForm"]));
 	
-	reviseSystemNotice(parentData.systemNoticeCode);
+	reviseSystemNotice(parentData.boardCode);
 	
 });
 /** 초기화(끝) **/
 
 // 부모 페이지에서 받은 systemNoticeCode를 이용해 공지사항 조회
-function reviseSystemNotice(systemNoticeCode){
-	if(systemNoticeCode == ""){
+function reviseSystemNotice(boardCode){
+	if(boardCode == ""){
 		dialog.alert("정상적인 접근이 아닙니다.");
 		return;
 	}
@@ -33,15 +33,15 @@ function reviseSystemNotice(systemNoticeCode){
 	$.ajax({
  		type: "POST",
  		url : "/notice/selectReviseSystemNotice.json",
- 		data : systemNoticeCode,
+ 		data : boardCode,
 		contentType: "application/json; charset=UTF-8",
-		async: false,
+		async: true,
 		success : function(data, status, xhr) {
 			switch(data.result){
 			    case COMMON_SUCCESS:
-			    	systemNoticeInfoDetailBinder.setModel(data.systemNoticeInfo);
-			    	$('#systemNoticeDesc').summernote('code', data.systemNoticeInfo.systemNoticeDesc);
-			    	$('#systemNoticeCode').val(systemNoticeCode);
+			    	systemNoticeInfoDetailBinder.setModel(data.boardInfo);
+			    	$('#boardDesc').summernote('code', data.boardInfo.boardDesc);
+			    	$('#boardCode').val(boardCode);
 			    	
 			    	var output="";
 			    	

@@ -2,22 +2,22 @@ package com.notice.DAO;
 
 import java.util.List;
 
-import com.notice.VO.moreNoticeInfoVO;
+import com.notice.VO.boardVO;
 
 public interface systemNoticeDAO {
 
-	public List<moreNoticeInfoVO> selectSystemNoticeList(moreNoticeInfoVO moreNoticeInfoVO);
+	public List<boardVO> selectSystemNoticeList(boardVO boardVO);
 	
-	public void insertSystemNotice(moreNoticeInfoVO data) throws Exception;
+	public void insertSystemNotice(boardVO data) throws Exception;
 	
-	public void deleteSystemNotice(String messageCode) throws Exception;
+	public void deleteSystemNotice(String boardCode) throws Exception;
 	
-	public int selectSystemNoticeListToCnt(moreNoticeInfoVO moreNoticeInfoVO);
+	public int selectSystemNoticeListToCnt(boardVO boardVO);
 	
-	public moreNoticeInfoVO selectSystemNoticeInfoDetail(String systemNoticeCode);
+	public boardVO selectSystemNoticeInfoDetail(String boardCode);
 	
-	public void reviseSystemNotice(moreNoticeInfoVO data) throws Exception;
+	public void reviseSystemNotice(boardVO data) throws Exception;
 	
-	public void updateSystemNoticeCnt(String code) throws Exception;
+	public void updateSystemNoticeCnt(String boardCode) throws Exception;
 
 }

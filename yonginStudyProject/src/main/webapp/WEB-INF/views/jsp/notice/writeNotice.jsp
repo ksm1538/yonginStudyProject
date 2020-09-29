@@ -43,7 +43,7 @@
       	<div class="study_text make_study_form">
            <div class="title_size type_2">제목</div>
            <div class="make_study_input_con">
-           	 <input type="text" name="systemNoticeTitle" id="systemNoticeTitle" class="textbox_style_1">
+           	 <input type="text" name="boardTitle" id="boardTitle" class="textbox_style_1">
            </div>
            
         </div> 
@@ -51,7 +51,7 @@
        <div class="study_text make_study_form">
           <div class="title_size type_2">설명</div>
           <div class="make_study_input_con">
-         		 <textarea name="systemNoticeDesc" id="systemNoticeDesc" placeholder="공지사항을 입력해주세요."></textarea> 
+         		 <textarea name="boardDesc" id="boardDesc" placeholder="공지사항을 입력해주세요."></textarea> 
           </div>
          
        </div>    

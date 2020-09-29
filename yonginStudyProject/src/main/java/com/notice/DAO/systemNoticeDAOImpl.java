@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.notice.VO.moreNoticeInfoVO;
+import com.notice.VO.boardVO;
 
 @Repository
 public class systemNoticeDAOImpl implements systemNoticeDAO{
@@ -15,38 +15,38 @@ public class systemNoticeDAOImpl implements systemNoticeDAO{
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<moreNoticeInfoVO> selectSystemNoticeList(moreNoticeInfoVO moreNoticeInfoVO){
-		return sqlSession.selectList("systemNoticeMapper.selectSystemNoticeList", moreNoticeInfoVO);
+	public List<boardVO> selectSystemNoticeList(boardVO boardVO){
+		return sqlSession.selectList("systemNoticeMapper.selectSystemNoticeList", boardVO);
 	}
 	
 	@Override
-	public void insertSystemNotice(moreNoticeInfoVO data) throws Exception{
+	public void insertSystemNotice(boardVO data) throws Exception{
 		sqlSession.insert("systemNoticeMapper.insertSystemNotice", data);
 	}
 	
 	@Override
-	public void deleteSystemNotice(String noticeCode) throws Exception{
-		sqlSession.delete("systemNoticeMapper.deleteSystemNotice", noticeCode);
+	public void deleteSystemNotice(String boardCode) throws Exception{
+		sqlSession.delete("systemNoticeMapper.deleteSystemNotice", boardCode);
 	}
 	
 	@Override
-	public int selectSystemNoticeListToCnt(moreNoticeInfoVO moreNoticeInfoVO) {
-		return sqlSession.selectOne("systemNoticeMapper.selectSystemNoticeListToCnt", moreNoticeInfoVO);
+	public int selectSystemNoticeListToCnt(boardVO boardVO) {
+		return sqlSession.selectOne("systemNoticeMapper.selectSystemNoticeListToCnt", boardVO);
 	}
 	
 	@Override
-	public moreNoticeInfoVO selectSystemNoticeInfoDetail(String systemNoticeCode) {
-		return sqlSession.selectOne("systemNoticeMapper.selectSystemNoticeInfoDetail", systemNoticeCode);
+	public boardVO selectSystemNoticeInfoDetail(String boardCode) {
+		return sqlSession.selectOne("systemNoticeMapper.selectSystemNoticeInfoDetail", boardCode);
 	}
 	
 	@Override
-	public void reviseSystemNotice(moreNoticeInfoVO data) throws Exception{
+	public void reviseSystemNotice(boardVO data) throws Exception{
 		sqlSession.update("systemNoticeMapper.reviseSystemNotice", data);
 	}
 	
 	@Override
-	public void updateSystemNoticeCnt(String code) throws Exception{
-		sqlSession.update("systemNoticeMapper.updateSystemNoticeCnt", code);
+	public void updateSystemNoticeCnt(String boardCode) throws Exception{
+		sqlSession.update("systemNoticeMapper.updateSystemNoticeCnt", boardCode);
 	}
 	
 }
