@@ -58,4 +58,12 @@
 			
 		]]>
 	</update>
+	
+	<update id="updateNFileWithDeleteBoard">
+		<![CDATA[
+			UPDATE	FILE_TB
+			SET		USE_YN	=	'N'
+			WHERE	B_CODE	=	#{boardCode}
+		]]>
+	</update>
 </mapper>

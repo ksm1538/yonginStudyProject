@@ -44,16 +44,9 @@ public class systemNoticeDAOImpl implements systemNoticeDAO{
 		sqlSession.update("systemNoticeMapper.reviseSystemNotice", data);
 	}
 	
-	/*
-	 * @Override public void insertFile(Map<String, Object> map) throws Exception{
-	 * sqlSession.insert("commonFileSQL.insertFile", map); }
-	 * 
-	 * @Override public List<Map<String, Object>> selectFileList(String bCode)
-	 * throws Exception{ return
-	 * sqlSession.selectList("commonFileSQL.selectFileList", bCode); }
-	 * 
-	 * @Override public Map<String, Object> selectFileInfo(Map<String, Object> map)
-	 * throws Exception { return
-	 * sqlSession.selectOne("commonFileSQL.selectFileInfo", map); }
-	 */
+	@Override
+	public void updateSystemNoticeCnt(String code) throws Exception{
+		sqlSession.update("systemNoticeMapper.updateSystemNoticeCnt", code);
+	}
+	
 }

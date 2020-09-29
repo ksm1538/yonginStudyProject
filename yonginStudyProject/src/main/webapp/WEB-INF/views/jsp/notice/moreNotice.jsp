@@ -34,10 +34,13 @@
 	  				<div data-ax5grid="noticeListPlusGrid" data-ax5grid-config="{}" style="height:610px; padding-top:10px; padding-right:10px"></div>  
 			   </div> 
 			   
-			   	<div class="apply_btn tc">
+			    <c:if test="${user.userIsAdmin == 'Y'}">
+            	  <div class="apply_btn tc">
 					<input type="button" value="글 작성하기" class="btn_style_1 type_3" onclick="openWriteNotice();">
 					<input type="button" value="삭제하기" class="btn_style_1 type_3" onclick="deleteSystemNotice();">
-				</div>
+				  </div>
+           		</c:if>
+			   	
    		 	</div>
        </div>
 </body>

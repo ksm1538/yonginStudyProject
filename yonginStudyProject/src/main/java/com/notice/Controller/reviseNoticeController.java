@@ -40,6 +40,11 @@ public class reviseNoticeController {
 		if(user == null) {
 			return "jsp/login/login";
 		}
+		// 관리자 권한이 없는 경우 로그인 페이지로 보냄(관리자 권한이 필요한 경우)
+		if(!user.getUserIsAdmin().equals("Y")) {
+			session.invalidate();
+			return "jsp/login/login";
+		}
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
 		
 		//model 변수에 데이터를 담아 jsp에 전달
@@ -100,6 +105,15 @@ public class reviseNoticeController {
 		
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
 		moreNoticeInfoVO.setSystemNoticeRgstusId(user.getUserCode());
+		
+		// 관리자 권한이 없는 경우 오류 메시지 발생
+		if(!user.getUserIsAdmin().equals("Y")) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "권한이 없습니다.");
+			
+			return mReturn;
+		}
+		
 		/** 데이터 검증(시작) **/
 		systemNoticeValidator systemNoticeValidator = new systemNoticeValidator();
 		systemNoticeValidator.validate(moreNoticeInfoVO, bindingResult);

@@ -16,15 +16,10 @@ public interface systemNoticeService {
 	
 	int selectSystemNoticeListToCnt(moreNoticeInfoVO moreNoticeInfoVO);
 	
-	moreNoticeInfoVO selectSystemNoticeInfoDetail(String systemNoticeCode);
+	moreNoticeInfoVO selectSystemNoticeInfoDetail(String systemNoticeCode) throws Exception;
 	
 	void reviseSystemNotice(moreNoticeInfoVO data, MultipartHttpServletRequest mpRequest) throws Exception;
 	
-	/*
-	 * List<Map<String, Object>> selectFileList(String bCode) throws Exception;
-	 * 
-	 * public Map<String, Object> selectFileInfo(Map<String, Object> map) throws
-	 * Exception;
-	 */
+
     
 }

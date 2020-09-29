@@ -12,5 +12,7 @@ public interface fileDAO {
 	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception;
 	
 	public void updateFile(Map<String, Object> map) throws Exception;
+	
+	public void updateNFileWithDeleteBoard(String boardCode) throws Exception;
 
 }

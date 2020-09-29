@@ -41,6 +41,7 @@ public class systemNoticeServiceImpl implements systemNoticeService{
 		String[] systemNoticeCodes = data.getSystemNoticeCodes();
 		for(int i=0;i<data.getSystemNoticeCodes().length;i++) {
 			systemNoticeDAO.deleteSystemNotice(systemNoticeCodes[i]);
+			fileDAO.updateNFileWithDeleteBoard(systemNoticeCodes[i]);
 		}
 	}
 	
@@ -50,7 +51,8 @@ public class systemNoticeServiceImpl implements systemNoticeService{
 	}
 	
 	@Override
-	public moreNoticeInfoVO selectSystemNoticeInfoDetail(String systemNoticeCode) {
+	public moreNoticeInfoVO selectSystemNoticeInfoDetail(String systemNoticeCode) throws Exception {
+		systemNoticeDAO.updateSystemNoticeCnt(systemNoticeCode);
 		return systemNoticeDAO.selectSystemNoticeInfoDetail(systemNoticeCode);
 	}
 	

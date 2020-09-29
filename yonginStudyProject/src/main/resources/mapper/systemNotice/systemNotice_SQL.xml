@@ -116,11 +116,19 @@
 	
 	<update id="reviseSystemNotice">
 		<![CDATA[
-			UPDATE SYSTEM_NOTICE
+			UPDATE 	SYSTEM_NOTICE
 			SET		TITLE				=	#{systemNoticeTitle}
 				,	SYSTEM_NOTICE_DESC	=	#{systemNoticeDesc}
 				,	UPDT_DT				=	sysdate
 			WHERE	SYSTEM_NOTICE.SYSTEM_NOTICE_CODE	=	#{systemNoticeCode}
+		]]>
+	</update>
+	
+	<update id="updateSystemNoticeCnt">
+		<![CDATA[
+			UPDATE	SYSTEM_NOTICE
+			SET		BOARD_COUNT	=	BOARD_COUNT+1
+			WHERE	SYSTEM_NOTICE_CODE	=	#{code}
 		]]>
 	</update>
 </mapper>

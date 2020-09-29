@@ -32,4 +32,9 @@ public class fileDAOImpl implements fileDAO{
 	public void updateFile(Map<String, Object> map) throws Exception{
 		sqlSession.update("commonFileSQL.updateFile", map);
 	}
+	
+	@Override
+	public void updateNFileWithDeleteBoard(String boardCode) throws Exception{
+		sqlSession.update("commonFileSQL.updateNFileWithDeleteBoard", boardCode);
+	}
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -98,9 +97,19 @@ public class moreNoticeController {
 	 */
 	@RequestMapping(value="/notice/deleteSystemNotice.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> deleteMessageTo(@RequestBody moreNoticeInfoVO moreNoticeInfoVO) throws Exception {
+	public Map<String, Object> deleteMessageTo(@RequestBody moreNoticeInfoVO moreNoticeInfoVO, HttpSession session) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		// 관리자 권한이 없는 경우 오류 메시지 발생
+		if(!user.getUserIsAdmin().equals("Y")) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "권한이 없습니다.");
+			
+			return mReturn;
+		}
+				
 		systemNoticeService.deleteSystemNotice(moreNoticeInfoVO);
 		
 		mReturn.put("result", "success");

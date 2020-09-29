@@ -48,7 +48,7 @@ public class adminPageController {
 			return "jsp/login/login";
 		}
 		
-		// 관리자 권한이 없는 경우 로그인 페이지로 보냄(여기 페이지만 추가)
+		// 관리자 권한이 없는 경우 로그인 페이지로 보냄(관리자 권한이 필요한 경우)
 		if(!user.getUserIsAdmin().equals("Y")) {
 			session.invalidate();
 			return "jsp/login/login";

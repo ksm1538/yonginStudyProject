@@ -75,7 +75,9 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 				
 			</div>
 				<div class="btn_style_1_con">
-					<input type="button" value="수정하기" class="btn_style_1" onclick="openReviseSystemNotice()" >
+					<c:if test="${user.userIsAdmin == 'Y'}">
+            	  		<input type="button" value="수정하기" class="btn_style_1" onclick="openReviseSystemNotice()" >
+           			</c:if>
 					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
 				</div> 
 		 </form:form>

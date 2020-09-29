@@ -127,50 +127,73 @@ function writeModalCloseWithRefresh(){
 
 /*공지사항 삭제*/ 
 function deleteSystemNotice(){
-	
 	var temp = noticeListPlusGrid.getList('selected');
-	var systemNoticeCodes = [];
 	
-	for(var i=0;i<temp.length;i++){
-		systemNoticeCodes.push(temp[i].systemNoticeCode)
+	if(temp.length == 0){
+		dialog.alert("삭제할 공지사항을 선택해주세요.");
+		return;
 	}
+	dialog.confirm({
+		msg:"선택하신 공지사항을 삭제하시겠습니까?",
+		btns:{
+			yes: {
+				label:'네', onClick:function(key){
+					dialog.close();
+					var systemNoticeCodes = [];
+					
+					for(var i=0;i<temp.length;i++){
+						systemNoticeCodes.push(temp[i].systemNoticeCode)
+					}
+					
+					var sendData = {
+						systemNoticeCodes:systemNoticeCodes
+					}
+					
+					$.ajax({
+					     type: "POST",
+					     url : "/notice/deleteSystemNotice.json",
+					     data: JSON.stringify(sendData),
+					     dataType: "json",
+					     contentType: "application/json; charset=UTF-8",
+					     async: false,
+					     success : function(data, status, xhr) {
+					    	 switch(data.result){
+					    	 case COMMON_SUCCESS:
+					    		 dialog.confirm({
+							    		msg:data.message,
+							        	btns:{
+							        		yes: {
+							        			label:'확인'
+							        		},
+							        	}
+							        }, function(){
+							        	if(this.key=="yes"  || this.state == "close"){
+							        		window.location.reload();
+							        	}
+							    	});
+					    		 break;
+					    	 case COMMON_FAIL:
+					    		 dialog.alert(data.message);
+					    		 break;
+					    	 }
+					     },
+					     error: function(jqXHR, textStatus, errorThrown) {
+					        alert('error = ' + jqXHR.responseText);
+					     }
+					  }); 
+    			}
+			},
+			no: {
+				label:'아니오', onClick:function(key){
+					dialog.close();
+					return;
+    			}
+			}
+		}
+	}, function(){
+	});
 	
-	var sendData = {
-		systemNoticeCodes:systemNoticeCodes
-	}
 	
-	$.ajax({
-	     type: "POST",
-	     url : "/notice/deleteSystemNotice.json",
-	     data: JSON.stringify(sendData),
-	     dataType: "json",
-	     contentType: "application/json; charset=UTF-8",
-	     async: false,
-	     success : function(data, status, xhr) {
-	    	 switch(data.result){
-	    	 case COMMON_SUCCESS:
-	    		 dialog.confirm({
-			    		msg:data.message,
-			        	btns:{
-			        		yes: {
-			        			label:'확인'
-			        		},
-			        	}
-			        }, function(){
-			        	if(this.key=="yes"  || this.state == "close"){
-			        		window.location.reload();
-			        	}
-			    	});
-	    		 break;
-	    	 case COMMON_FAIL:
-	    		 dialog.alert(data.message);
-	    		 break;
-	    	 }
-	     },
-	     error: function(jqXHR, textStatus, errorThrown) {
-	        alert('error = ' + jqXHR.responseText);
-	     }
-	  }); 
 } 
 
 //EnterKeyEvent
