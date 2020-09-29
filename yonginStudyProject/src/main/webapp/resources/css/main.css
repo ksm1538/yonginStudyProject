@@ -344,6 +344,41 @@ html, body {
 .next_btn:hover:after{border:1px solid #7f99e2; background-color:#7f99e2;}
 .next_btn:hover.type_2:after{border:1px solid #000; background-color:#000;}
 
+
+/*스터디목록*/
+
+/*공지사항*/
+
+/*qna*/
+.make_qna_wrap{padding-top:120px; padding-bottom:120px; background-color: #7f99e2;}
+.make_qna_title_con{display:flex;}
+.make_qna_title_con .make_qna_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px; color:#fff;}
+.make_qna_title_con .make_qna_title > span{display:inline-block; border-bottom:3px solid #fff; padding-bottom:10px;}
+
+.make_qna_search_con{display:flex; margin-bottom:20px;}
+.make_qna_search_con .make_qna_search_box{display:flex; position:relative; margin-right:40px;}
+.make_qna_search_con .make_qna_box_title{font-size:20px; font-weight:bold; color:#fff;}
+.make_qna_search_con .make_qna_box_title:before{content:"*"; position:absolute; left:-8px; top:-14px; font-size:25px; }
+.make_qna_search_con .btn_style_1{border:2px solid #fff; color:#fff;}
+.make_qna_search_con .btn_style_1:hover{border-colr:#000; color:#000;}
+
+.make_qna_con .question_desc{top:-15px;}
+
+.qna_grid{margin-bottom:15px;}
+.make_qna_btn_con .btn_style_1{border:2px solid #fff; color:#fff;}
+.make_qna_btn_con .btn_style_1:hover{border-colr:#000; color:#000;}
+
+
+/*qna 작성*/
+.write_qna_header_wrap{padding-top:40px; padding-bottom:40px; background-color: #7f99e2;}
+.write_qna_header_con .write_qna_header{font-size:35px; font-weight:bold; color:#fff;}
+
+.write_qna_content_wrap{padding:40px 20px;}
+.write_qna_content_con{margin-bottom:30px;}
+.write_qna_content_con .write_qna_name_con{display:flex;}
+
+.write_qna_content_wrap .write_qna_btn_con{dipaly:flex;}
+
 /*=======마이페이지==========*/
 .mypage_content_wrap{position:relative; height:700px; padding:120px 70px;}
 .mypage_content_img{z-index:-1; width:100%; height:100%; background-image:url("../img/mypage.jpg"); background-repeat: no-repeat; background-size:cover; backgroud-position:center; position:absolute; top:0; left:0;}
@@ -440,6 +475,7 @@ html, body {
 .message_content_con .message_content:hover{background-color:#7f99e2;}
 
 /*메세지 이미지 박스*/
+.message_content{cursor:pointer;}
 .message_content_con .message_img_box{margin-bottom:20px; padding-top:20px;}
 .message_content_con .message_img_box .get_img{}
 
