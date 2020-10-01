@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="/resources/js/header.js"></script>
+<script type="text/javascript" src="/resources/js/studyManagement/studyHeader.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title> 
 </head>

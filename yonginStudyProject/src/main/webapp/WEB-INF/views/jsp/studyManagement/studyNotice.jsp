@@ -24,6 +24,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-TEST
+	<div class="col-12 study_notice_wrap">
+		<div class="col-12 col-center mw-1200 study_notice_con">
+   			<div class="study_notice_title_con">
+				<div class="study_notice_title"><span>공지 사항</span></div>
+				<div class="question_mark_con">
+					<div class="tc question_mark"><span>?</span></div>
+					<div class="qestion_desc_box_con">
+						<div class="question_tri type_2"></div>
+						<div class="question_desc type_2">공지사항 입니다. 수시로 확인하여 차질이 없도록 하세요.</div>
+					</div>
+				</div>
+			</div>
+			
+		<div class="col-12 col-center mw-1200 study_notice_grid_con "style="width: 100%;" >  
+	  		<div data-ax5grid="studyNoticeListGrid" data-ax5grid-config="{}" class="color_grid" style="height:300px; padding-top:10px; padding-right:10px"></div>  
+		</div>
+			
+			
+			
+		</div>
+	</div>
+	
+	
 </body>
 </html>
