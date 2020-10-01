@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="replySQL">
+
+	<insert id="insertReply">
+		<![CDATA[
+			INSERT	
+			INTO	REPLY_TB
+				(	REPLY_CODE
+				,	BOARD_CODE
+				,	HGRNK_REPLY_CODE
+				,	REPLY_TEXT
+				,	RGSTUS_ID
+				,	RGDT_DT
+				,	UPDT_DT
+				,	USE_YN
+				)
+			VALUES
+				(	('REPLY_' || LPAD(reply_seq.nextval,8,0))
+				,	#{boardCode}
+				,	#{hgrnkReplyCode}
+				,	#{replyText}
+				,	#{rgstusId}
+				,	sysdate
+				,	sysdate
+				,	'Y'
+				)
+		]]>
+	</insert>
+	
+	<select id="selectReplyList" resultType="com.commonFunction.VO.replyVO">
+		<![CDATA[
+			SELECT	REPLY_CODE			as	replyCode
+			 	 ,	REPLY_TEXT			as	replyText
+			 	 ,	HGRNK_REPLY_CODE	as	hgrnkReplyCode
+			 	 ,	(SELECT	USER_INFO.USER_ID
+			 	 	 FROM	USER_INFO
+			 	 	 WHERE	USER_INFO.USER_CODE		=	REPLY_TB.RGSTUS_ID)		as	rgstusId
+			 	 ,	TO_CHAR(UPDT_DT, 'YYYY-MM-DD HH24:MI') 	as updtDt
+			 FROM	REPLY_TB
+			WHERE	BOARD_CODE		=	#{boardCode}
+				AND	USE_YN			=	'Y'
+			ORDER BY	RGDT_DT	
+		]]>
+	</select>
+	
+	<update id="updateReplyUseYnToN">
+		<![CDATA[
+			UPDATE	REPLY_TB
+			   SET	USE_YN				= 'N'
+			 WHERE	REPLY_CODE 			= #{replyCode}
+			    OR	HGRNK_REPLY_CODE 	= #{replyCode}
+		]]>	
+	</update>
+	
+	<update id="updateReply">
+		<![CDATA[
+			UPDATE	REPLY_TB
+			   SET	REPLY_TEXT	=	#{replyText}
+			   	 ,	UPDT_DT		=	sysdate		
+			 WHERE	REPLY_CODE 			= #{replyCode}
+		]]>	
+	</update>
+	
+	<select id="selectReplyWithId" resultType="com.commonFunction.VO.replyVO">
+		<![CDATA[
+			SELECT	REPLY_CODE			as	replyCode
+			 	 ,	REPLY_TEXT			as	replyText
+			 	 ,	HGRNK_REPLY_CODE	as	hgrnkReplyCode
+			 	 ,	RGSTUS_ID			as	rgstusCode
+			 	 ,	(SELECT	USER_INFO.USER_ID
+			 	 	 FROM	USER_INFO
+			 	 	 WHERE	USER_INFO.USER_CODE		=	REPLY_TB.RGSTUS_ID)		as	rgstusId
+			 	 ,	TO_CHAR(UPDT_DT, 'YYYY-MM-DD HH24:MI') 	as updtDt
+			 FROM	REPLY_TB
+			WHERE	REPLY_CODE		=	#{replyCode}
+		]]>
+	</select>
+</mapper>

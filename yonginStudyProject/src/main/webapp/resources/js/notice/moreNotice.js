@@ -218,7 +218,7 @@ function selectSystemNoticeInfoDetail(boardCode){
 	
 	systemNoticeInfoDetailModal.open({
 		width: 800,
-		height: 710,
+		height: 810,
 		iframe: {
 			method: "post",
 			url: "/notice/noticeInfoDetailPopup.do",

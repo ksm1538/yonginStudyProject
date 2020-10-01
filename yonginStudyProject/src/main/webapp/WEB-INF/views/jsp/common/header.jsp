@@ -7,7 +7,7 @@
 <html>
 <head>
 <!-- 해당 페이지 js 호출 -->
-<script type="text/javascript" src="/resources/js/header.js"></script>
+<script type="text/javascript" src="/resources/js/common/header.js"></script>
 </head>
 <body> 
   <div class="col-12 header_wrap">

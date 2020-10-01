@@ -94,6 +94,8 @@ public class adminPageController {
 		if(ltResult.size() < 1) {
 			mReturn.put("result", "fail");
 			mReturn.put("message", "사용자 목록이 없습니다.");
+			
+			return mReturn;
 		}
 		
 		mReturn.put("result", "success");

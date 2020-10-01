@@ -82,7 +82,18 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 				</div> 
 		 </form:form>
 		 
+	  <!-- 댓글 구역 (시작) -->
+	  <strong>댓글 <span id="replyCount"></span></strong><strong>개</strong>
+	 
+	  <div id="replyList" style="margin-top:50px; max-height:150px; overflow:auto;">
+	  </div>
+	  
+	  <div id="inputReplyDiv" style="margin-top:10px;">
+	    <textarea name="replyText" id="replyText" class="form-control" placeholder="댓글을 입력해주세요" style="margin-top:5px; width:99%; height:60px;"></textarea>
+	    <button id="inputReplyCnButton" onclick="saveReply();" style="background-color:#A4A4A4; border-color:#A4A4A4; float:right; margin-top:10px; margin-right:10px">댓글 입력하기</button>
+	  </div>
 		 
+	  <!-- 댓글 구역 (끝) -->
 	</div>
 </body>
 </html>
