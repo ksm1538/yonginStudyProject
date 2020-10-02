@@ -116,7 +116,7 @@ function closeModalWithRefresh(){
 
 //파일 추가
 function fn_addFile(){
-	$("#fileIndex").append("<div id='fileDiv_"+fileIndex+"' style=''><input type='file' style='float:left;' name='file_"+(fileIndex)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn' onclick='fileDelFunc("+fileIndex+")'>"+"삭제"+"</button></div>");
+	$("#fileIndex").append("<div id='fileDiv_"+fileIndex+"' style='display:flex; margin-bottom:10px;'><input type='file' name='file_"+(fileIndex)+"' class='file_style_0'>"+"</button>"+"<button type='button' style='' id='fileDelBtn' onclick='fileDelFunc("+fileIndex+")'>"+"삭제"+"</button></div>");
 	fileIndex++;
 }
 

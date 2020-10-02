@@ -62,33 +62,6 @@ function openStudyFreeNotice(){
 	location.href = "/studyfreenotice.do";
 }
 
-/* 스터디 만들기 팝업 호출 */
-function makeStudyForm(){
-	makeStudyModal.open({
-		width: 800,
-		height: 900,
-		iframe: {
-			method: "get",
-			url: "/makeStudy.do",
-		},
-		onStateChanged: function(){
-			if (this.state === "open") {
-	        	mask.open();
-	        }
-	        else if (this.state === "close") {
-	        	mask.close();
-	        }
-	    },
-	}, function() {
-	});
-	//window.open("/makeStudy.do",'스터디더보기','width=700px ,height=800px ,location=no,status=no,scrollbars=no');
-}
-
-// 스터디 만들기 팝업 닫기
-function closeMakeStudyModal(){
-	window.location.reload();
-	makeStudyModal.close();
-}
 
 // 관리자 페이지 열기
 function openAdminPage(){

@@ -26,7 +26,69 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="col-12 col-center mw-1200 study_detail_pop_wrap">
+	
+	<div class="col-12 notice_detail_pop_wrap">
+		<div class="col-12 col-center mw-1200 notice_detail_pop_con">
+			<div class="circle_btn" onClick="closeModal()"></div> 
+			<div class="tc content_title"><span>공지사항 상세정보</span></div>
+		</div>
+	</div> 
+	<div class="col-12 notice_detail_pop_content_con">
+		<form id="readForm" name="readForm" method="post" role="form">
+			 <input type="hidden" id="FILE_CODE" name="FILE_CODE" value=""> 
+		</form> 
+		<form:form method="POST" modelAttribute="boardVO" name="noticeInfoDetailForm" id="noticeInfoDetailForm" >
+		  <div class="" id="detailDiv">
+			
+				<form:input path="boardCode" type="hidden" name="boardCode" id="boardCode" data-ax-path="boardCode" class="textbox_style_1"/>
+				
+				<div class="study_detail_con detail_name">
+					<div class="title_size type_2">제목</div>
+					<div class="study_detail_input_con">
+						<form:input path="boardTitle" type="text" name="systemNoticeTitle" id="boardTitle" data-ax-path="boardTitle" class="textbox_style_1"/>
+					</div>
+				</div>				
+				
+				<div class="study_detail_con detail_name">
+					<div class="title_size type_2">작성자</div>
+					<div class="study_detail_input_con">
+						<form:input path="rgstusId" type="text" name="rgstusId" id="rgstusId" data-ax-path="rgstusId" class="textbox_style_1"/>
+					</div>
+				</div>	
+				
+				<div class="study_detail_con detail_name">
+					<div class="title_size type_2">날짜</div>
+					<div class="study_detail_input_con">
+						<form:input path="updtDt" type="text" name="updtDt" id="updtDt" data-ax-path="updtDt" class="textbox_style_1"/>
+					</div>
+				</div>	
+				
+				<div class="detail_desc">
+					<div class="study_detail_input_con">
+						<form:textarea path="boardDesc" id="boardDesc" name="boardDesc" data-ax-path="boardDesc" style=""/>
+					</div> 
+				</div>
+				
+				<div class="file_desc">
+					<div class="title_size type_2">첨부파일</div>
+					<div id="fileListDiv"></div>
+				</div>
+				
+			</div>
+			<div class="btn_style_1_con">
+					<c:if test="${user.userIsAdmin == 'Y'}">
+            	  		<input type="button" value="수정하기" class="btn_style_1" onclick="openReviseSystemNotice()" >
+           			</c:if>
+					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
+			</div> 
+	  </form:form>
+	
+	</div> 
+		
+		 
+	
+	
+	<%-- <div class="col-12 col-center mw-1200 study_detail_pop_wrap">
 		 <div class="circle_btn" onClick="closeModal()"></div> 
 		 <div class="tc content_title"><span>공지사항 상세정보</span></div>
 		 
@@ -93,6 +155,7 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 	  </div>
 		 
 	  <!-- 댓글 구역 (끝) -->
-	</div>
+	</div> --%>
+	
 </body>
 </html>

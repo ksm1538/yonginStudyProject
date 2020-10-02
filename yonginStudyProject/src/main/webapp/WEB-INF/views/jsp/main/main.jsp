@@ -106,6 +106,10 @@ typeSxnList.forEach(function(n){
 			<div class="main_study_list_con" style="width: 100%;" >  
 	  			<div data-ax5grid="studyListGrid" data-ax5grid-config="{}" style="height:600px; padding-top:10px; padding-right:10px"></div>  
 			</div>
+			
+			<div class="make_sutdy_btn_con">
+				<input type="button" value="스터디만들기" class="btn_style_1 type_2" onclick="makeStudyForm();" >
+			</div>
 		</div>
 		
 	</div>

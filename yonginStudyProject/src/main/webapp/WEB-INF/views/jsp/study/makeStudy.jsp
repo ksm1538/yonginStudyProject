@@ -31,7 +31,7 @@
 
 <div class="col-12 col-center mw-1200 make_study_wrap">
 
-   <div class="circle_btn" onClick="closeModal()"></div> 
+   <div class="circle_btn" onclick="closeModal()"></div> 
    
    <div class="tc make_study_title_con">
       <div class="make_study_title">스터디 생성</div>

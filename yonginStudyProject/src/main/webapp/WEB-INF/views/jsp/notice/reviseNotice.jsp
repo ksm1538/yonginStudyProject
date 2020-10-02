@@ -26,6 +26,62 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 <title>Insert title here</title>
 </head>
 <body>
+	
+	<div class="col-12 notice_revise_wrap">
+		<div class="col-12 notice_revise_con">
+			<div class="circle_btn" onClick="closeModal()"></div> 
+			<div class="tc notice_revise_title"><span>공지사항 수정</span></div>
+		</div>
+	</div>
+	<div class="col-12 notice_detail_pop_content_con">
+		<form id="readForm" name="readForm" method="post" role="form">
+		 	<input type="hidden" id="FILE_CODE" name="FILE_CODE" value=""> 
+		 </form> 
+		 
+		<form name="reviseNoticeForm" id="reviseNoticeForm" method="POST" enctype="multipart/form-data">
+		 <input type="hidden" id="fileCodeDel" name="fileCodeDel" value=""> 
+		 <input type="hidden" id="boardCode" name="boardCode" value=""> 
+		 
+		 <div class="study_detail_pop_wrap_con" id="detailDiv">
+			
+				<div class="study_detail_con detail_name">
+					<div class="title_size type_2">제목</div>
+					<div class="study_detail_input_con">
+						<input type="text" name="boardTitle" id="boardTitle" data-ax-path="boardTitle" class="textbox_style_1"/>
+					</div>
+				</div>				
+				
+				<div class="detail_desc">
+					<div class="study_detail_input_con">
+						<textarea id="boardDesc" name="boardDesc" data-ax-path="boardDesc"></textarea>
+					</div> 
+				</div>
+				
+				
+				<div class="file_desc">
+					<div class="title_size type_2">첨부 파일</div>
+					<div id="fileListDiv">
+					</div>
+					
+				</div>
+				
+				<div class="index_desc">					
+			        <input type="button" value="파일 추가" class="btn_style_1" onclick="fn_addFile()">
+					<div id="fileIndex"></div>
+				</div>
+				
+				
+				
+			</div>
+				<div class="btn_style_1_con">
+					<input type="button" value="수정완료" class="btn_style_1" onclick="reviseSystemNoticeFunc()" >
+					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
+				</div> 
+		 </form>
+	</div> 
+		
+	
+	<%-- 
 	<div class="col-12 col-center mw-1200 study_detail_pop_wrap">
 		 <div class="circle_btn" onClick="closeModal()"></div> 
 		 <div class="tc content_title"><span>공지사항 수정</span></div>
@@ -77,6 +133,6 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 		 </form>
 		 
 		 
-	</div>
+	</div> --%>
 </body>
 </html>

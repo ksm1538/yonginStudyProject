@@ -1,5 +1,5 @@
 function openRegisterForm(){
-	window.open("/registerForm.do",'회원가입','width=720px ,height=1050px ,location=no,status=no,scrollbars=no');
+	window.open("/registerForm.do",'회원가입','width=720px ,height=900px ,location=no,status=no,scrollbars=no');
 }
 
 function findIdForm(){

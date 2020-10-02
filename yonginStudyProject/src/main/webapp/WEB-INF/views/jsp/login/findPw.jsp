@@ -34,7 +34,7 @@
    
    <form:form method="POST" modelAttribute="userInfoVO" name="findPwForm" id="findPwForm" action="/findPw.json">
       <div class="col-12 col-center mw-1200 search_memeber_form_wrap">
-         <div class="search_password_form_con">
+         <div class="tc search_password_form_con">
             <div class="search_password_form_con">
       
                <div class="user_name search_member_form_con_type_2">

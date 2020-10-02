@@ -113,7 +113,7 @@ function studyAddressPopup() {
     }).open();
 }
 
-// 팝업 닫기
+// 팝업창 닫기
 function closeModal(){
-	self.parent.closeMakeStudyModal();
+	return self.parent.closeMakeStudyModal();		// 부모 페이지의 closeChangePwModal함수로 리턴
 }

@@ -34,7 +34,7 @@
 	</div>
 
 
-
+	
 	<form:form method="POST" modelAttribute="userInfoVO" name="registerForm" id="registerForm" action="/registerMember.json">
 	<div class="col-12 col-center mw-1200 search_memeber_form_wrap">
 			<div class="register_member_form_con">
