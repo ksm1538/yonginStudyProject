@@ -14,4 +14,6 @@ public interface replyService {
 	void updateReply(replyVO replyVO) throws Exception;
 	
 	replyVO selectReplyWithId(String replyCode) throws Exception;
+	
+	void deleteReplyWithBoardCode(String boardCode) throws Exception;
 }

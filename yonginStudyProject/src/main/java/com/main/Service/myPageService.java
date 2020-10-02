@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.login.VO.userInfoVO;
 import com.main.VO.studyInfoVO;
+import com.main.VO.userInStudyVO;
 import com.study.VO.studyApplicationFormUserVO;
 
 public interface myPageService {
@@ -16,4 +17,6 @@ public interface myPageService {
 	List<studyInfoVO> selectParticipateStudyList(String userCode);
 	
 	List<studyApplicationFormUserVO> selectMyStudyApplicationFormList(String userCode);
+	
+	void exitStudy(userInStudyVO userInStudyVO) throws Exception;
 }

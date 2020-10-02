@@ -15,7 +15,7 @@
 <%-- <jsp:include page="../common/header.jsp"></jsp:include> --%>
 
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
-<script type="text/javascript" src="/resources/js/qna/writeQna.js"></script>
+<script type="text/javascript" src="/resources/js/qna/writeQnaAnswer.js"></script>
 
 
 
@@ -26,20 +26,13 @@
 	<div class="col-12 write_qna_header_wrap">
 		<div class="circle_btn" onClick="closeModal();"></div> 
 		<div class="tc write_qna_header_con">
-			<div class="write_qna_header">Q&A 작성하기</div>
+			<div class="write_qna_header">QnA 답글 작성</div>
 		</div>
 	</div>
 	
-	<form name="writeQnaForm" id="writeQnaForm" method="POST" enctype="multipart/form-data">
+	<form name="writeQnaAnswerForm" id="writeQnaAnswerForm" method="POST" enctype="multipart/form-data">
+	<input type="hidden" name="hgrnkBoardCode" id="hgrnkBoardCode">
 	<div class="col-12 write_qna_content_wrap">
-		<div class="write_qna_content_con">
-			<div class="write_qna_name_con">
-				<div class="title_size type_2">제목</div>
-				<div class="register_input_con">
-					<input type="text" name="boardTitle" id="boardTitle" class="textbox_style_1 type_3" maxlength="30"/>
-				</div>
-			</div>
-		</div>
 		
 		<div class="tc summer_note_con"><!-- 내용이라고 안넣는게 더 이쁠거같아서 뺌 -->
      		<div class="summer_note" style="">
@@ -55,7 +48,7 @@
        </div>  
      	
      	<div class="tc write_qna_btn_con">
-     		<input type="button" value="완료" class="btn_style_1" onclick="makeQnaFunc()" >
+     		<input type="button" value="완료" class="btn_style_1" onclick="makeQnaAnswerFunc()" >
 			<input type="button" value="닫기" class="btn_style_1" onclick="closeModal();" >
      	</div>
 		

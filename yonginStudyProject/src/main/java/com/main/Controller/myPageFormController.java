@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,6 +30,7 @@ import com.login.VO.userInfoVO;
 import com.login.Validator.pwChangeValidator;
 import com.main.Service.myPageService;
 import com.main.VO.studyInfoVO;
+import com.main.VO.userInStudyVO;
 import com.main.Validator.changeUserInfoValidator;
 import com.study.VO.studyApplicationFormUserVO;
 
@@ -291,6 +293,32 @@ public class myPageFormController {
 		mReturn.put("result", "success");
 		mReturn.put("message", "조회 성공하였습니다.");
 		mReturn.put("resultList", ltResult);
+		
+		return mReturn;
+	}
+	
+	/**
+	 * 스터디 탈퇴하기
+	 * @param userInStudyVO
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/myPage/exitStudy.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> exitStudy(@RequestBody userInStudyVO userInStudyVO, HttpSession session) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		String userCode = user.getUserCode();
+		
+		userInStudyVO.setUserCode(userCode);
+		
+		myPageService.exitStudy(userInStudyVO);
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "탈퇴 되었습니다.");
 		
 		return mReturn;
 	}

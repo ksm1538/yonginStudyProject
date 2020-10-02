@@ -2,11 +2,46 @@
 <!DOCTYPE mapper
 	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	<!-- 해당 부분의 namespace는 project package + Mapper Package + Mapper Interface 이름입니다. -->
-<mapper namespace="systemNoticeMapper">
-	<!-- 해당 부분의 id는 MapperClass의 함수 이름과 유사하여야 합니다. -->	
+<!-- 해당 부분의 namespace는 project package + Mapper Package + Mapper Interface 이름입니다. -->
+<mapper namespace="systemQnaSQL">
+<!-- 해당 부분의 id는 MapperClass의 함수 이름과 유사하여야 합니다. -->	
+	<insert id="insertQna"> 
+		<selectKey keyProperty="boardCode" resultType="String" order="BEFORE">
+			SELECT	('QNA_' || LPAD(BOARD_SEQ.nextval,8,0))	FROM 	DUAL    
+		</selectKey>
 	
-	<select id="selectSystemNoticeList" resultType="com.notice.VO.boardVO" >
+		<![CDATA[
+			INSERT 
+			INTO	BOARD_TB
+				(	
+					BOARD_CODE
+				,	BOARD_TITLE
+				,	BOARD_DESC
+				,	RGSTUS_ID
+				,	RGDT_DT
+				,	UPDT_DT
+				,	USE_YN
+				,	BOARD_TYPE
+				,	HGRNK_BOARD_CODE
+				,	QNA_STATUS
+				)  
+			VALUES	
+				(	
+					#{boardCode}
+				,	#{boardTitle}
+				,	#{boardDesc}
+				,	#{rgstusId}
+				,	sysdate
+				,	sysdate
+				,	'Y'
+				,	'20'
+				,	#{hgrnkBoardCode}
+				,	#{qnaStatus}
+				)
+		]]>
+	</insert>
+	
+	<select id="selectQnaList" resultType="com.notice.VO.boardVO" >
 		<![CDATA[
 			SELECT	*
 			  FROM	(
@@ -21,9 +56,12 @@
 											 WHERE  ui.USER_CODE   =   bt.RGSTUS_ID)    as	rgstusId
 										,	TO_CHAR(bt.RGDT_DT, 'YYYY-MM-DD HH24:MI') 	as 	rgdtDt
 										,	bt.BOARD_COUNT								as	boardCount
+										,	bt.QNA_STATUS								as	qnaStatus
+										,	bt.RGSTUS_ID								as	rgstusCode
 									FROM	BOARD_TB bt
 									WHERE	bt.USE_YN			=	'Y'
-										AND	bt.BOARD_TYPE		=	'10'
+										AND	bt.BOARD_TYPE		=	'20'
+										AND	bt.HGRNK_BOARD_CODE	IS NULL
 			]]>
 									<if test='searchBoardRgstusId != ""'>
 											AND	bt.RGSTUS_ID			IN	(SELECT	ui2.USER_CODE
@@ -43,52 +81,13 @@
 		]]>
 	</select>
 	
-	<insert id="insertSystemNotice"> 
-		<selectKey keyProperty="boardCode" resultType="String" order="BEFORE">
-			SELECT	('SYSNOTICE_' || LPAD(BOARD_SEQ.nextval,8,0))	FROM 	DUAL    
-		</selectKey>
-	
-		<![CDATA[
-			INSERT 
-			INTO	BOARD_TB
-				(	
-					BOARD_CODE
-				,	BOARD_TITLE
-				,	BOARD_DESC
-				,	RGSTUS_ID
-				,	RGDT_DT
-				,	UPDT_DT
-				,	USE_YN
-				,	BOARD_TYPE
-				)  
-			VALUES	
-				(	
-					#{boardCode}
-				,	#{boardTitle}
-				,	#{boardDesc}
-				,	#{rgstusId}
-				,	sysdate
-				,	sysdate
-				,	'Y'
-				,	'10'
-				)
-		]]>
-	</insert>
-	
-	<delete id="deleteSystemNotice"> 
-		<![CDATA[
-			UPDATE 	BOARD_TB
-			SET 	USE_YN	=	'N'
-			WHERE	BOARD_CODE			=	#{boardCode}
-		]]>
-	</delete>
-	
-	<select id="selectSystemNoticeListToCnt" resultType="int">
+	<select id="selectQnaListToCnt" resultType="int">
 		<![CDATA[
 			SELECT	COUNT(*)
 			FROM	BOARD_TB
 			WHERE	BOARD_TB.USE_YN			=	'Y'
-				AND	BOARD_TB.BOARD_TYPE		=	'10'
+				AND	BOARD_TB.BOARD_TYPE		=	'20'
+				AND	BOARD_TB.HGRNK_BOARD_CODE	IS NULL
 		]]>
 		<if test='searchBoardRgstusId != ""'>
 				AND	BOARD_TB.RGSTUS_ID	IN		(SELECT	USER_INFO.USER_CODE
@@ -102,8 +101,26 @@
 		</if>
 	</select>
 	
-	<select id="selectSystemNoticeInfoDetail" parameterType="String" resultType="com.notice.VO.boardVO">
+	<update id="reviseQna">
 		<![CDATA[
+			UPDATE 	BOARD_TB
+			SET		BOARD_TITLE			=	#{boardTitle}
+				,	BOARD_DESC			=	#{boardDesc}
+				,	UPDT_DT				=	sysdate
+			WHERE	BOARD_CODE			=	#{boardCode}
+		]]>
+	</update>
+	
+	<update id="updateQnaStatus">
+		<![CDATA[
+			UPDATE 	BOARD_TB
+			SET		QNA_STATUS			=	'20'
+			WHERE	BOARD_CODE			=	#{boardCode}
+		]]>
+	</update>
+	
+	<select id="selectQnaAnswerDetail" resultType="com.notice.VO.boardVO">
+	<![CDATA[
 			SELECT	BOARD_TB.BOARD_CODE 			as boardCode
 				 ,	BOARD_TB.BOARD_TITLE 			as boardTitle
 				 ,	BOARD_TB.BOARD_DESC 			as boardDesc
@@ -116,25 +133,16 @@
 			FROM	BOARD_TB,
 					USER_INFO
 			WHERE	USER_INFO.USER_CODE		=	BOARD_TB.RGSTUS_ID
-				AND	BOARD_TB.BOARD_CODE		=	#{boardCode}
+				AND	BOARD_TB.HGRNK_BOARD_CODE		=	#{boardCode}
+				AND	BOARD_TB.USE_YN					=	'Y'
 		]]>
 	</select>
 	
-	<update id="reviseSystemNotice">
+	<update id="updateQnaStatusTo10">
 		<![CDATA[
 			UPDATE 	BOARD_TB
-			SET		BOARD_TITLE			=	#{boardTitle}
-				,	BOARD_DESC			=	#{boardDesc}
-				,	UPDT_DT				=	sysdate
+			SET		QNA_STATUS			=	'10'
 			WHERE	BOARD_CODE			=	#{boardCode}
-		]]>
-	</update>
-	
-	<update id="updateSystemNoticeCnt">
-		<![CDATA[
-			UPDATE	BOARD_TB
-			SET		BOARD_COUNT	=	BOARD_COUNT+1
-			WHERE	BOARD_CODE	=	#{boardCode}
 		]]>
 	</update>
 </mapper>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.login.VO.userInfoVO;
 import com.main.VO.studyInfoVO;
+import com.main.VO.userInStudyVO;
 import com.study.VO.studyApplicationFormUserVO;
 
 @Repository
@@ -39,5 +40,10 @@ public class myPageDAOImpl implements myPageDAO{
 	@Override
 	public List<studyApplicationFormUserVO> selectMyStudyApplicationFormList(String userCode){
 		return sqlSession.selectList("myPageSql.selectMyStudyApplicationFormList", userCode);
+	}
+	
+	@Override
+	public void exitStudy(userInStudyVO userInStudyVO) throws Exception{
+		sqlSession.update("myPageSql.updateUserInStudyToN", userInStudyVO);
 	}
 }

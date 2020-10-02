@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.login.VO.userInfoVO;
 import com.main.DAO.myPageDAO;
 import com.main.VO.studyInfoVO;
+import com.main.VO.userInStudyVO;
 import com.study.VO.studyApplicationFormUserVO;
 
 @Service("myPageService")
@@ -38,5 +39,10 @@ public class myPageServiceImpl implements myPageService{
 	@Override
 	public List<studyApplicationFormUserVO> selectMyStudyApplicationFormList(String userCode){
 		return myPageDAO.selectMyStudyApplicationFormList(userCode);
+	}
+	
+	@Override
+	public void exitStudy(userInStudyVO userInStudyVO) throws Exception{
+		myPageDAO.exitStudy(userInStudyVO);
 	}
 }

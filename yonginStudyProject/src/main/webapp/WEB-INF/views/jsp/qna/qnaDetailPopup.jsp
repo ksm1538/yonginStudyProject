@@ -16,10 +16,21 @@
 <%-- <jsp:include page="../common/header.jsp"></jsp:include> --%>
 
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
-<script type="text/javascript" src="/resources/js/notice/noticeInfoDetailPopup.js"></script>
+<script type="text/javascript" src="/resources/js/qna/qnaDetailPopup.js"></script>
 
 <script>
 var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유저의 코드 값을 가져옴
+
+var qnaSxnList = [
+    <c:forEach var="result" items="${qnaStatusArray}" varStatus="status">
+        {codeId:"${result.codeId}", codeValue:"${result.codeValue}"}<c:if test="${!status.last}">,</c:if>
+    </c:forEach> 	
+    ];
+
+var qnaSxnMap = {}; 
+qnaSxnList.forEach(function(n){
+	qnaSxnMap[n.codeId] = n.codeValue;
+}); 
 
 </script>
 <meta charset="UTF-8">
@@ -28,13 +39,13 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 <body>
 	<div class="col-12 col-center mw-1200 study_detail_pop_wrap">
 		 <div class="circle_btn" onClick="closeModal()"></div> 
-		 <div class="tc content_title"><span>공지사항 상세정보</span></div>
+		 <div class="tc content_title"><span>QnA 상세정보</span></div>
 		 
 		 <form id="readForm" name="readForm" method="post" role="form">
 		 	<input type="hidden" id="FILE_CODE" name="FILE_CODE" value=""> 
 		 </form> 
 		 
-		 <form:form method="POST" modelAttribute="boardVO" name="noticeInfoDetailForm" id="noticeInfoDetailForm" >
+		 <form:form method="POST" modelAttribute="boardVO" name="qnaDetailForm" id="qnaDetailForm" >
 		 <div class="study_detail_pop_wrap_con" id="detailDiv">
 			
 				<form:input path="boardCode" type="hidden" name="boardCode" id="boardCode" data-ax-path="boardCode" class="textbox_style_1"/>
@@ -42,7 +53,14 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 				<div class="study_detail_con detail_name">
 					<div class="title_size type_2">제목</div>
 					<div class="study_detail_input_con">
-						<form:input path="boardTitle" type="text" name="systemNoticeTitle" id="boardTitle" data-ax-path="boardTitle" class="textbox_style_1"/>
+						<form:input path="boardTitle" type="text" name="boardTitle" id="boardTitle" data-ax-path="boardTitle" class="textbox_style_1"/>
+					</div>
+				</div>	
+				
+				<div class="study_detail_con detail_name">
+					<div class="title_size type_2">상태</div>
+					<div class="study_detail_input_con">
+						<form:input path="qnaStatus" type="text" name="qnaStatus" id="qnaStatus" data-ax-path="qnaStatus" class="textbox_style_1"/>
 					</div>
 				</div>				
 				
@@ -74,9 +92,11 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 				
 			</div>
 				<div class="btn_style_1_con">
-					<c:if test="${user.userIsAdmin == 'Y'}">
-            	  		<input type="button" value="수정하기" class="btn_style_1" onclick="openReviseSystemNotice()" >
-           			</c:if>
+            	  	<input type="button" value="수정하기" id="reviseBtn" class="btn_style_1"  onclick="openReviseQna()" >
+            	  	<input type="button" value="삭제하기" id="deleteBtn" class="btn_style_1"  onclick="deleteQna()" >
+	            	<c:if test="${user.userIsAdmin == 'Y'}">
+						<input type="button" value="답글 작성" id="answerBtn" class="btn_style_1" onclick="openWriteQnaAnswer();">
+	           		</c:if>
 					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
 				</div> 
 		 </form:form>

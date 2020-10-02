@@ -1,5 +1,5 @@
 /** 변수 설정(시작) **/
-var systemNoticeInfoDetailBinder = new ax5.ui.binder();	// Binder 설정(데이터를 받아오면 이 Binder set 함으로써 데이터 자동으로 들어감)
+var qnaBinder = new ax5.ui.binder();	// Binder 설정(데이터를 받아오면 이 Binder set 함으로써 데이터 자동으로 들어감)
 var parentData = self.parent.callBack;		// 부모 페이지에서 보낸 데이터 정의
 var fileIndex = 1;
 var fileCodeArry = [];
@@ -16,32 +16,32 @@ $(document).ready(function () {
 		disableDragAndDrop: true,
 	});	
 	
-	systemNoticeInfoDetailBinder.setModel({}, $(document["reviseNoticeForm"]));
+	qnaBinder.setModel({}, $(document["reviseQnaAnswerForm"]));
 	
-	reviseSystemNotice(parentData.boardCode);
+	reviseQna(parentData.boardCode);
 	
 });
 /** 초기화(끝) **/
 
-// 부모 페이지에서 받은 systemNoticeCode를 이용해 공지사항 조회
-function reviseSystemNotice(boardCode){
-	if(boardCode == ""){
+//부모 페이지에서 받은 boardCode를 이용해 qna 조회
+function reviseQna(boardCode){
+	if(boardCode==null || boardCode == ""){
 		dialog.alert("정상적인 접근이 아닙니다.");
 		return;
 	}
 	
 	$.ajax({
  		type: "POST",
- 		url : "/notice/selectReviseSystemNotice.json",
+ 		url : "/systemQna/selectQnaAnswerDetail.json",
  		data : boardCode,
 		contentType: "application/json; charset=UTF-8",
-		async: true,
+		async: false,
 		success : function(data, status, xhr) {
 			switch(data.result){
 			    case COMMON_SUCCESS:
-			    	systemNoticeInfoDetailBinder.setModel(data.boardInfo);
+			    	qnaBinder.setModel(data.boardInfo);
+
 			    	$('#boardDesc').summernote('code', data.boardInfo.boardDesc);
-			    	$('#boardCode').val(boardCode);
 			    	
 			    	var output="";
 			    	
@@ -61,17 +61,17 @@ function reviseSystemNotice(boardCode){
 	}); 
 }
 
-//공지사항 수정 함수
-function reviseSystemNoticeFunc(){
+//Qna 수정 함수
+function reviseQnaAnswerFunc(){
 	
 	// 폼 데이터 가져옴
-    var form = $('#reviseNoticeForm')[0];
+    var form = $('#reviseQnaAnswerForm')[0];
     var data = new FormData(form);
 
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        url: "/notice/reviseSystemNotice",
+        url: "/systemQna/reviseQna",
         data: data,
         processData: false,		//필수
         contentType: false,		//필수
@@ -88,7 +88,7 @@ function reviseSystemNoticeFunc(){
 				        	}
 				        }, function(){
 				        	if(this.key=="yes" || this.state == "close"){
-									closeModalWithRefresh();
+				        		window.history.back();
 				        	}
 				    	});
 		   		 break;
@@ -104,14 +104,14 @@ function reviseSystemNoticeFunc(){
     });
 }
 
-// 팝업창 닫기
+//팝업창 닫기
 function closeModal(){
-	return self.parent.closeSystemNoticeInfo();		// 부모 페이지의 close함수로 리턴
+	return self.parent.closeQnaModal();		// 부모 페이지의 close함수로 리턴
 }
 
-// 팝업창 닫고 부모페이지 새로고침
+// 팝업창 닫고 새로고침
 function closeModalWithRefresh(){
-	window.history.back();	
+	return self.parent.closeWriteQnaWithRefresh();
 }
 
 //파일 추가

@@ -1,4 +1,5 @@
 var fileIndex = 1;
+var parentData = self.parent.callBack;
 
 $(document).ready(function () {
 	//summernote editor
@@ -9,19 +10,20 @@ $(document).ready(function () {
 		disableDragAndDrop: true
 	});	
 	
+	$('#hgrnkBoardCode').val(parentData.boardCode);
 });
 
-//QnA 작성 함수
-function makeQnaFunc(){
+//QnA 답글 작성 함수
+function makeQnaAnswerFunc(){
 	
 	// 폼 데이터 가져옴
-    var form = $('#writeQnaForm')[0];
+    var form = $('#writeQnaAnswerForm')[0];
     var data = new FormData(form);
 
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        url: "/systemQna/makeQna",
+        url: "/systemQna/writeQnaAnswer",
         data: data,
         processData: false,		//필수
         contentType: false,		//필수

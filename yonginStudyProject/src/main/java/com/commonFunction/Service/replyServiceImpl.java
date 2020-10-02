@@ -37,4 +37,9 @@ public class replyServiceImpl implements replyService{
 	public replyVO selectReplyWithId(String replyCode) throws Exception{
 		return replyDAO.selectReplyWithId(replyCode);
 	}
+	
+	@Override
+	public void deleteReplyWithBoardCode(String boardCode) throws Exception{
+		replyDAO.deleteReplyWithBoardCode(boardCode);
+	}
 }

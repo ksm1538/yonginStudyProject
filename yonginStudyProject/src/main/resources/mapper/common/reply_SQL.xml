@@ -78,4 +78,13 @@
 			WHERE	REPLY_CODE		=	#{replyCode}
 		]]>
 	</select>
+	
+	<update id="updateReplyWithBoardCodeUseYnToN">
+		<![CDATA[
+			UPDATE	REPLY_TB
+			   SET	USE_YN		=	'N'
+			   	 ,	UPDT_DT		=	sysdate		
+			 WHERE	BOARD_CODE 	= #{boardCode}
+		]]>	
+	</update>
 </mapper>

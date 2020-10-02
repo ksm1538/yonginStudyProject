@@ -193,7 +193,6 @@ function deleteSystemNotice(){
 	}, function(){
 	});
 	
-	
 } 
 
 //EnterKeyEvent
@@ -206,11 +205,12 @@ function enterKeyEvent() {
 }
 
 // 검색 버튼용 조회 함수
-function searchMessageList(){
+function searchNoticeList(){
 	_pageNo = 0;
 	getSystemNoticeList();
 }
 
+// 공지사항 상세 보기 팝업 
 function selectSystemNoticeInfoDetail(boardCode){
 	var parentData={
 			boardCode:boardCode

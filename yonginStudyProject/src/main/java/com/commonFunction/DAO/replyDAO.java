@@ -15,4 +15,6 @@ public interface replyDAO {
 	public void updateReply(replyVO replyVO) throws Exception;
 	
 	public replyVO selectReplyWithId(String replyCode) throws Exception;
+	
+	public void deleteReplyWithBoardCode(String boardCode) throws Exception;
 }

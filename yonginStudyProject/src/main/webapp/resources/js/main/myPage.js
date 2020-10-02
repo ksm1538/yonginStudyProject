@@ -617,6 +617,69 @@ function closeApplcationFormModalRefresh(){
 
 // 스터디 페이지 이동
 function openStudyManagementPage(){
-	
 	window.open("/studyManagement/studyMain.do"); 
+}
+
+
+//스터디 탈퇴
+function exitMyStudy(dindex){
+	var studyInfo = myParcitipateListGrid.list[dindex];
+
+	if(studyInfo.studyCode == ""){
+		dialog.alert("오류가 발생했습니다.");
+		return;
+	}
+	
+	dialog.confirm({
+		msg:"해당 스터디에서 탈퇴하시겠습니까?",
+		btns:{
+			yes: {
+				label:'네', onClick:function(key){
+					dialog.close();
+					
+					var sendData = {
+							studyCode : studyInfo.studyCode
+					}
+					$.ajax({
+				 		type: "POST",
+				 		url : "/myPage/exitStudy.json",
+				 		data : JSON.stringify(sendData),
+						contentType: "application/json; charset=UTF-8",
+						async: false,
+						success : function(data, status, xhr) {
+							switch(data.result){
+							    case COMMON_SUCCESS:
+							    	 dialog.confirm({
+								    		msg:data.message,
+								        	btns:{
+								        		yes: {
+								        			label:'확인'
+								        		},
+								        	}
+								        }, function(){
+								        	if(this.key=="yes" || this.state == "close"){
+								        		window.location.reload();
+								        	}
+								    	});
+							    	
+							    	break;    
+							    case COMMON_FAIL:
+							    	dialog.alert(data.message); 
+							}
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+						}
+					}); 
+ 			}
+			},
+			no: {
+				label:'아니오', onClick:function(key){
+					dialog.close();
+					return;
+ 			}
+			}
+		}
+	}, function(){
+	});
 }

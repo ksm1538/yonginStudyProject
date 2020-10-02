@@ -1,4 +1,4 @@
-package com.notice.Controller;
+package com.qna.Controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,63 +19,50 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.login.VO.userInfoVO;
-import com.notice.Service.systemNoticeService;
 import com.notice.VO.boardVO;
 import com.notice.Validator.boardValidator;
+import com.qna.Service.qnaService;
 
 @Controller
-public class writeNoticeController {
-	@Resource(name="systemNoticeService") // 해당 서비스가 리소스임을 표시합니다.
-	private systemNoticeService systemNoticeService;
+public class writeQnaController {
+	@Resource(name="qnaService") // 해당 서비스가 리소스임을 표시합니다.
+	private qnaService qnaService;
 	
 	
-	private static final Logger logger = LoggerFactory.getLogger(writeNoticeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(writeQnaController.class);
 	
 	/**
-	 * 공지사항 작성 Mapping
+	 * QnA 작성 팝업
+	 * @param model
+	 * @param session
+	 * @return
 	 */
-	@RequestMapping(value = "/writeNotice.do", method = RequestMethod.GET)
-	public String MoreNoticeForm(HttpSession session) {
+	@RequestMapping(value = "/systemQna/writeQna.do", method = RequestMethod.GET)
+	public String writeQna(Model model, HttpSession session) {
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(시작) **/
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
 
 		if(user == null) {
 			return "jsp/login/login";
 		}
-		// 관리자 권한이 없는 경우 로그인 페이지로 보냄(관리자 권한이 필요한 경우)
-		if(!user.getUserIsAdmin().equals("Y")) {
-			session.invalidate();
-			return "jsp/login/login";
-		}
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
-		 
-		return "jsp/notice/writeNotice";
+		
+		return "jsp/qna/writeQna";
 	}
 	
 	/**
-	 * 공지사항 작성
+	 * Qna 작성
 	 * @param boardVO
 	 * @param bingdingResult
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/notice/makeSystemNotice", method = RequestMethod.POST)
+	@RequestMapping(value="/systemQna/makeQna", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> makeSystemNotice(boardVO boardVO, HttpSession session, BindingResult bindingResult, MultipartHttpServletRequest mpRequest) throws Exception {
+	public Map<String, Object> makeQna(boardVO boardVO, HttpSession session, BindingResult bindingResult, MultipartHttpServletRequest mpRequest) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 		
-		userInfoVO user = (userInfoVO) session.getAttribute("user");
-		boardVO.setRgstusId(user.getUserCode());
-
-		// 관리자 권한이 없는 경우 오류 메시지 발생
-		if(!user.getUserIsAdmin().equals("Y")) {
-			mReturn.put("result", "fail");
-			mReturn.put("message", "권한이 없습니다.");
-			
-			return mReturn;
-		}
-				
 		/** 데이터 검증(시작) **/
 		boardValidator boardValidator = new boardValidator();
 		boardValidator.validate(boardVO, bindingResult);
@@ -93,7 +81,12 @@ public class writeNoticeController {
 			return mReturn;
 		}  
 		/** 데이터 검증(끝) **/
-		systemNoticeService.insertSystemNotice(boardVO, mpRequest);
+		
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		boardVO.setRgstusId(user.getUserCode());
+		boardVO.setQnaStatus("10");	
+		
+		qnaService.insertQna(boardVO, mpRequest);
 		
 		mReturn.put("result", "success");
 		mReturn.put("message", "성공적으로 생성되었습니다.");

@@ -25,9 +25,7 @@ function openMypageForm(){
 function openMessageForm(){
 	//이걸 쓰면 창이 새로 열리지않고 이동
 	location.href = "/message.do";
-	
 }
-
 
 /*메인으로 이동 */
 function openHome(){
@@ -43,9 +41,8 @@ function openMoreStudyForm(){
 
 /*qna */
 function openQna(){
-	location.href = "/makeQna.do";
+	location.href = "/systemQna.do";
 }
-
 
 /*공지사항 더보기 호출 */
 function openMoreNotice(){
@@ -64,8 +61,6 @@ function openStudyFreeNotice(){
 	//이걸 쓰면 창이 새로 열리지않고 이동
 	location.href = "/studyfreenotice.do";
 }
-
-
 
 /* 스터디 만들기 팝업 호출 */
 function makeStudyForm(){

@@ -1,13 +1,15 @@
 package com.notice.VO;
 
 public class boardVO {
-	private String boardCode	= "";
+	private String boardCode = "";
 	private String boardTitle = "";
 	private String boardDesc = "";
 	private String rgstusId = "";
 	private String useYn = "";
 	private String rgdtDt = "";
 	private String updtDt = "";
+	private String hgrnkBoardCode = "";
+	private String qnaStatus = "";
 	private String[] boardCodes;
 	private int boardCount;
 	private int	first;
@@ -18,13 +20,14 @@ public class boardVO {
 	private String	fileCode="";
 	private String[]	fileCodeDel;
 	private String[]	fileNameDel;
+	private String	rgstusCode="";
 	
 	
 	public String getBoardCode() {
 		return boardCode;
 	}
 	public void setBoardCode(String boardCode) {
-		this.boardCode = boardCode;
+		this.boardCode = boardCode; 
 	}
 	public String getBoardTitle() {
 		return boardTitle;
@@ -121,6 +124,24 @@ public class boardVO {
 	}
 	public void setFileNameDel(String[] fileNameDel) {
 		this.fileNameDel = fileNameDel;
+	}
+	public String getHgrnkBoardCode() {
+		return hgrnkBoardCode;
+	}
+	public void setHgrnkBoardCode(String hgrnkBoardCode) {
+		this.hgrnkBoardCode = hgrnkBoardCode;
+	}
+	public String getQnaStatus() {
+		return qnaStatus;
+	}
+	public void setQnaStatus(String qnaStatus) {
+		this.qnaStatus = qnaStatus;
+	}
+	public String getRgstusCode() {
+		return rgstusCode;
+	}
+	public void setRgstusCode(String rgstusCode) {
+		this.rgstusCode = rgstusCode;
 	}
 	
 }

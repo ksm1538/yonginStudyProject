@@ -1,4 +1,4 @@
-package com.notice.Controller;
+package com.qna.Controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,30 +18,25 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.commonFunction.Service.fileService;
 import com.login.VO.userInfoVO;
-import com.notice.Service.systemNoticeService;
 import com.notice.VO.boardVO;
 import com.notice.Validator.boardValidator;
+import com.qna.Service.qnaService;
 
 @Controller
-public class reviseNoticeController {
+public class reviseQnaController {
 	
-	@Resource(name="systemNoticeService")
-	private systemNoticeService systemNoticeService;
+	@Resource(name="qnaService")
+	private qnaService qnaService;
 	
 	@Resource(name="fileService")
 	private fileService fileService;
 	
-	@RequestMapping(value = "/notice/reviseNotice.do", method = RequestMethod.GET)
-	public String studyInfoDetailPopup(Model model, HttpSession session) throws Exception {
+	@RequestMapping(value = "/systemQna/reviseQna.do", method = RequestMethod.GET)
+	public String reviseQna(Model model, HttpSession session) throws Exception {
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(시작) **/
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
 
 		if(user == null) {
-			return "jsp/login/login";
-		}
-		// 관리자 권한이 없는 경우 로그인 페이지로 보냄(관리자 권한이 필요한 경우)
-		if(!user.getUserIsAdmin().equals("Y")) {
-			session.invalidate();
 			return "jsp/login/login";
 		}
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
@@ -50,65 +44,38 @@ public class reviseNoticeController {
 		//model 변수에 데이터를 담아 jsp에 전달
 		model.addAttribute("boardVO", new boardVO());
 		
-		return "jsp/notice/reviseNotice"; 
+		return "jsp/qna/reviseQna"; 
 	}
 	
 	/**
-	 * 해당 내용 조회
-	 * @param systemNoticeCode
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping(value="/notice/selectReviseSystemNotice.json", method = RequestMethod.POST)
-	@ResponseBody
-	public Map<String, Object> selectStudyInfoDetail(@RequestBody String boardCode) throws Exception {
-	      
-		HashMap<String, Object> mReturn = new HashMap<String, Object>();
-		
-		if(boardCode == null || boardCode.equals("")) {
-			mReturn.put("result","fail");
-			mReturn.put("message", "오류가 발생하였습니다.");
-			
-			return mReturn;
-		}
-		
-		boardVO boardInfo = systemNoticeService.selectSystemNoticeInfoDetail(boardCode);
-		
-		if(boardInfo == null) {
-			mReturn.put("result","fail");
-			mReturn.put("message", "오류가 발생하였습니다.");
-			
-			return mReturn;
-		}
-		List<Map<String, Object>> fileList = fileService.selectFileList(boardCode);
-		
-		mReturn.put("fileList", fileList);
-		mReturn.put("result", "success");
-		mReturn.put("message", "성공적으로 조회하였습니다.");
-		mReturn.put("boardInfo", boardInfo);
-		
-		return mReturn;
-	}
-	
-	/**
-	 * 공지사항 수정
+	 * QnA 수정
 	 * @param boardVO
-	 * @param bingdingResult
+	 * @param session
+	 * @param bindingResult
+	 * @param mpRequest
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/notice/reviseSystemNotice", method = RequestMethod.POST)
+	@RequestMapping(value="/systemQna/reviseQna", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> registerAjaxFunction(boardVO boardVO, HttpSession session, BindingResult bindingResult, MultipartHttpServletRequest mpRequest) throws Exception {
+	public Map<String, Object> reviseQna(boardVO boardVO, HttpSession session, BindingResult bindingResult, MultipartHttpServletRequest mpRequest) throws Exception {
 	      
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 		
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
 		boardVO.setRgstusId(user.getUserCode());
 		
-		// 관리자 권한이 없는 경우 오류 메시지 발생
-		if(!user.getUserIsAdmin().equals("Y")) {
-			mReturn.put("result", "fail");
+		boardVO boardVO2 = qnaService.selectQnaDetail(boardVO.getBoardCode());
+		
+		if(boardVO2 == null) {
+			mReturn.put("result","fail");
+			mReturn.put("message", "오류가 발생하였습니다.");
+			
+			return mReturn;
+		}
+		
+		if(!(boardVO2.getRgstusCode().equals(user.getUserCode()))) {
+			mReturn.put("result","fail");
 			mReturn.put("message", "권한이 없습니다.");
 			
 			return mReturn;
@@ -131,8 +98,9 @@ public class reviseNoticeController {
 			
 			return mReturn;
 		}  
+		
 		/** 데이터 검증(끝) **/
-		systemNoticeService.reviseSystemNotice(boardVO, mpRequest);
+		qnaService.reviseQna(boardVO, mpRequest);
 		mReturn.put("result", "success");
 		mReturn.put("message", "수정이 완료되었습니다.");
 		

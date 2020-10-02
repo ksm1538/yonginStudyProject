@@ -73,4 +73,14 @@
 				AND	STUDY_APPLICATION_FORM_USER.USE_YN			=	'Y'
 		]]>
 	</select>
+	
+	<update id="updateUserInStudyToN">
+		<![CDATA[
+			UPDATE	USER_IN_STUDY
+			SET		USE_YN		=	'N'
+				 ,	UPDT_DT		=	sysdate
+			WHERE	USER_CODE	=	#{userCode}
+				AND	STUDY_CODE	=	#{studyCode}
+		]]>
+	</update>
 </mapper>

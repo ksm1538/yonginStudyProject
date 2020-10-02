@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.login.VO.userInfoVO;
 import com.main.VO.studyInfoVO;
+import com.main.VO.userInStudyVO;
 import com.study.VO.studyApplicationFormUserVO;
 
 public interface myPageDAO {
@@ -16,4 +17,6 @@ public interface myPageDAO {
 	public List<studyInfoVO> selectParticipateStudyList(String userCode);
 	
 	public List<studyApplicationFormUserVO> selectMyStudyApplicationFormList(String userCode);
+	
+	public void exitStudy(userInStudyVO userInStudyVO) throws Exception;
 }

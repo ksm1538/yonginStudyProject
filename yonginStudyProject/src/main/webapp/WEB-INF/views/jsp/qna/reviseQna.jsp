@@ -16,7 +16,7 @@
 <%-- <jsp:include page="../common/header.jsp"></jsp:include> --%>
 
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
-<script type="text/javascript" src="/resources/js/notice/reviseNotice.js"></script>
+<script type="text/javascript" src="/resources/js/qna/reviseQna.js"></script>
 
 <script>
 var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유저의 코드 값을 가져옴
@@ -28,12 +28,12 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 <body>
 	<div class="col-12 col-center mw-1200 study_detail_pop_wrap">
 		 <div class="circle_btn" onClick="closeModal()"></div> 
-		 <div class="tc content_title"><span>공지사항 수정</span></div>
+		 <div class="tc content_title"><span>QnA 수정</span></div>
 		 <form id="readForm" name="readForm" method="post" role="form">
 		 	<input type="hidden" id="FILE_CODE" name="FILE_CODE" value=""> 
 		 </form> 
 		 
-		<form name="reviseNoticeForm" id="reviseNoticeForm" method="POST" enctype="multipart/form-data">
+		<form name="reviseQnaForm" id="reviseQnaForm" method="POST" enctype="multipart/form-data">
 		 <input type="hidden" id="fileCodeDel" name="fileCodeDel" value=""> 
 		 <input type="hidden" id="boardCode" name="boardCode" value=""> 
 		 
@@ -71,7 +71,7 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 				
 			</div>
 				<div class="btn_style_1_con">
-					<input type="button" value="수정완료" class="btn_style_1" onclick="reviseSystemNoticeFunc()" >
+					<input type="button" value="수정완료" class="btn_style_1" onclick="reviseQnaFunc()" >
 					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
 				</div> 
 		 </form>

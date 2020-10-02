@@ -28,7 +28,7 @@
          	   
          	   작성자 ID <input type="text" id="boardRgstusId" name ="boardRgstusId" class="textbox_style_1" onkeyup="enterKeyEvent();">
                            제목 <input type="text" id="boardTitle" name="boardTitle" class="textbox_style_1" maxlength="30" onkeyup="enterKeyEvent();">
-            <input type="button" value="검색" class="btn_style_1" onclick="getSystemNoticeList()"  >
+            <input type="button" value="검색" class="btn_style_1" onclick="searchNoticeList()"  >
             
          	   <div style="width: 100%;" >
 	  				<div data-ax5grid="noticeListPlusGrid" data-ax5grid-config="{}" style="height:610px; padding-top:10px; padding-right:10px"></div>  

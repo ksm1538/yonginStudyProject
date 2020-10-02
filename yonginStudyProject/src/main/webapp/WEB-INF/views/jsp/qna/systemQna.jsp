@@ -14,8 +14,21 @@
 <jsp:include page="../common/header.jsp"></jsp:include>
 
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
-<script type="text/javascript" src="/resources/js/qna/makeQna.js"></script>
+<script type="text/javascript" src="/resources/js/qna/systemQna.js"></script>
 
+<script>
+//그리드에 출력될 qna 상태 코드 값 설정
+var qnaSxnList = [
+    <c:forEach var="result" items="${qnaStatusArray}" varStatus="status">
+        {codeId:"${result.codeId}", codeValue:"${result.codeValue}"}<c:if test="${!status.last}">,</c:if>
+    </c:forEach> 	
+    ];
+
+var qnaSxnMap = {}; 
+qnaSxnList.forEach(function(n){
+	qnaSxnMap[n.codeId] = n.codeValue;
+}); 
+</script>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -37,54 +50,24 @@
 			<div class="make_qna_search_con">
 				<div class="make_qna_search_box write_qna_person">
 					<div class="make_qna_box_title">작성자 ID</div>
-					<input type="text" id="" name ="" class="textbox_style_1 color_bg" onkeyup="">
+					<input type="text" id=searchBoardRgstusId  class="textbox_style_1 color_bg" onkeyup="">
 				</div>
 				<div class="make_qna_search_box qna_name">
 					<div class="make_qna_box_title">작성 제목</div>
-					<input type="text" id="" name ="" class="textbox_style_1 color_bg" onkeyup="">
+					<input type="text" id="searchBoardTitle" class="textbox_style_1 color_bg" onkeyup="">
 				</div>
 				<div class="make_qna_search_box get_search_btn">
 					  <input type="button" value="검색" class="btn_style_1" onclick="" >
 				</div>
+				
+				<input type="button" value="질문 하기" class="btn_style_1" onclick="writeQna();" style="float:left; margin-left:33%">
 			</div>
 			
 			<div style="width: 100%;" >  
-	  			<div data-ax5grid="qnaListGrid" data-ax5grid-config="{}" class="qna_grid color_grid" style="height:520px; padding-top:10px; padding-right:10px"></div>  
-			</div>
-			
-			<div class="make_qna_btn_con">
-				<input type="button" value="작성" class="btn_style_1" onclick="writeQna();" >
-				<input type="button" value="삭제" class="btn_style_1" onclick="" ><!-- 관리자모드로 들어갈시 활성화  -->
+	  			<div data-ax5grid="qnaListGrid" data-ax5grid-config="{}" class="qna_grid color_grid" style="height:610px; padding-top:10px; padding-right:10px"></div>  
 			</div>
 			
 		</div>
-		
-		
-		
-<!-- 		<div class="col-12 main_my_study_notice_wrap" id="movenotice">
-		<div class="col-12 col-center mw-1200 main_my_study_notice_con">
-			<div class="main_my_study_notice_title_con">
-				<div class="main_my_study_notice_title"><span>스터디 공지사항</span></div>
-				<div class="question_mark_con">
-					<div class="tc question_mark"><span>?</span></div>
-					<div class="qestion_desc_box_con">
-						<div class="question_tri type_2"></div>
-						<div class="question_desc type_2">스터디 공지사항은 사용자가 참여하고 있는 스터디에서 등록된 공지사항을 보여 드립니다.</div>
-					</div>
-				</div>
-			</div>
-				<div style="width: 100%;" >  
-	  					<div data-ax5grid="studyNoticeListGrid" data-ax5grid-config="{}" class="color_grid" style="height:520px; padding-top:10px; padding-right:10px"></div>  
-				</div>
-		</div>
-	</div> -->
-		
-		
-		
-		
-		
-		
-		
 		
 	</div>
 </body>

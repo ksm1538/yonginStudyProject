@@ -75,7 +75,7 @@ public class moreNoticeController {
     	List<boardVO> ltResult = systemNoticeService.selectSystemNoticeList(boardVO);
 		
 		if(ltResult.size() < 1) {
-			mReturn.put("result", "fail");
+			mReturn.put("result", "success");
 			mReturn.put("message", "공지사항 목록이 없습니다.");
 		}
 		

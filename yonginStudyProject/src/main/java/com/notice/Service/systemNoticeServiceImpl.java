@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.commonFunction.Controller.FileUtilsController;
 import com.commonFunction.DAO.fileDAO;
+import com.commonFunction.DAO.replyDAO;
 import com.notice.DAO.systemNoticeDAO;
 import com.notice.VO.boardVO;
 
@@ -19,6 +20,9 @@ public class systemNoticeServiceImpl implements systemNoticeService{
 	
 	@Autowired
 	fileDAO fileDAO;
+	
+	@Autowired
+	replyDAO replyDAO;
 	
 	@Override
 	public List<boardVO> selectSystemNoticeList(boardVO boardVO){
@@ -42,7 +46,9 @@ public class systemNoticeServiceImpl implements systemNoticeService{
 		for(int i=0;i<boardCodes.length;i++) {
 			systemNoticeDAO.deleteSystemNotice(boardCodes[i]);
 			fileDAO.updateNFileWithDeleteBoard(boardCodes[i]);
+			replyDAO.deleteReplyWithBoardCode(boardCodes[i]);
 		}
+		
 	}
 	
 	@Override

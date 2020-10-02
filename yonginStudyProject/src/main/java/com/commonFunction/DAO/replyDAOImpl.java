@@ -38,4 +38,9 @@ public class replyDAOImpl implements replyDAO{
 	public replyVO selectReplyWithId(String replyCode) throws Exception{
 		return sqlSession.selectOne("replySQL.selectReplyWithId",replyCode);
 	}
+	
+	@Override
+	public void deleteReplyWithBoardCode(String boardCode) throws Exception{
+		sqlSession.update("replySQL.updateReplyWithBoardCodeUseYnToN",boardCode);
+	}
 }
