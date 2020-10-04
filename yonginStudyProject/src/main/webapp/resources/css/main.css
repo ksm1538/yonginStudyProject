@@ -448,6 +448,25 @@ html, body {
 
 .write_qna_content_wrap .write_qna_btn_con{dipaly:flex;}
 
+/*qna 상세보기*/
+.qna_detail_pop_wrap{padding:40px 0; background-color:#7f99e2; margin-bottom:30px;}
+.qna_detail_pop_wrap .circle_btn{top: -25%; z-index:3;}
+.qna_detail_pop_con .qna_detail_title{font-size:30px; font-weight:bold; color:#fff;}
+.qna_detail_pop_content_wrap .detail_desc{margin-bottom:20px;}
+.qna_detail_pop_content_wrap .detail_desc .title_size{margin-left:115px;}
+.qna_detail_pop_content_wrap .detail_desc .filelist{margin-left:115px;}
+
+.qna_detail_pop_content_wrap .btn_style_1_con .btn_style_1{margin-left:15px; margin-right:15px; margin-bottom:50px;}
+.qna_detail_pop_content_wrap .btn_style_1_con_2{display:flex; flex-wrap:nowrap; justify-content:center;}
+
+.qna_detail_pop_content_wrap .reply_con{margin-left:115px;}
+.qna_detail_pop_content_wrap .reply_con .reply_title{font-weight:bold;}
+.qna_detail_pop_content_wrap .reply_con .reply_number{font-size:25px; color:#7f99e2; font-weight:bold;}
+.qna_detail_pop_content_wrap .reply_con .reply_amonut{font-weight:bold;}
+
+.qna_detail_pop_content_wrap .reply_con .reply_list{margin-bottom:30px;}
+.qna_detail_pop_content_wrap .reply_con .reply_write{margin-bottom:15px;}
+
 /*=======마이페이지==========*/
 .mypage_content_wrap{position:relative; height:700px; padding:120px 70px;}
 .mypage_content_img{z-index:-1; width:100%; height:100%; background-image:url("../img/mypage.jpg"); background-repeat: no-repeat; background-size:cover; backgroud-position:center; position:absolute; top:0; left:0;}
