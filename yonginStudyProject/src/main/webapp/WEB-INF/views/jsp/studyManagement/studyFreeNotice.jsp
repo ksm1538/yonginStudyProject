@@ -37,6 +37,20 @@
 				</div>
 			</div>
 			
+		 <div class="study_free_notice_content_con">
+			 	<div class="study_free_notice_content_box">
+			 		<div class="study_free_notice_search_title">작성자 ID</div>
+			 		<input type="text" id="boardRgstusId" name ="boardRgstusId" class="textbox_style_1 color_bg" onkeyup="enterKeyEvent();">
+			 	</div>
+			 	
+			 	<div class="study_free_notice_content_box">
+			 		<div class="study_free_notice_search_title">제목</div>
+			 		<input type="text" id="boardTitle" name="boardTitle" class="textbox_style_1 color_bg" maxlength="30" onkeyup="enterKeyEvent();">
+			 	</div>
+			 	
+			 	 <input type="button" value="검색" class="btn_style_1" onclick="searchNoticeList()"  >			 	
+		</div>
+			
 		<div class="col-12 col-center mw-1200 study_free_notice_grid_con "style="width: 100%;" >  
 	  		<div data-ax5grid="studyFreeNoticeListGrid" data-ax5grid-config="{}" class="color_grid" style="height:300px; padding-top:10px; padding-right:10px"></div>  
 		</div>
