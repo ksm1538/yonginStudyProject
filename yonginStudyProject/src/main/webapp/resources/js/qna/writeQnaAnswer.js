@@ -55,9 +55,9 @@ function makeQnaAnswerFunc(){
     });
 }
 
-// 팝업창 닫기
+//팝업창 닫기
 function closeModal(){
-	return self.parent.closewriteQnaModal();		// 부모 페이지의 closeChangePwModal함수로 리턴
+	return self.parent.closeQnaModal();		// 부모 페이지의 close함수로 리턴
 }
 
 //팝업창 닫고 새로고침
@@ -67,7 +67,7 @@ function closeModalWithRefresh(){
 
 //파일 추가
 function fn_addFile(){
-	$("#fileIndex").append("<div id='fileDiv_"+fileIndex+"' style='margin-bottom:10%'><input type='file' style='float:left;' name='file_"+(fileIndex)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn' onclick='fileDelFunc("+fileIndex+")'>"+"삭제"+"</button></div>");
+	$("#fileIndex").append("<div id='fileDiv_"+fileIndex+"' style='display:flex'><input type='file' style='margin-bottom:10px;' name='file_"+(fileIndex)+"'>"+"</button>"+"<button type='button' style='height:25px;' id='fileDelBtn' onclick='fileDelFunc("+fileIndex+")'>"+"삭제"+"</button></div>");
 	fileIndex++;
 }
 

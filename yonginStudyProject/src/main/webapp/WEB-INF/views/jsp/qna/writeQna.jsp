@@ -49,10 +49,14 @@
      	
      	<div class="study_text make_study_form">
           <div class="title_size type_2">첨부파일</div>
-          <div id="fileIndex">
-          </div>
+          
           <input type="button" value="파일 추가" class="btn_style_1" onclick="fn_addFile()">
-       </div>  
+       </div> 
+       
+       <div class="add_file_list_con">
+       	<div id="fileIndex"></div> 
+       </div>
+       
      	
      	<div class="tc write_qna_btn_con">
      		<input type="button" value="완료" class="btn_style_1" onclick="makeQnaFunc()" >

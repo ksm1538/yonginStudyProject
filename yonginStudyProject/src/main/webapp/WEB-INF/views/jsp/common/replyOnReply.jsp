@@ -19,19 +19,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-       <div class="col-12 col-center mw-1200 moreStudy_wrap">
-       		<div class="circle_btn" onClick="closeModal()"></div> 
-        	<div class="col-12 moreStudy_list_wrap content_wrap">
-         	   <div class="content_title"><span>댓글 쓰기</span></div>
-         	   
-	         	   작성자 ID <input type="text" class="textbox_style_1" value="${user.userId}">
-	             <textarea id="replyText" class="form-control" style="width:100%; height:200px;" placeholder="댓글을 입력해주세요"></textarea>
 
-				<div class="btn_style_1_con">
-					<input type="button" value="완료" class="btn_style_1" onclick="replyOnReplyFunc()" >
-					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
-				</div> 			   	
-   		 	</div>
-       </div>
+	
+	<div class="col-12 reply_function_wrap">
+		<div class="col-12  reply_function_con">
+			<div class="tc reply_function_title"><span>댓글쓰기</span></div>
+		</div>		
+	</div>
+	<div class="col-12 reply_user_info_wrap">
+				<div class="reply_user_info_title">작성자ID</div>
+				<div class="reply_user_textbox"><input type="text" class="textbox_style_1" value="${user.userId}"></div>
+	</div>
+	<div class="col-12 replay_textarea_wrap">
+		<textarea id="replyText" class="form-control"  placeholder="댓글을 입력해주세요"></textarea>
+	</div>
+	<div class="col-12 reply_btn_wrap">
+		<input type="button" value="완료" class="btn_style_1" onclick="replyOnReplyFunc()" >
+		<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
+	</div>
+	
+     
 </body>
 </html> 
