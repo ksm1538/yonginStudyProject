@@ -28,7 +28,7 @@
 	</div>
 	<div class="col-12 reply_user_info_wrap">
 				<div class="reply_user_info_title">작성자ID</div>
-				<div class="reply_user_textbox"><input type="text" class="textbox_style_1" value="${user.userId}"></div>
+				<div class="reply_user_textbox"><input type="text" class="textbox_style_1" value="${user.userId}" readonly="true"></div>
 	</div>
 	<div class="col-12 replay_textarea_wrap">
 		<textarea id="replyText" class="form-control"  placeholder="댓글을 입력해주세요"></textarea>

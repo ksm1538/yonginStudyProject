@@ -287,23 +287,18 @@ function deleteReply(id){
 	});
 }
 
-/* 댓글 작성 호출 */
+/* 댓글 작성(대댓글) 호출 */
 function openReplyModal(id){
 	var parentData2 = {
 			replyCode : id,
 			boardCode : parentData.boardCode
 	}
 	
-	if($('#replyText').val() == ""){
-		dToast.push("댓글을 입력해주세요.");
-		return;
-	}
-	
 	replyModal.open({
 		width: 600,
 		height: 310,
 		iframe: {
-			method: "POST",
+			method: "post",
 			url: "/reply/replyOnReplyForm.do",
 			param: callBack = parentData2
 		},
@@ -329,7 +324,7 @@ function openUpdateModal(id){
 		width: 600,
 		height: 310,
 		iframe: {
-			method: "get",
+			method: "post",
 			url: "/reply/updateReplyForm.do",
 			param: callBack = parentData2
 		},

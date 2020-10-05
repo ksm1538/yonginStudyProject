@@ -303,7 +303,7 @@ function openReplyModal(id){
 		width: 600,
 		height: 310,
 		iframe: {
-			method: "get",
+			method: "post",
 			url: "/reply/replyOnReplyForm.do",
 			param: callBack = parentData2
 		},
@@ -329,7 +329,7 @@ function openUpdateModal(id){
 		width: 600,
 		height: 310,
 		iframe: {
-			method: "get",
+			method: "post",
 			url: "/reply/updateReplyForm.do",
 			param: callBack = parentData2
 		},
