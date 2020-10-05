@@ -156,6 +156,11 @@ function saveReply(){
 			replyText : $('#replyText').val()
 	}
 	
+	if($('#replyText').val() == ""){
+		dToast.push("댓글을 입력해주세요.");
+		return;
+	}
+	
 	$.ajax({
  		type: "POST",
  		url : "/reply/insertReply.json",
@@ -166,7 +171,6 @@ function saveReply(){
 			switch(data.result){
 			    case COMMON_SUCCESS:
 			    	window.location.reload();
-			    	
 			    	break;    
 			    case COMMON_FAIL:
 			    	dialog.alert(data.message); 
@@ -290,11 +294,16 @@ function openReplyModal(id){
 			boardCode : parentData.boardCode
 	}
 	
+	if($('#replyText').val() == ""){
+		dToast.push("댓글을 입력해주세요.");
+		return;
+	}
+	
 	replyModal.open({
 		width: 600,
 		height: 310,
 		iframe: {
-			method: "get",
+			method: "POST",
 			url: "/reply/replyOnReplyForm.do",
 			param: callBack = parentData2
 		},

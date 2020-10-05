@@ -119,7 +119,8 @@ qnaSxnList.forEach(function(n){
 	  					<textarea name="replyText" id="replyText" class="form-control" placeholder="댓글을 입력해주세요" style="margin-top:5px; width:99%; height:60px;"></textarea>	    				
 	  				</div>
 	  				
-	  				<button id="inputReplyCnButton" class="btn_style_1" onclick="saveReply();" style="">댓글 입력하기</button>		
+	  				<input type="button" id="inputReplyCnButton" class="btn_style_1" onclick="saveReply();" style="" value="댓글 입력하기">	
+	  				
 	  				 
 
 				</div>

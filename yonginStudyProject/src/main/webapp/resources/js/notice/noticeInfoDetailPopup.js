@@ -95,6 +95,11 @@ function saveReply(){
 			replyText : $('#replyText').val()
 	}
 	
+	if($("#replyText").val() == ""){
+		dToast.push("댓글 내용을 입력해주세요.");
+		return;
+	}
+	
 	$.ajax({
  		type: "POST",
  		url : "/reply/insertReply.json",

@@ -53,7 +53,7 @@ qnaSxnList.forEach(function(n){
 					<input type="text" id=searchBoardRgstusId  class="textbox_style_1 color_bg" onkeyup="">
 				</div>
 				<div class="make_qna_search_box qna_name">
-					<div class="make_qna_box_title">작성 제목</div>
+					<div class="make_qna_box_title">제목</div>
 					<input type="text" id="searchBoardTitle" class="textbox_style_1 color_bg" onkeyup="">
 				</div>
 				<div class="make_qna_search_box get_search_btn">
