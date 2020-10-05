@@ -75,12 +75,34 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 				</div>
 				
 			</div>
+			
+			<div class="reply_con">
+					<div class="reply_numbering_con">
+						<sapn class="reply_title">댓글&nbsp;</sapn><span class="reply_number" id="replyCount"></span><span class="reply_amount">개</span>
+					</div>
+					  
+	 
+	  				<div id="replyList" class="reply_list"></div>
+	  
+	  				<div id="inputReplyDiv" class="reply_write">
+	  					<textarea name="replyText" id="replyText" class="form-control" placeholder="댓글을 입력해주세요" style="margin-top:5px; width:99%; height:60px;"></textarea>	    				
+	  				</div>
+	  				
+	  				<input type="button" id="inputReplyCnButton" class="btn_style_1" onclick="saveReply();" style="" value="댓글 입력하기">	
+	  				
+	  			
+			</div>
+			
+			
 			<div class="btn_style_1_con">
 					<c:if test="${user.userIsAdmin == 'Y'}">
             	  		<input type="button" value="수정하기" class="btn_style_1" onclick="openReviseSystemNotice()" >
            			</c:if>
 					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
 			</div> 
+			
+			
+						
 	  </form:form>
 	
 	</div> 

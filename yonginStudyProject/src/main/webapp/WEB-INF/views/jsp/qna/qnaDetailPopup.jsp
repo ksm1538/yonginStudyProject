@@ -121,8 +121,7 @@ qnaSxnList.forEach(function(n){
 	  				
 	  				<input type="button" id="inputReplyCnButton" class="btn_style_1" onclick="saveReply();" style="" value="댓글 입력하기">	
 	  				
-	  				 
-
+	  			
 				</div>
 				
 				<div class="btn_style_1_con_2">

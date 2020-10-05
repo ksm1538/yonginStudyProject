@@ -26,7 +26,7 @@ qnaListGrid.setConfig({
 			{key : "", label: "", align: "center", width:"10%", 
 	       		 formatter: function (){
 	       			 if(this.item.qnaStatus == "20"){
-	       				 return '<button type="button" onclick="openAnswerForm(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none;font-weight:bold">답글 확인</button>';
+	       				 return '<button type="button" class="reply_check_btn" onclick="openAnswerForm(' + this.dindex + ')" style="">답글 확인</button>';
 	       			 }else{
 	       				 return "";
 	       			 }

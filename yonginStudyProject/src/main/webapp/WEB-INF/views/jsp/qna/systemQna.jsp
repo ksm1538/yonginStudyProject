@@ -42,7 +42,7 @@ qnaSxnList.forEach(function(n){
 					<div class="tc question_mark"><span>?</span></div>
 					<div class="qestion_desc_box_con">
 						<div class="question_tri type_2"></div>
-						<div class="question_desc type_2">궁금한사항을 물어볼 수 있는 공간 입니다. 궁금증을 해결하세요</div>
+						<div class="question_desc type_2">궁금한사항을 물어볼 수 있는 공간 입니다. 더블클릭하면 상세정보를 볼 수 있고 답글 확인 버튼을 누르면 답글을 확인할 수 있습니다.</div>
 					</div>
 				</div>
 			</div>
@@ -60,7 +60,7 @@ qnaSxnList.forEach(function(n){
 					  <input type="button" value="검색" class="btn_style_1" onclick="" >
 				</div>
 				
-				<input type="button" value="질문 하기" class="btn_style_1" onclick="writeQna();" style="float:left; margin-left:33%">
+				<input type="button" value="질문 하기" class="btn_style_1" onclick="writeQna();" style="float:left; margin-left:37%">
 			</div>
 			
 			<div style="width: 100%;" >  

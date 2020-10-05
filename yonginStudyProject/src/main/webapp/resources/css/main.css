@@ -391,6 +391,18 @@ html, body {
 .study_apply_close_btn{margin-left:15px;}
 
 
+/*댓글 공통*/
+.reply_con{margin-left:115px; width:550px;}
+.reply_con .reply_title{font-weight:bold;}
+.reply_con .reply_number{font-size:25px; color:#7f99e2; font-weight:bold;}
+.reply_con .reply_amonut{font-weight:bold;}
+
+.reply_con .reply_list{margin-bottom:30px; overflow:auto; max-height:200px;}
+.reply_con .reply_write{margin-bottom:15px; width:550px;}
+.reply_con .form-control{border:2px solid;}
+.reply_con .btn_style_1{width:150px;}
+
+
 
 
 /*공지사항*/
@@ -475,16 +487,7 @@ html, body {
 .qna_detail_pop_content_wrap .btn_style_1_con .btn_style_1{margin-left:15px; margin-right:15px; margin-bottom:50px;}
 .qna_detail_pop_content_wrap .btn_style_1_con_2{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:30px;}
 
-.qna_detail_pop_content_wrap .reply_con{margin-left:115px; width:550px;}
-.qna_detail_pop_content_wrap .reply_con .reply_title{font-weight:bold;}
-.qna_detail_pop_content_wrap .reply_con .reply_number{font-size:25px; color:#7f99e2; font-weight:bold;}
-.qna_detail_pop_content_wrap .reply_con .reply_amonut{font-weight:bold;}
 
-.qna_detail_pop_content_wrap .reply_con .reply_list{margin-bottom:30px;}
-.qna_detail_pop_content_wrap .reply_con .reply_write{margin-bottom:15px; width:550px;}
-.qna_detail_pop_content_wrap .reply_con .form-control{border:2px solid;}
-
-.qna_detail_pop_content_wrap .reply_con .btn_style_1{width:150px;}
 
 /*qna 수정*/
 .qna_revise_pop_wrap{padding:40px 0; background-color:#7f99e2; margin-bottom:30px;}
@@ -504,6 +507,29 @@ html, body {
 .write_revise_content_wrap .write_answer_file_add_con{margin-bottom:20px;}
 .write_revise_content_wrap .write_qna_btn_con{display:flex; flex-wrap:nowrap; justify-content:center;}
 .write_revise_content_wrap .write_qna_btn_con .btn_style_1{margin:0 15px;}
+
+.reply_check_btn{height:35px; font-weight:bold; border:2px solid #000; border-radius:10px; outline:none;}
+.reply_check_btn:hover{color:#fff; background-color:#7f99e2;}
+
+/*qna 답글 상세*/
+.qna_answer_detail_pop_wrap{padding:40px 0; background-color:#7f99e2; margin-bottom:30px;}
+.qna_answer_detail_pop_wrap .circle_btn{top: -25%; z-index:3;}
+.qna_answer_detail_pop_con .qna_answer_detai_title{font-size:30px; font-weight:bold; color:#fff;}
+
+.qna_answer_detail_content_wrap .answer_file_desc{margin-left:115px; margin-bottom:30px;}
+.answer_btn_style_1_con{display:flex; flex-wrap:nowrap; justify-content:center;}
+.answer_btn_style_1_con .btn_style_1{margin:0 15px;}
+
+/*qna 답글 수정*/
+.revise_qna_answer_wrap{padding:40px 0; background-color:#7f99e2; margin-bottom:30px;}
+.revise_qna_answer_wrap .circle_btn{top: -25%; z-index:3;}
+.revise_qna_answer_con .revise_qna_answer_title{font-size:30px; font-weight:bold; color:#fff;}
+
+.revise_qna_answer_content_wrap .revise_answer_file_con{margin-left:115px; margin-bottom:30px;}
+.revise_qna_answer_content_wrap .add_revise_answer_file_con{margin-left:115px; margin-bottom:20px;}
+.revise_qna_answer_content_wrap .add_revise_answer_file_con .btn_style_1{margin-bottom:20px;}
+.revise_qna_answer_content_wrap .btn_style_1_con .btn_style_1{margin:0 15px;}
+
 
 /*=======마이페이지==========*/
 .mypage_content_wrap{position:relative; height:700px; padding:120px 70px;}
