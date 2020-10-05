@@ -198,7 +198,7 @@ studySxnList.forEach(function(n){
 	<div class="col-12 mypage_myapply_wrap" id="list4">
 		<div class="col-12 col-center mw-1200 mypage_myapply_con">
 			<div class="mypage_myapply_title_con">
-				<div class="mypage_myapply_title"><span>나의 스터디 현황</span></div>
+				<div class="mypage_myapply_title"><span>나의 스터디 신청서</span></div>
 				<div class="question_mark_con">
 					<div class="tc question_mark"><span>?</span></div>
 					<div class="qestion_desc_box_con">
