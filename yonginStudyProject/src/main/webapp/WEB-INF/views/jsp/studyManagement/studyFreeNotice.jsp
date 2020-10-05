@@ -56,7 +56,7 @@
 		</div>
 		
 		<div class="tc study_free_notice_btn_con">
-			<input type="button" value="작성하기" class="btn_style_1">
+			<input type="button" value="작성하기" class="btn_style_1" onclick="openWriteStudyFreeNotice()">
 		</div>
 			
 			

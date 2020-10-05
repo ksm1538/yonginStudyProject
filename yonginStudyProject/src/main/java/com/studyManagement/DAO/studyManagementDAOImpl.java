@@ -1,4 +1,4 @@
-package com.studyManagement.DAO;
+package com.studyManagement.DAO; 
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.notice.VO.boardVO;
 import com.studyManagement.VO.studyManagementInfoVO;
 
 @Repository
@@ -22,5 +23,10 @@ public class studyManagementDAOImpl implements studyManagementDAO{
 	@Override
 	public int selectStudyMemeberListToCnt(studyManagementInfoVO studyManagementInfoVO)	{
 		return sqlSession.selectOne("studyManagementMapper.selectStudyMemeberListToCnt", studyManagementInfoVO);
+	}
+	
+	@Override
+	public void writeStudyFreeNotice(boardVO data) throws Exception{
+		sqlSession.insert("studyManagementMapper.insertStudyFreeNotice", data);
 	}
 }

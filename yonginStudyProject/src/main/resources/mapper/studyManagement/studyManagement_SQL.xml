@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE mapper
 	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -42,4 +42,36 @@
 				AND	USER_IN_STUDY.STUDY_CODE	=	#{studyCode}
 		]]>
 	</select>
+	
+	<insert id="insertStudyFreeNotice"> 
+		<selectKey keyProperty="boardCode" resultType="String" order="BEFORE">
+			SELECT	('SYSNOTICE_' || LPAD(BOARD_SEQ.nextval,8,0))	FROM 	DUAL    
+		</selectKey>
+	
+		<![CDATA[
+			INSERT 
+			INTO	BOARD_TB
+				(	
+					BOARD_CODE
+				,	BOARD_TITLE
+				,	BOARD_DESC
+				,	RGSTUS_ID
+				,	RGDT_DT
+				,	UPDT_DT
+				,	USE_YN
+				,	BOARD_TYPE
+				)  
+			VALUES	
+				(	
+					#{boardCode}
+				,	#{boardTitle}
+				,	#{boardDesc}
+				,	#{rgstusId}
+				,	sysdate
+				,	sysdate
+				,	'Y'
+				,	'40'
+				)
+		]]>
+	</insert>
 </mapper>

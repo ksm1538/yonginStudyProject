@@ -1,4 +1,5 @@
 var studyFreeNoticeListGrid = new ax5.ui.grid();
+var studyFreeNoticeInfoWriteModal = new ax5.ui.modal();
 
 $(document).ready(function () {
 	
@@ -46,3 +47,36 @@ $(document).ready(function () {
 	
 	
 });
+
+/*스터디 자유게시판 작성 호출 */
+function openWriteStudyFreeNotice(){
+	studyFreeNoticeInfoWriteModal.open({
+		width: 800,
+		height: 710,
+		iframe: {
+			method: "get",
+			url: "/studyFreeNoticeWrite.do",
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
+
+// 자유게시판 작성 팝업창 닫고 새로고침
+function writeModalCloseWithRefresh(){
+	studyFreeNoticeInfoWriteModal.close();
+	window.location.reload();
+	
+}
+
+// 자유게시판 작성 팝업창 닫기
+function writeModalClose(){
+	studyFreeNoticeInfoWriteModal.close();
+}
