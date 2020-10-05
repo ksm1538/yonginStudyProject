@@ -74,4 +74,60 @@
 				)
 		]]>
 	</insert>
+	
+	<select id="selectStudyFreeNoticeList" resultType="com.notice.VO.boardVO" >
+		<![CDATA[
+			SELECT	*
+			  FROM	(
+						SELECT	ROWNUM	as RNUM
+							 ,	main.*	
+						  FROM	(
+									SELECT	/*+ ordered use_nl(bt) INDEX_DESC(bt BOARD_IDX ) */
+											bt.BOARD_CODE						as	boardCode
+										,	bt.BOARD_TITLE 						as 	boardTitle
+										,	(SELECT ui.USER_ID	
+										     FROM   USER_INFO ui
+											 WHERE  ui.USER_CODE   =   bt.RGSTUS_ID)    as	rgstusId
+										,	TO_CHAR(bt.RGDT_DT, 'YYYY-MM-DD HH24:MI') 	as 	rgdtDt
+										,	bt.BOARD_COUNT								as	boardCount
+									FROM	BOARD_TB bt
+									WHERE	bt.USE_YN			=	'Y'
+										AND	bt.BOARD_TYPE		=	'10'
+			]]>
+									<if test='searchBoardRgstusId != ""'>
+											AND	bt.RGSTUS_ID			IN	(SELECT	ui2.USER_CODE
+ 																			 FROM	USER_INFO ui2
+																	 		 WHERE	ui2.USE_YN	=	'Y'
+																		 		AND	ui2.USER_ID	LIKE	'%'	||	#{searchBoardRgstusId} || '%'
+																			)
+									</if>
+									<if test='searchBoardTitle != ""'>
+											AND	bt.BOARD_TITLE	LIKE	'%'	||	#{searchBoardTitle} || '%'
+									</if>
+		<![CDATA[
+								) main 
+						  WHERE ROWNUM <= #{last}
+					)
+			WHERE	RNUM >= #{first}
+		]]>
+	</select>
+	
+	<select id="selectStudyFreeNoticeListToCnt" resultType="int">
+		<![CDATA[
+			SELECT	COUNT(*)
+			FROM	BOARD_TB
+			WHERE	BOARD_TB.USE_YN			=	'Y'
+				AND	BOARD_TB.BOARD_TYPE		=	'40'
+		]]>
+		<if test='searchBoardRgstusId != ""'>
+				AND	BOARD_TB.RGSTUS_ID	IN		(SELECT	USER_INFO.USER_CODE
+													 	FROM	USER_INFO
+													 	WHERE	USER_INFO.USE_YN	=	'Y'
+													 	AND	USER_INFO.USER_ID	LIKE	'%'	||	#{searchBoardRgstusId} || '%'
+													)
+		</if>
+		<if test='searchBoardTitle != ""'>
+				AND	BOARD_TB.BOARD_TITLE	LIKE	'%'	||	#{searchBoardTitle} || '%'
+		</if>
+	</select>
 </mapper>

@@ -12,4 +12,8 @@ public interface studyManagementDAO {
 	public int selectStudyMemeberListToCnt(studyManagementInfoVO studyManagementInfoVO);
 	
 	public void writeStudyFreeNotice(boardVO data) throws Exception;
+	
+	public int selectStudyFreeNoticeListToCnt(boardVO boardVO);
+	
+	public List<boardVO> selectStudyFreeNoticeList(boardVO boardVO);
 }

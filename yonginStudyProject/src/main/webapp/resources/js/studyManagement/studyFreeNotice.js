@@ -1,5 +1,6 @@
 var studyFreeNoticeListGrid = new ax5.ui.grid();
 var studyFreeNoticeInfoWriteModal = new ax5.ui.modal();
+var _pageNo = 0;
 
 $(document).ready(function () {
 	
@@ -33,20 +34,61 @@ $(document).ready(function () {
             navigationItemCount: 9,
             height: 30,
             display: true,
-            firstIcon: '|<', 
-            prevIcon: '<',
-            nextIcon: '>',
-            lastIcon: '>|',
-            display: false,
+            firstIcon: '<i class="fa fa-step-backward" aria-hidden="true"></i>', 
+            prevIcon: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+            nextIcon: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+            lastIcon: '<i class="fa fa-step-forward" aria-hidden="true"></i>',
             onChange: function () {
 				_pageNo = this.page.selectPage;
-				getStudyNoticeList();
+				getStudyFreeNoticeList();
                 },
             },
         });
 	
-	
+	getStudyFreeNoticeList();
 });
+
+/* 스터디 자유게시판 리스트 조회 함수 */
+function getStudyFreeNoticeList(){
+	var sendData = {
+			page :	_pageNo,
+			searchBoardRgstusId:$('#boardRgstusId').val(),
+			searchBoardTitle:$('#boardTitle').val()
+	}
+	
+	$.ajax({
+		type: "POST",
+ 		url : "/notice/selectStudyFreeNoticeList.json",
+		contentType: "application/json; charset=UTF-8",
+		data : JSON.stringify(sendData),
+		async: false,
+		success : function(data, status, xhr) {
+			switch(data.result){
+			    case COMMON_SUCCESS:
+			    	if(data.resultList.length>0){
+			    		studyFreeNoticeListGrid.setData({
+			    			list: data.resultList,
+			    		 	page: {
+			    		 		currentPage: _pageNo || 0,
+			    			 	pageSize: data.dataPerPage,
+			    			 	totalElements: data.total,
+			    			 	totalPages: data.totalPages
+			    		 	}, 
+			    		});
+			    	}else{
+			    		dToast.push("자유게시판 목록이 없습니다.");
+			    		studyFreeNoticeListGrid.setData([]);
+			    	}
+			    	break;    
+			    case COMMON_FAIL:
+			    	dialog.alert(data.message); 
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+		}
+	}); 
+}
 
 /*스터디 자유게시판 작성 호출 */
 function openWriteStudyFreeNotice(){

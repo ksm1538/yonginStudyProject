@@ -29,4 +29,14 @@ public class studyManagementDAOImpl implements studyManagementDAO{
 	public void writeStudyFreeNotice(boardVO data) throws Exception{
 		sqlSession.insert("studyManagementMapper.insertStudyFreeNotice", data);
 	}
+	
+	@Override
+	public int selectStudyFreeNoticeListToCnt(boardVO boardVO) {
+		return sqlSession.selectOne("studyManagementMapper.selectStudyFreeNoticeListToCnt", boardVO);
+	}
+	
+	@Override
+	public List<boardVO> selectStudyFreeNoticeList(boardVO boardVO){
+		return sqlSession.selectList("studyManagementMapper.selectStudyFreeNoticeList", boardVO);
+	}
 }

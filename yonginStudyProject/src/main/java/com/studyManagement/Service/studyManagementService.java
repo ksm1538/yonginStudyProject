@@ -14,5 +14,9 @@ public interface studyManagementService {
 	int selectStudyMemeberListToCnt(studyManagementInfoVO studyManagementInfoVO);
 	
 	void writeStudyFreeNotice(boardVO data, MultipartHttpServletRequest mpRequest) throws Exception;
+	
+	int selectStudyFreeNoticeListToCnt(boardVO boardVO);
+	
+	List<boardVO> selectStudyFreeNoticeList(boardVO boardVO);
 
 }

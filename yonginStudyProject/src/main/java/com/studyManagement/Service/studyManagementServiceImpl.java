@@ -41,5 +41,15 @@ public class studyManagementServiceImpl implements studyManagementService{
 			fileDAO.insertFile(list.get(i)); 
 		}
 	}
+	
+	@Override
+	public int selectStudyFreeNoticeListToCnt(boardVO boardVO) {
+		return studyManagementDAO.selectStudyFreeNoticeListToCnt(boardVO);
+	}
+	
+	@Override
+	public List<boardVO> selectStudyFreeNoticeList(boardVO boardVO){
+		return studyManagementDAO.selectStudyFreeNoticeList(boardVO);
+	}
 
 }
