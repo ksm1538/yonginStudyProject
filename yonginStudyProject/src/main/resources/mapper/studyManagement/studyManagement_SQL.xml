@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?> 
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
 	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -157,6 +157,16 @@
 			UPDATE	BOARD_TB
 			SET		BOARD_COUNT	=	BOARD_COUNT+1
 			WHERE	BOARD_CODE	=	#{boardCode}
+		]]>
+	</update>
+	
+	<update id="reviseStudyFreeNotice">
+		<![CDATA[
+			UPDATE 	BOARD_TB
+			SET		BOARD_TITLE			=	#{boardTitle}
+				,	BOARD_DESC			=	#{boardDesc}
+				,	UPDT_DT				=	sysdate
+			WHERE	BOARD_CODE			=	#{boardCode}
 		]]>
 	</update>
 </mapper>

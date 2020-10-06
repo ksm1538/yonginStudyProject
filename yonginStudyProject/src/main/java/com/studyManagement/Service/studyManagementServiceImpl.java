@@ -1,4 +1,4 @@
-package com.studyManagement.Service; 
+package com.studyManagement.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -60,6 +60,25 @@ public class studyManagementServiceImpl implements studyManagementService{
 	public boardVO selectStudyFreeNoticeInfoDetail(String boardCode) throws Exception {
 		studyManagementDAO.updateStudyFreeNoticeCnt(boardCode);
 		return studyManagementDAO.selectStudyFreeNoticeInfoDetail(boardCode);
+	}
+	
+	@Override
+	public void reviseStudyFreeNotice(boardVO data, MultipartHttpServletRequest mpRequest) throws Exception{
+		studyManagementDAO.reviseStudyFreeNotice(data);
+		
+		String[] files = data.getFileCodeDel();
+		
+		List<Map<String, Object>> list = FileUtilsController.parseUpdateFileInfo(data, files, mpRequest);
+		Map<String, Object> tempMap = null;
+		int size = list.size();
+		for(int i = 0; i<size; i++) {
+			tempMap = list.get(i);
+			if(tempMap.get("IS_NEW").equals("Y")) {
+				fileDAO.insertFile(tempMap);
+			}else {
+				fileDAO.updateFile(tempMap);
+			}
+		}
 	}
 
 }

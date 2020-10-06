@@ -1,4 +1,4 @@
-package com.studyManagement.Service; 
+package com.studyManagement.Service;
 
 import java.util.List;
 
@@ -20,5 +20,7 @@ public interface studyManagementService {
 	List<boardVO> selectStudyFreeNoticeList(boardVO boardVO);
 	
 	boardVO selectStudyFreeNoticeInfoDetail(String boardCode) throws Exception;
+	
+	void reviseStudyFreeNotice(boardVO data, MultipartHttpServletRequest mpRequest) throws Exception;
 
 }
