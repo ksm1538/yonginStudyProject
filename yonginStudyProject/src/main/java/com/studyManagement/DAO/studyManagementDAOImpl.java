@@ -39,4 +39,14 @@ public class studyManagementDAOImpl implements studyManagementDAO{
 	public List<boardVO> selectStudyFreeNoticeList(boardVO boardVO){
 		return sqlSession.selectList("studyManagementMapper.selectStudyFreeNoticeList", boardVO);
 	}
+	
+	@Override
+	public boardVO selectStudyFreeNoticeInfoDetail(String boardCode) {
+		return sqlSession.selectOne("studyManagementMapper.selectStudyFreeNoticeInfoDetail", boardCode);
+	}
+	
+	@Override
+	public void updateStudyFreeNoticeCnt(String boardCode) throws Exception{
+		sqlSession.update("studyManagementMapper.updateStudyFreeNoticeCnt", boardCode);
+	}
 }

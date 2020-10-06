@@ -18,5 +18,7 @@ public interface studyManagementService {
 	int selectStudyFreeNoticeListToCnt(boardVO boardVO);
 	
 	List<boardVO> selectStudyFreeNoticeList(boardVO boardVO);
+	
+	boardVO selectStudyFreeNoticeInfoDetail(String boardCode) throws Exception;
 
 }

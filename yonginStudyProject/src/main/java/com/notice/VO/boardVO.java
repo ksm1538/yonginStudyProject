@@ -5,6 +5,7 @@ public class boardVO {
 	private String boardTitle = "";
 	private String boardDesc = "";
 	private String rgstusId = "";
+	private String rgstusName = "";
 	private String useYn = "";
 	private String rgdtDt = "";
 	private String updtDt = "";
@@ -21,8 +22,14 @@ public class boardVO {
 	private String[]	fileCodeDel;
 	private String[]	fileNameDel;
 	private String	rgstusCode="";
+	private String studyCode = "";
 	
-	
+	public String getStudyCode() {
+		return studyCode;
+	}
+	public void setStudyCode(String studyCode) {
+		this.studyCode = studyCode;
+	}
 	public String getBoardCode() {
 		return boardCode;
 	}
@@ -40,6 +47,12 @@ public class boardVO {
 	}
 	public void setBoardDesc(String boardDesc) {
 		this.boardDesc = boardDesc;
+	}
+	public String getRgstusName() {
+		return rgstusName;
+	}
+	public void setRgstusName(String rgstusName) {
+		this.rgstusName = rgstusName;
 	}
 	public String getRgstusId() {
 		return rgstusId;

@@ -5,7 +5,7 @@
 	 
 <mapper namespace="studyManagementMapper"> 
 	
-	<select id="selectStudyNoticeList" resultType="com.studyManagement.VO.studyManagementInfoVO" >
+	<select id="selectStudyMemberList" resultType="com.studyManagement.VO.studyManagementInfoVO" >
 		<![CDATA[
 			SELECT	*
 			  FROM	(
@@ -34,7 +34,7 @@
 		]]>
 	</select>
 	
-	<select id="selectStudyNoticeListToCnt" resultType="int">
+	<select id="selectStudyMemeberListToCnt" resultType="int">
 		<![CDATA[
 			SELECT	COUNT(*)
 			FROM	USER_IN_STUDY
@@ -88,11 +88,14 @@
 										,	(SELECT ui.USER_ID	
 										     FROM   USER_INFO ui
 											 WHERE  ui.USER_CODE   =   bt.RGSTUS_ID)    as	rgstusId
+										,   (SELECT ui.USER_NAME
+                                             FROM   USER_INFO ui
+                                             WHERE  ui.USER_CODE    =   bt.RGSTUS_ID)   as 	rgstusName
 										,	TO_CHAR(bt.RGDT_DT, 'YYYY-MM-DD HH24:MI') 	as 	rgdtDt
 										,	bt.BOARD_COUNT								as	boardCount
 									FROM	BOARD_TB bt
 									WHERE	bt.USE_YN			=	'Y'
-										AND	bt.BOARD_TYPE		=	'10'
+										AND	bt.BOARD_TYPE		=	'40'
 			]]>
 									<if test='searchBoardRgstusId != ""'>
 											AND	bt.RGSTUS_ID			IN	(SELECT	ui2.USER_CODE
@@ -130,4 +133,30 @@
 				AND	BOARD_TB.BOARD_TITLE	LIKE	'%'	||	#{searchBoardTitle} || '%'
 		</if>
 	</select>
+	
+	<select id="selectStudyFreeNoticeInfoDetail" parameterType="String" resultType="com.notice.VO.boardVO">
+		<![CDATA[
+			SELECT	BOARD_TB.BOARD_CODE 			as boardCode
+				 ,	BOARD_TB.BOARD_TITLE 			as boardTitle
+				 ,	BOARD_TB.BOARD_DESC 			as boardDesc
+				 ,	BOARD_TB.BOARD_COUNT  			as boardCount
+				 ,	BOARD_TB.UPDT_DT				as updtDt
+				 ,	USER_INFO.USER_ID 				as rgstusId
+				 ,	USER_INFO.USER_CODE 			as rgstusCode
+				 ,	BOARD_TB.QNA_STATUS				as	qnaStatus
+				 ,	BOARD_TB.HGRNK_BOARD_CODE		as	qnaStatus
+			FROM	BOARD_TB,
+					USER_INFO
+			WHERE	USER_INFO.USER_CODE		=	BOARD_TB.RGSTUS_ID
+				AND	BOARD_TB.BOARD_CODE		=	#{boardCode}
+		]]>
+	</select>
+	
+	<update id="updateStudyFreeNoticeCnt">
+		<![CDATA[
+			UPDATE	BOARD_TB
+			SET		BOARD_COUNT	=	BOARD_COUNT+1
+			WHERE	BOARD_CODE	=	#{boardCode}
+		]]>
+	</update>
 </mapper>

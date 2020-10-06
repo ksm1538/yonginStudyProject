@@ -1,5 +1,6 @@
 var studyFreeNoticeListGrid = new ax5.ui.grid();
 var studyFreeNoticeInfoWriteModal = new ax5.ui.modal();
+var studyFreeNoticeInfoDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
 var _pageNo = 0;
 
 $(document).ready(function () {
@@ -10,10 +11,11 @@ $(document).ready(function () {
         showLineNumber: false,
         //showRowSelector: true,
         columns: [ 
-            {key : "freeNoticeNum", label: "번호", align: "center", width:"10%"},
-        	{key : "freeNoticeID", label: "작성자 아이디", align: "center", width:"20%"},
-        	{key : "freeNoticeMember",label : "작성자 이름", align : "center",width : "20%"},
-        	{key : "freeNoticeName",label : "제목", align : "right",width : "40%"}
+            {key : "boardCode", label: "번호", align: "center", width:"10%"},
+        	{key : "rgstusId", label: "작성자 아이디", align: "center", width:"20%"},
+        	{key : "rgstusName",label : "작성자 이름", align : "center",width : "20%"},
+        	{key : "boardTitle",label : "제목", align : "center",width : "40%"},
+			{key : "boardCount", label: "조회수", align: "center", width:"10%"},
         ],
         header: {
         	align:"center",
@@ -26,6 +28,7 @@ $(document).ready(function () {
                     onClick: function () 	{
 					},
 					onDBLClick: function(){
+						selectStudyFreeNoticeInfoDetail(this.list[this.dindex]["boardCode"]);
 					},
 					onDataChanged: function(){
 					},
@@ -98,6 +101,32 @@ function openWriteStudyFreeNotice(){
 		iframe: {
 			method: "get",
 			url: "/studyFreeNoticeWrite.do",
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
+
+// 스터디 자유게시판 상세 보기 팝업 
+function selectStudyFreeNoticeInfoDetail(boardCode){
+	var parentData={
+			boardCode:boardCode
+	}
+	
+	studyFreeNoticeInfoDetailModal.open({
+		width: 800,
+		height: 810,
+		iframe: {
+			method: "post",
+			url: "/studyManagement/studyFreeNoticeInfoDetailPopup.do",
+			param: callBack = parentData
 		},
 		onStateChanged: function(){
 			if (this.state === "open") {

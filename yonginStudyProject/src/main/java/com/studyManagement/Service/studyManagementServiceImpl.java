@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.commonFunction.Controller.FileUtilsController;
 import com.commonFunction.DAO.fileDAO;
+import com.commonFunction.DAO.replyDAO;
 import com.studyManagement.DAO.studyManagementDAO;
 import com.studyManagement.VO.studyManagementInfoVO;
 import com.notice.VO.boardVO;
@@ -20,6 +21,9 @@ public class studyManagementServiceImpl implements studyManagementService{
 	
 	@Autowired
 	fileDAO fileDAO;
+	
+	@Autowired
+	replyDAO replyDAO;
 	
 	@Override
 	public List<studyManagementInfoVO> selectStudyMemberList(studyManagementInfoVO studyManagementInfoVO){
@@ -50,6 +54,12 @@ public class studyManagementServiceImpl implements studyManagementService{
 	@Override
 	public List<boardVO> selectStudyFreeNoticeList(boardVO boardVO){
 		return studyManagementDAO.selectStudyFreeNoticeList(boardVO);
+	}
+	
+	@Override
+	public boardVO selectStudyFreeNoticeInfoDetail(String boardCode) throws Exception {
+		studyManagementDAO.updateStudyFreeNoticeCnt(boardCode);
+		return studyManagementDAO.selectStudyFreeNoticeInfoDetail(boardCode);
 	}
 
 }

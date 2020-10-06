@@ -16,4 +16,8 @@ public interface studyManagementDAO {
 	public int selectStudyFreeNoticeListToCnt(boardVO boardVO);
 	
 	public List<boardVO> selectStudyFreeNoticeList(boardVO boardVO);
+	
+	public boardVO selectStudyFreeNoticeInfoDetail(String boardCode);
+	
+	public void updateStudyFreeNoticeCnt(String boardCode) throws Exception;
 }
