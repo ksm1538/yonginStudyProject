@@ -78,7 +78,7 @@ public class studyFreeNoticeController {
 		
 		if(ltResult.size() < 1) {
 			mReturn.put("result", "success");
-			mReturn.put("message", "공지사항 목록이 없습니다.");
+			mReturn.put("message", "자유게시판 목록이 없습니다.");
 		}
 		
 		mReturn.put("result", "success");
