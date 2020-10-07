@@ -1,4 +1,4 @@
-var studyFreeNoticeListGrid = new ax5.ui.grid();
+var studyFreeNoticeListGrid = new ax5.ui.grid(); 
 var studyFreeNoticeInfoWriteModal = new ax5.ui.modal();
 var studyFreeNoticeInfoDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
 var _pageNo = 0;
@@ -150,4 +150,19 @@ function writeModalCloseWithRefresh(){
 // 자유게시판 작성 팝업창 닫기
 function writeModalClose(){
 	studyFreeNoticeInfoWriteModal.close();
+}
+
+//EnterKeyEvent
+function enterKeyEvent() {
+    if (window.event.keyCode == 13) {
+         // 엔터키가 눌렸을 때 실행할 내용
+    	_pageNo = 0;
+    	getStudyFreeNoticeList();
+    }
+}
+
+// 검색 버튼용 조회 함수
+function searchNoticeList(){
+	_pageNo = 0;
+	getStudyFreeNoticeList();
 }
