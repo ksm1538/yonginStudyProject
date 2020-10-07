@@ -1,4 +1,4 @@
-package com.studyManagement.DAO;
+package com.studyManagement.DAO; 
 
 import java.util.List;
 
@@ -53,5 +53,10 @@ public class studyManagementDAOImpl implements studyManagementDAO{
 	@Override
 	public void reviseStudyFreeNotice(boardVO data) throws Exception{
 		sqlSession.update("studyManagementMapper.reviseStudyFreeNotice", data);
+	}
+	
+	@Override
+	public void deleteStudyFreeNotice(String boardCode) throws Exception{
+		sqlSession.delete("studyManagementMapper.deleteStudyFreeNotice", boardCode);
 	}
 }

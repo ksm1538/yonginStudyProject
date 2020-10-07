@@ -81,4 +81,24 @@ public class studyFreeNoticeDetailPopupController {
 		
 		return mReturn;
 	}
+	
+	/**
+	 * 스터디 자유게시판 삭제
+	 * @param boardVO
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/studyManagement/studyFreeNoticeDelete.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> deleteMessageTo(@RequestBody boardVO boardVO, HttpSession session) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		
+		studyManagementService.deleteStudyFreeNotice(boardVO);
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "성공적으로 삭제되었습니다.");
+		
+		return mReturn;
+	}
 }

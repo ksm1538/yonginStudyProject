@@ -1,4 +1,4 @@
-package com.studyManagement.Service;
+package com.studyManagement.Service; 
 
 import java.util.List;
 import java.util.Map;
@@ -79,6 +79,15 @@ public class studyManagementServiceImpl implements studyManagementService{
 				fileDAO.updateFile(tempMap);
 			}
 		}
+	}
+	
+	@Override
+	public void deleteStudyFreeNotice(boardVO boardVO) throws Exception{
+			String boardCode = boardVO.getBoardCode();
+			studyManagementDAO.deleteStudyFreeNotice(boardCode);
+			fileDAO.updateNFileWithDeleteBoard(boardCode);
+			replyDAO.deleteReplyWithBoardCode(boardCode);
+		
 	}
 
 }

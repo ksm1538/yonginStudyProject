@@ -1,4 +1,4 @@
-package com.studyManagement.Service;
+package com.studyManagement.Service; 
 
 import java.util.List;
 
@@ -23,4 +23,5 @@ public interface studyManagementService {
 	
 	void reviseStudyFreeNotice(boardVO data, MultipartHttpServletRequest mpRequest) throws Exception;
 
+	void deleteStudyFreeNotice(boardVO boardVO) throws Exception;
 }

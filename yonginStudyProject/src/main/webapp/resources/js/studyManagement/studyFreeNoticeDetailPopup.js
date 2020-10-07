@@ -1,4 +1,4 @@
-/** 변수 설정(시작) **/ 
+/** 변수 설정(시작) **/  
 var studyFreeNoticeInfoDetailBinder = new ax5.ui.binder();	// Binder 설정(데이터를 받아오면 이 Binder set 함으로써 데이터 자동으로 들어감)
 var parentData = self.parent.callBack;		// 부모 페이지에서 보낸 데이터 정의
 var replyModal = new ax5.ui.modal();
@@ -78,11 +78,76 @@ function closeModal(){
 	return self.parent.writeModalCloseWithRefresh();		// 부모 페이지의 close함수로 리턴
 }
 
+// 팝업창 닫고 새로고침
+function closeModalWithRefresh(){
+	self.parent.writeModalCloseWithRefresh();
+}
+
 // 수정하기 버튼 함수
 function openReviseSystemNotice(){
 
 	location.href = "/studyManagemet/studyFreeNoticeRevise.do";
 	//window.open("/notice/reviseNotice.do",'공지사항 수정','width=700px ,height=800px ,location=no,status=no,scrollbars=no');
+}
+
+// 삭제하기 버튼 함수
+function deleteStudyFreeNotice(){
+	
+
+    dialog.confirm({
+		msg:"해당 게시물을 삭제하시겠습니까?",
+		btns:{
+			yes: {
+				label:'네', onClick:function(key){
+					dialog.close();
+					
+					var sendData = {
+							boardCode:parentData.boardCode
+					}
+					
+					$.ajax({
+					     type: "POST",
+					     url : "/studyManagement/studyFreeNoticeDelete.json",
+					     data: JSON.stringify(sendData),
+					     dataType: "json",
+					     contentType: "application/json; charset=UTF-8",
+					     async: false,
+					     success : function(data, status, xhr) {
+					    	 switch(data.result){
+					    	 case COMMON_SUCCESS:
+					    		 dialog.confirm({
+							    		msg:data.message,
+							        	btns:{
+							        		yes: {
+							        			label:'확인'
+							        		},
+							        	}
+							        }, function(){
+							        	if(this.key=="yes"  || this.state == "close"){
+							        		closeModalWithRefresh();
+							        	}
+							    	});
+					    		 break;
+					    	 case COMMON_FAIL:
+					    		 dialog.alert(data.message);
+					    		 break;
+					    	 }
+					     },
+					     error: function(jqXHR, textStatus, errorThrown) {
+					        alert('error = ' + jqXHR.responseText);
+					     }
+					  }); 
+    			}
+			},
+			no: {
+				label:'아니오', onClick:function(key){
+					dialog.close();
+					return;
+    			}
+			}
+		}
+	}, function(){
+	});
 }
 
 

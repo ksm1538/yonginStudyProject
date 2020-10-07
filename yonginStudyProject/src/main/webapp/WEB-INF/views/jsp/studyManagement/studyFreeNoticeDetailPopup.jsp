@@ -1,4 +1,4 @@
-<!------ JSP 설정(시작) ------>
+<!------ JSP 설정(시작) ------> 
 <%@ page language="java" contentType="text/HTML;charset=UTF-8" pageEncoding="UTF-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -95,8 +95,9 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 			
 			
 			<div class="btn_style_1_con">
-            	  		<input type="button" value="수정하기" class="btn_style_1" onclick="openReviseSystemNotice()" >
+            	  	<input type="button" value="수정하기" class="btn_style_1" onclick="openReviseSystemNotice()" >
 					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
+					<input type="button" value="삭제하기" class="btn_style_1" onclick="deleteStudyFreeNotice()" >
 			</div> 
 			
 			

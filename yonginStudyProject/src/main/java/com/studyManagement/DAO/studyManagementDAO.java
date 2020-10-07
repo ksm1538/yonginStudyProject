@@ -1,4 +1,4 @@
-package com.studyManagement.DAO;
+package com.studyManagement.DAO; 
 
 import java.util.List;
 
@@ -22,4 +22,6 @@ public interface studyManagementDAO {
 	public void updateStudyFreeNoticeCnt(String boardCode) throws Exception;
 	
 	public void reviseStudyFreeNotice(boardVO data) throws Exception;
+	
+	public void deleteStudyFreeNotice(String boardCode) throws Exception;
 }
