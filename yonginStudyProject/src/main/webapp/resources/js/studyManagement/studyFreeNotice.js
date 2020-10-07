@@ -11,10 +11,10 @@ $(document).ready(function () {
         showLineNumber: false,
         //showRowSelector: true,
         columns: [ 
-            {key : "boardCode", label: "번호", align: "center", width:"10%"},
-        	{key : "rgstusId", label: "작성자 아이디", align: "center", width:"20%"},
-        	{key : "rgstusName",label : "작성자 이름", align : "center",width : "20%"},
         	{key : "boardTitle",label : "제목", align : "center",width : "40%"},
+			{key : "rgstusId", label: "작성자 아이디", align: "center", width:"20%"},
+        	{key : "rgstusName",label : "작성자 이름", align : "center",width : "20%"},
+			{key : "rgdtDt", label: "날짜", align: "center", width:"20%"},
 			{key : "boardCount", label: "조회수", align: "center", width:"10%"},
         ],
         header: {
