@@ -1,4 +1,4 @@
-/** 변수 설정(시작) **/
+/** 변수 설정(시작) **/ 
 var studyFreeNoticeInfoDetailBinder = new ax5.ui.binder();	// Binder 설정(데이터를 받아오면 이 Binder set 함으로써 데이터 자동으로 들어감)
 var parentData = self.parent.callBack;		// 부모 페이지에서 보낸 데이터 정의
 var fileIndex = 1;
@@ -106,7 +106,7 @@ function reviseStudyFreeNoticeFunc(){
 
 // 팝업창 닫기
 function closeModal(){
-	return self.parent.closeSystemNoticeInfo();		// 부모 페이지의 close함수로 리턴
+	return self.parent.detailPopupModalCloseWithRefresh();		// 부모 페이지의 close함수로 리턴
 }
 
 // 팝업창 닫고 부모페이지 새로고침

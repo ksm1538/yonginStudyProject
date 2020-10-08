@@ -56,10 +56,19 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 					</div>
 				</div>	
 				
+				
+				
 				<div class="study_detail_con detail_name">
 					<div class="title_size type_2">날짜</div>
 					<div class="study_detail_input_con">
 						<form:input path="updtDt" type="text" name="updtDt" id="updtDt" data-ax-path="updtDt" class="textbox_style_1"/>
+					</div>
+				</div>	
+				
+				<div class="study_detail_con detail_name">
+					<div class="title_size type_2">조회수</div>
+					<div class="study_detail_input_con">
+						<form:input path="boardCount" type="text" name="boardCount" id="boardCount" data-ax-path="boardCount" class="textbox_style_1"/>
 					</div>
 				</div>	
 				

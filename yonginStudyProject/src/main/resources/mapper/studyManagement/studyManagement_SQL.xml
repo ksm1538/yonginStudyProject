@@ -45,7 +45,7 @@
 	
 	<insert id="insertStudyFreeNotice"> 
 		<selectKey keyProperty="boardCode" resultType="String" order="BEFORE">
-			SELECT	('SYSNOTICE_' || LPAD(BOARD_SEQ.nextval,8,0))	FROM 	DUAL    
+			SELECT	('STUDYFREENOTICE_' || LPAD(BOARD_SEQ.nextval,8,0))	FROM 	DUAL    
 		</selectKey>
 	
 		<![CDATA[
@@ -95,6 +95,7 @@
 										,	bt.BOARD_COUNT								as	boardCount
 									FROM	BOARD_TB bt
 									WHERE	bt.USE_YN			=	'Y'
+										AND bt.STUDY.CODE		=	#{studyCode}
 										AND	bt.BOARD_TYPE		=	'40'
 			]]>
 									<if test='searchBoardRgstusId != ""'>

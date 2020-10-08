@@ -13,7 +13,6 @@ $(document).ready(function () {
         columns: [ 
         	{key : "boardTitle",label : "제목", align : "center",width : "40%"},
 			{key : "rgstusId", label: "작성자 아이디", align: "center", width:"20%"},
-        	{key : "rgstusName",label : "작성자 이름", align : "center",width : "20%"},
 			{key : "rgdtDt", label: "날짜", align: "center", width:"20%"},
 			{key : "boardCount", label: "조회수", align: "center", width:"10%"},
         ],
@@ -150,6 +149,18 @@ function writeModalCloseWithRefresh(){
 // 자유게시판 작성 팝업창 닫기
 function writeModalClose(){
 	studyFreeNoticeInfoWriteModal.close();
+}
+
+// 자유게시판 상세보기 팝업창 닫고 새로고침
+function detailPopupModalCloseWithRefresh(){
+	studyFreeNoticeInfoDetailModal.close();
+	window.location.reload();
+	
+}
+
+// 자유게시판 상세 팝업창 닫기
+function detailPopupModalClose(){
+	studyFreeNoticeInfoDetailModal.close();
 }
 
 //EnterKeyEvent

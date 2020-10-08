@@ -1,4 +1,4 @@
-package com.studyManagement.Controller;
+package com.studyManagement.Controller; 
 
 import java.util.HashMap;
 import java.util.List;
@@ -101,13 +101,6 @@ public class studyFreeNoticeReviseController {
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
 		boardVO.setRgstusId(user.getUserCode());
 		
-		// 관리자 권한이 없는 경우 오류 메시지 발생
-		if(!user.getUserIsAdmin().equals("Y")) {
-			mReturn.put("result", "fail");
-			mReturn.put("message", "권한이 없습니다.");
-			
-			return mReturn;
-		}
 		
 		/** 데이터 검증(시작) **/
 		boardValidator boardValidator = new boardValidator();
