@@ -45,7 +45,7 @@
 	
 	<insert id="insertStudyFreeNotice"> 
 		<selectKey keyProperty="boardCode" resultType="String" order="BEFORE">
-			SELECT	('STUDYFREENOTICE_' || LPAD(BOARD_SEQ.nextval,8,0))	FROM 	DUAL    
+			SELECT	('STUDYFN_' || LPAD(BOARD_SEQ.nextval,8,0))	FROM 	DUAL    
 		</selectKey>
 	
 		<![CDATA[
