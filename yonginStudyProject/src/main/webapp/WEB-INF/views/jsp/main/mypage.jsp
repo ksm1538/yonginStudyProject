@@ -214,5 +214,11 @@ studySxnList.forEach(function(n){
 			</div>
 	</div>
 	
+	<!-- POST 사용하는 FORM -->
+	<form id="dataForm" name="dataForm">
+		<input type="hidden" id="studyCode" name="studyCode">
+		<input type="hidden" id="studyName" name="studyName">
+	</form>
+	
 </body>
 </html>

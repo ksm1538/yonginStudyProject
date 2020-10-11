@@ -26,8 +26,8 @@ public class studyDAOImpl implements studyDAO{
 	}
 	
 	@Override
-	public void insertUserInStudy(studyInfoVO data) {
-		sqlSession.insert("studyMapper.insertUserInStudy", data); 
+	public void insertUserInStudyAdmin(studyInfoVO data) {
+		sqlSession.insert("studyMapper.insertUserInStudyAdmin", data); 
 	}
 	
 	@Override

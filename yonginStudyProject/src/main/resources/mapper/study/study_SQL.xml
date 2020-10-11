@@ -43,7 +43,7 @@
 		]]>
 	</insert>
 	
-	<insert id="insertUserInStudy">
+	<insert id="insertUserInStudyAdmin">
 		<![CDATA[
 			INSERT
 			INTO	USER_IN_STUDY
@@ -57,7 +57,7 @@
 			VALUES
 				(	#{studyRgstusId}
 				,	#{studyCode}
-				,	'MASTER'
+				,	'10'
 				,	'Y'
 				,	sysdate
 				,	sysdate

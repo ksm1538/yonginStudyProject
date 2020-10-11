@@ -34,7 +34,7 @@ public class studyFreeNoticeController {
 	 * 스터디 더 보기 Mapping
 	 * @throws Exception 
 	 */
-	@RequestMapping(value = "/studyfreenotice.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/studyfreenotice.do", method = RequestMethod.POST)
 	public String studyFreeNoticeControllerForm(Locale locale, Model model, HttpSession session) throws Exception {
 		/*건들필요없음 무조건 들어가는거*/
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(시작) **/

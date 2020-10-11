@@ -12,7 +12,6 @@ $(document).ready(function (){
 	
 });
 
-
 /*마이페이지 호출*/
 function openMypageForm(){
 	//이걸 쓰면 창이 새로 열리지않고 이동
@@ -22,6 +21,7 @@ function openMypageForm(){
 	//window.open("/myPage.do");
 }
 
+/*쪽지함 이동*/
 function openMessageForm(){
 	//이걸 쓰면 창이 새로 열리지않고 이동
 	location.href = "/message.do";
@@ -49,7 +49,6 @@ function openMoreNotice(){
 	location.href = "/moreNotice.do";
 }
 
-
 /*스터디 공지사항*/
 function openStudyNotice(){
 	//이걸 쓰면 창이 새로 열리지않고 이동
@@ -61,7 +60,6 @@ function openStudyFreeNotice(){
 	//이걸 쓰면 창이 새로 열리지않고 이동
 	location.href = "/studyfreenotice.do";
 }
-
 
 // 관리자 페이지 열기
 function openAdminPage(){

@@ -25,7 +25,7 @@ public class studyServiceImpl implements studyService{
 		studyDAO.insertStudy(data);
 		
 		//스터디에 가입시켜줌
-		studyDAO.insertUserInStudy(data);
+		studyDAO.insertUserInStudyAdmin(data);
 	}
 	
 	@Override
