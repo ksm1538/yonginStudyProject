@@ -9,7 +9,12 @@ var _pageNo = 0;
 
 /** 초기화(시작) **/
 $(document).ready(function () {
-
+	
+/*	$(".tui-full-calendar-weekday-grid-line").click(function(){
+			
+			window.open("/registerForm.do",'회원가입','width=720px ,height=900px ,location=no,status=no,scrollbars=no');
+		});*/
+	
 	//달력 초기 설정
 	cal = new tui.Calendar('#calendar', {
 	    defaultView: 'month', // monthly view option
@@ -29,6 +34,9 @@ $(document).ready(function () {
 			openCalenderPopup(e);
 		}
 	});
+	
+	
+	
 	
 /*	$(".user_id").click(function(){
 		$(".user_box_con").fadeIn(600);
@@ -91,6 +99,10 @@ $(document).ready(function () {
 		$("#side_movelist3").on("click",function(event){
 			$("html body").animate({scrollTop:list6.top},400);
 		});
+
+
+		
+
 
 	//스터디 리스트 설정
 	studyListGrid.setConfig({   
@@ -353,7 +365,7 @@ function openCalenderPopup(e){
 		height: 250,
 		iframe: {
 			method: "post",
-			url: "/main/calendarDetailPopup.do",
+			url: "/main/calendarDetailPop.do",
 			param: callBack = e
 		},
 		onStateChanged: function(){
@@ -439,3 +451,5 @@ function writeModalCloseWithRefresh(){
 	window.location.reload();
 	
 }
+
+

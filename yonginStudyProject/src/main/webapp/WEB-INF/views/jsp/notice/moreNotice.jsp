@@ -51,6 +51,8 @@
 					<input type="button" value="삭제하기" class="btn_style_1 type_3 notice_delete_btn" onclick="deleteSystemNotice();">
 				  </div>
            	 </c:if>
+           	 
+          
 			 
 		</div>
 	</div>

@@ -4,6 +4,8 @@ var systemNoticeInfoWriteModal = new ax5.ui.modal();
 var _pageNo = 0;
 
 $(document).ready(function () {
+	
+	
 	//공지사항 목록 더보기 리스트 설정
 	noticeListPlusGrid.setConfig({   
     	target: $('[data-ax5grid="noticeListPlusGrid"]'),

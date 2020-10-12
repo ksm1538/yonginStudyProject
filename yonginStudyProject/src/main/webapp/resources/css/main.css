@@ -798,3 +798,7 @@ html, body {
 .study_free_notice_content_con .btn_style_1{border-color:#fff; color:#fff;}
 .study_free_notice_content_con .btn_style_1:hover{border-color:#000; color:#000;}
 
+/*달력 테스트*/
+.tui-full-calendar-weekday-grid-line{cursor:pointer; background-color:#fff !important}
+.tui-full-calendar-weekday-grid-line:hover{background-color:#7f99e2 !important;}
+.tui-full-calendar-weekday-grid-line:hover .tui-full-calendar-weekday-grid-header > span{color:#fff !important;}
