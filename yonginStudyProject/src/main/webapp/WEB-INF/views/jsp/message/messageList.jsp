@@ -32,7 +32,7 @@
 					<div class="tc question_mark"><span>?</span></div>
 					<div class="qestion_desc_box_con">
 						<div class="question_tri"></div>
-						<div class="question_desc">개인 정보 수정은 비밀번호와 이메일, 주소 등 개인정보를 쉽게 변경 할 수 있습니다.</div>
+						<div class="question_desc">누가 메세지를 보냈는지 확인하세요. 쪽지가 쌓이지 않도록 삭제버튼을 통해 주기적으로 삭제하세요.</div>
 					</div>
 				</div>
 			</div>

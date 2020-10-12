@@ -32,17 +32,7 @@ request.setCharacterEncoding("UTF-8");
    
    
     <div class="col-12 meessage_box_wrap">
-		<div class="side_fixed_menu_con">
-			<div class="side_fixed_menu_list_con">
-				<ul class="side_fixed_menu_list">
-					<li><a><img src="/resources/img/arrow.png" class="side_arrow_img" id="Movetop"></a></li>
-					<li><a><img src="/resources/img/write_message.png" class="side_write_message_img" id="side_movelist1"></a></li>
-					<li><a><img src="/resources/img/sendmessage.png" class="side_send_message_img" id="side_movelist2"></a></li>
-					<li><a><img src="/resources/img/getmessage.png" class="side_get_message_img" id="side_movelist3"></a></li>
-				</ul>
-			</div>
-			<div class="tc side_fixed_menu_title">빠른 이동</div>			
-		</div> 
+		
 		
 		<div class="message_content_img"></div>
 		<div class="message_content_dim"></div>

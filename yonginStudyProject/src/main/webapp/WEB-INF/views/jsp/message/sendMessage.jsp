@@ -28,71 +28,44 @@ request.setCharacterEncoding("UTF-8");
 </head>
 <body>
 
-
-	
-	<div class="col-8 mw-1200 send_message_wrap">
-		 <div class="tc content_title"><span>쪽지보내기</span></div>
-		 
-		 <div class="send_message_con">
-		 
-		 	  <div class="send_message_form">
-    	        <div class="title_size type_2">받는 사람 ID</div>
+	<div class="col-12 send_message_wrap">
+		<div class="col-12 col-center mw-1200 send_message_con">
+			<div class="send_message_title_con">
+				<div class="send_message_title"><span>쪽지 보내기</span></div>
+				<div class="question_mark_con">
+					<div class="tc question_mark"><span>?</span></div>
+					<div class="qestion_desc_box_con">
+						<div class="question_tri"></div>
+						<div class="question_desc">받는사람의 아이디를 입력하고 하고싶은 말을 쪽지로 보내세요. 쪽지 제목의 최대는 30글자 입니다.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-12 col-center mw-1200 send_message_content_con">
+			<div class="send_message_form_con">
+				 <div class="title_size type_2">받는 사람 ID</div>
     	        <input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1">
-    	      </div>
-    	      
-    	       <div class="send_message_form">
+			</div>
+			
+			<div class="send_message_form_con">
      	       	 <div class="title_size type_2">제목</div>
      	      	 <input type="text" id="messageTitle" name="messageTitle" class="textbox_style_1" maxlength="30">
-     		   </div>
-     		   
-     		   
-     		   <div class="tc summer_note_con"><!-- 내용이라고 안넣는게 더 이쁠거같아서 뺌 -->
-     		   		<div class="summer_note" style="width:70%; margin-left:15%">
-     		   			<textarea name="messageDesc" id="messageDesc"></textarea>
-     		   		</div>
-     		   		
-     		   </div>
-    	        	         	 
-		 </div>
-
-     	 <div class="btn_style_1_con">
+     		</div>		
+		</div>
+		
+		<div class="col-12 col-center mw-1200 send_message_summernote_con">
+			<div class="summer_note col-12">
+     		   	<textarea name="messageDesc" id="messageDesc"></textarea>
+     		</div>
+		</div>
+		
+		<div class="col-12 btn_style_1_con">
 	      	<input type="button" value="보내기" class="btn_style_1" onclick="sendMessage()" >
-  		 </div> 
-     	   
-     	   
-		 
-	</div>
-	
-<!-- 	<div class="col-12 col-center mw-1200 make_study_title_wrap">
-	 	  
-	 	 
-	 	   
-	 	   
-	 	   
-	</div> -->
-
-<!-- 	<div class="col-12 col-center mw-1200 make_study_form_wrap">
-	      <div class="make_study_form_con">
-         
-  	      	 
-         
-     	   
-     	     <div class="study_text make_study_form">
-      	      <div class="title_size type_2">내용</div>
-       	     <input type="text" name="messageDesc" id="messageDesc" class="textbox_style_1">
-       	     <textarea name="studyDesc" id="studyDesc" cols="20" rows="10" placeholder="스터디에 대한 설명을 입력해주세요."></textarea>
-      	   </div>      
-     	 </div>
+  		</div> 
+		
 	</div>
 
-	<div class="col-12 col-center mw-1200 make_study_btn_wrap">
-	   <div class="btn_style_1_con">
-	      <input type="button" value="보내기" class="btn_style_1" onclick="sendMessage()" >
-  		 </div> 
-	</div>
-	
-</div>
- -->
 
   
 </body>

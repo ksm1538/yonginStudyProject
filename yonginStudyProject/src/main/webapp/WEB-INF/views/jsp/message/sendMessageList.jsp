@@ -20,28 +20,52 @@
 <script type="text/javascript" src="/resources/js/message/sendMessageList.js"></script>
 	
 
-
-
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	
-	  <div class="col-8 mw-1200 message_list_wrap">
-            <div class="content_title"><span>보낸쪽지함</span></div>
-            
-           	받는사람 ID <input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1" onkeyup="enterKeyEvent();">
-                           제목 <input type="text" id="messageTitle" name="messageTitle" class="textbox_style_1" maxlength="30" onkeyup="enterKeyEvent();"s>
-            <input type="button" value="검색" class="btn_style_1" onclick="searchMessageList()" >
-            	
-            <div style="width: 80%;" >  
-	  			<div data-ax5grid="messageListGrid" data-ax5grid-config="{}" style="height:610px; padding-top:10px; padding-right:10px"></div>  
-			</div> 
-			
-			<div class="message_btn">
-				<input type="button" value="쪽지 삭제하기" class="btn_style_1 type_3" onclick="deleteSendMessage();">
+	
+	<div class="col-12 send_message_list_wrap">
+		<div class="col-12 col-center mw-1200 send_message_list_con">
+			<div class="send_message_list_title_con">
+				<div class="send_message_list_title"><span>보낸 쪽지함</span></div>
+				<div class="question_mark_con">
+					<div class="tc question_mark"><span>?</span></div>
+					<div class="qestion_desc_box_con">
+						<div class="question_tri"></div>
+						<div class="question_desc">누구에게 쪽지를 보냈는지 확인하세요. 삭제버튼을 통해 쪽지를 삭제할 수 있습니다.</div>
+					</div>
+				</div>
 			</div>
+		</div>
 		
-        </div>
+		<div class="col-12 col-center mw-1200 send_message_search_con">
+				<div class="send_message_search_box get_person">
+					<div class="send_message_box_title">받는사람 ID</div>
+					<input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1" onkeyup="enterKeyEvent();">
+				</div>
+				<div class="send_message_search_box send_title">
+					<div class="send_message_box_title">쪽지 제목</div>
+					<input type="text" id="messageTitle" name="messageTitle" class="textbox_style_1" maxlength="30" onkeyup="enterKeyEvent();">
+				</div>
+				<div class="send_message_search_box get_search_btn">
+					  <input type="button" value="검색" class="btn_style_1" onclick="searchMessageList()" >
+				</div>
+		</div>
+		
+		
+		<div class="send_message_list_grid_con col-12 col-center mw-1200 " >  
+	  			<div data-ax5grid="messageListGrid" data-ax5grid-config="{}" style="height:610px; padding-top:10px; padding-right:10px"></div>  
+		</div>
+		
+		<div class="col-12 col-center mw-1200  message_btn">
+				<input type="button" value="쪽지 삭제하기" class="btn_style_1 type_3" onclick="deleteSendMessage();">
+		</div>
+		
+	</div>
+
+
+        
 </body>
 </html> 

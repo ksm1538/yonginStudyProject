@@ -138,30 +138,7 @@ html, body {
 .message_list_title{padding-bottom:20px; margin-bottom:20px; border-bottom:2px solid #fff; width:auto; font-size:25px; font-weight:bold; color:#fff;}
 
 
-/*쪽지 보내기*/
-.send_message_wrap{padding:40px 40px;}
-.send_message_wrap .make_study_title_wrap .circle_btn{right:0%;}
-.send_message_wrap .content_title{padding:0 0; margin-bottom:70px;}
 
-.send_message_form{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:40px;}
-
-.summer_note_con .title_size{margin-bottom:40px;}
-.summer_note_con .summer_note{margin-bottom:40px;}
-
-/*쪽지 상세보기*/ 
-.message_detail_wrap{padding:40px 40px;}
-.message_detail_wrap .circle_btn.type_2{right:6%;}
-.message_detail_wrap .content_title{margin-bottom:30px;}
-.message_detail_wrap .textbox_style_1{font-size:18px; font-weight:bold;}
-.message_detail_con .message_user_con{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:30px;}
-.message_detail_con .send_user_con{display:flex; margin-right:30px;}
-.message_detail_con .get_user_con{display:flex; margin-left:30px;}
-.message_detail_con .message_title_con{display:flex; margin-left:42px; margin-bottom:30px;}
-.message_detail_con .message_title_con .textbox_style_1{width:500px; border-bottom:none;}
-.message_detail_con .message_time_con{display:flex; margin-left:42px; margin-bottom:30px;}
-.message_detail_con .message_detail_btn_con{display:flex;  flex-wrap:nowrap; justify-content:center; }
-.message_detail_btn_con .return_message_btn{margin-right:20px;}
-.message_detail_btn_con .close_message_btn{margin-right:20px;}
 
 
 
@@ -656,6 +633,8 @@ html, body {
 .get_message_con .get_message_search_box{display:flex; margin-right:30px;}
 .get_message_con .get_message_box_title{font-size:20px; font-weight:bold;}
 
+.get_person{position:relative;}
+.get_person:before{content:"*"; position:absolute; left:-8px; top:-14px; font-size:25px;}
 .send_person{position:relative;}
 .send_person:before{content:"*"; position:absolute; left:-8px; top:-14px; font-size:25px;}
 .send_title{position:relative;}
@@ -663,6 +642,63 @@ html, body {
 
 .get_message_con .get_message_grid_con{margin-bottom:15px;}
 .get_message_con .message_btn .btn_style_1{width:150px;}
+
+
+/*쪽지 보내기 */
+.send_message_wrap{padding-top:120px; padding-bottom:120px;}
+.send_message_con .send_message_title_con{display:flex; position:relative; margin-bottom:30px;}
+.send_message_con .send_message_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px;}
+.send_message_con .send_message_title > span{display:inline-block; border-bottom:3px solid #7f99e2; padding-bottom:10px;}
+
+.send_message_content_con .send_message_form_con{display:flex; margin-bottom:40px;}
+.send_message_content_con .send_message_form_con.type_2{justify-content:center;}
+
+.send_message_summernote_con .note-editable{height:350px !important;}
+.send_message_summernote_con.type_2 .note-editor.note-frame.panel.panel-default{ height:430px !important; width:701px !important; margin-left:45px;}
+
+.send_message_wrap .btn_style_1_con{margin-top:30px;}
+
+
+
+/*쪽지 상세보기*/ 
+.message_detail_pop_wrap{padding:40px 0; background-color:#7f99e2; margin-bottom:50px;}
+.message_detail_pop_wrap .circle_btn{top: -25%; z-index:3;}
+.message_detail_pop_con .message_detail_pop_title > span{font-size:25px; font-weight:bold; color:#fff;}
+
+.message_detail_con .textbox_style_1{font-size:18px; font-weight:bold;}
+.message_detail_con .message_user_con{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:50px;}
+.message_detail_con .send_user_con{display:flex; margin-right:50px;}
+.message_detail_con .get_user_con{display:flex; margin-left:30px;}
+.message_detail_con .message_title_con{display:flex; margin-left:82px; margin-bottom:30px;}
+.message_detail_con .message_title_con .textbox_style_1{width:500px; border-bottom:none;}
+.message_detail_con .message_time_con{display:flex; margin-left:82px; margin-bottom:30px;}
+.message_detail_con .message_detail_btn_con{display:flex;  flex-wrap:nowrap; justify-content:center; }
+.message_detail_btn_con .return_message_btn{margin-right:20px;}
+.message_detail_btn_con .close_message_btn{margin-right:20px;} 
+
+/*쪽지 답장 쓰기*/
+.reply_message_pop_wrap{padding:40px 0; background-color:#7f99e2; margin-bottom:50px;}
+.reply_message_pop_wrap .circle_btn{top: -25%; z-index:3;}
+.reply_message_pop_con .reply_message_pop_title > span{font-size:25px; font-weight:bold; color:#fff;}
+
+.send_message_summernote_con.type_2{overflow:hidden; margin-bottom:20px;}
+.reply_btn_style_1_con{display:flex; justify-content:center;}
+.reply_btn_style_1_con .btn_style_1{margin:0px 15px;}
+
+
+/*보낸 쪽지함*/
+.send_message_list_wrap{padding-top:120px; padding-bottom:120px;}
+.send_message_list_con .send_message_list_title_con{display:flex; position:relative; margin-bottom:30px;}
+.send_message_list_con .send_message_list_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px;}
+.send_message_list_con .send_message_list_title > span{display:inline-block; border-bottom:3px solid #7f99e2; padding-bottom:10px;}
+
+
+
+.send_message_search_con{display:flex; margin-bottom:40px;}
+.send_message_search_box{display:flex; margin-right:30px;}
+
+.send_message_search_con .send_message_box_title{font-size:20px; font-weight:bold;}
+.send_message_list_grid_con{margin-bottom:30px;}
 
 /*===============================================*/
 
