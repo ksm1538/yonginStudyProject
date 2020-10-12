@@ -32,7 +32,7 @@
 					<div class="tc question_mark"><span>?</span></div>
 					<div class="qestion_desc_box_con">
 						<div class="question_tri type_2"></div>
-						<div class="question_desc type_2">자유게시판 입니다. 자유롭게 질문하세요</div>
+						<div class="question_desc type_2"><span class="study_main_name" id="spanStudyMainName"></span> 자유게시판 입니다. 자유롭게 질문하세요</div>
 					</div>
 				</div>
 			</div>
@@ -40,12 +40,12 @@
 		 <div class="study_free_notice_content_con">
 			 	<div class="study_free_notice_content_box">
 			 		<div class="study_free_notice_search_title">작성자 ID</div>
-			 		<input type="text" id="boardRgstusId" name ="boardRgstusId" class="textbox_style_1 color_bg" onkeyup="enterKeyEvent();">
+			 		<input type="text" id="searchBoardRgstusId" name ="searchBoardRgstusId" class="textbox_style_1 color_bg" onkeyup="enterKeyEvent();">
 			 	</div>
 			 	
 			 	<div class="study_free_notice_content_box">
 			 		<div class="study_free_notice_search_title">제목</div>
-			 		<input type="text" id="boardTitle" name="boardTitle" class="textbox_style_1 color_bg" maxlength="30" onkeyup="enterKeyEvent();">
+			 		<input type="text" id="searchBoardTitle" name="searchBoardTitle" class="textbox_style_1 color_bg" maxlength="30" onkeyup="enterKeyEvent();">
 			 	</div>
 			 	
 			 	 <input type="button" value="검색" class="btn_style_1" onclick="searchNoticeList()"  >			 	

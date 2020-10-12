@@ -3,13 +3,13 @@ package com.studyManagement.DAO;
 import java.util.List;
 
 import com.notice.VO.boardVO;
-import com.studyManagement.VO.studyManagementInfoVO;
+import com.main.VO.userInStudyVO;
 
 public interface studyManagementDAO {
 
-	public List<studyManagementInfoVO> selectStudyMemberList(studyManagementInfoVO studyManagementInfoVO);
+	public List<userInStudyVO> selectStudyMemberList(userInStudyVO userInStudyVO);
 	
-	public int selectStudyMemeberListToCnt(studyManagementInfoVO studyManagementInfoVO);
+	public int selectStudyMemberListToCnt(userInStudyVO userInStudyVO);
 	
 	public void writeStudyFreeNotice(boardVO data) throws Exception;
 	

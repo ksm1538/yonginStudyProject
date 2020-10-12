@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.notice.VO.boardVO;
-import com.studyManagement.VO.studyManagementInfoVO;
+import com.main.VO.userInStudyVO;
 
 @Repository
 public class studyManagementDAOImpl implements studyManagementDAO{
@@ -16,13 +16,13 @@ public class studyManagementDAOImpl implements studyManagementDAO{
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<studyManagementInfoVO> selectStudyMemberList(studyManagementInfoVO studyManagementInfoVO){
-		return sqlSession.selectList("studyManagementMapper.selectStudyMemberList", studyManagementInfoVO);
+	public List<userInStudyVO> selectStudyMemberList(userInStudyVO userInStudyVO){
+		return sqlSession.selectList("studyManagementMapper.selectStudyMemberList", userInStudyVO);
 	}
 	
 	@Override
-	public int selectStudyMemeberListToCnt(studyManagementInfoVO studyManagementInfoVO)	{
-		return sqlSession.selectOne("studyManagementMapper.selectStudyMemeberListToCnt", studyManagementInfoVO);
+	public int selectStudyMemberListToCnt(userInStudyVO userInStudyVO)	{
+		return sqlSession.selectOne("studyManagementMapper.selectStudyMemeberListToCnt", userInStudyVO);
 	}
 	
 	@Override

@@ -2,8 +2,14 @@ var studyFreeNoticeListGrid = new ax5.ui.grid();
 var studyFreeNoticeInfoWriteModal = new ax5.ui.modal();
 var studyFreeNoticeInfoDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
 var _pageNo = 0;
+var studyCode;
+var studyName;
 
 $(document).ready(function () {
+	studyCode = $("#studyCode").val();
+	studyName = $("#studyName").val(); 
+	
+	document.getElementById("spanStudyMainName").innerText = studyName;
 	
 	//스터디 리스트 설정
 	studyFreeNoticeListGrid.setConfig({   
@@ -54,8 +60,9 @@ $(document).ready(function () {
 function getStudyFreeNoticeList(){
 	var sendData = {
 			page :	_pageNo,
-			searchBoardRgstusId:$('#boardRgstusId').val(),
-			searchBoardTitle:$('#boardTitle').val()
+			studyCode : $("#studyCode").val(),
+			searchBoardRgstusId:$('#searchBoardRgstusId').val(),
+			searchBoardTitle:$('#searchBoardTitle').val()
 	}
 	
 	$.ajax({

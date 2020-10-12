@@ -5,7 +5,7 @@
 	 
 <mapper namespace="studyManagementMapper"> 
 	
-	<select id="selectStudyMemberList" resultType="com.studyManagement.VO.studyManagementInfoVO" >
+	<select id="selectStudyMemberList" resultType="com.main.VO.userInStudyVO" >
 		<![CDATA[
 			SELECT	*
 			  FROM	(
@@ -13,20 +13,19 @@
 							 ,	main.*	
 						  FROM	(
 									SELECT	/*+ ordered use_nl(us) INDEX_DESC(us USERINSTUDY_IDX) */
-										(	SELECT 	si.STUDY_NAME
-											FROM	STUDY_INFO si
-											WHERE	si.STUDY_CODE	=	us.STUDY_CODE)		as	studyName
-										,	(	SELECT	ui.USER_ID
+										(	SELECT	ui.USER_ID
 												FROM 	USER_INFO ui
-												WHERE	ui.USER_CODE	=	us.USER_CODE)	as 	studyMemberName
-										,	us.USER_POSITION								as	studyMemberPosition
+												WHERE	ui.USER_CODE	=	us.USER_CODE)	as 	userId
+                                        ,   (   SELECT  ui.USER_NAME
+                                                FROM    USER_INFO ui
+                                                WHERE   ui.USER_CODE    =   us.USER_CODE)   as  userName
+                                        ,   (   SELECT  ui.USER_ADDRESS
+                                                FROM    USER_INFO ui
+                                                WHERE   ui.USER_CODE    =   us.USER_CODE)   as  userAddress
+										,	us.USER_POSITION								as	studyAuthority
 									FROM	USER_IN_STUDY us
 									WHERE	us.USE_YN			=	'Y'
-										AND	us.STUDY_CODE 	IN	(SELECT us2.STUDY_CODE
-																 FROM	USER_IN_STUDY us2
-																 WHERE	us2.STUDY_CODE	=	#{studyCode}
-																 	AND	us2.USE_YN		=	'Y'
-																 )
+										AND	us.STUDY_CODE 		=	#{studyCode}
 								) main 
 						  WHERE ROWNUM <= #{last}
 					)
@@ -60,6 +59,7 @@
 				,	UPDT_DT
 				,	USE_YN
 				,	BOARD_TYPE
+				,	STUDY_CODE
 				)  
 			VALUES	
 				(	
@@ -71,6 +71,7 @@
 				,	sysdate
 				,	'Y'
 				,	'40'
+				,	#{studyCode}
 				)
 		]]>
 	</insert>
@@ -88,14 +89,11 @@
 										,	(SELECT ui.USER_ID	
 										     FROM   USER_INFO ui
 											 WHERE  ui.USER_CODE   =   bt.RGSTUS_ID)    as	rgstusId
-										,   (SELECT ui.USER_NAME
-                                             FROM   USER_INFO ui
-                                             WHERE  ui.USER_CODE    =   bt.RGSTUS_ID)   as 	rgstusName
 										,	TO_CHAR(bt.RGDT_DT, 'YYYY-MM-DD HH24:MI') 	as 	rgdtDt
 										,	bt.BOARD_COUNT								as	boardCount
 									FROM	BOARD_TB bt
 									WHERE	bt.USE_YN			=	'Y'
-										AND bt.STUDY.CODE		=	#{studyCode}
+										AND bt.STUDY_CODE		=	#{studyCode}
 										AND	bt.BOARD_TYPE		=	'40'
 			]]>
 									<if test='searchBoardRgstusId != ""'>

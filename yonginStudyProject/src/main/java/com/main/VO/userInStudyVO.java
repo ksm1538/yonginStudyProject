@@ -3,17 +3,58 @@ package com.main.VO;
 public class userInStudyVO {
 	private String	userCode = "";
 	private String 	studyCode = "";
-	private String	userPosition = "";
+	private String 	userId = "";
+	private String 	userName = "";
+	private String 	userAddress = "";
+	private String	studyAuthority = "";
 	private String 	useYn = "";
 	private String	rgdtDt = "";
 	private String	updtDt = "";
+	private int	first;
+	private int	last;
+	private String	page = "";
 	
-	
+	public int getFirst() {
+		return first;
+	}
+	public void setFirst(int first) {
+		this.first = first;
+	}
+	public int getLast() {
+		return last;
+	}
+	public void setLast(int last) {
+		this.last = last;
+	}
+	public String getPage() {
+		return page;
+	}
+	public void setPage(String page) {
+		this.page = page;
+	}
 	public String getUserCode() {
 		return userCode;
 	}
 	public void setUserCode(String userCode) {
 		this.userCode = userCode;
+	}
+	public String getUserAddress() {
+		return userAddress;
+	}
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public String getStudyCode() {
 		return studyCode;
@@ -21,11 +62,11 @@ public class userInStudyVO {
 	public void setStudyCode(String studyCode) {
 		this.studyCode = studyCode;
 	}
-	public String getUserPosition() {
-		return userPosition;
+	public String getStudyAuthority() {
+		return studyAuthority;
 	}
-	public void setUserPosition(String userPosition) {
-		this.userPosition = userPosition;
+	public void setStudyAuthority(String studyAuthority) {
+		this.studyAuthority = studyAuthority;
 	}
 	public String getUseYn() {
 		return useYn;

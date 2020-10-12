@@ -1,43 +1,85 @@
 /** 변수 설정(시작) **/
 var studyMemberListGrid = new ax5.ui.grid();
 var calendarDetailModal = new ax5.ui.modal();
-var studyNoticeInfoDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
 var cal;
 var _pageNo = 0;
+var studyCode;		// 현재 페이지 스터디 코드
+var studyName; 		// 현재 페이지 스터디 이름
 /** 변수 설정(끝) **/
 
 /** 초기화(시작) **/
 $(document).ready(function () {
+	studyCode = $("#studyCode").val();
+	studyName = $("#studyName").val();
+	
+	document.getElementById("spanStudyMainName").innerText = studyName;
+	
+	//스터디 멤버 리스트 설정
+	studyMemberListGrid.setConfig({   
+    	target: $('[data-ax5grid="studyMemberListGrid"]'),
+        showLineNumber: false,
+        //showRowSelector: true,
+        columns: [
+        	{key : "userId", label: "ID", align: "center", width:"26%"},
+        	{key : "userName", label: "이름", align: "center", width:"15%"},
+        	{key : "userAddress",label : "거주지", align : "center",width : "15%"},
+        	{key : "studyAuthority",label : "직위", align : "center",width : "10%",
+				formatter:function(){
+    			    return studyPositionMap[this.value];
+    			}
+			},
+        ],
+        header: {
+        	align:"center",
+        	selector: false
+        },
+        body: {
+                    align: "left",
+                    columnHeight: 45,
+                    
+                    onClick: function () 	{
+					},
+					onDBLClick: function(){
+					},
+					onDataChanged: function(){
+					},
+                },
+        page: {
+            navigationItemCount: 9,
+            height: 30,
+            display: true,
+            firstIcon: '<i class="fa fa-step-backward" aria-hidden="true"></i>', 
+            prevIcon: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+            nextIcon: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+            lastIcon: '<i class="fa fa-step-forward" aria-hidden="true"></i>',
+            onChange: function () {
+				_pageNo = this.page.selectPage;
+				getStudyMemberList();
+                },
+            },
+        });
 
-	//달력 초기 설정
-	cal = new tui.Calendar('#study_calendar', {
-	    defaultView: 'month', // monthly view option
-	    //useDetailPopup : true,
-    	disableDblClick : true,
-    	disableClick : true,
-    	month : {
-    		daynames : [ '일', '월', '화', '수', '목', '금', '토' ],
-    		startDayOfWeek : 0,
-    	}
-	});
-	
-	cal.on({
-		'clickSchedule' : function(e) {
-			var schedule = e.schedule;
-			lastClickSchedule = schedule;
-			openCalenderPopup(e);
-		}
-	});
-	
-/*	$(".user_id").click(function(){
-		$(".user_box_con").fadeIn(600);
-	});
-	
-	$(".circle_btn_2").click(function(){
-		$(".user_box_con").fadeOut(600);
-	}); 
-	*/
+		//달력 초기 설정
+		cal = new tui.Calendar('#study_calendar', {
+		    defaultView: 'month', // monthly view option
+		    //useDetailPopup : true,
+	    	disableDblClick : true,
+	    	disableClick : true,
+	    	month : {
+	    		daynames : [ '일', '월', '화', '수', '목', '금', '토' ],
+	    		startDayOfWeek : 0,
+	    	}
+		});
 		
+		cal.on({
+			'clickSchedule' : function(e) {
+				var schedule = e.schedule;
+				lastClickSchedule = schedule;
+				openCalenderPopup(e);
+			}
+		});
+		
+		getStudyMemberList();
 		
 		/*클릭시 이동 */
 		$("#Movetop").click(function(){
@@ -90,146 +132,21 @@ $(document).ready(function () {
 		$("#side_movelist3").on("click",function(event){
 			$("html body").animate({scrollTop:list6.top},400);
 		});
-
-	//스터디 리스트 설정
-	studyMemberListGrid.setConfig({   
-    	target: $('[data-ax5grid="studyMemberListGrid"]'),
-        showLineNumber: false,
-        //showRowSelector: true,
-        columns: [ 
-        	{key : "studyTopic", label: "주제", align: "center", width:"25%", sortable: true,
-    			formatter:function(){
-    			    return inoutSxnMap[this.value];
-    			}
-        	},
-        	{key : "studyName", label: "제목", align: "center", width:"26%"},
-        	{key : "studyArea", label: "지역", align: "center", width:"15%"},
-        	{key : "userName",label : "방장", align : "center",width : "15%"},
-        	{key : "totalCount",label : "현재 인원", align : "right",width : "10%"},
-        	{key : "studyLimit",label : "정원", align : "right",width : "10%"},
-        ],
-        header: {
-        	align:"center",
-        	selector: false
-        },
-        body: {
-                    align: "left",
-                    columnHeight: 45,
-                    
-                    onClick: function () 	{
-					},
-					onDBLClick: function(){
-					},
-					onDataChanged: function(){
-					},
-                },
-        page: {
-            navigationItemCount: 9,
-            height: 30,
-            display: true,
-            firstIcon: '|<', 
-            prevIcon: '<',
-            nextIcon: '>',
-            lastIcon: '>|',
-            display: false,
-            onChange: function () {
-				_pageNo = this.page.selectPage;
-				getStudyNoticeList();
-                },
-            },
-        });
-	
-	
-	//공지사항 리스트 설정
-	studyNoticeListGrid.setConfig({   
-    	target: $('[data-ax5grid="studyNoticeListGrid"]'),
-        showLineNumber: false,
-        showRowSelector: false,
-        columns: [
-        	{key : "studyNoticeTitle", label: "제목", align: "center", width:"30%"},
-			{key : "studyNoticeStudyName", label: "스터디 이름", align: "center", width:"20%"},
-			{key : "studyNoticeRgstusId", label: "작성자 ID", align: "center", width:"24%"},
-			{key : "studyNoticeTime", label: "날짜", align: "center", width:"17%"},
-        	{key : "studyNoticeCount", label: "조회 수", align: "center", width:"10%"},
-        ],
-        header: {
-        	align:"center",
-        	selector: false
-        },
-        body: {
-                    align: "left",
-                    columnHeight: 45,
-
-					onDBLClick: function () 	{
-                    	selectStudyNoticeInfoDetail(this.list[this.dindex]["studyNoticeCode"]);
-					},                    
-                    onClick: function () 	{
-                    
-					},
-					onDataChanged: function(){
-						
-					},
-                },
-        page: {
-            navigationItemCount: 9,
-            height: 30,
-            display: true,
-            firstIcon: '<i class="fa fa-step-backward" aria-hidden="true"></i>', 
-            prevIcon: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
-            nextIcon: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
-            lastIcon: '<i class="fa fa-step-forward" aria-hidden="true"></i>',
-            onChange: function () {
-				_pageNo = this.page.selectPage;
-				getStudyNoticeList(); // 공지사항 조회
-                },
-            },
-        });
-	
-	getStudyList();	// 스터디 목록 조회
-	getStudyNoticeList(); // 공지사항 조회
-	
-	showRange();
-	searchMyStudyCalendar();
 });
 /** 초기화(끝) **/
 
-/*스터디 더보기 호출 2020 09 17 정승준 삭제*/
 
-
-/*스터드만들기 호출 2020 09 18 정승준삭제 */
-
-/* 스터디 리스트 조회 함수 */
-function getStudyList(){
+/* 스터디 멤버 조회 함수 */
+function getStudyMemberList(){
 	
-	$.ajax({
- 		type: "POST",
- 		url : "/main/selectStudyList.json",
-		contentType: "application/json; charset=UTF-8",
-		async: false,
-		success : function(data, status, xhr) {
-			switch(data.result){
-			    case COMMON_SUCCESS:
-			    	studyListGrid.setData(data.resultList);
-			    	break;    
-			    case COMMON_FAIL:
-			    	dialog.alert(data.message); 
-			}
-		},
-		error: function(jqXHR, textStatus, errorThrown) {
-			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
-		}
-	}); 
-}
-
-/* 시스템 공지사항 리스트 조회 함수 */
-function getStudyNoticeList(){
 	var sendData = {
-		page : _pageNo
+			page :	_pageNo,
+			studyCode : $("#studyCode").val()
 	}
-	
+
 	$.ajax({
 		type: "POST",
- 		url : "/main/selectStudyNoticeList.json",
+ 		url : "/studyManagemet/selectStudyMainMemberList",
 		contentType: "application/json; charset=UTF-8",
 		data : JSON.stringify(sendData),
 		async: false,
@@ -237,7 +154,7 @@ function getStudyNoticeList(){
 			switch(data.result){
 			    case COMMON_SUCCESS:
 			    	if(data.resultList.length>0){
-			    		studyNoticeListGrid.setData({
+			    		studyMemberListGrid.setData({
 			    			list: data.resultList,
 			    		 	page: {
 			    		 		currentPage: _pageNo || 0,
@@ -247,8 +164,8 @@ function getStudyNoticeList(){
 			    		 	}, 
 			    		});
 			    	}else{
-			    		dToast.push("공지사항 목록이 없습니다.");
-			    		studyNoticeListGrid.setData([]);
+			    		dToast.push("스터디 인원 목록이 없습니다.");
+			    		studyMemberListGrid.setData([]);
 			    	}
 			    	break;    
 			    case COMMON_FAIL:
@@ -259,11 +176,6 @@ function getStudyNoticeList(){
 			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
 		}
 	}); 
-}
-
-/*공지사항 더보기 호출 */
-function openMoreNotice(){
-	location.href = "/moreNotice.do";
 }
 
 //스케줄 검색
@@ -399,11 +311,4 @@ function selectStudyNoticeInfoDetail(studyNoticeCode){
 	    },
 	}, function() {
 	});
-}
-
-// 공지사항 작성 팝업창 닫고 새로고침
-function writeModalCloseWithRefresh(){
-	studyNoticeInfoDetailModal.close();
-	window.location.reload();
-	
 }

@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.notice.VO.boardVO;
-import com.studyManagement.VO.studyManagementInfoVO;
+import com.main.VO.userInStudyVO;
 
 public interface studyManagementService {
 	
-	List<studyManagementInfoVO> selectStudyMemberList(studyManagementInfoVO studyManagementInfoVO);
+	List<userInStudyVO> selectStudyMemberList(userInStudyVO userInStudyVO);
 	
-	int selectStudyMemeberListToCnt(studyManagementInfoVO studyManagementInfoVO);
+	int selectStudyMemberListToCnt(userInStudyVO userInStudyVO);
 	
 	void writeStudyFreeNotice(boardVO data, MultipartHttpServletRequest mpRequest) throws Exception;
 	

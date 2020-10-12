@@ -11,7 +11,7 @@ import com.commonFunction.Controller.FileUtilsController;
 import com.commonFunction.DAO.fileDAO;
 import com.commonFunction.DAO.replyDAO;
 import com.studyManagement.DAO.studyManagementDAO;
-import com.studyManagement.VO.studyManagementInfoVO;
+import com.main.VO.userInStudyVO;
 import com.notice.VO.boardVO;
 
 @Service("studyManagementService")
@@ -26,13 +26,13 @@ public class studyManagementServiceImpl implements studyManagementService{
 	replyDAO replyDAO;
 	
 	@Override
-	public List<studyManagementInfoVO> selectStudyMemberList(studyManagementInfoVO studyManagementInfoVO){
-		return studyManagementDAO.selectStudyMemberList(studyManagementInfoVO);
+	public List<userInStudyVO> selectStudyMemberList(userInStudyVO userInStudyVO){
+		return studyManagementDAO.selectStudyMemberList(userInStudyVO);
 	}
 	
 	@Override
-	public int selectStudyMemeberListToCnt(studyManagementInfoVO studyManagementInfoVO)	{
-		return studyManagementDAO.selectStudyMemeberListToCnt(studyManagementInfoVO);
+	public int selectStudyMemberListToCnt(userInStudyVO userInStudyVO)	{
+		return studyManagementDAO.selectStudyMemberListToCnt(userInStudyVO);
 	}
 	
 	@Override
