@@ -39,7 +39,7 @@
 			
 			<div class="col-12 col-center mw-1200 study_notice_search_con">
 				<div class="study_notice_search_box get_person_color">
-					<div class="study_notice_box_title">ID</div>
+					<div class="study_notice_box_title"> ID</div>
 					<input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1 color_bg" onkeyup="enterKeyEvent();">
 				</div>
 				

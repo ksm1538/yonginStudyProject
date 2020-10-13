@@ -83,6 +83,17 @@ studyPositionList.forEach(function(n){
 			</div>
    		</div>
    		
+   		<div class="col-12 col-center mw-1200 study_memeber_search_con">
+				<div class="study_memeber_search_box get_person">
+					<div class="study_memeber_box_title">ID</div>
+					<input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1" onkeyup="enterKeyEvent();">
+				</div>
+				
+				<div class="study_memeber_search_box get_search_btn">
+					  <input type="button" value="검색" class="btn_style_1" onclick="searchMessageList()" >
+				</div>
+		</div>
+   		
    		<div class="col-12 col-center mw-1200 study_member_grid_con"style="width: 100%;" >  
 	  		<div data-ax5grid="studyMemberListGrid" data-ax5grid-config="{}" class="" style="height:300px; padding-top:10px; padding-right:10px"></div>  
 		</div>

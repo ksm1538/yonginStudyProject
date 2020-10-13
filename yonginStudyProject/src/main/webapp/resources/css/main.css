@@ -789,6 +789,15 @@ html, body {
 .study_memeber_title_con .study_memeber_title > span{display:inline-block; border-bottom:3px solid #7f99e2; padding-bottom:10px;}
 .study_memeber_wrap .question_desc{top:-15px; top::45px;}
 
+
+.study_memeber_search_con{display:flex; margin-bottom:40px;}
+.study_memeber_search_box{display:flex; margin-right:30px;}
+
+.study_memeber_search_con .study_memeber_box_title{font-size:20px; font-weight:bold;}
+/* .study_memeber_search_con .get_search_btn .btn_style_1{border-color:#fff; color:#fff;}
+.study_memeber_search_con .get_search_btn .btn_style_1:hover{border-color:#000; color:#000;} */
+
+
 /*스터디 일정*/
 .study_plan_wrap{padding-top:120px; padding-bottom:120px; background-color: #7f99e2;}
 .study_plan_title_con{display:flex;}
