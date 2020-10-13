@@ -18,8 +18,21 @@
 
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
 <script type="text/javascript" src="/resources/js/studyManagement/studyManage.js"></script>
+<script>
 
+//그리드에 출력될 직책 코드 값 설정
+var studyPositionList = [
+    <c:forEach var="result" items="${studyAuthorityArray}" varStatus="status">
+        {codeId:"${result.codeId}", codeValue:"${result.codeValue}"}<c:if test="${!status.last}">,</c:if>
+    </c:forEach> 	
+    ];
+    
+var studyPositionMap = {}; 
+studyPositionList.forEach(function(n){
+	studyPositionMap[n.codeId] = n.codeValue;
+}); 
 
+</script>
 <meta charset="UTF-8">
 <title>Insert title here</title> 
 </head>
@@ -43,7 +56,7 @@
 		</div> 
 		
 		<div class="study_main_title_con">
-			<div class="tc study_main_title"><span class="study_main_name">스터디이름</span> 관리 페이지에 오신걸 환영합니다 !</div>
+			<div class="tc study_main_title"><span class="study_main_name" id="spanStudyMainName"></span>관리 페이지에 오신걸 환영합니다 !</div>
 			<div class="tc study_main_sub_title">공동된 목표를 이루기 위해 스터디를 관리하세요</div>
 		</div>
 		

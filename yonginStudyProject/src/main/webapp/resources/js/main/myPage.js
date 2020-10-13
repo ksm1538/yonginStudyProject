@@ -72,7 +72,7 @@ $(document).ready(function () {
         	{key : "studyName", label: "스터디 이름", align: "center", width:"45%"},
         	{key : "manageStudy", label: "", align: "center", width:"10%", 
 	       		 formatter: function (){
-	    			 return '<button type="button" onclick="manageStudy(' + myMakeListGrid.list[this.dindex].studyCode + ')" style="border:transparent; background-color:transparent;outline:none">관리</button>';
+	    			 return '<button type="button"  style="border:transparent; background-color:transparent;outline:none">관리</button>';
 	    		 }
         	},
         ],
@@ -85,7 +85,7 @@ $(document).ready(function () {
                     columnHeight: 45,
                     
 					onDBLClick: function () 	{
-                    	openStudyManagementPage(myMakeListGrid.list[this.dindex].studyCode, myParcitipateListGrid.list[this.dindex].studyName);
+                    	openStudyManagementAdminPage(myMakeListGrid.list[this.dindex].studyCode, myParcitipateListGrid.list[this.dindex].studyName);
 					},  
                     onClick: function () 	{
                     
@@ -619,6 +619,20 @@ function closeApplcationFormModalRefresh(){
 function openStudyManagementPage(studyCode, studyName){
 	var frmPop= document.dataForm;
     var url = '/studyManagement/studyMain.do';
+    window.open('',studyName);  
+     
+    frmPop.method="post";
+    frmPop.action = url;
+    frmPop.target = studyName; //window,open()의 두번째 인수와 같아야 하며 필수다.  
+    frmPop.studyCode.value = studyCode;
+    frmPop.studyName.value = studyName;
+    frmPop.submit();   
+}
+
+// 스터디 관리자용 페이지 이동(POST방식 이용)
+function openStudyManagementAdminPage(studyCode, studyName){
+	var frmPop= document.dataForm;
+    var url = '/studyManagement/studyManage.do';
     window.open('',studyName);  
      
     frmPop.method="post";
