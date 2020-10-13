@@ -38,6 +38,9 @@
    </div> 
    
    <form name="studyFreeNoticeWriteForm" id="studyFreeNoticeWriteForm" method="POST" enctype="multipart/form-data">
+   
+   <input type="hidden" id="studyCode" name="studyCode" value="<%=request.getParameter("studyCode")%>">
+   
    <div class="col-12 col-center mw-1200 make_study_form_wrap">
       <div class="make_study_form_con">
       	<div class="study_text make_study_form">

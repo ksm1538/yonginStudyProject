@@ -101,12 +101,18 @@ function getStudyFreeNoticeList(){
 
 /*스터디 자유게시판 작성 호출 */
 function openWriteStudyFreeNotice(){
+	
+	var parentData={
+			studyCode:$("#studyCode").val()
+		}
+		
 	studyFreeNoticeInfoWriteModal.open({
 		width: 800,
 		height: 710,
 		iframe: {
 			method: "get",
 			url: "/studyFreeNoticeWrite.do",
+			param: callBack = parentData,
 		},
 		onStateChanged: function(){
 			if (this.state === "open") {
