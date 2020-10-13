@@ -37,9 +37,21 @@
 				</div>
 			</div>
 			
-		<div class="col-12 col-center mw-1200 study_notice_grid_con "style="width: 100%;" >  
-	  		<div data-ax5grid="studyNoticeListGrid" data-ax5grid-config="{}" class="color_grid" style="height:300px; padding-top:10px; padding-right:10px"></div>  
-		</div>
+			<div class="col-12 col-center mw-1200 study_notice_search_con">
+				<div class="study_notice_search_box get_person_color">
+					<div class="study_notice_box_title">ID</div>
+					<input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1 color_bg" onkeyup="enterKeyEvent();">
+				</div>
+				
+				<div class="study_notice_search_box get_search_btn_color">
+					  <input type="button" value="검색" class="btn_style_1" onclick="searchMessageList()" >
+				</div>
+		    </div>
+			
+			
+			<div class="col-12 col-center mw-1200 study_notice_grid_con "style="width: 100%;" >  
+	  			<div data-ax5grid="studyNoticeListGrid" data-ax5grid-config="{}" class="color_grid" style="height:300px; padding-top:10px; padding-right:10px"></div>  
+			</div>
 			
 			
 			

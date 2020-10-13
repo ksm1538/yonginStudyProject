@@ -635,6 +635,8 @@ html, body {
 
 .get_person{position:relative;}
 .get_person:before{content:"*"; position:absolute; left:-8px; top:-14px; font-size:25px;}
+.get_person_color{position:relative;}
+.get_person_color:before{content:"*"; position:absolute; left:-8px; top:-14px; font-size:25px; color:#fff;}
 .send_person{position:relative;}
 .send_person:before{content:"*"; position:absolute; left:-8px; top:-14px; font-size:25px;}
 .send_title{position:relative;}
@@ -642,6 +644,7 @@ html, body {
 
 .get_message_con .get_message_grid_con{margin-bottom:15px;}
 .get_message_con .message_btn .btn_style_1{width:150px;}
+
 
 
 /*쪽지 보내기 */
@@ -809,6 +812,16 @@ html, body {
 .study_notice_title_con .study_notice_title > span{display:inline-block; border-bottom:3px solid #fff; padding-bottom:10px;}
 
 .study_notice_wrap .question_desc{top:-15px; top::45px;}
+
+
+.study_notice_search_con{display:flex; margin-bottom:40px;}
+.study_notice_search_box{display:flex; margin-right:30px;}
+
+.study_notice_search_con .study_notice_box_title{font-size:20px; font-weight:bold; color:#fff;}
+.study_notice_search_con .get_search_btn_color .btn_style_1{border-color:#fff; color:#fff;}
+.study_notice_search_con .get_search_btn_color .btn_style_1:hover{border-color:#000; color:#000;}
+
+
 
 /*스터디관리 자유게시판*/
 .study_free_notice_wrap{padding-top:120px; padding-bottom:120px; background-color:#7f99e2;}
