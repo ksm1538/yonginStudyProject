@@ -856,6 +856,30 @@ html, body {
 .study_free_notice_content_con .btn_style_1{border-color:#fff; color:#fff;}
 .study_free_notice_content_con .btn_style_1:hover{border-color:#000; color:#000;}
 
+
+
+
+
+/*스터디원 상세보기*/
+
+
+.study_member_detail_pop_con{padding:40px 0; background-color:#7f99e2; margin-bottom:40px;}
+.study_member_detail_pop_con .circle_btn{top: 25%; z-index:3;}
+.study_member_detail_pop_con .study_member_detail_title > span{font-size:25px; font-weight:bold; color:#fff;}
+
+.study_member_detail_info_wrap{margin-bottom:50px;}
+.study_member_detail_info_wrap .study_member_info_con{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:20px;}
+.study_member_detail_info_wrap .study_member_info_con.type_2{margin-left:109px;}
+.study_member_detail_info_wrap .study_member_title{min-width:130px;}
+.study_member_detail_info_wrap .study_member_title > span{font-size:25px; font-weight:bold;}
+
+.study_member_info_con .btn_style_1{margin-right:17px;}
+.study_member_info_con .change_study{width:110px; margin-left:17px;}
+
+.study_memeber_btn_con{display:flex; flex-wrap:nowrap; justify-content:center;}
+.study_memeber_btn_con .btn_style_1{margin:0 15px;}
+
+
 /*달력 테스트*/
 .tui-full-calendar-weekday-grid-line{cursor:pointer; background-color:#fff !important}
 .tui-full-calendar-weekday-grid-line:hover{background-color:#7f99e2 !important;}

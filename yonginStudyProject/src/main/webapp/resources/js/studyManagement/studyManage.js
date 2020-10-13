@@ -230,8 +230,8 @@ function studyMemberManagefunc(userCode){
 	}
 	
 	studyMemberManageModal.open({
-		width: 800,
-		height: 810,
+		width: 600,
+		height: 600,
 		iframe: {
 			method: "post",
 			url: "/studyManagement/studyMemberManagePopup.do",
