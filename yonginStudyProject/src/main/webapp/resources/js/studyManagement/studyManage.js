@@ -1,7 +1,7 @@
-/** 변수 설정(시작) **/
+/** 변수 설정(시작) **/ 
 var studyMemberManageListGrid = new ax5.ui.grid();
 var calendarDetailModal = new ax5.ui.modal();
-var studyNoticeInfoDetailModal = new ax5.ui.modal();	//팝업창 띄우는 modal기능
+var studyMemberManageModal = new ax5.ui.modal();	//팝업창 띄우는 modal기능
 var studyApplyCheckListGrid = new ax5.ui.grid();
 var cal;
 var _pageNo = 0;
@@ -26,7 +26,11 @@ $(document).ready(function () {
         	{key : "userName", label: "이름", align: "center", width:"15%"},
         	{key : "userAddress",label : "거주지", align : "center",width : "15%"},
         	{key : "studyAuthority",label : "직위", align : "center",width : "10%"},
-        	{key : "studyMemberManage",label : "관리", align : "right",width : "25%"},/*추방여부 */
+        	{key : "studyMemberManage",label : "관리", align : "center",width : "25%",
+				formatter: function (){
+        			 return '<button type="button" onclick="studyMemberManagefunc(' + this.list[this.dindex]["userCode"] + ')" style="border:transparent; background-color:transparent;outline:none">관리</button>';
+        		 }
+			},/*추방여부 */
         ],
         header: {
         	align:"center",
@@ -217,6 +221,32 @@ function getStudyMemberList(){
 			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
 		}
 	}); 
+}
+
+// 스터디 멤버 관리 팝업 
+function studyMemberManagefunc(userCode){
+	var parentData={
+			userCode:userCode
+	}
+	
+	studyMemberManageModal.open({
+		width: 800,
+		height: 810,
+		iframe: {
+			method: "post",
+			url: "/studyManagement/studyMemberManagePopup.do",
+			param: callBack = parentData
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
 }
 
 
