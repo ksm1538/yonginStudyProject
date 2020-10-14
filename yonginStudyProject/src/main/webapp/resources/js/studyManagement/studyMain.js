@@ -345,3 +345,20 @@ function selectStudyNoticeInfoDetail(studyNoticeCode){
 	}, function() {
 	});
 }
+
+// 채팅 팝업 열기
+function studyChatFunc(){
+	var frmPop= document.dataForm;
+	var targetName = studyName + "Chat";
+    var url = '/studyManagement/studyChatting.do';
+     
+    window.open("" ,targetName, 
+    "toolbar=no, width=540, height=467, directories=no, status=no,    scrollorbars=no, resizable=no"); 
+    
+    frmPop.method="post";
+    frmPop.action = url;
+    frmPop.target = targetName; 
+    frmPop.studyCode.value = studyCode;
+    frmPop.studyName.value = studyName;
+    frmPop.submit();   
+}

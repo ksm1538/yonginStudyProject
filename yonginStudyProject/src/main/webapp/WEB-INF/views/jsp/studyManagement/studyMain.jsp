@@ -61,7 +61,7 @@ studyPositionList.forEach(function(n){
 				<div class="tc study_main_content_sub_title">스터디의 일정을 확인하세요</div>
 			</div>
 			
-			<div class="study_main_content">
+			<div class="study_main_content" onclick="studyChatFunc()">
 				<div class="tc study_main_content_img_con"><img src="../resources/img/chatting.png" class="chatting_img"></div>
 				<div class="tc study_main_content_title">스터디 채팅</div>
 				<div class="tc study_main_content_sub_title">스터디 채팅을 통해 소통하세요</div>
