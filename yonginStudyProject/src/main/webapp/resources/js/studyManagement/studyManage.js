@@ -301,6 +301,10 @@ function searchMyStudyCalendarAjax(sendData){
 	}); 
 }
 
+
+
+
+
 //이전 달로 이동
 function prev() {
 	cal.prev();

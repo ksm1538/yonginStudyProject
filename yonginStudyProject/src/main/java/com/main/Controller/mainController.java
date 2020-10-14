@@ -195,6 +195,9 @@ public class mainController {
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
 		return "jsp/main/calendarDetailPopup";
 	}
+	
+	
+	
 }
 	
 	

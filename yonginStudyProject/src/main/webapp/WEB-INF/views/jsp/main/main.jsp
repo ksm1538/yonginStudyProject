@@ -155,10 +155,11 @@ typeSxnList.forEach(function(n){
 					  <button type="button" class="next_btn" data-action="move-next" onclick="next();">
 					    <i class="calendar-icon ic-arrow-line-right" data-action="move-next"></i>
 					  </button>
+					  
 				</span>
 				<span id="renderRange" class="render-range"></span>
 			</div>
-			<div id="calendar"></div>	
+			<div class="calendar_con" id="calendar"></div>	
 		</div>	
 	</div>
 	

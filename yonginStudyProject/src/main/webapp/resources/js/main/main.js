@@ -2,7 +2,8 @@
 var studyListGrid = new ax5.ui.grid();
 var studyNoticeListGrid = new ax5.ui.grid();
 var calendarDetailModal = new ax5.ui.modal();
-var studyNoticeInfoDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
+var studyNoticeInfoDetailModal = new ax5.ui.modal();
+		//팝업창 띄우는 modal기능
 var cal;
 var _pageNo = 0;
 /** 변수 설정(끝) **/
@@ -329,6 +330,10 @@ function searchMyStudyCalendarAjax(sendData){
 		}
 	}); 
 }
+
+
+
+
 
 //이전 달로 이동
 function prev() {

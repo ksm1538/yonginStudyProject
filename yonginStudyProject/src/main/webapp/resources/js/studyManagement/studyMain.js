@@ -1,6 +1,7 @@
 /** 변수 설정(시작) **/
 var studyMemberListGrid = new ax5.ui.grid();
 var calendarDetailModal = new ax5.ui.modal();
+var calendarWriteModal = new ax5.ui.modal();	
 var cal;
 var _pageNo = 0;
 var studyCode;		// 현재 페이지 스터디 코드
@@ -229,10 +230,32 @@ function searchMyStudyCalendarAjax(sendData){
 	}); 
 	
 	
-	
-	
+		
 	
 }
+
+
+// 일정작성 열기
+function writeSchedule(){
+	calendarWriteModal.open({
+		width: 600,
+		height: 410,
+		iframe: {
+			method: "get",
+			url: "/studyManagement/calendarWrite.do",
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
+
 
 //이전 달로 이동
 function prev() {

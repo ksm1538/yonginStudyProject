@@ -124,6 +124,7 @@ studyPositionList.forEach(function(n){
 					  </button>
 				</span>
 				<span id="renderRange" class="render-range"></span>
+				<input type="button" value="일정 작성" id="resetMailBtn"  class="btn_style_1 calendar_schedule_write_btn" onclick="writeSchedule()" >
 			</div>
    			<div id="study_calendar"></div>	
 			
