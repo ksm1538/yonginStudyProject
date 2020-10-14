@@ -365,7 +365,7 @@ function openCalenderPopup(e){
 		height: 250,
 		iframe: {
 			method: "post",
-			url: "/main/calendarDetailPop.do",
+			url: "/main/calendarDetailPopup.do",
 			param: callBack = e
 		},
 		onStateChanged: function(){
