@@ -47,3 +47,7 @@ $(document).ready(function () {
 	
 	
 });
+
+function openWriteStudyNotice() {
+	location.href = "/writeStudyNotice.do";
+}
