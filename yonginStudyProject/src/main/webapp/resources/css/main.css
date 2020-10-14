@@ -831,6 +831,10 @@ html, body {
 .study_notice_search_con .get_search_btn_color .btn_style_1:hover{border-color:#000; color:#000;}
 
 
+.notice_write_btn_con{margin-top:30px;}
+.notice_write_btn_con .btn_style_1{border-color:#fff; color:#fff;}
+.notice_write_btn_con .btn_style_1:hover{border-color:#000; color:#000;}
+
 
 /*스터디관리 자유게시판*/
 .study_free_notice_wrap{padding-top:120px; padding-bottom:120px; background-color:#7f99e2;}
