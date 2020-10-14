@@ -238,8 +238,8 @@ function searchMyStudyCalendarAjax(sendData){
 // 일정작성 열기
 function writeSchedule(){
 	calendarWriteModal.open({
-		width: 600,
-		height: 410,
+		width: 800,
+		height: 750,
 		iframe: {
 			method: "get",
 			url: "/studyManagement/calendarWrite.do",
@@ -256,6 +256,11 @@ function writeSchedule(){
 	});
 }
 
+
+// 공지사항 작성 팝업창 닫고 새로고침
+function closeModal(){
+	calendarWriteModal.close();
+}
 
 //이전 달로 이동
 function prev() {
