@@ -227,6 +227,11 @@ function searchMyStudyCalendarAjax(sendData){
 			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
 		}
 	}); 
+	
+	
+	
+	
+	
 }
 
 //이전 달로 이동
