@@ -1,4 +1,5 @@
 var studyNoticeListGrid = new ax5.ui.grid();
+var writeNoticeModal = new ax5.ui.modal();
 
 $(document).ready(function () {
 	
@@ -47,6 +48,34 @@ $(document).ready(function () {
 	
 	
 });
+
+
+// 공지사항 작성작성 열기
+function writeNotice(){
+	writeNoticeModal.open({
+		width: 800,
+		height: 750,
+		iframe: {
+			method: "get",
+			url: "/studyManagement/writeStudyNotice.do",
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
+
+//  공지사항 작성 팝업창 닫고 새로고침
+function closeModal(){
+	writeNoticeModal.close();
+}
+
 
 function openWriteStudyNotice() {
 	location.href = "/writeStudyNotice.do";

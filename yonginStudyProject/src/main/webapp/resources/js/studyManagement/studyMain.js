@@ -257,7 +257,7 @@ function writeSchedule(){
 }
 
 
-// 공지사항 작성 팝업창 닫고 새로고침
+//  일정 작성 팝업창 닫고 새로고침
 function closeModal(){
 	calendarWriteModal.close();
 }
