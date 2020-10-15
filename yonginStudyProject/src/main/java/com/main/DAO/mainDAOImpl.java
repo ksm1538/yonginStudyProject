@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.main.VO.calendarVO;
 import com.main.VO.studyInfoVO;
 import com.main.VO.studyNoticeInfoVO;
+import com.notice.VO.boardVO;
 
 @Repository
 public class mainDAOImpl implements mainDAO{
@@ -27,13 +28,13 @@ public class mainDAOImpl implements mainDAO{
 	}
 	
 	@Override
-	public int selectStudyNoticeListToCnt(studyNoticeInfoVO studyNoticeInfoVO) {
-		return sqlSession.selectOne("mainMapper.selectStudyNoticeListToCnt", studyNoticeInfoVO);
+	public int selectStudyNoticeListToCnt(boardVO boardVO) {
+		return sqlSession.selectOne("mainMapper.selectStudyNoticeListToCnt", boardVO);
 	}
 	
 	@Override
-	public List<studyNoticeInfoVO> selectStudyNoticeList(studyNoticeInfoVO studyNoticeInfoVO){
-		return sqlSession.selectList("mainMapper.selectStudyNoticeList", studyNoticeInfoVO);
+	public List<boardVO> selectStudyNoticeList(boardVO boardVO){
+		return sqlSession.selectList("mainMapper.selectStudyNoticeList", boardVO);
 	}
 	
 	@Override

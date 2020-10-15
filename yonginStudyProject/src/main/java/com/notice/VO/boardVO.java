@@ -22,7 +22,10 @@ public class boardVO {
 	private String[]	fileCodeDel;
 	private String[]	fileNameDel;
 	private String	rgstusCode="";
-	private String studyCode = "";
+	private String 	studyCode = "";
+	private String	currentUserCode="";
+	private String	studyName = "";
+	
 	
 	public String getStudyCode() {
 		return studyCode;
@@ -155,6 +158,18 @@ public class boardVO {
 	}
 	public void setRgstusCode(String rgstusCode) {
 		this.rgstusCode = rgstusCode;
+	}
+	public String getCurrentUserCode() {
+		return currentUserCode;
+	}
+	public void setCurrentUserCode(String currentUserCode) {
+		this.currentUserCode = currentUserCode;
+	}
+	public String getStudyName() {
+		return studyName;
+	}
+	public void setStudyName(String studyName) {
+		this.studyName = studyName;
 	}
 	
 }

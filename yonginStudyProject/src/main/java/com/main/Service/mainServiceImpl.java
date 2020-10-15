@@ -9,6 +9,7 @@ import com.main.DAO.mainDAO;
 import com.main.VO.calendarVO;
 import com.main.VO.studyInfoVO;
 import com.main.VO.studyNoticeInfoVO;
+import com.notice.VO.boardVO;
 
 @Service("mainService")
 public class mainServiceImpl implements mainService{
@@ -26,13 +27,13 @@ public class mainServiceImpl implements mainService{
 	}
 	
 	@Override
-	public int selectStudyNoticeListToCnt(studyNoticeInfoVO studyNoticeInfoVO) {
-		return mainDAO.selectStudyNoticeListToCnt(studyNoticeInfoVO);
+	public int selectStudyNoticeListToCnt(boardVO boardVO) {
+		return mainDAO.selectStudyNoticeListToCnt(boardVO);
 	}
 	
 	@Override
-	public List<studyNoticeInfoVO> selectStudyNoticeList(studyNoticeInfoVO studyNoticeInfoVO){
-		return mainDAO.selectStudyNoticeList(studyNoticeInfoVO);
+	public List<boardVO> selectStudyNoticeList(boardVO boardVO){
+		return mainDAO.selectStudyNoticeList(boardVO);
 	}
 	
 	@Override

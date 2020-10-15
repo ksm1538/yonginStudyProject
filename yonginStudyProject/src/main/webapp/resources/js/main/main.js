@@ -2,7 +2,7 @@
 var studyListGrid = new ax5.ui.grid();
 var studyNoticeListGrid = new ax5.ui.grid();
 var calendarDetailModal = new ax5.ui.modal();
-var studyNoticeInfoDetailModal = new ax5.ui.modal();
+var noticeDetailModal = new ax5.ui.modal();
 		//팝업창 띄우는 modal기능
 var cal;
 var _pageNo = 0;
@@ -101,12 +101,8 @@ $(document).ready(function () {
 			$("html body").animate({scrollTop:list6.top},400);
 		});
 
-
-		
-
-
-	//스터디 리스트 설정
-	studyListGrid.setConfig({   
+	//내가 참여한 스터디 목록
+		studyListGrid.setConfig({   
     	target: $('[data-ax5grid="studyListGrid"]'),
         showLineNumber: false,
         //showRowSelector: true,
@@ -129,14 +125,18 @@ $(document).ready(function () {
         body: {
                     align: "left",
                     columnHeight: 45,
-                    
+
+					onDBLClick: function () 	{
+                    	openStudyManagementPage(studyListGrid.list[this.dindex].studyCode, studyListGrid.list[this.dindex].studyName);
+					},                    
                     onClick: function () 	{
-					},
-					onDBLClick: function(){
+                    
 					},
 					onDataChanged: function(){
+						
 					},
                 },
+        
         page: {
             navigationItemCount: 9,
             height: 30,
@@ -147,12 +147,9 @@ $(document).ready(function () {
             lastIcon: '>|',
             display: false,
             onChange: function () {
-				_pageNo = this.page.selectPage;
-				getStudyNoticeList();
                 },
             },
         });
-	
 	
 	//공지사항 리스트 설정
 	studyNoticeListGrid.setConfig({   
@@ -160,11 +157,11 @@ $(document).ready(function () {
         showLineNumber: false,
         showRowSelector: false,
         columns: [
-        	{key : "studyNoticeTitle", label: "제목", align: "center", width:"30%"},
-			{key : "studyNoticeStudyName", label: "스터디 이름", align: "center", width:"20%"},
-			{key : "studyNoticeRgstusId", label: "작성자 ID", align: "center", width:"24%"},
-			{key : "studyNoticeTime", label: "날짜", align: "center", width:"17%"},
-        	{key : "studyNoticeCount", label: "조회 수", align: "center", width:"10%"},
+        	{key : "boardTitle", label: "제목", align: "center", width:"30%"},
+			{key : "studyName", label: "스터디 이름", align: "center", width:"20%"},
+			{key : "rgstusId", label: "작성자 ID", align: "center", width:"24%"},
+			{key : "rgdtDt", label: "날짜", align: "center", width:"17%"},
+        	{key : "boardCount", label: "조회 수", align: "center", width:"10%"},
         ],
         header: {
         	align:"center",
@@ -175,7 +172,7 @@ $(document).ready(function () {
                     columnHeight: 45,
 
 					onDBLClick: function () 	{
-                    	selectStudyNoticeInfoDetail(this.list[this.dindex]["studyNoticeCode"]);
+                    	selectStudyNoticeInfoDetail(this.list[this.dindex]["boardCode"]);
 					},                    
                     onClick: function () 	{
                     
@@ -394,17 +391,17 @@ function closeCalenderPopup(){
 	calendarDetailModal.close();
 }
 
-function selectStudyNoticeInfoDetail(studyNoticeCode){
+function selectStudyNoticeInfoDetail(boardCode){
 	var parentData={
-		studyNoticeCode:studyNoticeCode
+			boardCode:boardCode
 	}
 	
-	studyNoticeInfoDetailModal.open({
+	noticeDetailModal.open({
 		width: 800,
-		height: 710,
+		height: 810,
 		iframe: {
 			method: "post",
-			url: "/main/studyNoticeInfoDetailPopup.do",
+			url: "/notice/noticeInfoDetailPopup.do",
 			param: callBack = parentData
 		},
 		onStateChanged: function(){
@@ -451,10 +448,23 @@ function closeMakeStudyModal(){
 
 
 // 공지사항 작성 팝업창 닫고 새로고침
-function writeModalCloseWithRefresh(){
-	studyNoticeInfoDetailModal.close();
+function closeSystemNoticeInfo(){
+	noticeDetailModal.close();
 	window.location.reload();
 	
 }
 
 
+//스터디 페이지 이동(POST방식 이용)
+function openStudyManagementPage(studyCode, studyName){
+	var frmPop= document.dataForm;
+    var url = '/studyManagement/studyMain.do';
+    window.open('',studyName);  
+     
+    frmPop.method="post";
+    frmPop.action = url;
+    frmPop.target = studyName; //window,open()의 두번째 인수와 같아야 하며 필수다.  
+    frmPop.studyCode.value = studyCode;
+    frmPop.studyName.value = studyName;
+    frmPop.submit();   
+}

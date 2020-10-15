@@ -57,29 +57,30 @@
 		]]>
 	</select>
 	
-	<select id="selectStudyNoticeList" resultType="com.main.VO.studyNoticeInfoVO" >
+	<select id="selectStudyNoticeList" resultType="com.notice.VO.boardVO" >
 		<![CDATA[
 			SELECT	*
 			  FROM	(
 						SELECT	ROWNUM	as RNUM
 							 ,	main.*	
 						  FROM	(
-									SELECT	/*+ ordered use_nl(sn) INDEX_DESC(sn STUDYNOTICE_IDX) */
-										sn.NOTICE_CODE									as	studyNoticeCode
-										,	sn.NOTICE_TITLE 							as 	studyNoticeTitle
+									SELECT	/*+ ordered use_nl(bt) INDEX_DESC(bt BOARD_IDX ) */
+											bt.BOARD_CODE						as	boardCode
+										,	bt.BOARD_TITLE 						as 	boardTitle
 										,	(SELECT ui.USER_ID	
 										     FROM   USER_INFO ui
-											 WHERE  ui.USER_CODE   =   sn.RGSTUS_ID)    as	studyNoticeRgstusId
-										,	(SELECT si.STUDY_NAME
+											 WHERE  ui.USER_CODE   =   bt.RGSTUS_ID)    as	rgstusId
+										,	TO_CHAR(bt.RGDT_DT, 'YYYY-MM-DD HH24:MI') 	as 	rgdtDt
+										,	bt.BOARD_COUNT								as	boardCount
+										,	(SELECT	si.STUDY_NAME
 											 FROM	STUDY_INFO si
-											 WHERE	si.STUDY_CODE	=	sn.STUDY_CODE)	as	studyNoticeStudyName
-										,	TO_CHAR(sn.RGDT_DT, 'YYYY-MM-DD HH24:MI') 	as 	studyNoticeTime
-										,	sn.NOTICE_CNT								as	studyNoticeCount
-									FROM	STUDY_NOTICE sn
-									WHERE	sn.USE_YN			=	'Y'
-										AND	sn.STUDY_CODE 	IN	(SELECT us.STUDY_CODE
+											 WHERE	si.STUDY_CODE	=	bt.STUDY_CODE)	as	studyName
+									FROM	BOARD_TB bt
+									WHERE	bt.USE_YN			=	'Y'
+										AND	bt.BOARD_TYPE		=	'30'
+										AND	bt.STUDY_CODE 	IN	(SELECT us.STUDY_CODE
 																 FROM	USER_IN_STUDY us
-																 WHERE	us.USER_CODE	=	#{userCode}
+																 WHERE	us.USER_CODE	=	#{currentUserCode}
 																 	AND	us.USE_YN		=	'Y'
 																 )
 								) main 
@@ -92,8 +93,14 @@
 	<select id="selectStudyNoticeListToCnt" resultType="int">
 		<![CDATA[
 			SELECT	COUNT(*)
-			FROM	STUDY_NOTICE
-			WHERE	STUDY_NOTICE.USE_YN	=	'Y'
+			FROM	BOARD_TB
+			WHERE	BOARD_TB.USE_YN			=	'Y'
+				AND	BOARD_TB.BOARD_TYPE		=	'30'
+				AND	BOARD_TB.STUDY_CODE 	IN	(SELECT us.STUDY_CODE
+												 FROM	USER_IN_STUDY us
+												 WHERE	us.USER_CODE	=	#{currentUserCode}
+												 	AND	us.USE_YN		=	'Y'
+												 )
 		]]>
 	</select>
 	

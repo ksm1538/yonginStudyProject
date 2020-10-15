@@ -5,6 +5,7 @@ import java.util.List;
 import com.main.VO.calendarVO;
 import com.main.VO.studyInfoVO;
 import com.main.VO.studyNoticeInfoVO;
+import com.notice.VO.boardVO;
 
 public interface mainService {
 	
@@ -12,9 +13,9 @@ public interface mainService {
 
 	List<calendarVO> searchMyStudyCalendar(calendarVO calendarVO);
 	
-	int selectStudyNoticeListToCnt(studyNoticeInfoVO studyNoticeInfoVO);
+	int selectStudyNoticeListToCnt(boardVO boardVO);
 	
-	List<studyNoticeInfoVO> selectStudyNoticeList(studyNoticeInfoVO studyNoticeInfoVO);
+	List<boardVO> selectStudyNoticeList(boardVO boardVO);
 	
 	studyNoticeInfoVO selectStudyNoticeInfoDetail(String studyNoticeCode);
 	
