@@ -13,6 +13,7 @@ import com.commonFunction.DAO.replyDAO;
 import com.studyManagement.DAO.studyManagementDAO;
 import com.main.VO.userInStudyVO;
 import com.notice.VO.boardVO;
+import com.login.VO.userInfoVO;
 
 @Service("studyManagementService")
 public class studyManagementServiceImpl implements studyManagementService{
@@ -88,6 +89,11 @@ public class studyManagementServiceImpl implements studyManagementService{
 			fileDAO.updateNFileWithDeleteBoard(boardCode);
 			replyDAO.deleteReplyWithBoardCode(boardCode);
 		
+	}
+	
+	@Override
+	public userInfoVO selectStudyMemberManage(String userCode) throws Exception {
+		return studyManagementDAO.selectStudyMemberManage(userCode);
 	}
 
 }

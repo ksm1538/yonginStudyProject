@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.notice.VO.boardVO;
 import com.main.VO.userInStudyVO;
+import com.login.VO.userInfoVO;
 
 public interface studyManagementService {
 	
@@ -24,4 +25,6 @@ public interface studyManagementService {
 	void reviseStudyFreeNotice(boardVO data, MultipartHttpServletRequest mpRequest) throws Exception;
 
 	void deleteStudyFreeNotice(boardVO boardVO) throws Exception;
+	
+	userInfoVO selectStudyMemberManage(String userCode) throws Exception;
 }
