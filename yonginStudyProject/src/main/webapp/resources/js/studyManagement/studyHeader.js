@@ -81,3 +81,17 @@ function openMessageForm(){
 	//이걸 쓰면 창이 새로 열리지않고 이동
 	location.href = "/message.do";
 }
+
+/*관리자 페이지 이동*/
+function openStudyAdminPage(){
+	var frmPop= document.dataForm;
+    var url = '/studyManagement/studyManage.do';
+     
+    
+    frmPop.method="post";
+    frmPop.action = url;
+    frmPop.target = studyName; 
+    frmPop.studyCode.value = studyCode;
+    frmPop.studyName.value = studyName;
+    frmPop.submit();
+}
