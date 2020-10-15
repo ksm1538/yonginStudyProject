@@ -1,4 +1,4 @@
-/** 변수 설정(시작) **/ 
+/** 변수 설정(시작) **/  
 var studyMemberManageListGrid = new ax5.ui.grid();
 var calendarDetailModal = new ax5.ui.modal();
 var studyMemberManageModal = new ax5.ui.modal();	//팝업창 띄우는 modal기능
@@ -52,7 +52,7 @@ $(document).ready(function () {
                     onClick: function () 	{
 					},
 					onDBLClick: function(){
-						selectStudyMemberManage(this.list[this.dindex]["userCode"]);
+						selectStudyMemberManage(this.list[this.dindex]["userCode"],this.list[this.dindex]["userId"]);
 					},
 					onDataChanged: function(){
 					},
@@ -250,9 +250,10 @@ function searchStudyMemberList(){
 }
 
 // 스터디 멤버 관리 팝업 
-function selectStudyMemberManage(userCode){
+function selectStudyMemberManage(userCode, userId){
 	var parentData={
-			userCode:userCode
+			userCode:userCode,
+			userId:userId
 	}
 	
 	studyMemberManageModal.open({
@@ -396,4 +397,8 @@ function studyMemberManageCloseWithRefresh(){
 	window.location.reload();
 	
 }
-	
+
+// 쪽지 보내기 팝업 닫기
+function close(){
+	studyMemberManageModal.close();
+}

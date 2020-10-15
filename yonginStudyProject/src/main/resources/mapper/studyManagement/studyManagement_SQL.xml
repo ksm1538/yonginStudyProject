@@ -41,7 +41,7 @@
 					)
 			WHERE	RNUM >= #{first}
 		]]>
-	</select>
+	</select> 
 	
 	<select id="selectStudyMemeberListToCnt" resultType="int">
 		<![CDATA[
@@ -200,6 +200,7 @@
 				,	USER_INFO.USER_NAME				as userName
 				,	USER_INFO.USER_EMAIL			as userEmail
 				,	USER_INFO.USER_ADDRESS			as userAddress
+				,	USER_INFO.USER_CODE				as userCode
 			FROM	USER_INFO
 			WHERE	USER_INFO.USER_CODE		=	#{userCode}
 		]]>

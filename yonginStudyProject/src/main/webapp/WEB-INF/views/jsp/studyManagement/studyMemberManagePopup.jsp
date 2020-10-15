@@ -61,13 +61,17 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 						<form:input path="userEmail" type="text" name="userEmail" id="userEmail" data-ax-path="userEmail" class="textbox_style_1"/>
 					</div>
 			</div>
-			
+			</form:form>
 	
 			<div class="col-12 col-center mw-1200 study_memeber_btn_con">		
 					<input type="button" value="추방하기 " class="btn_style_1" onclick="" >
-					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >				
+					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
+					<form id="sendMessageForm" name="sendMessageForm" action="/studyManagement/writeMessageToSelectUserForm.do" method="POST">
+   		  		 	<input type="hidden" id="userId">
+      				<input type="submit" value="쪽지 보내기" class="btn_style_1 return_message_btn" id="sendMessageBtn">
+      				</form>			
 			</div>
-		</form:form>
+		
 		
 	</div>
 

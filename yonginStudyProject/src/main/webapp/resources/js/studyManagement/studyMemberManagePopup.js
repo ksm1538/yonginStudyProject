@@ -44,4 +44,4 @@ function selectStudyMemberManagement(userCode){
 // 팝업창 닫기
 function closeModal(){
 	return self.parent.studyMemberManageCloseWithRefresh();		// 부모 페이지의 close함수로 리턴
-}
+} 
