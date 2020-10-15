@@ -27,6 +27,15 @@
 									FROM	USER_IN_STUDY us
 									WHERE	us.USE_YN			=	'Y'
 										AND	us.STUDY_CODE 		=	#{studyCode}
+			]]>
+									<if test='searchStudyMemberId != ""'>
+											AND	us.USER_CODE			IN	(SELECT	ui2.USER_CODE
+ 																			 FROM	USER_INFO ui2
+																	 		 WHERE	ui2.USE_YN	=	'Y'
+																		 		AND	ui2.USER_ID	LIKE	'%'	||	#{searchStudyMemberId} || '%'
+																			)
+									</if>
+			<![CDATA[
 								) main 
 						  WHERE ROWNUM <= #{last}
 					)
@@ -41,6 +50,13 @@
 			WHERE	USER_IN_STUDY.USE_YN		=	'Y'
 				AND	USER_IN_STUDY.STUDY_CODE	=	#{studyCode}
 		]]>
+		<if test='searchStudyMemberId != ""'>
+				AND	USER_IN_STUDY.USER_CODE		IN		(SELECT	USER_INFO.USER_CODE
+													 	FROM	USER_INFO
+													 	WHERE	USER_INFO.USE_YN	=	'Y'
+													 	AND	USER_INFO.USER_ID	LIKE	'%'	||	#{searchStudyMemberId} || '%'
+														)
+		</if>
 	</select>
 	
 	<insert id="insertStudyFreeNotice"> 

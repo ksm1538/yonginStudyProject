@@ -13,7 +13,14 @@ public class userInStudyVO {
 	private int	first;
 	private int	last;
 	private String	page = "";
+	private String searchStudyMemberId="";
 	
+	public String getSearchStudyMemberId() {
+		return searchStudyMemberId;
+	}
+	public void setSearchStudyMemberId(String searchStudyMemberId) {
+		this.searchStudyMemberId = searchStudyMemberId;
+	}
 	public int getFirst() {
 		return first;
 	}
