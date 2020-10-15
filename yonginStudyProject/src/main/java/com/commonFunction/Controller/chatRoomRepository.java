@@ -51,7 +51,7 @@ public class chatRoomRepository {
 			if(result == true) {
 				HashMap<String, String> userList = cv.getUserList();
 				String userId = userList.get(session.getId());
-				String message = "CHAT:[¾Ë¸²] "+ userId + "´ÔÀÌ ÅğÀåÇÏ¼Ì½À´Ï´Ù.";
+				String message = "STAT:[¾Ë¸²] "+ userId + "´ÔÀÌ ÅğÀåÇÏ¼Ì½À´Ï´Ù.";
 				
 				userList.remove(session.getId());
 				

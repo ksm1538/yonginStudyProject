@@ -28,12 +28,12 @@ public class chatRoomVO {
         if(chatMessage.getType() == MessageType.ENTER){
         	userList.put(session.getId(), chatMessage.getWriter());
             sessions.add(session);
-            chatMessage.setMessage("CHAT:[¾Ë¸²] "+chatMessage.getWriter() + "´ÔÀÌ ÀÔÀåÇÏ¼Ì½À´Ï´Ù.");
+            chatMessage.setMessage("STAT:[¾Ë¸²] "+chatMessage.getWriter() + "´ÔÀÌ ÀÔÀåÇÏ¼Ì½À´Ï´Ù.");
         }
         else if(chatMessage.getType() == MessageType.LEAVE){
         	userList.remove(session.getId());
             sessions.remove(session);
-            chatMessage.setMessage("CHAT:[¾Ë¸²] "+chatMessage.getWriter() + "´ÔÀÌ ÅðÀåÇÏ¼Ì½À´Ï´Ù.");
+            chatMessage.setMessage("STAT:[¾Ë¸²] "+chatMessage.getWriter() + "´ÔÀÌ ÅðÀåÇÏ¼Ì½À´Ï´Ù.");
         }
         else{
             chatMessage.setMessage("CHAT:"+chatMessage.getWriter() + " : " + chatMessage.getMessage());

@@ -903,3 +903,53 @@ html, body {
 .tui-full-calendar-weekday-grid-line:hover .tui-full-calendar-weekday-grid-header > span{color:#fff !important;}
 
 
+/*스터디 채팅*/
+.study_chatting_title_con{padding:25px 0; background-color:#7f99e2; margin-bottom:25px;}
+.study_chatting_title_con .study_chatting_name{font-size:20px; font-weight:bold; color:#fff;}
+
+#userArea{overflow-y: auto;}
+.chatting_user_area_con{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:20px;}
+.chatting_user_area_con .chatting_user_area_title{margin-right:40px;}
+.chatting_user_area_con .chatting_user_area_title > span{display:inline-block; border-bottom:2px solid #7f99e2; padding-bottom:5px; font-size:15px; font-weight:bold; margin-top:20px;}
+.chatting_user_list_area{border:1px solid #000; border-radius:15px; width:250px; height:70px; padding:10px 20px;}
+
+.user_list_star{position:relative; margin-bottom:5px;}
+.user_list_star > span{margin-left:15px; font-size:15px; font-weight:bold}
+.user_list_star:before{content:"*"; font-weight:bold; position:absolute; top:5px; left:0;}
+
+#chatArea{width:545px; height:500px; overflow-y: auto; border: 1px solid black; margin-bottom:20px;}
+.chatting_area_con{padding:10px;}
+.my_message_info_wrap{text-align:end; padding-right:25px; margin-bottom:20px;}
+.my_message_info_wrap .message_info_con{display:flex; justify-content:flex-end;}
+.my_message_info_wrap .message_info_con .message_name{margin-right:15px;}
+.my_message_info_wrap .message_info_con .message_name > span{font-size:17px; font-weight:bold}
+.my_message_info_wrap .message_info_con .message_time > span{font-size:9px; font-weight:bold;}
+
+.my_message_info_wrap .message_desc_con{ margin-left:215px; position:relative;}
+.my_message_info_wrap .message_desc_con .message_desc{min-height:40px; min-width:30px; border-radius:10px; color:#fff; display:inline-block; padding:10px 10px;  background-color:#7f99e2; word-break:break-all;}
+.my_message_info_wrap .message_desc_con .message_desc_tri{position:absolute; right:-10px; top:5px; width:0px; height:0px; border-top:20px solid transparent; border-right:20px solid #7f99e2; transform:rotate(180deg);   }
+
+
+.message_info_wrap{padding-left:25px; margin-bottom:20px;}
+.message_info_wrap .message_info_con{display:flex;}
+.message_info_wrap .message_info_con .message_name{margin-right:15px;}
+.message_info_wrap .message_info_con .message_name > span{font-size:17px; font-weight:bold}
+.message_info_wrap .message_info_con .message_time > span{font-size:9px; font-weight:bold;}
+
+.message_info_wrap .message_desc_con{position:relative;}
+.message_info_wrap .message_desc_con .message_desc{min-height:40px; min-width:30px; border-radius:10px; color:#fff; display:inline-block; padding:10px 10px;  background-color:#7f99e2; word-break:break-all;}
+.message_info_wrap .message_desc_con .message_desc_tri{position:absolute; left:-10px; top:5px; width:0px; height:0px; border-top:20px solid transparent; border-right:20px solid #7f99e2; transform:rotate(270deg);   }
+
+.chatting_write_wrap .chatting_wirte_text_box_con{display:flex; justify-content:center; margin-bottom:30px;}
+.chatting_write_wrap .chatting_wirte_text_box_con .chatting_textbox{width:432px; height:40px; margin-right:38px;}
+.chatting_write_wrap .chatting_wirte_text_box_con .chatting_btn{width:80px; height:40px; font-weight:bold; background-color:transparent;  outline:none;}
+.chatting_write_wrap .chatting_wirte_text_box_con .chatting_btn:hover{background-color: #7f99e2; color:#fff;}
+
+.chatting_exit_btn_wrap{margin-bottom:20px;}
+.chatting_exit_btn_wrap .chatting_exit_btn{border-radius:15px; width:120px; height:40px; font-weight:bold; background-color:transparent;  outline:none;}
+.chatting_exit_btn_wrap .chatting_exit_btn:hover{background-color: #7f99e2; color:#fff;}
+
+
+
+
+

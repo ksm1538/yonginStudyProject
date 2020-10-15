@@ -369,7 +369,7 @@ function studyChatFunc(){
     var url = '/studyManagement/studyChatting.do';
      
     window.open("" ,targetName, 
-    "toolbar=no, width=540, height=467, directories=no, status=no,    scrollorbars=no, resizable=no"); 
+    "toolbar=no, width=700, height=850, directories=no, status=no,    scrollorbars=no, resizable=no"); 
     
     frmPop.method="post";
     frmPop.action = url;
