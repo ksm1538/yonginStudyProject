@@ -5,6 +5,8 @@ var studyMemberManageModal = new ax5.ui.modal();	//팝업창 띄우는 modal기�
 var studyApplyCheckListGrid = new ax5.ui.grid();
 var cal;
 var _pageNo = 0;
+var studyCode;		// 현재 페이지 스터디 코드
+var studyName; 		// 현재 페이지 스터디 이름
 /** 변수 설정(끝) **/
 
 /** 초기화(시작) **/
@@ -28,9 +30,16 @@ $(document).ready(function () {
         	{key : "studyAuthority",label : "직위", align : "center",width : "10%"},
         	{key : "studyMemberManage",label : "관리", align : "center",width : "25%",
 				formatter: function (){
-        			 return '<button type="button" onclick="studyMemberManagefunc(' + this.list[this.dindex]["userCode"] + ')" style="border:transparent; background-color:transparent;outline:none">관리</button>';
+        			 //return '<button type="button" onclick="studyMemberManagefunc(' + this.list[this.dindex]["userCode"] + ')" style="border:transparent; background-color:transparent;outline:none">관리</button>';
+					return '<button type="button" style="border:transparent; background-color:transparent;outline:none">관리</button>';
         		 }
-			},/*추방여부 */
+			},/*추방여부*/
+			{key : "studyAuthority",label : "직위 변경", align : "center",width : "25%",
+				formatter: function (){
+        			 //return '<button type="button" onclick="studyMemberManagefunc(' + this.list[this.dindex]["userCode"] + ')" style="border:transparent; background-color:transparent;outline:none">관리</button>';
+					return '<button type="button" style="border:transparent; background-color:transparent;outline:none">직위 변경</button>';
+        		 }
+			},/*직위변경 */
         ],
         header: {
         	align:"center",
@@ -43,6 +52,7 @@ $(document).ready(function () {
                     onClick: function () 	{
 					},
 					onDBLClick: function(){
+						selectStudyMemberManage(this.list[this.dindex]["userCode"]);
 					},
 					onDataChanged: function(){
 					},
@@ -224,7 +234,7 @@ function getStudyMemberList(){
 }
 
 // 스터디 멤버 관리 팝업 
-function studyMemberManagefunc(userCode){
+function selectStudyMemberManage(userCode){
 	var parentData={
 			userCode:userCode
 	}
@@ -362,5 +372,12 @@ function openCalenderPopup(e){
 }
 function closeCalenderPopup(){
 	calendarDetailModal.close();
+}
+
+// 팝업창 닫고 새로고침
+function studyMemberManageCloseWithRefresh(){
+	studyMemberManageModal.close();
+	window.location.reload();
+	
 }
 	

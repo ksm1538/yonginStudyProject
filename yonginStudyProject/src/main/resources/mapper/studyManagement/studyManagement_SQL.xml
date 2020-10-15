@@ -13,7 +13,8 @@
 							 ,	main.*	
 						  FROM	(
 									SELECT	/*+ ordered use_nl(us) INDEX_DESC(us USERINSTUDY_IDX) */
-										(	SELECT	ui.USER_ID
+											us.USER_CODE									as userCode
+										,	(	SELECT	ui.USER_ID
 												FROM 	USER_INFO ui
 												WHERE	ui.USER_CODE	=	us.USER_CODE)	as 	userId
                                         ,   (   SELECT  ui.USER_NAME
@@ -176,4 +177,15 @@
 			WHERE	BOARD_CODE			=	#{boardCode}
 		]]>
 	</delete>
+	
+	<select id="selectStudyMemberManage" parameterType="String" resultType="com.login.VO.userInfoVO">
+		<![CDATA[
+			SELECT	USER_INFO.USER_ID				as userId
+				,	USER_INFO.USER_NAME				as userName
+				,	USER_INFO.USER_EMAIL			as userEmail
+				,	USER_INFO.USER_ADDRESS			as userAddress
+			FROM	USER_INFO
+			WHERE	USER_INFO.USER_CODE		=	#{userCode}
+		]]>
+	</select>
 </mapper>
