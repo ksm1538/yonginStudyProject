@@ -793,7 +793,7 @@ html, body {
 .study_memeber_title_con{display:flex;}
 .study_memeber_title_con .study_memeber_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px;}
 .study_memeber_title_con .study_memeber_title > span{display:inline-block; border-bottom:3px solid #7f99e2; padding-bottom:10px;}
-.study_memeber_wrap .question_desc{top:-15px; top::45px;}
+.study_memeber_wrap .question_desc{top:-15px; top:45px;}
 
 
 .study_memeber_search_con{display:flex; margin-bottom:40px;}
@@ -807,7 +807,7 @@ html, body {
 .study_plan_title_con{display:flex;}
 .study_plan_title_con .study_plan_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px; color:#fff;}
 .study_plan_title_con .study_plan_title > span{display:inline-block; border-bottom:3px solid #fff; padding-bottom:10px;}
-.study_plan_wrap .question_desc{top:-15px; top::45px;}
+.study_plan_wrap .question_desc{top:-15px; top:45px;}
 .study_plan_wrap .render-range{color:#fff;}
 
 /*스터디 일정 작성*/
@@ -828,7 +828,7 @@ html, body {
 .study_apply_check_wrap .study_apply_check_title_con{display:flex;}
 .study_apply_check_title_con .study_apply_check_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px;}
 .study_apply_check_title_con .study_apply_check_title > span{display:inline-block; border-bottom:3px solid #7f99e2; padding-bottom:10px;}
-.study_apply_check_wrap .question_desc{top:-15px; top::45px;}
+.study_apply_check_wrap .question_desc{top:-15px; top:45px;}
 
 /*스터디관리 공지사항*/
 .study_notice_wrap{padding-top:120px; padding-bottom:120px; background-color:#7f99e2;}
@@ -837,7 +837,7 @@ html, body {
 .study_notice_title_con .study_notice_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px; color:#fff;}
 .study_notice_title_con .study_notice_title > span{display:inline-block; border-bottom:3px solid #fff; padding-bottom:10px;}
 
-.study_notice_wrap .question_desc{top:-15px; top::45px;}
+.study_notice_wrap .question_desc{top:-15px; top:45px;}
 
 
 .study_notice_search_con{display:flex; margin-bottom:40px;}
@@ -860,7 +860,7 @@ html, body {
 .study_free_notice_title_con .study_free_notice_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px; color:#fff;}
 .study_free_notice_title_con .study_free_notice_title > span{display:inline-block; border-bottom:3px solid #fff; padding-bottom:10px;}
 
-.study_free_notice_wrap .question_desc{top:-15px; top::45px;}
+.study_free_notice_wrap .question_desc{top:-15px; top:45px;}
 .study_free_notice_grid_con{margin-bottom:30px;}
 
 .study_free_notice_btn_con .btn_style_1{border-color:#fff; color:#fff;}
@@ -920,7 +920,7 @@ html, body {
 #chatArea{width:545px; height:500px; overflow-y: auto; border: 1px solid black; margin-bottom:20px;}
 .chatting_area_con{padding:10px;}
 .my_message_info_wrap{text-align:end; padding-right:25px; margin-bottom:20px;}
-.my_message_info_wrap .message_info_con{display:flex; justify-content:flex-end;}
+.my_message_info_wrap .message_info_con{display:flex; justify-content:flex-end; margin-bottom:5px;}
 .my_message_info_wrap .message_info_con .message_name{margin-right:15px;}
 .my_message_info_wrap .message_info_con .message_name > span{font-size:17px; font-weight:bold}
 .my_message_info_wrap .message_info_con .message_time > span{font-size:9px; font-weight:bold;}
@@ -931,7 +931,7 @@ html, body {
 
 
 .message_info_wrap{padding-left:25px; margin-bottom:20px;}
-.message_info_wrap .message_info_con{display:flex;}
+.message_info_wrap .message_info_con{display:flex; margin-bottom:5px;}
 .message_info_wrap .message_info_con .message_name{margin-right:15px;}
 .message_info_wrap .message_info_con .message_name > span{font-size:17px; font-weight:bold}
 .message_info_wrap .message_info_con .message_time > span{font-size:9px; font-weight:bold;}
