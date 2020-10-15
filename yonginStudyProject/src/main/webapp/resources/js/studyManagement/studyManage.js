@@ -196,7 +196,8 @@ function getStudyMemberList(){
 	
 	var sendData = {
 			page :	_pageNo,
-			studyCode : $("#studyCode").val()
+			studyCode : $("#studyCode").val(),
+			searchStudyMemberId:$('#searchStudyMemberId').val()
 	}
 
 	$.ajax({
@@ -231,6 +232,21 @@ function getStudyMemberList(){
 			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
 		}
 	}); 
+}
+
+//EnterKeyEvent
+function enterKeyEvent() {
+    if (window.event.keyCode == 13) {
+         // 엔터키가 눌렸을 때 실행할 내용
+    	_pageNo = 0;
+    	getStudyMemberList();
+    }
+}
+
+// 검색 버튼용 조회 함수
+function searchStudyMemberList(){
+	_pageNo = 0;
+	getStudyMemberList();
 }
 
 // 스터디 멤버 관리 팝업 
