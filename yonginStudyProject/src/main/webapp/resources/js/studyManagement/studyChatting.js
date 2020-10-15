@@ -26,7 +26,7 @@ $(document).ready(function(){
 function connect() {
     
     //wsocket = new SockJS("/echo");
-	wsocket = new SockJS("http://localhost:8080/studyChatWS");
+	wsocket = new SockJS("/studyChatWS");
     //sock = new SockJS("http://localhost:8080/study/echo");
     wsocket.onopen = onOpen;
     wsocket.onmessage = onMessage;
@@ -48,7 +48,15 @@ function onOpen(evt) {
 
 function onMessage(evt) {
     var data = evt.data;
-    appendMessage(data)
+    console.log(data);
+    data = data.substr(1, data.length-2);	// 처음과 끝 "" 제거
+
+    if (data.substring(0, 5) == "CHAT:") {
+        appendMessage(data.substring(5));
+    }
+    else if (data.substring(0, 5) == "USER:") {
+    	appendUserList(data.substring(5));
+    }
 }
 
 function onClose(evt) {
@@ -57,15 +65,34 @@ function onClose(evt) {
 
 function send() {
     var msg = $("#message").val();
+    if(msg.length>7000){
+    	dialog.alert("최대 7000 자까지 입력할 수 있습니다.");
+    	return;
+    }
     wsocket.send(JSON.stringify({studyCode : studyCode, type:'CHAT',writer:nickname,message : msg}));
     $("#message").val("");
 }
 
 // 메시지를 화면에 표시하는 함수
 function appendMessage(msg) {
+    let now = new Date();
     
-    // 메세지 입력창에 msg를 하고 줄바꿈 처리
-    $("#chatMessageArea").append(msg+"<br>");
+    //now.toLocaleTimeString()은 현재 시각 표시하는 기능
+    var message = "(" + now.toLocaleTimeString() + ")  " + msg;
+    
+    // msg에서 사용자 이름 따로 추출
+    var name = msg.substring(0, nickname.length);
+    
+    // 현재 접속자 아이디와 비교해서 같으면
+    if(name == nickname){
+    	 $("#chatMessageArea").append("<span style='float:right'>"+message+"</span>"+"<br>");
+    }
+    else{
+    	// 메세지 입력창에 msg를 하고 줄바꿈 처리
+        $("#chatMessageArea").append("<span>"+message+"</span>"+"<br>");
+    }
+    
+    
     
     // 채팅창의 heigth를 할당
     var chatAreaHeight = $("#chatArea").height();
@@ -79,4 +106,22 @@ function appendMessage(msg) {
     // .scrollTop(int) : 파라미터로 들어간 px 만큼 top에 공백을 둔 채
     //                   스크롤바를 위치시킨다
     $("#chatArea").scrollTop(maxScroll);
+}
+
+// 사용자 리스트를 화면에 표시하는 함수
+function appendUserList(userList){
+	userList = userList.substr(1, userList.length-2);	// [] 제거
+	userList = userList.replace(" ", "");	//공백 제거
+	
+	userListArray = userList.split(",");	// String to Array
+	
+	$("#userListArea").empty();	// 해당 DIV의 내용 제거
+	
+	for(var i=0;i<userListArray.length;i++){
+		$("#userListArea").append(userListArray[i]+"<br>");
+		var userAreaHeight = $("#userArea").height();
+		var maxScroll = $("#userListArea").height() - userAreaHeight;
+		$("#userArea").scrollTop(maxScroll);
+	}
+	
 }

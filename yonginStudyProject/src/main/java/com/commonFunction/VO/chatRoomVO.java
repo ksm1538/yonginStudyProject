@@ -1,6 +1,7 @@
 package com.commonFunction.VO;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +13,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class chatRoomVO {
 	private String studyCode;
-    private Set<WebSocketSession> sessions = new HashSet<>();
+    private Set<WebSocketSession> sessions = new HashSet<WebSocketSession>();
+    private HashMap<String, String> userList = new HashMap<String, String>();
 
     
     public static chatRoomVO create(String studyCode){
@@ -24,17 +26,18 @@ public class chatRoomVO {
     public void handleMessage(WebSocketSession session, chatMessageVO chatMessage,
                               ObjectMapper objectMapper) throws IOException {
         if(chatMessage.getType() == MessageType.ENTER){
+        	userList.put(session.getId(), chatMessage.getWriter());
             sessions.add(session);
-            chatMessage.setMessage(chatMessage.getWriter() + "¥‘¿Ã ¿‘¿Â«œºÃΩ¿¥œ¥Ÿ.");
+            chatMessage.setMessage("CHAT:[æÀ∏≤] "+chatMessage.getWriter() + "¥‘¿Ã ¿‘¿Â«œºÃΩ¿¥œ¥Ÿ.");
         }
         else if(chatMessage.getType() == MessageType.LEAVE){
+        	userList.remove(session.getId());
             sessions.remove(session);
-            chatMessage.setMessage(chatMessage.getWriter() + "¥‘¿Ã ≈¿Â«œºÃΩ¿¥œ¥Ÿ.");
+            chatMessage.setMessage("CHAT:[æÀ∏≤] "+chatMessage.getWriter() + "¥‘¿Ã ≈¿Â«œºÃΩ¿¥œ¥Ÿ.");
         }
         else{
-            chatMessage.setMessage(chatMessage.getWriter() + " : " + chatMessage.getMessage());
+            chatMessage.setMessage("CHAT:"+chatMessage.getWriter() + " : " + chatMessage.getMessage());
         }
-        System.out.println("chatMessage : "+chatMessage.getMessage());
         send(chatMessage,objectMapper);
     }
 
@@ -42,6 +45,18 @@ public class chatRoomVO {
         TextMessage textMessage = new TextMessage(objectMapper.writeValueAsString(chatMessage.getMessage()));
         for(WebSocketSession sess : sessions){
             sess.sendMessage(textMessage);
+            
+        }
+        
+        // ¡¢º”¿⁄ ∏Ì¥‹ ¿¸º€
+        if(chatMessage.getType() == MessageType.LEAVE || chatMessage.getType() == MessageType.ENTER) {
+        	TextMessage userListMessage = new TextMessage(objectMapper.writeValueAsString("USER:"+userList.values()));
+        	
+        	for(WebSocketSession sess : sessions){
+        		sess.sendMessage(userListMessage);
+                
+            }
+        	
         }
     }
 
@@ -59,6 +74,14 @@ public class chatRoomVO {
 
 	public void setStudyCode(String studyCode) {
 		this.studyCode = studyCode;
+	}
+
+	public HashMap<String, String> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(HashMap<String, String> userList) {
+		this.userList = userList;
 	}
     
     

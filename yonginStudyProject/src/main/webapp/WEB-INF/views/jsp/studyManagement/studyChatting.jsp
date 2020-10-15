@@ -19,6 +19,9 @@
 #chatArea {
     width: 400px; height: 100px; overflow-y: auto; border: 1px solid black;
 }
+#userArea {
+    width: 400px; height: 100px; overflow-y: auto; border: 1px solid black;
+}
 </style>
 <title>YonginStudy <%=request.getParameter("studyName")%> 대화방</title> 
 </head>
@@ -32,9 +35,14 @@
 	</form>
     
     <h1><span id="studyNameSpan"></span></h1>
+    <div id="userArea">
+      <span id="userListSpan"><b>접속자 리스트</b></span>
+      <div id="userListArea"></div>
+    </div>
+    
     <div id="chatArea"><div id="chatMessageArea"></div></div>
     <br/>
-    <input type="text" id="message" autofocus>
+    <input type="text" id="message" maxlength="7000" autofocus>
     <input type="button" id="sendBtn" value="전송" onclick="send()">
     <input type="button" id="exitBtn" value="나가기" onclick="disconnect()">
 </body>
