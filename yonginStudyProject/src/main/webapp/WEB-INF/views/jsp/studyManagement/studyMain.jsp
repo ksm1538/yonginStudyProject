@@ -32,6 +32,15 @@ studyPositionList.forEach(function(n){
 	studyPositionMap[n.codeId] = n.codeValue;
 }); 
 
+var typeSxnList = [
+    <c:forEach var="result" items="${calendarType}" varStatus="status">
+        {codeId:"${result.codeId}", codeValue:"${result.codeValue}", codeExtraData:"${result.codeExtraData}"}<c:if test="${!status.last}">,</c:if>
+    </c:forEach>
+    ];
+var typeSxnMap = {};
+typeSxnList.forEach(function(n){
+	typeSxnMap[n.codeId] = [n.codeValue, n.codeExtraData];
+});
 </script>
 
 <meta charset="UTF-8">

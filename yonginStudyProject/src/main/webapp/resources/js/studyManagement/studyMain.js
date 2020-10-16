@@ -133,6 +133,9 @@ $(document).ready(function () {
 		$("#side_movelist3").on("click",function(event){
 			$("html body").animate({scrollTop:list6.top},400);
 		});
+		
+		showRange();
+		searchMyStudyCalendar();
 });
 /** 초기화(끝) **/
 
@@ -297,6 +300,7 @@ function next() {
 // 현재 달력 범위 보여줌
 function showRange(){
 	var today = cal.getDate();
+	console.log(today);
 	var month = '' + (today.getMonth()+1);
 	if (month.length < 2) month = '0' + month;
 	document.getElementById("renderRange").innerText = today.getFullYear() + "." + month;
@@ -369,7 +373,7 @@ function studyChatFunc(){
     var url = '/studyManagement/studyChatting.do';
      
     window.open("" ,targetName, 
-    "toolbar=no, width=700, height=850, directories=no, status=no,    scrollorbars=no, resizable=no"); 
+    "toolbar=no, width=700, height=870, directories=no, status=no,    scrollorbars=no, resizable=no"); 
     
     frmPop.method="post";
     frmPop.action = url;

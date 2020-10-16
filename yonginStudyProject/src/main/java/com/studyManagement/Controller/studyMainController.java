@@ -47,10 +47,12 @@ public class studyMainController {
 		List<commonCodeVO> codeResult1 = commonCodeService.selectCommonCodeList("SAFStatus");
 		List<commonCodeVO> codeResult2 = commonCodeService.selectCommonCodeList("studyTopic");
 		List<commonCodeVO> codeResult3 = commonCodeService.selectCommonCodeList("studyAuthority");
-		
+		List<commonCodeVO> codeResult4 = commonCodeService.selectCommonCodeList("calendarType");
+
 		model.addAttribute("applicationFormStatusArray", codeResult1);
 		model.addAttribute("studyTopicArray", codeResult2);
 		model.addAttribute("studyAuthorityArray", codeResult3);
+		model.addAttribute("calendarType", codeResult4);
 		
 		return "jsp/studyManagement/studyMain";
 	}
