@@ -300,7 +300,6 @@ function next() {
 // 현재 달력 범위 보여줌
 function showRange(){
 	var today = cal.getDate();
-	console.log(today);
 	var month = '' + (today.getMonth()+1);
 	if (month.length < 2) month = '0' + month;
 	document.getElementById("renderRange").innerText = today.getFullYear() + "." + month;
