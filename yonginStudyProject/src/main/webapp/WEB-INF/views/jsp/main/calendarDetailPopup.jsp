@@ -39,12 +39,15 @@ button {
 
 <body>
 <div id="typeColor" style="width:100%; height:10px;"></div>
-<div style="height:240px; margin-left:5%; margin-right:5%">
+<div style="height:280px; margin-left:5%; margin-right:5%">
   <p style="margin-top:10px;"><span id="title" style="font-size:2rem; font-weight:bold;"></span><i class="fa fa-close" style="float:right; font-size:1.7rem; cursor:pointer;" onclick="closePopup();"></i></p>
   <p><span id="calendarDt" style="font-size:1.3rem; color:grey;"></span></p>
   <p><span style="margin-right:10px;"><i class="fa fa-briefcase"></i></span><span id="calendarType" style="font-size:1.3rem;"></span></p>
   <p style="margin-top:10px;"><span style="margin-right:10px;"><i class="fa fa-group" style="font-size:1.5rem;"></i></span><span id=attendeesStudy style="font-size:1.3rem;"></span></p>
   <div style="overflow:auto; height:100px"><p><span id="calendarContent" style="font-size:1.5rem;"></span></p></div>
+</div>
+<div style="text-align:center; position: fixed; bottom:0; width:100%; border-top: 1px solid #e5e5e5;">
+  <button type="button" id="closeCalendarBtn" style="float:right; width:100%" onclick="closePopup();"><i class="fa fa-times-circle"></i>  닫기</button>
 </div>
 
 </body>

@@ -15,4 +15,94 @@
 		]]>
 	</select>
 	
+	<insert id="insertCalendar">
+		<![CDATA[
+			INSERT 
+			INTO	CALENDAR
+				(	CALENDAR_CODE
+				,	TITLE
+				,	CONTENT
+				,	START_DT
+				,	START_HM
+				,	END_DT
+				,	END_HM
+				,	TYPE
+				,	STUDY_CODE
+				,	RGSTUS_ID
+				,	RGDT_DT
+				,	UPDTUS_ID
+				,	UPDT_DT
+				,	USE_YN
+				)  
+			VALUES	
+				(	'CALENDAR_' || LPAD(calendar_seq.nextval,8,0)
+				,	#{title}
+				,	#{content}
+				,	#{startDt}
+				,	#{startHm}
+				,	#{endDt}
+				,	#{endHm}
+				,	#{type}
+				,	#{studyCode}
+				,	#{rgstusId}
+				,	sysdate
+				,	#{rgstusId}
+				,	sysdate
+				,	'Y'
+				)
+		]]>
+	</insert>
+	
+	<update id="updateCalendar">
+		<![CDATA[
+			UPDATE 	CALENDAR
+			SET		TITLE			=	#{title}
+				,	CONTENT			=	#{content}
+				,	START_DT		=	#{startDt}
+				,	START_HM		=	#{startHm}
+				,	END_DT			=	#{endDt}
+				,	END_HM			=	#{endHm}
+				,	TYPE			=	#{type}
+				,	UPDT_DT			=	sysdate
+				,	UPDTUS_ID		=	#{updtusId}
+			WHERE	CALENDAR_CODE	=	#{calendarCode}
+		]]>
+	</update>
+	
+	<update id="updateCalendarToN">
+		<![CDATA[
+			UPDATE 	CALENDAR
+			SET		USE_YN			=	'N'
+				,	UPDT_DT			=	sysdate
+				,	UPDTUS_ID		=	#{updtusId}
+			WHERE	CALENDAR_CODE	=	#{calendarCode}
+		]]>
+	</update>
+	
+	<select id="selectStudyCalendar" resultType="com.main.VO.calendarVO">
+		<![CDATA[
+			SELECT	TITLE			as title
+				 ,	START_DT		as	startDt
+				 ,	START_HM		as	startHm
+				 ,	END_DT			as	endDt
+				 ,	END_HM			as	endHm
+				 ,	TYPE			as	type
+				 ,	CONTENT			as	content
+				 ,	STUDY_CODE		as	studyCode
+				 ,	CALENDAR_CODE	as	calendarCode
+				 ,	(SELECT	STUDY_NAME
+				 	 FROM	STUDY_INFO
+				 	 WHERE	STUDY_CODE  =  	CALENDAR.STUDY_CODE)	as	studyName
+				 ,	(SELECT	USER_ID
+				 	 FROM	USER_INFO
+				 	 WHERE	USER_CODE	=	CALENDAR.UPDTUS_ID)		as	updtusId
+			FROM	CALENDAR
+			WHERE	STUDY_CODE	=	#{studyCode}
+				AND	((START_DT		>= #{searchMonthFrom}	AND		START_DT	<= #{searchMonthTo})
+					 	OR		
+					 (END_DT		>= #{searchMonthFrom}	AND		END_DT	<= #{searchMonthTo}))
+				AND	USE_YN		=	'Y'
+		]]>
+	</select>
+	
 </mapper>

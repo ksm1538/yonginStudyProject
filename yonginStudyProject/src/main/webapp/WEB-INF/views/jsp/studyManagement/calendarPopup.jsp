@@ -47,8 +47,9 @@ button {
   <div style="overflow:auto; height:100px"><p><span id="calendarContent" style="font-size:1.5rem;"></span></p></div>
 </div>
 <br>
-<div style="text-align:center; position: fixed; bottom:0; width:100%; border-top: 1px solid #e5e5e5;">
-  <button type="button" style="float:left;" onclick="updateSchedule();"><i class="fa fa-edit"></i>  수정</button>
-  <button type="button" style="float:right;" onclick="deleteSchedule();"><i class="	fa fa-trash-o"></i>  삭제</button>
+<div id="calendarEditDiv" style="text-align:center; position: fixed; bottom:0; width:100%; border-top: 1px solid #e5e5e5;">
+  <button type="button" id="updateCalendarBtn" style="float:left; width:33%" onclick="updateSchedule();"><i class="fa fa-edit"></i>  수정</button>
+  <button type="button" id="deleteCalendarBtn" style="float:left; width:33%" onclick="deleteSchedule();"><i class="fa fa-trash-o"></i>  삭제</button>
+  <button type="button" id="closeCalendarBtn" style="float:right; width:33%" onclick="closePopup();"><i class="fa fa-times-circle"></i>  닫기</button>
 </div>
 </body>

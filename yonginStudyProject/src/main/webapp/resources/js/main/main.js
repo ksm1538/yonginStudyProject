@@ -313,7 +313,7 @@ function searchMyStudyCalendarAjax(sendData){
 							raw:typeSxnMap[data.resultList[i].type][0],
 							start : data.resultList[i].startDt + 'T' + data.resultList[i].startHm,
 							end : data.resultList[i].endDt + 'T' + data.resultList[i].endHm,
-							attendees : [data.resultList[i].studyName, data.resultList[i].rgstusId],
+							attendees : [data.resultList[i].studyName, data.resultList[i].updtusId],
 							borderColor:typeSxnMap[data.resultList[i].type][1],
 						}]);
 					}
@@ -327,10 +327,6 @@ function searchMyStudyCalendarAjax(sendData){
 		}
 	}); 
 }
-
-
-
-
 
 //이전 달로 이동
 function prev() {
@@ -356,6 +352,7 @@ function showRange(){
 	document.getElementById("renderRange").innerText = today.getFullYear() + "." + month;
 }
 
+// 일정 상세 팝업 띄우기
 function openCalenderPopup(e){
 	var windowWidth = $(window).width();
 	var windowHeight = $(window).height();
@@ -364,7 +361,7 @@ function openCalenderPopup(e){
 	
 	calendarDetailModal.open({
 		width: 350,
-		height: 250,
+		height: 290,
 		iframe: {
 			method: "post",
 			url: "/main/calendarDetailPopup.do",
@@ -387,6 +384,7 @@ function openCalenderPopup(e){
 		height = height-300;
 	calendarDetailModal.align({left:width, top:height});
 }
+
 function closeCalenderPopup(){
 	calendarDetailModal.close();
 }
@@ -416,7 +414,6 @@ function selectStudyNoticeInfoDetail(boardCode){
 	});
 }
 
-
 /* 스터디 만들기 팝업 호출 */
 function makeStudyForm(){
 	makeStudyModal.open({
@@ -445,15 +442,12 @@ function closeMakeStudyModal(){
 	makeStudyModal.close();
 }
 
-
-
 // 공지사항 작성 팝업창 닫고 새로고침
 function closeSystemNoticeInfo(){
 	noticeDetailModal.close();
 	window.location.reload();
 	
 }
-
 
 //스터디 페이지 이동(POST방식 이용)
 function openStudyManagementPage(studyCode, studyName){

@@ -41,6 +41,7 @@ var typeSxnMap = {};
 typeSxnList.forEach(function(n){
 	typeSxnMap[n.codeId] = [n.codeValue, n.codeExtraData];
 });
+var userId = "${user.userId}";
 </script>
 
 <meta charset="UTF-8">
@@ -156,7 +157,7 @@ typeSxnList.forEach(function(n){
 					  </button>
 				</span>
 				<span id="renderRange" class="render-range"></span>
-				<input type="button" value="일정 작성" id="resetMailBtn"  class="btn_style_1 calendar_schedule_write_btn" onclick="writeSchedule()" >
+				<input type="button" value="일정 작성" id="createCalendarBtn" class="btn_style_1 calendar_schedule_write_btn" onclick="writeSchedule()" >
 			</div>
    			<div id="study_calendar"></div>	
 			

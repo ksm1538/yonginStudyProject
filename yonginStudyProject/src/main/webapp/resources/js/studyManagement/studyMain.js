@@ -1,7 +1,8 @@
 /** 변수 설정(시작) **/
 var studyMemberListGrid = new ax5.ui.grid();
 var calendarDetailModal = new ax5.ui.modal();
-var calendarWriteModal = new ax5.ui.modal();	
+var calendarWriteModal = new ax5.ui.modal();
+var extraMask = new ax5.ui.mask();
 var cal;
 var _pageNo = 0;
 var studyCode;		// 현재 페이지 스터디 코드
@@ -65,7 +66,7 @@ $(document).ready(function () {
 		    defaultView: 'month', // monthly view option
 		    //useDetailPopup : true,
 	    	disableDblClick : true,
-	    	disableClick : true,
+	    	disableClick : false,
 	    	month : {
 	    		daynames : [ '일', '월', '화', '수', '목', '금', '토' ],
 	    		startDayOfWeek : 0,
@@ -73,6 +74,16 @@ $(document).ready(function () {
 		});
 		
 		cal.on({
+			'beforeCreateSchedule' : function(e) {
+				// open a creation popup
+				if(userAuthority == "10" || userAuthority == "20")
+					writeSchedule(e);
+				else {
+					var guide = e.guide;
+					if(e.guide != undefined)
+						guide.clearGuideElement();
+				}
+			},
 			'clickSchedule' : function(e) {
 				var schedule = e.schedule;
 				lastClickSchedule = schedule;
@@ -133,6 +144,11 @@ $(document).ready(function () {
 		$("#side_movelist3").on("click",function(event){
 			$("html body").animate({scrollTop:list6.top},400);
 		});
+		
+		// 관리자 권한 없는 경우 일정 생성 버튼 숨기기 함
+		if(!(userAuthority=="10" || userAuthority=="20")){
+			$("#createCalendarBtn").hide();
+		}
 		
 		showRange();
 		searchMyStudyCalendar();
@@ -209,7 +225,8 @@ function searchMyStudyCalendar() {
 	
 	var sendData = {
 		searchMonthFrom:today.getFullYear() + month + '01',
-		searchMonthTo:today.getFullYear() + month + '31'
+		searchMonthTo:today.getFullYear() + month + '31',
+		studyCode:studyCode
 	}
 
 	cal.clear();
@@ -217,11 +234,11 @@ function searchMyStudyCalendar() {
 	searchMyStudyCalendarAjax(sendData);
 }
 
-// 스케줄 검색 Ajax
+//스케줄 검색 Ajax
 function searchMyStudyCalendarAjax(sendData){
 	$.ajax({
  		type: "POST",
- 		url : "/main/searchMyStudyCalendar.json",
+ 		url : "/studyManagement/selectStudyCalendar.json",
  		data : JSON.stringify(sendData),
 		contentType: "application/json; charset=UTF-8",
 		async: false,
@@ -230,14 +247,15 @@ function searchMyStudyCalendarAjax(sendData){
 			    case COMMON_SUCCESS:
 			    	for(var i=0; i<data.resultList.length; i++) {
 						cal.createSchedules([ {
-							id : data.resultList[i].calendarCode,
+							id : data.resultList[i].studyCode,
+							calendarId : data.resultList[i].calendarCode,
 							title : "("+data.resultList[i].startHm+") "+data.resultList[i].title,
 							body : data.resultList[i].content,
 							category : 'time',
-							raw:typeSxnMap[data.resultList[i].type][0],
+							raw:data.resultList[i].type,
 							start : data.resultList[i].startDt + 'T' + data.resultList[i].startHm,
 							end : data.resultList[i].endDt + 'T' + data.resultList[i].endHm,
-							attendees : [data.resultList[i].studyName, data.resultList[i].rgstusId],
+							attendees : [data.resultList[i].studyName, data.resultList[i].updtusId],
 							borderColor:typeSxnMap[data.resultList[i].type][1],
 						}]);
 					}
@@ -252,22 +270,32 @@ function searchMyStudyCalendarAjax(sendData){
 	}); 
 }
 
-
-// 일정작성 열기
-function writeSchedule(){
+//일정작성 열기
+function writeSchedule(e){
+	var parentData = {
+		studyName : studyName,
+		studyCode : studyCode,
+		userId : userId,
+		calendar : e
+	}
+	
 	calendarWriteModal.open({
-		width: 800,
-		height: 750,
+		width: 470,
+		height: 250,
 		iframe: {
-			method: "get",
+			method: "post",
 			url: "/studyManagement/calendarWrite.do",
+			param: callBack=parentData
 		},
 		onStateChanged: function(){
 			if (this.state === "open") {
-	        	mask.open();
+	        	extraMask.open();
 	        }
 	        else if (this.state === "close") {
-	        	mask.close();
+	        	extraMask.close();
+	        	var guide = e.guide;
+	        	if(e.guide != undefined)
+	        		guide.clearGuideElement();
 	        }
 	    },
 	}, function() {
@@ -275,9 +303,15 @@ function writeSchedule(){
 }
 
 
-//  일정 작성 팝업창 닫고 새로고침
+//일정 작성 팝업창 닫고 새로고침
 function closeModal(){
 	calendarWriteModal.close();
+}
+
+//일정 작성 완료 시 일정 조회
+function closeModalWithRefresh(){
+	calendarWriteModal.close();
+	searchMyStudyCalendar();
 }
 
 //이전 달로 이동
@@ -288,7 +322,7 @@ function prev() {
 	searchMyStudyCalendar();
 }
 
-// 다음 달로 이동
+//다음 달로 이동
 function next() {
 	cal.next();
 	showRange();
@@ -296,7 +330,7 @@ function next() {
 	searchMyStudyCalendar();
 }
 
-// 현재 달력 범위 보여줌
+//현재 달력 범위 보여줌
 function showRange(){
 	var today = cal.getDate();
 	var month = '' + (today.getMonth()+1);
@@ -304,11 +338,16 @@ function showRange(){
 	document.getElementById("renderRange").innerText = today.getFullYear() + "." + month;
 }
 
+//일정 상세 팝업 열기
 function openCalenderPopup(e){
 	var windowWidth = $(window).width();
 	var windowHeight = $(window).height();
 	var width = e.event.clientX;
 	var height = e.event.clientY;
+	
+	e.userAuthority = userAuthority;
+	console.log(e);
+	e.typeName = typeSxnMap[e.schedule.raw][0]
 	
 	calendarDetailModal.open({
 		width: 350,
@@ -340,19 +379,29 @@ function closeCalenderPopup(){
 	calendarDetailModal.close();
 }
 
-// 채팅 팝업 열기
+function closeCalenderPopupWithRefresh(){
+	calendarDetailModal.close();
+	searchMyStudyCalendar();
+}
+
+function updateCalendar(e){
+	calendarDetailModal.close();
+	writeSchedule(e);
+}
+
+//채팅 팝업 열기
 function studyChatFunc(){
 	var frmPop= document.dataForm;
 	var targetName = studyName + "Chat";
-    var url = '/studyManagement/studyChatting.do';
-     
-    window.open("" ,targetName, 
-    "toolbar=no, width=700, height=870, directories=no, status=no,    scrollorbars=no, resizable=no"); 
-    
-    frmPop.method="post";
-    frmPop.action = url;
-    frmPop.target = targetName; 
-    frmPop.studyCode.value = studyCode;
-    frmPop.studyName.value = studyName;
-    frmPop.submit();   
+ var url = '/studyManagement/studyChatting.do';
+  
+ window.open("" ,targetName, 
+ "toolbar=no, width=700, height=870, directories=no, status=no,    scrollorbars=no, resizable=no"); 
+ 
+ frmPop.method="post";
+ frmPop.action = url;
+ frmPop.target = targetName; 
+ frmPop.studyCode.value = studyCode;
+ frmPop.studyName.value = studyName;
+ frmPop.submit();   
 }

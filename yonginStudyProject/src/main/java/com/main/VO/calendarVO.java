@@ -15,7 +15,7 @@ public class calendarVO {
 	private String	searchMonthFrom="";
 	private String	searchMonthTo="";
 	private String	userCode="";
-	
+	private String	updtusId="";
 	
 	public String getTitle() {
 		return title;
@@ -100,6 +100,12 @@ public class calendarVO {
 	}
 	public void setUserCode(String userCode) {
 		this.userCode = userCode;
+	}
+	public String getUpdtusId() {
+		return updtusId;
+	}
+	public void setUpdtusId(String updtusId) {
+		this.updtusId = updtusId;
 	}
 	
 	

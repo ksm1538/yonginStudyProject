@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.commonCode.Service.commonCodeService;
 import com.commonCode.VO.commonCodeVO;
+import com.commonFunction.Controller.yonginFunction;
 import com.login.VO.userInfoVO;
+import com.main.VO.calendarVO;
 import com.main.VO.userInStudyVO;
 import com.studyManagement.Service.studyMainService;
 import com.studyManagement.Service.studyManagementService;
@@ -141,26 +143,48 @@ public class studyMainController {
 		return mReturn;
 	}
 	
-	
 	/**
-	 * 달력 일정 작성하기
+	 * 해당 스터디 일정 조회
+	 * @param studyCode
 	 * @param session
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/studyManagement/calendarWrite.do", method = RequestMethod.GET)
-	public String calendarWritePopup(HttpSession session) throws Exception {
-		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지 로 이동(시작) **/
-		userInfoVO user = (userInfoVO) session.getAttribute("user");
-
-		if(user == null) {
-			return "jsp/login/login";
+	@RequestMapping(value="/studyManagement/selectStudyCalendar.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> selectStudyCalendar(@RequestBody calendarVO calendarVO, HttpSession session) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+	      
+		List<calendarVO> ltResult = studyMainService.selectStudyCalendar(calendarVO);
+		
+		if(ltResult.size() < 1) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "일정 목록이 없습니다.");
 		}
-		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
-		return "jsp/studyManagement/calendarWrite";
+		
+		// 시간 형식으로 변환
+		for(int i=0;i<ltResult.size();i++) {
+			calendarVO vo = ltResult.get(i);
+			
+			// '-' 추가
+    		String startDt = yonginFunction.nullConvert(vo.getStartDt());
+    		vo.setStartDt(yonginFunction.addMinusChar(startDt));
+    		String endDt = yonginFunction.nullConvert(vo.getEndDt());
+    		vo.setEndDt(yonginFunction.addMinusChar(endDt));
+    		// ':' 추가
+            String startHm = vo.getStartHm();
+            vo.setStartHm(yonginFunction.addColonChar(startHm));
+            String endHm = vo.getEndHm();
+            vo.setEndHm(yonginFunction.addColonChar(endHm));
+		}
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "조회 성공하였습니다.");
+		mReturn.put("resultList", ltResult);
+		
+		return mReturn;
 	}
-	
-	
 	
 }
  

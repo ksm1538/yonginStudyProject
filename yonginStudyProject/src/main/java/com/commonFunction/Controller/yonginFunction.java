@@ -1,5 +1,7 @@
 package com.commonFunction.Controller;
 
+import java.util.Calendar;
+
 public class yonginFunction {
 	
 	/**
@@ -69,5 +71,55 @@ public class yonginFunction {
 		} else {
 			return src.trim();
 		}
+	}
+	
+	/**
+	 * 입력시간의 유효 여부를 확인
+	 * @param     sTime 입력시간
+	 * @return    유효 여부
+	 */
+	public static boolean validTime(String sTime) {
+		String timeStr = validChkTime(sTime);
+
+		Calendar cal;
+		boolean ret = false;
+
+		cal = Calendar.getInstance();
+
+		cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeStr.substring(0, 2)));
+		cal.set(Calendar.MINUTE, Integer.parseInt(timeStr.substring(2, 4)));
+
+		String HH = String.valueOf(cal.get(Calendar.HOUR_OF_DAY));
+		String MM = String.valueOf(cal.get(Calendar.MINUTE));
+
+		String pad2Str = "00";
+
+		String retHH = (pad2Str + HH).substring(HH.length());
+		String retMM = (pad2Str + MM).substring(MM.length());
+
+		String retTime = retHH + retMM;
+
+		if (sTime.equals(retTime)) {
+			ret = true;
+		}
+
+		return ret;
+	}
+	
+	/**
+	 * 입력된 일자 문자열을 확인하고 8자리로 리턴
+	 * @param sDate
+	 * @return
+	 */
+	public static String validChkTime(String timeStr) {
+		if (timeStr == null || !(timeStr.trim().length() == 4)) {
+			throw new IllegalArgumentException("Invalid time format: " + timeStr);
+		}
+		
+		if (timeStr.length() == 5) {
+			timeStr = remove(timeStr, ':');
+		}
+
+		return timeStr;
 	}
 }

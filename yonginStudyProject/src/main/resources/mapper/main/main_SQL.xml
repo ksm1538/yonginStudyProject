@@ -43,9 +43,9 @@
 				 ,	(SELECT	STUDY_NAME
 				 	 FROM	STUDY_INFO
 				 	 WHERE	STUDY_CODE  =  	CALENDAR.STUDY_CODE)	as	studyName
-				 ,	(SELECT	USER_NAME
+				 ,	(SELECT	USER_ID
 				 	 FROM	USER_INFO
-				 	 WHERE	USER_CODE	=	CALENDAR.RGSTUS_ID)		as	rgstusId
+				 	 WHERE	USER_CODE	=	CALENDAR.UPDTUS_ID)		as	updtusId
 			FROM	CALENDAR
 			WHERE	STUDY_CODE	IN	(SELECT	STUDY_CODE
 									 FROM	USER_IN_STUDY
@@ -54,6 +54,7 @@
 				AND	((START_DT		>= #{searchMonthFrom}	AND		START_DT	<= #{searchMonthTo})
 					 	OR		
 					 (END_DT		>= #{searchMonthFrom}	AND		END_DT	<= #{searchMonthTo}))
+				AND	USE_YN		=	'Y'
 		]]>
 	</select>
 	
