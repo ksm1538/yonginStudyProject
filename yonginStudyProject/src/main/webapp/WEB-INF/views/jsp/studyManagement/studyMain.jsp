@@ -62,7 +62,7 @@ var userId = "${user.userId}";
 			<div class="study_main_content">
 				<div class="tc study_main_content_img_con"><img src="../resources/img/mymake.png" class="info_img"></div>
 				<div class="tc study_main_content_title">스터디원 보기</div>
-				<div class="tc study_main_content_sub_title">나와 함께는 스터디원을 확인하세요</div>
+				<div class="tc study_main_content_sub_title">나와 함께하는 스터디원을 확인하세요</div>
 			</div>
 			
 			<div class="study_main_content">

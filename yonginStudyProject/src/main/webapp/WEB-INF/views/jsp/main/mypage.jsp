@@ -85,19 +85,19 @@ studySxnList.forEach(function(n){
 				<div class="right_content" id="listMove2">
 					<div class="right_content_img_con"><img src="../resources/img/mystudy.png" class="mystudy_img"></div>
 					<div class="right_content_title">참여한 스터디</div>
-					<div class="right_content_subtitle">내가 참여한 스터디를 보여줘요 </div>
+					<div class="right_content_subtitle">참여한 스터디를 보여줘요 </div>
 				</div>
 			</div>
 			<div class="right_content_con">
 				<div class="right_content" id="listMove3">
 					<div class="right_content_img_con"><img src="../resources/img/mymake.png" class="mymake_img"></div>
-					<div class="right_content_title">만든 스터디</div>
-					<div class="right_content_subtitle">내가 만든 스터디를 보여줘요 </div>
+					<div class="right_content_title">관리 스터디</div>
+					<div class="right_content_subtitle">관리하는 스터디를 보여줘요 </div>
 				</div>
 				<div class="right_content" id="listMove4">
 					<div class="right_content_img_con"><img src="../resources/img/myapply.png" class="myapply_img"></div>
 					<div class="right_content_title">신청 현황</div>
-					<div class="right_content_subtitle">내가 신청한 스터디를 보여줘요 </div>
+					<div class="right_content_subtitle">신청한 스터디를 보여줘요 </div>
 				</div>
 			</div>
 		</div>

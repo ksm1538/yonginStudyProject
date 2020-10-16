@@ -26,8 +26,37 @@ request.setCharacterEncoding("UTF-8");
 <body>
 
 
+<div class="col-12 col-center mw-1200 study_apply_wrap">
+	<div class="tc study_apply_con">
+		<div class="circle_btn" onClick="closeModal()"></div> 
+		<div class="study_apply_title"><span>스터디 신청서 </span></div>
+	</div>
+</div>
 
-<div class="study_apply_wrap">
+<div class="col-12 col-center mw-1200 study_apply_content_wrap">
+	<div class="study_apply_content_con">
+		<div class="write_apply_title_box">
+			<div class="write_apply_title"><span>신청서 제목 </span></div>
+			<input type="text" id="title" name="title" data-ax-path="title" class="textbox_style_1" placeholder="신청서 제목을 입력해주세요." maxlength="30">
+		</div>
+	</div>
+</div>
+
+<div class="col-12 col-center mw-1200 study_apply_summernote_wrap">
+	<div class="study_apply_summernote_con">
+		<div class="tc write_apply_title"><span>신청서 내용 </span></div>
+		<div class="study_apply_desc_summer">
+			<textarea id="applicationFormDesc" data-ax-path="applicationFormDesc"></textarea>
+		</div>
+	</div>
+</div>
+
+<div class="col-12 col-center mw-1200 study_apply_btn_wrap">
+	<input type="button" value="신청하기" class="btn_style_1 study_apply_finsh_btn" onclick="applyStudy()" >
+	<input type="button" value="닫기" class="btn_style_1 study_apply_close_btn" onclick="closeModal()" >
+</div>
+
+<!-- <div class="study_apply_wrap">
 	<div class="circle_btn" onClick="closeModal()"></div> 
 	
 	<div class="study_apply_con tc">
@@ -52,7 +81,7 @@ request.setCharacterEncoding("UTF-8");
 		
 		
 	</div>
-</div>
+</div> -->
  
 </body>
 </html>

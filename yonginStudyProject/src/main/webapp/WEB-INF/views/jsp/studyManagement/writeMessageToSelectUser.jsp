@@ -46,8 +46,8 @@ request.setCharacterEncoding("UTF-8");
      		</div>		
 	</div>
 	
-	<div class="col-12 col-center mw-1200 send_message_summernote_con type_2">
-			<div class="reply_summer_note col-12">
+	<div class="col-12 col-center mw-1200 send_message_summernote_pop_con">
+			<div class="col-12 reply_summer_note_pop ">
      		   	<textarea name="messageDesc" id="messageDesc" class="reply_summer_note_textarea"></textarea>
      		</div>
 	</div>
