@@ -179,12 +179,12 @@ studySxnList.forEach(function(n){
 	<div class="col-12 mypage_mymake_wrap" id="list3">
 		<div class="col-12 col-center mw-1200 mypage_mymake_con">
 			<div class="mypage_mymake_title_con">
-				<div class="mypage_mymake_title"><span>내가 만든 스터디</span></div>
+				<div class="mypage_mymake_title"><span>내가 관리하는 스터디</span></div>
 				<div class="question_mark_con">
 					<div class="tc question_mark"><span>?</span></div>
 					<div class="qestion_desc_box_con">
 						<div class="question_tri"></div>
-						<div class="question_desc">현재 본인이 참가하고 있는 스터디의 목록입니다. 목록클릭시 상세보기가 가능합니다.</div>
+						<div class="question_desc">현재 본인이 관리하는 스터디 목록입니다. 목록 클릭시 해당 스터디 페이지로 이동 및 관리 버튼 클릭 시 관리 페이지로 이동합니다.</div>
 					</div>
 				</div>
 			</div>

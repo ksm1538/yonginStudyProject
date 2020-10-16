@@ -35,11 +35,11 @@
 				 ,	STUDY_INFO.STUDY_NAME 	as studyName
 				 ,	STUDY_INFO.STUDY_TOPIC  as studyTopic
 			FROM	STUDY_INFO
-			WHERE	STUDY_INFO.STUDY_RGSTUS_ID		=	#{userCode}
-				AND	STUDY_INFO.USE_YN		=	'Y'
+			WHERE	STUDY_INFO.USE_YN		=	'Y'
 				AND	STUDY_INFO.STUDY_CODE 	IN	(SELECT STUDY_CODE
 												 FROM	USER_IN_STUDY
 												 WHERE	USER_CODE	=	#{userCode}
+												 	AND	(USER_POSITION	=	'10'	OR	USER_POSITION	=	'20')
 												 	AND	USE_YN		=	'Y'
 												 )
 		]]>

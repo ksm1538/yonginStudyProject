@@ -45,9 +45,12 @@ public class mainFormController{
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(끝) **/
 		
 		List<commonCodeVO> codeResult = commonCodeService.selectCommonCodeList("studyTopic");
-		
+		List<commonCodeVO> codeResult2 = commonCodeService.selectCommonCodeList("calendarType");
+
 		//model 변수에 데이터를 담아 jsp에 전달
 		model.addAttribute("studyTopicArray", codeResult);
+		model.addAttribute("calendarType", codeResult2);
+		
 		return "jsp/main/main";
 	}
 

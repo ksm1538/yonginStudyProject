@@ -33,6 +33,7 @@ import com.main.VO.studyInfoVO;
 import com.main.VO.userInStudyVO;
 import com.main.Validator.changeUserInfoValidator;
 import com.study.VO.studyApplicationFormUserVO;
+import com.studyManagement.Service.studyMainService;
 
 /**
  * Handles requests for the application home page.
@@ -50,6 +51,9 @@ public class myPageFormController {
 	
 	@Resource(name="commonCodeService")
 	private commonCodeService commonCodeService;
+	
+	@Resource(name="studyMainService")
+	private studyMainService studyMainService;
 	
 	@Inject
     PasswordEncoder passwordEncoder;	// 암호화 기능 추가
@@ -314,6 +318,16 @@ public class myPageFormController {
 		String userCode = user.getUserCode();
 		
 		userInStudyVO.setUserCode(userCode);
+		
+		String authority = studyMainService.selectStudyUserInfo(userInStudyVO);
+		
+		// 사용자가 스터디 장인 경우
+		if(authority.equals("10")) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "스터디 장을 위임한 후에 탈퇴해주세요.");
+			
+			return mReturn;
+		}
 		
 		myPageService.exitStudy(userInStudyVO);
 		

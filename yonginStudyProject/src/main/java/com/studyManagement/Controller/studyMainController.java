@@ -18,6 +18,7 @@ import com.commonCode.Service.commonCodeService;
 import com.commonCode.VO.commonCodeVO;
 import com.login.VO.userInfoVO;
 import com.main.VO.userInStudyVO;
+import com.studyManagement.Service.studyMainService;
 import com.studyManagement.Service.studyManagementService;
 
 @Controller
@@ -28,6 +29,8 @@ public class studyMainController {
 	@Resource(name="commonCodeService")
 	private commonCodeService commonCodeService;
 	
+	@Resource(name="studyMainService") // 해당 서비스가 리소스임을 표시합니다.
+	private studyMainService studyMainService;
 	/**
 	 * 스터디 전용 페이지 Mapping
 	 * @throws Exception 
@@ -56,6 +59,43 @@ public class studyMainController {
 		
 		return "jsp/studyManagement/studyMain";
 	}
+	
+	/**
+	 * 접속자의 스터디 권한 가져오기
+	 * @param studyCode
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/studyManagement/selectStudyUserInfo.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> selectStudyUserInfo(@RequestBody String studyCode, HttpSession session) throws Exception {
+		
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+
+		userInStudyVO userinfo = new userInStudyVO();
+		
+		userinfo.setUserCode(user.getUserCode());
+		userinfo.setStudyCode(studyCode);
+		
+		if(userinfo.getUserCode().equals("") || userinfo.getStudyCode().equals("")) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "오류가 발생하였습니다.");
+			
+			return mReturn;
+		}
+		
+		String result = studyMainService.selectStudyUserInfo(userinfo);
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "조회 성공하였습니다.");
+		mReturn.put("userinfo", result);
+		
+		return mReturn;
+	}
+	
 	
 	/**
 	 * 스터디 멤버 리스트 조회

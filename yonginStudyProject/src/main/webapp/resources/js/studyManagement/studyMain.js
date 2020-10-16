@@ -247,10 +247,6 @@ function searchMyStudyCalendarAjax(sendData){
 			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
 		}
 	}); 
-	
-	
-		
-	
 }
 
 
@@ -313,10 +309,10 @@ function openCalenderPopup(e){
 	
 	calendarDetailModal.open({
 		width: 350,
-		height: 250,
+		height: 290,
 		iframe: {
 			method: "post",
-			url: "/main/calendarDetailPopup.do",
+			url: "/studyManagement/calendarPopup.do",
 			param: callBack = e
 		},
 		onStateChanged: function(){
@@ -336,33 +332,9 @@ function openCalenderPopup(e){
 		height = height-300;
 	calendarDetailModal.align({left:width, top:height});
 }
+
 function closeCalenderPopup(){
 	calendarDetailModal.close();
-}
-
-function selectStudyNoticeInfoDetail(studyNoticeCode){
-	var parentData={
-		studyNoticeCode:studyNoticeCode
-	}
-	
-	studyNoticeInfoDetailModal.open({
-		width: 800,
-		height: 710,
-		iframe: {
-			method: "post",
-			url: "/main/studyNoticeInfoDetailPopup.do",
-			param: callBack = parentData
-		},
-		onStateChanged: function(){
-			if (this.state === "open") {
-	        	mask.open();
-	        }
-	        else if (this.state === "close") {
-	        	mask.close();
-	        }
-	    },
-	}, function() {
-	});
 }
 
 // 채팅 팝업 열기

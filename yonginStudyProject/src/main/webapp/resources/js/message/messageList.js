@@ -74,6 +74,12 @@ $(document).ready(function () {
         });
 	
 	getMessageList();	// ㅉㅗㄱㅈㅣ 목록 조회
+	
+	var list1 = $("#list1").offset();
+	//클릭시 이동
+	$("#listMove1").on("click",function(event){
+		$("html body").animate({scrollTop:list1.top},400);
+	});
 });
 /** 초기화(끝) **/
 
