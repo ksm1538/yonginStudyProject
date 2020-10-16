@@ -1,7 +1,7 @@
 /** 변수 선언(시작) **/
 var studyCode;		// 현재 페이지 스터디 코드
 var studyName; 		// 현재 페이지 스터디 이름
-var userAuthority;		// 현재 접속한 사용자에 대한 정보(스터디 권한, 사용자 이름, 사용자 아이디)
+var userAuthority;		// 현재 접속한 사용자의 권한(10:스터디장, 20:스터디 관리자, 30:일반 스터디 원)
 /** 변수 선언(끝) **/
 
 /** 초기화(시작) **/
@@ -110,9 +110,13 @@ function getUserInfo(){
 		success : function(data, status, xhr) {
 			switch(data.result){
 			    case COMMON_SUCCESS:
-			    	console.log(data);
 			    	userAuthority = data.userinfo;
-			    	console.log("권한 : " + userAuthority);
+			    	
+			    	// 스터디 장 or 관리자가 아니면 관리 버튼 숨김
+			    	if(!(userAuthority == 10 || userAuthority == 20)){
+			    		$("#adminDiv").hide();
+			    	}
+			    	
 			    	break;    
 			    case COMMON_FAIL:
 			    	dToast.push(data.message); 

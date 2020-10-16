@@ -25,9 +25,7 @@
                     <div class="header_message"><a onclick="openMessageForm();">쪽지함</a></div>
                     <div class="logout"><a href="/logout.json">로그아웃</a></div>
               		<div class="admin_page">
-              			<c:if test="${user.userIsAdmin == 'Y'}">
-                    	  <div class="admin_page_click"><a onclick="openStudyAdminPage();">스터디 관리하기</a></div>
-                   		</c:if>
+                    	<div id="adminDiv" class="admin_page_click"><a onclick="openStudyAdminPage();">스터디 관리하기</a></div>
               		</div>
                     
                 </div>
