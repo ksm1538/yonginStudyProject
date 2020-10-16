@@ -146,7 +146,10 @@ function getStudyMemberList(){
 	var sendData = {
 			page :	_pageNo,
 			studyCode : $("#studyCode").val(),
-			searchStudyMemberId:$('#searchStudyMemberId').val()
+			searchStudyMemberId:$('#searchStudyMemberId').val(),
+			searchStudyMemberName:$('#searchStudyMemberName').val(),
+			searchStudyMemberAddress:$('#searchStudyMemberAddress').val(),
+			searchStudyMemberIsAdmin:$('#searchStudyMemberIsAdmin').val()
 	}
 
 	$.ajax({

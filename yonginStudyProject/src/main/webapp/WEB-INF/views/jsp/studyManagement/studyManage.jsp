@@ -33,6 +33,7 @@ studyPositionList.forEach(function(n){
 }); 
 
 </script>
+
 <meta charset="UTF-8">
 <title>Insert title here</title> 
 </head>
@@ -67,12 +68,6 @@ studyPositionList.forEach(function(n){
 				<div class="tc study_main_content_sub_title">나와 함께는 스터디원을 관리하세요</div>
 			</div>
 			
-			<div class="study_main_content" id="movelist2">
-				<div class="tc study_main_content_img_con"><img src="../resources/img/cal.png" class="cal_img"></div>
-				<div class="tc study_main_content_title">스터디 일정</div>
-				<div class="tc study_main_content_sub_title">스터디의 일정을 확인하세요</div>
-			</div>
-			
 			<div class="study_main_content" id="movelist3">
 				<div class="tc study_main_content_img_con"><img src="../resources/img/apply.png" class="apply_img"></div>
 				<div class="tc study_main_content_title">신청서</div>
@@ -101,6 +96,28 @@ studyPositionList.forEach(function(n){
 					<input type="text" id="searchStudyMemberId" name ="searchStudyMemberId" class="textbox_style_1" onkeyup="enterKeyEvent();">
 				</div>
 				
+				<div class="study_memeber_search_box get_person">
+					<div class="study_memeber_box_title">이름</div>
+					<input type="text" id="searchStudyMemberName" name ="searchStudyMemberName" class="textbox_style_1" onkeyup="enterKeyEvent();">
+				</div>
+				
+				
+				<div class="study_memeber_search_box get_person">
+					<div class="study_memeber_box_title">주소</div>
+					<input type="text" id="searchStudyMemberAddress" name ="searchStudyMemberAddress" class="textbox_style_1" onkeyup="enterKeyEvent();">
+				</div>
+				
+				
+				<div class="study_memeber_search_box get_person">
+					<div class="study_memeber_box_title">스터디 직위</div>
+					<select name="searchStudyMemberIsAdmin" id="searchStudyMemberIsAdmin" class="select_style_0" >
+  							<option class="option" value="noSelect" >선택 안함</option>
+  							<option value="30" >스터디원</option>
+  							<option value="20" >스터디 관리자</option>
+  							<option value="10" >스터디 장</option>
+    					</select>
+				</div>
+				
 				<div class="study_memeber_search_box get_search_btn">
 					  <input type="button" value="검색" class="btn_style_1" onclick="searchStudyMemberList()" >
 				</div>
@@ -110,38 +127,6 @@ studyPositionList.forEach(function(n){
 	  		<div data-ax5grid="studyMemberManageListGrid" data-ax5grid-config="{}" class="" style="height:300px; padding-top:10px; padding-right:10px"></div>  
 		</div>
    		
-   </div>
-   
-   <div class="col-12 study_plan_wrap" id="movecal">
-   		<div class="col-12 col-center mw-1200 study_plan_con">
-   			<div class="study_plan_title_con">
-				<div class="study_plan_title"><span>스터디 일정</span></div>
-				<div class="question_mark_con">
-					<div class="tc question_mark"><span>?</span></div>
-					<div class="qestion_desc_box_con">
-						<div class="question_tri type_2"></div>
-						<div class="question_desc type_2">스터디 일정을 보여줍니다. 일정을 확인하세요</div>
-					</div>
-				</div>
-			</div>
-			
-			<div id="menu" class="calender_menu">
-				<span id="menu-navi">
-					  <button type="button" class="prev_btn type_2" data-action="move-prev" onclick="prev();">
-					  	<i class="calendar-icon ic-arrow-line-left" data-action="move-prev"></i>
-					  </button>
-					  <span id="renderRange" class="render-range" style="font-size:2.5rem;">2020.09</span>
-					  <button type="button" class="next_btn type_2" data-action="move-next" onclick="next();">
-					    <i class="calendar-icon ic-arrow-line-right" data-action="move-next"></i>
-					  </button>
-				</span>
-				<span id="renderRange" class="render-range"></span>
-			</div>
-   			<div id="study_calendar"></div>	
-			
-			
-			
-   		</div>   		  		
    </div>
    
    <div class="col-12 study_apply_check_wrap" id="moveapply">

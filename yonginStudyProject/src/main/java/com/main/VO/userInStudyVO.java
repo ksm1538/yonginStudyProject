@@ -14,7 +14,28 @@ public class userInStudyVO {
 	private int	last;
 	private String	page = "";
 	private String searchStudyMemberId="";
+	private String searchStudyMemberName="";
+	private String searchStudyMemberAddress="";
+	private String searchStudyMemberIsAdmin="";
 	
+	public String getSearchStudyMemberIsAdmin() {
+		return searchStudyMemberIsAdmin;
+	}
+	public void setSearchStudyMemberIsAdmin(String searchStudyMemberIsAdmin) {
+		this.searchStudyMemberIsAdmin = searchStudyMemberIsAdmin;
+	}
+	public String getSearchStudyMemberAddress() {
+		return searchStudyMemberAddress;
+	}
+	public void setSearchStudyMemberAddress(String searchStudyMemberAddress) {
+		this.searchStudyMemberAddress = searchStudyMemberAddress;
+	}
+	public String getSearchStudyMemberName() {
+		return searchStudyMemberName;
+	}
+	public void setSearchStudyMemberName(String searchStudyMemberName) {
+		this.searchStudyMemberName = searchStudyMemberName;
+	}
 	public String getSearchStudyMemberId() {
 		return searchStudyMemberId;
 	}

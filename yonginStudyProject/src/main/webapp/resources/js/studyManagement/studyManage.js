@@ -1,6 +1,5 @@
 /** 변수 설정(시작) **/  
 var studyMemberManageListGrid = new ax5.ui.grid();
-var calendarDetailModal = new ax5.ui.modal();
 var studyMemberManageModal = new ax5.ui.modal();	//팝업창 띄우는 modal기능
 var studyApplyCheckListGrid = new ax5.ui.grid();
 var cal;
@@ -27,14 +26,12 @@ $(document).ready(function () {
         	{key : "userId", label: "ID", align: "center", width:"26%"},
         	{key : "userName", label: "이름", align: "center", width:"15%"},
         	{key : "userAddress",label : "거주지", align : "center",width : "15%"},
-        	{key : "studyAuthority",label : "직위", align : "center",width : "10%"},
-        	{key : "studyMemberManage",label : "관리", align : "center",width : "25%",
-				formatter: function (){
-        			 //return '<button type="button" onclick="studyMemberManagefunc(' + this.list[this.dindex]["userCode"] + ')" style="border:transparent; background-color:transparent;outline:none">관리</button>';
-					return '<button type="button" style="border:transparent; background-color:transparent;outline:none">관리</button>';
-        		 }
-			},/*추방여부*/
-			{key : "studyAuthority",label : "직위 변경", align : "center",width : "25%",
+        	{key : "studyAuthority",label : "직위", align : "center",width : "10%",
+				formatter:function(){
+    			    return studyPositionMap[this.value];
+    			}
+			},
+			{key : "studyAuthorityChange",label : "직위 변경", align : "center",width : "25%",
 				formatter: function (){
         			 //return '<button type="button" onclick="studyMemberManagefunc(' + this.list[this.dindex]["userCode"] + ')" style="border:transparent; background-color:transparent;outline:none">관리</button>';
 					return '<button type="button" style="border:transparent; background-color:transparent;outline:none">직위 변경</button>';
@@ -71,26 +68,6 @@ $(document).ready(function () {
                 },
             },
         });
-
-	//달력 초기 설정
-	cal = new tui.Calendar('#study_calendar', {
-	    defaultView: 'month', // monthly view option
-	    //useDetailPopup : true,
-    	disableDblClick : true,
-    	disableClick : true,
-    	month : {
-    		daynames : [ '일', '월', '화', '수', '목', '금', '토' ],
-    		startDayOfWeek : 0,
-    	}
-	});
-	
-	cal.on({
-		'clickSchedule' : function(e) {
-			var schedule = e.schedule;
-			lastClickSchedule = schedule;
-			openCalenderPopup(e);
-		}
-	});
 	
 	//스터디 신청서
 	studyApplyCheckListGrid.setConfig({   
@@ -197,7 +174,10 @@ function getStudyMemberList(){
 	var sendData = {
 			page :	_pageNo,
 			studyCode : $("#studyCode").val(),
-			searchStudyMemberId:$('#searchStudyMemberId').val()
+			searchStudyMemberId:$('#searchStudyMemberId').val(),
+			searchStudyMemberName:$('#searchStudyMemberName').val(),
+			searchStudyMemberAddress:$('#searchStudyMemberAddress').val(),
+			searchStudyMemberIsAdmin:$('#searchStudyMemberIsAdmin').val()
 	}
 
 	$.ajax({
@@ -274,121 +254,6 @@ function selectStudyMemberManage(userCode, userId){
 	    },
 	}, function() {
 	});
-}
-
-
-//스케줄 검색
-function searchMyStudyCalendar() {
-	var today = cal.getDate();
-	var month = '' + (today.getMonth()+1);
-	if (month.length < 2) month = '0' + month;
-	
-	var sendData = {
-		searchMonthFrom:today.getFullYear() + month + '01',
-		searchMonthTo:today.getFullYear() + month + '31'
-	}
-
-	cal.clear();
-	
-	searchMyStudyCalendarAjax(sendData);
-}
-
-// 스케줄 검색 Ajax
-function searchMyStudyCalendarAjax(sendData){
-	$.ajax({
- 		type: "POST",
- 		url : "/main/searchMyStudyCalendar.json",
- 		data : JSON.stringify(sendData),
-		contentType: "application/json; charset=UTF-8",
-		async: false,
-		success : function(data, status, xhr) {
-			switch(data.result){
-			    case COMMON_SUCCESS:
-			    	for(var i=0; i<data.resultList.length; i++) {
-						cal.createSchedules([ {
-							id : data.resultList[i].calendarCode,
-							title : "("+data.resultList[i].startHm+") "+data.resultList[i].title,
-							body : data.resultList[i].content,
-							category : 'time',
-							raw:typeSxnMap[data.resultList[i].type][0],
-							start : data.resultList[i].startDt + 'T' + data.resultList[i].startHm,
-							end : data.resultList[i].endDt + 'T' + data.resultList[i].endHm,
-							attendees : [data.resultList[i].studyName, data.resultList[i].rgstusId],
-							borderColor:typeSxnMap[data.resultList[i].type][1],
-						}]);
-					}
-			    	break;    
-			    case COMMON_FAIL:
-			    	dToast.push(data.message); 
-			}
-		},
-		error: function(jqXHR, textStatus, errorThrown) {
-			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
-		}
-	}); 
-}
-
-
-
-
-
-//이전 달로 이동
-function prev() {
-	cal.prev();
-	showRange();
-	cal.clear();
-	searchMyStudyCalendar();
-}
-
-// 다음 달로 이동
-function next() {
-	cal.next();
-	showRange();
-	cal.clear();
-	searchMyStudyCalendar();
-}
-
-// 현재 달력 범위 보여줌
-function showRange(){
-	var today = cal.getDate();
-	var month = '' + (today.getMonth()+1);
-	if (month.length < 2) month = '0' + month;
-	document.getElementById("renderRange").innerText = today.getFullYear() + "." + month;
-}
-
-function openCalenderPopup(e){
-	var windowWidth = $(window).width();
-	var windowHeight = $(window).height();
-	var width = e.event.clientX;
-	var height = e.event.clientY;
-	
-	calendarDetailModal.open({
-		width: 350,
-		height: 250,
-		iframe: {
-			method: "post",
-			url: "/main/calendarDetailPopup.do",
-			param: callBack = e
-		},
-		onStateChanged: function(){
-			if (this.state === "open") {
-	        	mask.open();
-	        }
-	        else if (this.state === "close") {
-	        	mask.close();
-	        }
-	    },
-	}, function() {
-	});
-	
-	if(width+300 > windowWidth)
-		width = width-300;
-	if(height+300 > windowHeight)
-		height = height-300;
-	calendarDetailModal.align({left:width, top:height});
-}
-function closeCalenderPopup(){
-	calendarDetailModal.close();
 }
 
 // 팝업창 닫고 새로고침

@@ -32,8 +32,25 @@
 											AND	us.USER_CODE			IN	(SELECT	ui2.USER_CODE
  																			 FROM	USER_INFO ui2
 																	 		 WHERE	ui2.USE_YN	=	'Y'
-																		 		AND	ui2.USER_ID	LIKE	'%'	||	#{searchStudyMemberId} || '%'
+																		 		AND	ui2.USER_ID			LIKE	'%'	||	#{searchStudyMemberId} || '%'
 																			)
+									</if>
+									<if test='searchStudyMemberName != ""'>
+											AND	us.USER_CODE			IN	(SELECT	ui2.USER_CODE
+ 																			 FROM	USER_INFO ui2
+																	 		 WHERE	ui2.USE_YN	=	'Y'
+																		 		AND	ui2.USER_NAME		LIKE	'%'	||	#{searchStudyMemberName} || '%'
+																			)
+									</if>
+									<if test='searchStudyMemberAddress != ""'>
+											AND	us.USER_CODE			IN	(SELECT	ui2.USER_CODE
+ 																			 FROM	USER_INFO ui2
+																	 		 WHERE	ui2.USE_YN	=	'Y'
+																		 		AND	ui2.USER_ADDRESS	LIKE	'%'	||	#{searchStudyMemberAddress} || '%'
+																			)
+									</if>
+									<if test='searchStudyMemberIsAdmin != "noSelect"'>
+											AND	us.USER_POSITION			=	#{searchStudyMemberIsAdmin}
 									</if>
 			<![CDATA[
 								) main 
@@ -56,6 +73,23 @@
 													 	WHERE	USER_INFO.USE_YN	=	'Y'
 													 	AND	USER_INFO.USER_ID	LIKE	'%'	||	#{searchStudyMemberId} || '%'
 														)
+		</if>
+		<if test='searchStudyMemberName != ""'>
+				AND	USER_IN_STUDY.USER_CODE		IN		(SELECT	USER_INFO.USER_CODE
+													 	FROM	USER_INFO
+													 	WHERE	USER_INFO.USE_YN	=	'Y'
+													 	AND	USER_INFO.USER_NAME	LIKE	'%'	||	#{searchStudyMemberName} || '%'
+														)
+		</if>
+		<if test='searchStudyMemberAddress != ""'>
+				AND	USER_IN_STUDY.USER_CODE		IN		(SELECT	USER_INFO.USER_CODE
+													 	FROM	USER_INFO
+													 	WHERE	USER_INFO.USE_YN	=	'Y'
+													 	AND	USER_INFO.USER_ADDRESS	LIKE	'%'	||	#{searchStudyMemberAddress} || '%'
+														)
+		</if>
+		<if test='searchStudyMemberIsAdmin != ""'>
+				AND	USER_IN_STUDY.USER_CODE		=	#{searchStudyMemberIsAdmin}
 		</if>
 	</select>
 	

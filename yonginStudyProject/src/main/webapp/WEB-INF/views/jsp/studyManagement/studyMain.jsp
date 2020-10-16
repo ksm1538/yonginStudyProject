@@ -98,6 +98,29 @@ typeSxnList.forEach(function(n){
 					<input type="text" id="searchStudyMemberId" name ="searchStudyMemberId" class="textbox_style_1" onkeyup="enterKeyEvent();">
 				</div>
 				
+				
+				<div class="study_memeber_search_box get_person">
+					<div class="study_memeber_box_title">이름</div>
+					<input type="text" id="searchStudyMemberName" name ="searchStudyMemberName" class="textbox_style_1" onkeyup="enterKeyEvent();">
+				</div>
+				
+				
+				<div class="study_memeber_search_box get_person">
+					<div class="study_memeber_box_title">주소</div>
+					<input type="text" id="searchStudyMemberAddress" name ="searchStudyMemberAddress" class="textbox_style_1" onkeyup="enterKeyEvent();">
+				</div>
+				
+				
+				<div class="study_memeber_search_box get_person">
+					<div class="study_memeber_box_title">스터디 직위</div>
+					<select name="searchStudyMemberIsAdmin" id="searchStudyMemberIsAdmin" class="select_style_0" >
+  							<option class="option" value="noSelect" >선택 안함</option>
+  							<option value="30" >스터디원</option>
+  							<option value="20" >스터디 관리자</option>
+  							<option value="10" >스터디 장</option>
+    					</select>
+				</div>
+				
 				<div class="study_memeber_search_box get_search_btn">
 					  <input type="button" value="검색" class="btn_style_1" onclick="searchStudyMemberList()" >
 				</div>
