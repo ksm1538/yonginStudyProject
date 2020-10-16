@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.notice.VO.boardVO;
 import com.main.VO.userInStudyVO;
+import com.message.VO.messageInfoVO;
 import com.login.VO.userInfoVO;
 
 public interface studyManagementDAO {
@@ -27,4 +28,6 @@ public interface studyManagementDAO {
 	public void deleteStudyFreeNotice(String boardCode) throws Exception;
 	
 	public userInfoVO selectStudyMemberManage(String userCode);
+	
+	public void deportStudyMember(messageInfoVO data) throws Exception;
 }

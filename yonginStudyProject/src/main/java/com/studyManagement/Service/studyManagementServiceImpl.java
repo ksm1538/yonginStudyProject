@@ -11,7 +11,9 @@ import com.commonFunction.Controller.FileUtilsController;
 import com.commonFunction.DAO.fileDAO;
 import com.commonFunction.DAO.replyDAO;
 import com.studyManagement.DAO.studyManagementDAO;
+import com.message.DAO.messageDAO;
 import com.main.VO.userInStudyVO;
+import com.message.VO.messageInfoVO;
 import com.notice.VO.boardVO;
 import com.login.VO.userInfoVO;
 
@@ -19,6 +21,9 @@ import com.login.VO.userInfoVO;
 public class studyManagementServiceImpl implements studyManagementService{
 	@Autowired
 	studyManagementDAO studyManagementDAO;
+	
+	@Autowired
+	messageDAO messageDAO;
 	
 	@Autowired
 	fileDAO fileDAO;
@@ -94,6 +99,12 @@ public class studyManagementServiceImpl implements studyManagementService{
 	@Override
 	public userInfoVO selectStudyMemberManage(String userCode) throws Exception {
 		return studyManagementDAO.selectStudyMemberManage(userCode);
+	}
+	
+	@Override
+	public void deportStudyMember(messageInfoVO data) throws Exception{
+		messageDAO.sendMessage(data);
+		studyManagementDAO.deportStudyMember(data);
 	}
 
 }

@@ -233,7 +233,9 @@ function searchStudyMemberList(){
 function selectStudyMemberManage(userCode, userId){
 	var parentData={
 			userCode:userCode,
-			userId:userId
+			userId:userId,
+			studyCode:$("#studyCode").val(),
+			studyName:$("#studyName").val()
 	}
 	
 	studyMemberManageModal.open({

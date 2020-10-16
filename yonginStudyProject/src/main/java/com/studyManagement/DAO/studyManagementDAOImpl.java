@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.notice.VO.boardVO;
 import com.main.VO.userInStudyVO;
+import com.message.VO.messageInfoVO;
 import com.login.VO.userInfoVO;
 
 @Repository
@@ -64,5 +65,10 @@ public class studyManagementDAOImpl implements studyManagementDAO{
 	@Override
 	public userInfoVO selectStudyMemberManage(String userCode) {
 		return sqlSession.selectOne("studyManagementMapper.selectStudyMemberManage", userCode);
+	}
+	
+	@Override
+	public void deportStudyMember(messageInfoVO data) throws Exception{
+		sqlSession.delete("studyManagementMapper.deportStudyMember", data);
 	}
 }

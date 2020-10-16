@@ -239,4 +239,13 @@
 			WHERE	USER_INFO.USER_CODE		=	#{userCode}
 		]]>
 	</select>
+	
+	<delete id="deportStudyMember"> 
+		<![CDATA[
+			UPDATE 	USER_IN_STUDY
+			SET 	USE_YN	=	'N'
+			WHERE	STUDY_CODE			=	#{studyCode}
+				AND	USER_CODE			=	#{userCodeTo}
+		]]>
+	</delete>
 </mapper>

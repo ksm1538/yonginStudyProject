@@ -13,7 +13,7 @@
 <jsp:include page="../common/resources.jsp"></jsp:include>
 
 <!-- 헤더 불러오기 : 순서 2(헤더 필요없는 곳은 주석처리) -->
-<jsp:include page="../studyManagement/studyHeader.jsp"></jsp:include>
+<!--<jsp:include page="../studyManagement/studyHeader.jsp"></jsp:include>
 
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
 <script type="text/javascript" src="/resources/js/studyManagement/studyMemberManagePopup.js"></script>
@@ -64,7 +64,9 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 			</form:form>
 	
 			<div class="col-12 col-center mw-1200 study_memeber_btn_con">		
-					<input type="button" value="추방하기 " class="btn_style_1" onclick="" >
+					<form id="deportStudyMemeberForm" name="deportStudyMemeberForm" action="/studyManagement/deportStudyMember.do" method="POST">
+   		  		 	<input type="hidden" id="studyCode">
+      				<input type="submit" value="추방하기" class="btn_style_1 return_message_btn" id="deportStudyMemeberBtn">
 					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
 					<form id="sendMessageForm" name="sendMessageForm" action="/studyManagement/writeMessageToSelectUserForm.do" method="POST">
    		  		 	<input type="hidden" id="userId">

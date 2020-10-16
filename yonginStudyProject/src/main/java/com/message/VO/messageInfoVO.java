@@ -2,6 +2,8 @@ package com.message.VO;
 
 public class messageInfoVO {
 
+	private String	userCode="";
+	private String	studyCode="";
 	private String	userCodeFrom = "";
 	private String 	userCodeTo = "";
 	private String 	messageCode = "";
@@ -19,6 +21,18 @@ public class messageInfoVO {
 	private	String	searchMessageTitle="";
 	
 	
+	public String getUserCode() {
+		return userCode;
+	}
+	public void setUserCode(String userCode) {
+		this.userCode = userCode;
+	}
+	public String getStudyCode() {
+		return studyCode;
+	}
+	public void setStudyCode(String studyCode) {
+		this.studyCode = studyCode;
+	}
 	public String getSearchUserCodeFrom() {
 		return searchUserCodeFrom;
 	}
