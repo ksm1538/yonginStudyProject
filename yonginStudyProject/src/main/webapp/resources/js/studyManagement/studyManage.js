@@ -146,7 +146,7 @@ $(document).ready(function () {
 		});
 		
 		$("#movelist2").on("click",function(event){
-			$("html body").animate({scrollTop:list2.top},400);
+			//$("html body").animate({scrollTop:list2.top},400);
 		});
 		
 		$("#movelist3").on("click",function(event){
@@ -473,12 +473,18 @@ function openApplicationFormDetail(dindex){
 
 // 스터디 정보 변경
 function openChangeStudyInfo(){
+	
+	var parentData={
+		studyCode:$("#studyCode").val(),
+		studyName:$("#studyName").val()
+	}
 	changeStudyInfoModal.open({
 		width: 800,
 		height: 900,
 		iframe: {
 			method: "get",
-			url: "/studyManagemet/studyInfoChange.do"
+			url: "/studyManagemet/studyInfoChange.do",
+			param: callBack = parentData
 		},
 		onStateChanged: function(){
 			if (this.state === "open") {
@@ -491,6 +497,7 @@ function openChangeStudyInfo(){
 	}, function() {
 	});
 }
+
 
 
 // 신청서 상세 팝업 닫기

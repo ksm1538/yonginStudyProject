@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.login.VO.userInfoVO;
 import com.main.VO.userInStudyVO;
+import com.main.VO.studyInfoVO;
 import com.message.VO.messageInfoVO;
 import com.notice.VO.boardVO;
 import com.study.VO.studyApplicationFormUserVO;
@@ -96,5 +97,10 @@ public class studyManagementDAOImpl implements studyManagementDAO{
 	@Override
 	public void insertUserInStudy(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception{
 		sqlSession.insert("studyManagementMapper.insertUserInStudy", studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public studyInfoVO selectStudyInfoView(String studyCode) {
+		return sqlSession.selectOne("studyManagementMapper.selectStudyInfoView", studyCode);
 	}
 }

@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.login.VO.userInfoVO;
 import com.main.VO.userInStudyVO;
+import com.main.VO.studyInfoVO;
 import com.message.VO.messageInfoVO;
 import com.notice.VO.boardVO;
 import com.study.VO.studyApplicationFormUserVO;
@@ -39,4 +40,6 @@ public interface studyManagementService {
 	void approveStudyForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception;
 	
 	void rejectStudyForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception;
+	
+	studyInfoVO selectStudyInfoView(String studyCode) throws Exception;
 }

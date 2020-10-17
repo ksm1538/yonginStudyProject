@@ -36,36 +36,29 @@
       <div class="make_study_title">스터디 내용 수정</div>
    </div> 
    
- <form:form method="POST" modelAttribute="studyInfoVO" name="studyMakeForm" id="studyMakeForm" action="/makeStudy.json">
+ <form:form method="POST" modelAttribute="studyInfoVO" name="studyInfoChangeForm" id="studyInfoChangeForm" action="/makeStudy.json">
    <div class="col-12 col-center mw-1200 make_study_form_wrap">
       <div class="make_study_form_con">
          
          <div class="study_name make_study_form">
             <div class="title_size type_2">스터디 이름</div>
-            <div class="make_study_input_con">
-            	<input type="text" id="studyName" name ="studyName" class="textbox_style_1" placeholder="5~30자로 설정해주세요.">
-           		<i class="fa fa-times-circle" aria-hidden="true" id="nameYnIcon" style="margin-left:1%"></i>
-          		<input type="button" value="중복확인" id="checkIdBtn" class="btn_style_1" onclick="studyNameCheckFunc()">
-            </div>
+            <div class="study_detail_input_con">
+				<form:input path="studyName" type="text" name="studyName" id="studyName" data-ax-path="studyName" class="textbox_style_1"/>
+			</div>
          </div>
          
          <div class="study_type make_study_form">
             <div class="title_size type_2">스터디 주제</div>
-            <div class="make_study_input_con">
-            	<select name="studyTopic" id="studyTopic" class="select_style_0" >
-					<c:forEach var="result" items="${studyTopic}" varStatus="status">
-						<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
-					</c:forEach>
-           		</select>
-            </div>
+            <div class="study_detail_input_con">
+				<form:input path="studyTopic" type="text" name="studyTopic" id="studyTopic" data-ax-path="studyTopic" class="textbox_style_1"/>
+			</div>
          </div>
          
           <div class="study_area make_study_form">
             <div class="title_size type_2">스터디 지역</div>
-            <div class="register_input_con">
-				<%-- <form:input path="studyArea" type="text" name="studyArea" id="studyArea" class="textbox_style_1" readonly="true" placeholder="주소 검색을 클릭하세요."/> --%>
+            <div class="study_detail_input_con">
+				<form:input path="studyArea" type="text" name="studyArea" id="studyArea" data-ax-path="studyArea" class="textbox_style_1"/>
 			</div>
-			<input type="button" value="주소 검색" class="btn_style_1" onclick="studyAddressPopup()" >
          </div>
          
          <div class="study_people make_study_form">

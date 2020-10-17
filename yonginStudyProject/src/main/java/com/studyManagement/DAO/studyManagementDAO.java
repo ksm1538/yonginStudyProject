@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.login.VO.userInfoVO;
 import com.main.VO.userInStudyVO;
+import com.main.VO.studyInfoVO;
 import com.message.VO.messageInfoVO;
 import com.notice.VO.boardVO;
 import com.study.VO.studyApplicationFormUserVO;
@@ -41,4 +42,6 @@ public interface studyManagementDAO {
 	public void rejectStudyForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception;
 	
 	public void insertUserInStudy(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception;
+	
+	public studyInfoVO selectStudyInfoView(String studyCode);
 }

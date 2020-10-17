@@ -12,6 +12,7 @@ import com.commonFunction.DAO.fileDAO;
 import com.commonFunction.DAO.replyDAO;
 import com.login.VO.userInfoVO;
 import com.main.VO.userInStudyVO;
+import com.main.VO.studyInfoVO;
 import com.message.DAO.messageDAO;
 import com.message.VO.messageInfoVO;
 import com.notice.VO.boardVO;
@@ -127,5 +128,10 @@ public class studyManagementServiceImpl implements studyManagementService{
 	@Override
 	public void rejectStudyForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception{
 		studyManagementDAO.rejectStudyForm(studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public studyInfoVO selectStudyInfoView(String studyCode) throws Exception {
+		return studyManagementDAO.selectStudyInfoView(studyCode);
 	}
 }
