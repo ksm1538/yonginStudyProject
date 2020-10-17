@@ -25,7 +25,7 @@
                 <div class="header_member_con">
                     <div class="header_user"><span class="user_id">${user.userId}</span>님 환영합니다.</div>
                     <div class="header_mypage"><a onclick="openMypageForm();">마이페이지</a></div>
-                    <div class="header_message"><a onclick="openMessageForm();">쪽지함</a></div>
+                    <div class="header_message"><a onclick="openMessageBoxForm();">쪽지함</a></div>
                     <div class="logout"><a href="/logout.json">로그아웃</a></div>
               		<div class="admin_page">
               			<c:if test="${user.userIsAdmin == 'Y'}">

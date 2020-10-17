@@ -22,7 +22,7 @@ function openMypageForm(){
 }
 
 /*쪽지함 이동*/
-function openMessageForm(){
+function openMessageBoxForm(){
 	//이걸 쓰면 창이 새로 열리지않고 이동
 	location.href = "/message.do";
 }
