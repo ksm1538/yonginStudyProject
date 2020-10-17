@@ -67,6 +67,7 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 					<form id="deportStudyMemeberForm" name="deportStudyMemeberForm" action="/studyManagement/deportStudyMember.do" method="POST">
    		  		 	<input type="hidden" id="studyCode">
       				<input type="submit" value="추방하기" class="btn_style_1 return_message_btn" id="deportStudyMemeberBtn">
+      				</form>
 					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
 					<form id="sendMessageForm" name="sendMessageForm" action="/studyManagement/writeMessageToSelectUserForm.do" method="POST">
    		  		 	<input type="hidden" id="userId">

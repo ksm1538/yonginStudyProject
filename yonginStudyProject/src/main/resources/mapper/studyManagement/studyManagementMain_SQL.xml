@@ -234,7 +234,7 @@
 				,	USER_INFO.USER_ADDRESS			as userAddress
 				,	USER_INFO.USER_CODE				as userCode
 			FROM	USER_INFO
-			WHERE	SER_INFO.USER_CUODE		=	#{userCode}
+			WHERE	USER_INFO.USER_CODE		=	#{userCode}
 		]]>
 	</select>
 	

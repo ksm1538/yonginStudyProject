@@ -64,7 +64,7 @@ public class studyMemberManagePopupController {
 	@RequestMapping(value="/studyManagement/selectStudyMemberManagement.json", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> selectStudyInfoDetail(@RequestBody String userCode) throws Exception {
-
+		
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 		
 		if(userCode == null || userCode.equals("")) {
