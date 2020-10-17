@@ -51,6 +51,15 @@ $(document).ready(function () {
         });
 	
 	getMessageList();	// ㅉㅗㄱㅈㅣ 목록 조회
+	
+	
+	$('.message_main_title').text("보낸 쪽지함");
+	$('.message_sub_title').text("다른 회원들에게 보낸 쪽지를 확인하세요");
+	
+	var position = $("#send_message_top").offset();
+    $('html, body').animate({scrollTop : position.top}, 800);
+	
+	
 });
 /** 초기화(끝) **/
 
