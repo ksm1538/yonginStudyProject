@@ -3,6 +3,7 @@ var studyMemberManageListGrid = new ax5.ui.grid();
 var studyMemberManageModal = new ax5.ui.modal();	//팝업창 띄우는 modal기능
 var studyApplyCheckListGrid = new ax5.ui.grid();
 var applicationFormDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
+var changeStudyInfoModal = new ax5.ui.modal();
 var cal;
 var _pageNo = 0;
 var _pageNo2 = 0;
@@ -469,6 +470,29 @@ function openApplicationFormDetail(dindex){
 	});
 }
 
+
+// 스터디 정보 변경
+function openChangeStudyInfo(){
+	changeStudyInfoModal.open({
+		width: 800,
+		height: 900,
+		iframe: {
+			method: "get",
+			url: "/studyManagemet/studyInfoChange.do"
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
+
+
 // 신청서 상세 팝업 닫기
 function closeApplcationFormModal(){
 	applicationFormDetailModal.close();
@@ -479,4 +503,8 @@ function closeApplcationFormModalRefresh(){
 	applicationFormDetailModal.close();
 	getStudyMemberList();
 	getStudyApplicationForm();
+}
+
+function closeStudyChangeInfoModal(){
+	changeStudyInfoModal.close();
 }

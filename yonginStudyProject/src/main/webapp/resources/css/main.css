@@ -305,6 +305,8 @@ html, body {
 .make_study_wrap .circle_btn{top:4%;}
 .make_study_form_wrap{padding:0px 40px;}
 
+.make_study_btn_wrap .btn_style_1_con .btn_style_1{margin:0 15px;}
+
 /*댓글 대댓 수정 쓰기*/
 .reply_function_wrap{padding:15px; font-size:15px; font-weight:bold; color:#fff; background-color:#7f99e2;}
 
@@ -811,6 +813,7 @@ html, body {
 .study_main_content .study_main_content_img_con .cal_img{width:85px; height:85px; }
 .study_main_content .study_main_content_img_con .chatting_img{width:85px; height:55px; margin-top:15px; margin-bottom:15px;}
 .study_main_content .study_main_content_img_con .apply_img{width:85px; height:85px;}
+.study_main_content .study_main_content_img_con .edit_img{width:85px; height:85px;}
 
 .study_main_wrap .side_see_member_img{width:75px; height:75px;}
 .study_main_wrap .side_see_cal_img{width:75px; height:75px; margin-left:2px;}
