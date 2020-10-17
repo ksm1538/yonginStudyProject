@@ -28,7 +28,7 @@ request.setCharacterEncoding("UTF-8");
 </head>
 <body>
 
-	<div class="col-12 send_message_wrap">
+	<div class="col-12 send_message_wrap" id="send_message_top">
 		<div class="col-12 col-center mw-1200 send_message_con">
 			<div class="send_message_title_con">
 				<div class="send_message_title"><span>쪽지 보내기</span></div>

@@ -8,6 +8,12 @@ $(document).ready(function () {
 		disableDragAndDrop: true
 	});	
 	
+	$('.message_main_title').text("쪽지쓰기");
+	$('.message_sub_title').text("다른 회원들에게 쪽지를 보내보세요");
+	
+	var position = $("#send_message_top").offset();
+    $('html, body').animate({scrollTop : position.top}, 800);
+	
 });
 /** 초기화(끝) **/
 

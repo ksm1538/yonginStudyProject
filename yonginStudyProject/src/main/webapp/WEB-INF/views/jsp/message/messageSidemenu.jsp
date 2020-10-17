@@ -33,19 +33,25 @@ request.setCharacterEncoding("UTF-8");
    
     <div class="col-12 meessage_box_wrap">
 		
-		
+		<div class="side_fixed_menu_con">
+			<div class="side_fixed_menu_list_con">
+				<ul class="side_fixed_menu_list">
+					<li><a><img src="/resources/img/arrow.png" class="side_arrow_img" id="Movetop"></a></li>
+				</ul>
+			</div>
+			<div class="tc side_fixed_menu_title">빠른 이동</div>			
+		</div> 
 		<div class="message_content_img"></div>
 		<div class="message_content_dim"></div>
 		
 		<div class="tc message_title_con">
 			<div class="message_main_title">쪽지함</div>
-			<div class="message_sub_title">다른 회원들에게 쪽지를 보내보세요</div>
-			<div class="message_last_title">메뉴를 클릭 후 스크롤을 내려 확인하세요</div>
+			<div class="message_sub_title">쪽지를 보내거나 보낸 혹은 받은 쪽지를 확인하세요</div>
 		</div>
 		
 		<div class="col-12 message_content_con">
 			<div class="col-4 message_content_box">
-				<div class="tc message_content write_message" onclick="openSendMessageForm();">
+				<div class="tc message_content write_message" onclick="openSendMessageForm();" id="writeMessage">
 					<div class="message_img_box"><img src="/resources/img/write_message.png" class="box_content_img write_img"></div>
 					<div class="tc message_content_main_title">쪽지 쓰기</div>
 					<div class="tc message_content_sub_title">쪽지를 작성합니다.</div>

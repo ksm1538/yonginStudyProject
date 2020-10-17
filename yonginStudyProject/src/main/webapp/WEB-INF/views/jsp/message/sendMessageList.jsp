@@ -26,7 +26,7 @@
 <body>
 	
 	
-	<div class="col-12 send_message_list_wrap">
+	<div class="col-12 send_message_list_wrap" id="send_message_top">
 		<div class="col-12 col-center mw-1200 send_message_list_con">
 			<div class="send_message_list_title_con">
 				<div class="send_message_list_title"><span>보낸 쪽지함</span></div>

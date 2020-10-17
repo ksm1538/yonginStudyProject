@@ -23,7 +23,7 @@
 </head>
 <body>
 	
-	<div class="col-12 get_message_wrap" id="move1">
+	<div class="col-12 get_message_wrap" id="send_message_top">
 		<div class="col-12 col-center mw-1200 get_message_con">
 			
 			<div class="get_message_title_con">
