@@ -40,7 +40,6 @@
 												 FROM	USER_IN_STUDY
 												 WHERE	USER_CODE	=	#{userCode}
 												 	AND	(USER_POSITION	=	'10'	OR	USER_POSITION	=	'20')
-												 	AND	USE_YN		=	'Y'
 												 )
 		]]>
 	</select>
@@ -55,7 +54,6 @@
 				AND	STUDY_INFO.STUDY_CODE 	IN	(SELECT STUDY_CODE
 												 FROM	USER_IN_STUDY
 												 WHERE	USER_CODE	=	#{userCode}
-												 	AND	USE_YN		=	'Y'
 												 )
 		]]>
 	</select>
@@ -66,6 +64,7 @@
 				 ,	STUDY_APPLICATION_FORM_USER.TITLE	as	title
 				 ,	STUDY_APPLICATION_FORM_USER.STATUS	as	status
 				 ,	STUDY_APPLICATION_FORM_USER.APPLICATION_FORM_CODE	as	applicationFormCode
+				 ,	STUDY_APPLICATION_FORM_USER.CHECK_YN	as	checkYn
 			FROM	STUDY_APPLICATION_FORM_USER,
 					STUDY_INFO
 			WHERE	STUDY_APPLICATION_FORM_USER.STUDY_CODE		=	STUDY_INFO.STUDY_CODE
@@ -74,13 +73,34 @@
 		]]>
 	</select>
 	
-	<update id="updateUserInStudyToN">
+	<delete id="deleteUserInStudy">
 		<![CDATA[
-			UPDATE	USER_IN_STUDY
-			SET		USE_YN		=	'N'
-				 ,	UPDT_DT		=	sysdate
+			DELETE	
+			FROM	USER_IN_STUDY
 			WHERE	USER_CODE	=	#{userCode}
 				AND	STUDY_CODE	=	#{studyCode}
+		]]>
+	</delete>
+	
+	<update id="cancelStudyForm">
+		<![CDATA[
+			UPDATE	STUDY_APPLICATION_FORM_USER
+			SET		CHECK_YN	=	'Y'
+				 ,	UPDT_DT		=	sysdate
+				 ,	UPDTUS_ID	=	#{userCode}
+			WHERE	USER_CODE	=	#{userCode}
+				AND	APPLICATION_FORM_CODE	=	#{applicationFormCode}
+				AND	STATUS		=	'10'
+		]]>
+	</update>
+	
+	<update id="deleteStudyForm">
+		<![CDATA[
+			UPDATE	STUDY_APPLICATION_FORM_USER
+			SET		USE_YN		=	'N'
+			WHERE	USER_CODE	=	#{userCode}
+				AND	APPLICATION_FORM_CODE	=	#{applicationFormCode}
+				AND	CHECK_YN	=	'Y'
 		]]>
 	</update>
 </mapper>

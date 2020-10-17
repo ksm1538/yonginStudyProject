@@ -44,6 +44,16 @@ public class myPageDAOImpl implements myPageDAO{
 	
 	@Override
 	public void exitStudy(userInStudyVO userInStudyVO) throws Exception{
-		sqlSession.update("myPageSql.updateUserInStudyToN", userInStudyVO);
+		sqlSession.delete("myPageSql.deleteUserInStudy", userInStudyVO);
+	}
+	
+	@Override
+	public void cancelStudyForm(studyApplicationFormUserVO vo) throws Exception{
+		sqlSession.update("myPageSql.cancelStudyForm", vo);
+	}
+	
+	@Override
+	public void deleteStudyForm(studyApplicationFormUserVO vo) throws Exception{
+		sqlSession.update("myPageSql.deleteStudyForm", vo);
 	}
 }

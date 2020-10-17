@@ -2,10 +2,11 @@ package com.studyManagement.DAO;
 
 import java.util.List;
 
-import com.notice.VO.boardVO;
+import com.login.VO.userInfoVO;
 import com.main.VO.userInStudyVO;
 import com.message.VO.messageInfoVO;
-import com.login.VO.userInfoVO;
+import com.notice.VO.boardVO;
+import com.study.VO.studyApplicationFormUserVO;
 
 public interface studyManagementDAO {
 
@@ -30,4 +31,14 @@ public interface studyManagementDAO {
 	public userInfoVO selectStudyMemberManage(String userCode);
 	
 	public void deportStudyMember(messageInfoVO data) throws Exception;
+	
+	public List<studyApplicationFormUserVO> selectStudyApplicationForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception;
+	
+	public int selectStudyApplicationFormToCnt(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception;
+	
+	public void approveStudyForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception;
+	
+	public void rejectStudyForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception;
+	
+	public void insertUserInStudy(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception;
 }

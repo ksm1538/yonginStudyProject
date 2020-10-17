@@ -44,8 +44,13 @@ request.setCharacterEncoding("UTF-8");
 			<textarea id="applicationFormDesc" data-ax-path="applicationFormDesc"></textarea>
 		</div>
 		</form>
-	<div class="btn_style_1_con">
+	<div id="readonlyDiv" class="btn_style_1_con">
 		<input type="button" value="수정하기" class="btn_style_1 study_apply_finsh_btn" id="updateAFBtn" onclick="updateStudyApplicationForm()" >
+		<input type="button" value="닫기" class="btn_style_1 study_apply_close_btn" onclick="closeModal()" >
+	</div> 
+	<div id="adminDiv" class="btn_style_1_con">
+		<input type="button" value="승인" class="btn_style_1 study_apply_finsh_btn" id="approveBtn" onclick="approveStudyForm()" >
+		<input type="button" value="거부" class="btn_style_1 study_apply_finsh_btn" id="rejectBtn" onclick="rejectStudyForm()" >
 		<input type="button" value="닫기" class="btn_style_1 study_apply_close_btn" onclick="closeModal()" >
 	</div> 
 		

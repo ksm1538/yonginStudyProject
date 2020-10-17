@@ -24,7 +24,6 @@
 				AND	STUDY_INFO.STUDY_CODE 	IN	(SELECT STUDY_CODE
 												 FROM	USER_IN_STUDY
 												 WHERE	USER_CODE	=	#{userCode}
-												 	AND	USE_YN		=	'Y'
 												 )
 		]]>
 	</select>
@@ -49,8 +48,7 @@
 			FROM	CALENDAR
 			WHERE	STUDY_CODE	IN	(SELECT	STUDY_CODE
 									 FROM	USER_IN_STUDY
-									 WHERE	USER_CODE	=	#{userCode}
-									 	AND	USE_YN		=	'Y')
+									 WHERE	USER_CODE	=	#{userCode})
 				AND	((START_DT		>= #{searchMonthFrom}	AND		START_DT	<= #{searchMonthTo})
 					 	OR		
 					 (END_DT		>= #{searchMonthFrom}	AND		END_DT	<= #{searchMonthTo}))
@@ -82,7 +80,6 @@
 										AND	bt.STUDY_CODE 	IN	(SELECT us.STUDY_CODE
 																 FROM	USER_IN_STUDY us
 																 WHERE	us.USER_CODE	=	#{currentUserCode}
-																 	AND	us.USE_YN		=	'Y'
 																 )
 								) main 
 						  WHERE ROWNUM <= #{last}
@@ -100,7 +97,6 @@
 				AND	BOARD_TB.STUDY_CODE 	IN	(SELECT us.STUDY_CODE
 												 FROM	USER_IN_STUDY us
 												 WHERE	us.USER_CODE	=	#{currentUserCode}
-												 	AND	us.USE_YN		=	'Y'
 												 )
 		]]>
 	</select>

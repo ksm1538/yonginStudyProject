@@ -72,7 +72,7 @@ $(document).ready(function () {
         	{key : "studyName", label: "스터디 이름", align: "center", width:"45%"},
         	{key : "manageStudy", label: "", align: "center", width:"10%", 
 	       		 formatter: function (){
-	    			 return '<button type="button"  style="border:transparent; background-color:transparent;outline:none">관리</button>';
+	    			 return '<button type="button" onclick="openStudyManagementAdminPage('+this.dindex+')" style="border:transparent; background-color:transparent;outline:none">관리하기</button>';
 	    		 }
         	},
         ],
@@ -85,7 +85,7 @@ $(document).ready(function () {
                     columnHeight: 45,
                     
 					onDBLClick: function () 	{
-                    	openStudyManagementAdminPage(myMakeListGrid.list[this.dindex].studyCode, myParcitipateListGrid.list[this.dindex].studyName);
+						openStudyManagementPage(myMakeListGrid.list[this.dindex].studyCode, myMakeListGrid.list[this.dindex].studyName);
 					},  
                     onClick: function () 	{
                     
@@ -121,6 +121,9 @@ $(document).ready(function () {
         	
 			{key : "status", label: "상태", align: "center", width:"10%",formatter:function(){
         		if(this.value == "10"){
+        			if(this.item.checkYn == "Y"){
+        				return "신청 취소";
+        			}
         			return applicationFormStatusMap[this.value];
         		}
         		else if(this.value == "20"){
@@ -130,12 +133,14 @@ $(document).ready(function () {
 					return "<span style="+"font-weight:bold;color:red;"+">"+applicationFormStatusMap[this.value]+"</span>";
 				}
 			}},
-        	{key : "dropStudy", label: "", align: "center", width:"10%", 
+        	{key : "", label: "", align: "center", width:"10%", 
        		 formatter: function (){
-       			 if(this.item.status == "10"){
-       				 return '<button type="button" onclick="dropStudyForm(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">취소</button>';
+       			 if(this.item.checkYn == "N"){
+       				 return '<button type="button" onclick="cancelStudyForm(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">신청 취소</button>';
+       			 }else if(this.item.checkYn == "Y"){
+       				 return '<button type="button" onclick="deleteStudyForm(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">삭제</button>';;
        			 }else{
-       				 return "";
+       				 return '';
        			 }
     		 }},
         ],
@@ -581,7 +586,8 @@ function getMyStudyApplicationFormList(){
 // 신청서 상세 팝업 열기
 function openApplicationFormDetail(applicationFormCode){
 	var parentData={
-			applicationFormCode:applicationFormCode	 		// 신청서 그리드에서 더블클릭으로 받은 applicationFormCode를 팝업으로 보낼 데이터에 넣음
+			applicationFormCode:applicationFormCode,	 		// 신청서 그리드에서 더블클릭으로 받은 applicationFormCode를 팝업으로 보낼 데이터에 넣음
+			type:"myPageType"
 	}
 	
 	applicationFormDetailModal.open({
@@ -612,7 +618,7 @@ function closeApplcationFormModal(){
 //신청서 상세 팝업 닫기
 function closeApplcationFormModalRefresh(){
 	applicationFormDetailModal.close();
-	window.location.reload();
+	getMyStudyApplicationFormList();
 }
 
 // 스터디 페이지 이동(POST방식 이용)
@@ -630,7 +636,10 @@ function openStudyManagementPage(studyCode, studyName){
 }
 
 // 스터디 관리자용 페이지 이동(POST방식 이용)
-function openStudyManagementAdminPage(studyCode, studyName){
+function openStudyManagementAdminPage(dindex){
+	var studyCode = myMakeListGrid.list[dindex].studyCode;
+	var studyName = myMakeListGrid.list[dindex].studyName;
+	
 	var frmPop= document.dataForm;
     var url = '/studyManagement/studyManage.do';
     window.open('',studyName);  
@@ -705,4 +714,86 @@ function exitMyStudy(dindex){
 		}
 	}, function(){
 	});
+}
+
+// 스터디 신청 취소하기
+function cancelStudyForm(dindex){
+	var code = myApplicationFormGrid.list[dindex].applicationFormCode;
+	
+	var sendData = {
+		applicationFormCode : code
+	}
+	
+	$.ajax({
+ 		type: "POST",
+ 		url : "/myPage/cancelStudyForm.json",
+ 		data : JSON.stringify(sendData),
+		contentType: "application/json; charset=UTF-8",
+		async: false,
+		success : function(data, status, xhr) {
+			switch(data.result){
+			    case COMMON_SUCCESS:
+			    	 dialog.confirm({
+				    		msg:data.message,
+				        	btns:{
+				        		yes: {
+				        			label:'확인'
+				        		},
+				        	}
+				        }, function(){
+				        	if(this.key=="yes" || this.state == "close"){
+				        		getMyStudyApplicationFormList();
+				        	}
+				    	});
+			    	
+			    	break;    
+			    case COMMON_FAIL:
+			    	dialog.alert(data.message); 
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+		}
+	}); 
+}
+
+// 스터디 신청서 삭제하기
+function deleteStudyForm(dindex){
+	var code = myApplicationFormGrid.list[dindex].applicationFormCode;
+	
+	var sendData = {
+		applicationFormCode : code
+	}
+	
+	$.ajax({
+ 		type: "POST",
+ 		url : "/myPage/deleteStudyForm.json",
+ 		data : JSON.stringify(sendData),
+		contentType: "application/json; charset=UTF-8",
+		async: false,
+		success : function(data, status, xhr) {
+			switch(data.result){
+			    case COMMON_SUCCESS:
+			    	 dialog.confirm({
+				    		msg:data.message,
+				        	btns:{
+				        		yes: {
+				        			label:'확인'
+				        		},
+				        	}
+				        }, function(){
+				        	if(this.key=="yes" || this.state == "close"){
+				        		getMyStudyApplicationFormList();
+				        	}
+				    	});
+			    	
+			    	break;    
+			    case COMMON_FAIL:
+			    	dialog.alert(data.message); 
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+		}
+	}); 
 }

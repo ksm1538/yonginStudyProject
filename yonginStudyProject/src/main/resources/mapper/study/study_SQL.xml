@@ -50,7 +50,6 @@
 				 (	USER_CODE
 				 ,	STUDY_CODE
 				 ,	USER_POSITION
-				 ,	USE_YN
 				 ,	RGDT_DT
 				 ,	UPDT_DT
 				 )
@@ -58,7 +57,6 @@
 				(	#{studyRgstusId}
 				,	#{studyCode}
 				,	'10'
-				,	'Y'
 				,	sysdate
 				,	sysdate
 				)
@@ -136,6 +134,9 @@
 				,	UPDT_DT
 				,	STATUS
 				,	USE_YN
+				,	CHECK_YN
+				,	RGSTUS_ID
+				,	UPDTUS_ID
 				)
 			VALUES	
 				(	('APPLIFORM_' || LPAD(applicationForm_seq.nextval,8,0))
@@ -147,6 +148,9 @@
 				,	sysdate
 				,	'10'
 				,	'Y'
+				,	'N'
+				,	#{userCode}
+				,	#{userCode}
 				)
 			
 			
@@ -171,9 +175,7 @@
 				 ,	APPLICATION_FORM_DESC	as	applicationFormDesc
 				 ,	STATUS					as	status
 			FROM	STUDY_APPLICATION_FORM_USER
-			WHERE	USER_CODE					=	#{userCode}
-				AND	APPLICATION_FORM_CODE		=	#{applicationFormCode}
-				AND	USE_YN						=	'Y'
+			WHERE	APPLICATION_FORM_CODE		=	#{applicationFormCode}
 		]]>
 	</select> 
 	
@@ -183,7 +185,7 @@
 			FROM	STUDY_APPLICATION_FORM_USER
 			WHERE	USER_CODE		=	#{userCode}
 				AND	STUDY_CODE		=	#{studyCode}
-				AND	USE_YN			=	'Y'
+				AND	CHECK_YN			=	'N'
 		]]>
 	</select>
 	
@@ -193,7 +195,6 @@
 			FROM	USER_IN_STUDY
 			WHERE	USER_CODE	=	#{userCode}
 				AND	STUDY_CODE	=	#{studyCode}
-				AND	USE_YN		=	'Y'
 		]]>
 	</select>
 	

@@ -10,12 +10,13 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.commonFunction.Controller.FileUtilsController;
 import com.commonFunction.DAO.fileDAO;
 import com.commonFunction.DAO.replyDAO;
-import com.studyManagement.DAO.studyManagementDAO;
-import com.message.DAO.messageDAO;
+import com.login.VO.userInfoVO;
 import com.main.VO.userInStudyVO;
+import com.message.DAO.messageDAO;
 import com.message.VO.messageInfoVO;
 import com.notice.VO.boardVO;
-import com.login.VO.userInfoVO;
+import com.study.VO.studyApplicationFormUserVO;
+import com.studyManagement.DAO.studyManagementDAO;
 
 @Service("studyManagementService")
 public class studyManagementServiceImpl implements studyManagementService{
@@ -107,4 +108,24 @@ public class studyManagementServiceImpl implements studyManagementService{
 		studyManagementDAO.deportStudyMember(data);
 	}
 
+	@Override
+	public List<studyApplicationFormUserVO> selectStudyApplicationForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception{
+		return studyManagementDAO.selectStudyApplicationForm(studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public int selectStudyApplicationFormToCnt(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception{
+		return studyManagementDAO.selectStudyApplicationFormToCnt(studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public void approveStudyForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception{
+		studyManagementDAO.approveStudyForm(studyApplicationFormUserVO);
+		studyManagementDAO.insertUserInStudy(studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public void rejectStudyForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception{
+		studyManagementDAO.rejectStudyForm(studyApplicationFormUserVO);
+	}
 }

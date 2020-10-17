@@ -29,8 +29,6 @@ inoutSxnList.forEach(function(n){
     inoutSxnMap[n.codeId] = n.codeValue;
 }); 
 
-var codes = "${calendarType}";
-console.log(codes);
 var typeSxnList = [
     <c:forEach var="result" items="${calendarType}" varStatus="status">
         {codeId:"${result.codeId}", codeValue:"${result.codeValue}", codeExtraData:"${result.codeExtraData}"}<c:if test="${!status.last}">,</c:if>

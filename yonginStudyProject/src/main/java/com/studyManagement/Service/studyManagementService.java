@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.notice.VO.boardVO;
+import com.login.VO.userInfoVO;
 import com.main.VO.userInStudyVO;
 import com.message.VO.messageInfoVO;
-import com.login.VO.userInfoVO;
+import com.notice.VO.boardVO;
+import com.study.VO.studyApplicationFormUserVO;
 
 public interface studyManagementService {
 	
@@ -30,4 +31,12 @@ public interface studyManagementService {
 	userInfoVO selectStudyMemberManage(String userCode) throws Exception;
 	
 	void deportStudyMember(messageInfoVO data) throws Exception;
+	
+	List<studyApplicationFormUserVO> selectStudyApplicationForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception;
+	
+	int selectStudyApplicationFormToCnt(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception;
+	
+	void approveStudyForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception;
+	
+	void rejectStudyForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception;
 }

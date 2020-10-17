@@ -337,6 +337,78 @@ public class myPageFormController {
 		return mReturn;
 	}
 	
+	/**
+	 * 스터디 신청 취소하기
+	 * @param vo
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/myPage/cancelStudyForm.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> cancelStudyForm(@RequestBody studyApplicationFormUserVO vo, HttpSession session) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		String userCode = user.getUserCode();
+		
+		vo.setUserCode(userCode);
+		
+		if(vo.getUserCode().equals("") || vo.getApplicationFormCode().equals("")) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "필요한 정보를 불러오는데 실패하였습니다.");
+			
+			return mReturn;
+		}
+		
+		myPageService.cancelStudyForm(vo);
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "취소가 완료되었습니다.");
+		
+		return mReturn;
+	}
+	
+	/**
+	 * 스터디 신청서 삭제하기
+	 * @param vo
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/myPage/deleteStudyForm.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> deleteStudyForm(@RequestBody studyApplicationFormUserVO vo, HttpSession session) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		String userCode = user.getUserCode();
+		
+		vo.setUserCode(userCode);
+		
+		if(vo.getUserCode().equals("") || vo.getApplicationFormCode().equals("")) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "필요한 정보를 불러오는데 실패하였습니다.");
+			
+			return mReturn;
+		}
+		
+		myPageService.deleteStudyForm(vo);
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "성공적으로 삭제되었습니다.");
+		
+		return mReturn;
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 
 	

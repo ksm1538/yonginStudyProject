@@ -5,7 +5,18 @@ var studyApplicationFormDetailBinder = new ax5.ui.binder();	// Binder 설정(데
 
 /** 초기화(시작) **/
 $(document).ready(function () {
+	$("#readonlyDiv").hide();
+	$("#adminDiv").hide();
 	
+	if(parentData.type == "myPageType"){
+		$("#readonlyDiv").show();
+	}
+	else if(parentData.type == "studyAdminPageType"){
+		$("#adminDiv").show();
+	}
+	else{
+		
+	}
 	
 	studyApplicationFormDetailBinder.setModel({}, $(document["applicationFormDetailPopupForm"]));
 	
@@ -19,7 +30,6 @@ function selectStudyApplicationForm(){
 	var sendData = {
 			applicationFormCode:parentData.applicationFormCode
 	}
-	
 	$.ajax({
  		type: "POST",
  		url : "/study/selectStudyApplicationForm.json",
@@ -31,8 +41,7 @@ function selectStudyApplicationForm(){
 			    case COMMON_SUCCESS:
 			    	// Binder에 데이터 넣어줌(자동으로 data-ax-path 랑 매치되면 알아서 대입됨)
 			    	studyApplicationFormDetailBinder.setModel(data.resultVO);
-			    	
-			    	if(data.resultVO.status != "10"){
+			    	if(data.resultVO.status != "10" || parentData.type == "studyAdminPageType"){
 			    		$("#detailDiv *").prop("disabled", true);
 			    		$("#updateAFBtn").hide();
 			    		$('#applicationFormDesc').summernote({           
@@ -116,4 +125,120 @@ function closeModal(){
 // 팝업창 닫고 부모페이지 새로고침
 function closeModalRefresh(){
 	return self.parent.closeApplcationFormModalRefresh();		
+}
+
+//신청 수락
+function approveStudyForm(){
+	dialog.confirm({
+		msg: "해당 신청서를 승인하시겠습니까?",
+		btns:{
+			yes: {
+				label:'네', onClick:function(key){
+					dialog.close();
+					
+					var sendData = {
+							applicationFormCode : parentData.applicationFormCode,
+							studyCode : parentData.studyCode,
+							userCode: parentData.userCode
+						}
+						
+						$.ajax({
+							type: "POST",
+					 		url : "/studyManagemetAdmin/approveStudyForm.json",
+							contentType: "application/json; charset=UTF-8",
+							data : JSON.stringify(sendData),
+							async: false,
+							success : function(data, status, xhr) {
+								switch(data.result){
+								    case COMMON_SUCCESS:
+								    	dialog.confirm({
+								    		msg:data.message,
+								        	btns:{
+								        		yes: {
+								        			label:'확인'
+								        		},
+								        	}
+								        }, function(){
+								        	if(this.key=="yes" || this.state == "close"){
+								        		closeModalRefresh();
+								        	}
+								    	});
+								    	break;    
+								    case COMMON_FAIL:
+								    	dialog.alert(data.message); 
+								}
+							},
+							error: function(jqXHR, textStatus, errorThrown) {
+								console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+							}
+						}); 
+ 			}
+			},
+			no: {
+				label:'아니오', onClick:function(key){
+					dialog.close();
+					return;
+ 			}
+			}
+		}
+	}, function(){
+	});
+}
+
+// 신청 거절
+function rejectStudyForm(){
+	dialog.confirm({
+		msg: "해당 신청서를 거부하시겠습니까?",
+		btns:{
+			yes: {
+				label:'네', onClick:function(key){
+					dialog.close();
+					
+					var sendData = {
+							applicationFormCode : parentData.applicationFormCode,
+							studyCode : parentData.studyCode,
+							userCode: parentData.userCode
+						}
+						
+						$.ajax({
+							type: "POST",
+					 		url : "/studyManagemetAdmin/rejectStudyForm.json",
+							contentType: "application/json; charset=UTF-8",
+							data : JSON.stringify(sendData),
+							async: false,
+							success : function(data, status, xhr) {
+								switch(data.result){
+								    case COMMON_SUCCESS:
+								    	dialog.confirm({
+								    		msg:data.message,
+								        	btns:{
+								        		yes: {
+								        			label:'확인'
+								        		},
+								        	}
+								        }, function(){
+								        	if(this.key=="yes" || this.state == "close"){
+								        		closeModalRefresh();
+								        	}
+								    	});
+								    	break;    
+								    case COMMON_FAIL:
+								    	dialog.alert(data.message); 
+								}
+							},
+							error: function(jqXHR, textStatus, errorThrown) {
+								console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+							}
+						}); 
+ 			}
+			},
+			no: {
+				label:'아니오', onClick:function(key){
+					dialog.close();
+					return;
+ 			}
+			}
+		}
+	}, function(){
+	});
 }

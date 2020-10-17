@@ -7,10 +7,11 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.notice.VO.boardVO;
+import com.login.VO.userInfoVO;
 import com.main.VO.userInStudyVO;
 import com.message.VO.messageInfoVO;
-import com.login.VO.userInfoVO;
+import com.notice.VO.boardVO;
+import com.study.VO.studyApplicationFormUserVO;
 
 @Repository
 public class studyManagementDAOImpl implements studyManagementDAO{
@@ -70,5 +71,30 @@ public class studyManagementDAOImpl implements studyManagementDAO{
 	@Override
 	public void deportStudyMember(messageInfoVO data) throws Exception{
 		sqlSession.delete("studyManagementMapper.deportStudyMember", data);
+	}
+	
+	@Override
+	public List<studyApplicationFormUserVO> selectStudyApplicationForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception{
+		return sqlSession.selectList("studyManagementMapper.selectStudyApplicationForm", studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public int selectStudyApplicationFormToCnt(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception{
+		return sqlSession.selectOne("studyManagementMapper.selectStudyApplicationFormToCnt", studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public void approveStudyForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception{
+		sqlSession.update("studyManagementMapper.approveStudyForm", studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public void rejectStudyForm(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception{
+		sqlSession.update("studyManagementMapper.rejectStudyForm", studyApplicationFormUserVO);
+	}
+	
+	@Override
+	public void insertUserInStudy(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception{
+		sqlSession.insert("studyManagementMapper.insertUserInStudy", studyApplicationFormUserVO);
 	}
 }

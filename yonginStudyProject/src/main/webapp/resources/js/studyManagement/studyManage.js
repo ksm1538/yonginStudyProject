@@ -2,8 +2,10 @@
 var studyMemberManageListGrid = new ax5.ui.grid();
 var studyMemberManageModal = new ax5.ui.modal();	//팝업창 띄우는 modal기능
 var studyApplyCheckListGrid = new ax5.ui.grid();
+var applicationFormDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
 var cal;
 var _pageNo = 0;
+var _pageNo2 = 0;
 var studyCode;		// 현재 페이지 스터디 코드
 var studyName; 		// 현재 페이지 스터디 이름
 /** 변수 설정(끝) **/
@@ -76,10 +78,20 @@ $(document).ready(function () {
         //showRowSelector: true,
         columns: [ 
         	
-        	{key : "studyApplyName", label: "신청자 이름", align: "center", width:"25%"},
-        	{key : "studyApplyId", label: "신청자 아이디", align: "center", width:"25%"},
-        	{key : "studySeeApplyRank",label : "신청서 보기", align : "center",width : "25%"},
-        	{key : "studyApplyCheck",label : "관리", align : "right",width : "25%"},/*수락 거절*/
+        	{key : "title", label: "신청서 제목", align: "center", width:"20%"},
+        	{key : "userId", label: "신청자 ID", align: "center", width:"20%"},
+        	{key : "userArea", label : "신청자 거주지", align : "center",width : "20%"},
+        	{key : "rgdtDt", label : "신청 날짜", align : "center",width : "20%"},
+        	{key : "", label : "승인", align : "center", width : "10%",
+				formatter: function (){
+					return '<button type="button" onclick="approveStudyForm('+this.dindex+')" style="border:transparent; background-color:transparent;outline:none;color:green">승인</button>';
+       		 	}
+        	},
+        	{key : "", label : "거부", align : "center", width : "10%",
+				formatter: function (){
+					return '<button type="button" onclick="rejectStudyForm('+this.dindex+')" style="border:transparent; background-color:transparent;outline:none;color:red">거부</button>';
+       		 	}
+        	},
         ],
         header: {
         	align:"center",
@@ -92,6 +104,7 @@ $(document).ready(function () {
                     onClick: function () 	{
 					},
 					onDBLClick: function(){
+						openApplicationFormDetail([this.dindex]);
 					},
 					onDataChanged: function(){
 					},
@@ -104,16 +117,16 @@ $(document).ready(function () {
             prevIcon: '<',
             nextIcon: '>',
             lastIcon: '>|',
-            display: false,
+            display: true,
             onChange: function () {
-				_pageNo = this.page.selectPage;
-				getStudyNoticeList();
+            	_pageNo2 = this.page.selectPage;
+            	getStudyApplicationForm();
                 },
             },
         });
 
 		getStudyMemberList();
-		
+		getStudyApplicationForm();
 		
 		/*클릭시 이동 */
 		$("#Movetop").click(function(){
@@ -163,8 +176,6 @@ $(document).ready(function () {
 			$("html body").animate({scrollTop:list3.top},400);
 		});
 	
-	showRange();
-	searchMyStudyCalendar();
 });
 /** 초기화(끝) **/
 
@@ -265,7 +276,207 @@ function studyMemberManageCloseWithRefresh(){
 	
 }
 
-// 쪽지 보내기 팝업 닫기
+// 스터디 멤버 관리 팝업 닫기
 function close(){
 	studyMemberManageModal.close();
+}
+
+//신청서 조회
+function getStudyApplicationForm(){
+	var sendData = {
+			page :	_pageNo2,
+			studyCode : $("#studyCode").val(),
+	}
+	
+	$.ajax({
+		type: "POST",
+ 		url : "/studyManagemetAdmin/selectStudyApplicationForm.json",
+		contentType: "application/json; charset=UTF-8",
+		data : JSON.stringify(sendData),
+		async: false,
+		success : function(data, status, xhr) {
+			switch(data.result){
+			    case COMMON_SUCCESS:
+			    	if(data.resultList.length>0){
+			    		studyApplyCheckListGrid.setData({
+			    			list: data.resultList,
+			    		 	page: {
+			    		 		currentPage: _pageNo2 || 0,
+			    			 	pageSize: data.dataPerPage,
+			    			 	totalElements: data.total,
+			    			 	totalPages: data.totalPages
+			    		 	}, 
+			    		});
+			    	}
+			    	else{
+			    		studyApplyCheckListGrid.setData([]);
+			    	}
+			    	break;    
+			    case COMMON_FAIL:
+			    	dialog.alert(data.message); 
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+		}
+	}); 
+}
+
+// 신청 수락
+function approveStudyForm(dindex){
+	dialog.confirm({
+		msg:studyApplyCheckListGrid.list[dindex].userId + " 님의 신청을 승인하시겠습니까?",
+		btns:{
+			yes: {
+				label:'네', onClick:function(key){
+					dialog.close();
+					
+					var sendData = {
+							applicationFormCode : studyApplyCheckListGrid.list[dindex].applicationFormCode,
+							studyCode:studyCode,
+							userCode: studyApplyCheckListGrid.list[dindex].userCode
+						}
+						
+						$.ajax({
+							type: "POST",
+					 		url : "/studyManagemetAdmin/approveStudyForm.json",
+							contentType: "application/json; charset=UTF-8",
+							data : JSON.stringify(sendData),
+							async: false,
+							success : function(data, status, xhr) {
+								switch(data.result){
+								    case COMMON_SUCCESS:
+								    	dialog.confirm({
+								    		msg:data.message,
+								        	btns:{
+								        		yes: {
+								        			label:'확인'
+								        		},
+								        	}
+								        }, function(){
+								        	if(this.key=="yes" || this.state == "close"){
+								        		getStudyMemberList();
+								        		getStudyApplicationForm();
+								        	}
+								    	});
+								    	break;    
+								    case COMMON_FAIL:
+								    	dialog.alert(data.message); 
+								}
+							},
+							error: function(jqXHR, textStatus, errorThrown) {
+								console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+							}
+						}); 
+ 			}
+			},
+			no: {
+				label:'아니오', onClick:function(key){
+					dialog.close();
+					return;
+ 			}
+			}
+		}
+	}, function(){
+	});
+}
+
+// 신청 거절
+function rejectStudyForm(dindex){
+	dialog.confirm({
+		msg:studyApplyCheckListGrid.list[dindex].userId + " 님의 신청을 거부하시겠습니까?",
+		btns:{
+			yes: {
+				label:'네', onClick:function(key){
+					dialog.close();
+					
+					var sendData = {
+							applicationFormCode : studyApplyCheckListGrid.list[dindex].applicationFormCode,
+							studyCode:studyCode,
+							userCode: studyApplyCheckListGrid.list[dindex].userCode
+						}
+						
+						$.ajax({
+							type: "POST",
+					 		url : "/studyManagemetAdmin/rejectStudyForm.json",
+							contentType: "application/json; charset=UTF-8",
+							data : JSON.stringify(sendData),
+							async: false,
+							success : function(data, status, xhr) {
+								switch(data.result){
+								    case COMMON_SUCCESS:
+								    	dialog.confirm({
+								    		msg:data.message,
+								        	btns:{
+								        		yes: {
+								        			label:'확인'
+								        		},
+								        	}
+								        }, function(){
+								        	if(this.key=="yes" || this.state == "close"){
+								        		getStudyApplicationForm();
+								        	}
+								    	});
+								    	break;    
+								    case COMMON_FAIL:
+								    	dialog.alert(data.message); 
+								}
+							},
+							error: function(jqXHR, textStatus, errorThrown) {
+								console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
+							}
+						}); 
+ 			}
+			},
+			no: {
+				label:'아니오', onClick:function(key){
+					dialog.close();
+					return;
+ 			}
+			}
+		}
+	}, function(){
+	});
+}
+
+//신청서 상세 팝업 열기
+function openApplicationFormDetail(dindex){
+	
+	var parentData={
+		applicationFormCode:studyApplyCheckListGrid.list[dindex].applicationFormCode,	 		// 신청서 그리드에서 더블클릭으로 받은 applicationFormCode를 팝업으로 보낼 데이터에 넣음
+		type:"studyAdminPageType",
+		studyCode:studyCode,
+		userCode:studyApplyCheckListGrid.list[dindex].userCode,
+	}
+	
+	applicationFormDetailModal.open({
+		width: 800,
+		height: 700,
+		iframe: {
+			method: "post",
+			url: "/study/studyApplicationFormDetailForm.do",
+			param: callBack = parentData
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open(); 
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
+
+// 신청서 상세 팝업 닫기
+function closeApplcationFormModal(){
+	applicationFormDetailModal.close();
+}
+
+//신청서 상세 팝업 닫기
+function closeApplcationFormModalRefresh(){
+	applicationFormDetailModal.close();
+	getStudyMemberList();
+	getStudyApplicationForm();
 }

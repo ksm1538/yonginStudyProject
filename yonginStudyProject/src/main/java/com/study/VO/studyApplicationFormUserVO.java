@@ -11,7 +11,33 @@ public class studyApplicationFormUserVO {
 	private	String	useYn="";
 	private	String	applicationFormCode="";
 	private String	studyName="";
+	private String	checkYn="";
+	private int	first;
+	private int	last;
+	private String	page = "";
+	private String	userId = "";
+	private String	userArea = "";
+	private String	updtusId = "";
 	
+	
+	public int getFirst() {
+		return first;
+	}
+	public void setFirst(int first) {
+		this.first = first;
+	}
+	public int getLast() {
+		return last;
+	}
+	public void setLast(int last) {
+		this.last = last;
+	}
+	public String getPage() {
+		return page;
+	}
+	public void setPage(String page) {
+		this.page = page;
+	}
 	public String getStatus() {
 		return status;
 	}
@@ -71,6 +97,30 @@ public class studyApplicationFormUserVO {
 	}
 	public void setStudyName(String studyName) {
 		this.studyName = studyName;
+	}
+	public String getCheckYn() {
+		return checkYn;
+	}
+	public void setCheckYn(String checkYn) {
+		this.checkYn = checkYn;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public String getUserArea() {
+		return userArea;
+	}
+	public void setUserArea(String userArea) {
+		this.userArea = userArea;
+	}
+	public String getUpdtusId() {
+		return updtusId;
+	}
+	public void setUpdtusId(String updtusId) {
+		this.updtusId = updtusId;
 	}
 	
 	

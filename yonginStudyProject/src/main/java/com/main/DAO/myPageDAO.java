@@ -19,4 +19,8 @@ public interface myPageDAO {
 	public List<studyApplicationFormUserVO> selectMyStudyApplicationFormList(String userCode);
 	
 	public void exitStudy(userInStudyVO userInStudyVO) throws Exception;
+	
+	public void cancelStudyForm(studyApplicationFormUserVO vo) throws Exception;
+	
+	public void deleteStudyForm(studyApplicationFormUserVO vo) throws Exception;
 }

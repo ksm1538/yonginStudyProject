@@ -45,4 +45,14 @@ public class myPageServiceImpl implements myPageService{
 	public void exitStudy(userInStudyVO userInStudyVO) throws Exception{
 		myPageDAO.exitStudy(userInStudyVO);
 	}
+	
+	@Override
+	public void cancelStudyForm(studyApplicationFormUserVO vo) throws Exception{
+		myPageDAO.cancelStudyForm(vo);
+	}
+	
+	@Override
+	public void deleteStudyForm(studyApplicationFormUserVO vo) throws Exception{
+		myPageDAO.deleteStudyForm(vo);
+	}
 }
