@@ -134,4 +134,9 @@ public class studyManagementServiceImpl implements studyManagementService{
 	public studyInfoVO selectStudyInfoView(String studyCode) throws Exception {
 		return studyManagementDAO.selectStudyInfoView(studyCode);
 	}
+	
+	@Override
+	public void studyInfoChange(studyInfoVO studyInfoVO) throws Exception{
+		studyManagementDAO.studyInfoChange(studyInfoVO);
+	}
 }

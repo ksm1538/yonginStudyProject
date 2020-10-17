@@ -44,4 +44,6 @@ public interface studyManagementDAO {
 	public void insertUserInStudy(studyApplicationFormUserVO studyApplicationFormUserVO) throws Exception;
 	
 	public studyInfoVO selectStudyInfoView(String studyCode);
+	
+	public void studyInfoChange(studyInfoVO studyInfoVO) throws Exception;
 }

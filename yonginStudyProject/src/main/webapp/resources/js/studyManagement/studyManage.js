@@ -473,6 +473,7 @@ function openApplicationFormDetail(dindex){
 
 // 스터디 정보 변경
 function openChangeStudyInfo(){
+	// 스터디 장만 변경할 수 있게 ㄱㄱ
 	
 	var parentData={
 		studyCode:$("#studyCode").val(),
@@ -482,7 +483,7 @@ function openChangeStudyInfo(){
 		width: 800,
 		height: 900,
 		iframe: {
-			method: "get",
+			method: "post",
 			url: "/studyManagemet/studyInfoChange.do",
 			param: callBack = parentData
 		},

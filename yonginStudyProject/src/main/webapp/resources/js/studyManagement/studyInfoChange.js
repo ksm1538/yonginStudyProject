@@ -14,6 +14,9 @@ $(document).ready(function () {
 		disableDragAndDrop: true
 	});	
 	
+	// DIV안에 있는 요소 비활성화
+	$("#studyTopicDiv *").prop("disabled", true);
+	
 	studyInfoChangeBinder.setModel({}, $(document["studyInfoChangeForm"]));
 	
 	selectStudyInfoView(parentData.studyCode);
@@ -45,6 +48,49 @@ function selectStudyInfoView(studyCode){
 			console.log('error = ' + jqXHR.responseText + 'code = ' + errorThrown);
 		}
 	}); 
+}
+
+//스터디 정보 변경 함수
+function studyInfoChange(){
+	
+	var sendData={
+		studyCode:parentData.studyCode,
+		studyLimit:$('#studyLimit').val(),
+		studyDesc:$('#studyDesc').val()
+	}
+
+     $.ajax({
+	     type: "POST",
+	     url : "/studyManagement/studyInfoChange.json",
+	     data: JSON.stringify(sendData),
+	     dataType: "json",
+	     contentType: "application/json; charset=UTF-8",
+	     async: false,
+	     success : function(data, status, xhr) {
+	    	 switch(data.result){
+	    	 case COMMON_SUCCESS:
+	    		 dialog.confirm({
+			    		msg:data.message,
+			        	btns:{
+			        		yes: {
+			        			label:'확인'
+			        		},
+			        	}
+			        }, function(){
+			        	if(this.key=="yes" || this.state == "close"){
+			        		closeModal();
+			        	}
+			    	});
+	    		 break;
+	    	 case COMMON_FAIL:
+	    		 dialog.alert(data.message);
+	    		 break;
+	    	 }
+	     },
+	     error: function(jqXHR, textStatus, errorThrown) {
+	        alert('error = ' + jqXHR.responseText);
+	     }
+	  }); 
 }
 
 

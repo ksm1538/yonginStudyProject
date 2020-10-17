@@ -23,6 +23,7 @@
 <!-- 자기가 만든 js파일은 가장 밑으로. 순서 잘 지키고 -->
 <!-- css, js 설정(끝) -->
 
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -36,7 +37,7 @@
       <div class="make_study_title">스터디 내용 수정</div>
    </div> 
    
- <form:form method="POST" modelAttribute="studyInfoVO" name="studyInfoChangeForm" id="studyInfoChangeForm" action="/makeStudy.json">
+ <form:form method="POST" modelAttribute="studyInfoVO" name="studyInfoChangeForm" id="studyInfoChangeForm">
    <div class="col-12 col-center mw-1200 make_study_form_wrap">
       <div class="make_study_form_con">
          
@@ -49,8 +50,12 @@
          
          <div class="study_type make_study_form">
             <div class="title_size type_2">스터디 주제</div>
-            <div class="study_detail_input_con">
-				<form:input path="studyTopic" type="text" name="studyTopic" id="studyTopic" data-ax-path="studyTopic" class="textbox_style_1"/>
+            <div class="study_detail_input_con" id="studyTopicDiv">
+				<form:select path="studyTopic" name="studyTopic" id="studyTopic" data-ax-path="studyTopic" class="select_style_0" >
+				    <c:forEach var="result" items="${studyTopicArray}" varStatus="status">
+			          	<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
+			         </c:forEach>
+				</form:select>
 			</div>
          </div>
          
@@ -87,7 +92,7 @@
 	
 	<div class="col-12 col-center mw-1200 make_study_btn_wrap">
    		<div class="btn_style_1_con">
-      		<input type="button" value="수정하기" class="btn_style_1 study_apply_finsh_btn" onclick="" >
+      		<input type="button" value="수정하기" class="btn_style_1 study_apply_finsh_btn" onclick="studyInfoChange()" >
       		<input type="button" value="취소" class="btn_style_1 study_apply_close_btn" onclick="closeModal()" >
    		</div> 
 	</div> 

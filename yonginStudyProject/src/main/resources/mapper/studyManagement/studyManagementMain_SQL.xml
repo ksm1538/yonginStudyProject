@@ -348,4 +348,13 @@
 		]]>
 	</select>
 	
+	<update id="changeStudyInfo">
+		<![CDATA[
+			UPDATE	STUDY_INFO
+			SET		STUDY_LIMIT	=	#{studyLimit}
+				,	STUDY_DESC	=	#{studyDesc}
+			WHERE	STUDY_CODE	=	#{studyCode}
+		]]>
+	</update>
+	
 </mapper>
