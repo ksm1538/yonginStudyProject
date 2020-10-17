@@ -50,6 +50,16 @@ var userId = "${user.userId}";
 <body>
    
    <div class="col-12 study_main_wrap">
+   		<div class="side_fixed_menu_con">
+			<div class="side_fixed_menu_list_con">
+				<ul class="side_fixed_menu_list">
+					<li><a><img src="/resources/img/arrow.png" class="side_arrow_img" id="Movetop"></a></li>
+					<li><a><img src="/resources/img/mymake.png" class="side_see_member_img" id="side_movelist1"></a></li>
+					<li><a><img src="/resources/img/cal.png" class="side_see_cal_img" id="side_movelist2"></a></li>
+				</ul>
+			</div>
+			<div class="tc side_fixed_menu_title">빠른 이동</div>			
+		</div> 
    		<div class="study_main_content_img"></div>
 		<div class="study_main_content_dim"></div>
 		
@@ -59,13 +69,13 @@ var userId = "${user.userId}";
 		</div>
 		
 		<div class="study_main_content_con">
-			<div class="study_main_content">
+			<div class="study_main_content" id="movelist1">
 				<div class="tc study_main_content_img_con"><img src="../resources/img/mymake.png" class="info_img"></div>
 				<div class="tc study_main_content_title">스터디원 보기</div>
 				<div class="tc study_main_content_sub_title">나와 함께하는 스터디원을 확인하세요</div>
 			</div>
 			
-			<div class="study_main_content">
+			<div class="study_main_content" id="movelist2">
 				<div class="tc study_main_content_img_con"><img src="../resources/img/cal.png" class="cal_img"></div>
 				<div class="tc study_main_content_title">스터디 일정</div>
 				<div class="tc study_main_content_sub_title">스터디의 일정을 확인하세요</div>
@@ -79,7 +89,7 @@ var userId = "${user.userId}";
 		</div>
    </div>
    
-   <div class="col-12 study_memeber_wrap">
+   <div class="col-12 study_memeber_wrap" id="see_member">
    		<div class="col-12 col-center mw-1200 study_memeber_con">
    			<div class="study_memeber_title_con">
 				<div class="study_memeber_title"><span>스터디원 보기</span></div>
@@ -133,7 +143,7 @@ var userId = "${user.userId}";
    		
    </div>
    
-   <div class="col-12 study_plan_wrap">
+   <div class="col-12 study_plan_wrap" id="see_cal">
    		<div class="col-12 col-center mw-1200 study_plan_con">
    			<div class="study_plan_title_con">
 				<div class="study_plan_title"><span>스터디 일정</span></div>

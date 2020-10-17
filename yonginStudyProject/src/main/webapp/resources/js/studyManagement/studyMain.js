@@ -101,9 +101,8 @@ $(document).ready(function () {
 			return false;
 		});
 		
-		var list1 = $("#movelist").offset();
-		var list2 = $("#movenotice").offset();
-		var list3 = $("#movecal").offset();
+		var list1 = $("#see_member").offset();
+		var list2 = $("#see_cal").offset();
 		//클릭시 이동
 		$("#movelist1").on("click",function(event){
 			$("html body").animate({scrollTop:list1.top},400);
@@ -113,9 +112,7 @@ $(document).ready(function () {
 			$("html body").animate({scrollTop:list2.top},400);
 		});
 		
-		$("#movelist3").on("click",function(event){
-			$("html body").animate({scrollTop:list3.top},400);
-		});
+		
 		
 		/*사이드메뉴 */
 		$(".side_fixed_menu_title").click(function(){
@@ -129,9 +126,8 @@ $(document).ready(function () {
 		});
 		
 		
-		var list4 = $("#movelist").offset();
-		var list5 = $("#movenotice").offset();
-		var list6 = $("#movecal").offset();
+		var list4 = $("#see_member").offset();
+		var list5 = $("#see_cal").offset();
 		//클릭시 이동
 		$("#side_movelist1").on("click",function(event){
 			$("html body").animate({scrollTop:list4.top},400);
@@ -141,9 +137,7 @@ $(document).ready(function () {
 			$("html body").animate({scrollTop:list5.top},400);
 		});
 		
-		$("#side_movelist3").on("click",function(event){
-			$("html body").animate({scrollTop:list6.top},400);
-		});
+	
 		
 		// 관리자 권한 없는 경우 일정 생성 버튼 숨기기 함
 		if(!(userAuthority=="10" || userAuthority=="20")){

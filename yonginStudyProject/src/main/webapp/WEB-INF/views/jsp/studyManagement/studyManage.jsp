@@ -49,7 +49,6 @@ studyPositionList.forEach(function(n){
 				<ul class="side_fixed_menu_list">
 					<li><a><img src="/resources/img/arrow.png" class="side_arrow_img" id="Movetop"></a></li>
 					<li><a><img src="/resources/img/mymake.png" class="side_mymake_img" id="side_movelist1"></a></li>
-					<li><a><img src="/resources/img/cal.png" class="side_cal_img" id="side_movelist2"></a></li>
 					<li><a><img src="/resources/img/apply.png" class="side_apply_img" id="side_movelist3"></a></li>
 				</ul>
 			</div>
@@ -136,14 +135,14 @@ studyPositionList.forEach(function(n){
 				<div class="question_mark_con">
 					<div class="tc question_mark"><span>?</span></div>
 					<div class="qestion_desc_box_con">
-						<div class="question_tri"></div>
-						<div class="question_desc">어떤 분이 스터디에 참여하기 위해 신청 했는지 확인 할 수 있습니다.</div>
+						<div class="question_tri type_2"></div>
+						<div class="question_desc type_2">어떤 분이 스터디에 참여하기 위해 신청 했는지 확인 할 수 있습니다.</div>
 					</div>
 				</div>
 			</div>
    		
    		<div class="col-12 col-center mw-1200 "style="width: 100%;" >  
-	  		<div data-ax5grid="studyApplyCheckListGrid" data-ax5grid-config="{}" class="" style="height:300px; padding-top:10px; padding-right:10px"></div>  
+	  		<div data-ax5grid="studyApplyCheckListGrid" data-ax5grid-config="{}" class="color_grid" style="height:300px; padding-top:10px; padding-right:10px"></div>  
 		</div>
    		</div>	
    </div>
