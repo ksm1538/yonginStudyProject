@@ -45,7 +45,7 @@ function deportStudyMemberFunc(){
 			        	}
 			        }, function(){
 			        	if(this.key=="yes" || this.state == "close"){
-			        		closeModal();
+			        		closeModalWithRefresh();
 			        	}
 			    	});
 	    		 break;
@@ -63,4 +63,9 @@ function deportStudyMemberFunc(){
 // 팝업창 닫기
 function closeModal(){
 	return self.parent.close();		// 부모 페이지의 close함수로 리턴
+}
+
+// 팝업창 닫고 새로고침
+function closeModalWithRefresh(){
+	self.parent.studyMemberManageCloseWithRefresh();
 }

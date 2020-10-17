@@ -62,7 +62,7 @@ public class deportStudyMemberController {
 	@RequestMapping(value="/studyManagement/deportStudyMemberFunc.json", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> sendDeleteAjaxFunction(@RequestBody messageInfoVO messageInfoVO, HttpSession session, BindingResult bindingResult) throws Exception {
-	     System.out.println("ÄÚµå : " + messageInfoVO.getStudyCode() + ", " + messageInfoVO.getUserCodeTo());
+	     
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 	      
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
