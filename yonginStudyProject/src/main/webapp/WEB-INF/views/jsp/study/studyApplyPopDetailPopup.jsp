@@ -25,8 +25,45 @@ request.setCharacterEncoding("UTF-8");
 </head>
 <body>
 
+<div class="col-12 col-center mw-1200 study_apply_detail_pop_wrap">
+	<div class="study_apply_detail_pop_con">
+		<div class="circle_btn" onClick="closeModal()"></div>
+		<div class="tc study_apply_detail_pop_title"><span>스터디 신청서 </span></div>
+	</div>
+</div>
  
- <div class="study_apply_wrap">
+ 
+<div class="col-12 col-center mw-1200 study_apply_detail_content_wrap">
+		<form id="applicationFormDetailPopupForm" name="applicationFormDetailPopupForm">
+			<div class="study_apply_detail_title_con">
+				<div class="tc study_apply_detail_subtitle"><span>신청서 제목</span></div>
+				<input type="text" id="title" name="title" data-ax-path="title" class="textbox_style_1" placeholder="신청서 제목을 입력해주세요." maxlength="30">
+			</div>
+			
+			<div class="study_apply_detail_summernote_con">
+				<div class="tc study_apply_desc"><span>신청서 내용 </span></div>
+				<div class="apply_detail_summernote_con">
+					<textarea class="apply_detail_summernote" id="applicationFormDesc" data-ax-path="applicationFormDesc"></textarea>
+				</div>				 
+			</div>
+			
+			
+		</form>
+</div> 
+
+<div class="col-12 col-center mw-1200 study_apply_detail_btn_wrap">
+	<div id="readonlyDiv" class="btn_member_con">
+		<input type="button" value="수정하기" class="btn_style_1 study_apply_finsh_btn" id="updateAFBtn" onclick="updateStudyApplicationForm()" >
+		<input type="button" value="닫기" class="btn_style_1 study_apply_close_btn" onclick="closeModal()" >
+	</div> 
+	<div id="adminDiv" class="btn_admin_con">
+		<input type="button" value="승인" class="btn_style_1 study_apply_finsh_btn" id="approveBtn" onclick="approveStudyForm()" >
+		<input type="button" value="거부" class="btn_style_1 study_apply_finsh_btn" id="rejectBtn" onclick="rejectStudyForm()" >
+		<input type="button" value="닫기" class="btn_style_1 study_apply_close_btn" onclick="closeModal()" >
+	</div> 
+		
+</div>
+ <!-- <div class="study_apply_wrap">
 	<div class="circle_btn" onClick="closeModal()"></div> 
 
 	<div class="study_apply_con tc">
@@ -57,6 +94,6 @@ request.setCharacterEncoding("UTF-8");
 		
 	</div>
 </div>
-
+ -->
 </body>
 </html>
