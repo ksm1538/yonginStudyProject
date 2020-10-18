@@ -48,6 +48,49 @@ function studyMemberAdminoView(){
 	}); 
 }
 
+//스터디 정보 변경 함수
+function studyMemberAdminChange(){
+	
+	var sendData={
+		userCode:parentData.userCode,
+		studyCode:parentData.studyCode,
+		afterStudyAuthority:$('#afterStudyAuthority').val()
+	}
+
+     $.ajax({
+	     type: "POST",
+	     url : "/studyManagement/studyMemberAdminChange.json",
+	     data: JSON.stringify(sendData),
+	     dataType: "json",
+	     contentType: "application/json; charset=UTF-8",
+	     async: false,
+	     success : function(data, status, xhr) {
+	    	 switch(data.result){
+	    	 case COMMON_SUCCESS:
+	    		 dialog.confirm({
+			    		msg:data.message,
+			        	btns:{
+			        		yes: {
+			        			label:'확인'
+			        		},
+			        	}
+			        }, function(){
+			        	if(this.key=="yes" || this.state == "close"){
+			        		closeModal();
+			        	}
+			    	});
+	    		 break;
+	    	 case COMMON_FAIL:
+	    		 dialog.alert(data.message);
+	    		 break;
+	    	 }
+	     },
+	     error: function(jqXHR, textStatus, errorThrown) {
+	        alert('error = ' + jqXHR.responseText);
+	     }
+	  }); 
+}
+
 // 팝업창 닫기
 function closeModal(){
 	return self.parent.studyMemberAdminChangeCloseWithRefresh();		// 부모 페이지의 close함수로 리턴

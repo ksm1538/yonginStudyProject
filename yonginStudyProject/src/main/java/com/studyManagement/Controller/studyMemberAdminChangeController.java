@@ -85,5 +85,31 @@ public class studyMemberAdminChangeController {
 		
 		return mReturn;
 	}
+	
+	/** 
+	 * 스터디 멤버 직위 변경
+	 * @param studyInfoVO
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/studyManagement/studyMemberAdminChange.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> studyInfoChange(@RequestBody userInStudyVO userInStudyVO, HttpSession session) throws Exception {
+ 
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		
+	
+		// 데이터 검증 할거 있으면 검증 
+		
+		studyManagementService.studyMemberAdminChange(userInStudyVO);
+		
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "직위가 변경되었습니다.");
+		
+		return mReturn;
+	}
 
 }

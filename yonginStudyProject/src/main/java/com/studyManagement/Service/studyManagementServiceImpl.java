@@ -144,4 +144,9 @@ public class studyManagementServiceImpl implements studyManagementService{
 	public userInStudyVO selectStudyMemberAdminView(userInStudyVO userInStudyVO) throws Exception {
 		return studyManagementDAO.selectStudyMemberAdminView(userInStudyVO);
 	}
+	
+	@Override
+	public void studyMemberAdminChange(userInStudyVO userInStudyVO) throws Exception{
+		studyManagementDAO.studyMemberAdminChange(userInStudyVO);
+	}
 }

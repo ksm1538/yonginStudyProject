@@ -48,6 +48,13 @@
          </div>
          
          <div class="study_name make_study_form">
+            <div class="title_size type_2">멤버 ID</div>
+            <div class="study_detail_input_con" id="userIdDiv">
+				<form:input path="userId" type="text" name="userId" id="userId" data-ax-path="userId" class="textbox_style_1"/>
+			</div>
+         </div>
+         
+         <div class="study_name make_study_form">
             <div class="title_size type_2">멤버 이름</div>
             <div class="study_detail_input_con" id="userNameDiv">
 				<form:input path="userName" type="text" name="userName" id="userName" data-ax-path="userName" class="textbox_style_1"/>
@@ -70,8 +77,8 @@
             <div class="make_study_input_con">
             	  <select name="afterStudyAuthority" id="afterStudyAuthority" class="select_style_0" >
                 	<option value="10">스터디 장</option>
-                	<option value="20">스터디 운영진</option>
-                	<option value="30">스터디 멤버</option>
+                	<option value="20">스터디 관리자</option>
+                	<option value="30">스터디 원</option>
            		  </select>
             </div>
          </div>     

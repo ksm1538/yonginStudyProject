@@ -46,4 +46,6 @@ public interface studyManagementService {
 	void studyInfoChange(studyInfoVO studyInfoVO) throws Exception;
 	
 	userInStudyVO selectStudyMemberAdminView(userInStudyVO userInStudyVO) throws Exception;
+	
+	void studyMemberAdminChange(userInStudyVO userInStudyVO) throws Exception;
 }

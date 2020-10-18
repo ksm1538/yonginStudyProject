@@ -113,4 +113,9 @@ public class studyManagementDAOImpl implements studyManagementDAO{
 	public userInStudyVO selectStudyMemberAdminView(userInStudyVO userInStudyVO) {
 		return sqlSession.selectOne("studyManagementMapper.selectStudyMemberAdminView", userInStudyVO);
 	}
+	
+	@Override
+	public void studyMemberAdminChange(userInStudyVO userInStudyVO) throws Exception{
+		sqlSession.update("studyManagementMapper.studyMemberAdminChange", userInStudyVO);
+	}
 }
