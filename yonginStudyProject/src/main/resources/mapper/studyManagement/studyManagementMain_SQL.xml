@@ -358,4 +358,19 @@
 		]]>
 	</update>
 	
+	<select id="selectStudyMemberAdminView" parameterType="String" resultType="com.main.VO.userInStudyVO">
+		<![CDATA[
+			SELECT	(	SELECT	STUDY_NAME
+						FROM	STUDY_INFO
+						WHERE	STUDY_INFO.STUDY_CODE	=	#{studyCode})			as 	studyName
+				,	(	SELECT	USER_NAME
+						FROM	USER_INFO
+						WHERE	USER_INFO.USER_CODE	=	#{userCode})				as 	userName
+				,	USER_POSITION													as 	studyAuthority
+			FROM	USER_IN_STUDY
+			WHERE	STUDY_CODE		=	#{studyCode}
+				AND	USER_CODE		=	#{userCode}
+		]]>
+	</select>
+	
 </mapper>

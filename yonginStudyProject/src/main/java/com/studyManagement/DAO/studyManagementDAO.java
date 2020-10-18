@@ -46,4 +46,6 @@ public interface studyManagementDAO {
 	public studyInfoVO selectStudyInfoView(String studyCode);
 	
 	public void studyInfoChange(studyInfoVO studyInfoVO) throws Exception;
+	
+	public userInStudyVO selectStudyMemberAdminView(userInStudyVO userInStudyVO);
 }

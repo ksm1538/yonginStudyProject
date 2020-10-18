@@ -3,10 +3,12 @@ package com.main.VO;
 public class userInStudyVO {
 	private String	userCode = "";
 	private String 	studyCode = "";
+	private String 	studyName = "";
 	private String 	userId = "";
 	private String 	userName = "";
 	private String 	userAddress = "";
 	private String	studyAuthority = "";
+	private String	afterStudyAuthority	= "";
 	private String 	useYn = "";
 	private String	rgdtDt = "";
 	private String	updtDt = "";
@@ -84,11 +86,23 @@ public class userInStudyVO {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	public String getStudyName() {
+		return studyName;
+	}
+	public void setStudyName(String studyName) {
+		this.studyName = studyName;
+	}
 	public String getStudyCode() {
 		return studyCode;
 	}
 	public void setStudyCode(String studyCode) {
 		this.studyCode = studyCode;
+	}
+	public String getAfterStudyAuthority() {
+		return afterStudyAuthority;
+	}
+	public void setAfterStudyAuthority(String afterStudyAuthority) {
+		this.afterStudyAuthority = afterStudyAuthority;
 	}
 	public String getStudyAuthority() {
 		return studyAuthority;

@@ -4,6 +4,7 @@ var studyMemberManageModal = new ax5.ui.modal();	//팝업창 띄우는 modal기�
 var studyApplyCheckListGrid = new ax5.ui.grid();
 var applicationFormDetailModal = new ax5.ui.modal();		//팝업창 띄우는 modal기능
 var changeStudyInfoModal = new ax5.ui.modal();
+var changeStudyMemberAdminModal = new ax5.ui.modal();
 var cal;
 var _pageNo = 0;
 var _pageNo2 = 0;
@@ -36,8 +37,7 @@ $(document).ready(function () {
 			},
 			{key : "studyAuthorityChange",label : "직위 변경", align : "center",width : "25%",
 				formatter: function (){
-        			 //return '<button type="button" onclick="studyMemberManagefunc(' + this.list[this.dindex]["userCode"] + ')" style="border:transparent; background-color:transparent;outline:none">관리</button>';
-					return '<button type="button" style="border:transparent; background-color:transparent;outline:none">직위 변경</button>';
+					return '<button type="button" onclick="openStudyMemberAdminChange('+this.dindex+')" style="border:transparent; background-color:transparent;outline:none">직위 변경</button>';
         		 }
 			},/*직위변경 */
         ],
@@ -473,7 +473,6 @@ function openApplicationFormDetail(dindex){
 
 // 스터디 정보 변경
 function openChangeStudyInfo(){
-	// 스터디 장만 변경할 수 있게 ㄱㄱ
 	
 	var parentData={
 		studyCode:$("#studyCode").val(),
@@ -499,7 +498,37 @@ function openChangeStudyInfo(){
 	});
 }
 
+// 스터디 멤버 직위 변경
+function openStudyMemberAdminChange(dindex){
 
+	var userInfo=studyMemberManageListGrid.list[dindex];
+	
+	var parentData = {
+		userCode:userInfo.userCode,
+		userName:userInfo.userName,
+		studyCode:$("#studyCode").val(),
+		studyName:$("#studyName").val()
+	}
+	
+	changeStudyMemberAdminModal.open({
+		width: 800,
+		height: 900,
+		iframe: {
+			method: "post",
+			url: "/studyManagement/studyMemberAdminChange.do",
+			param: callBack = parentData
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
 
 // 신청서 상세 팝업 닫기
 function closeApplcationFormModal(){
@@ -515,4 +544,11 @@ function closeApplcationFormModalRefresh(){
 
 function closeStudyChangeInfoModal(){
 	changeStudyInfoModal.close();
+}
+
+// 직위관리 닫고 새로고침
+function studyMemberAdminChangeCloseWithRefresh(){
+	changeStudyMemberAdminModal.close();
+	window.location.reload();
+	
 }
