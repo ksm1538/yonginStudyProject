@@ -511,8 +511,8 @@ function openStudyMemberAdminChange(dindex){
 	}
 	
 	changeStudyMemberAdminModal.open({
-		width: 800,
-		height: 900,
+		width: 500,
+		height: 600,
 		iframe: {
 			method: "post",
 			url: "/studyManagement/studyMemberAdminChange.do",
