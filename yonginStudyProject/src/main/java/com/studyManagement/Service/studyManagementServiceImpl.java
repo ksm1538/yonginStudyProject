@@ -149,4 +149,9 @@ public class studyManagementServiceImpl implements studyManagementService{
 	public void studyMemberAdminChange(userInStudyVO userInStudyVO) throws Exception{
 		studyManagementDAO.studyMemberAdminChange(userInStudyVO);
 	}
+	
+	@Override
+	public void studyMemberMasterChange(userInStudyVO userInStudyVO) throws Exception{
+		studyManagementDAO.studyMemberMasterChange(userInStudyVO);
+	}
 }

@@ -50,4 +50,6 @@ public interface studyManagementDAO {
 	public userInStudyVO selectStudyMemberAdminView(userInStudyVO userInStudyVO);
 	
 	public void studyMemberAdminChange(userInStudyVO userInStudyVO) throws Exception;
+	
+	public void studyMemberMasterChange(userInStudyVO userInStudyVO) throws Exception;
 }

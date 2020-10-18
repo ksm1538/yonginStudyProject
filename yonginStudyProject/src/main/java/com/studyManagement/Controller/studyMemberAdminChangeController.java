@@ -19,12 +19,16 @@ import com.commonCode.VO.commonCodeVO;
 import com.login.VO.userInfoVO;
 import com.main.VO.studyInfoVO;
 import com.main.VO.userInStudyVO;
+import com.studyManagement.Service.studyMainService;
 import com.studyManagement.Service.studyManagementService;
 
 @Controller
 public class studyMemberAdminChangeController {
 	@Resource(name="studyManagementService") // 해당 서비스가 리소스임을 표시합니다.
 	private studyManagementService studyManagementService;
+	
+	@Resource(name="studyMainService") // 해당 서비스가 리소스임을 표시합니다.
+	private studyMainService studyMainService;
 	
 	@Resource(name="commonCodeService")
 	private commonCodeService commonCodeService;
@@ -100,10 +104,33 @@ public class studyMemberAdminChangeController {
 		
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
 		
-	
-		// 데이터 검증 할거 있으면 검증 
-		
+		/** 권한 체크(시작) **/
+	      userInStudyVO userinfo = new userInStudyVO();
+	      
+	      userinfo.setUserCode(user.getUserCode());
+	      userinfo.setStudyCode(userInStudyVO.getStudyCode());
+	      
+	      if(userinfo.getUserCode().equals("") || userinfo.getStudyCode().equals("")) {
+	         mReturn.put("result", "fail");
+	         mReturn.put("message", "오류가 발생하였습니다.");
+	         
+	         return mReturn;
+	      }
+	      
+	      String result = studyMainService.selectStudyUserInfo(userinfo);
+	      if(!result.equals("10")) {
+	         mReturn.put("result", "fail");
+	         mReturn.put("message", "스터디장만 변경 가능합니다.");
+	         
+	         return mReturn;
+	      }
+	      /** 권한 체크(끝) **/
+
 		studyManagementService.studyMemberAdminChange(userInStudyVO);
+		if(userInStudyVO.getAfterStudyAuthority().equals("10")) {
+			userInStudyVO.setUserCode(user.getUserCode());
+			studyManagementService.studyMemberMasterChange(userInStudyVO);
+		}
 		
 		
 		mReturn.put("result", "success");

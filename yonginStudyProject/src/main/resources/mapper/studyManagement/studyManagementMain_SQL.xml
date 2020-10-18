@@ -385,4 +385,13 @@
 		]]>
 	</update>
 	
+	<update id="studyMemberMasterChange">
+		<![CDATA[
+			UPDATE	USER_IN_STUDY
+			SET		USER_POSITION	=	'20'
+			WHERE	STUDY_CODE	=	#{studyCode}
+				AND	USER_CODE	=	#{userCode}
+		]]>
+	</update>
+	
 </mapper>
