@@ -340,9 +340,10 @@
 	
 	<select id="selectStudyInfoView" parameterType="String" resultType="com.main.VO.studyInfoVO">
 		<![CDATA[
-			SELECT	STUDY_NAME				as studyName
-				,	STUDY_TOPIC				as studyTopic
-				,	STUDY_AREA				as studyArea
+			SELECT	STUDY_NAME				as 	studyName
+				,	STUDY_TOPIC				as 	studyTopic
+				,	STUDY_AREA				as 	studyArea
+				,	STUDY_DESC				as 	studyDesc
 			FROM	STUDY_INFO
 			WHERE	STUDY_CODE		=	#{studyCode}
 		]]>

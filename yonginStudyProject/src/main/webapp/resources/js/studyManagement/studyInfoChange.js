@@ -16,6 +16,8 @@ $(document).ready(function () {
 	
 	// DIV안에 있는 요소 비활성화
 	$("#studyTopicDiv *").prop("disabled", true);
+	$("#studyAreaDiv *").prop("disabled", true);
+	$("#studyNameDiv *").prop("disabled", true);
 	
 	studyInfoChangeBinder.setModel({}, $(document["studyInfoChangeForm"]));
 	
@@ -39,6 +41,7 @@ function selectStudyInfoView(studyCode){
 			switch(data.result){
 			    case COMMON_SUCCESS:
 			    	studyInfoChangeBinder.setModel(data.boardInfo);
+					$('#studyDesc').summernote('code', data.boardInfo.studyDesc);
 			    	break;    
 			    case COMMON_FAIL:
 			    	dialog.alert(data.message); 

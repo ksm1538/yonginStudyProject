@@ -43,7 +43,7 @@
          
          <div class="study_name make_study_form">
             <div class="title_size type_2">스터디 이름</div>
-            <div class="study_detail_input_con">
+            <div class="study_detail_input_con" id="studyNameDiv">
 				<form:input path="studyName" type="text" name="studyName" id="studyName" data-ax-path="studyName" class="textbox_style_1"/>
 			</div>
          </div>
@@ -61,7 +61,7 @@
          
           <div class="study_area make_study_form">
             <div class="title_size type_2">스터디 지역</div>
-            <div class="study_detail_input_con">
+            <div class="study_detail_input_con" id="studyAreaDiv">
 				<form:input path="studyArea" type="text" name="studyArea" id="studyArea" data-ax-path="studyArea" class="textbox_style_1"/>
 			</div>
          </div>
@@ -82,9 +82,9 @@
          
          <div class="study_text make_study_form">
             <div class="title_size type_2">설명</div>
-            <div class="make_study_input_con">
-           		 <textarea name="studyDesc" id="studyDesc"></textarea> 
-            </div>
+            <div class="study_detail_input_con" id="studyAreaDiv">
+				<form:textarea path="studyDesc" id="studyDesc" name="studyDesc" data-ax-path="studyDesc" style=""/>
+			</div>
            
          </div>      
       </div>
