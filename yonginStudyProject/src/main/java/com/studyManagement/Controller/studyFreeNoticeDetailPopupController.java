@@ -18,7 +18,6 @@ import com.commonFunction.Service.fileService;
 import com.login.VO.userInfoVO;
 import com.studyManagement.Service.studyManagementService;
 import com.notice.VO.boardVO;
-import com.main.VO.userInStudyVO;
 
 @Controller
 public class studyFreeNoticeDetailPopupController {
