@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.commonCode.Service.commonCodeService;
 import com.commonCode.VO.commonCodeVO;
 import com.login.VO.userInfoVO;
-import com.main.VO.studyInfoVO;
 import com.main.VO.userInStudyVO;
 import com.studyManagement.Service.studyMainService;
 import com.studyManagement.Service.studyManagementService;
@@ -105,6 +104,11 @@ public class studyMemberAdminChangeController {
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
 		
 		/** 권한 체크(시작) **/
+		  userInStudyVO userAuthority = new userInStudyVO();
+		  
+		  userAuthority.setUserCode(userInStudyVO.getUserCode());
+		  userAuthority.setStudyCode(userInStudyVO.getStudyCode());
+		
 	      userInStudyVO userinfo = new userInStudyVO();
 	      
 	      userinfo.setUserCode(user.getUserCode());
@@ -116,8 +120,17 @@ public class studyMemberAdminChangeController {
 	         
 	         return mReturn;
 	      }
-	      
+	     
+	      String authority = studyMainService.selectStudyUserInfo(userAuthority);
 	      String result = studyMainService.selectStudyUserInfo(userinfo);
+	   
+	      if(authority.equals("10")) {
+		         mReturn.put("result", "fail");
+		         mReturn.put("message", "스터디장 자신은 변경이 불가능합니다.");
+		         
+		         return mReturn;
+		      }
+	      
 	      if(!result.equals("10")) {
 	         mReturn.put("result", "fail");
 	         mReturn.put("message", "스터디장만 변경 가능합니다.");
