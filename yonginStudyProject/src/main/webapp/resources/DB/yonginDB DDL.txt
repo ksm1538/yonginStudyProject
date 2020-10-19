@@ -1,0 +1,677 @@
+--------------------------------------------------------
+--  파일이 생성됨 - 월요일-10월-19-2020   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table USER_MESSAGE
+--------------------------------------------------------
+
+  CREATE TABLE "USER_MESSAGE" 
+   (	"USER_CODE_FROM" VARCHAR2(20), 
+	"USER_CODE_TO" VARCHAR2(20), 
+	"MESSAGE_CODE" VARCHAR2(20), 
+	"MESSAGE_TITLE" VARCHAR2(100), 
+	"MESSAGE_DESC" CLOB, 
+	"MESSAGE_TIME" DATE, 
+	"USE_YN_TO" CHAR(1), 
+	"USE_YN_FROM" CHAR(1)
+   ) 
+ 
+
+   COMMENT ON COLUMN "USER_MESSAGE"."USER_CODE_FROM" IS '보낸 사람'
+ 
+   COMMENT ON COLUMN "USER_MESSAGE"."USER_CODE_TO" IS '받는 사람'
+ 
+   COMMENT ON COLUMN "USER_MESSAGE"."MESSAGE_CODE" IS '쪽지 CODE'
+ 
+   COMMENT ON COLUMN "USER_MESSAGE"."MESSAGE_TITLE" IS '쪽지 제목'
+ 
+   COMMENT ON COLUMN "USER_MESSAGE"."MESSAGE_DESC" IS '쪽지 내용'
+ 
+   COMMENT ON COLUMN "USER_MESSAGE"."MESSAGE_TIME" IS '쪽지 보낸 시각'
+ 
+   COMMENT ON COLUMN "USER_MESSAGE"."USE_YN_TO" IS '받는 사람 쪽지 삭제 여부'
+ 
+   COMMENT ON COLUMN "USER_MESSAGE"."USE_YN_FROM" IS '보내는 사람 쪽지 삭제 여부'
+--------------------------------------------------------
+--  DDL for Table COMMON_CODE_LIST
+--------------------------------------------------------
+
+  CREATE TABLE "COMMON_CODE_LIST" 
+   (	"CODE" VARCHAR2(20), 
+	"CODE_NM" VARCHAR2(20)
+   ) 
+ 
+
+   COMMENT ON COLUMN "COMMON_CODE_LIST"."CODE" IS '코드'
+ 
+   COMMENT ON COLUMN "COMMON_CODE_LIST"."CODE_NM" IS '코드 이름'
+--------------------------------------------------------
+--  DDL for Table BOARD_TB
+--------------------------------------------------------
+
+  CREATE TABLE "BOARD_TB" 
+   (	"BOARD_CODE" VARCHAR2(20), 
+	"BOARD_TITLE" VARCHAR2(100), 
+	"BOARD_DESC" CLOB, 
+	"BOARD_COUNT" NUMBER DEFAULT 0, 
+	"RGSTUS_ID" VARCHAR2(20), 
+	"STUDY_CODE" VARCHAR2(20), 
+	"RGDT_DT" DATE, 
+	"UPDT_DT" DATE, 
+	"USE_YN" CHAR(1), 
+	"BOARD_TYPE" CHAR(2), 
+	"HGRNK_BOARD_CODE" VARCHAR2(20), 
+	"QNA_STATUS" CHAR(2)
+   ) 
+ 
+
+   COMMENT ON COLUMN "BOARD_TB"."BOARD_CODE" IS '게시판 코드'
+ 
+   COMMENT ON COLUMN "BOARD_TB"."BOARD_TITLE" IS '게시판 제목'
+ 
+   COMMENT ON COLUMN "BOARD_TB"."BOARD_DESC" IS '게시판 내용'
+ 
+   COMMENT ON COLUMN "BOARD_TB"."BOARD_COUNT" IS '게시판 조회수'
+ 
+   COMMENT ON COLUMN "BOARD_TB"."RGSTUS_ID" IS '작성자 코드'
+ 
+   COMMENT ON COLUMN "BOARD_TB"."STUDY_CODE" IS '스터디 코드'
+ 
+   COMMENT ON COLUMN "BOARD_TB"."RGDT_DT" IS '생성 일자'
+ 
+   COMMENT ON COLUMN "BOARD_TB"."UPDT_DT" IS '수정 일자'
+ 
+   COMMENT ON COLUMN "BOARD_TB"."USE_YN" IS '사용 여부'
+ 
+   COMMENT ON COLUMN "BOARD_TB"."BOARD_TYPE" IS '게시판 타입'
+ 
+   COMMENT ON COLUMN "BOARD_TB"."HGRNK_BOARD_CODE" IS '부모 게시판 코드(QnA사용)'
+ 
+   COMMENT ON COLUMN "BOARD_TB"."QNA_STATUS" IS 'QnA상태'
+--------------------------------------------------------
+--  DDL for Table REPLY_TB
+--------------------------------------------------------
+
+  CREATE TABLE "REPLY_TB" 
+   (	"REPLY_CODE" VARCHAR2(20), 
+	"BOARD_CODE" VARCHAR2(20), 
+	"REPLY_TEXT" VARCHAR2(500), 
+	"RGSTUS_ID" VARCHAR2(20), 
+	"RGDT_DT" DATE, 
+	"UPDT_DT" DATE, 
+	"HGRNK_REPLY_CODE" VARCHAR2(20), 
+	"USE_YN" CHAR(1)
+   ) 
+ 
+
+   COMMENT ON COLUMN "REPLY_TB"."REPLY_CODE" IS '댓글 코드'
+ 
+   COMMENT ON COLUMN "REPLY_TB"."BOARD_CODE" IS '게시판 코드'
+ 
+   COMMENT ON COLUMN "REPLY_TB"."REPLY_TEXT" IS '댓글 내용'
+ 
+   COMMENT ON COLUMN "REPLY_TB"."RGSTUS_ID" IS '작성자 코드'
+ 
+   COMMENT ON COLUMN "REPLY_TB"."RGDT_DT" IS '생성 날짜'
+ 
+   COMMENT ON COLUMN "REPLY_TB"."UPDT_DT" IS '수정 날짜'
+ 
+   COMMENT ON COLUMN "REPLY_TB"."HGRNK_REPLY_CODE" IS '부모 댓글 코드'
+ 
+   COMMENT ON COLUMN "REPLY_TB"."USE_YN" IS '삭제여부'
+--------------------------------------------------------
+--  DDL for Table CALENDAR
+--------------------------------------------------------
+
+  CREATE TABLE "CALENDAR" 
+   (	"TITLE" VARCHAR2(100), 
+	"START_DT" CHAR(8), 
+	"START_HM" CHAR(4), 
+	"END_DT" CHAR(8), 
+	"END_HM" CHAR(4), 
+	"TYPE" CHAR(2), 
+	"CONTENT" VARCHAR2(300), 
+	"RGSTUS_ID" VARCHAR2(20), 
+	"STUDY_CODE" VARCHAR2(20), 
+	"CALENDAR_CODE" VARCHAR2(20), 
+	"UPDTUS_ID" VARCHAR2(20), 
+	"UPDT_DT" DATE, 
+	"RGDT_DT" DATE, 
+	"USE_YN" CHAR(1)
+   ) 
+ 
+
+   COMMENT ON COLUMN "CALENDAR"."TITLE" IS '일정 제목'
+ 
+   COMMENT ON COLUMN "CALENDAR"."START_DT" IS '시작 날짜'
+ 
+   COMMENT ON COLUMN "CALENDAR"."START_HM" IS '시작 시간'
+ 
+   COMMENT ON COLUMN "CALENDAR"."END_DT" IS '종료 날짜'
+ 
+   COMMENT ON COLUMN "CALENDAR"."END_HM" IS '종료 시간'
+ 
+   COMMENT ON COLUMN "CALENDAR"."TYPE" IS '일정 타입'
+ 
+   COMMENT ON COLUMN "CALENDAR"."CONTENT" IS '일정 내용'
+ 
+   COMMENT ON COLUMN "CALENDAR"."RGSTUS_ID" IS '생성자 ID'
+ 
+   COMMENT ON COLUMN "CALENDAR"."STUDY_CODE" IS '스터디 코드'
+ 
+   COMMENT ON COLUMN "CALENDAR"."CALENDAR_CODE" IS '일정 코드'
+ 
+   COMMENT ON COLUMN "CALENDAR"."UPDTUS_ID" IS '수정자 ID'
+ 
+   COMMENT ON COLUMN "CALENDAR"."UPDT_DT" IS '수정날짜
+'
+ 
+   COMMENT ON COLUMN "CALENDAR"."RGDT_DT" IS '생성날짜'
+ 
+   COMMENT ON COLUMN "CALENDAR"."USE_YN" IS '사용 여부'
+--------------------------------------------------------
+--  DDL for Table USER_INFO
+--------------------------------------------------------
+
+  CREATE TABLE "USER_INFO" 
+   (	"USER_CODE" VARCHAR2(20), 
+	"USER_ID" VARCHAR2(20), 
+	"USER_PW" CHAR(60), 
+	"USER_ADDRESS" VARCHAR2(20), 
+	"USER_PHONENUMBER" VARCHAR2(11), 
+	"USER_GENDER" CHAR(1), 
+	"USER_NAME" VARCHAR2(20), 
+	"USE_YN" CHAR(1), 
+	"USER_PW_HINT_CODE" CHAR(2), 
+	"USER_PW_HINT_ANSWER" VARCHAR2(100), 
+	"USER_BIRTH" CHAR(8), 
+	"USER_EMAIL" VARCHAR2(40), 
+	"RGDT_DT" DATE, 
+	"UPDT_DT" DATE, 
+	"USER_IS_ADMIN" CHAR(1)
+   ) 
+ 
+
+   COMMENT ON COLUMN "USER_INFO"."USER_CODE" IS '사용자 CODE'
+ 
+   COMMENT ON COLUMN "USER_INFO"."USER_ID" IS '사용자 ID'
+ 
+   COMMENT ON COLUMN "USER_INFO"."USER_PW" IS '사용자 패스워드'
+ 
+   COMMENT ON COLUMN "USER_INFO"."USER_ADDRESS" IS '사용자 주소'
+ 
+   COMMENT ON COLUMN "USER_INFO"."USER_PHONENUMBER" IS '사용자 전화번호'
+ 
+   COMMENT ON COLUMN "USER_INFO"."USER_GENDER" IS '사용자 성별'
+ 
+   COMMENT ON COLUMN "USER_INFO"."USER_NAME" IS '사용자 이름'
+ 
+   COMMENT ON COLUMN "USER_INFO"."USE_YN" IS '사용 여부'
+ 
+   COMMENT ON COLUMN "USER_INFO"."USER_PW_HINT_CODE" IS 'PW 힌트 타입'
+ 
+   COMMENT ON COLUMN "USER_INFO"."USER_PW_HINT_ANSWER" IS 'PW 힌트 대답'
+ 
+   COMMENT ON COLUMN "USER_INFO"."USER_BIRTH" IS '사용자 생일'
+ 
+   COMMENT ON COLUMN "USER_INFO"."USER_EMAIL" IS '사용자 이메일'
+ 
+   COMMENT ON COLUMN "USER_INFO"."RGDT_DT" IS '생성 일자'
+ 
+   COMMENT ON COLUMN "USER_INFO"."UPDT_DT" IS '수정 일자'
+ 
+   COMMENT ON COLUMN "USER_INFO"."USER_IS_ADMIN" IS '관리자 여부'
+--------------------------------------------------------
+--  DDL for Table USER_IN_STUDY
+--------------------------------------------------------
+
+  CREATE TABLE "USER_IN_STUDY" 
+   (	"USER_CODE" VARCHAR2(20), 
+	"STUDY_CODE" VARCHAR2(20), 
+	"USER_POSITION" VARCHAR2(20), 
+	"RGDT_DT" DATE, 
+	"UPDT_DT" DATE
+   ) 
+ 
+
+   COMMENT ON COLUMN "USER_IN_STUDY"."USER_CODE" IS '사용자 CODE'
+ 
+   COMMENT ON COLUMN "USER_IN_STUDY"."STUDY_CODE" IS '스터디 CODE'
+ 
+   COMMENT ON COLUMN "USER_IN_STUDY"."USER_POSITION" IS '사용자 권한'
+ 
+   COMMENT ON COLUMN "USER_IN_STUDY"."RGDT_DT" IS '생성 일자'
+ 
+   COMMENT ON COLUMN "USER_IN_STUDY"."UPDT_DT" IS '수정 일자'
+--------------------------------------------------------
+--  DDL for Table STUDY_INFO
+--------------------------------------------------------
+
+  CREATE TABLE "STUDY_INFO" 
+   (	"STUDY_CODE" VARCHAR2(20), 
+	"STUDY_NAME" VARCHAR2(100), 
+	"STUDY_DESC" CLOB, 
+	"STUDY_TOPIC" VARCHAR2(20), 
+	"STUDY_LIMIT" NUMBER(*,0), 
+	"STUDY_RGSTUS_ID" VARCHAR2(20), 
+	"STUDY_AREA" VARCHAR2(20), 
+	"USE_YN" VARCHAR2(20)
+   ) 
+ 
+
+   COMMENT ON COLUMN "STUDY_INFO"."STUDY_CODE" IS '스터디 CODE'
+ 
+   COMMENT ON COLUMN "STUDY_INFO"."STUDY_NAME" IS '스터디 이름'
+ 
+   COMMENT ON COLUMN "STUDY_INFO"."STUDY_DESC" IS '스터디 내용'
+ 
+   COMMENT ON COLUMN "STUDY_INFO"."STUDY_TOPIC" IS '스터디 주제'
+ 
+   COMMENT ON COLUMN "STUDY_INFO"."STUDY_LIMIT" IS '스터디 제한인원'
+ 
+   COMMENT ON COLUMN "STUDY_INFO"."STUDY_RGSTUS_ID" IS '스터디 방장'
+ 
+   COMMENT ON COLUMN "STUDY_INFO"."STUDY_AREA" IS '스터디 지역'
+ 
+   COMMENT ON COLUMN "STUDY_INFO"."USE_YN" IS '사용 여부'
+--------------------------------------------------------
+--  DDL for Table STUDY_APPLICATION_FORM_USER
+--------------------------------------------------------
+
+  CREATE TABLE "STUDY_APPLICATION_FORM_USER" 
+   (	"APPLICATION_FORM_CODE" VARCHAR2(20), 
+	"USER_CODE" VARCHAR2(20), 
+	"STUDY_CODE" VARCHAR2(20), 
+	"TITLE" VARCHAR2(100), 
+	"APPLICATION_FORM_DESC" CLOB, 
+	"STATUS" CHAR(2), 
+	"CHECK_YN" CHAR(1), 
+	"USE_YN" CHAR(1), 
+	"RGSTUS_ID" VARCHAR2(20), 
+	"UPDTUS_ID" VARCHAR2(20), 
+	"RGDT_DT" DATE, 
+	"UPDT_DT" DATE
+   ) 
+ 
+
+   COMMENT ON COLUMN "STUDY_APPLICATION_FORM_USER"."APPLICATION_FORM_CODE" IS '신청서 코드'
+ 
+   COMMENT ON COLUMN "STUDY_APPLICATION_FORM_USER"."USER_CODE" IS '신청자 ID'
+ 
+   COMMENT ON COLUMN "STUDY_APPLICATION_FORM_USER"."STUDY_CODE" IS '스터디 코드'
+ 
+   COMMENT ON COLUMN "STUDY_APPLICATION_FORM_USER"."TITLE" IS '신청서 제목'
+ 
+   COMMENT ON COLUMN "STUDY_APPLICATION_FORM_USER"."APPLICATION_FORM_DESC" IS '세부내용'
+ 
+   COMMENT ON COLUMN "STUDY_APPLICATION_FORM_USER"."STATUS" IS '신청서 상태'
+ 
+   COMMENT ON COLUMN "STUDY_APPLICATION_FORM_USER"."CHECK_YN" IS '처리 여부'
+ 
+   COMMENT ON COLUMN "STUDY_APPLICATION_FORM_USER"."USE_YN" IS '사용 여부'
+ 
+   COMMENT ON COLUMN "STUDY_APPLICATION_FORM_USER"."RGSTUS_ID" IS '생성자 ID'
+ 
+   COMMENT ON COLUMN "STUDY_APPLICATION_FORM_USER"."UPDTUS_ID" IS '수정자 ID'
+ 
+   COMMENT ON COLUMN "STUDY_APPLICATION_FORM_USER"."RGDT_DT" IS '생성 날짜'
+ 
+   COMMENT ON COLUMN "STUDY_APPLICATION_FORM_USER"."UPDT_DT" IS '수정 날짜'
+--------------------------------------------------------
+--  DDL for Table CHAT_TABLE
+--------------------------------------------------------
+
+  CREATE TABLE "CHAT_TABLE" 
+   (	"STUDY_CODE" VARCHAR2(20), 
+	"WRITER" VARCHAR2(20), 
+	"RGDT_DT" DATE, 
+	"MESSAGE" CLOB
+   ) 
+ 
+
+   COMMENT ON COLUMN "CHAT_TABLE"."STUDY_CODE" IS '스터디 코드'
+ 
+   COMMENT ON COLUMN "CHAT_TABLE"."WRITER" IS '작성자 코드'
+ 
+   COMMENT ON COLUMN "CHAT_TABLE"."RGDT_DT" IS '보낸 시각'
+--------------------------------------------------------
+--  DDL for Table COMMON_CODE_DETAIL
+--------------------------------------------------------
+
+  CREATE TABLE "COMMON_CODE_DETAIL" 
+   (	"CODE" VARCHAR2(20), 
+	"CODE_ID" CHAR(2), 
+	"CODE_VALUE" VARCHAR2(100), 
+	"CODE_EXTRA_DATA" VARCHAR2(20)
+   ) 
+ 
+
+   COMMENT ON COLUMN "COMMON_CODE_DETAIL"."CODE" IS '코드 종류'
+ 
+   COMMENT ON COLUMN "COMMON_CODE_DETAIL"."CODE_ID" IS '코드 ID'
+ 
+   COMMENT ON COLUMN "COMMON_CODE_DETAIL"."CODE_VALUE" IS '코드 내용'
+ 
+   COMMENT ON COLUMN "COMMON_CODE_DETAIL"."CODE_EXTRA_DATA" IS '해당 코드 추가  데이터'
+--------------------------------------------------------
+--  DDL for Table FILE_TB
+--------------------------------------------------------
+
+  CREATE TABLE "FILE_TB" 
+   (	"FILE_CODE" VARCHAR2(20), 
+	"B_CODE" VARCHAR2(20), 
+	"ORG_FILE_NAME" VARCHAR2(260), 
+	"STORED_FILE_NAME" VARCHAR2(40), 
+	"FILE_SIZE" NUMBER, 
+	"RGDT_DT" DATE DEFAULT SYSDATE, 
+	"USE_YN" CHAR(1) DEFAULT NULL
+   ) 
+ 
+
+   COMMENT ON COLUMN "FILE_TB"."FILE_CODE" IS '파일 코드'
+ 
+   COMMENT ON COLUMN "FILE_TB"."B_CODE" IS '게시판 코드'
+ 
+   COMMENT ON COLUMN "FILE_TB"."ORG_FILE_NAME" IS '원래 파일 이름'
+ 
+   COMMENT ON COLUMN "FILE_TB"."STORED_FILE_NAME" IS '변경된 파일 이름
+'
+ 
+   COMMENT ON COLUMN "FILE_TB"."FILE_SIZE" IS '파일 사이즈'
+ 
+   COMMENT ON COLUMN "FILE_TB"."RGDT_DT" IS '등록일'
+ 
+   COMMENT ON COLUMN "FILE_TB"."USE_YN" IS '사용여부'
+--------------------------------------------------------
+--  DDL for Index MESSAGELIST_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "MESSAGELIST_IDX" ON "USER_MESSAGE" ("MESSAGE_CODE", "MESSAGE_TIME")
+--------------------------------------------------------
+--  DDL for Index USER_MESSAGE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "USER_MESSAGE_PK" ON "USER_MESSAGE" ("MESSAGE_CODE")
+--------------------------------------------------------
+--  DDL for Index COMMON_CODE_LIST_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "COMMON_CODE_LIST_PK" ON "COMMON_CODE_LIST" ("CODE")
+--------------------------------------------------------
+--  DDL for Index BOARD_TB_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "BOARD_TB_PK" ON "BOARD_TB" ("BOARD_CODE")
+--------------------------------------------------------
+--  DDL for Index BOARD_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "BOARD_IDX" ON "BOARD_TB" ("BOARD_CODE", "RGDT_DT")
+--------------------------------------------------------
+--  DDL for Index REPLY_TB_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REPLY_TB_PK" ON "REPLY_TB" ("REPLY_CODE")
+--------------------------------------------------------
+--  DDL for Index CALENDAR_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "CALENDAR_PK" ON "CALENDAR" ("CALENDAR_CODE")
+--------------------------------------------------------
+--  DDL for Index USERLIST_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "USERLIST_IDX" ON "USER_INFO" ("USER_ID", "USER_NAME")
+--------------------------------------------------------
+--  DDL for Index USER_INFO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "USER_INFO_PK" ON "USER_INFO" ("USER_CODE")
+--------------------------------------------------------
+--  DDL for Index USER_IN_STUDY_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "USER_IN_STUDY_PK" ON "USER_IN_STUDY" ("USER_CODE", "STUDY_CODE")
+--------------------------------------------------------
+--  DDL for Index STUDY_INFO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "STUDY_INFO_PK" ON "STUDY_INFO" ("STUDY_CODE")
+--------------------------------------------------------
+--  DDL for Index MORESTUDY_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "MORESTUDY_IDX" ON "STUDY_INFO" ("STUDY_NAME")
+--------------------------------------------------------
+--  DDL for Index STUDY_APPLICATION_FORM_USE_PK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "STUDY_APPLICATION_FORM_USE_PK1" ON "STUDY_APPLICATION_FORM_USER" ("APPLICATION_FORM_CODE")
+--------------------------------------------------------
+--  DDL for Index STUDYAPPLICATIONFORM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "STUDYAPPLICATIONFORM_IDX" ON "STUDY_APPLICATION_FORM_USER" ("RGDT_DT", "APPLICATION_FORM_CODE")
+--------------------------------------------------------
+--  DDL for Index COMMON_CODE_DETAIL_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "COMMON_CODE_DETAIL_PK" ON "COMMON_CODE_DETAIL" ("CODE", "CODE_ID")
+--------------------------------------------------------
+--  DDL for Index SYS_C0011840
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C0011840" ON "FILE_TB" ("FILE_CODE")
+--------------------------------------------------------
+--  Constraints for Table USER_MESSAGE
+--------------------------------------------------------
+
+  ALTER TABLE "USER_MESSAGE" MODIFY ("USER_CODE_TO" NOT NULL ENABLE)
+ 
+  ALTER TABLE "USER_MESSAGE" MODIFY ("MESSAGE_CODE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "USER_MESSAGE" MODIFY ("MESSAGE_TITLE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "USER_MESSAGE" MODIFY ("USER_CODE_FROM" NOT NULL ENABLE)
+ 
+  ALTER TABLE "USER_MESSAGE" ADD CONSTRAINT "USER_MESSAGE_PK" PRIMARY KEY ("MESSAGE_CODE") ENABLE
+--------------------------------------------------------
+--  Constraints for Table COMMON_CODE_LIST
+--------------------------------------------------------
+
+  ALTER TABLE "COMMON_CODE_LIST" ADD CONSTRAINT "COMMON_CODE_LIST_PK" PRIMARY KEY ("CODE") ENABLE
+ 
+  ALTER TABLE "COMMON_CODE_LIST" MODIFY ("CODE" NOT NULL ENABLE)
+--------------------------------------------------------
+--  Constraints for Table BOARD_TB
+--------------------------------------------------------
+
+  ALTER TABLE "BOARD_TB" ADD CONSTRAINT "BOARD_TB_PK" PRIMARY KEY ("BOARD_CODE") ENABLE
+ 
+  ALTER TABLE "BOARD_TB" MODIFY ("BOARD_CODE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "BOARD_TB" MODIFY ("BOARD_TITLE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "BOARD_TB" MODIFY ("RGSTUS_ID" NOT NULL ENABLE)
+ 
+  ALTER TABLE "BOARD_TB" MODIFY ("USE_YN" NOT NULL ENABLE)
+ 
+  ALTER TABLE "BOARD_TB" MODIFY ("BOARD_TYPE" NOT NULL ENABLE)
+--------------------------------------------------------
+--  Constraints for Table REPLY_TB
+--------------------------------------------------------
+
+  ALTER TABLE "REPLY_TB" ADD CONSTRAINT "REPLY_TB_PK" PRIMARY KEY ("REPLY_CODE") ENABLE
+ 
+  ALTER TABLE "REPLY_TB" MODIFY ("REPLY_CODE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "REPLY_TB" MODIFY ("BOARD_CODE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "REPLY_TB" MODIFY ("RGSTUS_ID" NOT NULL ENABLE)
+ 
+  ALTER TABLE "REPLY_TB" MODIFY ("RGDT_DT" NOT NULL ENABLE)
+ 
+  ALTER TABLE "REPLY_TB" MODIFY ("UPDT_DT" NOT NULL ENABLE)
+--------------------------------------------------------
+--  Constraints for Table CALENDAR
+--------------------------------------------------------
+
+  ALTER TABLE "CALENDAR" ADD CONSTRAINT "CALENDAR_PK" PRIMARY KEY ("CALENDAR_CODE") ENABLE
+ 
+  ALTER TABLE "CALENDAR" MODIFY ("TITLE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "CALENDAR" MODIFY ("START_DT" NOT NULL ENABLE)
+ 
+  ALTER TABLE "CALENDAR" MODIFY ("START_HM" NOT NULL ENABLE)
+ 
+  ALTER TABLE "CALENDAR" MODIFY ("END_DT" NOT NULL ENABLE)
+ 
+  ALTER TABLE "CALENDAR" MODIFY ("END_HM" NOT NULL ENABLE)
+ 
+  ALTER TABLE "CALENDAR" MODIFY ("RGSTUS_ID" NOT NULL ENABLE)
+ 
+  ALTER TABLE "CALENDAR" MODIFY ("CALENDAR_CODE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "CALENDAR" MODIFY ("STUDY_CODE" NOT NULL ENABLE)
+--------------------------------------------------------
+--  Constraints for Table USER_INFO
+--------------------------------------------------------
+
+  ALTER TABLE "USER_INFO" MODIFY ("USER_CODE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "USER_INFO" ADD CONSTRAINT "USER_INFO_PK" PRIMARY KEY ("USER_CODE") ENABLE
+--------------------------------------------------------
+--  Constraints for Table USER_IN_STUDY
+--------------------------------------------------------
+
+  ALTER TABLE "USER_IN_STUDY" MODIFY ("USER_CODE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "USER_IN_STUDY" MODIFY ("STUDY_CODE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "USER_IN_STUDY" ADD CONSTRAINT "USER_IN_STUDY_PK" PRIMARY KEY ("USER_CODE", "STUDY_CODE") ENABLE
+--------------------------------------------------------
+--  Constraints for Table STUDY_INFO
+--------------------------------------------------------
+
+  ALTER TABLE "STUDY_INFO" ADD CONSTRAINT "STUDY_INFO_PK" PRIMARY KEY ("STUDY_CODE") ENABLE
+ 
+  ALTER TABLE "STUDY_INFO" MODIFY ("STUDY_CODE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "STUDY_INFO" MODIFY ("STUDY_NAME" NOT NULL ENABLE)
+--------------------------------------------------------
+--  Constraints for Table STUDY_APPLICATION_FORM_USER
+--------------------------------------------------------
+
+  ALTER TABLE "STUDY_APPLICATION_FORM_USER" ADD CONSTRAINT "STUDY_APPLICATION_FORM_USE_PK" PRIMARY KEY ("APPLICATION_FORM_CODE") ENABLE
+ 
+  ALTER TABLE "STUDY_APPLICATION_FORM_USER" MODIFY ("APPLICATION_FORM_CODE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "STUDY_APPLICATION_FORM_USER" MODIFY ("USER_CODE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "STUDY_APPLICATION_FORM_USER" MODIFY ("STUDY_CODE" NOT NULL ENABLE)
+--------------------------------------------------------
+--  Constraints for Table CHAT_TABLE
+--------------------------------------------------------
+
+  ALTER TABLE "CHAT_TABLE" MODIFY ("STUDY_CODE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "CHAT_TABLE" MODIFY ("WRITER" NOT NULL ENABLE)
+--------------------------------------------------------
+--  Constraints for Table COMMON_CODE_DETAIL
+--------------------------------------------------------
+
+  ALTER TABLE "COMMON_CODE_DETAIL" ADD CONSTRAINT "COMMON_CODE_DETAIL_PK" PRIMARY KEY ("CODE", "CODE_ID") ENABLE
+ 
+  ALTER TABLE "COMMON_CODE_DETAIL" MODIFY ("CODE_ID" NOT NULL ENABLE)
+ 
+  ALTER TABLE "COMMON_CODE_DETAIL" MODIFY ("CODE" NOT NULL ENABLE)
+--------------------------------------------------------
+--  Constraints for Table FILE_TB
+--------------------------------------------------------
+
+  ALTER TABLE "FILE_TB" MODIFY ("B_CODE" NOT NULL ENABLE)
+ 
+  ALTER TABLE "FILE_TB" MODIFY ("ORG_FILE_NAME" NOT NULL ENABLE)
+ 
+  ALTER TABLE "FILE_TB" MODIFY ("STORED_FILE_NAME" NOT NULL ENABLE)
+ 
+  ALTER TABLE "FILE_TB" MODIFY ("RGDT_DT" NOT NULL ENABLE)
+ 
+  ALTER TABLE "FILE_TB" MODIFY ("USE_YN" NOT NULL ENABLE)
+ 
+  ALTER TABLE "FILE_TB" ADD PRIMARY KEY ("FILE_CODE") ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table USER_MESSAGE
+--------------------------------------------------------
+
+  ALTER TABLE "USER_MESSAGE" ADD CONSTRAINT "USER_MESSAGE_FK_USER_CODE_FROM" FOREIGN KEY ("USER_CODE_FROM")
+	  REFERENCES "USER_INFO" ("USER_CODE") ENABLE
+ 
+  ALTER TABLE "USER_MESSAGE" ADD CONSTRAINT "USER_MESSAGE_FK_USER_CODE_TO" FOREIGN KEY ("USER_CODE_TO")
+	  REFERENCES "USER_INFO" ("USER_CODE") ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table BOARD_TB
+--------------------------------------------------------
+
+  ALTER TABLE "BOARD_TB" ADD CONSTRAINT "BOARD_TB_FK_RGSTUS_ID" FOREIGN KEY ("RGSTUS_ID")
+	  REFERENCES "USER_INFO" ("USER_CODE") ENABLE
+ 
+  ALTER TABLE "BOARD_TB" ADD CONSTRAINT "BOARD_TB_FK_STUDY_CODE" FOREIGN KEY ("STUDY_CODE")
+	  REFERENCES "STUDY_INFO" ("STUDY_CODE") ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table REPLY_TB
+--------------------------------------------------------
+
+  ALTER TABLE "REPLY_TB" ADD CONSTRAINT "REPLY_TB_FK_BOARD_CODE" FOREIGN KEY ("BOARD_CODE")
+	  REFERENCES "BOARD_TB" ("BOARD_CODE") ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table CALENDAR
+--------------------------------------------------------
+
+  ALTER TABLE "CALENDAR" ADD CONSTRAINT "CALENDAR_FK_STUDY_CODE" FOREIGN KEY ("STUDY_CODE")
+	  REFERENCES "STUDY_INFO" ("STUDY_CODE") ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table USER_IN_STUDY
+--------------------------------------------------------
+
+  ALTER TABLE "USER_IN_STUDY" ADD CONSTRAINT "USER_IN_STUDY_FK_STUDY_CODE" FOREIGN KEY ("STUDY_CODE")
+	  REFERENCES "STUDY_INFO" ("STUDY_CODE") ENABLE
+ 
+  ALTER TABLE "USER_IN_STUDY" ADD CONSTRAINT "USER_IN_STUDY_FK_USER_CODE" FOREIGN KEY ("USER_CODE")
+	  REFERENCES "USER_INFO" ("USER_CODE") ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table STUDY_INFO
+--------------------------------------------------------
+
+  ALTER TABLE "STUDY_INFO" ADD CONSTRAINT "STUDY_INFO_FK_STUDY_RGSTUS_ID" FOREIGN KEY ("STUDY_RGSTUS_ID")
+	  REFERENCES "USER_INFO" ("USER_CODE") ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table STUDY_APPLICATION_FORM_USER
+--------------------------------------------------------
+
+  ALTER TABLE "STUDY_APPLICATION_FORM_USER" ADD CONSTRAINT "SAF_USER_FK_STUDY_CODE" FOREIGN KEY ("STUDY_CODE")
+	  REFERENCES "STUDY_INFO" ("STUDY_CODE") ENABLE
+ 
+  ALTER TABLE "STUDY_APPLICATION_FORM_USER" ADD CONSTRAINT "SAF_USER_FK_USER_CODE" FOREIGN KEY ("USER_CODE")
+	  REFERENCES "USER_INFO" ("USER_CODE") ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table CHAT_TABLE
+--------------------------------------------------------
+
+  ALTER TABLE "CHAT_TABLE" ADD CONSTRAINT "CHAT_TABLE_FK_USER_CODE" FOREIGN KEY ("WRITER")
+	  REFERENCES "USER_INFO" ("USER_CODE") ENABLE
+ 
+  ALTER TABLE "CHAT_TABLE" ADD CONSTRAINT "STUDY_CODE" FOREIGN KEY ("STUDY_CODE")
+	  REFERENCES "STUDY_INFO" ("STUDY_CODE") ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table COMMON_CODE_DETAIL
+--------------------------------------------------------
+
+  ALTER TABLE "COMMON_CODE_DETAIL" ADD CONSTRAINT "COMMON_CODE_DETAIL_FK_CODE" FOREIGN KEY ("CODE")
+	  REFERENCES "COMMON_CODE_LIST" ("CODE") ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table FILE_TB
+--------------------------------------------------------
+
+  ALTER TABLE "FILE_TB" ADD CONSTRAINT "FILE_TB_FK_B_CODE" FOREIGN KEY ("B_CODE")
+	  REFERENCES "BOARD_TB" ("BOARD_CODE") ENABLE
