@@ -2,6 +2,7 @@
 var studyMemberListGrid = new ax5.ui.grid();
 var calendarDetailModal = new ax5.ui.modal();
 var calendarWriteModal = new ax5.ui.modal();
+var studyMemberInfoDetailModal = new ax5.ui.modal();
 var extraMask = new ax5.ui.mask();
 var cal;
 var _pageNo = 0;
@@ -42,6 +43,7 @@ $(document).ready(function () {
                     onClick: function () 	{
 					},
 					onDBLClick: function(){
+						selectStudyMemberInfoDetail(this.list[this.dindex]["userCode"],this.list[this.dindex]["userId"]);
 					},
 					onDataChanged: function(){
 					},
@@ -148,6 +150,35 @@ $(document).ready(function () {
 		searchMyStudyCalendar();
 });
 /** 초기화(끝) **/
+
+// 스터디 멤버 상세 보기 팝업 
+function selectStudyMemberInfoDetail(userCode, userId){
+	var parentData={
+			userCode:userCode,
+			userId:userId,
+			studyCode:$("#studyCode").val(),
+			studyName:$("#studyName").val()
+	}
+	
+	studyMemberInfoDetailModal.open({
+		width: 600,
+		height: 600,
+		iframe: {
+			method: "post",
+			url: "/studyManagement/studyMemberInfoDetail.do",
+			param: callBack = parentData
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
 
 
 /* 스터디 멤버 조회 함수 */
@@ -398,4 +429,9 @@ function studyChatFunc(){
  frmPop.studyCode.value = studyCode;
  frmPop.studyName.value = studyName;
  frmPop.submit();   
+}
+
+// 스터디 상세 보기 팝업 닫기
+function close(){
+	studyMemberInfoDetailModal.close();
 }
