@@ -129,7 +129,8 @@ function openWriteStudyFreeNotice(){
 // 스터디 자유게시판 상세 보기 팝업 
 function selectStudyFreeNoticeInfoDetail(boardCode){
 	var parentData={
-			boardCode:boardCode
+			boardCode:boardCode,
+			userAuthority : userAuthority
 	}
 	
 	studyFreeNoticeInfoDetailModal.open({
