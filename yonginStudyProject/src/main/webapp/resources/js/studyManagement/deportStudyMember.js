@@ -15,6 +15,8 @@ $(document).ready(function () {
 	
 	$('#userCodeTo').val(parentData.userId);
 	$('#memberStudyName').val(parentData.studyName);
+	
+	self.parent.deportSize();
 });
 /** 초기화(끝) **/
 

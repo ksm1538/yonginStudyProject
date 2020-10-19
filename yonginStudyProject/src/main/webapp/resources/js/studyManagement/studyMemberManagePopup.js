@@ -10,10 +10,12 @@ $(document).ready(function () {
 	
 	selectStudyMemberManagement(parentData.userCode);
 	
+	$("#detailDiv *").prop("disabled", true);
+	
 });
 /** 초기화(끝) **/
 
-// 부모 페이지에서 받은 systemNoticeCode를 이용해 공지사항 조회
+// 해당 멤버 정보 조회
 function selectStudyMemberManagement(userCode){
 	if(userCode==null || userCode == ""){
 		dialog.alert("정상적인 접근이 아닙니다.");

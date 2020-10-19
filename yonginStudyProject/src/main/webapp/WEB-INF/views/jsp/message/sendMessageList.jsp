@@ -56,7 +56,7 @@
 		
 		
 		<div class="send_message_list_grid_con col-12 col-center mw-1200 " >  
-	  			<div data-ax5grid="messageListGrid" data-ax5grid-config="{}" style="height:610px; padding-top:10px; padding-right:10px"></div>  
+	  			<div data-ax5grid="messageListGrid" data-ax5grid-config="{}" style="height:520px; padding-top:10px; padding-right:10px"></div>  
 		</div>
 		
 		<div class="col-12 col-center mw-1200  message_btn">

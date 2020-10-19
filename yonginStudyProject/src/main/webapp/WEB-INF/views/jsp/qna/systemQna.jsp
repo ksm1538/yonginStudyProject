@@ -31,7 +31,7 @@ qnaSxnList.forEach(function(n){
 </script>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>YonginStudy</title>
 </head>
 <body>
 	<div class="col-12 make_qna_wrap">

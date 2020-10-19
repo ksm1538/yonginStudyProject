@@ -21,7 +21,7 @@
 
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>YonginStudy - <%=request.getParameter("studyName")%></title>
 </head>
 <body>
 	<div class="col-12 study_notice_wrap">

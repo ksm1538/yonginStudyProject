@@ -10,9 +10,11 @@ $(document).ready(function () {
 	
 	if(parentData.type == "myPageType"){
 		$("#readonlyDiv").show();
+		$("#title").attr("readonly",false);
 	}
 	else if(parentData.type == "studyAdminPageType"){
 		$("#adminDiv").show();
+		$("#title").attr("readonly",true);
 	}
 	else{
 		
@@ -53,6 +55,7 @@ function selectStudyApplicationForm(){
 			    		});	
 			    		//섬머노트 비활성화(readonly)
 			    		$('#applicationFormDesc').summernote('disable');
+			    		$("#title").attr("readonly",true);
 			    	}
 			    	else{
 			    		//summernote editor
@@ -64,7 +67,7 @@ function selectStudyApplicationForm(){
 			    		});	
 			    	}
 			    	
-			    	//summernote는 따로 넣어줘야함 이런방식으로 Binder가 적용안됨
+			    	//summernote는 따로 넣어줘야함 이런방식으로. Binder가 적용안됨
 			    	$('#applicationFormDesc').summernote('code', data.resultVO.applicationFormDesc);
 			    	break;    
 			    case COMMON_FAIL:

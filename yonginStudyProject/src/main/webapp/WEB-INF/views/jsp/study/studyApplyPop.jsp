@@ -21,7 +21,7 @@ request.setCharacterEncoding("UTF-8");
 <!---- css, js 설정(끝) ----> 
 
 <meta charset="UTF-8">
-<title>스터디 신청서</title>
+<title>YonginStudy</title>
 </head>
 <body>
 

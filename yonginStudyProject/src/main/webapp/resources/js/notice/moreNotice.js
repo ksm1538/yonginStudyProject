@@ -123,7 +123,7 @@ function writeModalClose(){
 // 공지사항 작성 팝업창 닫고 새로고침
 function writeModalCloseWithRefresh(){
 	systemNoticeInfoWriteModal.close();
-	window.location.reload();
+	getSystemNoticeList();
 	
 }
 

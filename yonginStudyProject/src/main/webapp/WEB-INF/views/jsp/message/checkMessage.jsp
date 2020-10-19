@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>YonginStudy</title>
 </head>
 <body>
 <div class="col-12 col-center mw-1200 make_study_title_wrap">

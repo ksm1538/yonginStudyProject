@@ -27,7 +27,7 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 <title>Insert title here</title>
 </head>
 <body>
-
+	
 	<div class="col-12 col-center mw-1200 study_member_detail_pop_wrap">
 		<div class="study_member_detail_pop_con">
 			<div class="circle_btn" onClick="closeModal()"></div> 
@@ -37,6 +37,7 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 	
 	<div class="col-12 col-center mw-1200 study_member_detail_info_wrap">
 		<form:form method="POST" modelAttribute="userInfoVO" name="studyMemberManageForm" id="studyMemberManageForm" >
+		<div id=detailDiv>
 			<div class="study_member_info_con">
 				<div class="study_member_title"><span>이름</span></div>
 				 <div class="study_detail_input_con">
@@ -61,22 +62,24 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 						<form:input path="userEmail" type="text" name="userEmail" id="userEmail" data-ax-path="userEmail" class="textbox_style_1"/>
 					</div>
 			</div>
-			</form:form>
-	
-			<div class="col-12 col-center mw-1200 study_memeber_btn_con">		
-					<form id="deportStudyMemeberForm" name="deportStudyMemeberForm" action="/studyManagement/deportStudyMember.do" method="POST">
-   		  		 	<input type="hidden" id="studyCode">
-      				<input type="submit" value="추방하기" class="btn_style_1 return_message_btn" id="deportStudyMemeberBtn">
-      				</form>
-					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
-					<form id="sendMessageForm" name="sendMessageForm" action="/studyManagement/writeMessageToSelectUserForm.do" method="POST">
-   		  		 	<input type="hidden" id="userId">
-      				<input type="submit" value="쪽지 보내기" class="btn_style_1 return_message_btn" id="sendMessageBtn">
-      				</form>			
-			</div>
+		</div>
+		</form:form>
+
+		<div class="col-12 col-center mw-1200 study_memeber_btn_con">		
+				<form id="deportStudyMemeberForm" name="deportStudyMemeberForm" action="/studyManagement/deportStudyMember.do" method="POST">
+  		  		 	<input type="hidden" id="studyCode">
+     				<input type="submit" value="추방하기" class="btn_style_1 return_message_btn" id="deportStudyMemeberBtn">
+     				</form>
+				<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
+				<form id="sendMessageForm" name="sendMessageForm" action="/studyManagement/writeMessageToSelectUserForm.do" method="POST">
+  		  		 	<input type="hidden" id="userId">
+     				<input type="submit" value="쪽지 보내기" class="btn_style_1 return_message_btn" id="sendMessageBtn">
+     				</form>			
+		</div>
 		
 		
 	</div>
+	
 
 </body>
 </html> 

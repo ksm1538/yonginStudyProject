@@ -113,7 +113,7 @@ function getUserInfo(){
 			    	userAuthority = data.userinfo;
 			    	
 			    	// 스터디 장 or 관리자가 아니면 관리 버튼 숨김
-			    	if(!(userAuthority == 10 || userAuthority == 20)){
+			    	if(!(userAuthority == "10" || userAuthority == "20")){
 			    		$("#adminDiv").hide();
 			    	}
 			    	

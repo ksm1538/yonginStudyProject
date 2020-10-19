@@ -13,7 +13,7 @@ request.setCharacterEncoding("UTF-8");
 <!DOCTYPE html>
 <html>
 <head>
-<title>쪽지 보내기</title>
+<title>YonginStudy</title>
 
 <!---- 순서 다르면 오류 ---->
 <!-- 자원 불러오기(공통) : 순서  1(필수)-->

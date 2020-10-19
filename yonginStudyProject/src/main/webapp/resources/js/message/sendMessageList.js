@@ -12,7 +12,7 @@ $(document).ready(function () {
         showRowSelector: true,
         columns: [ 
         	{key : "userCodeTo", label: "받는 사람", align: "center", width:"25%", sortable: true},
-        	{key : "messageTitle", label: "제목", align: "center", width:"50%"},
+        	{key : "messageTitle", label: "제목", align: "center", width:"51%"},
         	{key : "messageTime", label: "시간", align: "center", width:"25%"},
         ],
         header: {
@@ -104,7 +104,7 @@ function deleteSendMessage(){
 			        	}
 			        }, function(){
 			        	if(this.key=="yes" || this.state == "close"){
-			        		window.location.reload();
+			        		getMessageList();
 			        	}
 			    	});
 	    		 break;

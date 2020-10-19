@@ -47,7 +47,7 @@ request.setCharacterEncoding("UTF-8");
 			
 			<div class="send_message_form_con type_2">
 				 <div class="title_size type_2">제목</div>
-    	         <input type="text" id="messageTitle" name="messageTitle" class="textbox_style_1" maxlength="30">
+    	         <input type="text" id="messageTitle" name="messageTitle" class="textbox_style_1" maxlength="30" placeholder="추방 사유에 대한 쪽지">
 			</div>	
 	</div>
 	

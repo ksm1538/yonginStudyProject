@@ -35,7 +35,7 @@ studyPositionList.forEach(function(n){
 </script>
 
 <meta charset="UTF-8">
-<title>Insert title here</title> 
+<title>YonginStudy - <%=request.getParameter("studyName")%></title> 
 </head>
 <body>
    
@@ -56,7 +56,7 @@ studyPositionList.forEach(function(n){
 		</div> 
 		
 		<div class="study_main_title_con">
-			<div class="tc study_main_title"><span class="study_main_name" id="spanStudyMainName"></span>관리 페이지에 오신걸 환영합니다 !</div>
+			<div class="tc study_main_title"><span class="study_main_name" id="spanStudyMainName"></span> 관리 페이지에 오신걸 환영합니다 !</div>
 			<div class="tc study_main_sub_title">공동된 목표를 이루기 위해 스터디를 관리하세요</div>
 		</div>
 		

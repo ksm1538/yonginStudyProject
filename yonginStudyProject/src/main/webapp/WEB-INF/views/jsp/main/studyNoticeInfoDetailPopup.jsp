@@ -23,7 +23,7 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 
 </script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>YonginStudy</title>
 </head>
 <body>
 	<div class="col-12 col-center mw-1200 study_detail_pop_wrap">

@@ -45,7 +45,7 @@ var userId = "${user.userId}";
 </script>
 
 <meta charset="UTF-8">
-<title>Insert title here</title> 
+<title>YonginStudy - <%=request.getParameter("studyName")%></title> 
 </head>
 <body>
    
@@ -64,7 +64,7 @@ var userId = "${user.userId}";
 		<div class="study_main_content_dim"></div>
 		
 		<div class="study_main_title_con">
-			<div class="tc study_main_title"><span class="study_main_name" id="spanStudyMainName"></span>홈에 오신걸 환영합니다 !</div>
+			<div class="tc study_main_title"><span class="study_main_name" id="spanStudyMainName"></span> 홈에 오신걸 환영합니다 !</div>
 			<div class="tc study_main_sub_title">스터디원과 힘을 모아 공동된 목표를 향해 나아가세요</div>
 		</div>
 		

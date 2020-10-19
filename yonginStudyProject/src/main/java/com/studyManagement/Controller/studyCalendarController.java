@@ -27,231 +27,231 @@ import com.studyManagement.Validator.calendarValidator;
 
 @Controller
 public class studyCalendarController {
-   @Resource(name="studyMainService") // ÇØ´ç ¼­ºñ½º°¡ ¸®¼Ò½ºÀÓÀ» Ç¥½ÃÇÕ´Ï´Ù.
-   private studyMainService studyMainService;
+	@Resource(name="studyMainService") // í•´ë‹¹ ì„œë¹„ìŠ¤ê°€ ë¦¬ì†ŒìŠ¤ì„ì„ í‘œì‹œí•©ë‹ˆë‹¤.
+	private studyMainService studyMainService;
 
-   @Resource(name="commonCodeService")
-   private commonCodeService commonCodeService;
-   
-   /**
-    * ´Ş·Â ÀÏÁ¤ ÀÛ¼ºÇÏ±â
-    * @param session
-    * @return
-    * @throws Exception
-    */
-   @RequestMapping(value = "/studyManagement/calendarWrite.do", method = RequestMethod.POST)
-   public String calendarWritePopup(HttpSession session, Model model) throws Exception {
-      /** ¼¼¼Ç¿¡ À¯Àú°¡ Á¤»óÀûÀ¸·Î µî·ÏµÇ¾î ÀÖÁö ¾Ê´Ù¸é ·Î±×ÀÎ ÆäÀÌÁö ·Î ÀÌµ¿(½ÃÀÛ) **/
-      userInfoVO user = (userInfoVO) session.getAttribute("user");
+	@Resource(name="commonCodeService")
+	private commonCodeService commonCodeService;
+	
+	/**
+	 * ë‹¬ë ¥ ì¼ì • ì‘ì„±í•˜ê¸°
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/studyManagement/calendarWrite.do", method = RequestMethod.POST)
+	public String calendarWritePopup(HttpSession session, Model model) throws Exception {
+		/** ì„¸ì…˜ì— ìœ ì €ê°€ ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì–´ ìˆì§€ ì•Šë‹¤ë©´ ë¡œê·¸ì¸ í˜ì´ì§€ ë¡œ ì´ë™(ì‹œì‘) **/
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
 
-      if(user == null) {
-         return "jsp/login/login";
-      }
-      /** ¼¼¼Ç¿¡ À¯Àú°¡ Á¤»óÀûÀ¸·Î µî·ÏµÇ¾î ÀÖÁö ¾Ê´Ù¸é ·Î±×ÀÎ ÆäÀÌÁö·Î ÀÌµ¿(³¡) **/
-      
-      List<commonCodeVO> codeResult = commonCodeService.selectCommonCodeList("calendarType");
-      
-      model.addAttribute("calendarType", codeResult);
-      
-      return "jsp/studyManagement/calendarWrite";
-   }
-   
-   /**
-    * ´Ş·Â ÆË¾÷ º¸±â
-    * @param session
-    * @return
-    * @throws Exception
-    */
-   @RequestMapping(value = "/studyManagement/calendarPopup.do", method = RequestMethod.POST)
-   public String calendarDetailPopup(HttpSession session) throws Exception {
-      /** ¼¼¼Ç¿¡ À¯Àú°¡ Á¤»óÀûÀ¸·Î µî·ÏµÇ¾î ÀÖÁö ¾Ê´Ù¸é ·Î±×ÀÎ ÆäÀÌÁö ·Î ÀÌµ¿(½ÃÀÛ) **/
-      userInfoVO user = (userInfoVO) session.getAttribute("user");
+		if(user == null) {
+			return "jsp/login/login";
+		}
+		/** ì„¸ì…˜ì— ìœ ì €ê°€ ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì–´ ìˆì§€ ì•Šë‹¤ë©´ ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ì´ë™(ë) **/
+		
+		List<commonCodeVO> codeResult = commonCodeService.selectCommonCodeList("calendarType");
+		
+		model.addAttribute("calendarType", codeResult);
+		
+		return "jsp/studyManagement/calendarWrite";
+	}
+	
+	/**
+	 * ë‹¬ë ¥ íŒì—… ë³´ê¸°
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/studyManagement/calendarPopup.do", method = RequestMethod.POST)
+	public String calendarDetailPopup(HttpSession session) throws Exception {
+		/** ì„¸ì…˜ì— ìœ ì €ê°€ ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì–´ ìˆì§€ ì•Šë‹¤ë©´ ë¡œê·¸ì¸ í˜ì´ì§€ ë¡œ ì´ë™(ì‹œì‘) **/
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
 
-      if(user == null) {
-         return "jsp/login/login";
-      }
-      /** ¼¼¼Ç¿¡ À¯Àú°¡ Á¤»óÀûÀ¸·Î µî·ÏµÇ¾î ÀÖÁö ¾Ê´Ù¸é ·Î±×ÀÎ ÆäÀÌÁö·Î ÀÌµ¿(³¡) **/
-      return "jsp/studyManagement/calendarPopup";
-   }
-   
-   /**
-    * ÀÏÁ¤ ÀúÀå
-    * @param calendarVO
-    * @param session
-    * @param bindingResult
-    * @return
-    * @throws Exception
-    */
-   @RequestMapping(value="/studyManagement/saveCalendar.json", method = RequestMethod.POST)
-   @ResponseBody
-   public Map<String, Object> saveCalendar(@RequestBody calendarVO calendarVO, HttpSession session, BindingResult bindingResult) throws Exception {
-         
-      HashMap<String, Object> mReturn = new HashMap<String, Object>();
-      
-      userInfoVO user = (userInfoVO) session.getAttribute("user");
-      
-      /** ±ÇÇÑ Ã¼Å©(½ÃÀÛ) **/
-      userInStudyVO userinfo = new userInStudyVO();
-      
-      userinfo.setUserCode(user.getUserCode());
-      userinfo.setStudyCode(calendarVO.getStudyCode());
-      
-      if(userinfo.getUserCode().equals("") || userinfo.getStudyCode().equals("")) {
-         mReturn.put("result", "fail");
-         mReturn.put("message", "¿À·ù°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù.");
-         
-         return mReturn;
-      }
-      
-      String result = studyMainService.selectStudyUserInfo(userinfo);
-      if(!(result.equals("10") || result.equals("20"))) {
-         mReturn.put("result", "fail");
-         mReturn.put("message", "±ÇÇÑÀÌ ¾ø½À´Ï´Ù.");
-         
-         return mReturn;
-      }
-      /** ±ÇÇÑ Ã¼Å©(³¡) **/
-      
-      /** µ¥ÀÌÅÍ °ËÁõ(½ÃÀÛ) **/
-      calendarValidator calendarValidator = new calendarValidator();
-      calendarValidator.validate(calendarVO, bindingResult);
-      
-      // ¿¡·¯ °ËÃâ ½Ã ¿¡·¯ ¸Ş½ÃÁö¿Í ÇÔ²² Á¾·á
-      if (bindingResult.hasErrors()) {
-         List<FieldError> errors = bindingResult.getFieldErrors();
-         String errorMsg = "";
-          for (FieldError error : errors ) {
-             errorMsg += error.getDefaultMessage() + "\n";
-          }
+		if(user == null) {
+			return "jsp/login/login";
+		}
+		/** ì„¸ì…˜ì— ìœ ì €ê°€ ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì–´ ìˆì§€ ì•Šë‹¤ë©´ ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ì´ë™(ë) **/
+		return "jsp/studyManagement/calendarPopup";
+	}
+	
+	/**
+	 * ì¼ì • ì €ì¥
+	 * @param calendarVO
+	 * @param session
+	 * @param bindingResult
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/studyManagement/saveCalendar.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> saveCalendar(@RequestBody calendarVO calendarVO, HttpSession session, BindingResult bindingResult) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		
+		/** ê¶Œí•œ ì²´í¬(ì‹œì‘) **/
+		userInStudyVO userinfo = new userInStudyVO();
+		
+		userinfo.setUserCode(user.getUserCode());
+		userinfo.setStudyCode(calendarVO.getStudyCode());
+		
+		if(userinfo.getUserCode().equals("") || userinfo.getStudyCode().equals("")) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "ì˜¤ë¥˜ê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤.");
+			
+			return mReturn;
+		}
+		
+		String result = studyMainService.selectStudyUserInfo(userinfo);
+		if(!(result.equals("10") || result.equals("20"))) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.");
+			
+			return mReturn;
+		}
+		/** ê¶Œí•œ ì²´í¬(ë) **/
+		
+		/** ë°ì´í„° ê²€ì¦(ì‹œì‘) **/
+		calendarValidator calendarValidator = new calendarValidator();
+		calendarValidator.validate(calendarVO, bindingResult);
+		
+		// ì—ëŸ¬ ê²€ì¶œ ì‹œ ì—ëŸ¬ ë©”ì‹œì§€ì™€ í•¨ê»˜ ì¢…ë£Œ
+		if (bindingResult.hasErrors()) {
+			List<FieldError> errors = bindingResult.getFieldErrors();
+			String errorMsg = "";
+		    for (FieldError error : errors ) {
+		    	errorMsg += error.getDefaultMessage() + "\n";
+		    }
 
-          mReturn.put("result", "fail");
-         mReturn.put("message", errorMsg);
-         
-         return mReturn;
-      }  
-      /** µ¥ÀÌÅÍ °ËÁõ(³¡) **/
-      
-      // ½ÃÀÛ ³¯Â¥¿¡¼­ '-' »©±â
-      String removeStartDt = yonginFunction.remove(calendarVO.getStartDt(), '-');   //com.commonFunction.Controller¿¡ ÀÖ´Â °øÅë ÇÔ¼ö¸¦ ÀÌ¿ëÇØ ¹®ÀÚ Á¦°Å
-      calendarVO.setStartDt(removeStartDt);
-      
-      // Á¾·á ³¯Â¥¿¡¼­ '-' »©±â
-      String removeEndDt = yonginFunction.remove(calendarVO.getEndDt(), '-');   //com.commonFunction.Controller¿¡ ÀÖ´Â °øÅë ÇÔ¼ö¸¦ ÀÌ¿ëÇØ ¹®ÀÚ Á¦°Å
-      calendarVO.setEndDt(removeEndDt);
-      
-      // ½ÃÀÛ ½Ã°¢¿¡¼­ ':' »©±â
-      String removeStartHm = yonginFunction.remove(calendarVO.getStartHm(), ':');   //com.commonFunction.Controller¿¡ ÀÖ´Â °øÅë ÇÔ¼ö¸¦ ÀÌ¿ëÇØ ¹®ÀÚ Á¦°Å
-      calendarVO.setStartHm(removeStartHm);
-      
-      // Á¾·á ½Ã°¢¿¡¼­ ':' »©±â
-      String removeEndHm = yonginFunction.remove(calendarVO.getEndHm(), ':');   //com.commonFunction.Controller¿¡ ÀÖ´Â °øÅë ÇÔ¼ö¸¦ ÀÌ¿ëÇØ ¹®ÀÚ Á¦°Å
-      calendarVO.setEndHm(removeEndHm);
-               
-      // ½Ã°£ À¯È¿¼º °Ë»ç
+		    mReturn.put("result", "fail");
+			mReturn.put("message", errorMsg);
+			
+			return mReturn;
+		}  
+		/** ë°ì´í„° ê²€ì¦(ë) **/
+		
+		// ì‹œì‘ ë‚ ì§œì—ì„œ '-' ë¹¼ê¸°
+		String removeStartDt = yonginFunction.remove(calendarVO.getStartDt(), '-');	//com.commonFunction.Controllerì— ìˆëŠ” ê³µí†µ í•¨ìˆ˜ë¥¼ ì´ìš©í•´ ë¬¸ì ì œê±°
+		calendarVO.setStartDt(removeStartDt);
+		
+		// ì¢…ë£Œ ë‚ ì§œì—ì„œ '-' ë¹¼ê¸°
+		String removeEndDt = yonginFunction.remove(calendarVO.getEndDt(), '-');	//com.commonFunction.Controllerì— ìˆëŠ” ê³µí†µ í•¨ìˆ˜ë¥¼ ì´ìš©í•´ ë¬¸ì ì œê±°
+		calendarVO.setEndDt(removeEndDt);
+		
+		// ì‹œì‘ ì‹œê°ì—ì„œ ':' ë¹¼ê¸°
+		String removeStartHm = yonginFunction.remove(calendarVO.getStartHm(), ':');	//com.commonFunction.Controllerì— ìˆëŠ” ê³µí†µ í•¨ìˆ˜ë¥¼ ì´ìš©í•´ ë¬¸ì ì œê±°
+		calendarVO.setStartHm(removeStartHm);
+		
+		// ì¢…ë£Œ ì‹œê°ì—ì„œ ':' ë¹¼ê¸°
+		String removeEndHm = yonginFunction.remove(calendarVO.getEndHm(), ':');	//com.commonFunction.Controllerì— ìˆëŠ” ê³µí†µ í•¨ìˆ˜ë¥¼ ì´ìš©í•´ ë¬¸ì ì œê±°
+		calendarVO.setEndHm(removeEndHm);
+					
+		// ì‹œê°„ ìœ íš¨ì„± ê²€ì‚¬
         if(!yonginFunction.validTime(calendarVO.getStartHm()) || !yonginFunction.validTime(calendarVO.getEndHm())) {
-           mReturn.put("result", "fail");
-            mReturn.put("message", "À¯È¿ÇÏÁö ¾ÊÀº °ªÀÔ´Ï´Ù.");
+        	mReturn.put("result", "fail");
+            mReturn.put("message", "ìœ íš¨í•˜ì§€ ì•Šì€ ê°’ì…ë‹ˆë‹¤.");
             
             return mReturn;
         } else if(Integer.parseInt(removeStartDt) >= Integer.parseInt(removeEndDt)) {
-           String startDate = removeStartDt+removeStartHm;
-           String endDate = removeEndDt+removeEndHm;
-           
-           if(Long.parseLong(startDate) > Long.parseLong(endDate)) {
-               mReturn.put("result", "fail");
-                mReturn.put("message", "¿Ã¹Ù¸¥ ½Ã°£ ¹üÀ§°¡ ¾Æ´Õ´Ï´Ù.");
+        	String startDate = removeStartDt+removeStartHm;
+        	String endDate = removeEndDt+removeEndHm;
+        	
+        	if(Long.parseLong(startDate) > Long.parseLong(endDate)) {
+            	mReturn.put("result", "fail");
+                mReturn.put("message", "ì˜¬ë°”ë¥¸ ì‹œê°„ ë²”ìœ„ê°€ ì•„ë‹™ë‹ˆë‹¤.");
                 
                 return mReturn;
             }
         }
         
-      // ½Å±Ô ÀúÀå
-      if(calendarVO.getCalendarCode().equals("NEW")) {
-         // ½ºÅÍµğ ÄÚµå°¡ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì ¿¡·¯ ¹ß»ı ½ÃÅ´
-         if(calendarVO.getStudyCode().equals("")) {
-            mReturn.put("result", "fail");
-            mReturn.put("message", "½ºÅÍµğ Á¤º¸°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
-            
-            return mReturn;
-         }
-         
-         calendarVO.setRgstusId(user.getUserCode());
-         
-         studyMainService.insertCalendar(calendarVO);
-         
-         mReturn.put("result", "success");
-         mReturn.put("message", "¼º°øÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù.");
-         
-         return mReturn;
-      }
-      // ¼öÁ¤
-      else {
-         // Ä¶¸°´õ ÄÚµå°¡ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì ¿¡·¯ ¹ß»ı ½ÃÅ´
-         if(calendarVO.getCalendarCode().equals("")) {
-            mReturn.put("result", "fail");
-            mReturn.put("message", "Ä¶¸°´õ Á¤º¸°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
-            
-            return mReturn;
-         }
-         
-         calendarVO.setUpdtusId(user.getUserCode());
-         studyMainService.updateCalendar(calendarVO);
-         
-         mReturn.put("result", "success");
-         mReturn.put("message", "¼º°øÀûÀ¸·Î ¼öÁ¤µÇ¾ú½À´Ï´Ù.");
-         
-         return mReturn;
-      }
-   }
-   
-   
-   /**
-    * ÀÏÁ¤ »èÁ¦
-    * @param calendarVO
-    * @param session
-    * @param bindingResult
-    * @return
-    * @throws Exception
-    */
-   @RequestMapping(value="/studyManagement/deleteCalendar.json", method = RequestMethod.POST)
-   @ResponseBody
-   public Map<String, Object> deleteCalendar(@RequestBody calendarVO calendarVO, HttpSession session, BindingResult bindingResult) throws Exception {
-         
-      HashMap<String, Object> mReturn = new HashMap<String, Object>();
-      
-      userInfoVO user = (userInfoVO) session.getAttribute("user");
-      
-      calendarVO.setUpdtusId(user.getUserCode());
-      
-      /** ±ÇÇÑ Ã¼Å©(½ÃÀÛ) **/
-      userInStudyVO userinfo = new userInStudyVO();
-      
-      userinfo.setUserCode(user.getUserCode());
-      userinfo.setStudyCode(calendarVO.getStudyCode());
-      
-      if(userinfo.getUserCode().equals("") || userinfo.getStudyCode().equals("")) {
-         mReturn.put("result", "fail");
-         mReturn.put("message", "¿À·ù°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù.");
-         
-         return mReturn;
-      }
-      
-      String result = studyMainService.selectStudyUserInfo(userinfo);
-      if(!(result.equals("10") || result.equals("20"))) {
-         mReturn.put("result", "fail");
-         mReturn.put("message", "±ÇÇÑÀÌ ¾ø½À´Ï´Ù.");
-         
-         return mReturn;
-      }
-      /** ±ÇÇÑ Ã¼Å©(³¡) **/
-      
-      studyMainService.deleteCalendar(calendarVO);
-      
-      mReturn.put("result", "success");
-      mReturn.put("message", "¼º°øÀûÀ¸·Î »èÁ¦µÇ¾ú½À´Ï´Ù.");
-      
-      return mReturn;
-   }
-   
+		// ì‹ ê·œ ì €ì¥
+		if(calendarVO.getCalendarCode().equals("NEW")) {
+			// ìŠ¤í„°ë”” ì½”ë“œê°€ ì¡´ì¬í•˜ì§€ ì•Šì„ ê²½ìš° ì—ëŸ¬ ë°œìƒ ì‹œí‚´
+			if(calendarVO.getStudyCode().equals("")) {
+				mReturn.put("result", "fail");
+				mReturn.put("message", "ìŠ¤í„°ë”” ì •ë³´ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+				
+				return mReturn;
+			}
+			
+			calendarVO.setRgstusId(user.getUserCode());
+			
+			studyMainService.insertCalendar(calendarVO);
+			
+			mReturn.put("result", "success");
+			mReturn.put("message", "ì„±ê³µì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.");
+			
+			return mReturn;
+		}
+		// ìˆ˜ì •
+		else {
+			// ìº˜ë¦°ë” ì½”ë“œê°€ ì¡´ì¬í•˜ì§€ ì•Šì„ ê²½ìš° ì—ëŸ¬ ë°œìƒ ì‹œí‚´
+			if(calendarVO.getCalendarCode().equals("")) {
+				mReturn.put("result", "fail");
+				mReturn.put("message", "ìº˜ë¦°ë” ì •ë³´ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+				
+				return mReturn;
+			}
+			
+			calendarVO.setUpdtusId(user.getUserCode());
+			studyMainService.updateCalendar(calendarVO);
+			
+			mReturn.put("result", "success");
+			mReturn.put("message", "ì„±ê³µì ìœ¼ë¡œ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
+			
+			return mReturn;
+		}
+	}
+	
+	
+	/**
+	 * ì¼ì • ì‚­ì œ
+	 * @param calendarVO
+	 * @param session
+	 * @param bindingResult
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/studyManagement/deleteCalendar.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> deleteCalendar(@RequestBody calendarVO calendarVO, HttpSession session, BindingResult bindingResult) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		
+		userInfoVO user = (userInfoVO) session.getAttribute("user");
+		
+		calendarVO.setUpdtusId(user.getUserCode());
+		
+		/** ê¶Œí•œ ì²´í¬(ì‹œì‘) **/
+		userInStudyVO userinfo = new userInStudyVO();
+		
+		userinfo.setUserCode(user.getUserCode());
+		userinfo.setStudyCode(calendarVO.getStudyCode());
+		
+		if(userinfo.getUserCode().equals("") || userinfo.getStudyCode().equals("")) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "ì˜¤ë¥˜ê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤.");
+			
+			return mReturn;
+		}
+		
+		String result = studyMainService.selectStudyUserInfo(userinfo);
+		if(!(result.equals("10") || result.equals("20"))) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.");
+			
+			return mReturn;
+		}
+		/** ê¶Œí•œ ì²´í¬(ë) **/
+		
+		studyMainService.deleteCalendar(calendarVO);
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "ì„±ê³µì ìœ¼ë¡œ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
+		
+		return mReturn;
+	}
+	
 }
  

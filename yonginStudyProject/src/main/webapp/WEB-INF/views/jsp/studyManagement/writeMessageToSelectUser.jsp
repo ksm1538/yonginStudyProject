@@ -29,7 +29,7 @@ request.setCharacterEncoding("UTF-8");
 	<div class="col-12 reply_message_pop_wrap">
 		<div class="col-12 col-center mw-1200 reply_message_pop_con">
 			<div class="circle_btn" onClick="closeModal()"></div> 
-			<div class="tc reply_message_pop_title"><span>쪽지 쓰기</span></div>
+			<div class="tc reply_message_pop_title"><span>쪽지 보내기</span></div>
 		</div>
 	</div>
 	

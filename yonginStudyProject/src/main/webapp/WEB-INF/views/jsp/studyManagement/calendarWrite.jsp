@@ -51,7 +51,7 @@ button {
 	<form id="calendarForm" name="calendarForm">
     <i class="fa fa-close" style="float:right; font-size:1.7rem; cursor:pointer;" onclick="closeWriteModal();"></i>
     <div style="margin-top:1%;">
-      <div style="float:left; width:50%; margin-top:2%">
+      <div style="float:left; width:40%; margin-top:2%">
       <i id="typeColor" class="fa fa-circle" style="font-size:15px;margin-right:10px;"></i>
       <select id="type" name="type" data-ax-path="type" onmouseup="mouseUp();" style="width:100px; height:32px; margin-right:10%">
         <c:forEach var="result" items="${calendarType}" varStatus="status">
@@ -60,8 +60,8 @@ button {
       </select>
       </div>
       
-      <div style="float:right; width:50%;height:32px;">
-        <i class="fa fa-group" style="font-size:2.0rem"></i> <span id="userInfoSpan" style="font-size:1.7rem;"></span>
+      <div style="float:right; width:60%;height:32px;">
+        <i class="fa fa-group" style="font-size:1.5rem"></i> <span id="userInfoSpan" style="font-size:1.0rem;"></span>
       </div>
       
       

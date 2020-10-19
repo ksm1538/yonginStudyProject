@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,8 +19,9 @@ import com.commonCode.VO.commonCodeVO;
 import com.login.VO.userInfoVO;
 import com.main.VO.studyInfoVO;
 import com.main.VO.userInStudyVO;
-import com.studyManagement.Service.studyManagementService;
 import com.studyManagement.Service.studyMainService;
+import com.studyManagement.Service.studyManagementService;
+
 
 @Controller
 public class studyInfoChangeController {

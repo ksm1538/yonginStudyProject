@@ -20,7 +20,7 @@
 
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>YonginStudy</title>
 </head>
 <body>
 	<div class="col-12 write_qna_header_wrap">

@@ -75,7 +75,7 @@ public class adminPageController {
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 	      
 		/*** 페이징(시작) ***/
-		int dataPerPage = 12; //그리드 한 페이지에 표시할 데이터 수
+		int dataPerPage = 8; //그리드 한 페이지에 표시할 데이터 수
     	int page = Integer.parseInt(userInfoVO.getPage()); //페이지별 변경
     	
     	int first = page * dataPerPage + 1; //변경없이 추가

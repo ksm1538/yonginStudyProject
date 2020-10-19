@@ -27,15 +27,15 @@ $(document).ready(function () {
         //showRowSelector: true,
         columns: [ 
         	
-        	{key : "userId", label: "ID", align: "center", width:"26%"},
-        	{key : "userName", label: "이름", align: "center", width:"15%"},
-        	{key : "userAddress",label : "거주지", align : "center",width : "15%"},
+        	{key : "userId", label: "ID", align: "center", width:"25%"},
+        	{key : "userName", label: "이름", align: "center", width:"25%"},
+        	{key : "userAddress",label : "거주지", align : "center",width : "25%"},
         	{key : "studyAuthority",label : "직위", align : "center",width : "10%",
 				formatter:function(){
     			    return studyPositionMap[this.value];
     			}
 			},
-			{key : "studyAuthorityChange",label : "직위 변경", align : "center",width : "25%",
+			{key : "studyAuthorityChange",label : "직위 변경", align : "center",width : "15%",
 				formatter: function (){
 					return '<button type="button" onclick="openStudyMemberAdminChange('+this.dindex+')" style="border:transparent; background-color:transparent;outline:none">직위 변경</button>';
         		 }
@@ -273,8 +273,8 @@ function selectStudyMemberManage(userCode, userId){
 // 팝업창 닫고 새로고침
 function studyMemberManageCloseWithRefresh(){
 	studyMemberManageModal.close();
-	window.location.reload();
-	
+	//window.location.reload();
+	getStudyMemberList();		// 새로고침보다 데이터를 다시 불러오는게 더 빠름
 }
 
 // 스터디 멤버 관리 팝업 닫기
@@ -501,6 +501,11 @@ function openChangeStudyInfo(){
 // 스터디 멤버 직위 변경
 function openStudyMemberAdminChange(dindex){
 
+	if(userAuthority != "10"){
+		dialog.alert("권한이 없습니다.");
+		return;
+	}
+	
 	var userInfo=studyMemberManageListGrid.list[dindex];
 	
 	var parentData = {
@@ -549,6 +554,17 @@ function closeStudyChangeInfoModal(){
 // 직위관리 닫고 새로고침
 function studyMemberAdminChangeCloseWithRefresh(){
 	changeStudyMemberAdminModal.close();
-	window.location.reload();
-	
+	getStudyMemberList();
+}
+
+// 추방 팝업 사이즈 변경
+function deportSize(){
+	studyMemberManageModal.css({width:800, height: 900});
+	studyMemberManageModal.align();
+}
+
+//쪽지보내기 팝업 사이즈 변경
+function sendMessageSize(){
+	studyMemberManageModal.css({width:600, height: 750});
+	studyMemberManageModal.align();
 }

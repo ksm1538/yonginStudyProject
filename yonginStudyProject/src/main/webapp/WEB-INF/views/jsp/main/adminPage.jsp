@@ -30,7 +30,7 @@ studySxnList.forEach(function(n){
 }); 
 </script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>YonginStudy</title>
 </head>
 <body>
 

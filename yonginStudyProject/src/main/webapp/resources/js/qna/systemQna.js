@@ -157,7 +157,7 @@ function closeQnaModal(){
 //QnA 작성 팝업 닫고 새로고침
 function closeWriteQnaWithRefresh(){
 	qnaModal.close();
-	window.location.reload();
+	getQnaList();
 }
 
 //공지사항 상세 보기 팝업 

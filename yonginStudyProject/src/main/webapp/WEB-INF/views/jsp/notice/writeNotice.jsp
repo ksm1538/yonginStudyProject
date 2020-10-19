@@ -25,7 +25,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>공지사항 작성</title>
+<title>YonginStudy</title>
 </head>
 <body>
 

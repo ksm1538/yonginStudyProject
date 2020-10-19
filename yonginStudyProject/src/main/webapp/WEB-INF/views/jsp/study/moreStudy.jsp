@@ -32,7 +32,7 @@ inoutSxnList.forEach(function(n){
 <!---- css, js 설정(끝) ----> 
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>YonginStudy</title>
 </head>
 <body>
 	

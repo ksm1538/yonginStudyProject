@@ -159,8 +159,8 @@ function makeStudyForm(){
 
 // 스터디 만들기 팝업 닫기
 function closeMakeStudyModal(){
-	window.location.reload();
 	makeStudyModal.close();
+	getStudyList();
 }
 
 

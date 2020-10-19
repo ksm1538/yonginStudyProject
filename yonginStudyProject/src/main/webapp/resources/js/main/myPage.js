@@ -690,7 +690,7 @@ function exitMyStudy(dindex){
 								        	}
 								        }, function(){
 								        	if(this.key=="yes" || this.state == "close"){
-								        		window.location.reload();
+								        		getParticipateStudyList();
 								        	}
 								    	});
 							    	

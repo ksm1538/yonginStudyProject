@@ -22,10 +22,10 @@ $(document).ready(function () {
         showLineNumber: false,
         //showRowSelector: true,
         columns: [
-        	{key : "userId", label: "ID", align: "center", width:"26%"},
-        	{key : "userName", label: "이름", align: "center", width:"15%"},
-        	{key : "userAddress",label : "거주지", align : "center",width : "15%"},
-        	{key : "studyAuthority",label : "직위", align : "center",width : "10%",
+        	{key : "userId", label: "ID", align: "center", width:"25%"},
+        	{key : "userName", label: "이름", align: "center", width:"25%"},
+        	{key : "userAddress",label : "거주지", align : "center",width : "25%"},
+        	{key : "studyAuthority",label : "직위", align : "center",width : "25%",
 				formatter:function(){
     			    return studyPositionMap[this.value];
     			}

@@ -19,7 +19,7 @@
 
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>YonginStudy</title>
 </head>
 <body>
 	
@@ -52,7 +52,7 @@
 			</div>
 			
 			<div class="get_message_grid_con" style="width: 100%;" >  
-	  			<div  data-ax5grid="messageListGrid" data-ax5grid-config="{}" style="height:500px; padding-top:10px; padding-right:10px"></div>  
+	  			<div  data-ax5grid="messageListGrid" data-ax5grid-config="{}" style="height:520px; padding-top:10px; padding-right:10px"></div>  
 			</div> 
 			
 			<div class="message_btn">

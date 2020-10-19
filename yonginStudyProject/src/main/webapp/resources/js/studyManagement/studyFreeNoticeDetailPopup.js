@@ -75,12 +75,12 @@ function fileDownFunc(fileCode){
 
 // 팝업창 닫기
 function closeModal(){
-	return self.parent.writeModalCloseWithRefresh();		// 부모 페이지의 close함수로 리턴
+	return self.parent.detailPopupModalClose();		// 부모 페이지의 close함수로 리턴
 }
 
 // 팝업창 닫고 새로고침
 function closeModalWithRefresh(){
-	self.parent.writeModalCloseWithRefresh();
+	self.parent.detailPopupModalCloseWithRefresh();
 }
 
 // 수정하기 버튼 함수

@@ -30,7 +30,7 @@ public class studyManageController {
 	private commonCodeService commonCodeService;
 
 	/**
-	 * 스터디 페이지 Mapping
+	 *  스터디 관리 페이지 Mapping
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/studyManagement/studyManage.do", method = RequestMethod.POST)
@@ -80,7 +80,7 @@ public class studyManageController {
     	int total = studyManagementService.selectStudyMemberListToCnt(userInStudyVO); // 총 몇 페이지인지 확인
     	int totalPages = (int)Math.ceil(total / (double)dataPerPage); // 변경없이 추가
 		
-		/*** 페이징(끝) ***/
+    	/*** 페이징(끝) ***/
 
     	List<userInStudyVO> ltResult = studyManagementService.selectStudyMemberList(userInStudyVO);
 		
@@ -113,19 +113,19 @@ public class studyManageController {
 		
 		
 		/*** 페이징(시작) ***/
-		int dataPerPage = 5; //그리드 한 페이지에 표시할 데이터 수
-    	int page = Integer.parseInt(studyApplicationFormUserVO.getPage()); //페이지별 변경
+		int dataPerPage = 5; 
+    	int page = Integer.parseInt(studyApplicationFormUserVO.getPage()); 
     	
-    	int first = page * dataPerPage + 1; //변경없이 추가
-    	int last = first + dataPerPage - 1; //변경없이 추가
+    	int first = page * dataPerPage + 1; 
+    	int last = first + dataPerPage - 1; 
     	
-    	studyApplicationFormUserVO.setFirst(first); //변경없이 추가
-    	studyApplicationFormUserVO.setLast(last);   //변경없이 추가
+    	studyApplicationFormUserVO.setFirst(first); 
+    	studyApplicationFormUserVO.setLast(last);   
     	
-    	int total = studyManagementService.selectStudyApplicationFormToCnt(studyApplicationFormUserVO); // 총 몇 페이지인지 확인
-    	int totalPages = (int)Math.ceil(total / (double)dataPerPage); // 변경없이 추가
+    	int total = studyManagementService.selectStudyApplicationFormToCnt(studyApplicationFormUserVO);
+    	int totalPages = (int)Math.ceil(total / (double)dataPerPage); 
 		
-		/*** 페이징(끝) ***/
+    	/*** 페이징(끝) ***/
 
     	List<studyApplicationFormUserVO> ltResult = studyManagementService.selectStudyApplicationForm(studyApplicationFormUserVO);
 		

@@ -17,7 +17,7 @@
 <script src="<c:url value="/resources/js/login/login.js" />"></script>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>YonginStudy</title>
 </head>
 <body> 
 <div class="col-12 log_in_wrap">

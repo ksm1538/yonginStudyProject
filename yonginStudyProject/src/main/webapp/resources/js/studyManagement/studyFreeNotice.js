@@ -17,8 +17,8 @@ $(document).ready(function () {
         showLineNumber: false,
         //showRowSelector: true,
         columns: [ 
-        	{key : "boardTitle",label : "제목", align : "center",width : "40%"},
-			{key : "rgstusId", label: "작성자 아이디", align: "center", width:"20%"},
+        	{key : "boardTitle",label : "제목", align : "center",width : "46%"},
+			{key : "rgstusId", label: "작성자 아이디", align: "center", width:"25%"},
 			{key : "rgdtDt", label: "날짜", align: "center", width:"20%"},
 			{key : "boardCount", label: "조회수", align: "center", width:"10%"},
         ],
@@ -108,7 +108,7 @@ function openWriteStudyFreeNotice(){
 		
 	studyFreeNoticeInfoWriteModal.open({
 		width: 800,
-		height: 710,
+		height: 750,
 		iframe: {
 			method: "get",
 			url: "/studyFreeNoticeWrite.do",
@@ -155,7 +155,8 @@ function selectStudyFreeNoticeInfoDetail(boardCode){
 // 자유게시판 작성 팝업창 닫고 새로고침
 function writeModalCloseWithRefresh(){
 	studyFreeNoticeInfoWriteModal.close();
-	window.location.reload();
+	// 원래 새로고침 있던 자리인데, 어처피 데이터 다시 불러오는 거라 데이터 가져오는 함수로 대체(이게 훨씬 빠름)
+	getStudyFreeNoticeList();
 	
 }
 
@@ -167,7 +168,7 @@ function writeModalClose(){
 // 자유게시판 상세보기 팝업창 닫고 새로고침
 function detailPopupModalCloseWithRefresh(){
 	studyFreeNoticeInfoDetailModal.close();
-	window.location.reload();
+	getStudyFreeNoticeList();
 	
 }
 

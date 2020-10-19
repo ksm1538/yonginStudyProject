@@ -14,6 +14,8 @@ $(document).ready(function () {
 	});	
 	
 	$('#userCodeTo').val(parentData.userId);
+	
+	self.parent.sendMessageSize();
 });
 /** 초기화(끝) **/
 

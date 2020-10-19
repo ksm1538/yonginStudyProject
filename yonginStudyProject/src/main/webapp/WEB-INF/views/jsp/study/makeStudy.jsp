@@ -25,7 +25,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>스터디 생성</title>
+<title>YonginStudy</title>
 </head>
 <body>
 
