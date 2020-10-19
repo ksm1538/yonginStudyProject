@@ -51,6 +51,7 @@
 				</div>
 				<div class="send_message_search_box get_search_btn">
 					  <input type="button" value="검색" class="btn_style_1" onclick="searchMessageList()" >
+					  <input type="button" value="쪽지 삭제하기" class="btn_style_1 delete_message_btn" onclick="deleteSendMessage();">
 				</div>
 		</div>
 		
@@ -59,9 +60,7 @@
 	  			<div data-ax5grid="messageListGrid" data-ax5grid-config="{}" style="height:520px; padding-top:10px; padding-right:10px"></div>  
 		</div>
 		
-		<div class="col-12 col-center mw-1200  message_btn">
-				<input type="button" value="쪽지 삭제하기" class="btn_style_1 type_3" onclick="deleteSendMessage();">
-		</div>
+
 		
 	</div>
 

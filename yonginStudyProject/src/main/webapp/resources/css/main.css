@@ -385,7 +385,7 @@ html, body {
 .study_apply_detail_pop_wrap{padding:40px 0px; background-color: #7f99e2; margin-bottom:40px;}
 .study_apply_detail_pop_title > span{font-size:25px; font-weight:bold; color:#fff;}
 
-.study_apply_detail_title_con{display:flex; justify-content:center; margin-bottom:40px;}
+.study_apply_detail_title_con{display:flex;  margin-bottom:40px; padding:0 70px;}
 .study_apply_detail_title_con .study_apply_detail_subtitle > span{font-size:20px !important; font-weight: bold; margin-right:40px;}
 
 
@@ -572,6 +572,8 @@ html, body {
 .mypage_myinfo_title_con .mypage_myinfo_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px;}
 .mypage_myinfo_title_con .mypage_myinfo_title > span{display:inline-block; border-bottom:3px solid #7f99e2; padding-bottom:10px;}
 
+.modify_btn_con .btn_style_1{width:200px;}
+
 /*나의 스터디목록*/
 .mypage_mystudy_wrap{padding-top:120px; padding-bottom:120px; background-color: #7f99e2;}
 .mypage_mystudy_title_con{display:flex;}
@@ -685,7 +687,7 @@ html, body {
 .send_message_con .send_message_title > span{display:inline-block; border-bottom:3px solid #7f99e2; padding-bottom:10px;}
 
 .send_message_content_con .send_message_form_con{display:flex; margin-bottom:40px;}
-.send_message_content_con .send_message_form_con.type_2{justify-content:center;}
+.send_message_content_con .send_message_form_con.type_2{}
 
 .send_message_summernote_con .note-editable{height:350px !important;}
 .send_message_summernote_con.type_2 .note-editor.note-frame.panel.panel-default{ height:430px !important; width:701px !important; margin-left:45px;}
@@ -705,9 +707,9 @@ html, body {
 .message_detail_con .message_user_con{display:flex; flex-wrap:nowrap; justify-content:center; margin-bottom:50px;}
 .message_detail_con .send_user_con{display:flex; margin-right:50px;}
 .message_detail_con .get_user_con{display:flex; margin-left:30px;}
-.message_detail_con .message_title_con{display:flex; margin-left:82px; margin-bottom:30px;}
+.message_detail_con .message_title_con{display:flex; margin-left:73px; margin-bottom:30px;}
 .message_detail_con .message_title_con .textbox_style_1{width:500px; border-bottom:none;}
-.message_detail_con .message_time_con{display:flex; margin-left:82px; margin-bottom:30px;}
+.message_detail_con .message_time_con{display:flex; margin-left:72px; margin-bottom:30px;}
 .message_detail_con .message_detail_btn_con{display:flex;  flex-wrap:nowrap; justify-content:center; }
 .message_detail_btn_con .return_message_btn{margin-right:20px;}
 .message_detail_btn_con .close_message_btn{margin-right:20px;} 
@@ -718,7 +720,7 @@ html, body {
 .reply_message_pop_con .reply_message_pop_title > span{font-size:25px; font-weight:bold; color:#fff;}
 
 .send_message_summernote_con.type_2{overflow:hidden; margin-bottom:20px;}
-.reply_btn_style_1_con{display:flex; justify-content:center;}
+.reply_btn_style_1_con{display:flex; justify-content:center; margin-bottom:20px;}
 .reply_btn_style_1_con .btn_style_1{margin:0px 15px;}
 
 
@@ -874,7 +876,7 @@ html, body {
 .study_notice_search_con{display:flex; margin-bottom:40px;}
 .study_notice_search_box{display:flex; margin-right:30px;}
 
-.study_notice_search_con .study_notice_box_title{font-size:20px; font-weight:bold; color:#fff;}
+.study_notice_search_con .study_notice_box_title{font-size:20px; font-weight:bold; color:#fff; margin-right:15px;}
 .study_notice_search_con .get_search_btn_color .btn_style_1{border-color:#fff; color:#fff;}
 .study_notice_search_con .get_search_btn_color .btn_style_1:hover{border-color:#000; color:#000;}
 
@@ -1008,6 +1010,9 @@ input::placeholder{color:#7f99e2; font-weight:bold;}
 /*스터디신청 제목*/
 .write_apply_title_box .name_textbox_style_0{width:450px;}
 
+/*스터디신청서*/
+.study_apply_detail_title_con .name_textbox_style_0{width:500px;}
+
 /*공지사항 상세정보*/
 .notice_detail_info_wrap{padding:0 116px;}
 .notice_detail_info_wrap .name_textbox_style_0{width:445px;}
@@ -1025,7 +1030,7 @@ input::placeholder{color:#7f99e2; font-weight:bold;}
 
 /*qna 상세정보*/
 .qna_detail_name_wrap{padding:0 116px; width:445px;}
-.qna_detail_name_wrap .name_textbox_style_0{width:345px;}
+.qna_detail_name_wrap .name_textbox_style_0{width:445px;}
 
 /*qna 수정하기*/
 .qna_revise_name_wrap{padding:0 116px; margin-bottom:40px;}
@@ -1035,19 +1040,37 @@ input::placeholder{color:#7f99e2; font-weight:bold;}
 .qna_answer_detail_name_wrap{padding:0 116px;}
 .qna_answer_detail_name_wrap .name_textbox_style_0{width:450px;}
 
+/*쪽지 쓰기*/
+.send_person_id{margin-right:40px;}
+.send_message_wrap .btn_style_1.send_message_btn{width:220px;}
+.send_message_name_wrap .name_textbox_style_0{width:450px;}
 
+/*받은쪽지함*/
+.get_message_search_box .btn_style_1{margin:0 15px;}
+.get_message_search_box .btn_style_1.delete_message_btn{width:180px;}
 
+/*보낸쪽지함*/
+.send_message_search_box .btn_style_1{margin:0 15px;}
+.send_message_search_box .btn_style_1.delete_message_btn{width:180px;}
 
+/*쪽지 상세보기*/
+.message_title_con .name_textbox_style_0{width:515px;}
 
+/*쪽지 답장*/
+.reply_message_name_wrap{padding:0 45px;}
 
+/*답장쓰기*/
+.reply_message_name_wrap  .name_textbox_style_0{width:560px;}
 
+/*관리자 페이지 사용자 관리 그리드 확장 방지*/
+.admin_study_list.color_grid > div {height:350px !important; }
+.admin_study_list > div {height:350px !important; }
 
+/*내가 참여한페이지 공지사항*/
+.notice_write_btn_con .btn_style_1{width:220px;}
 
-
-
-
-
-
+/*내가 참여한페이지 공지사항 작성*/
+.write_notice_study_manage_wrap .name_textbox_style_0{width:500px;}
 
 
 
