@@ -27,12 +27,12 @@
 	<div class="col-12 study_notice_wrap">
 		<div class="col-12 col-center mw-1200 study_notice_con">
    			<div class="study_notice_title_con">
-				<div class="study_notice_title"><span>공지 사항</span></div>
+				<div class="study_notice_title"><span>공지사항</span></div>
 				<div class="question_mark_con">
 					<div class="tc question_mark"><span>?</span></div>
 					<div class="qestion_desc_box_con">
 						<div class="question_tri type_2"></div>
-						<div class="question_desc type_2">공지사항 입니다. 수시로 확인하여 차질이 없도록 하세요.</div>
+						<div class="question_desc type_2">공지사항입니다. 수시로 확인하여 차질이 없도록 하세요.</div>
 					</div>
 				</div>
 			</div>
@@ -40,11 +40,11 @@
 			<div class="col-12 col-center mw-1200 study_notice_search_con">
 				<div class="study_notice_search_box get_person_color">
 					<div class="study_notice_box_title"> ID</div>
-					<input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1 color_bg" onkeyup="enterKeyEvent();">
+					<input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1 color_bg" onkeyup="enterKeyEvent_2();">
 				</div>
 				
 				<div class="study_notice_search_box get_search_btn_color">
-					  <input type="button" value="검색" class="btn_style_1" onclick="searchMessageList()" >
+					  <input type="button" value="검색" class="btn_style_1" onclick="searchStudyNoticeList()" >
 				</div>
 		    </div>
 			
@@ -54,7 +54,7 @@
 			</div>
 			
 			<div class="col-12 col-center mw-1200 notice_write_btn_con">
-				<input type="button" value="작성하기" class="btn_style_1" onclick="writeNotice();" >
+				<input type="button" value="작성하기" class="btn_style_1" onclick="openWriteStudyNotice();" >
 			</div>
 			
 			
