@@ -35,7 +35,7 @@
    <div class="tc make_study_title_con">
       <div class="make_study_title">직위 변경</div>
    </div> 
-   
+    
  <form:form method="POST" modelAttribute="userInStudyVO" name="studyMemberAdminChangeForm" id="studyMemberAdminChangeForm">
    <div class="col-12 col-center mw-1200 make_study_form_wrap">
       <div class="make_study_form_con">

@@ -400,7 +400,7 @@ html, body {
 .study_apply_detail_btn_wrap .btn_admin_con .btn_style_1{margin:0 15px;}
 
 /*댓글 공통*/
-.reply_con{margin-left:115px; width:550px;}
+.reply_con{margin-left:115px; width:550px; margin-bottom:30px;}
 .reply_con .reply_title{font-weight:bold;}
 .reply_con .reply_number{font-size:25px; color:#7f99e2; font-weight:bold;}
 .reply_con .reply_amonut{font-weight:bold;}
@@ -832,7 +832,7 @@ html, body {
 .study_memeber_search_con{display:flex; margin-bottom:40px;}
 .study_memeber_search_box{display:flex; margin-right:30px;}
 
-.study_memeber_search_con .study_memeber_box_title{font-size:20px; font-weight:bold;}
+.study_memeber_search_con .study_memeber_box_title{font-size:20px; font-weight:bold; margin-right:15px;}
 
 
 /*스터디 일정*/
@@ -1072,19 +1072,26 @@ input::placeholder{color:#7f99e2; font-weight:bold;}
 /*내가 참여한페이지 공지사항 작성*/
 .write_notice_study_manage_wrap .name_textbox_style_0{width:500px;}
 
+/*내가 참여한페이지 자유게시판*/
+.study_free_notice_btn_con .btn_style_1{width:220px;}
 
+/*내가참여한페이지 자유게시판 작성*/
+.make_study_input_con .name_textbox_style_0{width:500px;}
 
+/*내가참여한페이지 자유게시판 상세정보*/
+.free_notice_name_wrap{padding:0 116px;}
+.free_notice_name_wrap .name_textbox_style_0{width:450px;}
 
+/*내가참여한페이지 자유게시판 수정*/
+.free_notice_revise_wrap{padding:0 116px;}
+.free_notice_revise_wrap .name_textbox_style_0{width:450px;}
 
+/*내가 참여한 스터디 스터디관리 쪽지보내기*/
+.study_manage_send_message_name_wrap{padding:0 70px;}
+.study_manage_send_message_name_wrap .name_textbox_style_0{width:450px;}
 
-
-
-
-
-
-
-
-
+/*내가 참여한 스터디 스터디 관리 스터디 정보 변경*/
+.study_info_change_name_wrap .name_textbox_style_0{width:500px;}
 
 
 

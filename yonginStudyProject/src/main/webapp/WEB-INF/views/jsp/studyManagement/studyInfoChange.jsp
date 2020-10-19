@@ -44,7 +44,7 @@
          <div class="study_name make_study_form">
             <div class="title_size type_2">스터디 이름</div>
             <div class="study_detail_input_con" id="studyNameDiv">
-				<form:input path="studyName" type="text" name="studyName" id="studyName" data-ax-path="studyName" class="textbox_style_1"/>
+				<div class="study_info_change_name_wrap"><form:input path="studyName" type="text" name="studyName" id="studyName" data-ax-path="studyName" class="name_textbox_style_0"/></div>
 			</div>
          </div>
          

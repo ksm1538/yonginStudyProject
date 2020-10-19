@@ -162,7 +162,7 @@ function selectStudyMemberInfoDetail(userCode, userId){
 	
 	studyMemberInfoDetailModal.open({
 		width: 600,
-		height: 600,
+		height: 450,
 		iframe: {
 			method: "post",
 			url: "/studyManagement/studyMemberInfoDetail.do",

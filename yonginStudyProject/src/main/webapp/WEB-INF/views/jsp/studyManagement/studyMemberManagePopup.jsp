@@ -62,7 +62,7 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 						<form:input path="userEmail" type="text" name="userEmail" id="userEmail" data-ax-path="userEmail" class="textbox_style_1"/>
 					</div>
 			</div>
-		</div>
+		</div> 
 		</form:form>
 
 		<div class="col-12 col-center mw-1200 study_memeber_btn_con">		
