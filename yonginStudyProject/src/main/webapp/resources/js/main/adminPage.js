@@ -52,9 +52,9 @@ $(document).ready(function () {
         showLineNumber: false,
         //showRowSelector: true,
         columns: [ 
-			{key : "userId", label: "사용자 아이디", align: "center", width:"25%"},
-        	{key : "userName", label: "사용자 이름", align: "center", width:"20%"},
-        	{key : "userEmail", label: "사용자 이메일", align: "center", width:"30%"},
+			{key : "userId", label: "사용자 아이디", align: "center", width:"20%"},
+        	{key : "userName", label: "사용자 이름", align: "center", width:"15%"},
+        	{key : "userEmail", label: "사용자 이메일", align: "center", width:"20%"},
         	{key : "userIsAdmin", label: "사용자 권한", align: "center", width:"15%", 
           		 formatter: function (){
           			 if(this.item.userIsAdmin == "Y"){
@@ -64,12 +64,12 @@ $(document).ready(function () {
           				 return '일반 사용자';
           			 }
         		 }},
-        	{key : "kickUser", label: "추방", align: "center", width:"5%", 
+        	{key : "kickUser", label: "추방", align: "center", width:"15%", 
           		 formatter: function (){
         			 return '<button type="button" onclick="kickUser(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">추방</button>';
         		 }
         	},
-        	{key : "manageAdmin", label: "관리자 임명", align: "center", width:"5%", 
+        	{key : "manageAdmin", label: "관리자 임명", align: "center", width:"15%", 
          		 formatter: function (){
          			 if(this.item.userIsAdmin == 'Y'){
          				return '<button type="button" onclick="cancleAdmin(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">관리자 해제</button>';

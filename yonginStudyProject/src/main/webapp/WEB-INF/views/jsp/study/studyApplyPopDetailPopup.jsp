@@ -36,8 +36,8 @@ request.setCharacterEncoding("UTF-8");
 <div class="col-12 col-center mw-1200 study_apply_detail_content_wrap">
 		<form id="applicationFormDetailPopupForm" name="applicationFormDetailPopupForm">
 			<div class="study_apply_detail_title_con">
-				<div class="tc study_apply_detail_subtitle"><span>신청서 제목</span></div>
-				<input type="text" id="title" name="title" data-ax-path="title" class="textbox_style_1" placeholder="신청서 제목을 입력해주세요." maxlength="30">
+				<div class="name_title_size"><span>신청서 제목</span></div>
+				<input type="text" id="title" name="title" data-ax-path="title" class="name_textbox_style_0" placeholder="신청서 제목을 입력해주세요." maxlength="30">
 			</div>
 			
 			<div class="study_apply_detail_summernote_con">

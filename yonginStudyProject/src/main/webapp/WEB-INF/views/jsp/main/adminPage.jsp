@@ -87,15 +87,10 @@ studySxnList.forEach(function(n){
 					</div>
 					
 				
-				</div>
-								
-				
-				
-				
-																
+				</div>																
 			</div>
 			<div class="main_study_list_con" style="width: 100%;" >  
-				<div data-ax5grid="userListGrid" data-ax5grid-config="{}" class="color_grid" style="padding-top:10px; padding-right:10px"></div>  
+				<div data-ax5grid="userListGrid" data-ax5grid-config="{}" class="admin_study_list color_grid" style="padding-top:10px; padding-right:10px"></div>  
 			</div>
 		</div>
 	</div>
@@ -141,7 +136,7 @@ studySxnList.forEach(function(n){
 							
 			</div>
 			<div class="main_study_list_con"  style="width: 100%;" >  
-				<div data-ax5grid="studyListGrid" data-ax5grid-config="{}"  style="padding-top:10px; padding-right:10px"></div>  
+				<div data-ax5grid="studyListGrid" class="admin_study_list" data-ax5grid-config="{}"  style="padding-top:10px; padding-right:10px"></div>  
 			</div>
 			
 		</div>

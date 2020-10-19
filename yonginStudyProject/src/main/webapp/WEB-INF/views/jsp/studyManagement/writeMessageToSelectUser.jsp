@@ -35,15 +35,17 @@ request.setCharacterEncoding("UTF-8");
 	
 	
 	<div class="col-12 send_message_content_con">
+		<div class="study_manage_send_message_name_wrap">
+		
 			<div class="send_message_form_con type_2">
-				 <div class="title_size type_2">받는 사람 ID</div>
+     	       	 <div class="name_title_size_1">제목</div>
+     	      	  <input type="text" id="messageTitle" name="messageTitle" class="name_textbox_style_0" maxlength="30">
+     		</div>
+			<div class="send_message_form_con type_2">
+				 <div class="title_size type_1">받는 사람 ID</div>
     	         <input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1" readonly="true">
 			</div>
-			
-			<div class="send_message_form_con type_2">
-     	       	 <div class="title_size type_2">제목</div>
-     	      	  <input type="text" id="messageTitle" name="messageTitle" class="textbox_style_1" maxlength="30">
-     		</div>		
+     	</div>			
 	</div>
 	
 	<div class="col-12 col-center mw-1200 send_message_summernote_pop_con">

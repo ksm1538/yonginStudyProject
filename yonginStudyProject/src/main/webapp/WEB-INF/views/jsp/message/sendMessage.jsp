@@ -43,15 +43,16 @@ request.setCharacterEncoding("UTF-8");
 		</div>
 		
 		<div class="col-12 col-center mw-1200 send_message_content_con">
-			<div class="send_message_form_con">
-				 <div class="title_size type_2">받는 사람 ID</div>
-    	        <input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1">
-			</div>
 			
 			<div class="send_message_form_con">
-     	       	 <div class="title_size type_2">제목</div>
-     	      	 <input type="text" id="messageTitle" name="messageTitle" class="textbox_style_1" maxlength="30">
-     		</div>		
+     	       	 <div class="name_title_size">제목</div>
+     	      	 <div class="send_message_name_wrap"><input type="text" id="messageTitle" name="messageTitle" class="name_textbox_style_0" maxlength="30"></div>
+     		</div>	
+     		
+     		<div class="send_message_form_con">
+				 <div class="name_title_size_1 send_person_id">받는 사람 ID</div>
+    	        <input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1">
+			</div>	
 		</div>
 		
 		<div class="col-12 col-center mw-1200 send_message_summernote_con">
@@ -61,7 +62,7 @@ request.setCharacterEncoding("UTF-8");
 		</div>
 		
 		<div class="col-12 btn_style_1_con">
-	      	<input type="button" value="보내기" class="btn_style_1" onclick="sendMessage()" >
+	      	<input type="button" value="쪽지 보내기" class="btn_style_1 send_message_btn" onclick="sendMessage()" >
   		</div> 
 		
 	</div>

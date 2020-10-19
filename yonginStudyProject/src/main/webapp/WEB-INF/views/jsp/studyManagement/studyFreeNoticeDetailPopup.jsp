@@ -41,16 +41,16 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 		  <div class="" id="detailDiv">
 			
 				<form:input path="boardCode" type="hidden" name="boardCode" id="boardCode" data-ax-path="boardCode" class="textbox_style_1"/>
-				
+				<div class="free_notice_name_wrap">
 				<div class="study_detail_con detail_name">
-					<div class="title_size type_2">제목</div>
+					<div class="name_title_size_1">제목</div>
 					<div class="study_detail_input_con">
-						<form:input path="boardTitle" type="text" name="systemNoticeTitle" id="boardTitle" data-ax-path="boardTitle" class="textbox_style_1"/>
+						<form:input path="boardTitle" type="text" name="systemNoticeTitle" id="boardTitle" data-ax-path="boardTitle" class="name_textbox_style_0"/>
 					</div>
 				</div>				
 				
 				<div class="study_detail_con detail_name">
-					<div class="title_size type_2">작성자</div>
+					<div class="name_title_size_1">작성자</div>
 					<div class="study_detail_input_con">
 						<form:input path="rgstusId" type="text" name="rgstusId" id="rgstusId" data-ax-path="rgstusId" class="textbox_style_1"/>
 					</div>
@@ -59,17 +59,18 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 				
 				
 				<div class="study_detail_con detail_name">
-					<div class="title_size type_2">날짜</div>
+					<div class="name_title_size_1">날짜</div>
 					<div class="study_detail_input_con">
 						<form:input path="updtDt" type="text" name="updtDt" id="updtDt" data-ax-path="updtDt" class="textbox_style_1"/>
 					</div>
 				</div>	
 				
 				<div class="study_detail_con detail_name">
-					<div class="title_size type_2">조회수</div>
+					<div class="name_title_size_1">조회수</div>
 					<div class="study_detail_input_con">
 						<form:input path="boardCount" type="text" name="boardCount" id="boardCount" data-ax-path="boardCount" class="textbox_style_1"/>
 					</div>
+				</div>
 				</div>	
 				
 				<div class="detail_desc">

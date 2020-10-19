@@ -40,7 +40,7 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 					<div class="message_desc_con">
 						<div class="message_title_con">
 							<div class="title_size">제목</div>
-     	      				<input type="text" id="messageTitle" name="messageTitle" data-ax-path="messageTitle" class="textbox_style_1"  readonly="true">
+     	      				<input type="text" id="messageTitle" name="messageTitle" data-ax-path="messageTitle" class="name_textbox_style_0"  readonly="true">
 						</div>
 						<div class="message_time_con">
 							 <div class="title_size">보낸 시각</div>
