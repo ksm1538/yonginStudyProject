@@ -54,30 +54,30 @@ qnaSxnList.forEach(function(n){
 		 		<div class="" id="detailDiv">
 			
 					<form:input path="boardCode" type="hidden" name="boardCode" id="boardCode" data-ax-path="boardCode" class="textbox_style_1"/>
-				
+					<div class="qna_detail_name_wrap">
 					<div class="study_detail_con detail_name">
-						<div class="title_size type_2">제목</div>
+						<div class="name_title_size_1">제목</div>
 						<div class="study_detail_input_con">
-							<form:input path="boardTitle" type="text" name="boardTitle" id="boardTitle" data-ax-path="boardTitle" class="textbox_style_1"/>
+							<form:input path="boardTitle" type="text" name="boardTitle" id="boardTitle" data-ax-path="boardTitle" class="name_textbox_style_0"/>
 						</div>
 					</div>	
 				
 					<div class="study_detail_con detail_name">
-						<div class="title_size type_2">상태</div>
+						<div class="name_title_size_1">상태</div>
 						<div class="study_detail_input_con">
 							<form:input path="qnaStatus" type="text" name="qnaStatus" id="qnaStatus" data-ax-path="qnaStatus" class="textbox_style_1"/>
 						</div>
 					</div>				
 				
 					<div class="study_detail_con detail_name">
-						<div class="title_size type_2">작성자</div>
+						<div class="name_title_size_1">작성자</div>
 						<div class="study_detail_input_con">
 							<form:input path="rgstusId" type="text" name="rgstusId" id="rgstusId" data-ax-path="rgstusId" class="textbox_style_1"/>
 						</div>
 					</div>	
 				
 					<div class="study_detail_con detail_name">
-						<div class="title_size type_2">날짜</div>
+						<div class="name_title_size_1">날짜</div>
 						<div class="study_detail_input_con">
 							<form:input path="updtDt" type="text" name="updtDt" id="updtDt" data-ax-path="updtDt" class="textbox_style_1"/>
 						</div>
@@ -87,6 +87,7 @@ qnaSxnList.forEach(function(n){
 						<div class="study_detail_input_con">
 							<form:textarea path="boardDesc" id="boardDesc" name="boardDesc" data-ax-path="boardDesc" style=""/>
 						</div> 
+					</div>
 					</div>
 				
 					<div class="detail_desc">

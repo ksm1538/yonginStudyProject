@@ -34,7 +34,7 @@
    <div class="circle_btn" onclick="closeModal()"></div> 
    
    <div class="tc make_study_title_con">
-      <div class="make_study_title">스터디 생성</div>
+      <div class="make_study_title">스터디 만들기</div>
    </div> 
    
  <form:form method="POST" modelAttribute="studyInfoVO" name="studyMakeForm" id="studyMakeForm" action="/makeStudy.json">
@@ -44,7 +44,7 @@
          <div class="study_name make_study_form">
             <div class="title_size type_2">스터디 이름</div>
             <div class="make_study_input_con">
-            	<input type="text" id="studyName" name ="studyName" class="textbox_style_1" placeholder="5~30자로 설정해주세요.">
+            	<input type="text" id="studyName" name ="studyName" class="name_textbox_style_0" placeholder="5~30자로 설정해주세요.">
            		<i class="fa fa-times-circle" aria-hidden="true" id="nameYnIcon" style="margin-left:1%"></i>
           		<input type="button" value="중복확인" id="checkIdBtn" class="btn_style_1" onclick="studyNameCheckFunc()">
             </div>

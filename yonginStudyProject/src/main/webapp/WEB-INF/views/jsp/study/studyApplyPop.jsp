@@ -37,7 +37,7 @@ request.setCharacterEncoding("UTF-8");
 	<div class="study_apply_content_con">
 		<div class="write_apply_title_box">
 			<div class="write_apply_title"><span>신청서 제목 </span></div>
-			<input type="text" id="title" name="title" data-ax-path="title" class="textbox_style_1" placeholder="신청서 제목을 입력해주세요." maxlength="30">
+			<input type="text" id="title" name="title" data-ax-path="title" class="name_textbox_style_0" placeholder="신청서 제목을 입력해주세요." maxlength="30">
 		</div>
 	</div>
 </div>

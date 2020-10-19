@@ -34,9 +34,9 @@
 	<div class="col-12 write_qna_content_wrap">
 		<div class="write_qna_content_con">
 			<div class="write_qna_name_con">
-				<div class="title_size type_2">제목</div>
+				<div class="name_title_size_1">제목</div>
 				<div class="register_input_con">
-					<input type="text" name="boardTitle" id="boardTitle" class="textbox_style_1 type_3" maxlength="30"/>
+					<input type="text" name="boardTitle" id="boardTitle" class="name_textbox_style_0" maxlength="30"/>
 				</div>
 			</div>
 		</div>

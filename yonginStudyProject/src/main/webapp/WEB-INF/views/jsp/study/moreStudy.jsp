@@ -69,8 +69,8 @@ inoutSxnList.forEach(function(n){
 	  			<div data-ax5grid="studyListPlusGrid" class="color_grid" data-ax5grid-config="{}" style="height:610px; padding-top:10px; padding-right:10px"></div>  
 			</div> 
 			
-			<div class="make_sutdy_btn_con">
-				<input type="button" value="스터디만들기" class="btn_style_1 type_2" onclick="makeStudyForm();" >
+			<div class="tc make_sutdy_btn_con">
+				<input type="button" value="스터디만들기" class="btn_style_1 type_4" onclick="makeStudyForm();" >
 			</div>
 			
 			

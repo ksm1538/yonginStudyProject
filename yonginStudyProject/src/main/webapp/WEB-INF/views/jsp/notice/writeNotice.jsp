@@ -43,7 +43,7 @@
       	<div class="study_text make_study_form">
            <div class="title_size type_2">제목</div>
            <div class="make_study_input_con">
-           	 <input type="text" name="boardTitle" id="boardTitle" class="textbox_style_1">
+           	 <div class="write_notice_wrap"><input type="text" name="boardTitle" id="boardTitle" class="name_textbox_style_0"></div>
            </div>
            
         </div> 

@@ -43,13 +43,15 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 		 <input type="hidden" id="boardCode" name="boardCode" value=""> 
 		 
 		 <div class="study_detail_pop_wrap_con" id="detailDiv">
-			
+				
+			<div class="notice_revise_name_wrap">	
 				<div class="study_detail_con detail_name">
-					<div class="title_size type_2">제목</div>
+					<div class="name_title_size_1">제목</div>
 					<div class="study_detail_input_con">
-						<input type="text" name="boardTitle" id="boardTitle" data-ax-path="boardTitle" class="textbox_style_1"/>
+						<input type="text" name="boardTitle" id="boardTitle" data-ax-path="boardTitle" class="name_textbox_style_0"/>
 					</div>
-				</div>				
+				</div>
+			</div>					
 				
 				<div class="detail_desc">
 					<div class="study_detail_input_con">

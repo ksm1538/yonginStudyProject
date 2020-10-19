@@ -45,37 +45,40 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 			
 				<form:input path="studyCode" type="hidden" name="studyCode" id="studyCode" data-ax-path="studyCode" class="textbox_style_1"/>
 				
-				<div class="study_detail_con detail_name">
-					<div class="title_size type_2">스터디 이름</div>
-					<div class="study_detail_input_con">
-						<form:input path="studyName" type="text" name="studyName" id="studyName" data-ax-path="studyName" class="textbox_style_1"/>
+				<div class="study_detail_wrap">
+					<div class="study_detail_con detail_name">
+						<div class="name_title_size">스터디 이름</div>
+						<div class="study_detail_input_con">
+							<form:input path="studyName" type="text" name="studyName" id="studyName" data-ax-path="studyName" class="name_textbox_style_0"/>
+						</div>
+					</div>				
+					<div class="study_detail_con detail_subject">
+						<div class="name_title_size">스터디 과목</div>
+						<div class="study_detail_input_con">
+							<form:select path="studyTopic" name="studyTopic" id="studyTopic" data-ax-path="studyTopic" class="select_style_0" >
+							    <c:forEach var="result" items="${studyTopicArray}" varStatus="status">
+						          	<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
+					    	     </c:forEach>
+							</form:select>
+						</div>
 					</div>
-				</div>				
-				<div class="study_detail_con detail_subject">
-					<div class="title_size type_2">스터디 과목</div>
-					<div class="study_detail_input_con">
-						<form:select path="studyTopic" name="studyTopic" id="studyTopic" data-ax-path="studyTopic" class="select_style_0" >
-						    <c:forEach var="result" items="${studyTopicArray}" varStatus="status">
-					          	<option value="<c:out value='${result.codeId}'/>" ><c:out value='${result.codeValue}'/>
-					         </c:forEach>
-						</form:select>
-					</div>
-				</div>
-				<div class="study_detail_con detail_leader">
-					<div class="title_size type_2">스터디 장</div>
-					<div class="study_detail_input_con">
-						<form:input path="studyRgstusId" type="text" name="studyRgstusId" id="studyRgstusId" data-ax-path="studyRgstusId" class="textbox_style_1"/>
-					</div>
-				</div>	
+					<div class="study_detail_con detail_leader">
+						<div class="name_title_size">스터디 장</div>
+						<div class="study_detail_input_con">
+							<form:input path="studyRgstusId" type="text" name="studyRgstusId" id="studyRgstusId" data-ax-path="studyRgstusId" class="textbox_style_1"/>
+						</div>
+					</div>	
 				
 				
 				
-				<div class="study_detail_con detail_location">
-					<div class="title_size type_2">스터디 지역</div>
-					<div class="study_detail_input_con">
-					  <div class="study_detail_input_con">
-						<form:input path="studyArea" type="text" name="studyArea" id="studyArea" data-ax-path="studyArea" class="textbox_style_1"/>
-					  </div>
+					<div class="study_detail_con detail_location">
+						<div class="name_title_size">스터디 지역</div>
+						<div class="study_detail_input_con">
+						  <div class="study_detail_input_con">
+							<form:input path="studyArea" type="text" name="studyArea" id="studyArea" data-ax-path="studyArea" class="textbox_style_1"/>
+						  </div>
+						</div>
+					</div>
 					</div>
 				</div>
 				

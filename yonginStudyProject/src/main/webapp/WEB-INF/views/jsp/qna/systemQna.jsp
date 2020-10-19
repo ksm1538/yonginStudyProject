@@ -60,11 +60,14 @@ qnaSxnList.forEach(function(n){
 					  <input type="button" value="검색" class="btn_style_1" onclick="" >
 				</div>
 				
-				<input type="button" value="질문 하기" class="btn_style_1" onclick="writeQna();" style="float:left; margin-left:37%">
 			</div>
 			
 			<div style="width: 100%;" >  
 	  			<div data-ax5grid="qnaListGrid" data-ax5grid-config="{}" class="qna_grid color_grid" style="height:610px; padding-top:10px; padding-right:10px"></div>  
+			</div>
+			
+			<div class="tc make_qna_btn_con">
+				<input type="button" value="질문 하기" class="btn_style_1" onclick="writeQna();">
 			</div>
 			
 		</div>
