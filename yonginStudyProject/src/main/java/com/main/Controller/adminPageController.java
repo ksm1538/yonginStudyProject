@@ -21,6 +21,8 @@ import com.commonCode.Service.commonCodeService;
 import com.commonCode.VO.commonCodeVO;
 import com.login.VO.userInfoVO;
 import com.main.Service.adminService;
+import com.main.VO.studyInfoVO;
+import com.study.Service.studyService;
 
 /**
  * Handles requests for the application home page.
@@ -32,6 +34,9 @@ public class adminPageController {
 	
 	@Resource(name="commonCodeService")
 	private commonCodeService commonCodeService;
+	
+	@Resource(name="studyService")
+	private studyService studyService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(adminPageController.class);
 	
@@ -75,7 +80,7 @@ public class adminPageController {
 		HashMap<String, Object> mReturn = new HashMap<String, Object>();
 	      
 		/*** 페이징(시작) ***/
-		int dataPerPage = 8; //그리드 한 페이지에 표시할 데이터 수
+		int dataPerPage = 6; //그리드 한 페이지에 표시할 데이터 수
     	int page = Integer.parseInt(userInfoVO.getPage()); //페이지별 변경
     	
     	int first = page * dataPerPage + 1; //변경없이 추가
@@ -96,6 +101,51 @@ public class adminPageController {
 			mReturn.put("message", "사용자 목록이 없습니다.");
 			
 			return mReturn;
+		}
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "조회 성공하였습니다.");
+		mReturn.put("total", total);
+    	mReturn.put("totalPages", totalPages);
+    	mReturn.put("dataPerPage", dataPerPage);
+		mReturn.put("resultList", ltResult);
+		
+		return mReturn;
+	}
+	
+	/**
+	 * 관리자 페이지에서 스터디 목록 조회
+	 * @param studyInfoVO
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/adminPage/selectStudyList.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> selectStudyList(@RequestBody studyInfoVO studyInfoVO, HttpServletRequest request) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+	      
+		/*** 페이징(시작) ***/
+		int dataPerPage = 6; //그리드 한 페이지에 표시할 데이터 수
+    	int page = Integer.parseInt(studyInfoVO.getPage()); //페이지별 변경
+    	
+    	int first = page * dataPerPage + 1; //변경없이 추가
+    	int last = first + dataPerPage - 1; //변경없이 추가
+    	
+    	studyInfoVO.setFirst(first); //변경없이 추가
+    	studyInfoVO.setLast(last);   //변경없이 추가
+    	
+    	int total = studyService.selectStudyListToCnt(studyInfoVO); // 총 몇 페이지인지 확인
+    	int totalPages = (int)Math.ceil(total / (double)dataPerPage); // 변경없이 추가
+		
+		/*** 페이징(끝) ***/
+    	
+		List<studyInfoVO> ltResult = studyService.selectStudyList(studyInfoVO);
+		
+		if(ltResult.size() < 1) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "스터디 목록이 없습니다.");
 		}
 		
 		mReturn.put("result", "success");

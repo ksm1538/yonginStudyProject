@@ -2,6 +2,7 @@
 var userListGrid = new ax5.ui.grid();
 var studyListGrid = new ax5.ui.grid();
 var studyInfoDetailModal = new ax5.ui.modal();
+var studyMemberInfoDetailModal = new ax5.ui.modal();
 
 var _pageNo1 = 0;	// 사용자 그리드 페이지
 var _pageNo2 = 0;	// 스터디 그리드 페이지 
@@ -54,7 +55,7 @@ $(document).ready(function () {
         columns: [ 
 			{key : "userId", label: "사용자 아이디", align: "center", width:"23%"},
         	{key : "userName", label: "사용자 이름", align: "center", width:"15%"},
-        	{key : "userEmail", label: "사용자 이메일", align: "center", width:"20%"},
+        	{key : "userEmail", label: "사용자 이메일", align: "center", width:"23%"},
         	{key : "userIsAdmin", label: "사용자 권한", align: "center", width:"15%", 
           		 formatter: function (){
           			 if(this.item.userIsAdmin == "Y"){
@@ -64,7 +65,7 @@ $(document).ready(function () {
           				 return '일반 사용자';
           			 }
         		 }},
-        	{key : "kickUser", label: "추방", align: "center", width:"15%", 
+        	{key : "kickUser", label: "추방", align: "center", width:"10%", 
           		 formatter: function (){
         			 return '<button type="button" class="grid_btn_style_0 banishment" onclick="kickUser(' + this.dindex + ')"  >추방</button>';
         		 }
@@ -75,7 +76,7 @@ $(document).ready(function () {
          				return '<button type="button" class="grid_btn_style_0" onclick="cancleAdmin(' + this.dindex + ')"  >관리자 해제</button>';
          			 }
          			 else{
-         				return '<button type="button" class="grid_btn_style_0" onclick="setAdmin(' + this.dindex + ')" >관리자 설정</button>';
+         				return '<button type="button" class="grid_btn_style_0" onclick="setAdmin(' + this.dindex + ')" >관리자 임명</button>';
          			 }
        		 }
        	},
@@ -86,10 +87,10 @@ $(document).ready(function () {
         },
         body: {
                     align: "left",
-                    columnHeight: 45,
+                    columnHeight: 48,
                     
-                    onClick: function () 	{
-                    
+                    onDBLClick: function () 	{
+                    	selectStudyMemberInfoDetail(this.list[this.dindex]["userCode"], this.list[this.dindex]["userId"]);
 					},
 					onDataChanged: function(){
 						
@@ -125,11 +126,11 @@ $(document).ready(function () {
     			}
         	},
         	{key : "studyName", label: "스터디 이름", align: "center", width:"30%"},
-        	{key : "studyArea", label: "스터디 지역", align: "center", width:"15%"},
+        	{key : "studyArea", label: "스터디 지역", align: "center", width:"16%"},
         	{key : "userName", label: "스터디 방장", align: "center", width:"15%"},
         	{key : "totalCount",label : "현재 인원", align : "center",width : "10%"},
-        	{key : "studyLimit",label : "정원", align : "center",width : "5%"},
-        	{key : "deleteStudy", label: "삭제", align: "center", width:"10%", 
+        	{key : "studyLimit",label : "정원", align : "center",width : "7.5%"},
+        	{key : "deleteStudy", label: "삭제", align: "center", width:"7.5%", 
           		 formatter: function (){
         			 return '<button type="button" class="grid_btn_style_0" onclick="deleteStudy(' + this.dindex + ')" >삭제</button>';
         		 }
@@ -141,7 +142,7 @@ $(document).ready(function () {
         },
         body: {
                     align: "left",
-                    columnHeight: 45,
+                    columnHeight: 48,
                     
                     onDBLClick: function () 	{
                     	selectStudyInfoDetail(this.list[this.dindex]["studyCode"]);
@@ -244,7 +245,7 @@ function getStudyList(){
 
 	$.ajax({
  		type: "POST",
- 		url : "/study/selectStudyList.json",
+ 		url : "/adminPage/selectStudyList.json",
  		data : JSON.stringify(sendData),
 		contentType: "application/json; charset=UTF-8",
 		async: false,
@@ -300,6 +301,10 @@ function selectStudyInfoDetail(studyCode){
 	    },
 	}, function() {
 	});
+}
+
+function closeStudyInfo(){
+	studyInfoDetailModal.close();
 }
 
 //EnterKeyEvent
@@ -555,5 +560,42 @@ function deleteStudy(dindex){
 		}
 	}, function(){
 	});
+}
+
+//스터디 멤버 상세 보기 팝업 
+function selectStudyMemberInfoDetail(userCode, userId){
+	var parentData={
+			userCode:userCode,
+			userId:userId
+	}
 	
+	studyMemberInfoDetailModal.open({
+		width: 600,
+		height: 600,
+		iframe: {
+			method: "post",
+			url: "/studyManagement/studyMemberInfoDetail.do",
+			param: callBack = parentData
+		},
+		onStateChanged: function(){
+			if (this.state === "open") {
+	        	mask.open();
+	        }
+	        else if (this.state === "close") {
+	        	mask.close();
+	        }
+	    },
+	}, function() {
+	});
+}
+
+//스터디 상세 보기 팝업 닫기
+function close(){
+	studyMemberInfoDetailModal.close();
+}
+
+//쪽지보내기 팝업 사이즈 변경
+function sendMessageSize(){
+	studyMemberInfoDetailModal.css({width:600, height: 750});
+	studyMemberInfoDetailModal.align();
 }

@@ -32,6 +32,15 @@ function selectStudyMemberManagement(userCode){
 			switch(data.result){
 			    case COMMON_SUCCESS:
 			    	studyMemberManageBinder.setModel(data.boardInfo);
+			    	if(data.boardInfo.userGender == "w"){
+			    		studyMemberManageBinder.set("userGender", "여성");
+			    	}
+			    	else if(data.boardInfo.userGender == "m"){
+			    		studyMemberManageBinder.set("userGender", "남성");
+			    	}
+			    	else{
+			    		studyMemberManageBinder.set("userGender", "");
+			    	}
 			    	break;    
 			    case COMMON_FAIL:
 			    	dialog.alert(data.message); 

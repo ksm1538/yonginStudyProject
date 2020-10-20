@@ -32,6 +32,15 @@ function selectStudyMemberInfoDetail(userCode){
 			switch(data.result){
 			    case COMMON_SUCCESS:
 			    	studyMemberInfoDetailBinder.setModel(data.boardInfo);
+			    	if(data.boardInfo.userGender == "w"){
+			    		studyMemberInfoDetailBinder.set("userGender", "여성");
+			    	}
+			    	else if(data.boardInfo.userGender == "m"){
+			    		studyMemberInfoDetailBinder.set("userGender", "남성");
+			    	}
+			    	else{
+			    		studyMemberInfoDetailBinder.set("userGender", "");
+			    	}
 			    	break;    
 			    case COMMON_FAIL:
 			    	dialog.alert(data.message); 

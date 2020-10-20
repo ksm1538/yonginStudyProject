@@ -162,7 +162,7 @@ function selectStudyMemberInfoDetail(userCode, userId){
 	
 	studyMemberInfoDetailModal.open({
 		width: 600,
-		height: 450,
+		height: 600,
 		iframe: {
 			method: "post",
 			url: "/studyManagement/studyMemberInfoDetail.do",
@@ -429,6 +429,12 @@ function studyChatFunc(){
  frmPop.studyCode.value = studyCode;
  frmPop.studyName.value = studyName;
  frmPop.submit();   
+}
+
+//쪽지보내기 팝업 사이즈 변경
+function sendMessageSize(){
+	studyMemberInfoDetailModal.css({width:600, height: 750});
+	studyMemberInfoDetailModal.align();
 }
 
 // 스터디 상세 보기 팝업 닫기

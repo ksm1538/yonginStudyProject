@@ -1,7 +1,6 @@
 package com.studyManagement.Controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.commonCode.Service.commonCodeService;
-import com.commonCode.VO.commonCodeVO;
+import com.commonFunction.Controller.yonginFunction;
 import com.login.VO.userInfoVO;
 import com.studyManagement.Service.studyManagementService;
 
@@ -74,6 +73,9 @@ public class studyMemberInfoDetailController {
 			
 			return mReturn;
 		}
+		
+		String birth = yonginFunction.nullConvert(userInfoVO.getUserBirth());
+		userInfoVO.setUserBirth(yonginFunction.addMinusChar(birth));
 		
 		mReturn.put("result", "success");
 		mReturn.put("message", "성공적으로 조회하였습니다.");

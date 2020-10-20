@@ -50,6 +50,21 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 						<form:input path="userId" type="text" name="userId" id="userId" data-ax-path="userId" class="textbox_style_1"/>
 					</div>
 			</div>
+			
+			<div class="study_member_info_con">
+				<div class="study_member_title"><span>성별</span></div>
+				<div class="study_detail_input_con">
+					<form:input path="userGender" type="text" name="userGender" id="userGender" data-ax-path="userGender" class="textbox_style_1"/>
+				</div>
+			</div>
+			
+			<div class="study_member_info_con">
+				<div class="study_member_title"><span>생일</span></div>
+				<div class="study_detail_input_con">
+					<form:input path="userBirth" type="text" name="userBirth" id="userBirth" data-ax-path="userBirth" class="textbox_style_1"/>
+				</div>
+			</div>
+			
 			<div class="study_member_info_con">
 				<div class="study_member_title"><span>주소</span></div>
 				<div class="study_detail_input_con">
