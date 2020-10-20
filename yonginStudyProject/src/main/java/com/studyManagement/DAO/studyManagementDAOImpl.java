@@ -8,8 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.login.VO.userInfoVO;
-import com.main.VO.userInStudyVO;
 import com.main.VO.studyInfoVO;
+import com.main.VO.userInStudyVO;
 import com.message.VO.messageInfoVO;
 import com.notice.VO.boardVO;
 import com.study.VO.studyApplicationFormUserVO;
@@ -122,5 +122,15 @@ public class studyManagementDAOImpl implements studyManagementDAO{
 	@Override
 	public void studyMemberMasterChange(userInStudyVO userInStudyVO) throws Exception{
 		sqlSession.update("studyManagementMapper.studyMemberMasterChange", userInStudyVO);
+	}
+	
+	@Override
+	public int selectStudyMemberToCnt(String studyCode) throws Exception{
+		return sqlSession.selectOne("studyManagementMapper.selectStudyMemberToCnt", studyCode);
+	}
+	
+	@Override
+	public int selectStudyCountToCnt(String studyCode) throws Exception{
+		return sqlSession.selectOne("studyManagementMapper.selectStudyCountToCnt", studyCode);
 	}
 }
