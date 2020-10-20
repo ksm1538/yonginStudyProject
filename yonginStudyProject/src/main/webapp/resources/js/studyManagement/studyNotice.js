@@ -11,10 +11,10 @@ $(document).ready(function () {
         showLineNumber: false,
         showRowSelector: true,
         columns: [ 
-			{key : "noticeTitle", label: "제목", align: "center", width:"55%", sortable: true},
+			{key : "boardTitle", label: "제목", align: "center", width:"55%", sortable: true},
         	{key : "rgstusId", label: "작성자 ID", align: "center", width:"16%"},
         	{key : "rgdtDt", label: "날짜", align: "center", width:"20%"},
-			{key : "noticeCount", label: "조회수", align: "center", width:"10%"}, 
+			{key : "boardCount", label: "조회수", align: "center", width:"10%"}, 
         ],
         header: {
         	align:"center",
@@ -54,8 +54,8 @@ $(document).ready(function () {
 function getStudyNoticeList(){
 	var sendData = {
 			page :	_pageNo,
-			searchNoticeRgstusId:$('#noticeRgstusId').val(),
-			searchNoticeTitle:$('#noticeTitle').val()
+			searchNoticeRgstusId:$('#boardRgstusId').val(),
+			searchNoticeTitle:$('#boardTitle').val()
 	}
 	
 	$.ajax({
