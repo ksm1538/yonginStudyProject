@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.login.VO.userInfoVO;
-import com.main.VO.userInStudyVO;
 import com.main.VO.studyInfoVO;
+import com.main.VO.userInStudyVO;
 import com.message.VO.messageInfoVO;
 import com.notice.VO.boardVO;
 import com.study.VO.studyApplicationFormUserVO;
@@ -50,4 +50,8 @@ public interface studyManagementService {
 	void studyMemberAdminChange(userInStudyVO userInStudyVO) throws Exception;
 	
 	void studyMemberMasterChange(userInStudyVO userInStudyVO) throws Exception;
+	
+	int selectStudyMemberToCnt(String studyCode) throws Exception; 
+	
+	int selectStudyCountToCnt(String studyCode) throws Exception; 
 }

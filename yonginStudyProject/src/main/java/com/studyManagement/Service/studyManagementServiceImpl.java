@@ -11,8 +11,8 @@ import com.commonFunction.Controller.FileUtilsController;
 import com.commonFunction.DAO.fileDAO;
 import com.commonFunction.DAO.replyDAO;
 import com.login.VO.userInfoVO;
-import com.main.VO.userInStudyVO;
 import com.main.VO.studyInfoVO;
+import com.main.VO.userInStudyVO;
 import com.message.DAO.messageDAO;
 import com.message.VO.messageInfoVO;
 import com.notice.VO.boardVO;
@@ -153,5 +153,15 @@ public class studyManagementServiceImpl implements studyManagementService{
 	@Override
 	public void studyMemberMasterChange(userInStudyVO userInStudyVO) throws Exception{
 		studyManagementDAO.studyMemberMasterChange(userInStudyVO);
+	}
+	
+	@Override
+	public int selectStudyMemberToCnt(String studyCode) throws Exception{
+		return studyManagementDAO.selectStudyMemberToCnt(studyCode);
+	}
+	
+	@Override
+	public int selectStudyCountToCnt(String studyCode) throws Exception{
+		return studyManagementDAO.selectStudyCountToCnt(studyCode);
 	}
 }

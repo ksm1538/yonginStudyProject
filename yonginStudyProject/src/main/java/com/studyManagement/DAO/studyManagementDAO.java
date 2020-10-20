@@ -3,8 +3,8 @@ package com.studyManagement.DAO;
 import java.util.List;
 
 import com.login.VO.userInfoVO;
-import com.main.VO.userInStudyVO;
 import com.main.VO.studyInfoVO;
+import com.main.VO.userInStudyVO;
 import com.message.VO.messageInfoVO;
 import com.notice.VO.boardVO;
 import com.study.VO.studyApplicationFormUserVO;
@@ -52,4 +52,8 @@ public interface studyManagementDAO {
 	public void studyMemberAdminChange(userInStudyVO userInStudyVO) throws Exception;
 	
 	public void studyMemberMasterChange(userInStudyVO userInStudyVO) throws Exception;
+	
+	public int selectStudyMemberToCnt(String studyCode) throws Exception;
+	
+	public int selectStudyCountToCnt(String studyCode) throws Exception;
 }
