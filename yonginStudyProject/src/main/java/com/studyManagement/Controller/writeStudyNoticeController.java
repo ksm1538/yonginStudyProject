@@ -100,3 +100,4 @@ public class writeStudyNoticeController {
 		return mReturn;
 	}
 }
+

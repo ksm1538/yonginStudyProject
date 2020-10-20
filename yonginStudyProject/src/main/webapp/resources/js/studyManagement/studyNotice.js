@@ -234,7 +234,7 @@ function selectStudyNoticeInfoDetail(boardCode){
 	        }
 	    },
 	}, function() {
-	});
+	}); 
 }
 
 // 스터디 공지사항 상세 팝업 닫기

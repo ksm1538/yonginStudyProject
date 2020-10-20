@@ -20,7 +20,7 @@ $(document).ready(function () {
 	
 	reviseStudyNotice(parentData.boardCode);
 	
-});
+});  
 /** 초기화(끝) **/
 
 // 부모 페이지에서 받은 studyNoticeCode를 이용해 공지사항 조회

@@ -85,3 +85,4 @@ function openReviseStudyNotice(){
 	//window.open("/notice/reviseNotice.do",'공지사항 수정','width=700px ,height=800px ,location=no,status=no,scrollbars=no');
 }
 
+
