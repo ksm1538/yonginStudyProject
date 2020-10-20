@@ -168,6 +168,16 @@ public class studyManageController {
 			return mReturn;
 		}
 		
+		int studyTotalCount = studyManagementService.selectStudyCountToCnt(studyApplicationFormUserVO.getStudyCode());
+		int currentTotalCount = studyManagementService.selectStudyMemberToCnt(studyApplicationFormUserVO.getStudyCode());
+
+		if(currentTotalCount == studyTotalCount) {
+			mReturn.put("result", "fail");
+			mReturn.put("message", "스터디 정원을 초과합니다.");
+			
+			return mReturn;
+		}
+		
     	studyManagementService.approveStudyForm(studyApplicationFormUserVO);
 		
 		

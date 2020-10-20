@@ -392,4 +392,20 @@
 		]]>
 	</update>
 	
+	<select id="selectStudyMemberToCnt" resultType="int">
+		<![CDATA[
+			SELECT	COUNT(*)
+			FROM	USER_IN_STUDY
+			WHERE	STUDY_CODE	=	#{studyCode}
+		]]>
+	</select>
+	
+	<select id="selectStudyCountToCnt" resultType="int">
+		<![CDATA[
+			SELECT	STUDY_LIMIT
+			FROM	STUDY_INFO
+			WHERE	STUDY_CODE	=	#{studyCode}
+		]]>
+	</select>
+	
 </mapper>
