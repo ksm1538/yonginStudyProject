@@ -22,7 +22,7 @@ $(document).ready(function () {
         	{key : "studyLimit",label : "정원", align : "right",width : "8%"},
         	{key : "applyButton", label : "", align : "center", width:"5%", 
         		 formatter: function (){
-        			 return '<button type="button" onclick="applyStudyForm(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">신청</button>';
+        			 return '<button type="button" class="grid_btn_style_0" onclick="applyStudyForm(' + this.dindex + ')">신청</button>';
         		 }
         	}
         ],

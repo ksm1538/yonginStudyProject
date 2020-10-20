@@ -136,7 +136,7 @@ studySxnList.forEach(function(n){
 							
 			</div>
 			<div class="main_study_list_con"  style="width: 100%;" >  
-				<div data-ax5grid="studyListGrid" class="admin_study_list" data-ax5grid-config="{}"  style="padding-top:10px; padding-right:10px"></div>  
+				<div data-ax5grid="studyListGrid" class="admin_study_list admin_study_manage_grid" data-ax5grid-config="{}"  style="padding-top:10px; padding-right:10px"></div>  
 			</div>
 			
 		</div>

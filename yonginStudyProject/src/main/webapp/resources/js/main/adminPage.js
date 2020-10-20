@@ -52,7 +52,7 @@ $(document).ready(function () {
         showLineNumber: false,
         //showRowSelector: true,
         columns: [ 
-			{key : "userId", label: "사용자 아이디", align: "center", width:"20%"},
+			{key : "userId", label: "사용자 아이디", align: "center", width:"23%"},
         	{key : "userName", label: "사용자 이름", align: "center", width:"15%"},
         	{key : "userEmail", label: "사용자 이메일", align: "center", width:"20%"},
         	{key : "userIsAdmin", label: "사용자 권한", align: "center", width:"15%", 
@@ -66,16 +66,16 @@ $(document).ready(function () {
         		 }},
         	{key : "kickUser", label: "추방", align: "center", width:"15%", 
           		 formatter: function (){
-        			 return '<button type="button" onclick="kickUser(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">추방</button>';
+        			 return '<button type="button" class="grid_btn_style_0 banishment" onclick="kickUser(' + this.dindex + ')"  >추방</button>';
         		 }
         	},
         	{key : "manageAdmin", label: "관리자 임명", align: "center", width:"15%", 
          		 formatter: function (){
          			 if(this.item.userIsAdmin == 'Y'){
-         				return '<button type="button" onclick="cancleAdmin(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">관리자 해제</button>';
+         				return '<button type="button" class="grid_btn_style_0" onclick="cancleAdmin(' + this.dindex + ')"  >관리자 해제</button>';
          			 }
          			 else{
-         				return '<button type="button" onclick="setAdmin(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">관리자 설정</button>';
+         				return '<button type="button" class="grid_btn_style_0" onclick="setAdmin(' + this.dindex + ')" >관리자 설정</button>';
          			 }
        		 }
        	},
@@ -119,19 +119,19 @@ $(document).ready(function () {
         showLineNumber: false,
         //showRowSelector: true,
         columns: [ 
-        	{key : "studyTopic", label: "스터디 주제", align: "center", width:"20%",
+        	{key : "studyTopic", label: "스터디 주제", align: "center", width:"15%",
     			formatter:function(){
     			    return studySxnMap[this.value];
     			}
         	},
         	{key : "studyName", label: "스터디 이름", align: "center", width:"30%"},
-        	{key : "studyArea", label: "스터디 지역", align: "center", width:"30%"},
+        	{key : "studyArea", label: "스터디 지역", align: "center", width:"15%"},
         	{key : "userName", label: "스터디 방장", align: "center", width:"15%"},
-        	{key : "totalCount",label : "현재 인원", align : "right",width : "8%"},
-        	{key : "studyLimit",label : "정원", align : "right",width : "8%"},
-        	{key : "deleteStudy", label: "삭제", align: "center", width:"5%", 
+        	{key : "totalCount",label : "현재 인원", align : "center",width : "10%"},
+        	{key : "studyLimit",label : "정원", align : "center",width : "5%"},
+        	{key : "deleteStudy", label: "삭제", align: "center", width:"10%", 
           		 formatter: function (){
-        			 return '<button type="button" onclick="deleteStudy(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">삭제</button>';
+        			 return '<button type="button" class="grid_btn_style_0" onclick="deleteStudy(' + this.dindex + ')" >삭제</button>';
         		 }
         	},
         ],
