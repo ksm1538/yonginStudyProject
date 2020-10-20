@@ -136,7 +136,7 @@ $(document).ready(function () {
         	{key : "", label: "", align: "center", width:"10%", 
        		 formatter: function (){
        			 if(this.item.checkYn == "N"){
-       				 return '<button type="button" class="grid_btn_style_0" onclick="cancelStudyForm(' + this.dindex + ')" >신청 취소</button>';
+       				 return '<button type="button" class="grid_btn_style_0" onclick="cancelStudyForm(' + this.dindex + ')" >취소</button>';
        			 }else if(this.item.checkYn == "Y"){
        				 return '<button type="button" class="grid_btn_style_0" onclick="deleteStudyForm(' + this.dindex + ')" >삭제</button>';;
        			 }else{
