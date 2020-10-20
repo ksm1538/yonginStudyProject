@@ -8,7 +8,7 @@
 <!------ JSP 설정(끝) ------>
 
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
 

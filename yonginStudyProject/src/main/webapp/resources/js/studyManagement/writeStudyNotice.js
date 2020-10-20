@@ -9,7 +9,7 @@ $(document).ready(function () {
 		disableDragAndDrop: true
 	});	
 	
-});
+});  
 
 // 공지사항 작성 함수
 function makeStudyNoticeFunc(){

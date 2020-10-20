@@ -82,3 +82,4 @@ public class studyNoticeDetailPopupController {
 		return mReturn;
 	}
 }
+
