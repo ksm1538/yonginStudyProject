@@ -191,8 +191,6 @@
 				 ,	BOARD_TB.UPDT_DT				as updtDt
 				 ,	USER_INFO.USER_ID 				as rgstusId
 				 ,	USER_INFO.USER_CODE 			as rgstusCode
-				 ,	BOARD_TB.QNA_STATUS				as	qnaStatus
-				 ,	BOARD_TB.HGRNK_BOARD_CODE		as	qnaStatus
 			FROM	BOARD_TB,
 					USER_INFO
 			WHERE	USER_INFO.USER_CODE		=	BOARD_TB.RGSTUS_ID

@@ -105,13 +105,12 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 			
 			
 			<div class="btn_style_1_con">
-            	  	<input type="button" value="수정하기" class="btn_style_1" onclick="openReviseSystemNotice()" >
+            	  	<input type="button" id="updateBtn" value="수정하기" class="btn_style_1" onclick="openReviseSystemNotice()" >
+					<input type="button" id="removeBtn" value="삭제하기" class="btn_style_1" onclick="deleteStudyFreeNotice()" >
 					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
-					<input type="button" value="삭제하기" class="btn_style_1" onclick="deleteStudyFreeNotice()" >
 			</div> 
 			
 			
-						
 	  </form:form>
 	
 	</div> 

@@ -1076,7 +1076,7 @@ input::placeholder{color:#7f99e2; font-weight:bold;}
 .study_free_notice_btn_con .btn_style_1{width:220px;}
 
 /*내가참여한페이지 자유게시판 작성*/
-.make_study_input_con .name_textbox_style_0{width:500px;}
+.write_free_notice_name_wrap .name_textbox_style_0{width:500px;}
 
 /*내가참여한페이지 자유게시판 상세정보*/
 .free_notice_name_wrap{padding:0 116px;}
@@ -1093,9 +1093,31 @@ input::placeholder{color:#7f99e2; font-weight:bold;}
 /*내가 참여한 스터디 스터디 관리 스터디 정보 변경*/
 .study_info_change_name_wrap .name_textbox_style_0{width:500px;}
 
+/*그리드 버튼 스타일*/
+/*그리드 버튼 스타일 기본 양식*/
+.grid_btn_style_0{height:25px; border-radius:10px; border:2px solid #000; outline:none; background-color:transparent; }
+.grid_btn_style_0:hover{background-color:#7f99e2; color:#fff;}
 
 
+/*스터디목록 신청*/
+.study_list_grid_con .grid_btn_style_0{height:25px; border-radius:10px; border:2px solid #000; outline:none; background-color:transparent; }
+.study_list_grid_con .grid_btn_style_0:hover{background-color:#7f99e2; color:#fff;}
 
+/*내가 참여한스터디*/
+.my_participate_study .grid_btn_style_0{width:50px; height:30px;}
+
+/*내가 관리하는 스터디*/
+.my_make_study .grid_btn_style_0{width:75px; height:30px;}
+
+/*나의 스터디 신청서*/
+.my_apply_list_con .grid_btn_style_0{width:50px;}
+
+/*관리자페이지 사용자 관리*/
+.admin_study_list .grid_btn_style_0{width:100px; height:30px;}
+.admin_study_list .grid_btn_style_0.banishment{width:50px; height:30px;}
+
+/*관리자페이지 스터디 관리*/
+.admin_study_manage_grid .grid_btn_style_0{width:50px; height:30px;}
 
 
 

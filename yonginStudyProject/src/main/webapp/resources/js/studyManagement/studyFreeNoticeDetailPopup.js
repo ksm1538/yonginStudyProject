@@ -23,6 +23,7 @@ $(document).ready(function () {
 	
 	selectStudyFreeNoticeInfoDetail(parentData.boardCode);
 	
+	
 });
 /** 초기화(끝) **/
 
@@ -42,6 +43,7 @@ function selectStudyFreeNoticeInfoDetail(boardCode){
 		success : function(data, status, xhr) {
 			switch(data.result){
 			    case COMMON_SUCCESS:
+
 			    	studyFreeNoticeInfoDetailBinder.setModel(data.boardInfo);
 			    	$('#boardDesc').summernote('code', data.boardInfo.boardDesc);
 			    	
@@ -53,6 +55,12 @@ function selectStudyFreeNoticeInfoDetail(boardCode){
 			    	$("#fileListDiv").html(output);
 			    	
 			    	getReplyList(boardCode);	//	댓글 조회
+
+					// 권한에 따른 버튼 설정
+					if(!(parentData.userAuthority == "10" || rgstusIdCode == data.boardInfo.rgstusCode )){
+						$("#removeBtn").hide();
+						$("#updateBtn").hide();
+					}
 			    	
 			    	break;    
 			    case COMMON_FAIL:

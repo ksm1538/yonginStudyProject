@@ -107,16 +107,16 @@ $(document).ready(function () {
         showLineNumber: false,
         //showRowSelector: true,
         columns: [ 
-        	{key : "studyTopic", label: "주제", align: "center", width:"25%", sortable: true,
+        	{key : "studyTopic", label: "주제", align: "center", width:"20%", sortable: true,
     			formatter:function(){
     			    return inoutSxnMap[this.value];
     			}
         	},
-        	{key : "studyName", label: "제목", align: "center", width:"26%"},
+        	{key : "studyName", label: "제목", align: "center", width:"30%"},
         	{key : "studyArea", label: "지역", align: "center", width:"15%"},
         	{key : "userName",label : "방장", align : "center",width : "15%"},
-        	{key : "totalCount",label : "현재 인원", align : "right",width : "10%"},
-        	{key : "studyLimit",label : "정원", align : "right",width : "10%"},
+        	{key : "totalCount",label : "현재 인원", align : "center",width : "10%"},
+        	{key : "studyLimit",label : "정원", align : "center",width : "10%"},
         ],
         header: {
         	align:"center",

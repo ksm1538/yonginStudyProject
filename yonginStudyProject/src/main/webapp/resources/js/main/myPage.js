@@ -21,7 +21,7 @@ $(document).ready(function () {
         	{key : "studyName", label: "스터디 이름", align: "center", width:"45%"},
         	{key : "dropStudy", label: "탈퇴", align: "center", width:"10%", 
           		 formatter: function (){
-        			 return '<button type="button" onclick="exitMyStudy(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">탈퇴</button>';
+        			 return '<button type="button" class="grid_btn_style_0" onclick="exitMyStudy(' + this.dindex + ')" >탈퇴</button>';
         		 }
         	},
         ],
@@ -72,7 +72,7 @@ $(document).ready(function () {
         	{key : "studyName", label: "스터디 이름", align: "center", width:"45%"},
         	{key : "manageStudy", label: "", align: "center", width:"10%", 
 	       		 formatter: function (){
-	    			 return '<button type="button" onclick="openStudyManagementAdminPage('+this.dindex+')" style="border:transparent; background-color:transparent;outline:none">관리하기</button>';
+	    			 return '<button type="button" class="grid_btn_style_0" onclick="openStudyManagementAdminPage('+this.dindex+')" >관리하기</button>';
 	    		 }
         	},
         ],
@@ -136,9 +136,9 @@ $(document).ready(function () {
         	{key : "", label: "", align: "center", width:"10%", 
        		 formatter: function (){
        			 if(this.item.checkYn == "N"){
-       				 return '<button type="button" onclick="cancelStudyForm(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">신청 취소</button>';
+       				 return '<button type="button" class="grid_btn_style_0" onclick="cancelStudyForm(' + this.dindex + ')" >신청 취소</button>';
        			 }else if(this.item.checkYn == "Y"){
-       				 return '<button type="button" onclick="deleteStudyForm(' + this.dindex + ')" style="border:transparent; background-color:transparent;outline:none">삭제</button>';;
+       				 return '<button type="button" class="grid_btn_style_0" onclick="deleteStudyForm(' + this.dindex + ')" >삭제</button>';;
        			 }else{
        				 return '';
        			 }
