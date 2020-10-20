@@ -30,7 +30,7 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 	<div class="col-12 notice_detail_pop_wrap">
 		<div class="col-12 col-center mw-1200 notice_detail_pop_con">
 			<div class="circle_btn" onClick="closeModalWithRefresh()"></div> 
-			<div class="tc content_title"><span>자유게시판 상세정보</span></div>
+			<div class="tc content_title"><span>공지사항 상세정보</span></div>
 		</div>
 	</div> 
 	<div class="col-12 notice_detail_pop_content_con">

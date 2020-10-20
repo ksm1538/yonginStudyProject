@@ -54,8 +54,9 @@ $(document).ready(function () {
         });
 	getStudyNoticeList();
 	
-	// 이쪽에서 권한체크 해서 작성하기버튼 숨기기 보이기 하면됨 
-	// 숨기기는 $("#아이디").hide(),    보이기 $("#아이디").show()
+	if(!(userAuthority == "10" || userAuthority == "20" )){
+		$("#writeBtn").hide();
+	}
 });
 
 /* 스터디 공지사항 리스트 조회 함수 */

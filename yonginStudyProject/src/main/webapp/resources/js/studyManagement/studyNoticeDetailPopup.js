@@ -42,7 +42,7 @@ function selectStudyNoticeInfoDetail(boardCode){
 		success : function(data, status, xhr) {
 			switch(data.result){
 			    case COMMON_SUCCESS:
-
+	
 			    	studyNoticeInfoDetailBinder.setModel(data.boardInfo);
 			    	$('#boardDesc').summernote('code', data.boardInfo.boardDesc);
 			    	
@@ -54,6 +54,17 @@ function selectStudyNoticeInfoDetail(boardCode){
 			    	$("#fileListDiv").html(output);
 			    	
 			    	getReplyList(boardCode);	//	댓글 조회
+
+					// 권한에 따른 버튼 설정
+					if(!(rgstusIdCode == data.boardInfo.rgstusCode )){
+						$("#removeBtn").hide();
+						$("#updateBtn").hide();
+					}
+					if(parentData.userAuthority == "10")
+					{
+						$("#removeBtn").show();
+					}
+					
 			    	
 			    	break;    
 			    case COMMON_FAIL:

@@ -57,7 +57,7 @@
 			</div>
 			
 			<div class="col-12 col-center mw-1200 tc notice_write_btn_con">
-				<input type="button" value="작성하기" class="btn_style_1" onclick="openWriteStudyNotice();" >
+				<input type="button" id="writeBtn" value="작성하기" class="btn_style_1" onclick="openWriteStudyNotice();" >
 			</div>
 			
 			
