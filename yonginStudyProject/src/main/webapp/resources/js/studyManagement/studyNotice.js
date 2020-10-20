@@ -163,9 +163,11 @@ function writeModalCloseWithRefresh(){
 	
 }
 
-// 공지사항 작성 팝업창 닫기
-function writeModalClose(){
-	writeNoticeModal.close();
+// 자유게시판 상세보기 팝업창 닫고 새로고침
+function detailPopupModalCloseWithRefresh(){
+	studyFreeNoticeInfoDetailModal.close();
+	getStudyFreeNoticeList();
+	
 }
 
 //EnterKeyEvent

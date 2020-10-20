@@ -87,7 +87,7 @@ function closeModalWithRefresh(){
 // 수정하기 버튼 함수
 function openReviseStudyNotice(){
 
-	location.href = "/studyManagement/reviseStudyNotice.do";
+	location.href = "/studyManagemet/studyNoticeRevise.do";
 	//window.open("/notice/reviseNotice.do",'공지사항 수정','width=700px ,height=800px ,location=no,status=no,scrollbars=no');
 }
 
