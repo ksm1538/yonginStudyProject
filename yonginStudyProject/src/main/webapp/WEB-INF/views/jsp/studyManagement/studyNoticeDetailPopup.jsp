@@ -1,9 +1,9 @@
-<!------ JSP 설정(시작) ------>
+<!------ JSP 설정(시작) ------> 
 <%@ page language="java" contentType="text/HTML;charset=UTF-8" pageEncoding="UTF-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!------ JSP 설정(끝) ------> 
+<!------ JSP 설정(끝) ------>
     
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
 <%-- <jsp:include page="../common/header.jsp"></jsp:include> --%>
 
 <!-- 해당 페이지 js 호출 : 순서 3(다른 페이지 js 호출 금지)-->
-<script type="text/javascript" src="/resources/js//studyManagement/studyNoticeDetailPopup.js"></script>
+<script type="text/javascript" src="/resources/js/studyManagement/studyNoticeDetailPopup.js"></script>
 
 <script>
 var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유저의 코드 값을 가져옴
@@ -26,46 +26,55 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="col-12 studynotice_detail_pop_wrap">
-		<div class="col-12 col-center mw-1200 studynotice_detail_pop_con">
+	
+	<div class="col-12 notice_detail_pop_wrap">
+		<div class="col-12 col-center mw-1200 notice_detail_pop_con">
 			<div class="circle_btn" onClick="closeModal()"></div> 
-			<div class="tc content_title"><span>공지사항 상세정보</span></div>
+			<div class="tc content_title"><span>자유게시판 상세정보</span></div>
 		</div>
 	</div> 
-	<div class="col-12 studynotice_detail_pop_content_con">
+	<div class="col-12 notice_detail_pop_content_con">
 		<form id="readForm" name="readForm" method="post" role="form">
 			 <input type="hidden" id="FILE_CODE" name="FILE_CODE" value=""> 
 		</form> 
-		<form:form method="POST" modelAttribute="boardVO" name="studynoticeDetailForm" id="studynoticeDetailForm" >
+		<form:form method="POST" modelAttribute="boardVO" name="noticeInfoDetailForm" id="noticeInfoDetailForm" >
 		  <div class="" id="detailDiv">
 			
 				<form:input path="boardCode" type="hidden" name="boardCode" id="boardCode" data-ax-path="boardCode" class="textbox_style_1"/>
+				<div class="free_notice_name_wrap">
+				<div class="study_detail_con detail_name">
+					<div class="name_title_size_1">제목</div>
+					<div class="study_detail_input_con">
+						<form:input path="boardTitle" type="text" name="systemNoticeTitle" id="boardTitle" data-ax-path="boardTitle" class="name_textbox_style_0"/>
+					</div>
+				</div>				
 				
-				<div class="studynotice_detail_info_wrap">
-					<div class="studynotice_detail_con detail_name">
-						<div class="name_title_size_1">제목</div>
-						<div class="studynotice_detail_input_con">
-							<form:input path="boardTitle" type="text" name="systemNoticeTitle" id="boardTitle" data-ax-path="boardTitle" class="name_textbox_style_0"/>
-						</div>
-					</div>				
-				
-					<div class="studynotice_detail_con detail_name">
-						<div class="name_title_size_1">작성자</div>
-						<div class="study_detail_input_con">
-							<form:input path="rgstusId" type="text" name="rgstusId" id="rgstusId" data-ax-path="rgstusId" class="textbox_style_1"/>
-						</div>
-					</div>	
-				
-					<div class="studynotice_detail_con detail_name">
-						<div class="name_title_size_1">날짜</div>
-						<div class="studynotice_detail_input_con">
-							<form:input path="updtDt" type="text" name="updtDt" id="updtDt" data-ax-path="updtDt" class="textbox_style_1"/>
-						</div>
+				<div class="study_detail_con detail_name">
+					<div class="name_title_size_1">작성자</div>
+					<div class="study_detail_input_con">
+						<form:input path="rgstusId" type="text" name="rgstusId" id="rgstusId" data-ax-path="rgstusId" class="textbox_style_1"/>
 					</div>
 				</div>	
 				
+				
+				
+				<div class="study_detail_con detail_name">
+					<div class="name_title_size_1">날짜</div>
+					<div class="study_detail_input_con">
+						<form:input path="updtDt" type="text" name="updtDt" id="updtDt" data-ax-path="updtDt" class="textbox_style_1"/>
+					</div>
+				</div>	
+				
+				<div class="study_detail_con detail_name">
+					<div class="name_title_size_1">조회수</div>
+					<div class="study_detail_input_con">
+						<form:input path="boardCount" type="text" name="boardCount" id="boardCount" data-ax-path="boardCount" class="textbox_style_1"/>
+					</div>
+				</div>
+				</div>	
+				
 				<div class="detail_desc">
-					<div class="studynotice_detail_input_con">
+					<div class="study_detail_input_con">
 						<form:textarea path="boardDesc" id="boardDesc" name="boardDesc" data-ax-path="boardDesc" style=""/>
 					</div> 
 				</div>
@@ -96,14 +105,15 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 			
 			
 			<div class="btn_style_1_con">
-					<c:if test="${user.userIsAdmin == 'Y'}">
-            	  		<input type="button" value="수정하기" class="btn_style_1" onclick="openReviseStudyNotice()" >
-           			</c:if>
+            	  	<input type="button" id="updateBtn" value="수정하기" class="btn_style_1" onclick="openReviseSystemNotice()" >
+					<input type="button" id="removeBtn" value="삭제하기" class="btn_style_1" onclick="deleteStudyNotice()" >
 					<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()" >
 			</div> 
 			
 			
-						
 	  </form:form>
+	
+	</div> 
+	
 </body>
 </html>

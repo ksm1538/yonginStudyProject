@@ -131,7 +131,8 @@ function openWriteStudyNotice(){
 // 스터디 공지사항 상세 보기 팝업 
 function selectStudyNoticeInfoDetail(boardCode){
 	var parentData={
-			boardCode:boardCode
+			boardCode:boardCode,
+			userAuthority : userAuthority
 	}
 	
 	studyNoticeInfoDetailModal.open({
@@ -139,7 +140,7 @@ function selectStudyNoticeInfoDetail(boardCode){
 		height: 810,
 		iframe: {
 			method: "post",
-			url: "/studyManagement/studyNoticeDetailPopup.do",
+			url: "/studyManagement/studyNoticeInfoDetailPopup.do",
 			param: callBack = parentData
 		},
 		onStateChanged: function(){
@@ -180,4 +181,16 @@ function enterKeyEvent() {
 function searchStudyNoticeList(){
 	_pageNo = 0;
 	getStudyNoticeList();
+}
+
+// 공지사항 상세보기 팝업창 닫고 새로고침
+function detailPopupModalCloseWithRefresh(){
+	studyNoticeInfoDetailModal.close();
+	getStudyNoticeList();
+	
+}
+
+// 공지사항 상세 팝업창 닫기
+function detailPopupModalClose(){
+	studyNoticeInfoDetailModal.close();
 }

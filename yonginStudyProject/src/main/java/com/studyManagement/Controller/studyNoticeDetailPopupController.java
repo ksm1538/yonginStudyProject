@@ -28,7 +28,7 @@ public class studyNoticeDetailPopupController {
 	@Resource(name="fileService")
 	private fileService fileService;
 	
-	@RequestMapping(value = "/studyManagement/studyNoticeDetailPopup.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/studyManagement/studyNoticeInfoDetailPopup.do", method = RequestMethod.POST)
 	public String studyInfoDetailPopup(Model model, HttpSession session) throws Exception {
 		/** 세션에 유저가 정상적으로 등록되어 있지 않다면 로그인 페이지로 이동(시작) **/
 		userInfoVO user = (userInfoVO) session.getAttribute("user");
@@ -50,7 +50,7 @@ public class studyNoticeDetailPopupController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/studyManagement/selectStudyNoticeDetail.json", method = RequestMethod.POST)
+	@RequestMapping(value="/studyManagement/selectStudyNoticeInfoDetail.json", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> selectStudyNoticeDetail(@RequestBody String boardCode) throws Exception {
 	      
@@ -78,6 +78,26 @@ public class studyNoticeDetailPopupController {
 		mReturn.put("message", "성공적으로 조회하였습니다.");
 		mReturn.put("boardInfo", boardVO);
 		mReturn.put("fileList", fileList);
+		
+		return mReturn;
+	}
+	
+	/**
+	 * 스터디 공지사항 삭제
+	 * @param boardVO
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/studyManagement/studyNoticeDelete.json", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> deleteMessageTo(@RequestBody boardVO boardVO, HttpSession session) throws Exception {
+	      
+		HashMap<String, Object> mReturn = new HashMap<String, Object>();
+		
+		studyManagementService.deleteStudyNotice(boardVO);
+		
+		mReturn.put("result", "success");
+		mReturn.put("message", "성공적으로 삭제되었습니다.");
 		
 		return mReturn;
 	}
