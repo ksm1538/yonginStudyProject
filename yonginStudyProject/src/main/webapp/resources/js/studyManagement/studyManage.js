@@ -37,7 +37,7 @@ $(document).ready(function () {
 			},
 			{key : "studyAuthorityChange",label : "직위 변경", align : "center",width : "15%",
 				formatter: function (){
-					return '<button type="button" onclick="openStudyMemberAdminChange('+this.dindex+')" style="border:transparent; background-color:transparent;outline:none">직위 변경</button>';
+					return '<button type="button" class="grid_btn_style_0" onclick="openStudyMemberAdminChange('+this.dindex+')">직위 변경</button>';
         		 }
 			},/*직위변경 */
         ],
@@ -85,12 +85,12 @@ $(document).ready(function () {
         	{key : "rgdtDt", label : "신청 날짜", align : "center",width : "20%"},
         	{key : "", label : "승인", align : "center", width : "10%",
 				formatter: function (){
-					return '<button type="button" onclick="approveStudyForm('+this.dindex+')" style="border:transparent; background-color:transparent;outline:none;color:green">승인</button>';
+					return '<button type="button" class="grid_btn_style_0 color_green" onclick="approveStudyForm('+this.dindex+')" >승인</button>';
        		 	}
         	},
         	{key : "", label : "거부", align : "center", width : "10%",
 				formatter: function (){
-					return '<button type="button" onclick="rejectStudyForm('+this.dindex+')" style="border:transparent; background-color:transparent;outline:none;color:red">거부</button>';
+					return '<button type="button" class="grid_btn_style_0 color_red" onclick="rejectStudyForm('+this.dindex+')" >거부</button>';
        		 	}
         	},
         ],
