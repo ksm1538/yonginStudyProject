@@ -65,6 +65,41 @@ public class studyManagementDAOImpl implements studyManagementDAO{
 	}
 	
 	@Override
+	public void writeStudyNotice(boardVO data) throws Exception{
+		sqlSession.insert("studyManagementMapper.insertStudyNotice", data);
+	}
+	
+	@Override
+	public int selectStudyNoticeListToCnt(boardVO boardVO) {
+		return sqlSession.selectOne("studyManagementMapper.selectStudyNoticeListToCnt", boardVO);
+	}
+	
+	@Override
+	public List<boardVO> selectStudyNoticeList(boardVO boardVO){
+		return sqlSession.selectList("studyManagementMapper.selectStudyNoticeList", boardVO);
+	}
+	
+	@Override
+	public boardVO selectStudyNoticeInfoDetail(String boardCode) {
+		return sqlSession.selectOne("studyManagementMapper.selectStudyNoticeInfoDetail", boardCode);
+	}
+	
+	@Override
+	public void updateStudyNoticeCnt(String boardCode) throws Exception{
+		sqlSession.update("studyManagementMapper.updateStudyNoticeCnt", boardCode);
+	}
+	
+	@Override
+	public void reviseStudyNotice(boardVO data) throws Exception{
+		sqlSession.update("studyManagementMapper.reviseStudyNotice", data);
+	}
+	
+	@Override
+	public void deleteStudyNotice(String boardCode) throws Exception{
+		sqlSession.delete("studyManagementMapper.deleteStudyNotice", boardCode);
+	}
+	
+	@Override
 	public userInfoVO selectStudyMemberManage(String userCode) {
 		return sqlSession.selectOne("studyManagementMapper.selectStudyMemberManage", userCode);
 	}

@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.commonFunction.Service.fileService;
 import com.login.VO.userInfoVO;
-import com.studyManagement.Service.studyNoticeService;
+import com.studyManagement.Service.studyManagementService;
 import com.notice.VO.boardVO;
 
 @Controller
 public class studyNoticeDetailPopupController {
 	
-	@Resource(name="studyNoticeService")
-	private studyNoticeService studyNoticeService;
+	@Resource(name="studyManagementService")
+	private studyManagementService studyManagementService;
 	
 	@Resource(name="fileService")
 	private fileService fileService;
@@ -63,7 +63,7 @@ public class studyNoticeDetailPopupController {
 			return mReturn;
 		}
 		
-		boardVO boardVO = studyNoticeService.selectStudyNoticeInfoDetail(boardCode);
+		boardVO boardVO = studyManagementService.selectStudyNoticeInfoDetail(boardCode);
 		
 		if(boardVO == null) {
 			mReturn.put("result","fail");

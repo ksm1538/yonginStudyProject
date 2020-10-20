@@ -29,6 +29,18 @@ public interface studyManagementService {
 
 	void deleteStudyFreeNotice(boardVO boardVO) throws Exception;
 	
+	void writeStudyNotice(boardVO data, MultipartHttpServletRequest mpRequest) throws Exception;
+	
+	int selectStudyNoticeListToCnt(boardVO boardVO);
+	
+	List<boardVO> selectStudyNoticeList(boardVO boardVO);
+	
+	boardVO selectStudyNoticeInfoDetail(String boardCode) throws Exception;
+	
+	void reviseStudyNotice(boardVO data, MultipartHttpServletRequest mpRequest) throws Exception;
+
+	void deleteStudyNotice(boardVO boardVO) throws Exception;
+	
 	userInfoVO selectStudyMemberManage(String userCode) throws Exception;
 	
 	void deportStudyMember(messageInfoVO data) throws Exception;

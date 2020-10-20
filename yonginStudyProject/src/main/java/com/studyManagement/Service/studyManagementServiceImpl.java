@@ -99,6 +99,61 @@ public class studyManagementServiceImpl implements studyManagementService{
 	}
 	
 	@Override
+	public void writeStudyNotice(boardVO data, MultipartHttpServletRequest mpRequest) throws Exception{ 
+		studyManagementDAO.writeStudyNotice(data);
+		
+		List<Map<String,Object>> list = FileUtilsController.parseInsertFileInfo(data, mpRequest); 
+		int size = list.size();
+		for(int i=0; i<size; i++){ 
+			fileDAO.insertFile(list.get(i)); 
+		}
+	}
+	
+	@Override
+	public int selectStudyNoticeListToCnt(boardVO boardVO) {
+		return studyManagementDAO.selectStudyNoticeListToCnt(boardVO);
+	}
+	
+	@Override
+	public List<boardVO> selectStudyNoticeList(boardVO boardVO){
+		return studyManagementDAO.selectStudyNoticeList(boardVO);
+	}
+	
+	@Override
+	public boardVO selectStudyNoticeInfoDetail(String boardCode) throws Exception {
+		studyManagementDAO.updateStudyNoticeCnt(boardCode);
+		return studyManagementDAO.selectStudyNoticeInfoDetail(boardCode);
+	}
+	
+	@Override
+	public void reviseStudyNotice(boardVO data, MultipartHttpServletRequest mpRequest) throws Exception{
+		studyManagementDAO.reviseStudyNotice(data);
+		
+		String[] files = data.getFileCodeDel();
+		
+		List<Map<String, Object>> list = FileUtilsController.parseUpdateFileInfo(data, files, mpRequest);
+		Map<String, Object> tempMap = null;
+		int size = list.size();
+		for(int i = 0; i<size; i++) {
+			tempMap = list.get(i);
+			if(tempMap.get("IS_NEW").equals("Y")) {
+				fileDAO.insertFile(tempMap);
+			}else {
+				fileDAO.updateFile(tempMap);
+			}
+		}
+	}
+	
+	@Override
+	public void deleteStudyNotice(boardVO boardVO) throws Exception{
+			String boardCode = boardVO.getBoardCode();
+			studyManagementDAO.deleteStudyNotice(boardCode);
+			fileDAO.updateNFileWithDeleteBoard(boardCode);
+			replyDAO.deleteReplyWithBoardCode(boardCode);
+		
+	}
+	
+	@Override
 	public userInfoVO selectStudyMemberManage(String userCode) throws Exception {
 		return studyManagementDAO.selectStudyMemberManage(userCode);
 	}

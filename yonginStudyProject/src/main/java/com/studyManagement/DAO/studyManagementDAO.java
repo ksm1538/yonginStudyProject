@@ -29,6 +29,20 @@ public interface studyManagementDAO {
 	
 	public void deleteStudyFreeNotice(String boardCode) throws Exception;
 	
+	public void writeStudyNotice(boardVO data) throws Exception;
+	
+	public int selectStudyNoticeListToCnt(boardVO boardVO);
+	
+	public List<boardVO> selectStudyNoticeList(boardVO boardVO);
+	
+	public boardVO selectStudyNoticeInfoDetail(String boardCode);
+	
+	public void updateStudyNoticeCnt(String boardCode) throws Exception;
+	
+	public void reviseStudyNotice(boardVO data) throws Exception;
+	
+	public void deleteStudyNotice(String boardCode) throws Exception;
+	
 	public userInfoVO selectStudyMemberManage(String userCode);
 	
 	public void deportStudyMember(messageInfoVO data) throws Exception;

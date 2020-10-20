@@ -32,20 +32,23 @@
 					<div class="tc question_mark"><span>?</span></div>
 					<div class="qestion_desc_box_con">
 						<div class="question_tri type_2"></div>
-						<div class="question_desc type_2">공지사항입니다. 수시로 확인하여 차질이 없도록 하세요.</div>
+						<div class="question_desc type_2"><span class="study_main_name" id="spanStudyMainName"></span>공지사항입니다. 수시로 확인하여 차질이 없도록 하세요.</div>
 					</div>
 				</div>
 			</div>
 			
 			<div class="col-12 col-center mw-1200 study_notice_search_con">
 				<div class="study_notice_search_box get_person_color">
-					<div class="study_notice_box_title">ID</div>
-					<input type="text" id="userCodeTo" name ="userCodeTo" class="textbox_style_1 color_bg" onkeyup="enterKeyEvent_2();">
+					<div class="study_notice_box_title">작성자 ID</div>
+					<input type="text" id="searchBoardRgstusId" name ="searchBoardRgstusId" class="textbox_style_1 color_bg" onkeyup="enterKeyEvent();">
 				</div>
 				
-				<div class="study_notice_search_box get_search_btn_color">
-					  <input type="button" value="검색" class="btn_style_1" onclick="searchStudyNoticeList()" >
-				</div>
+				<div class="study_free_notice_content_box">
+			 		<div class="study_free_notice_search_title">제목</div>
+			 		<input type="text" id="searchBoardTitle" name="searchBoardTitle" class="textbox_style_1 color_bg" maxlength="30" onkeyup="enterKeyEvent();">
+			 	</div>
+
+				 	<input type="button" value="검색" class="btn_style_1" onclick="searchStudyNoticeList()" >
 		    </div>
 			
 			

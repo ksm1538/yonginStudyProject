@@ -40,13 +40,16 @@
       <div class="make_study_title">공지사항 작성</div>
    </div> 
    
-   <form name="writeSysNoticeForm" id="writeSysNoticeForm" method="POST" enctype="multipart/form-data">
+   <form name="studyNoticeWriteForm" id="studyNoticeWriteForm" method="POST" enctype="multipart/form-data">
+   
+   <input type="hidden" id="studyCode" name="studyCode" value="<%=request.getParameter("studyCode")%>">
+   
    <div class="col-12 col-center mw-1200 make_study_form_wrap">
       <div class="make_study_form_con">
       	<div class="study_text make_study_form">
            <div class="title_size type_2">제목</div>
            <div class="make_study_input_con">
-           	 <div class="write_notice_study_manage_wrap"><input type="text" name="" id="" class="name_textbox_style_0"></div>
+           	 <div class="write_notice_study_manage_wrap"><input type="text" name="boardTitle" id="boardTitle" class="name_textbox_style_0"></div>
            </div>
            
         </div> 
@@ -54,7 +57,7 @@
        <div class="study_text make_study_form">
           <div class="title_size type_2">설명</div>
           <div class="make_study_input_con">
-         		 <textarea name="noticeWriteSummernote" id="noticeWriteSummernote" placeholder="공지사항을 입력해주세요."></textarea> 
+         		 <textarea name="boardDesc" id="boardDesc" placeholder="공지사항을 입력해주세요."></textarea> 
           </div>
          
        </div>    
@@ -73,8 +76,8 @@
 	
 	<div class="col-12 col-center mw-1200 write_notice_btn_wrap">
    		<div class="btn_style_1_con">
-      		<input type="button" value="작성하기" class="btn_style_1" onclick="">
-      		<input type="button" value="닫기" class="btn_style_1" onclick="closeWriteModal()">
+      		<input type="button" value="작성하기" class="btn_style_1" onclick="studyNoticeWriteFunc()">
+      		<input type="button" value="닫기" class="btn_style_1" onclick="closeModal()">
    		</div> 
 	</div> 
 	</form>

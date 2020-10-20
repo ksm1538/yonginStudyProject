@@ -2,7 +2,7 @@ var fileIndex = 1;
 
 $(document).ready(function () {
 	//summernote editor
-	$('#noticeWriteSummernote').summernote({           
+	$('#boardDesc').summernote({           
 	    height: 200,        
 	    codeviewFilter: true,
 		codeviewIframeFilter: true,   
@@ -12,16 +12,16 @@ $(document).ready(function () {
 });  
 
 // 공지사항 작성 함수
-function makeStudyNoticeFunc(){
+function studyNoticeWriteFunc(){
 	
 	// 폼 데이터 가져옴
-    var form = $('#writeStudyNoticeForm')[0];
+    var form = $('#studyNoticeWriteForm')[0];
     var data = new FormData(form);
 
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        url: "/notice/makeStudyNotice",
+        url: "/studyManagement/studyNoticeWrite",
         data: data,
         processData: false,		//필수
         contentType: false,		//필수
@@ -54,7 +54,7 @@ function makeStudyNoticeFunc(){
 }
 
 function closeWriteModal(){
-	return self.parent.closeModal();		// 부모 페이지의 close함수로 리턴
+	self.parent.closeModal();		// 부모 페이지의 close함수로 리턴
 }
 
 // 팝업창 닫고 새로고침

@@ -19,15 +19,15 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.commonFunction.Service.fileService;
 import com.login.VO.userInfoVO;
-import com.studyManagement.Service.studyNoticeService;
+import com.studyManagement.Service.studyManagementService;
 import com.notice.VO.boardVO;
 import com.notice.Validator.boardValidator;
 
 @Controller
 public class reviseStudyNoticeController {
 	
-	@Resource(name="studyNoticeService")
-	private studyNoticeService studyNoticeService;
+	@Resource(name="studyManagementService")
+	private studyManagementService studyManagementService;
 	
 	@Resource(name="fileService")
 	private fileService fileService;
@@ -72,7 +72,7 @@ public class reviseStudyNoticeController {
 			return mReturn;
 		}
 		
-		boardVO boardInfo = studyNoticeService.selectStudyNoticeInfoDetail(boardCode);
+		boardVO boardInfo = studyManagementService.selectStudyNoticeInfoDetail(boardCode);
 		
 		if(boardInfo == null) {
 			mReturn.put("result","fail");
@@ -132,7 +132,7 @@ public class reviseStudyNoticeController {
 			return mReturn;
 		}  
 		/** 데이터 검증(끝) **/
-		studyNoticeService.reviseStudyNotice(boardVO, mpRequest);
+		studyManagementService.reviseStudyNotice(boardVO, mpRequest);
 		mReturn.put("result", "success");
 		mReturn.put("message", "수정이 완료되었습니다.");
 		
