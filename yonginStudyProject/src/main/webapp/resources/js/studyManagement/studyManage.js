@@ -473,6 +473,10 @@ function openApplicationFormDetail(dindex){
 
 // 스터디 정보 변경
 function openChangeStudyInfo(){
+	if(userAuthority != "10"){
+		dialog.alert("권한이 없습니다.");
+		return;
+	}
 	
 	var parentData={
 		studyCode:$("#studyCode").val(),

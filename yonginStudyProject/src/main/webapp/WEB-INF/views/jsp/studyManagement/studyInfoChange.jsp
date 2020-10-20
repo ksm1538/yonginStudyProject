@@ -82,7 +82,7 @@
          
          <div class="study_text make_study_form">
             <div class="title_size type_2">설명</div>
-            <div class="study_detail_input_con" id="studyAreaDiv">
+            <div class="study_detail_input_con">
 				<form:textarea path="studyDesc" id="studyDesc" name="studyDesc" data-ax-path="studyDesc" style=""/>
 			</div>
            

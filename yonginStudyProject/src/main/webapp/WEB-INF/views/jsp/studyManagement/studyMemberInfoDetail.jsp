@@ -31,7 +31,7 @@ var rgstusIdCode = '${user.userCode}';		// 세션에 있는 현재 접속한 유
 	<div class="col-12 col-center mw-1200 study_member_detail_pop_wrap">
 		<div class="study_member_detail_pop_con">
 			<div class="circle_btn" onClick="closeModal()"></div> 
-			<div class="tc study_member_detail_title"><span>스터디원 상세정보</span></div>
+			<div class="tc study_member_detail_title"><span>사용자 상세정보</span></div>
 		</div>
 	</div>
 	
