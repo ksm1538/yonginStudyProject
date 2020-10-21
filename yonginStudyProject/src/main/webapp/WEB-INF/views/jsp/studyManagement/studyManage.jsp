@@ -74,7 +74,7 @@ studyPositionList.forEach(function(n){
 			</div>
 			
 			<div class="study_main_content" id="movelist2" onclick="openChangeStudyInfo()">
-				<div class="tc study_main_content_img_con"><img src="../resources/img/apply.png" class="edit_img"></div>
+				<div class="tc study_main_content_img_con"><img src="../resources/img/edit.png" class="edit_img"></div>
 				<div class="tc study_main_content_title">스터디 정보 변경</div>
 				<div class="tc study_main_content_sub_title">스터디 정보를 변경하세요</div>
 			</div>
