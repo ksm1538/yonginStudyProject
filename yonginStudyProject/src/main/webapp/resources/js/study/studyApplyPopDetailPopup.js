@@ -41,30 +41,25 @@ function selectStudyApplicationForm(){
 		success : function(data, status, xhr) {
 			switch(data.result){
 			    case COMMON_SUCCESS:
+			    	console.log(data.resultVO);
 			    	// Binder에 데이터 넣어줌(자동으로 data-ax-path 랑 매치되면 알아서 대입됨)
 			    	studyApplicationFormDetailBinder.setModel(data.resultVO);
-			    	if(data.resultVO.status != "10" || parentData.type == "studyAdminPageType"){
-			    		$("#detailDiv *").prop("disabled", true);
-			    		$("#updateAFBtn").hide();
-			    		$('#applicationFormDesc').summernote({           
-			    		    height: 250,        
-			    		    codeviewFilter: true,
-			    			codeviewIframeFilter: true,   
-			    			disableDragAndDrop: true,
-			    			toolbar:[]
-			    		});	
-			    		//섬머노트 비활성화(readonly)
-			    		$('#applicationFormDesc').summernote('disable');
-			    		$("#title").attr("readonly",true);
+			    	if(parentData.type == "studyAdminPageType"){
+			    		readonly();
 			    	}
-			    	else{
-			    		//summernote editor
-			    		$('#applicationFormDesc').summernote({           
-			    		    height: 250,        
-			    		    codeviewFilter: true,
-			    			codeviewIframeFilter: true,   
-			    			disableDragAndDrop: true
-			    		});	
+			    	else if(parentData.type == "myPageType"){
+			    		if(data.resultVO.checkYn == "N"){
+			    			//summernote editor
+				    		$('#applicationFormDesc').summernote({           
+				    		    height: 250,        
+				    		    codeviewFilter: true,
+				    			codeviewIframeFilter: true,   
+				    			disableDragAndDrop: true
+				    		});	
+			    		}
+			    		else if(data.resultVO.checkYn == "Y"){
+			    			readonly();
+			    		}
 			    	}
 			    	
 			    	//summernote는 따로 넣어줘야함 이런방식으로. Binder가 적용안됨
@@ -244,4 +239,19 @@ function rejectStudyForm(){
 		}
 	}, function(){
 	});
+}
+
+function readonly(){
+	$("#detailDiv *").prop("disabled", true);
+	$("#updateAFBtn").hide();
+	$('#applicationFormDesc').summernote({           
+	    height: 250,        
+	    codeviewFilter: true,
+		codeviewIframeFilter: true,   
+		disableDragAndDrop: true,
+		toolbar:[]
+	});	
+	//섬머노트 비활성화(readonly)
+	$('#applicationFormDesc').summernote('disable');
+	$("#title").attr("readonly",true);
 }

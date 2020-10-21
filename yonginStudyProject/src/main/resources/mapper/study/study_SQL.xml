@@ -174,6 +174,7 @@
 				 ,	TITLE					as	title	
 				 ,	APPLICATION_FORM_DESC	as	applicationFormDesc
 				 ,	STATUS					as	status
+				 ,	CHECK_YN				as	checkYn
 			FROM	STUDY_APPLICATION_FORM_USER
 			WHERE	APPLICATION_FORM_CODE		=	#{applicationFormCode}
 		]]>

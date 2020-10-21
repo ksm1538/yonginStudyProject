@@ -364,6 +364,8 @@
 				,	USER_INFO.USER_EMAIL			as userEmail
 				,	USER_INFO.USER_ADDRESS			as userAddress
 				,	USER_INFO.USER_CODE				as userCode
+				,	USER_INFO.USER_BIRTH			as userBirth
+				,	USER_INFO.USER_GENDER			as userGender
 			FROM	USER_INFO
 			WHERE	USER_INFO.USER_CODE		=	#{userCode}
 		]]>
