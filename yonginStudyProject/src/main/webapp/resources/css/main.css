@@ -880,7 +880,7 @@ html, body {
 .study_notice_search_con{display:flex; margin-bottom:40px;}
 .study_notice_search_box{display:flex; margin-right:30px;}
 
-.study_notice_search_con .study_notice_box_title{font-size:20px; font-weight:bold; color:#fff; margin-right:15px;}
+.study_notice_search_con .study_notice_box_title{font-size:25px; font-weight:bold; color:#fff; margin-right:15px;}
 .study_notice_search_con .get_search_btn_color .btn_style_1{border-color:#fff; color:#fff;}
 .study_notice_search_con .get_search_btn_color .btn_style_1:hover{border-color:#000; color:#000;}
 
