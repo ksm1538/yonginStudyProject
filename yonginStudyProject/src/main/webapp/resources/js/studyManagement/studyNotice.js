@@ -164,6 +164,10 @@ function writeModalCloseWithRefresh(){
 	
 }
 
+function closeWriteModal(){
+	writeNoticeModal.close();
+}
+
 // 자유게시판 상세보기 팝업창 닫고 새로고침
 function detailPopupModalCloseWithRefresh(){
 	studyFreeNoticeInfoDetailModal.close();

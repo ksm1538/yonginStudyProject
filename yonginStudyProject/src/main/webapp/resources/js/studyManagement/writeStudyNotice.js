@@ -54,7 +54,7 @@ function studyNoticeWriteFunc(){
 }
 
 function closeWriteModal(){
-	self.parent.closeModal();		// 부모 페이지의 close함수로 리턴
+	self.parent.closeWriteModal();		// 부모 페이지의 close함수로 리턴
 }
 
 // 팝업창 닫고 새로고침
