@@ -216,6 +216,10 @@ html, body {
 .main_my_study_notice_con .main_my_study_notice_title{position:relative; font-size:30px; font-weight: bold; margin-bottom:50px; color:#fff;}
 .main_my_study_notice_con .main_my_study_notice_title > span{display:inline-block; border-bottom:3px solid #fff; padding-bottom:10px;}
 
+.study_notice_search_box .btn_style_1{border-color:#fff; color:#fff;}
+.study_notice_search_box .btn_style_1:hover{border-color:#000; color:#000;}
+
+
 
 /*스터디 일정*/
 .main_my_study_calender_wrap{padding-top:120px; padding-bottom:120px; z-index:3;}
@@ -1119,8 +1123,15 @@ input::placeholder{color:#7f99e2; font-weight:bold;}
 /*관리자페이지 스터디 관리*/
 .admin_study_manage_grid .grid_btn_style_0{width:50px; height:30px;}
 
+/*직위변경*/
+.study_member_grid_con .grid_btn_style_0{width:100px; height:30px;}
 
+/*신청서 승인거부*/
+.apply_manage_grid_con .grid_btn_style_0.color_green{width:75px; height:30px; color:green;}
+.apply_manage_grid_con .grid_btn_style_0.color_green:hover{color:#fff;}
 
+.apply_manage_grid_con .grid_btn_style_0.color_red{width:75px; height:30px; color:red;}
+.apply_manage_grid_con .grid_btn_style_0.color_red:hover{color:#fff;}
 
 
 

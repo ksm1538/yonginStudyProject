@@ -43,12 +43,14 @@
 					<input type="text" id="searchBoardRgstusId" name ="searchBoardRgstusId" class="textbox_style_1 color_bg" onkeyup="enterKeyEvent();">
 				</div>
 				
-				<div class="study_free_notice_content_box">
-			 		<div class="study_free_notice_search_title">제목</div>
+				<div class="study_notice_search_box get_person_color">
+			 		<div class="study_notice_box_title">제목</div>
 			 		<input type="text" id="searchBoardTitle" name="searchBoardTitle" class="textbox_style_1 color_bg" maxlength="30" onkeyup="enterKeyEvent();">
 			 	</div>
 
-				 	<input type="button" value="검색" class="btn_style_1" onclick="searchStudyNoticeList()" >
+				<div class="study_notice_search_box">
+					<input type="button" value="검색" class="btn_style_1" onclick="searchStudyNoticeList()" >
+				</div>
 		    </div>
 			
 			
