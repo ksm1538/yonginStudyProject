@@ -436,17 +436,11 @@ function makeStudyForm(){
 	//window.open("/makeStudy.do",'스터디더보기','width=700px ,height=800px ,location=no,status=no,scrollbars=no');
 }
 
-// 스터디 만들기 팝업 닫기
-function closeMakeStudyModal(){
-	window.location.reload();
-	makeStudyModal.close();
-}
 
-// 공지사항 작성 팝업창 닫고 새로고침
+// 공지사항 상세 팝업창 닫고 새로고침
 function closeSystemNoticeInfo(){
 	noticeDetailModal.close();
-	window.location.reload();
-	
+	getStudyNoticeList();
 }
 
 //스터디 페이지 이동(POST방식 이용)
