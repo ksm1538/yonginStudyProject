@@ -9,5 +9,5 @@
 ## YonginStudy 소개 자료 
 https://github.com/ksm1538/yonginStudyProject/blob/master/yonginStudyProject/src/main/webapp/resources/backupFiles/YonginStudy%20%EC%A1%B8%EC%97%85%EC%9E%91%ED%92%88%20%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pptx
 
-## 영상
-https://youtu.be/Xma8l9yGxw4
+## 영상 (2배속)
+https://youtu.be/flO6e-5HK7E
